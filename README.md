@@ -3,4 +3,4 @@
 
 ## История изменений
 ### 10.05.2022
-- Запущено зеркало сайта LFS mirror.linuxfromscratch.ru
+- Запущено зеркало сайта LFS [mirror.linuxfromscratch.ru](https://mirror.linuxfromscratch.ru)
