@@ -95,13 +95,13 @@
 
 <!ENTITY anduin-sources  "https://anduin.linuxfromscratch.org/LFS">
 
-<!ENTITY buildtime       "Ïðèáëèçèòåëüíîå âðåìÿ ñáîðêè">
-<!ENTITY diskspace       "Òðåáóåìîå äèñêîâîå ïðîñòðàíñòâî">
-<!ENTITY dependencies    "Óñòàíîâêà çàâèñèò îò">
-<!ENTITY runtime         "Òðåáóåòñÿ âî âðåìÿ âûïîëíåíèÿ">
-<!ENTITY testsuites      "Íàáîð òåñòîâ çàâèñèò îò">
-<!ENTITY before          "Äîëæåí áûòü óñòàíîâëåí äî">
-<!ENTITY external        "Íåîáÿçàòåëüíûå çàâèñèìîñòè">
+<!ENTITY buildtime       "ÐŸÑ€Ð¸Ð±Ð»Ð¸Ð·Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ðµ Ð²Ñ€ÐµÐ¼Ñ ÑÐ±Ð¾Ñ€ÐºÐ¸">
+<!ENTITY diskspace       "Ð¢Ñ€ÐµÐ±ÑƒÐµÐ¼Ð¾Ðµ Ð´Ð¸ÑÐºÐ¾Ð²Ð¾Ðµ Ð¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÑÑ‚Ð²Ð¾">
+<!ENTITY dependencies    "Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð·Ð°Ð²Ð¸ÑÐ¸Ñ‚ Ð¾Ñ‚">
+<!ENTITY runtime         "Ð¢Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð²Ð¾ Ð²Ñ€ÐµÐ¼Ñ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ">
+<!ENTITY testsuites      "ÐÐ°Ð±Ð¾Ñ€ Ñ‚ÐµÑÑ‚Ð¾Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ñ‚ Ð¾Ñ‚">
+<!ENTITY before          "Ð”Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½ Ð´Ð¾">
+<!ENTITY external        "ÐÐµÐ¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸">
 
 <!ENTITY gnu             "https://ftp.gnu.org/gnu/">
 <!ENTITY gnu-software    "https://www.gnu.org/software/">

@@ -13,13 +13,13 @@
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="prologue/preface.xml"/>
 
 <part id="part1">
-<title>Введение</title>
+<title>Р’РІРµРґРµРЅРёРµ</title>
 <?dbhtml filename="part1.html"?>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter01/chapter01.xml"/>
 </part>
 
 <part id="part2">
-<title>Подготовка к сборке</title>
+<title>РџРѕРґРіРѕС‚РѕРІРєР° Рє СЃР±РѕСЂРєРµ</title>
 <?dbhtml filename="part2.html"?>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter02/chapter02.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter03/chapter03.xml"/>
@@ -27,7 +27,7 @@
 </part>
 
 <part id="part3">
-<title>Сборка кросс-компилятора и временного набора инструментов</title>
+<title>РЎР±РѕСЂРєР° РєСЂРѕСЃСЃ-РєРѕРјРїРёР»СЏС‚РѕСЂР° Рё РЅР°Р±РѕСЂР° РІСЂРµРјРµРЅРЅС‹С… РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ</title>
 <?dbhtml filename="part3.html"?>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="part3intro/part3intro.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/chapter05.xml"/>
@@ -36,7 +36,7 @@
 </part>
 
 <part id="part4">
-<title>Сборка системы LFS</title>
+<title>РЎР±РѕСЂРєР° СЃРёСЃС‚РµРјС‹ LFS</title>
 <?dbhtml filename="part4.html"?>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter08/chapter08.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter09/chapter09.xml"/>
@@ -45,7 +45,7 @@
 </part>
 
 <part id="part5">
-<title>Приложения</title>
+<title>РџСЂРёР»РѕР¶РµРЅРёСЏ</title>
 <?dbhtml filename="part5.html"?>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="appendices/acronymlist.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="appendices/acknowledgments.xml"/>
