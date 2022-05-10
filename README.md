@@ -1,6 +1,32 @@
-# lfs-ru
-## Перевод книги Linux From Scratch на русский язык 
+LFS Book README
 
-## История изменений
-### 10.05.2022
-- Запущено зеркало сайта LFS [mirror.linuxfromscratch.ru](https://mirror.linuxfromscratch.ru)
+В этом документе содержится информация о том, как выполнить преобразование 
+книги из XML формата в другой формат (например, HTML, PDF, PS и TXT). Для 
+начала, если вы ещё этого не сделали, пожалуйста, откройте и прочитайте 
+информацию, представленную в файле INSTALL, чтобы установить необходимое 
+программное обеспечение. Если вы уже выполнили все шаги в файле INSTALL, 
+ознакомьтесь с примерами того, как выполнить преобразование файлов в другие 
+форматы.
+
+Во всех примерах необходимо указание аргумента REV=systemd, если требуется 
+сборка книги редакции systemd.
+
+XML в XHTML:
+-------------
+make BASEDIR=/path/to/output/location
+
+
+XML в одностраничный XHTML (nochunks):
+------------------------------------
+make BASEDIR=/path/to/output/location nochunks
+
+
+XML в TXT
+----------
+Следуйте инструкциям для nochunks и затем запустите:
+lynx -dump /path/to/nochunks > /path/to/output
+
+
+XML в PDF:
+-----------
+make BASEDIR=/path/to/output/location pdf
