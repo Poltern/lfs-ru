@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pre-prerequisites">
+  <?dbhtml filename="prerequisites.html"?>
+
+  <title>Предпосылки</title>
+
+  <para>Создание системы LFS — непростая задача. Это требует определенного 
+  уровня знаний системного администрирования Unix для решения проблем и 
+  правильного выполнения перечисленных команд. В частности, как абсолютный 
+  минимум, Вы должны уметь пользоваться командной оболочкой для копирования 
+  или перемещения файлов и каталогов, просмотра содержимого каталогов и файлов 
+  и изменения текущего каталога. Также ожидается, что у вас есть достаточные 
+  знания об использовании и установке программного обеспечения Linux.</para>
+
+  <para>Поскольку книга LFS предполагает наличие <emphasis>хотя бы этого</emphasis> 
+  базового уровня навыков, различные форумы поддержки LFS вряд ли смогут 
+  предоставить вам большую помощь в этих вопросах. Вы обнаружите, что ваши 
+  вопросы, касающиеся таких базовых знаний, скорее всего, останутся без 
+  ответа, или вас просто направят к списку основных материалов для 
+  предварительного ознакомления.</para>
+
+  <para>Перед созданием системы LFS мы рекомендуем прочитать следующее:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>HOWTO по сборке программного обеспечения
+      <ulink url="http://www.tldp.org/HOWTO/Software-Building-HOWTO.html"/></para>
+
+      <para>Это исчерпывающее руководство по сборке и установке 
+      <quote>универсальных</quote> программ Unix под Linux.
+      Несмотря на то что книга написана достаточно давно, по-прежнему дает 
+	  хороший обзор основных методов, необходимым для сборки и установки программного обеспечения.</para>
+    </listitem>
+
+    <listitem>
+      <para>Руководство для начинающих по установке из исходников
+      <ulink url="http://moi.vonos.net/linux/beginners-installing-from-source/"/></para>
+
+      <para>В этом руководстве содержится хороший обзор основных навыков и 
+	  методов, необходимых для сборки программ из исходного кода</para>
+    </listitem>
+<!--
+    <listitem>
+      <para>The Essential Pre-Reading Hint
+      <ulink url="&hints-root;essential_prereading.txt"/></para>
+
+      <para>This is an LFS Hint written specifically for users new to Linux.
+      It includes a list of links to excellent sources of information on a
+      wide range of topics. Anyone attempting to install LFS should have an
+      understanding of many of the topics in this hint.</para>
+    </listitem>
+-->
+  </itemizedlist>
+
+</sect1>

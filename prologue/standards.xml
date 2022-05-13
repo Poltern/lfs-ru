@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pre-standards">
+  <?dbhtml filename="standards.html"?>
+
+  <title>LFS и стандарты</title>
+
+  <!--<sect2>
+    <title/> -->
+
+     <para>Структура LFS максимально соответствует стандартам Linux. Первичными 
+	 стандартами являются:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><ulink url="http://pubs.opengroup.org/onlinepubs/9699919799/">
+        POSIX.1-2008</ulink>.</para>
+      </listitem>
+      <listitem>
+        <para><ulink
+        url="http://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html">
+        Filesystem Hierarchy Standard (FHS) Version 3.0</ulink></para>
+
+      </listitem>
+      <listitem>
+        <para><ulink url="http://refspecs.linuxfoundation.org/lsb.shtml">Linux
+        Standard Base (LSB) Version 5.0 (2015)</ulink></para>
+
+		<para>LSB имеет четыре отдельных стандарта: Core, Desktop, Runtime Languages 
+		и Imaging. Кроме того, существуют требования специфичные для архитектуры. Есть 
+		также две области для пробного или ознакомительного использования: Gtk3 и Graphics. 
+		LFS старается соответствовать стандартам предусмотренными архитектурами, 
+		рассмотренными в предыдущем разделе.</para>
+
+        <note><para>
+		Многие не согласны с требованиями LSB. Основные цели стандартов - быть уверенным в том,
+		что проприетарное ПО будет правильно установлено и сможет корректно работать на 
+		совместимой системе. Поскольку в LFS установка программ идёт из исходных кодов, у 
+		пользователя имеется полный контроль над тем, какие пакеты ему необходимы и многие 
+		предпочитают не устанавливать некоторые пакеты, которые определяются в стандартах LSB.</para></note>
+
+      </listitem>
+    </itemizedlist>
+
+    <para>Создание законченной системы LFS, способной успешно выполнять сертификационные 
+	тесты LSB - возможно с установкой некоторых дополнительных пакетов, которые выходят 
+	за рамки этой книги. Но инструкции по их установке есть в книге BLFS.</para>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Пакеты LFS, которые необходимы для удовлетворения 
+	  требований LSB</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry>
+        <term><emphasis>LSB Core:</emphasis></term>
+        <listitem>
+          <para>Bash, Bc, Binutils, Coreutils, Diffutils, File, Findutils, Gawk,
+                Grep, Gzip, M4, Man-DB, Ncurses, Procps, Psmisc, Sed,
+                Shadow, Tar, Util-linux, Zlib</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Desktop:</emphasis></term>
+        <listitem>
+          <para>Нет</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <listitem>
+          <para>Perl, Python</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Imaging:</emphasis></term>
+        <listitem>
+          <para>Нет</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Gtk3 and LSB Graphics (Trial Use):</emphasis></term>
+        <listitem>
+          <para>Нет</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Пакеты, поставляемые BLFS, необходимые для 
+	  удовлетворения требований LSB</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry>
+        <term><emphasis>LSB Core:</emphasis></term>
+        <listitem>
+          <para>At, Batch (a part of At), Cpio, Ed, Fcrontab, LSB-Tools, NSPR,
+          NSS, PAM, Pax, Sendmail (or Postfix or Exim), time
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Desktop:</emphasis></term>
+        <listitem>
+          <para>Alsa, ATK, Cairo, Desktop-file-utils, Freetype, Fontconfig,
+          Gdk-pixbuf, Glib2, GTK+2, Icon-naming-utils, Libjpeg-turbo, Libpng, Libtiff,
+          Libxml2, MesaLib, Pango, Xdg-utils, Xorg</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <listitem>
+          <para>Libxml2, Libxslt </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Imaging:</emphasis></term>
+        <listitem>
+          <para>CUPS, Cups-filters, Ghostscript, SANE</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Gtk3 and LSB Graphics (Trial Use):</emphasis></term>
+        <listitem>
+          <para>GTK+3</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Пакеты, не поставляемые LFS или BLFS, необходимые 
+	  для удовлетворения требований LSB</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry>
+        <term><emphasis>LSB Core:</emphasis></term>
+        <listitem>
+          <para>Нет</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Desktop:</emphasis></term>
+        <listitem>
+          <para>Qt4 (но предоставляется Qt5)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <listitem>
+          <para>Нет</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Imaging:</emphasis></term>
+        <listitem>
+          <para>Нет</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Gtk3 and LSB Graphics (Trial Use):</emphasis></term>
+        <listitem>
+          <para>Нет</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+</sect1>
+
