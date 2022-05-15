@@ -21,7 +21,7 @@ XML в одностраничный XHTML (nochunks):
 make BASEDIR=/path/to/output/location nochunks
 
 
-XML в TXT
+XML в TXT:
 ----------
 Следуйте инструкциям для nochunks и затем запустите:
 lynx -dump /path/to/nochunks > /path/to/output
