@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-partitioning-hostreqs" xreflabel="Host System Requirements">
+  <?dbhtml filename="hostreqs.html"?>
+
+  <title>Требования к хост-системе</title>
+
+    <para>Ваша хост-система должна иметь следующее программное обеспечение с 
+	указанными минимальными версиями. Это не должно быть проблемой для 
+	большинства современных дистрибутивов Linux. Также обратите внимание на то, 
+	что многие дистрибутивы помещают заголовочные файлы в отдельные пакеты, 
+	как правило в формате <quote>&lt;package-name&gt;-devel</quote> или 
+	<quote>&lt;package-name&gt;-dev</quote>. Обязательно установите эти пакеты, 
+	если ваш дистрибутив их предоставляет.</para>
+
+   <para>Более ранние версии перечисленных ниже пакетов могут работать, но
+   это не проверялось.</para>
+
+  <itemizedlist spacing="compact">
+
+    <listitem>
+      <para><emphasis role="strong">Bash-3.2</emphasis> (/bin/sh
+      должен быть символической или жесткой ссылкой на bash)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Binutils-2.13.1</emphasis> (Версия выше
+	  &binutils-version; не рекомендуется, так как она не тестировалась)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Bison-2.7</emphasis> (/usr/bin/yacc
+      должен быть ссылкой на bison или небольшой скрипт, запускающий bison)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Coreutils-6.9</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Diffutils-2.8.1</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Findutils-4.2.31</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Gawk-4.0.1</emphasis> (/usr/bin/awk
+      должен быть ссылкой на gawk)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">GCC-4.8</emphasis>, включая компилятор C++,
+	  <command>g++</command> (версии выше 11.2.0 не рекомендуются, поскольку
+	  они не тестировались). Также должны присутствовать стандартные библиотеки
+	  C и C++ (с заголовочными файлами), чтобы компилятор C++ мог осуществлять
+	  сборку программ.</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Grep-2.5.1a</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Gzip-1.3.12</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Linux Kernel-&min-kernel;</emphasis></para>
+
+      <para>Требования к версии ядра заключается в том, что мы указываем эту
+	  версию при сборке <application>glibc</application> в Главе 5 <xref linkend="chapter-cross-tools"/> и Главе 8 <xref linkend="chapter-building-system"/> по рекомендации
+	  разработчиков. Кроме этого, она необходима для udev.</para>
+
+      <para>Если версия ядра ​​хоста меньше, чем &min-kernel;, вам необходимо обновить
+	  ядро ​​на более позднюю версию. Есть два способа сделать это. Во-первых,
+	  посмотрите, предоставляет ли ваш дистрибутив Linux пакет ядра &min-kernel;
+	  или более позднюю версию. Если это так, установите его. Если ваш дистрибутив
+	  не предлагает приемлемый пакет ядра или вы предпочитаете не устанавливать
+	  его, вы можете скомпилировать ядро ​​самостоятельно. Инструкции по компиляции
+	  ядра и настройке загрузчика (при условии, что хост использует GRUB)
+	  находятся в главе 10 <xref linkend="chapter-bootable"/>.</para>
+
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">M4-1.4.10</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Make-4.0</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Patch-2.5.4</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Perl-5.8.8</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Python-3.4</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Sed-4.1.5</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Tar-1.22</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Texinfo-4.7</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Xz-5.0.0</emphasis></para>
+    </listitem>
+
+  </itemizedlist>
+
+  <important>
+    <para>Обратите внимание, что упомянутые выше символические ссылки необходимы
+	для создания системы LFS с использованием инструкций, содержащихся в этой
+	книге. Симлинки, указывающие на другое программное обеспечение (например,
+	dash, mawk и т. д.), могут работать, но не тестируются и не поддерживаются
+	командой разработчиков LFS, и могут потребовать либо отклонения от
+	инструкций, либо дополнительных исправлений для некоторых пакетов.</para>
+  </important>
+
+  <!-- Use an empty sect2 element to prevent a pdf warning.  -->
+  <bridgehead renderas="sect2"
+              id="version-check"
+              xreflabel="Host System Requirements">
+  </bridgehead>
+  <!--<title> </title>-->
+
+  <para>Чтобы узнать, есть ли в вашей хост-системе все необходимые пакеты и
+  возможность компилировать программы, выполните следующий скрипт:</para>
+
+<screen role="nodump"><userinput>cat &gt; version-check.sh &lt;&lt; "EOF"
+<literal>#!/bin/bash
+# Simple script to list version numbers of critical development tools
+export LC_ALL=C
+bash --version | head -n1 | cut -d" " -f2-4
+MYSH=$(readlink -f /bin/sh)
+echo "/bin/sh -&gt; $MYSH"
+echo $MYSH | grep -q bash || echo "ERROR: /bin/sh does not point to bash"
+unset MYSH
+
+echo -n "Binutils: "; ld --version | head -n1 | cut -d" " -f3-
+bison --version | head -n1
+
+if [ -h /usr/bin/yacc ]; then
+  echo "/usr/bin/yacc -> `readlink -f /usr/bin/yacc`";
+elif [ -x /usr/bin/yacc ]; then
+  echo yacc is `/usr/bin/yacc --version | head -n1`
+else
+  echo "yacc not found"
+fi
+
+echo -n "Coreutils: "; chown --version | head -n1 | cut -d")" -f2
+diff --version | head -n1
+find --version | head -n1
+gawk --version | head -n1
+
+if [ -h /usr/bin/awk ]; then
+  echo "/usr/bin/awk -&gt; `readlink -f /usr/bin/awk`";
+elif [ -x /usr/bin/awk ]; then
+  echo awk is `/usr/bin/awk --version | head -n1`
+else
+  echo "awk not found"
+fi
+
+gcc --version | head -n1
+g++ --version | head -n1
+grep --version | head -n1
+gzip --version | head -n1
+cat /proc/version
+m4 --version | head -n1
+make --version | head -n1
+patch --version | head -n1
+echo Perl `perl -V:version`
+python3 --version
+sed --version | head -n1
+tar --version | head -n1
+makeinfo --version | head -n1  # texinfo version
+xz --version | head -n1
+
+echo 'int main(){}' &gt; dummy.c &amp;&amp; g++ -o dummy dummy.c
+if [ -x dummy ]
+  then echo "g++ compilation OK";
+  else echo "g++ compilation failed"; fi
+rm -f dummy.c dummy</literal>
+EOF
+
+bash version-check.sh</userinput></screen>
+<!--
+  <para>Also check for some library consistency:</para>
+
+<screen role="nodump"><userinput>cat &gt; library-check.sh &lt;&lt; "EOF"
+<literal>#!/bin/bash
+for lib in lib{gmp,mpfr,mpc}.la; do
+  echo $lib: $(if find /usr/lib* -name $lib|
+               grep -q $lib;then :;else echo not;fi) found
+done
+unset lib</literal>
+EOF
+
+bash library-check.sh</userinput></screen>
+
+<para>The files identified by this script should be all present
+or all absent, but not only one or two present.</para>
+-->
+
+</sect1>

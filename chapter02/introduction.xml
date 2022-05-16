@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-partitioning-introduction">
+  <?dbhtml filename="introduction.html"?>
+
+  <title>Введение</title>
+
+  <para>В этой главе проверяются и при необходимости устанавливаются основные
+  инструменты, необходимые для построения LFS. Затем подготавливается раздел,
+  в котором будет размещаться система LFS. Мы создадим сам раздел, создадим на
+  нем файловую систему и смонтируем </para>
+
+</sect1>

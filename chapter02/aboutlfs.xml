@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-partitioning-aboutlfs">
+  <?dbhtml filename="aboutlfs.html"?>
+
+  <title>Установка переменной $LFS</title>
+
+  <para>В этой книге переменная окружения <envar>LFS</envar> будет использоваться
+  несколько раз. Вы должны убедиться, что эта переменная всегда определена в
+  процессе сборки LFS. Он должен быть установлен на имя каталога, в котором
+  вы будете создавать свою систему LFS — мы будем использовать
+  <filename class="directory">/mnt/lfs</filename> в качестве примера, но выбор
+  каталога зависит от вас. Если вы собираете LFS на отдельном разделе, этот
+  каталог будет точкой монтирования для раздела. Выберите расположение каталога
+  и установите переменную с помощью следующей команды:</para>
+
+<screen role="nodump"><userinput>export LFS=<replaceable>/mnt/lfs</replaceable></userinput></screen>
+
+  <para>Установка этой переменной полезна тем, что такие команды, как
+  <command>mkdir -v $LFS/tools</command>, можно вводить буквально. Оболочка
+  автоматически заменит <quote>$LFS</quote> на <quote>/mnt/lfs</quote>
+  (или любую другую переменную, которая была установлена) при обработке команды.</para>
+
+  <caution>
+  <para>Не забывайте проверять, что <envar>LFS</envar> установлен всякий раз,
+  когда вы покидаете и снова входите в текущую рабочую среду (например, когда
+  выполняете <command>su</command> для <systemitem class="username">root</systemitem>
+  или другого пользователя). Убедитесь, что переменная <envar>LFS</envar>
+  настроена правильно:</para>
+
+<screen role="nodump"><userinput>echo $LFS</userinput></screen>
+
+  <para>Убедитесь, что в выходных данных указан путь к местоположению сборки
+  вашей системы LFS, то есть <filename class="directory">/mnt/lfs</filename>,
+  если вы следовали примеру. Если вывод неверен, используйте команду, указанную
+  ранее, чтобы установить <envar>$LFS</envar> в правильное значение каталога LFS.</para>
+  </caution>
+
+  <note><para>Один из способов гарантировать, что переменная <envar>LFS</envar>
+  всегда установлена, — отредактировать файл <filename>.bash_profile</filename>
+  как в вашем личном домашнем каталоге, так и в <filename>/root/.bash_profile</filename>
+  и ввести приведенную выше команду экспорта. Кроме того, оболочка, указанная в
+  файле <filename>/etc/passwd</filename> для всех пользователей, которым нужна
+  переменная <envar>LFS</envar>, должна быть оболочкой bash, чтобы гарантировать,
+  что файл <filename>/root/.bash_profile</filename> используется как часть процесса
+  входа в систему.</para>
+
+  <para>Еще один способ, который используется для входа в хост-систему. При
+  входе в систему через диспетчер графического дисплея пользовательский
+  <filename>.bash_profile</filename> не используется при запуске виртуального
+  терминала. В этом случае добавьте команду экспорта в файл
+  <filename>.bashrc</filename> для пользователя и
+  <systemitem class="username">root</systemitem>. Кроме того, в некоторых
+  дистрибутивах есть инструкции не запускать <filename>.bashrc</filename> при
+  неинтерактивном вызове bash. Обязательно добавьте команду экспорта перед
+  тем, как проверить в неинтерактивном режиме.</para>
+
+  </note>
+
+</sect1>
