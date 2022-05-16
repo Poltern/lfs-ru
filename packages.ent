@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Notes:
      For empty *-home entities use " " not ""
@@ -427,12 +427,12 @@
 
 <!ENTITY linux-major-version "5">
 <!ENTITY linux-minor-version "17">
-<!ENTITY linux-patch-version "5">
+<!ENTITY linux-patch-version "7">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "125,421 KB">
+<!ENTITY linux-size "125,444 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "2d9d725a716d27c82ea31d2b4e802158">
+<!ENTITY linux-md5 "2075f12da027fb933114f27a9a96cce9">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -580,10 +580,10 @@
 <!ENTITY procps-ng-fin-du "19 MB">
 <!ENTITY procps-ng-fin-sbu "0.4 SBU">
 
-<!ENTITY psmisc-version "23.4">
-<!ENTITY psmisc-size "362 KB">
+<!ENTITY psmisc-version "23.5">
+<!ENTITY psmisc-size "395 KB">
 <!ENTITY psmisc-url "https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-&psmisc-version;.tar.xz">
-<!ENTITY psmisc-md5 "8114cd4489b95308efe2509c3a406bbf">
+<!ENTITY psmisc-md5 "014f0b5d5ab32478a2c57812ad01e1fb">
 <!ENTITY psmisc-home "https://gitlab.com/psmisc/psmisc">
 <!ENTITY psmisc-fin-du "5.6 MB">
 <!ENTITY psmisc-fin-sbu "less than 0.1 SBU">

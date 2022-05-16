@@ -11,8 +11,6 @@
 
   <title>Что нового с момента последнего релиза</title>
 
-  <para>В этой версии LFS была проведена серьезная реорганизация книги с использованием методов, которые позволяют избежать изменения хост-системы и обеспечивают более простой процесс сборки.</para>
-  
   <para>Ниже приведен список обновлений пакетов, сделанных после предыдущего выпуска книги.</para>
 
   <!--
@@ -213,9 +211,9 @@
     <listitem>
       <para>Procps-ng-&procps-ng-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Psmisc-&psmisc-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Python-&python-version;</para>
     </listitem>

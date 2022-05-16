@@ -10,9 +10,12 @@
 
   <title>Журнал изменений</title>
 
-  <para>Это версия &version; книги Linux From Scratch от &releasedate;. Если этой книге больше шести месяцев, возможно, уже доступна более новая и лучшая версия. Чтобы узнать это, проверьте одно из зеркал здесь <ulink url="&lfs-root;mirrors.html"/>.</para>
+  <para>Это версия &version; книги Linux From Scratch от &releasedate;. Если
+  этой книге больше шести месяцев, возможно, уже доступна более новая, улучшенная
+  версия. Чтобы узнать это, проверьте одно из зеркал <ulink url="&lfs-root;mirrors.html"/>.</para>
 
-  <para>Ниже приведен список изменений, внесенных с момента предыдущего выпуска книги.</para>
+  <para>Ниже приведен список изменений, внесенных с момента предыдущего выпуска
+  книги.</para>
 
   <itemizedlist>
     <title>Список изменений:</title>
@@ -35,6 +38,20 @@
     <listitem revision="sysv"> or <listitem revision="systemd"> as
     appropriate for the entry or if needed the entire day's listitem.
     -->
+
+    <listitem>
+      <para>2022-05-16</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to linux-5.17.7.  Fixes
+          <ulink url="&lfs-ticket-root;5059">#5059</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to psmisc-23.5.  Fixes
+          <ulink url="&lfs-ticket-root;5060">#5060</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
 
     <listitem>
       <para>2022-05-01</para>
