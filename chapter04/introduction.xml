@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-preps-introduction">
+  <?dbhtml filename="introduction.html"?>
+
+  <title>Введение</title>
+
+  <para>В этой главе мы выполним несколько задач, чтобы подготовиться к 
+  сборке временной системы. Мы создадим несколько каталогов в
+  <filename class="directory">$LFS</filename> для установки временных
+  инструментов, добавим непривилегированного пользователя для снижения риска
+  и настроим окружение для этого пользователя. Кроме этого, будут даны
+  пояснения по стандартной единице времени сборки, или <quote>SBU</quote>,
+  которую мы используем для измерения того, сколько времени требуется для
+  сборки пакетов LFS, и предоставим некоторую информацию о наборах тестов.</para>
+
+</sect1>

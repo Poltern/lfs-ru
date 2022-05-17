@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-creatingminlayout">
+  <?dbhtml filename="creatingminlayout.html"?>
+
+  <title>Создание ограниченной иерархии папок в файловой системе LFS</title>
+
+  <para>Первая задача, выполняемая на разделе LFS, — это создание ограниченной иерархии каталогов, чтобы программы, скомпилированные в <xref
+  linkend="chapter-temporary-tools"/> (а также glibc и libstdc++ в <xref
+  linkend="chapter-cross-tools"/>), могли быть установлены в их конечном расположении. Это необходимо для того, чтобы временные программы были перезаписаны при их пересборке в <xref linkend="chapter-building-system"/>.</para>
+
+  <para>Создайте необходимую иерархию каталогов, выполнив следующую команду от имени 
+  <systemitem class="username">root</systemitem>:</para>
+
+<screen><userinput>mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+
+for i in bin lib sbin; do
+  ln -sv usr/$i $LFS/$i
+done
+
+case $(uname -m) in
+  x86_64) mkdir -pv $LFS/lib64 ;;
+esac</userinput></screen>
+
+  <para>Программы в <xref linkend="chapter-temporary-tools"/> будут скомпилированы 
+  с помощью кросс-компилятора (более подробная информация приведена в разделе <xref
+  linkend="ch-tools-toolchaintechnotes"/>). Чтобы отделить кросс-компилятор от других
+  программ, он будет установлен в специальный каталог. Создайте этот каталог с
+  помощью команды:</para>
+
+<screen><userinput>mkdir -pv $LFS/tools</userinput></screen>
+
+</sect1>
