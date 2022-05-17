@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-preps-addinguser">
+  <?dbhtml filename="addinguser.html"?>
+
+  <title>Создание пользователя LFS</title>
+
+  <para>При входе в систему под пользователем
+  <systemitem class="username">root</systemitem> допущение одной ошибки может
+  привести к повреждению или разрушению системы. Поэтому пакеты в следующих
+  двух главах собираются из-под учетной записи непривилегированного пользователя.
+  Вы можете использовать свое собственное имя пользователя, но чтобы упростить
+  настройку рабочей среды, создайте нового пользователя с именем <systemitem
+  class="username">lfs</systemitem> в качестве члена новой группы (также
+  называемой <systemitem class="groupname">lfs</systemitem>) и используйте этого
+  пользователя в течение всего процесса сборки пакетов временного набора инструментов.
+  От имени пользователя <systemitem class="username">root</systemitem> выполните
+  следующие команды, чтобы добавить нового пользователя:</para>
+
+<screen><userinput>groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs</userinput></screen>
+
+  <variablelist>
+    <title>Значение параметров командной строки:</title>
+
+    <varlistentry>
+      <term><parameter>-s /bin/bash</parameter></term>
+      <listitem>
+        <para>Устанавливает <command>bash</command> оболочкой по умолчанию для пользователя
+		<systemitem class="username">lfs</systemitem>.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>-g lfs</parameter></term>
+      <listitem>
+        <para>Эта опция добавляет пользователя <systemitem class="username">lfs</systemitem>
+		в группу <systemitem class="groupname">lfs</systemitem>.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>-m</parameter></term>
+      <listitem>
+        <para>Создает домашний каталог для пользователя <systemitem
+        class="username">lfs</systemitem>.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>-k /dev/null</parameter></term>
+      <listitem>
+        <para>Этот параметр предотвращает возможное копирование файлов из
+		предустановленного набора каталогов (по умолчанию
+		<filename class="directory">/etc/skel</filename>) путем изменения
+		местоположения ввода на специальное null-устройство</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>lfs</parameter></term>
+      <listitem>
+        <para> Это фактическое имя созданного пользователя.</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <para>Чтобы войти в систему как пользователь <systemitem class="username">lfs</systemitem>
+  (в отличие от переключения на пользователя <systemitem class="username">lfs</systemitem>
+  при входе в систему как <systemitem class="username">root</systemitem>, для которого не
+  требуется, чтобы пользователь <systemitem class="username">lfs</systemitem> имел пароль),
+  задайте пароль пользователя <systemitem class="username">lfs</systemitem> :</para>
+
+<screen role="nodump"><userinput>passwd lfs</userinput></screen>
+
+  <para>Предоставьте пользователю <systemitem class="username">lfs</systemitem> полный
+  доступ ко всем каталогам в папке <filename class="directory">$LFS</filename>, сделав
+  <systemitem class="username">lfs</systemitem> владельцем каталога:</para>
+
+<screen><userinput>chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+case $(uname -m) in
+  x86_64) chown -v lfs $LFS/lib64 ;;
+esac</userinput></screen>
+
+  <note><para>В некоторых хост-системах следующая команда не выполняется должным
+  образом и приостанавливает вход пользователя &lfs-user; в фоновом режиме. Если
+  подсказка "lfs:~$" не появляется сразу, ввод команды <command>fg</command>
+  устранит проблему.</para></note>
+
+  <para>Затем войдите в систему как пользователь <systemitem class="username">lfs</systemitem>.
+  Это можно сделать через виртуальную консоль, через графическую оболочку или с помощью
+  следующей команды замены/переключения пользователя:</para>
+
+<screen role="nodump"><userinput>su - lfs</userinput></screen>
+
+  <para>Аргумент <quote><parameter>-</parameter></quote> передает значение команде
+  <command>su</command> для запуска оболочки входа в систему, а не обычной оболочки.
+  Разнличия между этими двумя типами оболочек можно найти в <filename>bash(1)</filename>
+  и <command>info bash</command>.</para>
+
+</sect1>
