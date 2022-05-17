@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-materials-packages">
+  <?dbhtml filename="packages.html"?>
+
+  <title>Все пакеты</title>
+
+  <note>
+    <para>Ознакомьтесь с <ulink url='&secadv;'>security advisories</ulink> 
+	перед загрузкой пакетов, чтобы узнать, следует ли использовать более новую 
+	версию пакета, чтобы избежать проблем безопасности.</para>
+
+    <para>При выходе новых версий, старые версии пакетов могут быть удалены, 
+	особенно, если они содержали уязвимости. Если одна или несколько ссылок 
+	ниже недоступны, сначала ознакомтесь с рекомендациями по безопасности, 
+	чтобы понять следует ли использовать более новую версию (с исправленной 
+	уязвимостью). Если нет, попробуйте скачать удаленный пакет с зеркала. Хотя 
+	старый релиз можно скачать с зеркала (даже если он был удален из-за 
+	уязвимости), для сборки системы не рекомендуется использовать версию, 
+	которая уязвима.</para>
+  </note>
+
+  <para>Загрузите или иным образом получите следующие пакеты:</para>
+
+  <variablelist role="materials">
+
+    <varlistentry>
+      <term>Acl (&acl-version;) - <token>&acl-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&acl-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&acl-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&acl-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Attr (&attr-version;) - <token>&attr-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&attr-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&attr-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&attr-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Autoconf (&autoconf-version;) - <token>&autoconf-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&autoconf-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&autoconf-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&autoconf-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Automake (&automake-version;) - <token>&automake-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&automake-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&automake-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&automake-md5;</literal></para>
+        <para>Контрольная сумма SHA256: <literal>&automake-sha256;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Bash (&bash-version;) - <token>&bash-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&bash-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&bash-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&bash-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Bc (&bc-version;) - <token>&bc-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&bc-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&bc-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&bc-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Binutils (&binutils-version;) - <token>&binutils-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&binutils-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&binutils-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&binutils-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Bison (&bison-version;) - <token>&bison-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&bison-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&bison-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&bison-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Bzip2 (&bzip2-version;) - <token>&bzip2-size;</token>:</term>
+      <listitem>
+        <!--<para>Домашняя страница: <ulink url="&bzip2-home;"/></para>-->
+        <para>Ссылка на загрузку: <ulink url="&bzip2-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&bzip2-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Check (&check-version;) - <token>&check-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&check-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&check-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&check-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Coreutils (&coreutils-version;) - <token>&coreutils-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&coreutils-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&coreutils-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&coreutils-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="systemd">
+      <term>D-Bus (&dbus-version;) - <token>&dbus-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&dbus-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&dbus-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&dbus-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>DejaGNU (&dejagnu-version;) - <token>&dejagnu-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&dejagnu-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&dejagnu-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&dejagnu-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Diffutils (&diffutils-version;) - <token>&diffutils-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&diffutils-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&diffutils-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&diffutils-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>E2fsprogs (&e2fsprogs-version;) - <token>&e2fsprogs-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&e2fsprogs-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&e2fsprogs-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&e2fsprogs-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Elfutils (&elfutils-version;) - <token>&elfutils-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&elfutils-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&elfutils-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&elfutils-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="sysv">
+      <term>Eudev (&eudev-version;) - <token>&eudev-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&eudev-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&eudev-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Expat (&expat-version;) - <token>&expat-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&expat-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&expat-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&expat-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Expect (&expect-version;) - <token>&expect-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&expect-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&expect-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&expect-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>File (&file-version;) - <token>&file-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&file-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&file-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&file-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Findutils (&findutils-version;) - <token>&findutils-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&findutils-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&findutils-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&findutils-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Flex (&flex-version;) - <token>&flex-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&flex-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&flex-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&flex-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Gawk (&gawk-version;) - <token>&gawk-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&gawk-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&gawk-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gawk-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>GCC (&gcc-version;) - <token>&gcc-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&gcc-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&gcc-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gcc-md5;</literal></para>
+        <para>Контрольная сумма SHA256: <literal>&gcc-sha256;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>GDBM (&gdbm-version;) - <token>&gdbm-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&gdbm-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&gdbm-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gdbm-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Gettext (&gettext-version;) - <token>&gettext-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&gettext-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&gettext-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gettext-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Glibc (&glibc-version;) - <token>&glibc-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&glibc-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&glibc-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&glibc-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>GMP (&gmp-version;) - <token>&gmp-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&gmp-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&gmp-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gmp-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Gperf (&gperf-version;) - <token>&gperf-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&gperf-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&gperf-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gperf-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Grep (&grep-version;) - <token>&grep-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&grep-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&grep-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&grep-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Groff (&groff-version;) - <token>&groff-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&groff-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&groff-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&groff-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>GRUB (&grub-version;) - <token>&grub-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&grub-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&grub-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&grub-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Gzip (&gzip-version;) - <token>&gzip-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&gzip-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&gzip-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gzip-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Iana-Etc (&iana-etc-version;) - <token>&iana-etc-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&iana-etc-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&iana-etc-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&iana-etc-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Inetutils (&inetutils-version;) - <token>&inetutils-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&inetutils-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&inetutils-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&inetutils-md5;</literal></para>
+        <para>Контрольная сумма SHA256: <literal>&inetutils-sha256;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Intltool (&intltool-version;) - <token>&intltool-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&intltool-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&intltool-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&intltool-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>IPRoute2 (&iproute2-version;) - <token>&iproute2-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&iproute2-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&iproute2-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&iproute2-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="systemd">
+      <term>Jinja2 (&jinja2-version;) - <token>&jinja2-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&jinja2-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&jinja2-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&jinja2-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Kbd (&kbd-version;) - <token>&kbd-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&kbd-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&kbd-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&kbd-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Kmod (&kmod-version;) - <token>&kmod-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&kmod-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&kmod-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&kmod-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Less (&less-version;) - <token>&less-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&less-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&less-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&less-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="sysv">
+      <term>LFS-Bootscripts (&lfs-bootscripts-version;) - <token>&lfs-bootscripts-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&lfs-bootscripts-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&lfs-bootscripts-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&lfs-bootscripts-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Libcap (&libcap-version;) - <token>&libcap-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&libcap-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&libcap-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&libcap-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Libffi (&libffi-version;) - <token>&libffi-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&libffi-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&libffi-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&libffi-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Libpipeline (&libpipeline-version;) - <token>&libpipeline-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&libpipeline-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&libpipeline-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&libpipeline-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Libtool (&libtool-version;) - <token>&libtool-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&libtool-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&libtool-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&libtool-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Linux (&linux-version;) - <token>&linux-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&linux-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&linux-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&linux-md5;</literal></para>
+
+        <note>
+          <para>Ядро Linux обновляется достаточно часто из-за обнаружения
+		  уязвимостей в системе безопасности. Можно использовать последнюю
+		  стабильную версию ядра, если на странице с опечатками и
+		  рекомендациями по безопасности не указано иное.</para>
+
+          <para>Для пользователей, у которых ограниченный или тарифицируемый
+		  выход в интернет, и которые хотят обновить ядро Linux, можно скачать
+		  базовую версию ядра, а затем применить к ней патчи, которые могут
+		  быть загружены отдельно. Это может сэкономить немного времени или
+		  стоимость при обновлению до следующих версий.
+          </para>
+        </note>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>M4 (&m4-version;) - <token>&m4-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&m4-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&m4-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&m4-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Make (&make-version;) - <token>&make-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&make-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&make-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&make-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Man-DB (&man-db-version;) - <token>&man-db-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&man-db-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&man-db-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&man-db-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Man-pages (&man-pages-version;) - <token>&man-pages-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&man-pages-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&man-pages-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&man-pages-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="systemd">
+      <term>MarkupSafe (&markupsafe-version;) - <token>&markupsafe-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&markupsafe-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&markupsafe-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&markupsafe-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Meson (&meson-version;) - <token>&meson-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&meson-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&meson-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&meson-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>MPC (&mpc-version;) - <token>&mpc-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&mpc-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&mpc-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&mpc-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>MPFR (&mpfr-version;) - <token>&mpfr-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&mpfr-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&mpfr-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&mpfr-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Ncurses (&ncurses-version;) - <token>&ncurses-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&ncurses-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&ncurses-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&ncurses-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Ninja (&ninja-version;) - <token>&ninja-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&ninja-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&ninja-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&ninja-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>OpenSSL (&openssl-version;) - <token>&openssl-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&openssl-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&openssl-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&openssl-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Patch (&patch-version;) - <token>&patch-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&patch-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&patch-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&patch-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Perl (&perl-version;) - <token>&perl-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&perl-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&perl-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&perl-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Pkg-config (&pkgconfig-version;) - <token>&pkgconfig-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&pkgconfig-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&pkgconfig-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&pkgconfig-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Procps (&procps-ng-version;) - <token>&procps-ng-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&procps-ng-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&procps-ng-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&procps-ng-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Psmisc (&psmisc-version;) - <token>&psmisc-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&psmisc-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&psmisc-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&psmisc-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Python (&python-version;) - <token>&python-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&python-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&python-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&python-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Python Documentation (&python-version;) - <token>&python-docs-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&python-docs-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&python-docs-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Readline (&readline-version;) - <token>&readline-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&readline-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&readline-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&readline-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Sed (&sed-version;) - <token>&sed-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&sed-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&sed-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&sed-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Shadow (&shadow-version;) - <token>&shadow-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&shadow-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&shadow-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&shadow-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="sysv">
+      <term>Sysklogd (&sysklogd-version;) - <token>&sysklogd-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&sysklogd-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&sysklogd-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&sysklogd-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="systemd">
+      <term>Systemd (&systemd-version;) - <token>&systemd-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&systemd-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&systemd-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&systemd-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="systemd">
+      <term>Systemd Man Pages(&systemd-version;) - <token>&systemd-man-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&systemd-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&systemd-man-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&systemd-man-md5;</literal></para>
+
+        <note>
+          <para>Команда Linux From Scratch генерирует собственный архив
+           справочных страниц, используя исходный код systemd. Это делается
+		   для того, чтобы избежать ненужных зависимостей.</para>
+        </note>
+      </listitem>
+    </varlistentry>
+
+
+    <varlistentry revision="sysv">
+      <term>Sysvinit (&sysvinit-version;) - <token>&sysvinit-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&sysvinit-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&sysvinit-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&sysvinit-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Tar (&tar-version;) - <token>&tar-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&tar-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&tar-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&tar-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Tcl (&tcl-version;) - <token>&tcl-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&tcl-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&tcl-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&tcl-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Tcl Documentation (&tcl-version;) - <token>&tcl-docs-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&tcl-docs-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&tcl-docs-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Texinfo (&texinfo-version;) - <token>&texinfo-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&texinfo-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&texinfo-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&texinfo-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Time Zone Data (&tzdata-version;) - <token>&tzdata-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&tzdata-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&tzdata-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&tzdata-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="sysv">
+      <term>Udev-lfs Tarball (&udev-lfs-version;) - <token>&udev-lfs-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&udev-lfs-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&udev-lfs-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Util-linux (&util-linux-version;) - <token>&util-linux-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&util-linux-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&util-linux-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&util-linux-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+<!--
+    <varlistentry>
+      <term>Util-linux Man Pages - <token>&util-linux-man-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&util-linux-man-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&util-linux-man-md5;</literal></para>
+
+        <note>
+          <para>The Linux From Scratch team generates its own tarball of the
+          man pages using the util-linux source. This is done in order to avoid
+          unnecessary dependencies.</para>
+        </note>
+      </listitem>
+    </varlistentry>
+-->
+    <varlistentry>
+      <term>Vim (&vim-version;) - <token>&vim-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&vim-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&vim-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&vim-md5;</literal></para>
+        <note>
+          <para>
+            Версия vim меняется ежедневно. Чтобы получить последнюю версию, перейдите на
+            <ulink url="https://github.com/vim/vim/releases">
+            https://github.com/vim/vim/tags</ulink>.
+          </para>
+        </note>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Wheel (&wheel-version;) - <token>&wheel-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&wheel-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&wheel-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&wheel-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>XML::Parser (&xml-parser-version;) - <token>&xml-parser-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&xml-parser-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&xml-parser-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&xml-parser-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Xz Utils (&xz-version;) - <token>&xz-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&xz-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&xz-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&xz-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Zlib (&zlib-version;) - <token>&zlib-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&zlib-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&zlib-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&zlib-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Zstd (&zstd-version;) - <token>&zstd-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&zstd-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&zstd-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&zstd-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <para>Общий размер пакетов: примерно <returnvalue/></para>
+
+</sect1>
