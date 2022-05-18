@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-preps-settingenviron">
+  <?dbhtml filename="settingenvironment.html"?>
+
+  <title>Настройка окружения</title>
+
+  <para>Настроим хорошо работающее окружение, создав два новых файла запуска
+  для оболочки <command>bash</command>. Войдя в систему как пользователь
+  <systemitem class="username">lfs</systemitem>, введите следующую команду,
+  чтобы создать новый <filename>.bash_profile</filename>:</para>
+
+<screen><userinput>cat &gt; ~/.bash_profile &lt;&lt; "EOF"
+<literal>exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash</literal>
+EOF</userinput></screen>
+
+  <para>При входе в систему под учетной записью пользователя 
+  <systemitem class="username">lfs</systemitem> начальная оболочка представляет
+  собой оболочку <emphasis>входа</emphasis> в систему, которая читает данные из
+  <filename>/etc/profile</filename> хоста (который, возможно, содержит некоторые
+  настройки и переменные среды), а затем <filename>.bash_profile</filename>. 
+  Команда <command>exec env -i.../bin/bash</command> в файле 
+  <filename>.bash_profile</filename> заменяет запущенную оболочку новой, не 
+  содержащей переменные среды, за исключением переменных <envar>HOME</envar>, 
+  <envar>TERM</envar>, и <envar>PS1</envar>. Это гарантирует, что никакие 
+  нежелательные и потенциально опасные переменные среды из хост-системы не попадут
+  в среду сборки. Используемая здесь техника дповоляет получить чистое окружене.</para>
+
+  <para>Новый экземпляр оболочки представляет собой <emphasis>non-login</emphasis>
+  оболочку, которая не считывает и не выполняет содержимое файлов 
+  <filename>/etc/profile</filename> и <filename>.bash_profile</filename>,
+  а вместо этого выполняет чтение из файла <filename>.bashrc</filename>.
+  Создайте файл <filename>.bashrc</filename>:</para>
+
+<screen><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
+<literal>set +h
+umask 022
+LFS=/mnt/lfs
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-lfs-linux-gnu
+PATH=/usr/bin
+if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
+PATH=$LFS/tools/bin:$PATH
+CONFIG_SITE=$LFS/usr/share/config.site
+export LFS LC_ALL LFS_TGT PATH CONFIG_SITE</literal>
+EOF</userinput></screen>
+
+  <variablelist>
+    <title>Значение настроек в <filename>.bashrc</filename></title>
+
+    <varlistentry>
+      <term><parameter>set +h</parameter></term>
+      <listitem>
+  <para>Команда <command>set +h</command> отключает хэш-функцию
+  <command>bash</command>. Хеширование является полезной функцией
+  &mdash;<command>bash</command> использует хеш-таблицу для запоминания полного
+  пути к исполняемому файлу, чтобы избежать многократного поиска одного и того же
+  исполняемого файла в переменной окружения <envar>PATH</envar>. Однако новые
+  инструменты требуется использовать сразу же после их установки. Отключив
+  хэш-функцию, оболочка всегда будет искать переменную окружения <envar>PATH</envar>,
+  когда программу необходимо запустить. Таким образом, оболочка найдет вновь
+  скомпилированные инструменты в <filename class="directory">$LFS/tools/bin</filename>,
+  как только они станут доступны, не запоминая предыдущую версию той же программы,
+  предоставленную хост-дистрибутивом, в <filename class='directory'>/usr/bin</filename> или
+  <filename class='directory'>/bin</filename>.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>umask 022</parameter></term>
+      <listitem>
+  <para>Установка значения пользовательской маски создания файлов (umask) 022 гарантирует,
+  что вновь созданные файлы и каталоги доступны для записи только их владельцу, но
+  будут доступны для чтения и выполнения остальным пользователям (при условии, что 
+  системный вызов <function>open(2)</function> использует режим по умолчанию, новые
+  файлы получат разрешения 644, а каталоги 755).</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>LFS=/mnt/lfs</parameter></term>
+      <listitem>
+  <para>Переменная окружения <envar>LFS</envar> должны указывать на выбранную точку монтирования.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>LC_ALL=POSIX</parameter></term>
+      <listitem>
+  <para>Переменная <envar>LC_ALL</envar> управляет локализацией определенных
+  программ, и формирует сообщения в соответствии с локализаций указанной страны.
+  Установка в <envar>LC_ALL</envar> значения <quote>POSIX</quote> или <quote>C</quote>
+  (они эквивалентны) гарантирует, что в среде chroot все будет работать должным образом.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>LFS_TGT=(uname -m)-lfs-linux-gnu</parameter></term>
+      <listitem>
+  <para>Переменная <envar>LFS_TGT</envar> устанавливает нестандартное, но
+  совместимое описание компьютера для использования при создании кросс-компилятора
+  и компоновщика, а также при кросс-компиляции временного набора инструментов. 
+  Дополнительная информация об этом содержится в <xref linkend="ch-tools-toolchaintechnotes" role=""/>.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>PATH=/usr/bin</parameter></term>
+      <listitem>
+  <para>Многие современные дистрибутивы Linux объединили <filename
+  class="directory">/bin</filename> и <filename
+  class="directory">/usr/bin</filename>. В этом случае для стандартной переменной <envar>PATH</envar> необходимо просто установить значение <filename
+  class="directory">/usr/bin/</filename> для среды <xref
+  linkend="chapter-temporary-tools"/>. Когда это не так, следующая строка добавляет <filename class="directory">/bin</filename> к пути.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>if [ ! -L /bin ]; then PATH=/bin:$PATH; fi</parameter></term>
+      <listitem>
+  <para>Если <filename class="directory">/bin</filename> не является символической
+  ссылкой, то ее необходимо добавить в переменную <envar>PATH</envar>.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>PATH=$LFS/tools/bin:$PATH</parameter></term>
+      <listitem>
+  <para>Поместив <filename class="directory">$LFS/tools/bin</filename> перед
+  стандартным <envar>PATH</envar>, кросс-компилятор, установленный в начале 
+  <xref linkend="chapter-cross-tools"/>, будет обнаружен оболочкой сразу после
+  его установки. Это, в сочетании с отключением хеширования, ограничивает риск
+  использования компилятора с хоста вместо кросс-компилятора.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>CONFIG_SITE=$LFS/usr/share/config.site</parameter></term>
+      <listitem>
+  <para>В <xref linkend="chapter-cross-tools"/> и <xref linkend="chapter-temporary-tools"/>,
+  если эта переменная не задана, сценарии <command>configure</command> могут попытаться
+  загрузить элементы конфигурации, специфичные для некоторых дистрибутивов, из
+  <filename>/usr/share/config.site</filename> в хост-системе. Переопределите её,
+  чтобы предотвратить потенциальное заражение от хоста.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>export ...</parameter></term>
+      <listitem>
+        <para>Приведенные выше команды установили некоторые переменные, чтобы сделать
+		их видимыми в любых вложенных оболочках, мы экспортируем их.</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <important>
+
+     <para>Некоторые коммерческие дистрибутивы добавляют недокументированный экземпляр
+	 <filename>/etc/bash.bashrc</filename> к инициализации <command>bash</command>.
+	 Этот файл потенциально может изменить среду пользователя
+	 <systemitem class="username">lfs</systemitem> таким образом, что это может
+	 повлиять на сборку важных пакетов LFS. Чтобы убедиться, что пользовательская
+	 среда <systemitem class="username">lfs</systemitem> чиста, проверьте наличие
+	 файла <filename>/etc/bash.bashrc</filename> и, если он есть, переименуйте его.
+	 От пользователя <systemitem class="username">root</systemitem>, запустите:</para>
+
+     <screen role="nodump"><userinput>[ ! -e /etc/bash.bashrc ] || mv -v /etc/bash.bashrc /etc/bash.bashrc.NOUSE</userinput></screen>
+
+     <para>После завершения работ под учетной записью пользователя 
+	 <systemitem class="username">lfs</systemitem> в начале <xref
+     linkend="chapter-chroot-temporary-tools"/> вы можете восстановить
+	 <filename>/etc/bash.bashrc</filename> (при желании).</para>
+
+     <para>Обратите внимание, что пакет LFS Bash, который мы создадим в
+	 <xref linkend="ch-system-bash"/>, не настроен на загрузку или выполнение
+	 <filename>/etc/bash.bashrc</filename>, поэтому этот файл бесполезен в
+	 готовой системе LFS.</para>
+  </important>
+
+  <para>Наконец, чтобы полностью подготовить среду для сборки временных инструментов,
+  используйте только что созданный профиль пользователя</para>
+
+<screen><userinput>source ~/.bash_profile</userinput></screen>
+
+</sect1>
