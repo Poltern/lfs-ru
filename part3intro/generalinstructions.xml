@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-generalinstructions"
+       xreflabel="General Compilation Instructions">
+  <?dbhtml filename="generalinstructions.html"?>
+
+  <title>Общие инструкции по компиляции</title>
+
+  <para>При сборке пакетов в инструкциях делается несколько допущений:</para>
+
+  <itemizedlist>
+
+  <listitem>
+    <para>На некоторые пакеты необходимо наложить патчи перед компиляцией,
+	метод использется тогда, когда исправление необходимо для решения проблем сборки.
+	Патчи часто требются как в этой, так и в следующих главах, но иногда только в одном
+	месте. Поэтому не беспокойтесь, если инструкции для скачанного патча отсутствуют.
+	Предупреждающие сообщения о <emphasis>смещении</emphasis> или
+    <emphasis>размытии</emphasis> также могут появляться при применении патча. Не
+	обращайте внимания на эти предупреждения, когда патч был успешно применен.</para>
+  </listitem>
+
+  <listitem>
+    <para>Во время компиляции большинства пакетов на экране будут отображаться
+	предупреждения. Это нормально, и их можно смело игнорировать. Предупреждения
+	появляются, например, когда используется устаревший, недопустимый синтаксис
+	C или C++. Стандарты C меняются довольно часто, и некоторые пакеты все еще
+	используют более старый стандарт. Это не является проблемой, но вызывает предупреждения.</para>
+  </listitem>
+
+  <listitem>
+    <para>Проверьте в последний раз, что переменная среды <envar>LFS</envar>
+	настроена правильно:</para>
+
+<screen role="nodump"><userinput>echo $LFS</userinput></screen>
+
+    <para>Убедитесь, что в выводе указан путь к точке монтирования раздела LFS,
+	то есть <filename class="directory">/mnt/lfs</filename>, как в примере из
+	этой книги.</para>
+  </listitem>
+
+  <listitem>
+
+    <para>Наконец, необходимо подчеркнуть два важных момента:</para>
+
+    <important>
+
+      <para>Инструкции по сборке предполагают, что <xref
+      linkend='ch-partitioning-hostreqs'/>, включая символические ссылки,
+	  установлены правильно:</para>
+
+      <itemizedlist role='important'>
+
+        <listitem override='bullet'><para><command>bash</command> это
+		используемая оболочка.</para></listitem>
+
+        <listitem override='bullet'><para><command>sh</command> это
+		символическая ссылка на <command>bash</command>.</para></listitem>
+
+        <listitem override='bullet'><para><command>/usr/bin/awk</command> это
+		символическая ссылка на <command>gawk</command>.</para></listitem>
+
+        <listitem override='bullet'><para><command>/usr/bin/yacc</command> это
+		символическая ссылка на <command>bison</command> или небольшой скрипт,
+		который выполняет bison</para></listitem>
+
+      </itemizedlist>
+    </important>
+
+    <important>
+      <para>Еще раз обратим внимание на процесс сборки:</para>
+
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>Поместите все исходники и патчи в каталог, который будет доступен из
+		  среды chroot, например, <filename class="directory">/mnt/lfs/sources/</filename>.<!-- Do
+          <emphasis>not</emphasis> put sources in
+	  <filename class="directory">/mnt/lfs/tools/</filename>. --></para>
+        </listitem>
+        <listitem>
+          <para>Перейдите в каталог с исходными кодами.</para>
+        </listitem>
+        <listitem id='buildinstr' xreflabel='Package build instructions'>
+          <para>Для каждого пакета:</para>
+          <orderedlist numeration="loweralpha" spacing="compact">
+            <listitem>
+              <para>С помощью программы <command>tar</command> извлеките пакет для
+			  сборки. В <xref linkend="chapter-cross-tools"/> и
+              <xref linkend="chapter-temporary-tools"/> убедитесь, что при извлечении
+			  пакета вы залогинены под пользователем lfs.</para>
+			  
+              <para>Все методы получения дерева исходного кода на месте сборки, кроме
+			  извлечения tar-архива, не поддерживаются. Примечательно, что использование
+			  <command>cp -R</command> для копирования дерева исходного кода в другое
+			  место может привести к уничтожению ссылок и временных меток в дереве
+			  исходного кода и вызвать сбой сборки.</para>
+            </listitem>
+            <listitem>
+              <para>Перейдите в каталог, созданный при извлечении пакета.</para>
+            </listitem>
+            <listitem>
+              <para>Следуйте инструкциям книги по сборке пакета.</para>
+            </listitem>
+            <listitem>
+              <para>Вернитесь в исходный каталог.</para>
+            </listitem>
+            <listitem>
+              <para>Удалите извлеченный каталог, если не указано иное.</para>
+            </listitem>
+          </orderedlist>
+        </listitem>
+      </orderedlist>
+    </important>
+  </listitem>
+
+  </itemizedlist>
+
+</sect1>
