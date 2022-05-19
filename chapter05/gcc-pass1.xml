@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-gcc-pass1" role="wrap" xreflabel="gcc-pass1">
+  <?dbhtml filename="gcc-pass1.html"?>
+
+  <sect1info condition="script">
+    <productname>gcc-pass1</productname>
+    <productnumber>&gcc-version;</productnumber>
+    <address>&gcc-url;</address>
+  </sect1info>
+
+  <title>GCC-&gcc-version; - Проход 1</title>
+
+  <indexterm zone="ch-tools-gcc-pass1">
+    <primary sortas="a-GCC">GCC</primary>
+    <secondary>tools, pass 1</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/gcc.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gcc-tmpp1-sbu;</seg>
+        <seg>&gcc-tmpp1-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка кросс-пакета GCC</title>
+
+    <para>Для GCC требуются пакеты GMP, MPFR и MPC. Поскольку эти пакеты могут
+	отсутствовать в дистрибутиве вашего хоста, они будут собраны с помощью GCC.
+	Распакуйте каждый пакет в исходный каталог GCC и переименуйте получившиеся
+	каталоги, чтобы процедуры сборки GCC использовали их автоматически:</para>
+
+    <note><para>.В этой главе часто возникают недоразумения. Процедуры такие же,
+	как и в любой другой главе, как было описано ранее (<xref
+    linkend='buildinstr'/>). Сначала распакуйте пакет gcc из архива,
+	а затем перейдите в созданный каталог. Только после этого следует
+	приступить к приведенным ниже инструкциям.</para></note>
+
+<screen><userinput remap="pre">tar -xf ../mpfr-&mpfr-version;.tar.xz
+mv -v mpfr-&mpfr-version; mpfr
+tar -xf ../gmp-&gmp-version;.tar.xz
+mv -v gmp-&gmp-version; gmp
+tar -xf ../mpc-&mpc-version;.tar.gz
+mv -v mpc-&mpc-version; mpc</userinput></screen>
+
+    <para>На хостах x86_64 установите имя каталога по умолчанию для 64-битных
+	библиотек на <quote>lib</quote>:</para>
+
+<screen><userinput remap="pre">case $(uname -m) in
+  x86_64)
+    sed -e '/m64=/s/lib64/lib/' \
+        -i.orig gcc/config/i386/t-linux64
+ ;;
+esac</userinput></screen>
+
+    <para>В документации к GCC рекомендуется собирать GCC в отдельном каталоге:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <para>Подготовьте GCC к компиляции:</para>
+
+<screen><userinput remap="configure">../configure                  \
+    --target=$LFS_TGT         \
+    --prefix=$LFS/tools       \
+    --with-glibc-version=&glibc-version; \
+    --with-sysroot=$LFS       \
+    --with-newlib             \
+    --without-headers         \
+    --disable-nls             \
+    --disable-shared          \
+    --disable-multilib        \
+    --disable-decimal-float   \
+    --disable-threads         \
+    --disable-libatomic       \
+    --disable-libgomp         \
+    --disable-libquadmath     \
+    --disable-libssp          \
+    --disable-libvtv          \
+    --disable-libstdcxx       \
+    --enable-languages=c,c++</userinput></screen>
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--with-glibc-version=&glibc-version;</parameter></term>
+        <listitem>
+          <para>Этот параметр указывает версию glibc, которая будет использоваться
+		  на целевой системе. Он не имеет отношения к libc хост-дистрибутива, потому
+		  что все, скомпилированное в этом разделе, будет выполняться в среде chroot,
+		  которая изолирована от libc хост-дистрибутива.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-newlib</parameter></term>
+        <listitem>
+          <para>Поскольку работающая библиотека C еще недоступна, это гарантирует, что
+		  константа inhibit_libc будет определена при сборке libgcc. Это предотвращает
+		  компиляцию любого кода, требующего поддержки libc.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-headers</parameter></term>
+        <listitem>
+          <para>При создании полного кросс-компилятора GCC требует наличия стандартных
+		  заголовков, совместимых с целевой системой. Для наших целей эти заголовки
+		  не понадобятся. Этот параметр предотвращает их поиск GCC.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-shared</parameter></term>
+        <listitem>
+          <para>Этот параметр заставляет использовать некоторые внутренние структуры
+		  данных, которые необходимы, но не могут быть обнаружены при сборке кросс-компилятора.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-multilib</parameter></term>
+        <listitem>
+          <para>Для платформы x86_64, LFS пока не поддерживает конфигурацию multilib.
+		  Этот аргумент ни как не повлияет, если установка выполняется на платформе x86.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-decimal-float, --disable-threads,
+              --disable-libatomic, --disable-libgomp,
+        --disable-libquadmath, --disable-libssp, --disable-libvtv,
+        --disable-libstdcxx</parameter></term>
+        <listitem>
+          <para>Эти аргументы отключают поддержку расширений для работы с десятичным числами с плавающей запятой, многопоточностью, libatomic, libgomp, libquadmath, libssp, libvtv и стандартной библиотеки C++ соответственно. Эти функции не будут компилироваться при сборке кросс-компилятора и не нужны для задач кросс-компиляции временной libc</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-languages=c,c++</parameter></term>
+        <listitem>
+          <para>Этот параметр обеспечивает сборку только компиляторов C и C++.
+		  Это единственные языки, которые нужны сейчас.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте GCC, выполнив:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+    <screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Во время сборки GCC установил пару внутренних системных заголовков.
+	Обычно один из файлов <filename>limits.h</filename>, включает соответствующие
+	системные ограничения <filename>limits.h</filename>, в данном случае
+	<filename>$LFS/usr/include/limits.h</filename>. Однако во время сборки GCC
+	<filename>$LFS/usr/include/limits.h</filename> не существует, поэтому только
+	что установленный внутренний заголовок является частичным, автономным файлом
+	и не включает расширенные функции системного заголовка. Этого достаточно для
+	сборки glibc, но полный внутренний заголовок понадобится позже. Создайте
+	полную версию внутреннего заголовка с помощью команды, идентичной тому, что
+	система сборки GCC делает в обычных обстоятельствах:</para>
+
+<screen><userinput remap="install">cd ..
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/install-tools/include/limits.h</userinput></screen>
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в
+    <xref linkend="contents-gcc" role="."/></para>
+
+  </sect2>
+
+</sect1>
