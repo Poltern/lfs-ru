@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-introduction">
+  <?dbhtml filename="introduction.html"?>
+
+  <title>Введение</title>
+
+  <para>В этой главе дано описание, как создать кросс-компилятор и связанные с
+  ним инструменты. Несмотря на то, что на данном этапе кросс-компиляция имитируется,
+  принципы его работы те же, что и для настоящего кросс-тулчейна.</para>
+
+  <para>Программы, скомпилированные в этой главе, будут установлены в каталог
+  <filename class="directory">$LFS/tools</filename>, чтобы они были отделены
+  от файлов, установленных в следующих главах. Библиотеки, же, устанавливаются
+  на свое постоянное место, поскольку они относятся к системе, которую мы хотим создать.</para>
+
+</sect1>

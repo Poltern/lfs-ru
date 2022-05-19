@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-binutils-pass1" role="wrap">
+  <?dbhtml filename="binutils-pass1.html"?>
+
+  <sect1info condition="script">
+    <productname>binutils-pass1</productname>
+    <productnumber>&binutils-version;</productnumber>
+    <address>&binutils-url;</address>
+  </sect1info>
+
+  <title>Binutils-&binutils-version; - Проход 1</title>
+
+  <indexterm zone="ch-tools-binutils-pass1">
+    <primary sortas="a-Binutils">Binutils</primary>
+    <secondary>tools, pass 1</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/binutils.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&binutils-tmpp1-sbu;</seg>
+        <seg>&binutils-tmpp1-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка кросс-пакета Binutils</title>
+
+    <note><para>Вернитесь назад и перечитайте примечания в разделе <xref
+    linkend="ch-tools-generalinstructions"/>. Понимание нформации, помеченной
+	как важная, может впоследствии избавить вас от многих проблем.</para></note>
+
+    <para>Очень важно, чтобы Binutils был скомпилированным первым, потому что и
+	Glibc, и GCC выполняют различные тесты на доступных компоновщике и ассемблере,
+	чтобы определить, какие из их функций следует включить.</para>
+
+    <para>В документации пакета Binutils рекомендуется выполнять сборку в отдельном каталоге:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <note>
+      <para>Для того, чтобы значения SBU, перечисленные в остальной части книги,
+	  были вам полезны, измерьте время, необходимое для сборки этого пакета,
+	  начиная с настройки и заканчивая установкой. Чтобы добиться этого, оберните
+	  команды сборки командой <command>time</command>:
+	  <userinput>time { ../configure ... &amp;&amp; make
+      &amp;&amp; make install; }.</userinput>.</para>
+    </note>
+
+    <para>Теперь подготовьте Binutils к компиляции:</para>
+
+    <screen><userinput remap="configure">../configure --prefix=$LFS/tools \
+             --with-sysroot=$LFS \
+             --target=$LFS_TGT   \
+             --disable-nls       \
+             --disable-werror</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--prefix=$LFS/tools</parameter></term>
+        <listitem>
+          <para>Указывает сценарию configure подготовить к установке пакет binutils в каталог <filename
+          class="directory">$LFS/tools</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-sysroot=$LFS</parameter></term>
+        <listitem>
+          <para>Для кросс-компляции указывает системе сборки искать в $LFS
+		  библиотеки целевой системы по мере необходимости..</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><envar>--target=$LFS_TGT</envar></term>
+        <listitem>
+          <para>Поскольку название машины в значении переменной
+		  <envar>LFS_TGT</envar> может отличаться от значения, которое
+		  возвращает сценарий <command>config.guess</command>, этот аргумент
+		  укажет сценарию <command>configure</command> настроить систему
+		  сборки пакета Binutils для создания кросс-компоновщика.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-nls</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает интернационализацию, так как i18n не
+		  требуется для временных инструментов.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-werror</parameter></term>
+        <listitem>
+          <para>Этот параметр предотвращает остановку сборки в случае появления
+		  предупреждений от компилятора хоста.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Продолжайте компиляцию пакета:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в разделе
+    <xref linkend="contents-binutils" role="."/></para>
+
+  </sect2>
+
+</sect1>
