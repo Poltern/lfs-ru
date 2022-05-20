@@ -9,7 +9,7 @@
   <?dbhtml dir="chapter05"?>
   <?dbhtml filename="chapter05.html"?>
 
-  <title>Сборка временного набора инструментов</title>
+  <title>Сборка кросс-тулчейна</title>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="introduction.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="binutils-pass1.xml"/>
