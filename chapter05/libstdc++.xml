@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-libstdcpp" role="wrap">
+  <?dbhtml filename="gcc-libstdc++.html"?>
+
+  <sect1info condition="script">
+    <productname>gcc-libstdc++</productname>
+    <productnumber>&gcc-version;</productnumber>
+    <address>&gcc-url;</address>
+  </sect1info>
+
+  <title>Libstdc++ из GCC-&gcc-version;</title>
+
+  <indexterm zone="ch-tools-libstdcpp">
+    <primary sortas="a-GCC">GCC</primary>
+    <secondary>tools, libstdc++ Проход 1</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Libstdc++ — это стандартная библиотека C++. Она нужна для компиляции
+	кода C++ (часть GCC написана на C++), когда мы собирали <xref linkend="ch-tools-gcc-pass1"/>, 
+	нам пришлось отложить её установку, потому что она зависит от библиотеки glibc,
+	которой еще не было в целевом каталоге.
+    </para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&libstdcpp-tmpp1-sbu;</seg>
+        <seg>&libstdcpp-tmpp1-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка библиотеки Libstdc++</title>
+
+    <note>
+      <para><application>Libstdc++</application> является частью исходников GCC.
+	  Сначала вы должны распаковать архив GCC и перейти в каталог
+      <filename>gcc-&gcc-version;</filename>.</para>
+    </note>
+
+    <para>Создайте отдельный каталог сборки для libstdc++ и перейдите в него:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <para>Подготовьте libstdc++ к компиляции:</para>
+
+<screen><userinput remap="configure">../libstdc++-v3/configure           \
+    --host=$LFS_TGT                 \
+    --build=$(../config.guess)      \
+    --prefix=/usr                   \
+    --disable-multilib              \
+    --disable-nls                   \
+    --disable-libstdcxx-pch         \
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/&gcc-version;</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--host=...</parameter></term>
+        <listitem>
+          <para>Указывает, что кросс-компилятор, который мы только что создали,
+		  должен использоваться вместо того, который находится в
+          <filename>/usr/bin</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-libstdcxx-pch</parameter></term>
+        <listitem>
+          <para> Этот аргумент предотвращает установку предварительно скомпилированных
+		  include-файлов, которые на данном этапе не нужны.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-gxx-include-dir=/tools/$LFS_TGT/include/c++/&gcc-version;</parameter></term>
+        <listitem>
+          <para>Указывает каталог установки для include-файлов. Поскольку libstdc++
+		  является стандартной библиотекой C++ для LFS, этот каталог должен
+		  соответствовать местоположению, в котором компилятор C++
+		  (<command>$LFS_TGT-g++</command>) будет искать стандартные включаемые
+		  файлы C++. При обычной сборке эта информация автоматически передается при 
+		  выполнении <command>configure</command> из каталога верхнего уровня.
+		  В нашем случае эта информация должна быть указана явно. Компилятор C++ добавит
+		  путь sysroot <filename class="directory">$LFS</filename> (указанный в GCC Проход 1)
+		  к пути поиска include-файлов, поэтому он фактически будет искать в
+		  <filename class="directory">$LFS/tools/$LFS_TGT/include/c++/&gcc-version;</filename>.
+		  Комбинация переменной <parameter>DESTDIR</parameter> (в приведенной ниже команде
+		  <command>make install</command>) и этого аргумента обеспечивает установку
+		  заголовочных файлов туда.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте libstdc++, выполнив:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите библиотеку:</para>
+
+<screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете приведена в
+    <xref linkend="contents-gcc" role="."/></para>
+
+  </sect2>
+
+</sect1>

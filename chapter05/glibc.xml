@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-glibc" role="wrap">
+  <?dbhtml filename="glibc.html"?>
+
+  <sect1info condition="script">
+    <productname>glibc</productname>
+    <productnumber>&glibc-version;</productnumber>
+    <address>&glibc-url;</address>
+  </sect1info>
+
+  <title>Glibc-&glibc-version;</title>
+
+  <indexterm zone="ch-tools-glibc">
+    <primary sortas="a-Glibc">Glibc</primary>
+    <secondary>tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/glibc.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&glibc-tmp-sbu;</seg>
+        <seg>&glibc-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Glibc</title>
+
+    <para>Во-первых, создайте символическую ссылку для соответствия требованиям LSB. Кроме того, для совместимости с x86_64 создайте символическую ссылку, необходимую для правильной работы загрузчика динамической библиотеки:</para>
+
+<screen><userinput remap="pre">case $(uname -m) in
+    i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+    ;;
+    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
+            ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+    ;;
+esac</userinput></screen>
+
+    <note>
+      <para>
+        Приведенная выше команда верна. Команда <command>ln</command> имеет несколько
+		синтаксических версий, поэтому обязательно ознакомтесь с <command>info coreutils ln</command>
+		и <filename>ln(1)</filename>, прежде чем сообщать об ошибке.
+      </para>
+    </note>
+
+    <para>Некоторые программы, использующие Glibc, применяют несовместимый с
+	FHS каталог <filename class="directory">/var/db</filename> для хранения
+	своих данных времени выполнения. Установите следующий патч, чтобы такие
+	программы хранили свои данные в местах, совместимых с FHS:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../glibc-&glibc-version;-fhs-1.patch</userinput></screen>
+
+    <para>В документации к Glibc рекомендуется собирать Glibc в отдельном каталоге:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <para>Убедитесь, что утилиты <command>ldconfig</command> and <command>sln</command>
+	установлены в <filename class="directory">/usr/sbin</filename>:</para>
+
+<screen><userinput remap="pre">echo "rootsbindir=/usr/sbin" &gt; configparms</userinput></screen>
+
+    <para>Затем подготовьте Glibc к компиляции:</para>
+
+<screen><userinput remap="configure">../configure                             \
+      --prefix=/usr                      \
+      --host=$LFS_TGT                    \
+      --build=$(../scripts/config.guess) \
+      --enable-kernel=&min-kernel;                \
+      --with-headers=$LFS/usr/include    \
+      libc_cv_slibdir=/usr/lib</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--host=$LFS_TGT, --build=$(../scripts/config.guess)</parameter></term>
+        <listitem>
+          <para>Комбинация этих опций указывает на то, что система сборки
+		  Glibc настраивается на кросс-компиляцию с использованием кросс-компоновщика
+		  и кросс-компилятора в <filename class="directory">$LFS/tools</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-kernel=&min-kernel;</parameter></term>
+        <listitem>
+          <para>Этот параметр позволяет Glibc выполнять компиляцию библиотеки 
+		  с поддержкой ядра &min-kernel; и более поздних версий. Поддержка более
+		  старых ядер не включена.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-headers=$LFS/usr/include</parameter></term>
+        <listitem>
+          <para>Этот аргумент позволяет скомпилировать библиотеку с заголовочными файлами,
+		  недавно установленными в каталоге $LFS/usr/include, таким образом, пакету будет
+		  известно, какие функции есть у ядра, чтобы оптимизировать себя.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>libc_cv_slibdir=/usr/lib</parameter></term>
+        <listitem>
+          <para> Этот аргумент гарантирует, что библиотека будет установлена
+		  в /usr/lib вместо стандартного /lib64 на 64-битных машинах.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>На этом этапе может появиться следующее предупреждение:</para>
+
+    <blockquote>
+<screen><computeroutput>configure: WARNING:
+*** These auxiliary programs are missing or
+*** incompatible versions: msgfmt
+*** some features will be disabled.
+*** Check the INSTALL file for required versions.</computeroutput></screen>
+    </blockquote>
+
+    <para>Отсутствующая или несовместимая программа <command>msgfmt</command>,
+	как правило, безвредна. <command>msgfmt</command> является частью пакета Gettext,
+	который должен предоставлять хост-дистрибутив.</para>
+
+    <note><para>Поступали сообщения о том, что этот пакет может не компилироваться
+	при "параллельной сборке". Если это произойдет, повторно запустите команду
+	make с параметром "-j1".</para></note>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+    <warning><para>Если переменная <envar>LFS</envar> настроена неправильно, и,
+	несмотря на рекомендации, вы выполняете сборку от имени пользователя 
+	<systemitem class="username">root</systemitem>, следующая команда установит
+	только что собранный glibc в вашу хост-систему, что, скорее всего, сделает её
+	непригодной для использования. Поэтому дважды проверьте, правильность настройки
+	среды, прежде чем запускать следующую команду.</para></warning>
+
+<screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
+
+    <variablelist>
+      <title>Значение опции <command>make install</command>:</title>
+
+      <varlistentry>
+        <term><parameter>DESTDIR=$LFS</parameter></term>
+        <listitem>
+          <para>Переменная make <envar>DESTDIR</envar> используется почти
+		  всеми пакетами для определения места установки пакета. Если она
+		  не задана, по умолчанию для установки используется корневой каталог (<filename
+          class="directory">/</filename>). Здесь мы указываем, что пакет должен
+		  быть установлен в $LFS, который станет корневым после <xref linkend=
+          "ch-tools-chroot"/>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Исправьте жестко заданный путь к исполняемому загрузчику в скрипте
+    <command>ldd</command>:</para>
+
+<screen><userinput remap="install">sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd</userinput></screen>
+
+    <caution>
+      <para>На этом этапе необходимо остановиться и убедиться, что основные функции
+	  (компиляция и компоновка) нового набора инструментов работают должным образом.
+	  Чтобы выполнить проверку работоспособности, выполните следующие команды:</para>
+
+<screen><userinput>echo 'int main(){}' &gt; dummy.c
+$LFS_TGT-gcc dummy.c
+readelf -l a.out | grep '/ld-linux'</userinput></screen>
+
+      <para>Если все работает правильно, ошибок быть не должно, и вывод последней
+	  команды будет иметь вид:</para>
+
+<screen><computeroutput>[Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]</computeroutput></screen>
+
+      <para>Обратите внимание, что для 32-разрядных машин имя интерпретатора будет
+      <filename>/lib/ld-linux.so.2</filename>.</para>
+
+      <para>Если выходные данные отображаются не так, как указано выше, или их вообще
+	  не было, значит, что-то не так. Разберитесь с проблемой и повторите шаги выше,
+	  чтобы исправить ее. Эта проблема должна быть решена, прежде чем вы продолжите.</para>
+
+      <para>Как только все будет хорошо, удалите тестовые файлы:</para>
+
+<screen><userinput>rm -v dummy.c a.out</userinput></screen>
+
+    </caution>
+
+    <note><para>Сборка пакетов в следующей главе послужит дополнительной проверкой
+	правильности сборки временного набора инструментов. Если какой-либо пакет, особенно
+	binutils-pass2 или gcc-pass2, не удается собрать, это указывает на то, что что-то
+	пошло не так с установленными ранее Binutils, GCC, или Glibc.</para></note>
+
+    <para>Теперь, когда наш кросс-тулчейн собран, завершите установку заголовочного
+	файла limits.h. Для этого запустите утилиту, предоставленную разработчиками GCC:</para>
+
+<screen><userinput>$LFS/tools/libexec/gcc/$LFS_TGT/&gcc-version;/install-tools/mkheaders</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в
+    <xref linkend="contents-glibc" role="."/></para>
+
+  </sect2>
+
+</sect1>

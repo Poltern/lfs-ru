@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<chapter id="chapter-cross-tools" xreflabel="Chapter&nbsp;5">
+  <?dbhtml dir="chapter05"?>
+  <?dbhtml filename="chapter05.html"?>
+
+  <title>Сборка временного набора инструментов</title>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="introduction.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="binutils-pass1.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gcc-pass1.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="linux-headers.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="glibc.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libstdc++.xml"/>
+
+</chapter>
