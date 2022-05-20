@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<chapter id="chapter-temporary-tools" xreflabel="Chapter&nbsp;6">
+  <?dbhtml dir="chapter06"?>
+  <?dbhtml filename="chapter06.html"?>
+
+  <title>Кросс-Компиляция временных инструментов</title>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="introduction.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="m4.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ncurses.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bash.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="coreutils.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="diffutils.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="file.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="findutils.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gawk.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="grep.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gzip.xml"/>
+  <!--xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zlib.xml"/-->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="make.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="patch.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sed.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tar.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xz.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="binutils-pass2.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gcc-pass2.xml"/>
+
+</chapter>
