@@ -114,9 +114,11 @@ EOF</userinput></screen>
       <listitem>
   <para>Многие современные дистрибутивы Linux объединили <filename
   class="directory">/bin</filename> и <filename
-  class="directory">/usr/bin</filename>. В этом случае для стандартной переменной <envar>PATH</envar> необходимо просто установить значение <filename
+  class="directory">/usr/bin</filename>. В этом случае для стандартной переменной <envar>PATH</envar>
+  необходимо просто установить значение <filename
   class="directory">/usr/bin/</filename> для среды <xref
-  linkend="chapter-temporary-tools"/>. Когда это не так, следующая строка добавляет <filename class="directory">/bin</filename> к пути.</para>
+  linkend="chapter-temporary-tools"/>. Когда это не так, следующая строка добавляет
+  <filename class="directory">/bin</filename> к пути.</para>
       </listitem>
     </varlistentry>
 

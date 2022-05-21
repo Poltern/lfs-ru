@@ -75,7 +75,8 @@
       <para><emphasis role="strong">Linux Kernel-&min-kernel;</emphasis></para>
 
       <para>Требования к версии ядра заключается в том, что мы указываем эту
-	  версию при сборке <application>glibc</application> в Главе 5 <xref linkend="chapter-cross-tools"/> и Главе 8 <xref linkend="chapter-building-system"/> по рекомендации
+	  версию при сборке <application>glibc</application> в 
+	  <xref linkend="chapter-cross-tools"/> и <xref linkend="chapter-building-system"/> по рекомендации
 	  разработчиков. Кроме этого, она необходима для udev.</para>
 
       <para>Если версия ядра ​​хоста меньше, чем &min-kernel;, вам необходимо обновить
