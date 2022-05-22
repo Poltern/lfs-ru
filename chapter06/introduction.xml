@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-introduction-cross">
+  <?dbhtml filename="introduction.html"?>
+
+  <title>Введение</title>
+
+  <para>В этой главе рассказывается, как выполнить кросс-компиляцию базовых
+  утилит с использованием только что собранного кросс-тулчейна. Эти утилиты 
+  установлены в свое конечное местоположение, но пока не могут быть использованы.
+  Выполненяемые инструкции по-прежнему зависят от инструментария хоста. Тем не менее,
+  установленные библиотеки используются при компоновке.</para>
+
+  <para>Использование утилит станет возможным в следующей главе после входа в
+  среду <quote>chroot</quote>. Все пакеты из этой главы, должны быть
+  собраны до того, как мы это сделаем. Поэтому пока наша система зависима от хост-системы.</para>
+
+  <para>Еще раз напомним, что неправильная настройка <envar>LFS</envar> вместе со
+  сборкой от <systemitem class="username">root</systemitem> может сделать ваш
+  компьютер непригодным для использования. Всю эту главу нужно выполнить от имени пользователя <systemitem
+  class="username">lfs</systemitem>, в его рабочем окружении, как описано в
+  <xref linkend="ch-preps-settingenviron"/>.</para>
+
+</sect1>

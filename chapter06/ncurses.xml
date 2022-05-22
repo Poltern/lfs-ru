@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-ncurses" role="wrap">
+  <?dbhtml filename="ncurses.html"?>
+
+  <sect1info condition="script">
+    <productname>ncurses</productname>
+    <productnumber>&ncurses-version;</productnumber>
+    <address>&ncurses-url;</address>
+  </sect1info>
+
+  <title>Ncurses-&ncurses-version;</title>
+
+  <indexterm zone="ch-tools-ncurses">
+    <primary sortas="a-Ncurses">Ncurses</primary>
+    <secondary>tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/ncurses.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&ncurses-tmp-sbu;</seg>
+        <seg>&ncurses-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка Ncurses</title>
+
+    <para>Во-первых, убедитесь, что <command>gawk</command> найден первым во время настройки:</para>
+
+<screen><userinput remap="pre">sed -i s/mawk// configure</userinput></screen>
+
+    <para>Затем выполните следующие команды, чтобы собрать программу 
+	<quote>tic</quote> на хосте сборки:</para>
+
+<screen><userinput remap="pre">mkdir build
+pushd build
+  ../configure
+  make -C include
+  make -C progs tic
+popd</userinput></screen>
+
+    <para>Подготовьте Ncurses к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr                \
+            --host=$LFS_TGT              \
+            --build=$(./config.guess)    \
+            --mandir=/usr/share/man      \
+            --with-manpage-format=normal \
+            --with-shared                \
+            --without-debug              \
+            --without-ada                \
+            --without-normal             \
+            --disable-stripping          \
+            --enable-widec</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--with-manpage-format=normal</parameter></term>
+        <listitem>
+          <para>Этот аргумент предотвращает установку Ncurses сжатых страниц руководства, что
+		  может произойти, если сам дистрибутив хоста содержит сжатые страницы руководства.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-ada</parameter></term>
+        <listitem>
+          <para>Этот аргумент гарантирует, что Ncurses будет собран без поддержки компилятора Ada,
+		  который может присутствовать на хосте, но будет недоступен, как только мы войдем
+		  в среду <command>chroot</command>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-stripping</parameter></term>
+        <listitem>
+          <para>Этот аргумент не позволяет системе сборки удалять пакеты с
+		  помощью программы <command>strip</command> с хоста. Использование инструментов
+		  хоста в кросс-компилируемой программе может привести к сбою.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-widec</parameter></term>
+        <listitem>
+          <para>Этот аргумент указывает, что необходимо скомпилировать библиотеки
+		  расширенных символов (такие как, <filename
+          class="libraryfile">libncursesw.so.&ncurses-version;</filename>)
+          вместо обычных (таких как, <filename class="libraryfile">libncurses.so.&ncurses-version;</filename>).
+		  Эти библиотеки расширенных символов можно использовать как в многобайтовой, так и
+          традиционной 8-битной локали, в то время как обычные библиотеки корректно работают
+          только в 8-битных локалях. Библиотеки расширенных символов и обычные совместимы на
+		  уровне исходного кода, но не совместимы в двоичном.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-normal</parameter></term>
+        <listitem>
+          <para>Этот аргумент отключает сборку и установку большинства статических библиотек
+          </para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
+echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров установки:</title>
+
+      <varlistentry>
+        <term><parameter>TIC_PATH=$(pwd)/build/progs/tic</parameter></term>
+        <listitem>
+          <para>Нам нужно передать путь только что собранного <command>tic</command>,
+		  способного работать на машине сборки, чтобы база данных терминала была
+		  создана без ошибок.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><command>echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</command></term>
+        <listitem>
+          <para>Библиотека <filename>libncurses.so</filename> необходима для нескольких
+		  пакетов, которые мы скоро соберем. Мы создадим небольшой скрипт компоновщика, как это делается поясняется в <xref
+          linkend="chapter-building-system"/>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в
+    <xref linkend="contents-ncurses" role="."/></para>
+
+  </sect2>
+
+</sect1>
