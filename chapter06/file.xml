@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-file" role="wrap">
+  <?dbhtml filename="file.html"?>
+
+  <sect1info condition="script">
+    <productname>file</productname>
+    <productnumber>&file-version;</productnumber>
+    <address>&file-url;</address>
+  </sect1info>
+
+  <title>File-&file-version;</title>
+
+  <indexterm zone="ch-tools-file">
+    <primary sortas="a-File">File</primary>
+    <secondary>tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/file.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&file-tmp-sbu;</seg>
+        <seg>&file-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета File</title>
+
+    <para>
+       Команда <command>file</command> на хосте сборки должна быть той же версии, что и
+	   собираемая, чтобы создать файл подписи. Запустите следующие команды, для сборки пакета:
+    </para>
+
+<screen><userinput remap="pre">mkdir build
+pushd build
+  ../configure --disable-bzlib      \
+               --disable-libseccomp \
+               --disable-xzlib      \
+               --disable-zlib
+  make
+popd</userinput></screen>
+
+    <variablelist>
+      <title>Значение новой опции настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-*</parameter></term>
+        <listitem>
+          <para>Сценарий конфигурации пытается использовать некоторые пакеты из
+		  основного дистрибутива, если существуют соответствующие файлы библиотек.
+		  Это может привести к сбою компиляции, если файлы библиотек существует,
+		  но отсутствуют соответствующие заголовочные файлы. Эти параметры
+		  предотвращают использование ненужных возможностей хоста.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Подготовьте файл для компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)</userinput></screen>
+
+<!-- devs: if using - -build here, the build system wants to compile
+     the signature file with "file" on the build system, but stops if it is not
+     the same version. One possibility would be to build "file" on the build
+     system first, but it is simpler to have the system think it is not
+     cross-compiling, and use the just built "file". -->
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make FILE_COMPILE=$(pwd)/build/src/file</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+    <para>Подробная информация об этом пакете находится в <xref linkend="contents-file" role="."/></para>
+
+  </sect2>
+
+</sect1>

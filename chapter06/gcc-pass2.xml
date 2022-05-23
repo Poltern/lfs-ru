@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-gcc-pass2" role="wrap" xreflabel="gcc-pass2">
+  <?dbhtml filename="gcc-pass2.html"?>
+
+  <sect1info condition="script">
+    <productname>gcc-pass2</productname>
+    <productnumber>&gcc-version;</productnumber>
+    <address>&gcc-url;</address>
+  </sect1info>
+
+  <title>GCC-&gcc-version; - Проход 2</title>
+
+  <indexterm zone="ch-tools-gcc-pass2">
+    <primary sortas="a-GCC">GCC</primary>
+    <secondary>tools, pass 2</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/gcc.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gcc-tmpp2-sbu;</seg>
+        <seg>&gcc-tmpp2-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета GCC</title>
+
+    <para>Как и при первой сборке GCC, требуются пакеты GMP, MPFR и MPC. Распакуйте
+	архивы и переместите их в каталоги с нужными именами:</para>
+
+<screen><userinput remap="pre">tar -xf ../mpfr-&mpfr-version;.tar.xz
+mv -v mpfr-&mpfr-version; mpfr
+tar -xf ../gmp-&gmp-version;.tar.xz
+mv -v gmp-&gmp-version; gmp
+tar -xf ../mpc-&mpc-version;.tar.gz
+mv -v mpc-&mpc-version; mpc</userinput></screen>
+
+    <para>При сборке на x86_64 измените имя каталога по умолчанию для 64-разрядных 
+	библиотек на <quote>lib</quote>.:</para>
+
+<screen><userinput remap="pre">case $(uname -m) in
+  x86_64)
+    sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+  ;;
+esac</userinput></screen>
+
+    <para>Переопределите правила сборки заголовочных файлов libgcc и libstdc++, чтобы 
+	разрешить создание этих библиотек с поддержкой потоков POSIX:</para>
+
+<screen><userinput remap="pre">sed '/thread_header =/s/@.*@/gthr-posix.h/' \
+    -i libgcc/Makefile.in libstdc++-v3/include/Makefile.in</userinput></screen>
+
+    <para>Снова создайте отдельный каталог сборки:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <para>Перед началом сборки GCC не забудьте отключить все переменные среды,
+	которые переопределяют флаги оптимизации по умолчанию.</para>
+
+    <para>Теперь подготовьте GCC к компиляции:</para>
+
+<screen><userinput remap="configure">../configure                                       \
+    --build=$(../config.guess)                     \
+    --host=$LFS_TGT                                \
+    --target=$LFS_TGT                              \
+    LDFLAGS_FOR_TARGET=-L$PWD/$LFS_TGT/libgcc      \
+    --prefix=/usr                                  \
+    --with-build-sysroot=$LFS                      \
+    --enable-initfini-array                        \
+    --disable-nls                                  \
+    --disable-multilib                             \
+    --disable-decimal-float                        \
+    --disable-libatomic                            \
+    --disable-libgomp                              \
+    --disable-libquadmath                          \
+    --disable-libssp                               \
+    --disable-libvtv                               \
+    --enable-languages=c,c++</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров настройки:</title><!-- WIP -->
+
+      <varlistentry>
+        <term><parameter>--with-build-sysroot=$LFS</parameter></term>
+        <listitem>
+          <para>Обычно, использование <parameter>--host</parameter> гарантирует, что
+		  для сборки GCC используется кросс-компилятор, и этот компилятор знает,
+		  что он должен искать заголовочные файлы и библиотеки в <filename
+          class="directory">$LFS</filename>. Но сборочная система GCC использует
+		  другие инструменты, которые не знают об этом местоположении. Этот
+		  переключатель необходим для того, чтобы они могли находить нужные файлы в <filename
+          class="directory">$LFS</filename>, а не на хосте.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--target=$LFS_TGT</parameter></term>
+        <listitem>
+          <para>Поскольку мы выполняем кросс-компиляцию GCC, невозможно создать
+		  целевые библиотеки (<filename class="libraryfile">libgcc</filename>
+          и <filename class="libraryfile">libstdc++</filename>) со скомпилированными
+		  двоичными файлами GCC, потому что эти двоичные файлы не будут работать на
+		  хост-дистрибутиве. Система сборки GCC попытается использовать 
+		  компиляторы C и C++ в хост-дистрибутиве в качестве обходного пути.
+          Сейчас не поддерживается создание целевых библиотек GCC с другими версиями GCC,
+		  поэтому использование хост-компиляторов может привести к отказу сборки. Этот
+		  параметр обеспечивает сборку библиотек с помощью GCC собранного на первом проходе,
+		  чтобы предотвратить проблему</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>LDFLAGS_FOR_TARGET=...</parameter></term>
+        <listitem>
+          <para>Разрешить <filename class="libraryfile">libstdc++</filename> использовать
+           общую библиотеку <filename class="libraryfile">libgcc</filename>,
+           собранную на этом проходе, вместо статической версии, собранной в GCC
+           Проход 1. Это необходимо для поддержки обработки исключения C++</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-initfini-array</parameter></term>
+        <listitem>
+          <para>Эта опция включается автоматически при сборке собственного
+           компилятора с родным компилятором на x86. Но сейчас мы собираем с помощью
+           кросс-компилятора, поэтому нам нужно явно включить эту опцию.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
+
+    <para>В качестве завершающего штриха создайте символическую ссылку на утилиту.
+	Многие программы и скрипты используют <command>cc</command> вместо <command>gcc</command>,
+	чтобы сделать программы более универсальными и, следовательно, для соместимости со всеми
+	типами UNIX-систем, где компилятор GNU C не всегда установлен. Наличие <command>cc</command>
+	оставляет системному администратору право самостоятельно решать, какой компилятор C устанавливать:</para>
+
+<screen><userinput remap="install">ln -sv gcc $LFS/usr/bin/cc</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в
+    <xref linkend="contents-gcc" role="."/></para>
+
+  </sect2>
+
+</sect1>

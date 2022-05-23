@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-binutils-pass2" role="wrap">
+  <?dbhtml filename="binutils-pass2.html"?>
+
+  <sect1info condition="script">
+    <productname>binutils-pass2</productname>
+    <productnumber>&binutils-version;</productnumber>
+    <address>&binutils-url;</address>
+  </sect1info>
+
+  <title>Binutils-&binutils-version; - Проход 2</title>
+
+  <indexterm zone="ch-tools-binutils-pass2">
+    <primary sortas="a-Binutils">Binutils</primary>
+    <secondary>tools, pass 2</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/binutils.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&binutils-tmpp2-sbu;</seg>
+        <seg>&binutils-tmpp2-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Binutils</title>
+
+    <!-- Don't remove this until Binutils upstream updates the libtool
+         copy.  On some host distros the issue doesn't show up.  -->
+    <para>Binutils поставляет устаревшую версию libtool в архиве. В нем отсутствует
+	поддержка sysroot, поэтому созданные двоичные файлы будут ошибочно связаны с
+	библиотеками из основного дистрибутива. Решение этой проблемы:</para>
+
+<screen><userinput remap="pre">sed '6009s/$add_dir//' -i ltmain.sh</userinput></screen>
+
+    <para>Создайте отдельный каталог для сборки:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <para>Подготовьте Binutils к компиляции:</para>
+
+<screen><userinput remap="configure">../configure                   \
+    --prefix=/usr              \
+    --build=$(../config.guess) \
+    --host=$LFS_TGT            \
+    --disable-nls              \
+    --enable-shared            \
+    --disable-werror           \
+    --enable-64-bit-bfd</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--enable-shared</parameter></term>
+        <listitem>
+          <para>Собирает <filename
+          class="libraryfile">libbfd</filename> как разделяемую библиотеку</para>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
+        <term><parameter>--enable-64-bit-bfd</parameter></term>
+        <listitem>
+          <para>Включает 64-разрядную поддержку (на хостах с более узким размером
+		  слов). Может и не понадобиться в 64-разрядных системах, но вреда от этого не будет.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в
+    <xref linkend="contents-binutils" role="."/></para>
+
+  </sect2>
+
+</sect1>

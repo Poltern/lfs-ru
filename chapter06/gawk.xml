@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-gawk" role="wrap">
+  <?dbhtml filename="gawk.html"?>
+
+  <sect1info condition="script">
+    <productname>gawk</productname>
+    <productnumber>&gawk-version;</productnumber>
+    <address>&gawk-url;</address>
+  </sect1info>
+
+  <title>Gawk-&gawk-version;</title>
+
+  <indexterm zone="ch-tools-gawk">
+    <primary sortas="a-Gawk">Gawk</primary>
+    <secondary>tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/gawk.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gawk-tmp-sbu;</seg>
+        <seg>&gawk-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Gawk</title>
+
+    <para>Во-первых, убедитесь, что некоторые ненужные файлы не будут установлены:</para>
+
+<screen><userinput remap="pre">sed -i 's/extras//' Makefile.in</userinput></screen>
+
+    <para>Подготовьте Gawk к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr   \
+            --host=$LFS_TGT \
+            --build=$(build-aux/config.guess)</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в
+    <xref linkend="contents-gawk" role="."/></para>
+
+  </sect2>
+
+</sect1>
