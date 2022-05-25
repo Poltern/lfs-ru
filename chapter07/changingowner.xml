@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-changingowner">
+  <?dbhtml filename="changingowner.html"?>
+
+  <title>Смена владельца</title>
+
+  <note>
+    <para>Команды, приведенные в оставшейся части этой книги, должны выполняться от
+	имени пользователя <systemitem class="username">root</systemitem>, а не 
+	<systemitem class="username">lfs</systemitem>. Дважды проверьте, что переменная
+	<envar>$LFS</envar> установлен для окружения <systemitem class="username">root</systemitem>.</para>
+  </note>
+
+  <para>В настоящее время вся иерархия каталогов в <filename
+  class="directory">$LFS</filename> принадлежит пользователю 
+  <systemitem class="username">lfs</systemitem>, существующему только на хост-системе.
+  Если права на файлы и каталоги внутри <filename class="directory">$LFS</filename> оставить
+  как есть, то они будут принадлежать ID пользователя без существующей учетной записи. Это опасно,
+  так как созданная позже учетная запись, может получить такой же ID пользователя и
+  стать владельцем всех файлов в <filename class="directory">$LFS</filename>, тем самым
+  делая эти файлы уязвимыми для возможных злонамеренных манипуляций.</para>
+
+  <para>Для решения проблемы измените владельца каталогов
+  <filename class="directory">$LFS/*</filename> на пользователя
+  <systemitem class="username">root</systemitem> выполнив следующую команду::</para>
+
+<screen><userinput>chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
+case $(uname -m) in
+  x86_64) chown -R root:root $LFS/lib64 ;;
+esac</userinput></screen>
+
+</sect1>
