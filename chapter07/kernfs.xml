@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-kernfs">
+  <?dbhtml filename="kernfs.html"?>
+
+  <title>Подготовка виртуальных файловых систем ядра</title>
+
+  <indexterm zone="ch-tools-kernfs">
+    <primary sortas="e-/dev/">/dev/*</primary>
+  </indexterm>
+
+    <para>Различные файловые системы, экспортируемые ядром, используются для обмена
+	данными с самим ядром и из него. Эти файловые системы являются виртуальными в
+	том смысле, что для них не используется дисковое пространство. Содержимое
+	файловых систем хранится в памяти.</para>
+
+    <para>Сначала создайте каталоги, в которые будут смонтированы файловые системы:</para>
+
+<screen><userinput>mkdir -pv $LFS/{dev,proc,sys,run}</userinput></screen>
+
+  <sect2 id="ch-tools-bindmount">
+    <title>Монтирование и заполнение /dev</title>
+
+      <para>Во время обычной загрузки ядро автоматически монтирует файловую систему
+      <systemitem class="filesystem">devtmpfs</systemitem> в каталоге
+      <filename class="directory">/dev</filename>, это позволяет
+	  динамически создавать устройства в этой виртуальной файловой системе по мере их
+	  обнаружения или получения доступа. Создание устройств обычно выполняется во время
+	  процесса загрузки ядром и Udev.
+      Поскольку наша новая система еще не имеет Udev и не загружена, необходимо смонтировать
+	  и заполнить <filename class="directory">/dev</filename> вручную.Это достигается
+	  путем связного монтирования каталога 
+      <filename class="directory">/dev</filename> хост-системы. Связное монтирование - это особый
+	  тип монтирования, позволяющий создавать зеркальный каталог или точку монтирования в
+	  какое-либо другое место. Используйте следующую команду для этого:</para>
+
+<screen><userinput>mount -v --bind /dev $LFS/dev</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="ch-tools-kernfsmount">
+    <title>Монтирование виртуальных файловых систем ядра</title>
+
+      <para>Теперь смонтируйте оставшиеся виртуальные файловые системы:</para>
+
+<screen><userinput>mount -v --bind /dev/pts $LFS/dev/pts
+mount -vt proc proc $LFS/proc
+mount -vt sysfs sysfs $LFS/sys
+mount -vt tmpfs tmpfs $LFS/run</userinput></screen>
+<!--
+    <variablelist>
+      <title>The meaning of the mount options for devpts:</title>
+
+      <varlistentry>
+        <term><parameter>gid=5</parameter></term>
+        <listitem>
+          <para>This ensures that all devpts-created device nodes are owned by
+          group ID 5.  This is the ID we will use later on for the <systemitem
+          class="groupname">tty</systemitem> group.  We use the group ID instead
+          of a name, since the host system might use a different ID for its
+          <systemitem class="groupname">tty</systemitem> group.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>mode=0620</parameter></term>
+        <listitem>
+          <para>This ensures that all devpts-created device nodes have mode 0620
+          (user readable and writable, group writable).  Together with the
+          option above, this ensures that devpts will create device nodes that
+          meet the requirements of grantpt(), meaning the Glibc
+          <command>pt_chown</command> helper binary (which is not installed by
+          default) is not necessary.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+-->
+      <para>В некоторых хост-системах <filename>/dev/shm</filename> является
+      символической ссылкой на <filename class="directory">/run/shm</filename>.
+      /run tmpfs был смонтирован выше, поэтому нужно создать только каталог.</para>
+
+<screen><userinput>if [ -h $LFS/dev/shm ]; then
+  mkdir -pv $LFS/$(readlink $LFS/dev/shm)
+fi</userinput></screen>
+
+  </sect2>
+
+</sect1>

@@ -11,10 +11,10 @@
   <title>Смена владельца</title>
 
   <note>
-    <para>Команды, приведенные в оставшейся части этой книги, должны выполняться от
+    <para>Команды, приведенные в оставшейся части книги, должны выполняться от
 	имени пользователя <systemitem class="username">root</systemitem>, а не 
 	<systemitem class="username">lfs</systemitem>. Дважды проверьте, что переменная
-	<envar>$LFS</envar> установлен для окружения <systemitem class="username">root</systemitem>.</para>
+	<envar>$LFS</envar> установлена для окружения <systemitem class="username">root</systemitem>.</para>
   </note>
 
   <para>В настоящее время вся иерархия каталогов в <filename
