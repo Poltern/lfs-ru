@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-chroot">
+  <?dbhtml filename="chroot.html"?>
+
+  <title>Вход в окружение Chroot</title>
+
+  <para>Теперь, когда все пакеты, необходимые для сборки остальных инструментов находятся
+  в системе, пришло время войти в окружение chroot и завершить установку временных
+  инструментов. Это окружение также будет использоваться для установки конечной системы.
+  От имени пользователя <systemitem class="username">root</systemitem> выполните
+  следующую команду для входа в окружение, которое на этот момент заполнено только
+  временными инструментами:</para>
+
+<screen role="nodump"><userinput>chroot "$LFS" /usr/bin/env -i   \
+    HOME=/root                  \
+    TERM="$TERM"                \
+    PS1='(lfs chroot) \u:\w\$ ' \
+    PATH=/usr/bin:/usr/sbin     \
+    /bin/bash --login</userinput></screen>
+
+  <para>Параметр <parameter>-i</parameter> команды <command>env</command>
+  очищает все переменные в окружении chroot. После этого переменные
+  <envar>HOME</envar>, <envar>TERM</envar>, <envar>PS1</envar> и
+  <envar>PATH</envar> будут установлены заново. Конструкция 
+  <parameter>TERM=$TERM</parameter> установит переменную TERM внутри chroot 
+  в то же значение, что и вне chroot. Эта переменная необходима для корректной работы таким
+  программам как <command>vim</command> и <command>less</command>. Если понадобятся 
+  другие переменные окружения, такие как <envar>CFLAGS</envar> или <envar>CXXFLAGS</envar>,
+  то это подходящее место для их установки.</para>
+
+  <para>С этого момента больше нет необходимости использовать переменную 
+  <envar>LFS</envar>, поскольку вся работа будет ограничена файловой системой
+  LFS. Это связано с тем, что оболочке Bash сообщается, что 
+  <filename class="directory">$LFS</filename> теперь является корневым 
+  каталогом (<filename class="directory">/</filename>).</para>
+
+  <para>Обратите внимание, что каталог <filename class="directory">/tools/bin</filename> не 
+  указан в переменной окружения <envar>PATH</envar>. Это означает, что кросс-тулчейн
+  больше не будет использоваться внутри chroot окружения.</para>
+
+  <para>Обратите внимание, что в командной строке <command>bash</command> будет указано
+  <computeroutput>I have no name!</computeroutput>. Это нормально, поскольку файл 
+  <filename>/etc/passwd</filename> еще не создан.</para>
+
+  <note>
+    <para>Важно, чтобы все команды в оставшейся части этой главы и следующих главах
+	выполнялись из среды chroot. Если вы покидаете эту среду по какой-либо причине
+	(например, при перезагрузке), убедитесь, что файловые системы виртуального ядра
+	смонтированы, как описано в <xref linkend="ch-tools-bindmount"/> и <xref
+    linkend="ch-tools-kernfsmount"/>, а затем войдите в среду chroot для продолжением установки.</para>
+  </note>
+
+</sect1>
