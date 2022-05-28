@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-creatingdirs">
+  <?dbhtml filename="creatingdirs.html"?>
+
+  <title>Создание каталогов</title>
+
+  <para>Пришло время создать структуру каталогов для файловой системы LFS.</para>
+
+  <para>Создайте несколько каталогов, которые не входили в ограниченный набор,
+  используемый в предыдущих главах, выполнив следующую команду:</para>
+  
+  <screen><userinput>mkdir -pv /{boot,home,mnt,opt,srv}</userinput></screen>
+
+  <note><para>Некоторые каталоги были созданы ранее с помощью явных инструкций или
+  при установке некоторых пакетов. Они повторяются ниже для полноты картины.</para></note>
+
+  <para>Создайте необходимые подкаталоги, выполнив следующие команды:</para>
+
+<screen><userinput>mkdir -pv /etc/{opt,sysconfig}
+mkdir -pv /lib/firmware
+mkdir -pv /media/{floppy,cdrom}
+mkdir -pv /usr/{,local/}{include,src}
+mkdir -pv /usr/local/{bin,lib,sbin}
+mkdir -pv /usr/{,local/}share/{color,dict,doc,info,locale,man}
+mkdir -pv /usr/{,local/}share/{misc,terminfo,zoneinfo}
+mkdir -pv /usr/{,local/}share/man/man{1..8}
+mkdir -pv /var/{cache,local,log,mail,opt,spool}
+mkdir -pv /var/lib/{color,misc,locate}
+
+ln -sfv /run /var/run
+ln -sfv /run/lock /var/lock
+
+install -dv -m 0750 /root
+install -dv -m 1777 /tmp /var/tmp</userinput></screen>
+
+  <para>По умолчанию каталоги создаются с правами 755, но это нежелательно для
+  всех каталогов. В приведенных выше командах вносятся два изменения &mdash; одно
+  в домашний каталог пользователя <systemitem
+  class="username">root</systemitem>, а другое в каталог для временных файлов.</para>
+
+  <para>Первое изменение гарантирует, что никто не сможет войти в каталог 
+  <filename class="directory">/root</filename> &mdash; но он так же, как обычный пользователь
+  сможет работать в своем домашнем каталоге. Второе изменение гарантирует, что любой
+  пользователь может писать в каталоги <filename class="directory">/tmp</filename> и <filename
+  class="directory">/var/tmp</filename>, но не может удалять из них файлы другого пользователя.
+  Последнее запрещено так называемым <quote>sticky bit (липким битом)</quote>, старшим
+  битом (1) в битовой маске 1777</para>
+
+  <sect2>
+    <title>Примечание о соответствии требованиям FHS</title>
+
+    <para>Дерево каталогов основано на стандарте иерархии файловой системы (FHS)
+	(доступен по адресу <ulink
+    url="https://refspecs.linuxfoundation.org/fhs.shtml"/>). FHS также указывает, что наличие
+	некоторых каталогов необязательно, например, <filename
+    class="directory">/usr/local/games</filename> и <filename
+    class="directory">/usr/share/games</filename>. Мы создаем только необходимые каталоги.
+	Несмотря на это, вы имеете полное право создать их.</para>
+
+  </sect2>
+
+</sect1>

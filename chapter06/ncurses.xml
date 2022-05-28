@@ -136,7 +136,7 @@ echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</userinput></screen>
     <para>Удалите ненужную статическую библиотеку, не обрабатываемую скриптом
     <command>configure</command>:</para>
 
-	<screen><userinput remap="install">rm -v /usr/lib/libncurses++w.a</userinput></screen>
+	<screen><userinput remap="install">rm -v $LFS/usr/lib/libncurses++w.a</userinput></screen>
 
     <variablelist>
       <title>Значение параметров установки:</title>
