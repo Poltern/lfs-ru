@@ -134,22 +134,6 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="systemd">
-      <term>Systemd Upstream Fixes Patch - <token>&systemd-upstream-fixes-patch-size;</token>:</term>
-      <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&systemd-upstream-fixes-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&systemd-upstream-fixes-patch-md5;</literal></para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry revision="systemd">
-      <term>Systemd Kernel Fixes Patch - <token>&systemd-kernel-fixes-patch-size;</token>:</term>
-      <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&systemd-kernel-fixes-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&systemd-kernel-fixes-patch-md5;</literal></para>
-      </listitem>
-    </varlistentry>
-
     <varlistentry>
       <term>Xz Upstream Fix Patch - <token>&xz-upstream-fix-patch-size;</token>:</term>
       <listitem>

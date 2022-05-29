@@ -193,9 +193,9 @@
     <!--<listitem>
       <para>Ncurses-&ncurses-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Ninja-&ninja-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Openssl-&openssl-version;</para>
     </listitem>
@@ -229,9 +229,9 @@
     <!--<listitem revision="sysv">
       <para>Sysklogd-&sysklogd-version;</para>
     </listitem>-->
-    <!--<listitem revision="systemd">
+    <listitem revision="systemd">
       <para>Systemd-&systemd-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem revision="sysv">
       <para>SysVinit-&sysvinit-version;</para>
     </listitem>
@@ -296,6 +296,12 @@
 
     <listitem>
       <para>perl-5.34.0-upstream_fixes-1.patch</para>
+    </listitem>
+    <listitem>
+      <para>systemd-250-kernel_5.17_fixes-1.patch</para>
+    </listitem>
+    <listitem>
+      <para>systemd-250-upstream_fixes-1.patch</para>
     </listitem>
 
   </itemizedlist>

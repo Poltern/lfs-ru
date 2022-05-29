@@ -524,10 +524,10 @@
 <!ENTITY ncurses-fin-du "45 MB">
 <!ENTITY ncurses-fin-sbu "0.4 SBU">
 
-<!ENTITY ninja-version "1.10.2">
-<!ENTITY ninja-size "209 KB">
+<!ENTITY ninja-version "1.11.0">
+<!ENTITY ninja-size "228 KB">
 <!ENTITY ninja-url "&github;/ninja-build/ninja/archive/v&ninja-version;/ninja-&ninja-version;.tar.gz">
-<!ENTITY ninja-md5 "639f75bc2e3b19ab893eaf2c810d4eb4">
+<!ENTITY ninja-md5 "7d1a1a2f5cdc06795b3054df5c17d5ef">
 <!ENTITY ninja-home "https://ninja-build.org/">
 <!ENTITY ninja-fin-du "64 MB">
 <!ENTITY ninja-fin-sbu "0.2 SBU">
@@ -640,20 +640,20 @@
 <!ENTITY sysklogd-fin-du "0.6 MB">
 <!ENTITY sysklogd-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY systemd-version  "250">
+<!ENTITY systemd-version  "251">
 <!--<!ENTITY systemd-stable   "6b4878d">-->
 <!-- The above entity is used whenever we move to a stable backport branch. In the event of a critical problem or kernel
      change that is incompatible, we will switch to the backport branch until the next stable release. -->
-<!ENTITY systemd-size     "10,856 KB">
+<!ENTITY systemd-size     "11,168 KB">
 <!ENTITY systemd-url      "&github;/systemd/systemd/archive/v&systemd-version;/systemd-&systemd-version;.tar.gz">
 <!--<!ENTITY systemd-url      "&anduin-sources;/systemd-&systemd-version;-&systemd-stable;.tar.xz">-->
-<!ENTITY systemd-md5      "8929beb037c587ada4ed201f19756fe2">
+<!ENTITY systemd-md5      "8090fcccc3a2ec20995e89d56fed61b1">
 <!ENTITY systemd-home     "https://www.freedesktop.org/wiki/Software/systemd/">
-<!ENTITY systemd-man-version "250">
+<!ENTITY systemd-man-version "251">
 <!ENTITY systemd-man-size "596 KB">
 <!--<!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-version;-&systemd-stable;.tar.xz">-->
 <!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-man-version;.tar.xz">
-<!ENTITY systemd-man-md5  "af3aca39abe4e990cb2a9ac63dcdf506">
+<!ENTITY systemd-man-md5  "87053ffef1cfb74e4fe28f627e12a2a4">
 <!ENTITY systemd-fin-du   "273 MB">
 <!ENTITY systemd-fin-sbu  "2.2 SBU">
 
@@ -720,13 +720,13 @@
 <!ENTITY util-linux-fin-du "261 MB">
 <!ENTITY util-linux-fin-sbu "1.1 SBU">
 
-<!ENTITY vim-version "8.2.4814">
+<!ENTITY vim-version "8.2.5014">
 <!ENTITY vim-majmin "82">
 <!ENTITY vim-docdir "vim/vim82">
-<!ENTITY vim-size "10,486 KB">
+<!ENTITY vim-size "10,568 KB">
 <!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
 <!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.xz">
-<!ENTITY vim-md5 "3ffc16fd72de90ab72f7d94dee30a806">
+<!ENTITY vim-md5 "5b27e59fa53b74611422af6fa4149957">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "206 MB">
 <!ENTITY vim-fin-sbu "2.4 SBU">

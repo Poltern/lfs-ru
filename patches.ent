@@ -85,14 +85,6 @@
 <!ENTITY sysvinit-consolidated-patch-md5 "4900322141d493e74020c9cf437b2cdc">
 <!ENTITY sysvinit-consolidated-patch-size "2.4 KB">
 
-<!ENTITY systemd-upstream-fixes-patch "systemd-&systemd-version;-upstream_fixes-1.patch">
-<!ENTITY systemd-upstream-fixes-patch-md5 "71eac6abdad5fba2039dcd011a9ae5b3">
-<!ENTITY systemd-upstream-fixes-patch-size "20 KB">
-
-<!ENTITY systemd-kernel-fixes-patch "systemd-&systemd-version;-kernel_5.17_fixes-1.patch">
-<!ENTITY systemd-kernel-fixes-patch-md5 "34cee987b35d5d522fd3317e08057c1d">
-<!ENTITY systemd-kernel-fixes-patch-size "2.7 KB">
-
 <!ENTITY xz-upstream-fix-patch "xz-&xz-version;-upstream_fix-1.patch">
 <!ENTITY xz-upstream-fix-patch-md5 "584c72ea3d8f7502b2770670f3090788">
 <!ENTITY xz-upstream-fix-patch-size "3.7 KB">
