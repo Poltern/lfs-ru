@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-createfiles">
+  <?dbhtml filename="createfiles.html"?>
+
+  <title>Создание основных файлов и символических ссылок</title>
+
+  <indexterm zone="ch-tools-createfiles">
+    <primary sortas="e-/etc/passwd">/etc/passwd</primary>
+  </indexterm>
+
+  <indexterm zone="ch-tools-createfiles">
+    <primary sortas="e-/etc/group">/etc/group</primary>
+  </indexterm>
+
+  <indexterm zone="ch-tools-createfiles">
+    <primary sortas="e-/run/utmp">/run/utmp</primary>
+  </indexterm>
+
+  <indexterm zone="ch-tools-createfiles">
+    <primary sortas="e-/var/log/btmp">/var/log/btmp</primary>
+  </indexterm>
+
+  <indexterm zone="ch-tools-createfiles">
+    <primary sortas="e-/var/log/lastlog">/var/log/lastlog</primary>
+  </indexterm>
+
+  <indexterm zone="ch-tools-createfiles">
+    <primary sortas="e-/var/log/wtmp">/var/log/wtmp</primary>
+  </indexterm>
+
+  <para>Исторически сложилось, что Linux хранит список примонтированных файловых
+  систем в файле <filename>/etc/mtab</filename>. Современные ядра хранят этот список
+  внутри себя и предоставляют его пользователю через файловую систему <filename
+  class="directory">/proc</filename>. Чтобы удовлетворять требованиям утилит, которые
+  ожидают наличие   <filename>/etc/mtab</filename> создайте следующую символическую ссылку:</para>
+
+<screen><userinput>ln -sv /proc/self/mounts /etc/mtab</userinput></screen>
+
+  <para>:Создайте файл <filename>/etc/hosts</filename>, на который будут ссылаться
+  некоторые наборы тестов, а также один из файлов конфигурации Perl:</para>
+
+<screen><userinput>cat &gt; /etc/hosts &lt;&lt; EOF
+127.0.0.1  localhost $(hostname)
+::1        localhost
+EOF</userinput></screen>
+
+  <para>Чтобы пользователь <systemitem class="username">root</systemitem> мог войти в
+  систему и распознавался системой, в файлах 
+  <filename>/etc/passwd</filename> и <filename>/etc/group</filename> должны
+  быть соответствующие записи.</para>
+
+  <para>Создайте файл <filename>/etc/passwd</filename> выполнив следующую команду:</para>
+
+<screen revision="sysv"><userinput>cat &gt; /etc/passwd &lt;&lt; "EOF"
+<literal>root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/dev/null:/usr/bin/false
+daemon:x:6:6:Daemon User:/dev/null:/usr/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/run/dbus:/usr/bin/false
+uuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false
+nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false</literal>
+EOF</userinput></screen>
+
+<screen revision="systemd"><userinput>cat &gt; /etc/passwd &lt;&lt; "EOF"
+<literal>root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/dev/null:/usr/bin/false
+daemon:x:6:6:Daemon User:/dev/null:/usr/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/run/dbus:/usr/bin/false
+systemd-journal-gateway:x:73:73:systemd Journal Gateway:/:/usr/bin/false
+systemd-journal-remote:x:74:74:systemd Journal Remote:/:/usr/bin/false
+systemd-journal-upload:x:75:75:systemd Journal Upload:/:/usr/bin/false
+systemd-network:x:76:76:systemd Network Management:/:/usr/bin/false
+systemd-resolve:x:77:77:systemd Resolver:/:/usr/bin/false
+systemd-timesync:x:78:78:systemd Time Synchronization:/:/usr/bin/false
+systemd-coredump:x:79:79:systemd Core Dumper:/:/usr/bin/false
+uuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false
+systemd-oom:x:81:81:systemd Out Of Memory Daemon:/:/usr/bin/false
+nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false</literal>
+EOF</userinput></screen>
+
+  <para>Пароль пользователя <systemitem class="username">root</systemitem>
+  будет задан позднее.</para>
+
+  <para>Создайте файл <filename>/etc/group</filename> выполнив следующую команду:</para>
+
+<screen revision="sysv"><userinput>cat &gt; /etc/group &lt;&lt; "EOF"
+<literal>root:x:0:
+bin:x:1:daemon
+sys:x:2:
+kmem:x:3:
+tape:x:4:
+tty:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:
+video:x:12:
+utmp:x:13:
+usb:x:14:
+cdrom:x:15:
+adm:x:16:
+messagebus:x:18:
+input:x:24:
+mail:x:34:
+kvm:x:61:
+uuidd:x:80:
+wheel:x:97:
+users:x:999:
+nogroup:x:65534:</literal>
+EOF</userinput></screen>
+
+<screen revision="systemd"><userinput>cat &gt; /etc/group &lt;&lt; "EOF"
+<literal>root:x:0:
+bin:x:1:daemon
+sys:x:2:
+kmem:x:3:
+tape:x:4:
+tty:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:
+video:x:12:
+utmp:x:13:
+usb:x:14:
+cdrom:x:15:
+adm:x:16:
+messagebus:x:18:
+systemd-journal:x:23:
+input:x:24:
+mail:x:34:
+kvm:x:61:
+systemd-journal-gateway:x:73:
+systemd-journal-remote:x:74:
+systemd-journal-upload:x:75:
+systemd-network:x:76:
+systemd-resolve:x:77:
+systemd-timesync:x:78:
+systemd-coredump:x:79:
+uuidd:x:80:
+systemd-oom:x:81:
+wheel:x:97:
+users:x:999:
+nogroup:x:65534:</literal>
+EOF</userinput></screen>
+
+  <para>Созданные группы не являются частью какого-либо стандарта — эти группы
+  частично определяются требованиями конфигурации Udev в главе
+  9, и частично соглашением, используемым рядом существующих Linux
+  дистрибутивов. Кроме того, некоторые наборы тестов зависят от конкретных пользователей или
+  групп. Специфкация LSB (доступна по адресу <ulink
+  url="http://refspecs.linuxfoundation.org/lsb.shtml"/>) рекомендует, чтобы,
+  помимо группы <systemitem class="groupname">root</systemitem> с
+  идентификатор (GID) 0 присутствовала группа <systemitem class="groupname">bin</systemitem>
+  с GID 1. GID 5 широко используется для
+  группы <systemitem class="groupname">tty</systemitem>, число 5
+  также используется в <phrase revision="systemd">systemd</phrase>
+  <phrase Revision="sysv"><filename>/etc/fstab</filename></phrase> для
+  файловой системы <systemitem class="filesystem">devpts</systemitem>.
+  Все остальные имена групп и GID могут свободно выбираться системным
+  администратором, так как хорошо написанные программы не зависят от номеров GID,
+  а чаще используют название группы.</para>
+
+  <para>Идентификатор 65534 используется ядром для NFS и отдельных пользовательских
+  пространств имен для несопоставленных пользователей и групп (они существуют на сервере NFS
+  или родительском пространстве имен пользователя, но <quote>не существует</quote> на локальном
+  компьютере или в отдельном пространстве имен). Мы присваиваем <systemitem class="username">nobody</systemitem>
+  и <systemitem class="groupname">nogroup</systemitem> для того, чтобы избежать 
+  несопоставленных идентификаторов. Другие дистрибутивы могут обрабатывать этот
+  идентификатор по-разному, поэтому любая переносимая программа не должна зависеть
+  от этого.</para>
+
+  <para>Для некоторых тестов в главе <xref linkend="chapter-building-system"/> требуется
+  обычный пользователь. Добавим такого пользователя здесь и удалим эту учетную запись 
+  в конце главы.</para>
+
+<screen><userinput>echo "tester:x:101:101::/home/tester:/bin/bash" &gt;&gt; /etc/passwd
+echo "tester:x:101:" &gt;&gt; /etc/group
+install -o tester -d /home/tester</userinput></screen>
+
+  <para>Чтобы удалить приглашение <quote>I have no name!</quote>, запустите новую
+  оболочку. Поскольку файлы <filename>/etc/passwd</filename> и <filename>/etc/group</filename>
+  были созданы, разрешение имен пользователей и групп теперь будет работать:</para>
+
+<screen role="nodump"><userinput>exec /usr/bin/bash --login</userinput></screen>
+
+  <para>Программы <command>login</command>, <command>agetty</command>,
+  <command>init</command> (и другие) используют ряд журналов для записи такой 
+  информации, как кто и когда входил в систему. Однако эти программы не будут
+  записывать данные в журналы, если они еще не существуют. Инициализируйте
+  журналы и предоставьте им соответствующие разрешения:</para>
+
+<screen><userinput>touch /var/log/{btmp,lastlog,faillog,wtmp}
+chgrp -v utmp /var/log/lastlog
+chmod -v 664  /var/log/lastlog
+chmod -v 600  /var/log/btmp</userinput></screen>
+
+  <para>В файл <filename>/var/log/wtmp</filename> записываются все входы и выходы
+  из системы. В файл <filename>/var/log/lastlog</filename> записывается время
+  последнего входа каждого пользователя в систему. В файл <filename>/var/log/faillog</filename>
+  записываются неудачные попытки входа в систему. В файл <filename>/var/log/btmp</filename>
+  записываются неудачные попытки входа в систему.</para>
+
+  <note><para>В файле <filename>/run/utmp</filename> записываются пользователи,
+  которые в данный момент вошли в систему. Он создаётся динамически, в процессе
+  выполнения сценариев загрузки.</para></note>
+
+</sect1>
