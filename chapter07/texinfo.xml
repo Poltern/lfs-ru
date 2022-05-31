@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-texinfo" role="wrap">
+  <?dbhtml filename="texinfo.html"?>
+
+  <sect1info condition="script">
+    <productname>texinfo</productname>
+    <productnumber>&texinfo-version;</productnumber>
+    <address>&texinfo-url;</address>
+  </sect1info>
+
+  <title>Texinfo-&texinfo-version;</title>
+
+  <indexterm zone="ch-tools-texinfo">
+    <primary sortas="a-Texinfo">Texinfo</primary>
+    <secondary>temporary</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/texinfo.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&texinfo-tmp-sbu;</seg>
+        <seg>&texinfo-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Texinfo</title>
+
+    <para>Во-первых, устраните проблему со сборкой пакета с помощью Glibc-2.34
+	или более поздней версии:</para>
+
+<screen><userinput remap="pre">sed -e 's/__attribute_nonnull__/__nonnull/' \
+    -i gnulib/lib/malloc/dynarray-skeleton.c</userinput></screen>
+
+    <para>Подготовьте Texinfo к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в <xref linkend="contents-texinfo" role="."/></para>
+
+  </sect2>
+
+</sect1>

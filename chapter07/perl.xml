@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-perl" role="wrap">
+  <?dbhtml filename="perl.html"?>
+
+  <sect1info condition="script">
+    <productname>perl</productname>
+    <productnumber>&perl-version;</productnumber>
+    <address>&perl-url;</address>
+  </sect1info>
+
+  <title>Perl-&perl-version;</title>
+
+  <indexterm zone="ch-tools-perl">
+    <primary sortas="a-Perl">Perl</primary>
+    <secondary>tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/perl.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&perl-tmp-sbu;</seg>
+        <seg>&perl-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Perl</title>
+
+    <para>Подготовьте Perl к компиляции:</para>
+
+    <screen><userinput remap="configure">sh Configure -des                                        \
+             -Dprefix=/usr                               \
+             -Dvendorprefix=/usr                         \
+             -Dprivlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
+             -Darchlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
+             -Dsitelib=/usr/lib/perl5/&perl-version-min;/site_perl     \
+             -Dsitearch=/usr/lib/perl5/&perl-version-min;/site_perl    \
+             -Dvendorlib=/usr/lib/perl5/&perl-version-min;/vendor_perl \
+             -Dvendorarch=/usr/lib/perl5/&perl-version-min;/vendor_perl</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых опций Configure:</title>
+      <varlistentry>
+        <term><parameter>-des</parameter></term>
+        <listitem>
+          <para> Это комбинация из трех параметров: -d использует значения по
+		  умолчанию для всех элементов; -e обеспечивает выполнение всех задач;
+		  -s отключает несущественные выходные данные.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в <xref linkend="contents-perl" role="."/></para>
+
+  </sect2>
+
+</sect1>

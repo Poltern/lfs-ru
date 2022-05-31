@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-gettext" role="wrap">
+  <?dbhtml filename="gettext.html"?>
+
+  <sect1info condition="script">
+    <productname>gettext</productname>
+    <productnumber>&gettext-version;</productnumber>
+    <address>&gettext-url;</address>
+  </sect1info>
+
+  <title>Gettext-&gettext-version;</title>
+
+  <indexterm zone="ch-tools-gettext">
+    <primary sortas="a-Gettext">Gettext</primary>
+    <secondary>tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/gettext.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gettext-tmp-sbu;</seg>
+        <seg>&gettext-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Gettext</title>
+
+    <para>Для временного набора инструментов нам нужно установить только три
+	программы из пакета Gettext.</para>
+
+    <para>Подготовьте Gettext к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --disable-shared</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-shared</parameter></term>
+        <listitem>
+          <para>В настоящее время нам не нужно устанавливать какие-либо общие
+		  библиотеки Gettext, поэтому нет необходимости их собирать.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите программы <command>msgfmt</command>, <command>msgmerge</command>, и
+    <command>xgettext</command> programs:</para>
+
+<screen><userinput remap="install">cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в <xref linkend="contents-gettext" role="."/></para>
+
+  </sect2>
+
+</sect1>

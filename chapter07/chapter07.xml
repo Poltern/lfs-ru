@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<chapter id="chapter-chroot-temporary-tools" xreflabel="Chapter&nbsp;7">
+  <?dbhtml dir="chapter07"?>
+  <?dbhtml filename="chapter07.html"?>
+
+  <title>Вход в окружение Chroot и создание дополнительных временных инструментов</title>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="introduction.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="changingowner.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kernfs.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chroot.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="creatingdirs.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="createfiles.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gettext.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bison.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="perl.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="python.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="texinfo.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="util-linux.xml"/>
+
+<!--
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tcl.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expect.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dejagnu.xml"/>
+-->
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cleanup.xml"/>
+
+</chapter>

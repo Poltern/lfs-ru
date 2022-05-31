@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-Python" role="wrap">
+  <?dbhtml filename="Python.html"?>
+
+  <sect1info condition="script">
+    <productname>Python</productname>
+    <productnumber>&python-version;</productnumber>
+    <address>&python-url;</address>
+  </sect1info>
+
+  <title>Python-&python-version;</title>
+
+  <indexterm zone="ch-tools-Python">
+    <primary sortas="a-Python">Python</primary>
+    <secondary>temporary</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/python.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+    <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&python-tmp-sbu;</seg>
+        <seg>&python-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Python</title>
+
+    <note>
+      <para>Есть два пакета, имена которых начинаются с <quote>python</quote>.
+      Нужный архив это <filename>Python-&python-version;.tar.xz</filename> (обратите
+      внимание на заглавную первую букву).</para>
+    </note>
+
+    <para>Подготовка Python к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr   \
+            --enable-shared \
+            --without-ensurepip</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--enable-shared</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает установку статичных библиотек.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-ensurepip</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает установщик пакетов Python, который на данном этапе не нужен.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <note>
+      <para>
+        Некоторые модули Python 3 не могут быть собраны сейчас, потому что зависимости
+		еще не установлены. Система сборки пытается их собрать, в результате компиляция
+		некоторых файлов завершится ошибкой, и может показаться, что сообщение компилятора
+		указывает на <quote>фатальную ошибку</quote>. Сообщение следует проигнорировать.
+		Просто убедитесь, что команда <command>make</command> верхнего уровня не
+		завершилась ошибкой. Дополнительные модули сейчас не нужны, и они будут собраны
+		в <xref linkend="chapter-building-system"/>.
+      </para>
+    </note>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в <xref linkend="contents-python" role="."/></para>
+
+  </sect2>
+
+</sect1>
