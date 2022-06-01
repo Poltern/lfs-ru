@@ -320,10 +320,10 @@
 <!ENTITY gzip-fin-du "20 MB">
 <!ENTITY gzip-fin-sbu "0.1 SBU">
 
-<!ENTITY iana-etc-version "20220207">
-<!ENTITY iana-etc-size "580 KB">
+<!ENTITY iana-etc-version "20220524">
+<!ENTITY iana-etc-size "582 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "81d865ce7fe4240d5abed48c3ca5fa9f">
+<!ENTITY iana-etc-md5 "a79e10f6c520a237a28522a25a7a4496">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.7 MB">
 <!ENTITY iana-etc-fin-sbu "less than 0.1 SBU">
@@ -345,10 +345,10 @@
 <!ENTITY intltool-fin-du "1.5 MB">
 <!ENTITY intltool-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY iproute2-version "5.17.0">
-<!ENTITY iproute2-size "851 KB">
+<!ENTITY iproute2-version "5.18.0">
+<!ENTITY iproute2-size "860 KB">
 <!ENTITY iproute2-url "&kernel;linux/utils/net/iproute2/iproute2-&iproute2-version;.tar.xz">
-<!ENTITY iproute2-md5 "8ade96ee93f37fba7e1beec89f1a54bf">
+<!ENTITY iproute2-md5 "f666bab8ccf9c972938a0c0d8a4e6a68">
 <!ENTITY iproute2-home "&kernel;linux/utils/net/iproute2/">
 <!ENTITY iproute2-fin-du "15 MB">
 <!ENTITY iproute2-fin-sbu "0.2 SBU">
@@ -426,13 +426,13 @@
 <!ENTITY libtool-fin-sbu "1.5 SBU">
 
 <!ENTITY linux-major-version "5">
-<!ENTITY linux-minor-version "17">
-<!ENTITY linux-patch-version "7">
+<!ENTITY linux-minor-version "18">
+<!ENTITY linux-patch-version "1">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "125,444 KB">
+<!ENTITY linux-size "126,754 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "2075f12da027fb933114f27a9a96cce9">
+<!ENTITY linux-md5 "5ee0353e80e17cf1dd33474bd05e353e">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -551,13 +551,13 @@
 <!ENTITY patch-fin-sbu "0.2 SBU">
 
 <!ENTITY perl-version-major "5">
-<!ENTITY perl-version-minor "34">
-<!ENTITY perl-version-patch "1">
+<!ENTITY perl-version-minor "36">
+<!ENTITY perl-version-patch "0">
 <!ENTITY perl-version-min "&perl-version-major;.&perl-version-minor;">
 <!ENTITY perl-version "&perl-version-major;.&perl-version-minor;.&perl-version-patch;">
-<!ENTITY perl-size "12,464 KB">
+<!ENTITY perl-size "12,746 KB">
 <!ENTITY perl-url "https://www.cpan.org/src/5.0/perl-&perl-version;.tar.xz">
-<!ENTITY perl-md5 "7d2ece7f50775ea1ff739831935a24bd">
+<!ENTITY perl-md5 "826e42da130011699172fd655e49cfa2">
 <!ENTITY perl-home "https://www.perl.org/">
 <!ENTITY perl-tmp-du "272 MB">
 <!ENTITY perl-tmp-sbu "1.6 SBU">

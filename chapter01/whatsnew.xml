@@ -121,9 +121,9 @@
     <listitem>
       <para>Gzip-&gzip-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>IANA-Etc-&iana-etc-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Inetutils-&inetutils-version;</para>
     </listitem>-->

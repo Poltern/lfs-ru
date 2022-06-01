@@ -40,6 +40,28 @@
     -->
 
     <listitem>
+      <para>2022-05-31</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20220524.
+          Addresses <ulink url="&lfs-ticket-root;5006">#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iproute2-5.18.0.  Fixes
+          <ulink url="&lfs-ticket-root;5065">#5065</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-5.18.1.  Fixes
+          <ulink url="&lfs-ticket-root;5061">#5061</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to perl-5.36.0.  Fixes
+          <ulink url="&lfs-ticket-root;5066">#5066</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2022-05-29</para>
       <itemizedlist>
         <listitem>
