@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-util-linux" role="wrap">
+  <?dbhtml filename="util-linux.html"?>
+
+  <sect1info condition="script">
+    <productname>util-linux</productname>
+    <productnumber>&util-linux-version;</productnumber>
+    <address>&util-linux-url;</address>
+  </sect1info>
+
+  <title>Util-linux-&util-linux-version;</title>
+
+  <indexterm zone="ch-tools-util-linux">
+    <primary sortas="a-Util-linux">Util-linux</primary>
+    <secondary>tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../chapter08/util-linux.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&util-linux-tmp-sbu;</seg>
+        <seg>&util-linux-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Util-linux</title>
+
+    <para>FHS рекомендует использовать каталог <filename
+    class="directory">/var/lib/hwclock</filename> вместо каталога
+	<filename class="directory">/etc</filename> в качестве местоположения для файла
+	<filename>adjtime</filename>. Создайте этот каталог:</para>
+
+<screen><userinput remap="pre">mkdir -pv /var/lib/hwclock</userinput></screen>
+
+    <para>Подготовьте Util-linux к компиляции:</para>
+
+<screen><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime    \
+            --libdir=/usr/lib    \
+            --docdir=/usr/share/doc/util-linux-&util-linux-version; \
+            --disable-chfn-chsh  \
+            --disable-login      \
+            --disable-nologin    \
+            --disable-su         \
+            --disable-setpriv    \
+            --disable-runuser    \
+            --disable-pylibmount \
+            --disable-static     \
+            --without-python     \
+            runstatedir=/run</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>ADJTIME_PATH=/var/lib/hwclock/adjtime</parameter></term>
+        <listitem>
+          <para>Этот параметр устанавливает расположение файла для записи информации об
+		  аппаратных часах в соответствии с FHS. Он не обязателен для временного инструментария,
+		  но предотвращает создание файла в другом месте, где файл не будет перезаписан или
+		  удален при финальной сборке пакета util-linux.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--libdir=/usr/lib</parameter></term>
+        <listitem>
+          <para>Этот параметр гарантирует, что символические ссылки 
+		  <filename class="extension">.so</filename>, будут указывать на
+		  файл общей библиотеки в том же каталоге (<filename class="directory">/usr/lib</filename>).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-*</parameter></term>
+        <listitem>
+          <para>Этот параметр предотвращают появление предупреждений о сборке
+		  компонентов, для которых требуются пакеты, отсутствующие или еще не установленные в LFS.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-python</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает использование <application>Python</application>.
+		  Это позволяет избежать попыток создания ненужных привязок.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>runstatedir=/run</parameter></term>
+        <listitem>
+          <para>Этот параметр устанавливает расположение сокета, используемого
+          <command>uuidd</command> и <filename class="libraryfile">libuuid</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+     </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Подробная информация об этом пакете находится в <xref linkend="contents-utillinux" role="."/></para>
+
+  </sect2>
+
+</sect1>
