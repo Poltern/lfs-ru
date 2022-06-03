@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-man-pages" role="wrap">
+  <?dbhtml filename="man-pages.html"?>
+
+  <sect1info condition="script">
+    <productname>man-pages</productname>
+    <productnumber>&man-pages-version;</productnumber>
+    <address>&man-pages-url;</address>
+  </sect1info>
+
+  <title>Man-pages-&man-pages-version;</title>
+
+  <indexterm zone="ch-system-man-pages">
+    <primary sortas="a-Man-pages">Man-pages</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Man-pages содержит более 2,200 справочных руководств.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&man-pages-fin-sbu;</seg>
+        <seg>&man-pages-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Man-pages</title>
+
+    <para>Установите пакет Man-pages выполнив команду:</para>
+
+<screen><userinput remap="install">make prefix=/usr install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-manpages" role="content">
+    <title>Содержимое пакета Man-pages</title>
+
+    <segmentedlist>
+      <segtitle>Установленные файлы:</segtitle>
+
+      <seglistitem>
+        <seg>различные справочные страницы</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="man-pages">
+        <term><filename>man pages</filename></term>
+        <listitem>
+          <para>Описывать функции языка программирования C, важные файлы устройств и важные файлы конфигурации.</para>
+          <indexterm zone="ch-system-man-pages man-pages">
+            <primary sortas="e-man-pages">man pages</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
