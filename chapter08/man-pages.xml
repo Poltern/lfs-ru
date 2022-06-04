@@ -65,7 +65,7 @@
       <varlistentry id="man-pages">
         <term><filename>man pages</filename></term>
         <listitem>
-          <para>Описывать функции языка программирования C, важные файлы устройств и важные файлы конфигурации.</para>
+          <para>Описывают функции языка программирования C, важные файлы устройств и важные файлы конфигурации.</para>
           <indexterm zone="ch-system-man-pages man-pages">
             <primary sortas="e-man-pages">man pages</primary>
           </indexterm>
