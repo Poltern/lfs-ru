@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-jinja2" role="wrap" revision="systemd">
+  <?dbhtml filename="jinja2.html"?>
+
+  <sect1info condition="script">
+    <productname>jinja2</productname>
+    <productnumber>&jinja2-version;</productnumber>
+    <address>&jinja2-url;</address>
+  </sect1info>
+
+  <title>Jinja2-&jinja2-version;</title>
+
+  <indexterm zone="ch-system-jinja2">
+    <primary sortas="a-jinja2">Jinja2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Jinja2 - это модуль Python, который реализует простой язык шаблонов pythonic</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+      <seglistitem>
+        <seg>&jinja2-fin-sbu;</seg>
+        <seg>&jinja2-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Jinja2</title>
+
+    <para>Соберите пакет:</para>
+
+<screen><userinput remap="install">pip3 wheel -w dist --no-build-isolation --no-deps $PWD</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">pip3 install --no-index --find-links dist Jinja2</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-jinja2" role="content">
+    <title>Содержимое пакета Jinja2</title>
+
+    <segmentedlist>
+      <segtitle>Каталог установки</segtitle>
+
+      <seglistitem>
+         <seg>
+            /usr/lib/python&python-minor;/site-packages/Jinja2-&jinja2-version;.dist-info
+         </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>
+

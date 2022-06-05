@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-markupsafe" role="wrap" revision="systemd">
+  <?dbhtml filename="markupsafe.html"?>
+
+  <sect1info condition="script">
+    <productname>markupsafe</productname>
+    <productnumber>&markupsafe-version;</productnumber>
+    <address>&markupsafe-url;</address>
+  </sect1info>
+
+  <title>MarkupSafe-&markupsafe-version;</title>
+
+  <indexterm zone="ch-system-markupsafe">
+    <primary sortas="a-markupsafe">MarkupSafe</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>MarkupSafe — это модуль Python, реализующий безопасное использование строк в языках разметки XML/HTML/XHTML</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+      <seglistitem>
+        <seg>&markupsafe-fin-sbu;</seg>
+        <seg>&markupsafe-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета MarkupSafe</title>
+
+    <para>Скомпилируйте MarkupSafe с помощью следующей команды:</para>
+
+<screen><userinput remap="make">pip3 wheel -w dist --no-build-isolation --no-deps $PWD</userinput></screen>
+
+    <para>С этим пакетом не поставляется набор тестов.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">pip3 install --no-index --find-links dist Markupsafe</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-markupsafe" role="content">
+    <title>Содержимое пакета MarkupSafe</title>
+
+    <segmentedlist>
+      <segtitle>Каталог установки</segtitle>
+
+      <seglistitem>
+        <seg>
+           /usr/lib/python&python-minor;/site-packages/MarkupSafe-&markupsafe-version;.dist-info
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>
+

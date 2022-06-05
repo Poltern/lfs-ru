@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-cleanup">
+  <?dbhtml filename="cleanup.html"?>
+
+  <title>Очистка</title>
+
+  <para>Очистите некоторые лишние файлы, оставшиеся после запуска тестов:</para>
+
+<screen><userinput>rm -rf /tmp/*</userinput></screen>
+
+  <para>Также в каталогах /usr/lib и /usr/libexec установлено несколько файлов с
+  расширением .la. Это файлы <quote>архива libtool</quote>. Как было сказано ранее,
+  они необходимы только при линковке со статическими библиотеками. Они не нужны и
+  потенциально опасны при использовании динамических разделяемых библиотек, особенно
+  при использовании систем сборки, отличных от autotools. Чтобы удалить их, выполните команду:</para>
+
+<screen><userinput>find /usr/lib /usr/libexec -name \*.la -delete</userinput></screen>
+
+   <para>Дополнительные сведения об архивных файлах libtool см. в разделе BLFS  <ulink
+   url="&blfs-book;introduction/la-files.html">"О файлах архива Libtool (.la)"</ulink>.</para>
+
+   <para>Компилятор, собраный в <xref linkend="chapter-temporary-tools"/> и
+   <xref linkend="chapter-chroot-temporary-tools"/> все еще установлен но больше
+   не нужен. Удалите его с помощью команды:</para>
+
+<screen><userinput>find /usr -depth -name $(uname -m)-lfs-linux-gnu\* | xargs rm -rf</userinput></screen>
+
+   <para>Наконец, удалите временную учетную запись пользователя 'tester',
+   созданную в начале предыдущей главы.</para>
+
+<screen><userinput>userdel -r tester</userinput></screen>
+</sect1>

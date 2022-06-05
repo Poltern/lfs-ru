@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-zlib" role="wrap">
+  <?dbhtml filename="zlib.html"?>
+
+  <sect1info condition="script">
+    <productname>zlib</productname>
+    <productnumber>&zlib-version;</productnumber>
+    <address>&zlib-url;</address>
+  </sect1info>
+
+  <title>Zlib-&zlib-version;</title>
+
+  <indexterm zone="ch-system-zlib">
+    <primary sortas="a-Zlib">Zlib</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Zlib содержит подпрограммы сжатия и распаковки, используемые некоторыми программами.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&zlib-fin-sbu;</seg>
+        <seg>&zlib-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Zlib</title>
+
+    <para>Подготовьте Zlib к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Удалите бесполезную статическую библиотеку:</para>
+
+<screen><userinput remap="install">rm -fv /usr/lib/libz.a</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-zlib" role="content">
+    <title>Содержимое пакета Zlib</title>
+
+    <segmentedlist>
+      <segtitle>Установленная библиотека</segtitle>
+
+      <seglistitem>
+        <seg>libz.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libz">
+        <term><filename class="libraryfile">libz</filename></term>
+        <listitem>
+          <para>Содержит функции сжатия и распаковки, используемые некоторыми программами.</para>
+          <indexterm zone="ch-system-zlib libz">
+            <primary sortas="c-libz">libz</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
