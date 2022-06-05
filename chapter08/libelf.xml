@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-libelf" role="wrap">
+  <?dbhtml filename="libelf.html"?>
+
+  <sect1info condition="script">
+    <productname>libelf</productname>
+    <productnumber>&elfutils-version;</productnumber>
+    <address>&elfutils-url;</address>
+  </sect1info>
+
+  <title>Libelf from Elfutils-&elfutils-version;</title>
+
+  <indexterm zone="ch-system-libelf">
+    <primary sortas="a-Libelf">Libelf</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Libelf — это библиотека для обработки файлов ELF (Executable and
+	Linkable Format - формат исполняемых и связываемых файлов).</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&elfutils-fin-sbu;</seg>
+        <seg>&elfutils-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Libelf</title>
+
+      <para>Libelf является частью пакета elfutils-&elfutils-version;. Используйте
+	  elfutils-&elfutils-version;.tar.bz2 в качестве исходного архива</para>
+
+    <para>Подготовьте Libelf к компиляции:</para>
+
+    <screen><userinput remap="configure">./configure --prefix=/usr                \
+            --disable-debuginfod         \
+            --enable-libdebuginfod=dummy</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+<!--    <para>One test, run-elfclassify.sh, is known to fail.</para>-->
+
+    <para>Установите только Libelf:</para>
+
+<screen><userinput remap="install">make -C libelf install
+install -vm644 config/libelf.pc /usr/lib/pkgconfig
+rm /usr/lib/libelf.a</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-elfutils" role="content">
+    <title>Содержимое пакета Libelf</title>
+
+    <segmentedlist>
+      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Каталог установки</segtitle>
+
+      <seglistitem>
+        <seg>
+          libelf.so (символическая ссылка) и libelf-&elfutils-version;.so
+        </seg>
+        <seg>
+          /usr/include/elfutils
+        </seg>
+      </seglistitem>
+
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libelf">
+        <term><filename class="libraryfile">libelf</filename></term>
+        <listitem>
+          <para>Содержит функции API для обработки объектных файлов ELF</para>
+          <indexterm zone="ch-system-libelf libelf">
+            <primary sortas="c-libelf">libelf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

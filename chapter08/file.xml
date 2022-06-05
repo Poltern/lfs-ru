@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-file" role="wrap">
+  <?dbhtml filename="file.html"?>
+
+  <sect1info condition="script">
+    <productname>file</productname>
+    <productnumber>&file-version;</productnumber>
+    <address>&file-url;</address>
+  </sect1info>
+
+  <title>File-&file-version;</title>
+
+  <indexterm zone="ch-system-file">
+    <primary sortas="a-File">File</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет File содержит утилиту для определения типа указанного файла или файлов</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&file-fin-sbu;</seg>
+        <seg>&file-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета File</title>
+
+    <para>Подготовьте File к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="contents-file" role="content">
+    <title>Содержимое пакета File</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+
+      <seglistitem>
+        <seg>file</seg>
+        <seg>libmagic.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="file">
+        <term><command>file</command></term>
+        <listitem>
+          <para>Пытается классифицировать каждый указанный файл; он делает это,
+		  выполняя серию тестов&mdash;тесты файловой системы, тесты магических чисел и языковые тесты.</para>
+          <indexterm zone="ch-system-file file">
+            <primary sortas="b-file">file</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libmagic">
+        <term><filename class="libraryfile">libmagic</filename></term>
+        <listitem>
+          <para>Содержит функции распознавания магических чисел используемые
+          программой <command>file</command></para>
+          <indexterm zone="ch-system-file libmagic">
+            <primary sortas="c-libmagic">libmagic</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

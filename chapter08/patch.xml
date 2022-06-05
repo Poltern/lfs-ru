@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-patch" role="wrap">
+  <?dbhtml filename="patch.html"?>
+
+  <sect1info condition="script">
+    <productname>patch</productname>
+    <productnumber>&patch-version;</productnumber>
+    <address>&patch-url;</address>
+  </sect1info>
+
+  <title>Patch-&patch-version;</title>
+
+  <indexterm zone="ch-system-patch">
+    <primary sortas="a-Patch">Patch</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Patch содержит программу для изменения или создания файлов
+    путём наложение <quote>патча</quote>, обычно, создаваемого программой
+    <command>diff</command>.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&patch-fin-sbu;</seg>
+        <seg>&patch-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Patch</title>
+
+    <para>Подготовьте Patch к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-patch" role="content">
+    <title>Содержимое пакета Patch</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+
+      <seglistitem>
+        <seg>patch</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="patch">
+        <term><command>patch</command></term>
+        <listitem>
+          <para>Изменяет файлы в соответствии с файлом исправления (патч обычно
+		  представляет собой список различий, созданный с помощью программы
+		  <command>diff</command>. Применяя эти различия к исходным файлам,
+		  <command>patch</command> создает исправленные версии.)</para>
+          <indexterm zone="ch-system-patch patch">
+            <primary sortas="b-patch">patch</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

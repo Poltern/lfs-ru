@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-mpc" role="wrap">
+  <?dbhtml filename="mpc.html"?>
+
+  <sect1info condition="script">
+    <productname>mpc</productname>
+    <productnumber>&mpc-version;</productnumber>
+    <address>&mpc-url;</address>
+  </sect1info>
+
+  <title>MPC-&mpc-version;</title>
+
+  <indexterm zone="ch-system-mpc">
+    <primary sortas="a-MPC">MPC</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет MPC содержит библиотеку для арифметики комплексных чисел с
+	высокой точностью и правильным округлением результата.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&mpc-fin-sbu;</seg>
+        <seg>&mpc-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета MPC</title>
+
+    <para>Подготовьте MPC к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/mpc-&mpc-version;</userinput></screen>
+
+    <para>Скомпилируйте пакет и сгенерируйте HTML-документацию:</para>
+
+<screen><userinput remap="make">make
+make html</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет и документацию к нему:</para>
+
+<screen><userinput remap="install">make install
+make install-html</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="contents-mpc" role="content">
+    <title>Содержимое пакета MPC</title>
+
+    <segmentedlist>
+      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Каталог установки</segtitle>
+
+      <seglistitem>
+        <seg>libmpc.so</seg>
+        <seg>/usr/share/doc/mpc-&mpc-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libmpc">
+        <term><filename class="libraryfile">libmpc</filename></term>
+        <listitem>
+          <para>Содержит сложные математические функции</para>
+          <indexterm zone="ch-system-mpc libmpc">
+            <primary sortas="c-libmpc">libmpc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

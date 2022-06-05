@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-make" role="wrap">
+  <?dbhtml filename="make.html"?>
+
+  <sect1info condition="script">
+    <productname>make</productname>
+    <productnumber>&make-version;</productnumber>
+    <address>&make-url;</address>
+  </sect1info>
+
+  <title>Make-&make-version;</title>
+
+  <indexterm zone="ch-system-make">
+    <primary sortas="a-Make">Make</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Make содержит программу, управляющую генерацией исполняемых и других файлов, из исходного кода.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&make-fin-sbu;</seg>
+        <seg>&make-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Make</title>
+<!--
+    <para>Again, work around an error caused by glibc-2.27 and later:</para>
+
+<screen><userinput remap="pre">sed -i '211,217 d; 219,229 d; 232 d' glob/glob.c</userinput></screen>
+-->
+    <para>Подготовьте Make к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="contents-make" role="content">
+    <title>Содержимое пакета Make</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+
+      <seglistitem>
+        <seg>make</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="make">
+        <term><command>make</command></term>
+        <listitem>
+          <para>Автоматически определяет, какие части пакета необходимо (пере)компилировать и запускает соответствующие команды.</para>
+          <indexterm zone="ch-system-make make">
+            <primary sortas="b-make">make</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

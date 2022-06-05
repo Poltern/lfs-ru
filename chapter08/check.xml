@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-check" role="wrap">
+  <?dbhtml filename="check.html"?>
+
+  <sect1info condition="script">
+    <productname>check</productname>
+    <productnumber>&check-version;</productnumber>
+    <address>&check-url;</address>
+  </sect1info>
+
+  <title>Check-&check-version;</title>
+
+  <indexterm zone="ch-system-check">
+    <primary sortas="a-Check">Check</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Check - это фреймворк модульного тестирования для языка C.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&check-fin-sbu;</seg>
+        <seg>&check-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Check</title>
+
+    <para>Подготовить Check к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr --disable-static</userinput></screen>
+
+    <para>Соберите пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Когда компиляция будет завершена, запустите набор тестов:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+<!--    <para>Note that the Check test suite may take a relatively long
+    (up to 4 SBU) time.</para>
+-->
+    <para>Установите пакет:</para>
+
+    <screen><userinput remap="install">make docdir=/usr/share/doc/check-&check-version; install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-check" role="content">
+    <title>Содержимое пакета Check</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+
+      <seglistitem>
+        <seg>checkmk</seg>
+        <seg>libcheck.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="checkmk">
+        <term><command>checkmk</command></term>
+        <listitem>
+          <para>Сценарий Awk для генерации unit-тестов C, для использования с
+		  платформой модульного тестирования Check.</para>
+          <indexterm zone="ch-system-check checkmk">
+            <primary sortas="b-checmk">checkmk</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcheck">
+        <term><filename class="libraryfile">libcheck.so</filename></term>
+        <listitem>
+          <para>Содержит функции, позволяющие вызывать Check из программы тестирования.</para>
+          <indexterm zone="ch-system-check libcheck">
+            <primary sortas="c-libcheck">libcheck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
