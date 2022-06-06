@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-less" role="wrap">
+  <?dbhtml filename="less.html"?>
+
+  <sect1info condition="script">
+    <productname>less</productname>
+    <productnumber>&less-version;</productnumber>
+    <address>&less-url;</address>
+  </sect1info>
+
+  <title>Less-&less-version;</title>
+
+  <indexterm zone="ch-system-less">
+    <primary sortas="a-Less">Less</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Less содержит средство просмотра текстовых файлов</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&less-fin-sbu;</seg>
+        <seg>&less-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Less</title>
+
+    <para>Подготовьте Less к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr --sysconfdir=/etc</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--sysconfdir=/etc</parameter></term>
+        <listitem>
+          <para>Этот параметр указывает программам, созданным пакетом, искать файлы
+		  конфигурации в <filename class="directory">/etc</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>С этим пакетом не поставляются наборы тестов.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-less" role="content">
+    <title>Содержимое пакета Less</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+
+      <seglistitem>
+        <seg>less, lessecho, и lesskey</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="less">
+        <term><command>less</command></term>
+        <listitem>
+          <para>Просмотрщик файлов; отображает содержимое данного файла, позволяя
+		  пользователю прокручивать файл, искать строки и переходить к меткам</para>
+          <indexterm zone="ch-system-less less">
+            <primary sortas="b-less">less</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lessecho">
+        <term><command>lessecho</command></term>
+        <listitem>
+          <para>Требуется для расширения метасимволов, таких как <emphasis>*</emphasis>
+          и <emphasis>?</emphasis>, в именах файлов в системах Unix.</para>
+          <indexterm zone="ch-system-less lessecho">
+            <primary sortas="b-lessecho">lessecho</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lesskey">
+        <term><command>lesskey</command></term>
+        <listitem>
+          <para>Используется для привязки клавиш в программе <command>less</command></para>
+          <indexterm zone="ch-system-less lesskey">
+            <primary sortas="b-lesskey">lesskey</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

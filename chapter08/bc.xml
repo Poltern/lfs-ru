@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-bc" role="wrap">
+  <?dbhtml filename="bc.html"?>
+
+  <sect1info condition="script">
+    <productname>bc</productname>
+    <productnumber>&bc-version;</productnumber>
+    <address>&bc-url;</address>
+  </sect1info>
+
+  <title>Bc-&bc-version;</title>
+
+  <indexterm zone="ch-system-bc">
+    <primary sortas="a-Bc">Bc</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Bc содержит язык для обработки чисел произвольной точности.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&bc-fin-sbu;</seg>
+        <seg>&bc-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Bc</title>
+
+    <para>Подготовьте Bc к компиляции:</para>
+
+<screen><userinput remap="configure">CC=gcc ./configure --prefix=/usr -G -O3</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>CC=gcc</parameter></term>
+        <listitem>
+          <para>Этот параметр определяет используемый компилятор</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-O3</parameter></term>
+        <listitem>
+          <para>Указывает уровень оптимизации.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-G</parameter></term>
+        <listitem>
+          <para>Исключает тесты, которые не работают без GNU bc.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать bc, запустите:</para>
+
+<screen><userinput remap="test">make test</userinput></screen>
+
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-bc" role="content">
+    <title>Содержимое пакета Bc</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+
+      <seglistitem>
+        <seg>bc и dc</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="bc">
+        <term><command>bc</command></term>
+        <listitem>
+          <para>Калькулятор командной строки</para>
+          <indexterm zone="ch-system-bc bc">
+            <primary sortas="b-bc">bc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dc">
+        <term><command>dc</command></term>
+        <listitem>
+          <para>Калькулятор командной строки с обратной польской нотацией</para>
+          <indexterm zone="ch-system-bc dc">
+            <primary sortas="b-dc">dc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

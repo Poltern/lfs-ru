@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-diffutils" role="wrap">
+  <?dbhtml filename="diffutils.html"?>
+
+  <sect1info condition="script">
+    <productname>diffutils</productname>
+    <productnumber>&diffutils-version;</productnumber>
+    <address>&diffutils-url;</address>
+  </sect1info>
+
+  <title>Diffutils-&diffutils-version;</title>
+
+  <indexterm zone="ch-system-diffutils">
+    <primary sortas="a-Diffutils">Diffutils</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Diffutils содержит программы, которые показывают различия между
+	файлами или каталогами.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&diffutils-fin-sbu;</seg>
+        <seg>&diffutils-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Diffutils</title>
+
+    <para>Подготовьте Diffutils к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестровать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="contents-diffutils" role="content">
+    <title>Содержимое пакета Diffutils</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+
+      <seglistitem>
+        <seg>cmp, diff, diff3, и sdiff</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cmp">
+        <term><command>cmp</command></term>
+        <listitem>
+          <para>Сравнивает два файла и, если они различаются, сообщает в каких байтах</para>
+          <indexterm zone="ch-system-diffutils cmp">
+            <primary sortas="b-cmp">cmp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="diff">
+        <term><command>diff</command></term>
+        <listitem>
+          <para>Сравнивает два файла или каталога и сообщает, какие строки отличаются</para>
+          <indexterm zone="ch-system-diffutils diff">
+            <primary sortas="b-diff">diff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="diff3">
+        <term><command>diff3</command></term>
+        <listitem>
+            <para>Сравнивает три файла построчно</para>
+            <indexterm zone="ch-system-diffutils diff3">
+              <primary sortas="b-diff3">diff3</primary>
+            </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sdiff">
+        <term><command>sdiff</command></term>
+        <listitem>
+          <para>Объединяет два файла и интерактивно выводит результат</para>
+          <indexterm zone="ch-system-diffutils sdiff">
+            <primary sortas="b-sdiff">sdiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

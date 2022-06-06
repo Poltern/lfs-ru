@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-wheel" role="wrap">
+  <?dbhtml filename="wheel.html"?>
+
+  <sect1info condition="script">
+    <productname>wheel</productname>
+    <productnumber>&wheel-version;</productnumber>
+    <address>&wheel-url;</address>
+  </sect1info>
+
+  <title>Wheel-&wheel-version;</title>
+
+  <indexterm zone="ch-system-wheel">
+    <primary sortas="a-wheel">wheel</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Wheel — это библиотека Python, которая является эталонной реализацией
+	стандарта упаковки программ на языке Python.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+      <seglistitem>
+        <seg>&wheel-fin-sbu;</seg>
+        <seg>&wheel-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Wheel</title>
+
+    <para>Установите Wheel с помощью следующей команды:</para>
+
+<screen><userinput remap="install">pip3 install --no-index $PWD</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров pip3:</title>
+
+      <varlistentry>
+        <term><command>install</command></term>
+        <listitem>
+           <para>Установить пакет.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--no-index</parameter></term>
+        <listitem>
+          <para>Запретить pip извлекать файлы из онлайн-репозитория пакетов (PyPI).
+		  Если пакеты установлены в правильном порядке, то нет необходимости загружать
+		  какие-либо файлы, эта опция усиливает безопасность в случае ошибки пользователя.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>$PWD</parameter></term>
+        <listitem>
+           <para>Искать файлы для установки в текущем рабочем каталоге.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+  <sect2 id="contents-wheel" role="content">
+    <title>Содержимое пакета Wheel</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+      <segtitle>Каталог установки</segtitle>
+
+      <seglistitem>
+        <seg>wheel</seg>
+        <seg>/usr/lib/python&python-minor;/site-packages/wheel</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="wheel-wheel">
+        <term><command>wheel</command></term>
+        <listitem>
+          <para>
+            это утилита для распаковки, упаковки или преобразования пакетов Wheel
+          </para>
+          <indexterm zone="ch-system-wheel">
+            <primary sortas="b-wheel">wheel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect2>
+
+</sect1>
+
