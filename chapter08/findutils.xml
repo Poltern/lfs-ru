@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-findutils" role="wrap">
+  <?dbhtml filename="findutils.html"?>
+
+  <sect1info condition="script">
+    <productname>findutils</productname>
+    <productnumber>&findutils-version;</productnumber>
+    <address>&findutils-url;</address>
+  </sect1info>
+
+  <title>Findutils-&findutils-version;</title>
+
+  <indexterm zone="ch-system-findutils">
+    <primary sortas="a-Findutils">Findutils</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Findutils содержит программы для поиска файлов. Эти программы
+	предназначены для рекурсивного поиска по дереву каталогов, а также для создания,
+	обслуживания и поиска в базе данных (часто быстрее, чем рекурсивный поиск, но
+	ненадежно, если база данных давно не обновлялась)</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&findutils-fin-sbu;</seg>
+        <seg>&findutils-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Findutils</title>
+
+    <para>Подготовьте Findutils к компиляции:</para>
+
+<screen><userinput remap="configure">case $(uname -m) in
+    i?86)   TIME_T_32_BIT_OK=yes ./configure --prefix=/usr --localstatedir=/var/lib/locate ;;
+    x86_64) ./configure --prefix=/usr --localstatedir=/var/lib/locate ;;
+esac</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><command>TIME_32_BIT_OK=yes</command></term>
+        <listitem>
+          <para>Этот параметр необходим для сборки на 32-битной системе.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--localstatedir</parameter></term>
+        <listitem>
+          <para>Этот параметр изменяет расположение базы данных команды <command>locate</command>
+		  на <filename class="directory">/var/lib/locate</filename>, что соответствует
+		  стандарту FHS</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">chown -Rv tester .
+su tester -c "PATH=$PATH make check"</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-findutils" role="content">
+    <title>Содержимое пакета Findutils</title>
+
+    <segmentedlist>
+      <segtitle>Installed programs</segtitle>
+      <segtitle>Каталог установки</segtitle>
+
+      <seglistitem>
+        <seg>Установленные программы</seg>
+        <seg>/var/lib/locate</seg>
+      </seglistitem>
+
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="find">
+        <term><command>find</command></term>
+        <listitem>
+          <para>Выполняет поиск в заданных каталогах файлов, соответствующих критериям</para>
+          <indexterm zone="ch-system-findutils find">
+            <primary sortas="b-find">find</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="locate">
+        <term><command>locate</command></term>
+        <listitem>
+          <para>Выполняет поиск по базе данных имен файлов и сообщает об именах,
+		  которые содержат заданную строку или соответствуют заданному шаблону.</para>
+          <indexterm zone="ch-system-findutils locate">
+            <primary sortas="b-locate">locate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="updatedb">
+      <term><command>updatedb</command></term>
+        <listitem>
+          <para>Обновляет базу данных <command>locate</command>; сканирует всю
+		  файловую систему (включая другие файловые системы, которые в настоящее
+		  время смонтированы, если не указано иное) и записывает найденные имена
+		  файлов в базу данных</para>
+          <indexterm zone="ch-system-findutils updatedb">
+            <primary sortas="b-updatedb">updatedb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xargs">
+        <term><command>xargs</command></term>
+        <listitem>
+          <para>Может использоваться для применения заданной команды к списку файлов</para>
+          <indexterm zone="ch-system-findutils xargs">
+            <primary sortas="b-xargs">xargs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

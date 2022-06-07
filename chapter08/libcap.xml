@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-libcap" role="wrap">
+  <?dbhtml filename="libcap.html"?>
+
+  <sect1info condition="script">
+    <productname>libcap</productname>
+    <productnumber>&libcap-version;</productnumber>
+    <address>&libcap-url;</address>
+  </sect1info>
+
+  <title>Libcap-&libcap-version;</title>
+
+  <indexterm zone="ch-system-libcap">
+    <primary sortas="a-Libcap">Libcap</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Libcap реализует интерфейсы пользовательского пространства для
+	возможностей POSIX 1003.1e, доступных в ядрах Linux. Эти возможности представляют
+	собой разделение привилегий root на набор отдельных привилегий.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&libcap-fin-sbu;</seg>
+        <seg>&libcap-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Libcap</title>
+
+    <para>Запретите установку статических библиотек:</para>
+
+<screen><userinput remap="pre">sed -i '/install -m.*STA/d' libcap/Makefile</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make prefix=/usr lib=lib</userinput></screen>
+
+    <variablelist>
+      <title>Значение опции make:</title>
+
+      <varlistentry>
+        <term><parameter>lib=lib</parameter></term>
+        <listitem>
+          <para>Этот параметр устанавливает библиотеки в каталог 
+          <filename>/usr/lib</filename>, а не 
+          <filename>/usr/lib64</filename> на x86_64. На x86 это никак не влияет.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make test</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make prefix=/usr lib=lib install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-libcap" role="content">
+    <title>Содержимое пакета Libcap</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+
+      <seglistitem>
+        <seg>capsh, getcap, getpcaps, и setcap</seg>
+        <seg>libcap.so и libpsx.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="capsh">
+        <term><command>capsh</command></term>
+        <listitem>
+          <para>Обёртка к оболочке для исследования и ограничения поддержки возможностей Linux</para>
+          <indexterm zone="ch-system-libcap capsh">
+            <primary sortas="b-capsh">capsh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="getcap">
+        <term><command>getcap</command></term>
+        <listitem>
+          <para>Проверяет возможности файлов</para>
+          <indexterm zone="ch-system-libcap getcap">
+            <primary sortas="b-getcap">getcap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="getpcaps">
+        <term><command>getpcaps</command></term>
+        <listitem>
+          <para>Отображает возможности запрошенного процесса (процессов)</para>
+          <indexterm zone="ch-system-libcap getpcaps">
+            <primary sortas="b-getpcaps">getpcaps</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="setcap">
+        <term><command>setcap</command></term>
+        <listitem>
+          <para>Устанавливает возможности файлов</para>
+          <indexterm zone="ch-system-libcap setcap">
+            <primary sortas="b-setcap">setcap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcap">
+        <term><filename class="libraryfile">libcap</filename></term>
+        <listitem>
+          <para>Содержит функции для управления возможностями POSIX 1003.1e.</para>
+          <indexterm zone="ch-system-libcap libcap">
+            <primary sortas="c-libcap">libcap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpsx">
+        <term><filename class="libraryfile">libpsx</filename></term>
+        <listitem>
+          <para>Содержит функции для поддержки семантики POSIX для системных
+		  вызовов, связанных с библиотекой pthread</para>
+          <indexterm zone="ch-system-libcap libpsx">
+            <primary sortas="c-libpsx">libpsx</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

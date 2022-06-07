@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-bash" role="wrap">
+  <?dbhtml filename="bash.html"?>
+
+  <sect1info condition="script">
+    <productname>bash</productname>
+    <productnumber>&bash-version;</productnumber>
+    <address>&bash-url;</address>
+  </sect1info>
+
+  <title>Bash-&bash-version;</title>
+
+  <indexterm zone="ch-system-bash">
+    <primary sortas="a-Bash">Bash</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Bash содержит Bourne-Again SHell.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&bash-fin-sbu;</seg>
+        <seg>&bash-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Bash</title>
+
+    <para>Подготовьте Bash к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr                      \
+            --docdir=/usr/share/doc/bash-&bash-version; \
+            --without-bash-malloc              \
+            --with-installed-readline</userinput></screen>
+
+    <variablelist>
+      <title>Значение нового параметра настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--with-installed-readline</parameter></term>
+        <listitem>
+          <para>Этот параметр указывает Bash использовать библиотеку <filename
+          class="libraryfile">readline</filename>, которая уже установлена ​​в системе,
+		  а не собственную версию readline.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Перейдите к разелу <quote>Установка пакета</quote>, если не планируете запускать
+    тесты.</para>
+
+    <para>Перед запуском тестов, убедитесь, что пользователь
+    <systemitem class="username">tester</systemitem> может писать в каталог с 
+    исходниками:</para>
+
+<screen><userinput remap="test">chown -Rv tester .</userinput></screen>
+
+    <para>Набор тестов пакета предназначен для запуска пользователем без полномочий
+	root, которому принадлежит терминал, подключенный к стандартному вводу. Чтобы
+	удовлетворить это требование, создайте новый псевдотерминал с помощью
+	<application>Expect</application> и запустите тесты от имени пользователя <systemitem
+    class="username">tester</systemitem>:</para>
+
+<screen><userinput remap="test">su -s /usr/bin/expect tester &lt;&lt; EOF
+set timeout -1
+spawn make tests
+expect eof
+lassign [wait] _ _ _ value
+exit $value
+EOF</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Запустите только что скомпилированную программу <command>bash</command>
+	(заменив ту, которая выполняется в данный момент):</para>
+
+ <screen role="nodump"><userinput>exec /usr/bin/bash --login</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-bash" role="content">
+    <title>Содержимое пакета Bash</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>bash, bashbug, and sh (ссылка на bash)</seg>
+        <seg>/usr/include/bash, /usr/lib/bash, and
+        /usr/share/doc/bash-&bash-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="bash">
+        <term><command>bash</command></term>
+        <listitem>
+          <para>Широко распространенный командный интерпретатор. Выполняет различные
+          дополнения и подстановки в переданной командной строке перед её выполнением, что
+          делает этот интерпретатор мощным инструментом</para>
+          <indexterm zone="ch-system-bash bash">
+            <primary sortas="b-bash">bash</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="bashbug">
+        <term><command>bashbug</command></term>
+        <listitem>
+          <para>Скрипт, помогающий пользователю составлять и отправлять по почте отчеты
+		  об ошибках <command>bash</command></para>
+          <indexterm zone="ch-system-bash bashbug">
+            <primary sortas="b-bashbug">bashbug</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sh">
+        <term><command>sh</command></term>
+        <listitem>
+          <para>Симлинк на программу <command>bash</command>; при вызове <command>sh</command>,
+		  <command>bash</command> пытается максимально точно имитировать поведение
+		  <command>sh</command>, при этом также соответствуя стандарту POSIX.</para>
+          <indexterm zone="ch-system-bash sh">
+            <primary sortas="b-sh">sh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

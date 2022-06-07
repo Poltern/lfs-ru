@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-zstd" role="wrap">
+  <?dbhtml filename="zstd.html"?>
+
+  <sect1info condition="script">
+    <productname>zstd</productname>
+    <productnumber>&zstd-version;</productnumber>
+    <address>&zstd-url;</address>
+  </sect1info>
+
+  <title>Zstd-&zstd-version;</title>
+
+  <indexterm zone="ch-system-zstd">
+    <primary sortas="a-zstd">zstd</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Zstandard — это алгоритм сжатия в реальном времени, обеспечивающий высокую
+	степень сжатия. Он предлагает очень широкий диапазон компромиссов между сжатием
+	и скоростью при поддержке очень быстрого декодера.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&zstd-fin-sbu;</seg>
+        <seg>&zstd-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Zstd</title>
+
+    <para>Примените патч, чтобы исправить некоторые выявленные проблемы:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&zstd-upstream-fixes-patch;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make prefix=/usr</userinput></screen>
+
+    <note>
+       <para>В выходных данных теста есть несколько мест, выводящих сообщение 'failed'.
+	   Они ожидаемы, и только 'FAIL' является фактическим сбоем теста. Сбоев при
+	   тестировании быть не должно.</para>
+    </note>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make prefix=/usr install</userinput></screen>
+
+    <para>Удалите статическую библиотеку:</para>
+<screen><userinput remap="install">rm -v /usr/lib/libzstd.a</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-zstd" role="content">
+    <title>Содержимое пакета Zstd</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+
+      <seglistitem>
+        <seg>zstd,
+             zstdcat (ссылка на zstd),
+             zstdgrep,
+             zstdless,
+             zstdmt (ссылка на zstd), и
+             unzstd (ссылка на zstd)
+        </seg>
+
+        <seg>libzstd.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="zstd">
+        <term><command>zstd</command></term>
+        <listitem>
+          <para>Сжимает или распаковывает файлы в формате ZSTD</para>
+          <indexterm zone="ch-system-zstd zstd">
+            <primary sortas="b-zstd">zstd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zstdgrep">
+        <term><command>zstdgrep</command></term>
+        <listitem>
+          <para>Запускает <command>grep</command> на сжатых ZSTD файлах</para>
+          <indexterm zone="ch-system-zstd zstdgrep">
+            <primary sortas="b-zstdgrep">zstdgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zstdless">
+        <term><command>zstdless</command></term>
+        <listitem>
+          <para>Запускает <command>less</command> на сжатых ZSTD файлах</para>
+          <indexterm zone="ch-system-zstd zstdless">
+            <primary sortas="b-zstdless">zstdless</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libzstd">
+        <term><filename class="libraryfile">libzstd</filename></term>
+        <listitem>
+          <para>Библиотека, реализующая сжатие данных без потерь, с использованием
+		  алгоритма ZSTD.</para>
+          <indexterm zone="ch-system-zstd libzstd">
+            <primary sortas="c-libzstd">libzstd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
