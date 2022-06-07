@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-meson" role="wrap">
+  <?dbhtml filename="meson.html"?>
+
+  <sect1info condition="script">
+    <productname>meson</productname>
+    <productnumber>&meson-version;</productnumber>
+    <address>&meson-url;</address>
+  </sect1info>
+
+  <title>Meson-&meson-version;</title>
+
+  <indexterm zone="ch-system-meson">
+    <primary sortas="a-Meson">Meson</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Meson — это система сборки с открытым исходным кодом, призванная быть
+	чрезвычайно быстрой и максимально удобной для пользователя.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+      <seglistitem>
+        <seg>&meson-fin-sbu;</seg>
+        <seg>&meson-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <tip revision="sysv">
+      <para>Этот раздел не является строго обязательным, если LFS не использует
+	  systemd. С другой стороны, meson/ninja - это мощная система сборки,
+	  которая, скорее всего, будет использоваться все чаще и чаще. Meson необходим для
+	  нескольких пакетов в <ulink url="&blfs-book;">книге BLFS</ulink>.</para>
+    </tip>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Meson</title>
+<!--
+    <para>First, apply a patch that fixes an issue identified upstream:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&meson-fix-patch;</userinput></screen>
+-->
+    <para>Скомпилируйте Meson с помощью следующей команды:</para>
+
+<screen><userinput remap="make">pip3 wheel -w dist --no-build-isolation --no-deps $PWD</userinput></screen>
+
+    <para>Для набора тестов требуются некоторые пакеты, выходящие за рамки LFS.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">pip3 install --no-index --find-links dist meson
+install -vDm644 data/shell-completions/bash/meson /usr/share/bash-completion/completions/meson
+install -vDm644 data/shell-completions/zsh/_meson /usr/share/zsh/site-functions/_meson</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров установки:</title>
+
+      <varlistentry>
+        <term><parameter>-w dist</parameter></term>
+        <listitem>
+           <para> Поместить собранный wheels в каталог
+           <filename class='directory'>dist</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--find-links dist</parameter></term>
+        <listitem>
+           <para>Установить wheels из каталога
+           <filename class='directory'>dist</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </sect2>
+
+  <sect2 id="contents-meson" role="content">
+    <title>Содержимое пакета Meson</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>meson</seg>
+        <seg>
+           /usr/lib/python&python-minor;/site-packages/meson-&meson-version;.dist-info и 
+           /usr/lib/python&python-minor;/site-packages/mesonbuild
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="meson">
+		<term><command>meson</command></term>
+        <listitem>
+          <para>Высокопроизводительная система сборки</para>
+          <indexterm zone="ch-system-meson meson">
+            <primary sortas="b-meson">meson</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
+

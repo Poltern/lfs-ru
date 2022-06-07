@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-libffi" role="wrap">
+  <?dbhtml filename="libffi.html"?>
+
+  <sect1info condition="script">
+    <productname>libffi</productname>
+    <productnumber>&libffi-version;</productnumber>
+    <address>&libffi-url;</address>
+  </sect1info>
+
+  <title>Libffi-&libffi-version;</title>
+
+  <indexterm zone="ch-system-libffi">
+    <primary sortas="a-libffi">libffi</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Библиотека Libffi предоставляет переносимый высокоуровневый программный
+	интерфейс для различных соглашений о вызовах. Это позволяет программисту вызывать
+	любую функцию, указанную в описании интерфейса вызова во время выполнения.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&libffi-fin-sbu;</seg>
+        <seg>&libffi-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Libffi</title>
+
+    <note>
+      <para>Подобно GMP, libffi собирается с оптимизацией, специфичной для используемого
+	  процессора. При сборке для другой системы измените значение параметра
+	  <parameter>--with-gcc-arch=</parameter> в следующей команде на имя архитектуры,
+	  полностью реализованной процессором в этой системе. Если этого не сделать,
+	  все приложения, ссылающиеся на libffi, будут выдавать ошибку <quote>Illegal Operation Errors</quote>.</para>
+    </note>
+
+    <para>Подготовьте libffi к компиляции:</para>
+
+    <screen><userinput remap="configure">./configure --prefix=/usr          \
+            --disable-static       \
+            --with-gcc-arch=native \
+            --disable-exec-static-tramp</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров configure:</title>
+
+      <varlistentry>
+        <term><parameter>--with-gcc-arch=native</parameter></term>
+        <listitem>
+          <para>Убедитесь, что GCC оптимизируется для текущей системы. Если значение
+		  не указано, то архитектура системы угадывается, и созданный код может
+		  быть неправильным для некоторых систем. Если созданный код будет скопирован
+		  из родной системы в менее мощную, используйте менее мощную систему в качестве
+		  параметра. Дополнительные сведения об альтернативных типах систем см. в <ulink
+          url='https://gcc.gnu.org/onlinedocs/gcc-&gcc-version;/gcc/x86-Options.html'>
+          описании параметров x86 в руководстве GCC</ulink>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <!-- To editors: try to remove it once GJS fixed (at GNOME 43) -->
+        <term><parameter>--disable-exec-static-tramp</parameter></term>
+        <listitem>
+          <para>Отключить поддержку предотвращения наращивания стека. Это новая функция
+		  безопасности в libffi, но некоторые пакеты BLFS (в частности,
+		  <application>GJS</application>) не были адаптированы для работы с ней</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-libffi" role="content">
+    <title>Содержимое пакета Libffi</title>
+
+    <segmentedlist>
+      <segtitle>Установленная библиотека</segtitle>
+
+      <seglistitem>
+        <seg>libffi.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libffi">
+        <term><filename class="libraryfile">libffi</filename></term>
+        <listitem>
+          <para>содержит внешний интерфейс для API-функций</para>
+          <indexterm zone="ch-system-libffi">
+            <primary sortas="c-libffi">libffi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect2>
+
+</sect1>
+

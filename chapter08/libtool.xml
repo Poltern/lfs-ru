@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-libtool" role="wrap">
+  <?dbhtml filename="libtool.html"?>
+
+  <sect1info condition="script">
+    <productname>libtool</productname>
+    <productnumber>&libtool-version;</productnumber>
+    <address>&libtool-url;</address>
+  </sect1info>
+
+  <title>Libtool-&libtool-version;</title>
+
+  <indexterm zone="ch-system-libtool">
+    <primary sortas="a-Libtool">Libtool</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Libtool содержит сценарий поддержки универсальной библиотеки GNU.
+	Он преобразует сложный механизм использования общих библиотек в согласованный
+	переносимый интерфейс.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&libtool-fin-sbu;</seg>
+        <seg>&libtool-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Libtool</title>
+
+    <para>Подготовьте Libtool к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+<para>Чтобы протестировать пакет<!--(about 11.0 SBU)-->, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <note><para>Время тестирования libtool может быть значительно сокращено в системе
+	с несколькими ядрами. Для этого добавьте <command>TESTSUITEFLAGS=-j&lt;N&gt;</command>
+	к строке выше. Например, использование -j4 может сократить время тестирования
+	более чем на 60 процентов.</para></note>
+
+    <para>Известно, что пять тестов в среде сборки LFS завершаются неудачно из-за
+	круговой зависимости, но все тесты проходят успешно, если они повторно запускаются
+	после установки automake.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <!-- dev: - -disable-static works but causes additional test failures
+              so we manually remove the static library -->
+
+    <para>Удалите ненужную статическую библиотеку:</para>
+
+<screen><userinput remap="install">rm -fv /usr/lib/libltdl.a</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="contents-libtool" role="content">
+    <title>Содержимое пакета Libtool</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>libtool и libtoolize</seg>
+        <seg>libltdl.so</seg>
+        <seg>/usr/include/libltdl и /usr/share/libtool</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libtool">
+        <term><command>libtool</command></term>
+        <listitem>
+          <para>Обеспечивает общие услуги поддержки при сборке библиотек</para>
+          <indexterm zone="ch-system-libtool libtool">
+            <primary sortas="b-libtool">libtool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtoolize">
+        <term><command>libtoolize</command></term>
+        <listitem>
+          <para>Предоставляет стандартный способ добавления поддержки
+		  <command>libtool</command> в пакет</para>
+          <indexterm zone="ch-system-libtool libtoolize">
+            <primary sortas="b-libtoolize">libtoolize</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libltdl">
+        <term><filename class="libraryfile">libltdl</filename></term>
+        <listitem>
+          <para>Скрывает различные трудности, связанные с динамически загружаемыми библиотеками</para>
+          <indexterm zone="ch-system-libtool libltdl">
+            <primary sortas="c-libltdl">libltdl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

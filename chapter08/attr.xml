@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-attr" role="wrap">
+  <?dbhtml filename="attr.html"?>
+
+  <sect1info condition="script">
+    <productname>attr</productname>
+    <productnumber>&attr-version;</productnumber>
+    <address>&attr-url;</address>
+  </sect1info>
+
+  <title>Attr-&attr-version;</title>
+
+  <indexterm zone="ch-system-attr">
+    <primary sortas="a-Attr">Attr</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет attr содержит утилиты для управления расширенными атрибутами
+	объектов файловой системы.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&attr-fin-sbu;</seg>
+        <seg>&attr-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Attr</title>
+
+    <para>Подготовьте Attr к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr     \
+            --disable-static  \
+            --sysconfdir=/etc \
+            --docdir=/usr/share/doc/attr-&attr-version;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Тесты необходимо запускать в файловой системе, которая поддерживает
+	расширенные атрибуты, например, ext2, ext3 или ext4. Чтобы протестировать
+	пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-attr" role="content">
+    <title>Содержимое пакета Attr</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>attr, getfattr, и setfattr</seg>
+        <seg>libattr.so</seg>
+        <seg>/usr/include/attr и /usr/share/doc/attr-&attr-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="attr">
+        <term><command>attr</command></term>
+        <listitem>
+          <para>Расширяет атрибуты объектов файловой системы</para>
+          <indexterm zone="ch-system-attr attr">
+            <primary sortas="b-attr">attr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="getfattr">
+        <term><command>getfattr</command></term>
+        <listitem>
+          <para>Получает расширенные атрибуты объектов файловой системы</para>
+          <indexterm zone="ch-system-attr getfattr">
+            <primary sortas="b-getfattr">getfattr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="setfattr">
+        <term><command>setfattr</command></term>
+        <listitem>
+          <para>Устанавливает расширенные атрибуты объектов файловой системы</para>
+          <indexterm zone="ch-system-attr setfattr">
+            <primary sortas="b-setfattr">setfattr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libattr">
+        <term><filename class="libraryfile">libattr</filename></term>
+        <listitem>
+          <para>Содержит библиотечные функции для управления расширенными атрибутами.</para>
+          <indexterm zone="ch-system-attr libattr">
+            <primary sortas="c-libattr">libattr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

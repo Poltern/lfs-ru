@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-acl" role="wrap">
+  <?dbhtml filename="acl.html"?>
+
+  <sect1info condition="script">
+    <productname>acl</productname>
+    <productnumber>&acl-version;</productnumber>
+    <address>&acl-url;</address>
+  </sect1info>
+
+  <title>Acl-&acl-version;</title>
+
+  <indexterm zone="ch-system-acl">
+    <primary sortas="a-Acl">Acl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Acl содержит утилиты для администрирования списков контроля доступа,
+	которые используются для более детальной настройки прав доступа к файлам и каталогам.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&acl-fin-sbu;</seg>
+        <seg>&acl-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Acl</title>
+
+    <para>Подготовьте Acl к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr         \
+            --disable-static      \
+            --docdir=/usr/share/doc/acl-&acl-version;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Тесты Acl необходимо запускать в файловой системе, поддерживающей списки
+	контроля доступа, после сборки <application>Coreutils</application> с библиотекой
+	Acl. При желании вернитесь к этому пакету и запустите <command>make
+    check</command> после того, как будет собран пакет <application>Coreutils</application>.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-acl" role="content">
+    <title>Содержимое пакета Acl</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>chacl, getfacl, и setfacl</seg>
+        <seg>libacl.so</seg>
+        <seg>/usr/include/acl и /usr/share/doc/acl-&acl-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="chacl">
+        <term><command>chacl</command></term>
+        <listitem>
+          <para>Изменяет список контроля доступа файла или каталога</para>
+          <indexterm zone="ch-system-acl chacl">
+            <primary sortas="b-chacl">chacl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="getfacl">
+        <term><command>getfacl</command></term>
+        <listitem>
+          <para>Получает списки контроля доступа файла</para>
+          <indexterm zone="ch-system-acl getfacl">
+            <primary sortas="b-getfacl">getfacl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="setfacl">
+        <term><command>setfacl</command></term>
+        <listitem>
+          <para>Устанавливает списки контроля доступа к файлам</para>
+          <indexterm zone="ch-system-acl setfacl">
+            <primary sortas="b-setfacl">setfacl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libacl">
+        <term><filename class="libraryfile">libacl</filename></term>
+        <listitem>
+          <para>Содержит библиотечные функции для управления списками контроля доступа.</para>
+          <indexterm zone="ch-system-acl libacl">
+            <primary sortas="c-libacl">libacl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

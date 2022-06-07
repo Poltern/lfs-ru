@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-ninja" role="wrap">
+  <?dbhtml filename="ninja.html"?>
+
+  <sect1info condition="script">
+    <productname>ninja</productname>
+    <productnumber>&ninja-version;</productnumber>
+    <address>&ninja-url;</address>
+  </sect1info>
+
+  <title>Ninja-&ninja-version;</title>
+
+  <indexterm zone="ch-system-ninja">
+    <primary sortas="a-Ninja">Ninja</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Ninja - небольшая система сборки ориентированная на скорость.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&ninja-fin-sbu;</seg>
+        <seg>&ninja-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <tip revision="sysv">
+      <para>Этот раздел необязателен, если LFS не использует systemd.
+      С другой стороны, связка ninja/meson - это мощная система сборки,
+	  которая, скорее всего, будет использоваться все чаще и чаще. Она 
+	  необходима для нескольких пакетов из <ulink url="&blfs-book;">книги BLFS</ulink>.</para>
+    </tip>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Ninja</title>
+
+    <para>При работе ninja обычно запускает максимальное количество процессов
+	параллельно. По умолчанию это количество ядер в системе плюс два. В некоторых
+	случаях это может привести к перегреву процессора или к нехватке памяти в
+	системе. При запуске из командной строки передача параметра -jN ограничит
+	количество параллельных процессов, у некоторых пакетов запуск ninja встроен
+	и параметр -j не передается.</para>
+
+    <para>Использование приведенной ниже <emphasis>необязательной</emphasis> процедуры
+	позволяет пользователю ограничить количество параллельных процессов с помощью переменной
+	окружения NINJAJOBS. <emphasis role="bold">Пример</emphasis>, настройки:
+
+    <screen>export NINJAJOBS=4</screen>
+
+    ограничит ninja четырьмя параллельными процессами.</para>
+
+    <para>По желанию добавьте возможность использовать переменную окружения NINJAJOBS, запустив:</para>
+
+<screen><userinput remap="pre">sed -i '/int Guess/a \
+  int   j = 0;\
+  char* jobs = getenv( "NINJAJOBS" );\
+  if ( jobs != NULL ) j = atoi( jobs );\
+  if ( j > 0 ) return j;\
+' src/ninja.cc</userinput></screen>
+
+    <para>Соберите Ninja с помощью команды:</para>
+
+<screen><userinput remap="configure">python3 configure.py --bootstrap</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров сборки:</title>
+
+      <varlistentry>
+        <term><parameter>--bootstrap</parameter></term>
+        <listitem>
+          <para>Этот параметр перестраивает ninja под текущую систему.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">./ninja ninja_test
+./ninja_test --gtest_filter=-SubprocessTest.SetWithLots</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">install -vm755 ninja /usr/bin/
+install -vDm644 misc/bash-completion /usr/share/bash-completion/completions/ninja
+install -vDm644 misc/zsh-completion  /usr/share/zsh/site-functions/_ninja</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-ninja" role="content">
+    <title>Содержимое пакета Ninja</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+
+      <seglistitem>
+        <seg>ninja</seg>
+      </seglistitem>
+    </segmentedlist>
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ninja">
+        <term><command>ninja</command></term>
+        <listitem>
+          <para>это система сборки Ninja</para>
+          <indexterm zone="ch-system-ninja ninja">
+            <primary sortas="b-ninja">ninja</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
+
