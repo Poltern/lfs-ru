@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-readline" role="wrap">
+  <?dbhtml filename="readline.html"?>
+
+  <sect1info condition="script">
+    <productname>readline</productname>
+    <productnumber>&readline-version;</productnumber>
+    <address>&readline-url;</address>
+  </sect1info>
+
+  <title>Readline-&readline-version;</title>
+
+  <indexterm zone="ch-system-readline">
+    <primary sortas="a-Readline">Readline</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Readline представляет собой набор библиотек, предлагающих возможности
+	редактирования и просмотра истории команд.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&readline-fin-sbu;</seg>
+        <seg>&readline-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Readline</title>
+
+    <para>Переустановка пакета Readline приводит к перемещению старых библиотек
+    в &lt;libraryname&gt;.old. Обычно это не вызывает проблем, но в некоторых случаях могут
+    возникать ошибки линковки с <command>ldconfig</command>.
+    Этого можно иизбежать, выполнив следующие две команды sed::</para>
+
+<screen><userinput remap="pre">sed -i '/MV.*old/d' Makefile.in
+sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
+
+    <para>Подготовьте Readline к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr    \
+            --disable-static \
+            --with-curses    \
+            --docdir=/usr/share/doc/readline-&readline-version;</userinput></screen>
+
+     <variablelist>
+      <title>Значение параметра configure:</title>
+
+      <varlistentry>
+        <term><parameter>--with-curses</parameter></term>
+        <listitem>
+          <para>Этот параметр сообщает Readline, что он может использовать функции
+		  библиотеки termcap из библиотеки curses, а не устанавливать для этого
+		  termcap. Это позволит сгенерировать корректный файл
+	       <filename>readline.pc</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make SHLIB_LIBS="-lncursesw"</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметра make:</title>
+
+      <varlistentry>
+        <term><parameter>SHLIB_LIBS="-lncursesw"</parameter></term>
+        <listitem>
+          <para>Этот параметр принудительно линкует Readline с библиотекой
+          <filename class="libraryfile">libncursesw</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>С этим пакетом не поставляется набор тестов.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make SHLIB_LIBS="-lncursesw" install</userinput></screen>
+
+    <para>По желанию установите документацию:</para>
+
+<screen><userinput remap="install">install -v -m644 doc/*.{ps,pdf,html,dvi} /usr/share/doc/readline-&readline-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-readline" role="content">
+    <title>Содержимое пакета Readline</title>
+
+    <segmentedlist>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>libhistory.so и libreadline.so</seg>
+        <seg>/usr/include/readline и
+        /usr/share/doc/readline-&readline-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libhistory">
+        <term><filename class="libraryfile">libhistory</filename></term>
+        <listitem>
+          <para>Обеспечивает согласованный пользовательский интерфейс для вызова
+          строк из истории</para>
+          <indexterm zone="ch-system-readline libhistory">
+            <primary sortas="c-libhistory">libhistory</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libreadline">
+        <term><filename class="libraryfile">libreadline</filename></term>
+        <listitem>
+          <para>Предоставляет набор команд для управления текстом, введенным
+		  в интерактивном сеансе программы.</para>
+          <indexterm zone="ch-system-readline libreadline">
+            <primary sortas="c-libreadline">libreadline</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

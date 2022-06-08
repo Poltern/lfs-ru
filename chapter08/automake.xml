@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-automake" role="wrap">
+  <?dbhtml filename="automake.html"?>
+
+  <sect1info condition="script">
+    <productname>automake</productname>
+    <productnumber>&automake-version;</productnumber>
+    <address>&automake-url;</address>
+  </sect1info>
+
+  <title>Automake-&automake-version;</title>
+
+  <indexterm zone="ch-system-automake">
+    <primary sortas="a-Automake">Automake</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Automake содержит программы генерации Makefile для использования с Autoconf.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&automake-fin-sbu;</seg>
+        <seg>&automake-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Automake</title>
+<!--
+    <para>Fix a failing test:</para>
+
+<screen><userinput remap="pre">sed -i "s/''/etags/" t/tags-lisp-space.sh</userinput></screen>
+-->
+    <para>Подготовьте Automake к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr --docdir=/usr/share/doc/automake-&automake-version;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Использование опции make -j4 ускоряет тесты даже в системах с одним
+	процессором из-за внутренних задержек в отдельных тестах. Чтобы протестировать
+	пакет, выполните:</para>
+
+<screen><userinput remap="test">make -j4 check</userinput></screen>
+
+    <para>Известно, что тест t/subobj.sh не проходит.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="contents-automake" role="content">
+    <title>Содержимое пакета Automake</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>aclocal, aclocal-&am-minor-version; (жестко связан с aclocal), automake, и
+        automake-&am-minor-version; (жестко связан с automake) </seg>
+        <seg>/usr/share/aclocal-&am-minor-version;, /usr/share/automake-&am-minor-version;, и
+        /usr/share/doc/automake-&automake-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="aclocal">
+        <term><command>aclocal</command></term>
+        <listitem>
+          <para>Генерирует файлы <filename>aclocal.m4</filename> на основе
+		  содержимого файла <filename>configure.in</filename></para>
+          <indexterm zone="ch-system-automake aclocal">
+            <primary sortas="b-aclocal">aclocal</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="aclocalversion">
+        <term><command>aclocal-&am-minor-version;</command></term>
+        <listitem>
+          <para>Жесткая ссылка на <command>aclocal</command></para>
+          <indexterm zone="ch-system-automake aclocalversion">
+            <primary sortas="b-aclocal-&am-minor-version;">aclocal-&am-minor-version;</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="automake">
+        <term><command>automake</command></term>
+        <listitem>
+          <para>Инструмент для автоматического создания
+          <filename>Makefile.in</filename> из файлов
+          <filename>Makefile.am</filename> [Чтобы создать все файлы
+          <filename>Makefile.in</filename> запустите эту программу в
+		  каталоге верхнего уровня. Сканируя файл
+          <filename>configure.in</filename>, он автоматически находит все
+		  подходящие файлы <filename>Makefile.am</filename> и создает
+		  соответствующий <filename>Makefile.in</filename>.]</para>
+          <indexterm zone="ch-system-automake automake">
+            <primary sortas="b-automake">automake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="automake-version">
+        <term><command>automake-&am-minor-version;</command></term>
+        <listitem>
+          <para>Жесткая ссылка на <command>automake</command></para>
+          <indexterm zone="ch-system-automake automake-version">
+            <primary sortas="b-automake-&am-minor-version;">automake-&am-minor-version;</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

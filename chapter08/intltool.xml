@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-intltool" role="wrap">
+  <?dbhtml filename="intltool.html"?>
+
+  <sect1info condition="script">
+    <productname>intltool</productname>
+    <productnumber>&intltool-version;</productnumber>
+    <address>&intltool-url;</address>
+  </sect1info>
+
+  <title>Intltool-&intltool-version;</title>
+
+  <indexterm zone="ch-system-intltool">
+    <primary sortas="a-Intltool">Intltool</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Intltool — это инструмент интернационализации, используемый для извлечения
+	переводимых строк из исходных файлов.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&intltool-fin-sbu;</seg>
+        <seg>&intltool-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Intltool</title>
+
+    <para>Сначала исправьте предупреждение, вызываемое perl-5.22 и более поздними версиями:</para>
+
+<screen><userinput remap="pre">sed -i 's:\\\${:\\\$\\{:' intltool-update.in</userinput></screen>
+
+    <note><para>Приведенное выше регулярное выражение выглядит необычно из-за
+	множества слэшей. Что оно делает, так это добавляет обратную косую черту перед
+	правой фигурной скобкой в ​​последовательности '\${' в результате чего
+	получается '\$\{'.</para></note>
+
+    <para>Подготовьте Intltool к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install
+install -v -Dm644 doc/I18N-HOWTO /usr/share/doc/intltool-&intltool-version;/I18N-HOWTO</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-intltool" role="content">
+    <title>Содержимое пакета Intltool</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>intltool-extract, intltool-merge, intltool-prepare,
+        intltool-update, и intltoolize</seg>
+        <seg>/usr/share/doc/intltool-&intltool-version; и
+        /usr/share/intltool</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="intltoolize">
+        <term><command>intltoolize</command></term>
+        <listitem>
+          <para>Подготавливает пакет для использования intltool</para>
+          <indexterm zone="ch-system-intltool intltoolize">
+            <primary sortas="b-intltoolize">intltoolize</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="intltool-extract">
+        <term><command>intltool-extract</command></term>
+        <listitem>
+          <para>Генерирует заголовочные файлы, которые могут быть прочитаны
+		  с помощью <command>gettext</command></para>
+          <indexterm zone="ch-system-intltool intltool-extract">
+            <primary sortas="b-intltool-extract">intltool-extract</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="intltool-merge">
+        <term><command>intltool-merge</command></term>
+        <listitem>
+          <para>Объединяет переведенные строки в файлы различных типов</para>
+          <indexterm zone="ch-system-intltool intltool-merge">
+            <primary sortas="b-intltool-merge">intltool-merge</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="intltool-prepare">
+        <term><command>intltool-prepare</command></term>
+        <listitem>
+          <para>Обновляет файлы pot и объединяет их с файлами перевода</para>
+          <indexterm zone="ch-system-intltool intltool-prepare">
+            <primary sortas="b-intltool-prepare">intltool-prepare</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="intltool-update">
+        <term><command>intltool-update</command></term>
+        <listitem>
+          <para>Обновляет файлы шаблонов po и объединяет их с переводами</para>
+          <indexterm zone="ch-system-intltool intltool-update">
+            <primary sortas="b-intltool-update">intltool-update</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-expect" role="wrap">
+  <?dbhtml filename="expect.html"?>
+
+  <sect1info condition="script">
+    <productname>expect</productname>
+    <productnumber>&expect-version;</productnumber>
+    <address>&expect-url;</address>
+  </sect1info>
+
+  <title>Expect-&expect-version;</title>
+
+  <indexterm zone="ch-system-expect">
+    <primary sortas="a-Expect">Expect</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет <application>Expect</application> содержит инструменты для автоматизации
+    работы интерактивных приложений, таких как
+    <command>telnet</command>, <command>ftp</command>,
+    <command>passwd</command>, <command>fsck</command>,
+    <command>rlogin</command> и <command>tip</command>, с помощью скриптовых диалогов и макросов.
+    Кроме того <application>Expect</application> полезен для тестирования перечисленных выше
+	приложений, а также для решения сложных задач взаимодействия с другими средствами.
+    Фреймворк <application>DejaGnu</application>
+    написан на языке <application>Expect</application>.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&expect-tmp-sbu;</seg>
+        <seg>&expect-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Expect</title>
+
+    <para>Подготовьте Expect к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr           \
+            --with-tcl=/usr/lib     \
+            --enable-shared         \
+            --mandir=/usr/share/man \
+            --with-tclinclude=/usr/include</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--with-tcl=/usr/lib</parameter></term>
+        <listitem>
+          <para>Этот параметр необходим для указания
+          <command>configure</command> где находится скрипт
+          <command>tclConfig.sh</command>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-tclinclude=/usr/include</parameter></term>
+        <listitem>
+          <para>Этот параметр явно указывает Expect, где искать внутренние заголовки Tcl.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Соберите пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make test</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install
+ln -svf expect&expect-version;/libexpect&expect-version;.so /usr/lib</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-expect" role="content">
+    <title>Содержимое пакета Expect</title>
+
+    <segmentedlist>
+      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+
+      <seglistitem>
+        <seg>expect</seg>
+        <seg>libexpect&expect-version;.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="expect">
+        <term><command>expect</command></term>
+        <listitem>
+          <para>Взаимодействует с другими интерактивными программами в соответствии
+		  со сценарием</para>
+          <indexterm zone="ch-system-expect expect">
+            <primary sortas="b-expect">expect</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libexpect">
+        <term><filename class="libraryfile">libexpect-&expect-version;.so</filename></term>
+        <listitem>
+          <para>Содержит функции, которые позволяют использовать Expect в качестве
+		  расширения Tcl или непосредственно из C или C++ (без Tcl).</para>
+          <indexterm zone="ch-system-expect libexpect">
+            <primary sortas="c-libexpect-&expect-version;">libexpect-&expect-version;</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

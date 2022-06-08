@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-gdbm" role="wrap">
+  <?dbhtml filename="gdbm.html"?>
+
+  <sect1info condition="script">
+    <productname>gdbm</productname>
+    <productnumber>&gdbm-version;</productnumber>
+    <address>&gdbm-url;</address>
+  </sect1info>
+
+  <title>GDBM-&gdbm-version;</title>
+
+  <indexterm zone="ch-system-gdbm">
+    <primary sortas="a-Gdbm">GDBM</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет GDBM содержит менеджер баз данных GNU. Это библиотека функций
+	базы данных, использующая расширяемое хеширование и работающая аналогично
+	стандартной UNIX dbm. Библиотека предоставляет примитивы для хранения пар
+	ключ/значение, поиска и извлечения данных по его ключу и удаления ключа
+	вместе с его данными.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gdbm-fin-sbu;</seg>
+        <seg>&gdbm-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета GDBM</title>
+<!--
+    <para>First, fix an issue first identified by gcc-10:</para>
+
+<screen><userinput remap="pre">sed -r -i '/^char.*parseopt_program_(doc|args)/d' src/parseopt.c</userinput></screen>
+-->
+    <para>Подготовьте GDBM к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr    \
+            --disable-static \
+            --enable-libgdbm-compat</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметра configure:</title>
+
+      <varlistentry>
+        <term><envar>--enable-libgdbm-compat</envar></term>
+        <listitem>
+          <para>Этот параметр включает сборку библиотеки совместимости libgdbm.
+		  Некоторым пакетам за пределами LFS могут потребоваться более старые
+		  подпрограммы DBM, которые он предоставляет.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+<!--
+    <para>
+      One test, <filename>version</filename>, is known to fail.
+    </para>
+-->
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-gdbm" role="content">
+    <title>Содержимое пакета GDBM</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+
+      <seglistitem>
+        <seg>gdbm_dump, gdbm_load, и gdbmtool</seg>
+        <seg>libgdbm.so и libgdbm_compat.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gdbm_dump">
+        <term><command>gdbm_dump</command></term>
+        <listitem>
+          <para>Сохраняет дамп базы данных GDBM в файл</para>
+          <indexterm zone="ch-system-gdbm gdbm_dump">
+            <primary sortas="b-gdbm_dump">gdbm_dump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gdbm_load">
+        <term><command>gdbm_load</command></term>
+        <listitem>
+          <para>Восстанавливает базу данных GDBM из дампа.</para>
+          <indexterm zone="ch-system-gdbm gdbm_load">
+            <primary sortas="b-gdbm_load">gdbm_load</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gdbmtool">
+        <term><command>gdbmtool</command></term>
+        <listitem>
+          <para>Проверяет и изменяет базу данных GDBM</para>
+          <indexterm zone="ch-system-gdbm gdbmtool">
+            <primary sortas="b-gdbmtool">gdbmtool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgdbm">
+        <term><filename class="libraryfile">libgdbm</filename></term>
+        <listitem>
+          <para>Содержит функции для управления хэшированной базой данных</para>
+          <indexterm zone="ch-system-gdbm libgdbm">
+            <primary sortas="c-libgdbm">libgdbm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgdbm_compat">
+        <term><filename class="libraryfile">libgdbm_compat</filename></term>
+        <listitem>
+          <para>Библиотека совместимости, содержащая более старые функции DBM</para>
+          <indexterm zone="ch-system-gdbm libgdbm_compat">
+            <primary sortas="c-libgdbm_compat">libgdbm_compat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
