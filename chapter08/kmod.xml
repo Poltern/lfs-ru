@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-kmod" role="wrap">
+  <?dbhtml filename="kmod.html"?>
+
+  <sect1info condition="script">
+    <productname>kmod</productname>
+    <productnumber>&kmod-version;</productnumber>
+    <address>&kmod-url;</address>
+  </sect1info>
+
+  <title>Kmod-&kmod-version;</title>
+
+  <indexterm zone="ch-system-kmod">
+    <primary sortas="a-Kmod">Kmod</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Kmod содержит библиотеки и утилиты для загрузки модулей ядра.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&kmod-fin-sbu;</seg>
+        <seg>&kmod-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Kmod</title>
+
+    <para>Подготовьте Kmod к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr          \
+            --sysconfdir=/etc      \
+            --with-openssl         \
+            --with-xz              \
+            --with-zstd            \
+            --with-zlib</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term>
+          <parameter>--with-openssl</parameter>
+        </term>
+        <listitem>
+          <para>Этот параметр позволяет Kmod обрабатывать сигнатуры PKCS7 для модулей ядра.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <parameter>--with-xz</parameter>,
+          <parameter>--with-zlib</parameter>, и
+          <parameter>--with-zstd</parameter>
+        </term>
+        <listitem>
+          <para>Эти параметры позволяют Kmod обрабатывать сжатые модули ядра.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Набору тестов этого пакета необходимы необработанные заголовочные файлы ядра
+	(а не <quote>очищенные</quote>, установленных ранее), это выходит за рамки LFS,
+	поэтому тестирование будет пропущено.</para>
+
+    <para>Установите пакет и создайте символические ссылки для совместимости с
+	Module-Init-Tools (пакетом, который ранее обрабатывал модули ядра Linux).:</para>
+
+<screen><userinput remap="install">make install
+
+for target in depmod insmod modinfo modprobe rmmod; do
+  ln -sfv ../bin/kmod /usr/sbin/$target
+done
+
+ln -sfv kmod /usr/bin/lsmod</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-kmod" role="content">
+    <title>Содержимое пакета Kmod</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+
+      <seglistitem>
+        <seg>depmod (ссылка на kmod), insmod (ссылка на kmod), kmod,
+        lsmod (ссылка на kmod), modinfo (ссылка на kmod), modprobe (ссылка на kmod),
+        и rmmod (ссылка на kmod)</seg>
+        <seg>libkmod.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="depmod">
+        <term><command>depmod</command></term>
+        <listitem>
+          <para>Создает файл зависимостей на основе символов найденных в
+          существующем наборе модулей; этот файл используется программой
+          <command>modprobe</command> для автоматической загрузки необходимых
+          модулей</para>
+          <indexterm zone="ch-system-kmod depmod">
+            <primary sortas="b-depmod">depmod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="insmod">
+        <term><command>insmod</command></term>
+        <listitem>
+          <para>Устанавливает загружаемый модуль в работающее ядро</para>
+          <indexterm zone="ch-system-kmod insmod">
+            <primary sortas="b-insmod">insmod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kmod">
+        <term><command>kmod</command></term>
+        <listitem>
+          <para>Загружает и выгружает модули ядра</para>
+          <indexterm zone="ch-system-kmod kmod">
+            <primary sortas="b-kmod">kmod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lsmod">
+        <term><command>lsmod</command></term>
+        <listitem>
+          <para>Список загруженных в данный момент модулей</para>
+          <indexterm zone="ch-system-kmod lsmod">
+            <primary sortas="b-lsmod">lsmod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="modinfo">
+        <term><command>modinfo</command></term>
+        <listitem>
+          <para>Проверяет объектный файл, связанный с модулем ядра, и отображает
+		  всю информацию, которую он смог собрать.</para>
+          <indexterm zone="ch-system-kmod modinfo">
+            <primary sortas="b-modinfo">modinfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="modprobe">
+        <term><command>modprobe</command></term>
+        <listitem>
+          <para>Использует файл зависимостей, созданный
+          <command>depmod</command>, для автоматической загрузки соответствующих модулей</para>
+          <indexterm zone="ch-system-kmod modprobe">
+            <primary sortas="b-modprobe">modprobe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rmmod">
+        <term><command>rmmod</command></term>
+        <listitem>
+          <para>Выгружает модули из работающего ядра</para>
+          <indexterm zone="ch-system-kmod rmmod">
+            <primary sortas="b-rmmod">rmmod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libkmod">
+        <term><filename class="libraryfile">libkmod</filename></term>
+        <listitem>
+          <para>Библиотека используемая другими программами для загрузки и выгрузки модулей ядра</para>
+          <indexterm zone="ch-system-kmod">
+            <primary sortas="c-libkmod">libkmod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
+

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+  <!ENTITY tdbc-ver          "1.1.3">
+  <!ENTITY itcl-ver          "4.2.2">
+]>
+
+<sect1 id="ch-system-tcl" role="wrap">
+  <?dbhtml filename="tcl.html"?>
+
+  <sect1info condition="script">
+    <productname>tcl</productname>
+    <productnumber>&tcl-version;</productnumber>
+    <address>&tcl-url;</address>
+  </sect1info>
+
+  <title>Tcl-&tcl-version;</title>
+
+  <indexterm zone="ch-system-tcl">
+    <primary sortas="a-Tcl">Tcl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет <application>Tcl</application> содержит Tool Command Language,
+	надежный скриптовый язык общего назначения. Пакет <application>Expect</application>
+	написан на языке <application>Tcl</application>.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&tcl-tmp-sbu;</seg>
+        <seg>&tcl-tmp-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Tcl</title>
+
+    <para>Этот пакет и следующие два (Expect и DejaGNU) устанавливаются для поддержки
+	возможности тестирования binutils, GCC и других пакетов. Установка трех пакетов для
+	целей тестирования может показаться избыточной, но это успокаивает, когда
+	необходимо знать, что наиболее важные инструменты работают правильно.</para>
+
+<!--    <para>Note that the Tcl package used here is a minimal version needed
+    to run the LFS tests.  For the full package, see the
+    <ulink url='&blfs-book;general/tcl.html'>BLFS Tcl procedures</ulink>.</para>-->
+
+    <para>Сначала распакуйте документацию, выполнив следующую команду:</para>
+
+<screen><userinput remap="pre">tar -xf ../tcl&tcl-version;-html.tar.gz --strip-components=1</userinput></screen>
+
+    <para>Подготовьте Tcl к компиляции:</para>
+
+<screen><userinput remap="configure">SRCDIR=$(pwd)
+cd unix
+./configure --prefix=/usr           \
+            --mandir=/usr/share/man</userinput></screen>
+
+    <para>Соберите пакет:</para>
+
+<screen><userinput remap="make">make
+
+sed -e "s|$SRCDIR/unix|/usr/lib|" \
+    -e "s|$SRCDIR|/usr/include|"  \
+    -i tclConfig.sh
+
+sed -e "s|$SRCDIR/unix/pkgs/tdbc&tdbc-ver;|/usr/lib/tdbc&tdbc-ver;|" \
+    -e "s|$SRCDIR/pkgs/tdbc&tdbc-ver;/generic|/usr/include|"    \
+    -e "s|$SRCDIR/pkgs/tdbc&tdbc-ver;/library|/usr/lib/tcl8.6|" \
+    -e "s|$SRCDIR/pkgs/tdbc&tdbc-ver;|/usr/include|"            \
+    -i pkgs/tdbc&tdbc-ver;/tdbcConfig.sh
+
+sed -e "s|$SRCDIR/unix/pkgs/itcl&itcl-ver;|/usr/lib/itcl&itcl-ver;|" \
+    -e "s|$SRCDIR/pkgs/itcl&itcl-ver;/generic|/usr/include|"    \
+    -e "s|$SRCDIR/pkgs/itcl&itcl-ver;|/usr/include|"            \
+    -i pkgs/itcl&itcl-ver;/itclConfig.sh
+
+unset SRCDIR</userinput></screen>
+
+    <para>Различные инструкции <quote>sed</quote> после команды
+    <quote>make</quote> удаляют ссылки на каталог сборки из файлов конфигурации и заменяют
+    их на каталог установки.
+    Это необязательно для оставшейся части LFS, но может понадобится в случае, если пакет,
+	собранный позже, использует Tcl.</para>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make test</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Сделайте установленную библиотеку доступной для записи, чтобы позже можно было
+	удалить отладочные символы:</para>
+
+<screen><userinput remap="install">chmod -v u+w /usr/lib/libtcl&tcl-major-version;.so</userinput></screen>
+
+    <para>>Установите заголовочные файлы Tcl. Они потребуются для следующего пакета - Expect.</para>
+
+<screen><userinput remap="install">make install-private-headers</userinput></screen>
+
+    <para>Теперь создайте необходимую символическую ссылку:</para>
+
+<screen><userinput remap="install">ln -sfv tclsh&tcl-major-version; /usr/bin/tclsh</userinput></screen>
+
+    <para>Переименуйте справочную страницу, которая конфликтует со справочной страницей Perl:</para>
+
+    <screen><userinput remap="install">mv /usr/share/man/man3/{Thread,Tcl_Thread}.3</userinput></screen>
+
+    <para>Если вы загрузили дополнительную документацию, установите ее, выполнив
+	следующие команды:</para>
+
+ <screen><userinput remap="install">mkdir -v -p /usr/share/doc/tcl-&tcl-version;
+cp -v -r  ../html/* /usr/share/doc/tcl-&tcl-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-tcl" role="content">
+    <title>Содержимое пакета Tcl</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+
+      <seglistitem>
+        <seg>
+          tclsh (ссылка на tclsh&tcl-major-version;) и
+          tclsh&tcl-major-version;
+        </seg>
+        <seg>
+          libtcl&tcl-major-version;.so и
+          libtclstub&tcl-major-version;.a
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="tclsh&tcl-major-version;">
+        <term><command>tclsh&tcl-major-version;</command></term>
+        <listitem>
+          <para>Командная оболочка Tcl</para>
+          <indexterm zone="ch-system-tcl tclsh&tcl-major-version;">
+            <primary sortas="b-tclsh&tcl-major-version;">tclsh&tcl-major-version;</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tclsh">
+        <term><command>tclsh</command></term>
+        <listitem>
+          <para>Ссылка на tclsh&tcl-major-version;</para>
+          <indexterm zone="ch-system-tcl tclsh">
+            <primary sortas="b-tclsh">tclsh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtcl&tcl-major-version;.so">
+        <term><filename class="libraryfile">libtcl&tcl-major-version;.so</filename></term>
+        <listitem>
+          <para>Библиотека Tcl</para>
+          <indexterm zone="ch-system-tcl libtcl&tcl-major-version;.so">
+            <primary sortas="c-libtcl&tcl-major-version;.so">libtcl&tcl-major-version;.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtclstub&tcl-major-version;.a">
+        <term><filename class="libraryfile">libtclstub&tcl-major-version;.a</filename></term>
+        <listitem>
+          <para>Библиотека-заглушка Tcl</para>
+          <indexterm zone="ch-system-tcl libtclstub&tcl-major-version;.a">
+            <primary sortas="c-libtclstub&tcl-major-version;.a">libtclstub&tcl-major-version;.a</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

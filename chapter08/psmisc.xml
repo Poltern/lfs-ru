@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-psmisc" role="wrap">
+  <?dbhtml filename="psmisc.html"?>
+
+  <sect1info condition="script">
+    <productname>psmisc</productname>
+    <productnumber>&psmisc-version;</productnumber>
+    <address>&psmisc-url;</address>
+  </sect1info>
+
+  <title>Psmisc-&psmisc-version;</title>
+
+  <indexterm zone="ch-system-psmisc">
+    <primary sortas="a-Psmisc">Psmisc</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Psmisc содержит программы для отображения информации о запущенных
+    процессах.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&psmisc-fin-sbu;</seg>
+        <seg>&psmisc-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Psmisc</title>
+
+    <para>Подготовьте Psmisc к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>С этим пакетом не поставляется набор тестов.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-psmisc" role="content">
+    <title>Содержимое пакета Psmisc</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+
+      <seglistitem>
+        <seg>fuser, killall, peekfd, prtstat, pslog, pstree, и pstree.x11 (ссылка на pstree)</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fuser">
+        <term><command>fuser</command></term>
+        <listitem>
+          <para>Сообщает идентификаторы процессов (PID), которые используют данные
+		  файлы или файловые системы.</para>
+          <indexterm zone="ch-system-psmisc fuser">
+            <primary sortas="b-fuser">fuser</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="killall">
+        <term><command>killall</command></term>
+        <listitem>
+          <para>Уничтожает процессы по имени; посылает сигнал всем процессам,
+		  выполняющим любую из заданных команд</para>
+          <indexterm zone="ch-system-psmisc killall">
+            <primary sortas="b-killall">killall</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="peekfd">
+        <term><command>peekfd</command></term>
+        <listitem>
+          <para>Просмотривает файловые дескрипторы запущенного процесса с учетом его PID</para>
+          <indexterm zone="ch-system-psmisc peekfd">
+            <primary sortas="b-peekfd">peekfd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="prtstat">
+        <term><command>prtstat</command></term>
+        <listitem>
+          <para>Выводит информацию о процессе</para>
+          <indexterm zone="ch-system-psmisc prtstat">
+            <primary sortas="b-prtstat">prtstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pslog">
+        <term><command>pslog</command></term>
+        <listitem>
+          <para>Сообщает текущий путь к журналам процесса</para>
+          <indexterm zone="ch-system-psmisc pslog">
+            <primary sortas="b-pslog">pslog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pstree">
+        <term><command>pstree</command></term>
+        <listitem>
+          <para>Отображает запущенные процессы в виде дерева</para>
+          <indexterm zone="ch-system-psmisc pstree">
+            <primary sortas="b-pstree">pstree</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pstree.x11">
+        <term><command>pstree.x11</command></term>
+        <listitem>
+          <para>То же, что и <command>pstree</command>, за исключением того, что
+		  он ожидает подтверждения перед выходом.</para>
+          <indexterm zone="ch-system-psmisc pstree.x11">
+            <primary sortas="b-pstree.x11">pstree.x11</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

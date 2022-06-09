@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-gzip" role="wrap">
+  <?dbhtml filename="gzip.html"?>
+
+  <sect1info condition="script">
+    <productname>gzip</productname>
+    <productnumber>&gzip-version;</productnumber>
+    <address>&gzip-url;</address>
+  </sect1info>
+
+  <title>Gzip-&gzip-version;</title>
+
+  <indexterm zone="ch-system-gzip">
+    <primary sortas="a-Gzip">Gzip</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Gzip содержит программы для сжатия и распаковки файлов.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gzip-fin-sbu;</seg>
+        <seg>&gzip-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Gzip</title>
+
+    <para>Подготовьте Gzip к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-gzip" role="content">
+    <title>Содержимое пакета Gzip</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+
+      <seglistitem>
+        <seg>gunzip, gzexe, gzip, uncompress (жесткая ссылка на gunzip), zcat, zcmp,
+        zdiff, zegrep, zfgrep, zforce, zgrep, zless, zmore, и znew</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gunzip">
+        <term><command>gunzip</command></term>
+        <listitem>
+          <para>Распаковывает gzip-файлы</para>
+          <indexterm zone="ch-system-gzip gunzip">
+            <primary sortas="b-gunzip">gunzip</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gzexe">
+        <term><command>gzexe</command></term>
+        <listitem>
+          <para>Создает самораспаковывающиеся исполняемые файлы</para>
+          <indexterm zone="ch-system-gzip gzexe">
+            <primary sortas="b-gzexe">gzexe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gzip">
+        <term><command>gzip</command></term>
+        <listitem>
+          <para>Сжимает файлы, используя алгоритм Lempel-Ziv (LZ77).</para>
+          <indexterm zone="ch-system-gzip gzip">
+            <primary sortas="b-gzip">gzip</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="uncompress">
+        <term><command>uncompress</command></term>
+        <listitem>
+          <para>Распаковывает сжатые файлы</para>
+          <indexterm zone="ch-system-gzip uncompress">
+            <primary sortas="b-uncompress">uncompress</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zcat">
+        <term><command>zcat</command></term>
+        <listitem>
+          <para>Распаковывает указанные сжатые файлы в стандартный поток вывода</para>
+          <indexterm zone="ch-system-gzip zcat">
+            <primary sortas="b-zcat">zcat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zcmp">
+        <term><command>zcmp</command></term>
+        <listitem>
+          <para>Запускает <command>cmp</command> для архивированных файлов</para>
+          <indexterm zone="ch-system-gzip zcmp">
+            <primary sortas="b-zcmp">zcmp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zdiff">
+        <term><command>zdiff</command></term>
+        <listitem>
+          <para>Запускает <command>diff</command> для архивированных файлов</para>
+          <indexterm zone="ch-system-gzip zdiff">
+            <primary sortas="b-zdiff">zdiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zegrep">
+        <term><command>zegrep</command></term>
+        <listitem>
+          <para>Запускает <command>egrep</command> для архивированных файлов</para>
+          <indexterm zone="ch-system-gzip zegrep">
+            <primary sortas="b-zegrep">zegrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zfgrep">
+        <term><command>zfgrep</command></term>
+        <listitem>
+          <para>Запускает <command>fgrep</command> для архивированных файлов</para>
+          <indexterm zone="ch-system-gzip zfgrep">
+            <primary sortas="b-zfgrep">zfgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zforce">
+        <term><command>zforce</command></term>
+        <listitem>
+          <para>Принудительно устанавливает расширение <filename class="extension">.gz</filename>
+          всем сжатым файлам, чтобы <command>gzip</command>
+          не сжимал их снова; это может быть полезно, когда имена файлов были
+		  обрезаны во время передачи файла</para>
+          <indexterm zone="ch-system-gzip zforce">
+            <primary sortas="b-zforce">zforce</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zgrep">
+        <term><command>zgrep</command></term>
+        <listitem>
+          <para>Запускает <command>grep</command> для архивированных файлов</para>
+          <indexterm zone="ch-system-gzip zgrep">
+            <primary sortas="b-zgrep">zgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zless">
+        <term><command>zless</command></term>
+        <listitem>
+          <para>Запускает <command>less</command> для архивированных файлов</para>
+          <indexterm zone="ch-system-gzip zless">
+            <primary sortas="b-zless">zless</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zmore">
+        <term><command>zmore</command></term>
+        <listitem>
+          <para>Запускает <command>more</command> для архивированных файлов</para>
+          <indexterm zone="ch-system-gzip zmore">
+            <primary sortas="b-zmore">zmore</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="znew">
+        <term><command>znew</command></term>
+        <listitem>
+          <para>Повторно сжимает файлы из формата <command>compress</command> в формат
+          <command>gzip</command> &mdash; из <filename
+          class="extension">.Z</filename> в <filename
+          class="extension">.gz</filename></para>
+          <indexterm zone="ch-system-gzip znew">
+            <primary sortas="b-znew">znew</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
