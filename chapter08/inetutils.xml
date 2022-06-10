@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-inetutils" role="wrap">
+  <?dbhtml filename="inetutils.html"?>
+
+  <sect1info condition="script">
+    <productname>inetutils</productname>
+    <productnumber>&inetutils-version;</productnumber>
+    <address>&inetutils-url;</address>
+  </sect1info>
+
+  <title>Inetutils-&inetutils-version;</title>
+
+  <indexterm zone="ch-system-inetutils">
+    <primary sortas="a-Inetutils">Inetutils</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Inetutils содержит базовые программы для работы с сетью.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&inetutils-fin-sbu;</seg>
+        <seg>&inetutils-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Inetutils</title>
+
+    <para>Подготовьте Inetutils к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr        \
+            --bindir=/usr/bin    \
+            --localstatedir=/var \
+            --disable-logger     \
+            --disable-whois      \
+            --disable-rcp        \
+            --disable-rexec      \
+            --disable-rlogin     \
+            --disable-rsh        \
+            --disable-servers</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-logger</parameter></term>
+        <listitem>
+          <para>Параметр запрещает установку программы
+          <command>logger</command>, используемой скриптами для отправки сообщений системной
+          службе логирования (System Log Daemon). Не устанавливайте её, т.к. Util-linux
+          устанавливает более свежую версию.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-whois</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает сборку <command>whois</command>-клиента Inetutils,
+		  который устарел. Инструкции для сборки более нового клиента <command>whois</command>
+		  находятся в книге BLFS.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-r*</parameter></term>
+        <listitem>
+          <para>Отключает установку устаревших программ, которые не должны использоваться
+          по соображениям безопасности. Функционал этих программы можно получить установкой
+          пакета <application>openssh</application> из книги BLFS.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-servers</parameter></term>
+        <listitem>
+          <para>Отключает установку различных сетевых серверов, входящих в состав пакета
+          Inetutils. Эти серверы считаются неподходящими для базовой системы LFS. Некоторые из
+          них небезопасны по своей природе и считаются надежными только в доверенных сетях.
+          Обратите внимание, что для многих из них доступны более качественные замены.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните::</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+<!--
+    <note><para>One test, libls.sh, may fail in the initial chroot
+    environment but will pass if the test is rerun after the LFS system
+    is complete. One test, ping-localhost.sh, will fail if the host
+    system does not have ipv6 capability.</para></note>
+-->
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Переместите программу в правильное место:</para>
+
+<screen><userinput remap="install">mv -v /usr/{,s}bin/ifconfig</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-inetutils" role="content">
+    <title>Содержимое пакета Inetutils</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+
+      <seglistitem>
+        <seg>dnsdomainname, ftp, ifconfig, hostname, ping, ping6,
+        talk, telnet, tftp, и traceroute</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="dnsdomainname">
+        <term><command>dnsdomainname</command></term>
+        <listitem>
+        <para>Показывает системное DNS имя</para>
+        <indexterm zone="ch-system-inetutils dnsdomainname">
+          <primary sortas="b-dnsdomainname">dnsdomainname</primary>
+        </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ftp">
+        <term><command>ftp</command></term>
+        <listitem>
+        <para>Программа для передачи файлов по протоколу FTP</para>
+        <indexterm zone="ch-system-inetutils ftp">
+          <primary sortas="b-ftp">ftp</primary>
+        </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hostname">
+        <term><command>hostname</command></term>
+        <listitem>
+          <para>Сообщает или задает имя хоста</para>
+          <indexterm zone="ch-system-inetutils hostname">
+            <primary sortas="b-hostname">hostname</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ifconfig">
+        <term><command>ifconfig</command></term>
+        <listitem>
+        <para>Управляет сетевыми интерфейсами</para>
+        <indexterm zone="ch-system-inetutils ifconfig">
+          <primary sortas="b-ifconfig">ifconfig</primary>
+        </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ping">
+        <term><command>ping</command></term>
+        <listitem>
+          <para>Отправляет пакеты эхо-запросов и сообщает, сколько времени занимают ответы</para>
+          <indexterm zone="ch-system-inetutils ping">
+            <primary sortas="b-ping">ping</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ping6">
+        <term><command>ping6</command></term>
+        <listitem>
+          <para>Версия <command>ping</command> для сетей IPv6</para>
+          <indexterm zone="ch-system-inetutils ping6">
+            <primary sortas="b-ping6">ping6</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="talk">
+        <term><command>talk</command></term>
+        <listitem>
+          <para>Используется для общения с другими пользователями</para>
+          <indexterm zone="ch-system-inetutils talk">
+            <primary sortas="b-talk">talk</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="telnet">
+        <term><command>telnet</command></term>
+        <listitem>
+          <para>Интерфейс к протоколу TELNET</para>
+          <indexterm zone="ch-system-inetutils telnet">
+            <primary sortas="b-telnet">telnet</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tftp">
+        <term><command>tftp</command></term>
+        <listitem>
+          <para>Программа для передачи файлов по протоколу TFTP (Trivial File
+		  Transfer Protocol — простой протокол передачи файлов)</para>
+          <indexterm zone="ch-system-inetutils tftp">
+            <primary sortas="b-tftp">tftp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="traceroute">
+        <term><command>traceroute</command></term>
+        <listitem>
+          <para>Отслеживает маршрут, по которому проходят ваши пакеты от хоста на
+		  которым вы работаете, к другому узлу сети, показывая все промежуточные
+		  переходы (шлюзы) на этом пути.</para>
+          <indexterm zone="ch-system-inetutils traceroute">
+            <primary sortas="b-traceroute">traceroute</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

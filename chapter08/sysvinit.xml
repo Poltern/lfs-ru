@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-sysvinit" role="wrap" revision="sysv">
+  <?dbhtml filename="sysvinit.html"?>
+
+  <sect1info condition="script">
+    <productname>sysvinit</productname>
+    <productnumber>&sysvinit-version;</productnumber>
+    <address>&sysvinit-url;</address>
+  </sect1info>
+
+  <title>Sysvinit-&sysvinit-version;</title>
+
+  <indexterm zone="ch-system-sysvinit">
+    <primary sortas="a-Sysvinit">Sysvinit</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Sysvinit содержит программы для управления загрузкой,
+    выполнением и выключением системы.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&sysvinit-fin-sbu;</seg>
+        <seg>&sysvinit-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Sysvinit</title>
+
+<!--
+    <para>When run-levels are changed (for example, when halting the
+    system), <command>init</command> sends termination signals to those
+    processes that <command>init</command> itself started and that should
+    not be running in the new run-level.  While doing this,
+    <command>init</command> outputs messages like <quote>Sending processes
+    the TERM signal</quote> which seem to imply that it is sending these
+    signals to all currently running processes. To avoid this
+    misinterpretation, modify the source so that these messages read like
+    <quote>Sending processes configured via /etc/inittab the TERM signal</quote>
+    instead:</para>
+
+<screen><userinput remap="pre">sed -i 's@Sending processes@&amp; configured via /etc/inittab@g' src/init.c</userinput></screen>
+
+    <para>Maintained versions of the <command>wall</command>,
+    <command>mountpoint</command>, <command>last</command>,
+    <command>mesg</command>, <command>sulogin</command>, and
+    <command>utmpdump</command> programs were installed earlier by Util-linux.
+    Suppress the installation of Sysvinit's versions of these programs and
+    their man pages:</para>
+
+<screen><userinput remap="make">sed -ri -e '/utmpdump/d'   \
+        -e '/mountpoint/d' \
+        -e '/mesg/d'       \
+        -e 's/= sulogin(\.8)?/=/' src/Makefile</userinput></screen>
+-->
+    <para>Сначала примените патч, который удаляет несколько программ,
+	установленных другими пакетами и исправляет предупреждение компилятора:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&sysvinit-consolidated-patch;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>С этим пакетом не поставляется набор тестов.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-sysvinit" role="content">
+    <title>Содержимое пакета Sysvinit</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+
+      <seglistitem>
+        <seg>bootlogd, fstab-decode, halt, init, killall5,
+        poweroff (ссылка на halt), reboot (ссылка на halt), runlevel,
+        shutdown, и telinit (ссылка на init)</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="bootlogd">
+        <term><command>bootlogd</command></term>
+        <listitem>
+          <para>Логирует сообщения при загрузке системы</para>
+          <indexterm zone="ch-system-sysvinit bootlogd">
+            <primary sortas="b-bootlogd">bootlogd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fstab-decode">
+        <term><command>fstab-decode</command></term>
+        <listitem>
+          <para>Запускает команды с аргументами, заданными в fstab</para>
+          <indexterm zone="ch-system-sysvinit fstab-decode">
+            <primary sortas="b-fstab-decode">fstab-decode</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="halt-sysv">
+        <term><command>halt</command></term>
+        <listitem>
+          <para>Обычно вызывает команду <command>shutdown</command> с параметром
+		  <parameter>-h</parameter>, за исключением случаев, когда система уже
+		  находится на уровне запуска 0, затем сообщает ядру остановить систему;
+		  в файле <filename>/var/log/wtmp</filename> отмечается, что система завершает работу.</para>
+          <indexterm zone="ch-system-sysvinit halt-sysv">
+            <primary sortas="b-halt">halt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="init-sysv">
+        <term><command>init</command></term>
+        <listitem>
+          <para>Первый процесс, который будет запущен, когда ядро ​​​​инициализирует
+		  оборудование, init берет на себя процесс загрузки и запускает все
+		  процессы, которые указанны в его файле конфигурации</para>
+          <indexterm zone="ch-system-sysvinit init-sysv">
+            <primary sortas="b-init">init</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="killall5">
+        <term><command>killall5</command></term>
+        <listitem>
+          <para>Посылает сигнал во все процессы, за исключением собственных
+		  процессов сессии, так что вы не уничтожите командную оболочку, в
+		  которой работает скрипт, запустивший данную команду</para>
+          <indexterm zone="ch-system-sysvinit killall5">
+            <primary sortas="b-killall5">killall5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="poweroff-sysv">
+        <term><command>poweroff</command></term>
+        <listitem>
+          <para>Посылает ядру команду остановить систему и выключить компьютер
+		  (смотрите команду <command>halt</command>)</para>
+          <indexterm zone="ch-system-sysvinit poweroff-sysv">
+            <primary sortas="b-poweroff">poweroff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="reboot-sysv">
+        <term><command>reboot</command></term>
+        <listitem>
+          <para>Посылает ядру команду перезагрузить систему
+		  (смотрите команду <command>halt</command>)</para>
+          <indexterm zone="ch-system-sysvinit reboot-sysv">
+            <primary sortas="b-reboot">reboot</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="runlevel-sysv">
+        <term><command>runlevel</command></term>
+        <listitem>
+          <para>Сообщает о предыдущем и текущем уровнях выполнения так, как это
+		  указано в последней записи в файле  <filename>/run/utmp</filename></para>
+          <indexterm zone="ch-system-sysvinit runlevel-sysv">
+            <primary sortas="b-runlevel">runlevel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="shutdown-sysv">
+        <term><command>shutdown</command></term>
+        <listitem>
+          <para>Безопасно останавливает систему, отправляя сигналы всем процессам и оповещая
+          всех пользователей, находящихся в системе</para>
+          <indexterm zone="ch-system-sysvinit shutdown-sysv">
+            <primary sortas="b-shutdown">shutdown</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="telinit-sysv">
+        <term><command>telinit</command></term>
+        <listitem>
+          <para>Сообщает <command>init</command> на какой уровень выполнения перейти</para>
+          <indexterm zone="ch-system-sysvinit telinit-sysv">
+            <primary sortas="b-telinit">telinit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
