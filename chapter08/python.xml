@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-Python" role="wrap">
+  <?dbhtml filename="Python.html"?>
+
+  <sect1info condition="script">
+    <productname>Python</productname>
+    <productnumber>&python-version;</productnumber>
+    <address>&python-url;</address>
+  </sect1info>
+
+  <title>Python-&python-version;</title>
+
+  <indexterm zone="ch-system-Python">
+    <primary sortas="a-Python">Python</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Python 3 содержит среду разработчика Python. Его можно использовать
+    для объектно-ориентированного программирования, написания скриптов, прототипирования
+    больших программ или разработки собственных приложений.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&python-fin-sbu;</seg>
+        <seg>&python-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Python 3</title>
+
+    <para>Подготовьте Python к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr        \
+            --enable-shared      \
+            --with-system-expat  \
+            --with-system-ffi    \
+            --enable-optimizations</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+    <varlistentry>
+      <term><parameter>--with-system-expat</parameter></term>
+      <listitem>
+        <para>Этот параметр выполняет линковку с системной версией
+        <application>Expat</application>.</para>
+       </listitem>
+     </varlistentry>
+
+    <varlistentry>
+      <term><parameter>--with-system-ffi</parameter></term>
+      <listitem>
+        <para>Этот параметр выполняет линковку с системной версией
+        <application>libffi</application>.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>--enable-optimizations</parameter></term>
+      <listitem>
+        <para>Этот параметр обеспечивает стабильную, но ресурсозатратную оптимизацию.</para>
+      </listitem>
+    </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Запускать тесты на этом этапе не рекомендуется. Известно, что тесты зависают
+	на неопределенный срок в неполной среде LFS. При желании тесты можно запустить
+	повторно в конце этой главы или при переустановке Python 3 в BLFS. Чтобы запустить
+	тесты, выполните команду <command>make test</command>.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>В некоторых местах мы используем команду <command>pip3</command> для
+	установки программ и модулей Python 3 от имени пользователя
+	<systemitem class='username'>root</systemitem>. Это противоречит рекомендации
+	разработчиков Python устанавливать пакеты в виртуальную среду или домашний каталог
+	обычного пользователя (путем запуска <command>pip3</command> от имени этого
+	пользователя). Поэтому при использовании <command>pip3</command> от имени пользователя
+	<systemitem class='username'>root</systemitem> появляется многострочное предупреждение.
+	Основная причина этой рекомендации — избежать конфликта с системным менеджером пакетов
+	(например, <command>dpkg</command>), но в LFS нет общесистемного менеджера пакетов,
+	так что это не проблема. По желанию отключите это предупреждение, выполнив следующую команду:</para>
+
+<screen><userinput remap="install">sed -e '/def warn_if_run_as_root/a\    return' \
+    -i /usr/lib/python3.10/site-packages/pip/_internal/cli/req_command.py
+</userinput></screen>
+
+    <important>
+      <para>
+        В LFS и BLFS мы собираем и устанавливаем модули Python с помощью команды
+		<command>pip3</command>. Позаботьтесь о том, чтобы команды <command>pip3 install</command>
+		в обеих книгах выполнялись от имени пользователя &root;, если только они не
+		предназначены для виртуальной среды Python. Запуск <command>pip3 install</command>
+		от имени пользователя без полномочий &root; может показаться нормальным, но
+		это приведет к тому, что установленный модуль будет недоступен для других пользователей.
+      </para>
+
+      <para>
+        Команда <command>pip3 install</command> по умолчанию не приведёт к
+		переустановке уже установленного модуля. Чтобы использовать команду
+		<command>pip3 install</command> для обновления модуля (например, с
+		meson-0.61.3 до meson-0.62.0), вставьте параметр <parameter>--upgrade</parameter>
+		в командную строку. Если по какой-то причине необходимо понизить версию
+		модуля или переустановить ту же версию, используйте параметр
+		<parameter>--force-reinstall</parameter>.
+      </para>
+    </important>
+
+    <para>По желанию установите предварительно отформатированную документацию:</para>
+
+<screen><userinput remap="install">install -v -dm755 /usr/share/doc/python-&python-version;/html
+
+tar --strip-components=1  \
+    --no-same-owner       \
+    --no-same-permissions \
+    -C /usr/share/doc/python-&python-version;/html \
+    -xvf ../python-&python-version;-docs-html.tar.bz2</userinput></screen>
+
+    <variablelist>
+      <title>Значение команд установки документации:</title>
+
+    <varlistentry>
+      <term><option>--no-same-owner</option> и <option>--no-same-permissions</option></term>
+      <listitem>
+        <para>Проверяет, что установленные файлы имеют корректные права и владельца
+		файлов. Использование <application>tar</application> без этих параметров
+		приведет к установке файлов с правами пользователя создававшего пакет.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+  <sect2 id="contents-python" role="content">
+    <title>Содержимое пакета Python 3</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>
+          2to3, idle3, pip3, pydoc3, python3, и python3-config
+        </seg>
+        <seg>
+          libpython&python-minor;.so и libpython3.so
+        </seg>
+        <seg>
+          /usr/include/python&python-minor;,
+          /usr/lib/python3, и
+          /usr/share/doc/python-&python-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="python-2to3">
+        <term><command>2to3</command></term>
+        <listitem>
+          <para>
+            программа на <application>Python</application>, которая читает файлы написанные
+            на <application>Python 2.x</application>, применяет к ним серию изменений и
+            переводит их в валидный код <application>Python 3.x</application>.
+          </para>
+          <indexterm zone="ch-system-Python">
+            <primary sortas="b-2to3">2to3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="idle3">
+        <term><command>idle3</command></term>
+        <listitem>
+          <para>
+            скрипт-обертка, который открывает графический редактор с поддержкой
+			<application>Python</application>. Для запуска этого скрипта, перед
+			установкой Python необходимо установить <application>Tk</application>,
+			чтобы модуль Tkinter Python был собран.
+          </para>
+          <indexterm zone="ch-system-Python">
+            <primary sortas="b-idle3">idle3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pip3">
+        <term><command>pip3</command></term>
+        <listitem>
+          <para>
+            Установщик пакетов для Python. Вы можете использовать pip для установки
+			пакетов из каталога PyPI (Python Package Index) и других источников.
+          </para>
+          <indexterm zone="ch-system-Python">
+            <primary sortas="b-pip3">pip3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pydoc3">
+        <term><command>pydoc3</command></term>
+        <listitem>
+          <para>
+            инструмент документации <application>Python</application>
+          </para>
+          <indexterm zone="ch-system-Python">
+            <primary sortas="b-pydoc3">pydoc3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="python3">
+        <term><command>python3</command></term>
+        <listitem>
+          <para>
+            интерпретируемый, интерактивный, объектно-ориентированный язык программирования
+          </para>
+          <indexterm zone="ch-system-Python">
+            <primary sortas="b-python3">python3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
+

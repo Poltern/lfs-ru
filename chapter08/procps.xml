@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-procps" role="wrap">
+  <?dbhtml filename="procps-ng.html"?>
+
+  <sect1info condition="script">
+    <productname>procps-ng</productname>
+    <productnumber>&procps-ng-version;</productnumber>
+    <address>&procps-ng-url;</address>
+  </sect1info>
+
+  <title>Procps-ng-&procps-ng-version;</title>
+
+  <indexterm zone="ch-system-procps">
+    <primary sortas="a-Procps">Procps-ng</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Procps-ng содержит программы для мониторинга процессов.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&procps-ng-fin-sbu;</seg>
+        <seg>&procps-ng-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Procps-ng</title>
+
+    <para>Подготовьте procps-ng для компиляции:</para>
+
+<screen revision="sysv"><userinput remap="configure">./configure --prefix=/usr                            \
+            --docdir=/usr/share/doc/procps-ng-&procps-ng-version; \
+            --disable-static                         \
+            --disable-kill</userinput></screen>
+
+<screen revision="systemd"><userinput remap="configure">./configure --prefix=/usr                            \
+            --docdir=/usr/share/doc/procps-ng-&procps-ng-version; \
+            --disable-static                         \
+            --disable-kill                           \
+            --with-systemd</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметра configure:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-kill</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает сборку команды <command>kill</command>,
+		  которая будет установлена ​​пакетом Util-linux.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+<!--
+    <para>The test suite needs some custom modifications for LFS.
+    Remove a test that fails when scripting does not use a tty device and
+    fix two others.
+    To run the test suite, run the following commands:</para>
+
+<screen><userinput remap="test">sed -i -r 's|(pmap_initname)\\\$|\1|' testsuite/pmap.test/pmap.exp
+sed -i '/set tty/d' testsuite/pkill.test/pkill.exp
+rm testsuite/pgrep.test/pgrep.exp
+make check</userinput></screen>
+-->
+    <para>Чтобы запустить набор тестов, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <!-- It's because "free -v" shows "used" greater than "total", and
+         a negative "free" for "Comm" line.  The "total" value is from
+         "CommitLimit" in /proc/meminfo, which is the limit for one process.
+         But the "used" value is from "Committed_AS" in the same file,
+         which is the total commited virtual memory space of all processes.
+         I'll make a report to upstream anyway.  -->
+    <para>Один тест с именем <filename>free with commit</filename> может завершиться
+	неудачей, если в дистрибутиве хоста запущены некоторые приложения с настраиваемым
+	распределителем памяти (например, JVM и веб-браузеры).</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-procps" role="content">
+    <title>Содержимое пакета Procps-ng</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>free, pgrep, pidof, pkill, pmap, ps, pwdx, slabtop,
+        sysctl, tload, top, uptime, vmstat, w, и watch</seg>
+        <seg>libproc-2.so</seg>
+        <seg>/usr/include/procps и /usr/share/doc/procps-ng-&procps-ng-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="free">
+        <term><command>free</command></term>
+        <listitem>
+          <para>Сообщает объем свободной и используемой памяти (как физической,
+		  так и файла подкачки) в системе.</para>
+          <indexterm zone="ch-system-procps free">
+            <primary sortas="b-free">free</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pgrep">
+        <term><command>pgrep</command></term>
+        <listitem>
+          <para>Выполняет поиск процессов на основе их имени и других атрибутов</para>
+          <indexterm zone="ch-system-procps pgrep">
+            <primary sortas="b-pgrep">pgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pidof">
+        <term><command>pidof</command></term>
+        <listitem>
+          <para>Сообщает PIDы указанных программ</para>
+          <indexterm zone="ch-system-procps pidof">
+            <primary sortas="b-pidof">pidof</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pkill">
+        <term><command>pkill</command></term>
+        <listitem>
+          <para>Отправка сигналов процессам на основе их имени и других атрибутов</para>
+          <indexterm zone="ch-system-procps pkill">
+            <primary sortas="b-pkill">pkill</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pmap">
+        <term><command>pmap</command></term>
+        <listitem>
+          <para>Команда выводит детальную информацию об использование оперативной памяти процессами</para>
+          <indexterm zone="ch-system-procps pmap">
+            <primary sortas="b-pmap">pmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ps">
+        <term><command>ps</command></term>
+        <listitem>
+          <para>Список запущенных процессов</para>
+          <indexterm zone="ch-system-procps ps">
+            <primary sortas="b-ps">ps</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pwait">
+        <term><command>pwait</command></term>
+        <listitem>
+          <para>ожидает завершения каждого из заданных процессов.</para>
+          <indexterm zone="ch-system-procps pwait">
+            <primary sortas="b-pwait">pwait</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pwdx">
+        <term><command>pwdx</command></term>
+        <listitem>
+          <para>Сообщает текущий рабочий каталог процесса</para>
+          <indexterm zone="ch-system-procps pwdx">
+            <primary sortas="b-pwdx">pwdx</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="slabtop">
+        <term><command>slabtop</command></term>
+        <listitem>
+          <para>Отображает подробную информацию о кэш-памяти ядра в режиме реального времени.</para>
+          <indexterm zone="ch-system-procps slabtop">
+            <primary sortas="b-slabtop">slabtop</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sysctl">
+        <term><command>sysctl</command></term>
+        <listitem>
+          <para>Изменяет параметры ядра во время выполнения</para>
+          <indexterm zone="ch-system-procps sysctl">
+            <primary sortas="b-sysctl">sysctl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tload">
+        <term><command>tload</command></term>
+        <listitem>
+          <para>Выводит график текущей средней загрузки системы</para>
+          <indexterm zone="ch-system-procps tload">
+            <primary sortas="b-tload">tload</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="top">
+        <term><command>top</command></term>
+        <listitem>
+          <para>Отображает список процессов, наиболее интенсивно использующих ЦП;
+		  обеспечивает просмотр активности процессора в режиме реального времени</para>
+          <indexterm zone="ch-system-procps top">
+            <primary sortas="b-top">top</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="uptime">
+        <term><command>uptime</command></term>
+        <listitem>
+          <para>Сообщает сколько времени работает система, сколько пользователей
+		  вошли в систему и средние значения загрузки системы.</para>
+          <indexterm zone="ch-system-procps uptime">
+            <primary sortas="b-uptime">uptime</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vmstat">
+        <term><command>vmstat</command></term>
+        <listitem>
+          <para>Сообщает статистику виртуальной памяти, содержащую информацию
+		  о процессах, памяти, подкачке, блочном вводе/выводе (IO), прерываниях
+		  и активности ЦП.</para>
+          <indexterm zone="ch-system-procps vmstat">
+            <primary sortas="b-vmstat">vmstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="w">
+        <term><command>w</command></term>
+        <listitem>
+          <para>Показывает, какие пользователи в настоящее время вошли в систему
+		  и с какого момента</para>
+          <indexterm zone="ch-system-procps w">
+            <primary sortas="b-w">w</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="watch">
+        <term><command>watch</command></term>
+        <listitem>
+          <para>Выполняет заданную команду повторно, отображая первый экран,
+		  заполненный ее выводом; это позволяет пользователю наблюдать за
+		  изменениями с течением времени</para>
+          <indexterm zone="ch-system-procps watch">
+            <primary sortas="b-watch">watch</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libproc-2">
+        <term><filename class="libraryfile">libproc-2</filename></term>
+        <listitem>
+          <para>Содержит функции, используемые большинством программ в этом пакете.</para>
+          <indexterm zone="ch-system-procps libproc-2">
+            <primary sortas="c-libproc-2">libproc-2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

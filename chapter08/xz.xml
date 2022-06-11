@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-xz" role="wrap">
+  <?dbhtml filename="xz.html"?>
+
+  <sect1info condition="script">
+    <productname>xz</productname>
+    <productnumber>&xz-version;</productnumber>
+    <address>&xz-url;</address>
+  </sect1info>
+
+  <title>Xz-&xz-version;</title>
+
+  <indexterm zone="ch-system-xz">
+    <primary sortas="a-xz">Xz</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Xz содержит программы для сжатия и распаковки файлов. Он предоставляет
+	возможности для lzma и более новых форматов сжатия xz. Сжатие текстовых файлов
+	с помощью <command>xz</command> дает лучший процент сжатия, чем с традиционные
+	<command>gzip</command> или <command>bzip2</command>.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&xz-fin-sbu;</seg>
+        <seg>&xz-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Xz</title>
+
+    <para>Примените патч, чтобы исправить проблему в xzgrep:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&xz-upstream-fix-patch;</userinput></screen>
+
+    <para>Подготовьте Xz к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/xz-&xz-version;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-xz" role="content">
+    <title>Содержимое пакета Xz</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>
+          lzcat (ссылка на xz),
+          lzcmp (ссылка на xzdiff),
+          lzdiff (ссылка на xzdiff),
+          lzegrep (ссылка на xzgrep),
+          lzfgrep (ссылка на xzgrep),
+          lzgrep (ссылка на xzgrep),
+          lzless (ссылка на xzless),
+          lzma (ссылка на xz),
+          lzmadec,
+          lzmainfo,
+          lzmore (ссылка на xzmore),
+          unlzma (ссылка на xz),
+          unxz (ссылка на xz),
+          xz,
+          xzcat (ссылка на xz),
+          xzcmp (ссылка на xzdiff),
+          xzdec,
+          xzdiff,
+          xzegrep (ссылка на xzgrep),
+          xzfgrep (ссылка на xzgrep),
+          xzgrep,
+          xzless, и
+          xzmore</seg>
+        <seg>
+          liblzma.so
+        </seg>
+        <seg>
+          /usr/include/lzma и
+          /usr/share/doc/xz-&xz-version;
+         </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="lzcat">
+        <term><command>lzcat</command></term>
+        <listitem>
+          <para>Распаковывает в стандартный поток вывода</para>
+          <indexterm zone="ch-system-xz lzcat">
+            <primary sortas="b-lzcat">lzcat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzcmp">
+        <term><command>lzcmp</command></term>
+        <listitem>
+          <para>Запускает <command>cmp</command> для файлов сжатых LZMA</para>
+          <indexterm zone="ch-system-xz lzcmp">
+            <primary sortas="b-lzcmp">lzcmp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzdiff">
+        <term><command>lzdiff</command></term>
+        <listitem>
+          <para>Запускает <command>diff</command> для файлов сжатых LZMA</para>
+          <indexterm zone="ch-system-xz lzdiff">
+            <primary sortas="b-lzdiff">lzdiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzegrep">
+        <term><command>lzegrep</command></term>
+        <listitem>
+          <para>Запускает <command>egrep</command> для файлов сжатых LZMA</para>
+          <indexterm zone="ch-system-xz lzegrep">
+            <primary sortas="b-lzegrep">lzegrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzfgrep">
+        <term><command>lzfgrep</command></term>
+        <listitem>
+          <para>Запускает <command>fgrep</command> для файлов сжатых LZMA</para>
+          <indexterm zone="ch-system-xz lzfgrep">
+            <primary sortas="b-lzfgrep">lzfgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzgrep">
+        <term><command>lzgrep</command></term>
+        <listitem>
+          <para>Запускает <command>grep</command> для файлов сжатых LZMA</para>
+          <indexterm zone="ch-system-xz lzgrep">
+            <primary sortas="b-lzgrep">lzgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzless">
+        <term><command>lzless</command></term>
+        <listitem>
+          <para>Запускает <command>less</command> для файлов сжатых LZMA</para>
+          <indexterm zone="ch-system-xz lzless">
+            <primary sortas="b-lzless">lzless</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzma">
+        <term><command>lzma</command></term>
+        <listitem>
+          <para>Сжимает или распаковывает файлы в формате LZMA</para>
+          <indexterm zone="ch-system-xz lzma">
+            <primary sortas="b-lzma">lzma</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzmadec">
+        <term><command>lzmadec</command></term>
+        <listitem>
+          <para>Небольшой и быстрый декодер для файлов сжатых LZMA.</para>
+          <indexterm zone="ch-system-xz lzmadec">
+            <primary sortas="b-lzmadec">lzmadec</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzmainfo">
+        <term><command>lzmainfo</command></term>
+        <listitem>
+          <para>Показывает информацию, хранящуюся в заголовке сжатого файла LZMA</para>
+          <indexterm zone="ch-system-xz lzmainfo">
+            <primary sortas="b-lzmainfo">lzmainfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lzmore">
+        <term><command>lzmore</command></term>
+        <listitem>
+          <para>Запускает <command>more</command> для файлов сжатых LZMA</para>
+          <indexterm zone="ch-system-xz lzmore">
+            <primary sortas="b-lzmamore">lzmore</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unlzma">
+        <term><command>unlzma</command></term>
+        <listitem>
+          <para>Распаковывает файлы в формате LZMA</para>
+          <indexterm zone="ch-system-xz unlzma">
+            <primary sortas="b-unlzma">unlzma</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unxz">
+        <term><command>unxz</command></term>
+        <listitem>
+          <para>Распаковывает файлы в формате XZ</para>
+          <indexterm zone="ch-system-xz unxz">
+            <primary sortas="b-unxz">unxz</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xz">
+        <term><command>xz</command></term>
+        <listitem>
+          <para>Сжимает или распаковывает файлы в формате XZ.</para>
+          <indexterm zone="ch-system-xz xz">
+            <primary sortas="b-xz">xz</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzcat">
+        <term><command>xzcat</command></term>
+        <listitem>
+          <para>Распаковывает в стандартный поток вывода</para>
+          <indexterm zone="ch-system-xz xzcat">
+            <primary sortas="b-xzcat">xzcat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzcmp">
+        <term><command>xzcmp</command></term>
+        <listitem>
+          <para>Запускает <command>cmp</command> для сжатых XZ файлов</para>
+          <indexterm zone="ch-system-xz xzcmp">
+            <primary sortas="b-xzcmp">xzcmp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzdec">
+        <term><command>xzdec</command></term>
+        <listitem>
+          <para>Небольшой и быстрый декодер для файлов сжатых XZ</para>
+          <indexterm zone="ch-system-xz xzdec">
+            <primary sortas="b-xzdec">xzdec</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzdiff">
+        <term><command>xzdiff</command></term>
+        <listitem>
+          <para>Запускает <command>diff</command> для сжатых XZ файлов</para>
+          <indexterm zone="ch-system-xz xzdiff">
+            <primary sortas="b-xzdiff">xzdiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzegrep">
+        <term><command>xzegrep</command></term>
+        <listitem>
+          <para>Запускает <command>egrep</command> для сжатых XZ файлов</para>
+          <indexterm zone="ch-system-xz xzegrep">
+            <primary sortas="b-xzegrep">xzegrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzfgrep">
+        <term><command>xzfgrep</command></term>
+        <listitem>
+          <para>Запускает <command>fgrep</command> для сжатых XZ файлов</para>
+          <indexterm zone="ch-system-xz xzfgrep">
+            <primary sortas="b-xzfgrep">xzfgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzgrep">
+        <term><command>xzgrep</command></term>
+        <listitem>
+          <para>Запускает <command>grep</command> для сжатых XZ файлов</para>
+          <indexterm zone="ch-system-xz xzgrep">
+            <primary sortas="b-xzgrep">xzgrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzless">
+        <term><command>xzless</command></term>
+        <listitem>
+          <para>Запускает <command>less</command> для сжатых XZ файлов</para>
+          <indexterm zone="ch-system-xz xzless">
+            <primary sortas="b-xzless">xzless</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xzmore">
+        <term><command>xzmore</command></term>
+        <listitem>
+          <para>Запускает <command>more</command> для сжатых XZ файлов</para>
+          <indexterm zone="ch-system-xz xzmore">
+            <primary sortas="b-xzmore">xzmore</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="liblzma">
+        <term><filename class="libraryfile">liblzma</filename></term>
+        <listitem>
+          <para>Библиотека, реализующая сжатие данных без потерь с блочной
+		  сортировкой с использованием алгоритма Lempel-Ziv-Markov</para>
+          <indexterm zone="ch-system-xz liblzma">
+            <primary sortas="c-liblzma">liblzma</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

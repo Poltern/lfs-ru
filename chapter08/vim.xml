@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-vim" role="wrap">
+  <?dbhtml filename="vim.html"?>
+
+  <sect1info condition="script">
+    <productname>vim</productname>
+    <productnumber>&vim-version;</productnumber>
+    <address>&vim-url;</address>
+  </sect1info>
+
+  <title>Vim-&vim-version;</title>
+
+  <indexterm zone="ch-system-vim">
+    <primary sortas="a-Vim">Vim</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Vim содержит мощный текстовый редактор.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&vim-fin-sbu;</seg>
+        <seg>&vim-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <tip>
+      <title>Альтернативы Vim</title>
+
+      <para>.Если вы предпочитаете другой текстовый редактор, например, Emacs,
+      Joe или Nano, обратитесь к <ulink
+      url="&blfs-book;postlfs/editors.html"/> за рекомендациями по установке.</para>
+    </tip>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Vim</title>
+
+    <para>Во-первых, измените расположение файла конфигурации <filename>vimrc</filename>
+	на <filename class="directory">/etc</filename>:</para>
+
+<screen><userinput remap="pre">echo '#define SYS_VIMRC_FILE "/etc/vimrc"' &gt;&gt; src/feature.h</userinput></screen>
+
+    <para>Подготовьте vim к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы подготовить тесты, убедитесь, что пользователь
+	<systemitem class="username">tester</systemitem> может писать в исходное дерево:</para>
+
+<screen><userinput remap="test">chown -Rv tester .</userinput></screen>
+
+    <para>Теперь запустите тесты от имени пользователя <systemitem
+    class="username">tester</systemitem>:</para>
+
+<screen><userinput remap="test">su tester -c "LANG=en_US.UTF-8 make -j1 test" &amp;> vim-test.log</userinput></screen>
+
+    <para>Набор тестов выводит на экран много двоичных данных. Это может вызвать
+	проблемы с настройками текущего терминала. Чтобы этого избежать, перенаправьте
+	вывод в файл журнала, как показано выше. Тест пройден успешно, если в файле
+	журнала по завершении есть надпись "ALL DONE".</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Многие пользователи привыкли использовать <command>vi</command> вместо
+	<command>vim</command>. Чтобы разрешить выполнение <command>vim</command>,
+	когда пользователи вводят <command>vi</command>, создайте символическую ссылку
+	как для двоичного файла, так и для справочной страницы:</para>
+
+<screen><userinput remap="install">ln -sv vim /usr/bin/vi
+for L in  /usr/share/man/{,*/}man1/vim.1; do
+    ln -sv vim.1 $(dirname $L)/vi.1
+done</userinput></screen>
+
+    <para>По умолчанию документация vim установлена в каталог <filename
+    class="directory">/usr/share/vim</filename>. Следующая символическая ссылка
+    позволяет получить доступ к документации через каталог <filename
+    class="directory">/usr/share/doc/vim-&vim-version;</filename>, что
+    согласуется с расположением документации остальных пакетов:</para>
+
+<screen><userinput remap="install">ln -sv ../&vim-docdir;/doc /usr/share/doc/vim-&vim-version;</userinput></screen>
+
+    <para>Если в LFS планируется установить систему X Window, может потребоваться
+	перекомпилировать vim после установки X. Vim поставляется с версией редактора
+	с графическим интерфейсом, для которой требуется установка X и некоторых
+	дополнительных библиотек. Для получения дополнительной информации об этом процессе
+	обратитесь к документации по vim и странице установки vim в книге BLFS по адресу <ulink
+    url="&blfs-book;postlfs/vim.html"/>.</para>
+
+  </sect2>
+
+  <sect2 id="conf-vim" role="configuration">
+    <title>Настройка Vim</title>
+
+    <indexterm zone="conf-vim">
+      <primary sortas="e-/etc/vimrc">/etc/vimrc</primary>
+    </indexterm>
+
+    <para>По умолчанию <command>vim</command> работает в режиме, несовместимом с vi.
+	Это может показаться необычным для пользователей, которые в прошлом использовали
+	другие редакторы. Параметр <quote>nocompatible</quote> включен ниже, чтобы
+	подчеркнуть тот факт, что используется новое поведение. Настройка также напоминает тем,
+	кто хотел бы перейти в режим <quote>compatible</quote>, что параметр должен быть
+	первым в файле конфигурации. Это необходимо, потому что изменяются другие параметры,
+	и переопределения происходят после этой настройки. Создайте файл
+	конфигурации <command>vim</command> по умолчанию, выполнив следующие действия:</para>
+
+<screen><userinput>cat &gt; /etc/vimrc &lt;&lt; "EOF"
+<literal>" Begin /etc/vimrc
+
+" Ensure defaults are set before customizing settings, not after
+source $VIMRUNTIME/defaults.vim
+let skip_defaults_vim=1
+
+set nocompatible
+set backspace=2
+set mouse=
+syntax on
+if (&amp;term == "xterm") || (&amp;term == "putty")
+  set background=dark
+endif
+
+" End /etc/vimrc</literal>
+EOF</userinput></screen>
+
+    <para>Параметр <parameter>set nocompatible</parameter> заставляет <command>vim</command>
+	вести себя более правильно (по умолчанию), чем vi-совместимый способ. Удалите
+	<quote>no</quote>, чтобы сохранить старое поведение <command>vi</command>.
+	Параметр <parameter>set backspace=2</parameter> позволяет удалять символы
+	через перенос строки, автоматические отступы и начало вставки. Параметр
+	<parameter>syntax on</parameter> включает подсветку синтаксиса vim. Параметр
+	<parameter>set mouse=</parameter> позволяет правильно вставлять текст с помощью
+	мыши при работе в chroot или через удаленное соединение. Наконец, оператор
+	<emphasis>if</emphasis> с параметром <parameter>set background=dark</parameter>
+	корректирует предположение <command>vim</command> о цвете фона некоторых
+	эмуляторов терминала. Это придает подсветке лучшую цветовую схему для использования
+	на черном фоне этих программ.</para>
+
+    <para>Документацию по другим доступным параметрам можно получить, выполнив
+	следующую команду:</para>
+
+<screen role="nodump"><userinput>vim -c ':options'</userinput></screen>
+
+    <note>
+      <para>По умолчанию vim устанавливает файлы проверки орфограции только для английского
+      языка. Для установки файлов проверки орфограции других языков, скачайте файлы
+      <filename>*.spl</filename> и, при необходимости, <filename>*.sug</filename>
+      для вашего языка и кодировки символов по ссылке <ulink
+      url="ftp://ftp.vim.org/pub/vim/runtime/spell/"/>, сохраните их в
+      <filename class='directory'>/usr/share/&vim-docdir;/spell/</filename>.</para>
+
+      <para>Для подключения этих файлов понадобится небольшая настройка
+      <filename>/etc/vimrc</filename>, например:</para>
+
+<screen><literal>set spelllang=en,ru
+set spell</literal></screen>
+
+      <para>Для получения дополнительной информации см. соответствующий файл
+	  README, расположенный по указанному выше URL-адресу.</para>
+    </note>
+
+  </sect2>
+
+  <sect2 id="contents-vim" role="content">
+    <title>Содержимое пакета Vim</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Каталог установки</segtitle>
+
+      <seglistitem>
+       <seg> ex (ссылка на vim), rview (ссылка на vim), rvim (ссылка на vim), vi
+       (ссылка на vim), view (ссылка на vim), vim, vimdiff (ссылка на vim), vimtutor,
+       и xxd</seg>
+        <seg>/usr/share/vim</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ex">
+        <term><command>ex</command></term>
+        <listitem>
+          <para>Запускает <command>vim</command> в режиме ex</para>
+          <indexterm zone="ch-system-vim ex">
+            <primary sortas="b-ex">ex</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rview">
+        <term><command>rview</command></term>
+        <listitem>
+          <para>Это ограниченная версия <command>view</command>; никакие команды
+		  оболочки не могут быть запущены, и <command>view</command> не может
+		  быть приостановлен</para>
+          <indexterm zone="ch-system-vim rview">
+            <primary sortas="b-rview">rview</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rvim">
+        <term><command>rvim</command></term>
+        <listitem>
+          <para>Это ограниченная версия <command>vim</command>; никакие команды
+		  оболочки не могут быть запущены, и <command>vim</command> не может
+		  быть приостановлен</para>
+          <indexterm zone="ch-system-vim rvim">
+            <primary sortas="b-rvim">rvim</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vi">
+        <term><command>vi</command></term>
+        <listitem>
+          <para>Ссылка на <command>vim</command></para>
+          <indexterm zone="ch-system-vim vi">
+            <primary sortas="b-vi">vi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="view">
+        <term><command>view</command></term>
+        <listitem>
+          <para>Запускает <command>vim</command> в режиме только для чтения</para>
+          <indexterm zone="ch-system-vim view">
+            <primary sortas="b-view">view</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vim">
+        <term><command>vim</command></term>
+        <listitem>
+          <para>Сам редактор</para>
+          <indexterm zone="ch-system-vim vim">
+            <primary sortas="b-vim">vim</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vimdiff">
+        <term><command>vimdiff</command></term>
+        <listitem>
+          <para>Редактирует две или три версии файла с помощью <command>vim</command>
+          и показывает различия</para>
+          <indexterm zone="ch-system-vim vimdiff">
+            <primary sortas="b-vimdiff">vimdiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vimtutor">
+        <term><command>vimtutor</command></term>
+        <listitem>
+          <para>Обучает основным горячим клавишам и командам <command>vim</command></para>
+          <indexterm zone="ch-system-vim vimtutor">
+            <primary sortas="b-vimtutor">vimtutor</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xxd">
+        <term><command>xxd</command></term>
+        <listitem>
+          <para>Создает шестнадцатеричный дамп данного файла; он также может делать
+		  обратное, поэтому его можно использовать для бинарных патчей</para>
+          <indexterm zone="ch-system-vim xxd">
+            <primary sortas="b-xxd">xxd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
