@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-gettext" role="wrap">
+  <?dbhtml filename="gettext.html"?>
+
+  <sect1info condition="script">
+    <productname>gettext</productname>
+    <productnumber>&gettext-version;</productnumber>
+    <address>&gettext-url;</address>
+  </sect1info>
+
+  <title>Gettext-&gettext-version;</title>
+
+  <indexterm zone="ch-system-gettext">
+    <primary sortas="a-Gettext">Gettext</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Gettext содержит утилиты для интернационализации и локализации. Они
+	позволяют компилировать программы с поддержкой NLS (Native Language Support),
+	позволяя им выводить сообщения на родном языке пользователя.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gettext-fin-sbu;</seg>
+        <seg>&gettext-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Gettext</title>
+
+    <para>Подготовьте Gettext для компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/gettext-&gettext-version;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<!--<screen><userinput remap="make">make BISON_LOCALEDIR=/usr/share/locale</userinput></screen>-->
+<screen><userinput remap="make">make</userinput></screen>
+<!--
+   <variablelist>
+      <title>The meaning of the make parameter:</title>
+
+      <varlistentry>
+        <term><parameter>BISON_LOCALEDIR=/usr/share/locale</parameter></term>
+        <listitem>
+          <para>Since bison is not yet installed in /usr, configure hardcodes
+          the directory containing translations for the bison program (the
+	  "locale" directory) as /tools/share/locale. Passing this variable
+           to make allows overriding the choice made by configure.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+-->
+    <para>Чтобы протестировать пакет (это занимает много времени, около 3 SBU), выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install
+chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-gettext" role="content">
+    <title>Содержимое пакета Gettext</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Установленные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>autopoint, envsubst, gettext, gettext.sh,
+        gettextize, msgattrib, msgcat, msgcmp, msgcomm, msgconv, msgen,
+        msgexec, msgfilter, msgfmt, msggrep, msginit, msgmerge, msgunfmt, msguniq,
+        ngettext, recode-sr-latin, и xgettext</seg>
+        <seg>libasprintf.so, libgettextlib.so, libgettextpo.so,
+        libgettextsrc.so, libtextstyle.so, и preloadable_libintl.so</seg>
+        <seg>/usr/lib/gettext, /usr/share/doc/gettext-&gettext-version;,
+        /usr/share/gettext, и /usr/share/gettext-0.19.8</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="autopoint">
+        <term><command>autopoint</command></term>
+        <listitem>
+          <para>Копирует файлы стандартной инфраструктуры Gettext в пакет с исходным кодом</para>
+          <indexterm zone="ch-system-gettext autopoint">
+            <primary sortas="b-autopoint">autopoint</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="envsubst">
+        <term><command>envsubst</command></term>
+        <listitem>
+          <para>Подставляет переменные окружения в строки, используемые командной оболочкой</para>
+          <indexterm zone="ch-system-gettext envsubst">
+            <primary sortas="b-envsubst">envsubst</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gettext">
+        <term><command>gettext</command></term>
+        <listitem>
+          <para>Переводит сообщение с естественного языка на язык пользователя,
+		  осуществляя для этого поиск уже сделанного перевода в каталоге сообщений</para>
+          <indexterm zone="ch-system-gettext gettext">
+            <primary sortas="b-gettext">gettext</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gettext.sh">
+        <term><command>gettext.sh</command></term>
+        <listitem>
+          <para>В основном служит библиотекой функций оболочки для gettext.</para>
+          <indexterm zone="ch-system-gettext gettext.sh">
+            <primary sortas="b-gettext.sh">gettext.sh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gettextize">
+        <term><command>gettextize</command></term>
+        <listitem>
+          <para>Копирует все стандартные файлы Gettext в указанный каталог верхнего
+		  уровня пакета, чтобы начать его интернационализацию.</para>
+          <indexterm zone="ch-system-gettext gettextize">
+            <primary sortas="b-gettextize">gettextize</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgattrib">
+        <term><command>msgattrib</command></term>
+        <listitem>
+          <para>Фильтрует сообщения каталога переводов в соответствии с их атрибутами
+		  и управляет атрибутами</para>
+          <indexterm zone="ch-system-gettext msgattrib">
+            <primary sortas="b-msgattrib">msgattrib</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgcat">
+        <term><command>msgcat</command></term>
+        <listitem>
+          <para>Объединяет указанные файлы
+          <filename class="extension">.po</filename></para>
+          <indexterm zone="ch-system-gettext msgcat">
+            <primary sortas="b-msgcat">msgcat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgcmp">
+        <term><command>msgcmp</command></term>
+        <listitem>
+          <para>Сравнивает два файла <filename class="extension">.po</filename>, чтобы
+		  проверить, что оба содержат один и тот же набор строк msgid</para>
+          <indexterm zone="ch-system-gettext msgcmp">
+            <primary sortas="b-msgcmp">msgcmp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgcomm">
+        <term><command>msgcomm</command></term>
+        <listitem>
+          <para>Находит сообщения, которые являются общими для указанных файлов
+          <filename class="extension">.po</filename></para>
+          <indexterm zone="ch-system-gettext msgcomm">
+            <primary sortas="b-msgcomm">msgcomm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgconv">
+        <term><command>msgconv</command></term>
+        <listitem>
+          <para>Преобразует каталог переводов в другую кодировку символов</para>
+          <indexterm zone="ch-system-gettext msgconv">
+            <primary sortas="b-msgconv">msgconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgen">
+        <term><command>msgen</command></term>
+        <listitem>
+          <para>Создает каталог переводов на английский язык</para>
+          <indexterm zone="ch-system-gettext msgen">
+            <primary sortas="b-msgen">msgen</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgexec">
+        <term><command>msgexec</command></term>
+        <listitem>
+          <para>Применяет команду ко всем переводам каталога переводов</para>
+          <indexterm zone="ch-system-gettext msgexec">
+            <primary sortas="b-msgexec">msgexec</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgfilter">
+        <term><command>msgfilter</command></term>
+        <listitem>
+          <para>Применяет фильтр ко всем переводам каталога переводов</para>
+          <indexterm zone="ch-system-gettext msgfilter">
+            <primary sortas="b-msgfilter">msgfilter</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgfmt">
+        <term><command>msgfmt</command></term>
+        <listitem>
+          <para>Генерирует каталог двоичных сообщений из каталога переводов</para>
+          <indexterm zone="ch-system-gettext msgfmt">
+            <primary sortas="b-msgfmt">msgfmt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msggrep">
+        <term><command>msggrep</command></term>
+        <listitem>
+          <para>Извлекает все сообщения каталога переводов, которые соответствуют
+		  заданному шаблону или принадлежат нескольким указанным исходным файлам</para>
+          <indexterm zone="ch-system-gettext msggrep">
+            <primary sortas="b-msggrep">msggrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msginit">
+        <term><command>msginit</command></term>
+        <listitem>
+          <para>Создает новый файл <filename class="extension">.po</filename>,
+		  инициализируя метаинформацию значениями из среды пользователя.</para>
+          <indexterm zone="ch-system-gettext msginit">
+            <primary sortas="b-msginit">msginit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgmerge">
+        <term><command>msgmerge</command></term>
+        <listitem>
+          <para>Объединяет два необработанных перевода в один файл</para>
+          <indexterm zone="ch-system-gettext msgmerge">
+            <primary sortas="b-msgmerge">msgmerge</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msgunfmt">
+        <term><command>msgunfmt</command></term>
+        <listitem>
+          <para>Декомпилирует каталог двоичных сообщений в необработанный текст перевода</para>
+          <indexterm zone="ch-system-gettext msgunfmt">
+            <primary sortas="b-msgunfmt">msgunfmt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="msguniq">
+        <term><command>msguniq</command></term>
+        <listitem>
+          <para>Объединяет дублирующиеся переводы в каталоге переводов</para>
+          <indexterm zone="ch-system-gettext msguniq">
+            <primary sortas="b-msguniq">msguniq</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ngettext">
+        <term><command>ngettext</command></term>
+        <listitem>
+          <para>Отображает перевод текстового сообщения на родной язык, грамматическая
+		  форма которого зависит от числа.</para>
+          <indexterm zone="ch-system-gettext ngettext">
+            <primary sortas="b-ngettext">ngettext</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="recode-sr-latin">
+        <term><command>recode-sr-latin</command></term>
+        <listitem>
+          <para>Перекодирует сербский текст с кириллицы на латиницу.</para>
+          <indexterm zone="ch-system-gettext recode-sr-latin">
+            <primary sortas="b-recode-sr-latin">recode-sr-latin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xgettext">
+        <term><command>xgettext</command></term>
+        <listitem>
+          <para>Извлекает переводимые строки сообщений из заданных исходных файлов
+		  для создания первого шаблона перевода.</para>
+          <indexterm zone="ch-system-gettext xgettext">
+            <primary sortas="b-xgettext">xgettext</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libasprintf">
+        <term><filename class="libraryfile">libasprintf</filename></term>
+        <listitem>
+          <para>определяет класс <emphasis>autosprintf</emphasis>, который делает
+		  подпрограммы вывода в формате C пригодными для использования в программах
+		  на C++ для использования со строками <emphasis>&lt;string&gt;</emphasis> и
+		  потоками <emphasis>&lt;iostream&gt;</emphasis></para>
+          <indexterm zone="ch-system-gettext libasprintf">
+            <primary sortas="c-libasprintf">libasprintf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgettextlib">
+        <term><filename class="libraryfile">libgettextlib</filename></term>
+        <listitem>
+          <para>Приватная библиотека, в которой находятся общие подпрограммы,
+		  используемые в различных программах Gettext; они не предназначены
+		  для общего использования</para>
+          <indexterm zone="ch-system-gettext libgettextlib">
+            <primary sortas="c-libgettextlib">libgettextlib</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgettextpo">
+        <term><filename class="libraryfile">libgettextpo</filename></term>
+        <listitem>
+          <para>Используется для написания специализированных программ, обрабатывающих
+		  файлы <filename class="extension">.po</filename>; эта библиотека используется,
+		  когда стандартных приложений, поставляемых с Gettext (таких как
+		  <command>msgcomm</command>, <command>msgcmp</command>,
+          <command>msgattrib</command>, и <command>msgen</command>), недостаточно.</para>
+          <indexterm zone="ch-system-gettext libgettextpo">
+            <primary sortas="c-libgettextpo">libgettextpo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgettextsrc">
+        <term><filename class="libraryfile">libgettextsrc</filename></term>
+        <listitem>
+          <para>Приватная библиотека, в которой находятся общие подпрограммы,
+		  используемые в различных программах Gettext; они не предназначены
+		  для общего использования</para>
+          <indexterm zone="ch-system-gettext libgettextsrc">
+            <primary sortas="c-libgettextsrc">libgettextsrc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtextstyle">
+        <term><filename class="libraryfile">libtextstyle</filename></term>
+        <listitem>
+          <para>Библиотека стилей текста</para>
+          <indexterm zone="ch-system-gettext libtextstyle">
+            <primary sortas="c-libtextstyle">libtextstyle</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="preloadable_libintl">
+        <term><filename class="libraryfile">preloadable_libintl</filename></term>
+        <listitem>
+          <para>Библиотека, предназначенная для использования LD_PRELOAD, которая
+		  помогает <filename class="libraryfile">libintl</filename> записывать в
+		  журнал непереведенные сообщения</para>
+          <indexterm zone="ch-system-gettext preloadable_libintl">
+            <primary sortas="c-preloadable_libintl">preloadable_libintl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect2>
+
+</sect1>
