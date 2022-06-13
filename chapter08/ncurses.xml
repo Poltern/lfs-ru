@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-ncurses" role="wrap">
+  <?dbhtml filename="ncurses.html"?>
+
+  <sect1info condition="script">
+    <productname>ncurses</productname>
+    <productnumber>&ncurses-version;</productnumber>
+    <address>&ncurses-url;</address>
+  </sect1info>
+
+  <title>Ncurses-&ncurses-version;</title>
+
+  <indexterm zone="ch-system-ncurses">
+    <primary sortas="a-Ncurses">Ncurses</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Ncurses содержит библиотеки для независимой от терминала обработки ввода/вывода</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&ncurses-fin-sbu;</seg>
+        <seg>&ncurses-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Ncurses</title>
+
+    <para>Подготовьте Ncurses к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr           \
+            --mandir=/usr/share/man \
+            --with-shared           \
+            --without-debug         \
+            --without-normal        \
+            --enable-pc-files       \
+            --enable-widec          \
+            --with-pkg-config-libdir=/usr/lib/pkgconfig</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--enable-widec</parameter></term>
+        <listitem>
+          <para>Этот параметр указывает, что при сборке пакета вместо обычных библиотек
+		  (например, <filename class="libraryfile">libncurses.so.&ncurses-version;</filename>)
+		  будут использоваться библиотеки с расширенным набором символов (например, <filename
+          class="libraryfile">libncursesw.so.&ncurses-version;</filename>). Библиотеки с
+		  расширенным набором символов могут использоваться как с многобайтовыми локалями,
+		  так и с традиционными 8-битовыми локалями, тогда как обычные библиотеки работают
+		  только с 8-битовыми локалями. Библиотеки с расширенным набором символов и обычные
+		  библиотеки совместимы на уровне исходного кода, но не совместимыми на уровне двоичного. </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-pc-files</parameter></term>
+        <listitem>
+          <para>Этот параметр генерирует и устанавливает файлы .pc для pkg-config.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-normal</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает сборку и установку большинства статических библиотек.
+          </para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>У этого пакета есть набор тестов, но его можно запустить только после
+	того, как пакет будет установлен. Тесты находятся в каталоге
+	<filename class="directory">test/</filename>. Дополнительные сведения см.
+	в файле <filename>README</filename> в этом каталоге.
+    </para>
+
+    <!-- To editors: crash of shell process was very rare but really
+         observed.  We can't simply remove /usr/lib/libncursesw.so.6.x like 
+         how we handle libmozjs-xx.so in BLFS because bash needs it, and
+         make will spawn new shell processes during "make install".  -->
+
+    <para>Установка этого пакета приведет к перезаписи 
+	<filename class="libraryfile">libncursesw.so.&ncurses-version;</filename>. Это
+	может привести к сбою процесса оболочки, который использует код и данные из
+	файла библиотеки. Установите пакет с помощью <literal>DESTDIR</literal> и правильно
+	замените файл библиотеки с помощью команды <command>install</command>. Ненужный
+	статический архив, который не обрабатывается <command>configure</command>, также
+	удаляется:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/dest install
+install -vm755 dest/usr/lib/libncursesw.so.&ncurses-version; /usr/lib
+rm -v  dest/usr/lib/{libncursesw.so.&ncurses-version;,libncurses++w.a}
+cp -av dest/* /</userinput></screen>
+
+    <para>Многие приложения ожидают, что компоновщик сможет найти библиотеки Ncurses,
+	не поддерживающие расширенный набор символов. Свяжите такие приложения с библиотеками
+	расширенного набора символов с помощью символических ссылок и скриптов компоновщика:</para>
+
+<screen><userinput remap="install">for lib in ncurses form panel menu ; do
+    rm -vf                    /usr/lib/lib${lib}.so
+    echo "INPUT(-l${lib}w)" &gt; /usr/lib/lib${lib}.so
+    ln -sfv ${lib}w.pc        /usr/lib/pkgconfig/${lib}.pc
+done</userinput></screen>
+
+    <para>Убедитесь, что старые приложения, которым нужна
+    <filename class="libraryfile">-lcurses</filename> для сборки, собираются правильно:</para>
+
+<screen><userinput remap="install">rm -vf                     /usr/lib/libcursesw.so
+echo "INPUT(-lncursesw)" &gt; /usr/lib/libcursesw.so
+ln -sfv libncurses.so      /usr/lib/libcurses.so</userinput></screen>
+
+    <para>По желанию установите документацию Ncurses:</para>
+
+<screen><userinput remap="install">mkdir -pv      /usr/share/doc/ncurses-&ncurses-version;
+cp -v -R doc/* /usr/share/doc/ncurses-&ncurses-version;</userinput></screen>
+
+    <note>
+
+      <para>С помощью приведенных выше инструкций не создаются библиотеки Ncurses,
+	  не использующие расширенный набор символов, поскольку ни один пакет,
+	  установленный путем компиляции из исходного кода, не будет связан с ними
+	  во время выполнения. Тем не менее, известно что некоторые бинарные приложения,
+	  которые связаны с библиотекой Ncurses и не поддерживающие расширенный набор
+	  символов, требуют наличия версии 5. Если вам необходимо иметь такие библиотеки
+	  из-за какого-либо приложения, имеющегося только в бинарном виде, или для
+	  обеспечения совместимости с LSB, соберите  пакет с помощью следующих команд:</para>
+
+<screen role="nodump"><userinput>make distclean
+./configure --prefix=/usr    \
+            --with-shared    \
+            --without-normal \
+            --without-debug  \
+            --without-cxx-binding \
+            --with-abi-version=5
+make sources libs
+cp -av lib/lib*.so.5* /usr/lib</userinput></screen>
+    </note>
+
+  </sect2>
+
+  <sect2 id="contents-ncurses" role="content">
+    <title>Содержимое пакета Ncurses</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>
+           captoinfo (ссылка на tic),
+           clear,
+           infocmp,
+           infotocap (ссылка на tic),
+           ncursesw6-config,
+           reset (ссылка на tset),
+           tabs,
+           tic,
+           toe,
+           tput, и
+           tset
+        </seg>
+        <seg>
+           libcursesw.so (символическая ссылка и скрипт компоновщика на libncursesw.so),
+           libformw.so,
+           libmenuw.so,
+           libncursesw.so,
+           libpanelw.so, и их аналоги без "w" в именах библиотек.</seg>
+        <seg>
+           /usr/share/tabset,
+           /usr/share/terminfo, и
+           /usr/share/doc/ncurses-&ncurses-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="captoinfo">
+        <term><command>captoinfo</command></term>
+        <listitem>
+          <para>Преобразует описание termcap в описание terminfo</para>
+          <indexterm zone="ch-system-ncurses captoinfo">
+            <primary sortas="b-captoinfo">captoinfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="clear">
+        <term><command>clear</command></term>
+        <listitem>
+          <para>Очищает экран, если это возможно</para>
+          <indexterm zone="ch-system-ncurses clear">
+            <primary sortas="b-clear">clear</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="infocmp">
+        <term><command>infocmp</command></term>
+        <listitem>
+          <para>Сравнивает или показывает описания terminfo</para>
+          <indexterm zone="ch-system-ncurses infocmp">
+            <primary sortas="b-infocmp">infocmp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="infotocap">
+        <term><command>infotocap</command></term>
+        <listitem>
+          <para>Преобразует описание terminfo в описание termcap</para>
+          <indexterm zone="ch-system-ncurses infotocap">
+            <primary sortas="b-infotocap">infotocap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ncursesw6-config">
+        <term><command>ncursesw6-config</command></term>
+        <listitem>
+          <para>Предоставляет информацию о конфигурации пакету ncurses/para>
+          <indexterm zone="ch-system-ncurses ncursesw6-config">
+            <primary sortas="b-ncursesw6-config">ncursesw6-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="reset">
+        <term><command>reset</command></term>
+        <listitem>
+          <para>Повторно инициализирует терминал со значениями по умолчанию</para>
+          <indexterm zone="ch-system-ncurses reset">
+            <primary sortas="b-reset">reset</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tabs">
+        <term><command>tabs</command></term>
+        <listitem>
+          <para>Очищает и устанавливает размеры табуляции в терминале</para>
+          <indexterm zone="ch-system-ncurses tabs">
+            <primary sortas="b-tabs">tabs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tic">
+        <term><command>tic</command></term>
+        <listitem>
+          <para>Компилятор описания terminfo, преобразует файл terminfo из исходного
+		  формата в двоичный, который необходим для подпрограмм библиотеки ncurses
+		  [Файл terminfo содержит информацию о возможностях конкретного терминала.]</para>
+          <indexterm zone="ch-system-ncurses tic">
+            <primary sortas="b-tic">tic</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="toe">
+        <term><command>toe</command></term>
+        <listitem>
+          <para>
+		  Выводит список всех доступных типов терминалов, для каждого из которых
+		  указывается его имя и приводится описание </para>
+          <indexterm zone="ch-system-ncurses toe">
+            <primary sortas="b-toe">toe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tput">
+        <term><command>tput</command></term>
+        <listitem>
+          <para>Позволяет использовать в командной оболочке настройки, относящиеся к
+		  особенностям конкретного терминала; может также использоваться для сброса
+		  или инициализации терминала, либо для вывода полного имени терминала </para>
+          <indexterm zone="ch-system-ncurses tput">
+            <primary sortas="b-tput">tput</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tset">
+        <term><command>tset</command></term>
+        <listitem>
+          <para>Может использоваться для инициализации терминалов</para>
+          <indexterm zone="ch-system-ncurses tset">
+            <primary sortas="b-tset">tset</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcursesw">
+        <term><filename class="libraryfile">libcursesw</filename></term>
+        <listitem>
+          <para>Ссылка на <filename>libncursesw</filename></para>
+          <indexterm zone="ch-system-ncurses libcursesw">
+            <primary sortas="c-libcursesw">libcursesw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libncursesw">
+        <term><filename class="libraryfile">libncursesw</filename></term>
+        <listitem>
+          <para>Содержит функции, отображающие различными способами текст на экране
+		  терминала. Хорошим примером использования этих функций является меню,
+		  отображаемое командой <command>make menuconfig</command> при настройке ядра </para>
+          <indexterm zone="ch-system-ncurses libncursesw">
+            <primary sortas="c-libncursesw">libncursesw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libformw">
+        <term><filename class="libraryfile">libformw</filename></term>
+        <listitem>
+          <para>Содержит функции, реализующие формы</para>
+          <indexterm zone="ch-system-ncurses libformw">
+            <primary sortas="c-libformw">libformw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libmenuw">
+        <term><filename class="libraryfile">libmenuw</filename></term>
+        <listitem>
+          <para>Содержит функции, реализующие меню</para>
+          <indexterm zone="ch-system-ncurses libmenuw">
+            <primary sortas="c-libmenuw">libmenuw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpanelw">
+        <term><filename class="libraryfile">libpanelw</filename></term>
+        <listitem>
+          <para>Содержит функции, реализующие панели</para>
+          <indexterm zone="ch-system-ncurses libpanelw">
+            <primary sortas="c-libpanelw">libpanelw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

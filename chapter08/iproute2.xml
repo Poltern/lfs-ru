@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-iproute2" role="wrap">
+  <?dbhtml filename="iproute2.html"?>
+
+  <sect1info condition="script">
+    <productname>iproute2</productname>
+    <productnumber>&iproute2-version;</productnumber>
+    <address>&iproute2-url;</address>
+  </sect1info>
+
+  <title>IPRoute2-&iproute2-version;</title>
+
+  <indexterm zone="ch-system-iproute2">
+    <primary sortas="a-IPRoute2">IPRoute2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет IPRoute2 содержит набор программ для базового и расширенного администрирования сетей IPv4.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&iproute2-fin-sbu;</seg>
+        <seg>&iproute2-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета IPRoute2</title>
+
+    <para>Программа <command>arpd</command>, входящая в этот пакет, не будет собрана,
+	поскольку зависит от базы данных Berkeley DB, которая не установлена ​​в LFS. Однако
+	каталог для <command>arpd</command> и справочная страница все равно будут
+	установлены. Предотвратить это можно, выполнив приведенные ниже команды.
+	Если наличие <command>arpd</command> важно, инструкции по компиляции
+	Berkeley DB можно найти в книге BLFS по адресу <ulink url="&blfs-book;server/db.html"/>.
+    </para>
+
+<screen><userinput remap="pre">sed -i /ARPD/d Makefile
+rm -fv man/man8/arpd.8</userinput></screen>
+
+<!-- fixed upstream for 5.16.0
+    <para>It is also necessary to disable building two modules that
+    require <ulink url="&blfs-book;postlfs/iptables.html"/>.</para>
+
+<screen><userinput remap="pre">sed -i 's/.m_ipt.o//' tc/Makefile</userinput></screen>
+-->
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make NETNS_RUN_DIR=/run/netns</userinput></screen>
+
+    <para>Этот пакет не содержит рабочего набора тестов.</para>
+<!-- currently not useful, no tests actually run
+    <para>This package comes with a test suite, but due to assumptions it makes,
+    it is not possible to reliably run these tests from within the chroot
+    environment. If you wish to run these tests after booting into your new LFS
+    system, ensure you enable <filename>/proc/config.gz</filename> support
+    in your kernel (&quot;General setup&quot; -> &quot;Enable access to
+    .config through /proc/config.gz&quot; [CONFIG_IKCONFIG_PROC]), then run
+    'make alltests' from the <filename class="directory">testsuite/</filename>
+    subdirectory.</para>-->
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make SBINDIR=/usr/sbin install</userinput></screen>
+
+    <para>По желанию установите документацию:</para>
+
+<screen><userinput remap="install">mkdir -pv             /usr/share/doc/iproute2-&iproute2-version;
+cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-iproute2" role="content">
+    <title>Содержимое пакета IPRoute2</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+        <seg>bridge, ctstat (ссылка на lnstat), genl, ifcfg, ifstat, ip, lnstat,
+        nstat, routef, routel, rtacct, rtmon, rtpr, rtstat (ссылка на lnstat), ss,
+        и tc</seg>
+        <seg>/etc/iproute2, /usr/lib/tc, и /usr/share/doc/iproute2-&iproute2-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="bridge">
+        <term><command>bridge</command></term>
+        <listitem>
+          <para>Настраивает сетевые мосты</para>
+          <indexterm zone="ch-system-iproute2 bridge">
+            <primary sortas="b-bridge">bridge</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ctstat">
+        <term><command>ctstat</command></term>
+        <listitem>
+          <para>Утилита состояния подключения</para>
+          <indexterm zone="ch-system-iproute2 ctstat">
+            <primary sortas="b-ctstat">ctstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="genl">
+        <term><command>genl</command></term>
+        <listitem>
+          <para>Общий интерфейс утилиты netlink</para>
+          <indexterm zone="ch-system-iproute2 genl">
+            <primary sortas="b-genl">genl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ifcfg">
+        <term><command>ifcfg</command></term>
+        <listitem>
+          <para>Скрипт-обертка для команды <command>ip</command> [Обратите внимание,
+		  что для этого требуются программы <command>arping</command> и
+          <command>rdisk</command> из пакета iputils, который можно найти по
+		  адресу <ulink url="http://www.skbuff.net/iputils/"/>.]</para>
+          <indexterm zone="ch-system-iproute2 ifcfg">
+            <primary sortas="b-ifcfg">ifcfg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ifstat">
+        <term><command>ifstat</command></term>
+        <listitem>
+          <para>Показывает статистику интерфейса, включая количество переданных и
+		  полученных пакетов по интерфейсам.</para>
+          <indexterm zone="ch-system-iproute2 ifstat">
+            <primary sortas="b-ifstat">ifstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ip">
+        <term><command>ip</command></term>
+        <listitem>
+          <para>Основной исполняемый файл. Он имеет несколько различных функций:</para>
+
+          <para><command>ip link <replaceable>&lt;device&gt;</replaceable></command>
+          позволяет пользователям просматривать состояние устройств и вносить изменения</para>
+
+          <para><command>ip addr</command> позволяет пользователям просматривать
+		  адреса и их свойства, добавлять новые адреса и удалять старыеs</para>
+
+          <para><command>ip neighbor</command> позволяет пользователям просматривать
+		  связи с соседями и их свойства, добавлять новые записи и удалять старые</para>
+
+          <para><command>ip rule</command> позволяет пользователям просматривать
+		  политики маршрутизации и изменять их</para>
+
+          <para><command>ip route</command> позволяет пользователям просматривать
+		  таблицу маршрутизации и изменять правила таблицы маршрутизации</para>
+
+          <para><command>ip tunnel</command> позволяет пользователям просматривать
+		  IP-туннели и их свойства, а также изменять их</para>
+
+          <para><command>ip maddr</command> позволяет пользователям просматривать
+		  multicast адреса и их свойства и изменять их</para>
+
+          <para><command>ip mroute</command> позволяет пользователям устанавливать,
+		  изменять или удалять multicast маршрутизацию.</para>
+
+          <para><command>ip monitor</command> позволяет пользователям постоянно
+		  отслеживать состояние устройств, адресов и маршрутов</para>
+          <indexterm zone="ch-system-iproute2 ip">
+            <primary sortas="b-ip">ip</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lnstat">
+        <term><command>lnstat</command></term>
+        <listitem>
+          <para>Предоставляет сетевую статистику Linux; это обобщенная и более
+		  полнофункциональная замена старой программы <command>rtstat</command></para>
+          <indexterm zone="ch-system-iproute2 lnstat">
+            <primary sortas="b-lnstat">lnstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="nstat">
+        <term><command>nstat</command></term>
+        <listitem>
+          <para>Показывает статистику сети</para>
+          <indexterm zone="ch-system-iproute2 nstat">
+            <primary sortas="b-nstat">nstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="routef">
+        <term><command>routef</command></term>
+        <listitem>
+          <para>Компонент <command>ip route</command>. Служит для очистки
+		  таблиц маршрутизации</para>
+          <indexterm zone="ch-system-iproute2 routef">
+            <primary sortas="b-routef">routef</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="routel">
+        <term><command>routel</command></term>
+        <listitem>
+          <para>Компонент <command>ip route</command>. Служит для просмотра
+		  таблиц маршрутизации</para>
+          <indexterm zone="ch-system-iproute2 routel">
+            <primary sortas="b-routel">routel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rtacct">
+        <term><command>rtacct</command></term>
+        <listitem>
+          <para>Отображает содержимое
+          <filename>/proc/net/rt_acct</filename></para>
+          <indexterm zone="ch-system-iproute2 rtacct">
+            <primary sortas="b-rtacct">rtacct</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rtmon">
+        <term><command>rtmon</command></term>
+        <listitem>
+          <para>Мониторит изменения таблицы маршрутизации</para>
+          <indexterm zone="ch-system-iproute2 rtmon">
+            <primary sortas="b-rtmon">rtmon</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rtpr">
+        <term><command>rtpr</command></term>
+        <listitem>
+          <para>Преобразует вывод <command>ip -o</command> в удобочитаемую форму</para>
+          <indexterm zone="ch-system-iproute2 rtpr">
+            <primary sortas="b-rtpr">rtpr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rtstat">
+        <term><command>rtstat</command></term>
+        <listitem>
+          <para>Утилита состояния маршрута</para>
+          <indexterm zone="ch-system-iproute2 rtstat">
+            <primary sortas="b-rtstat">rtstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ss">
+        <term><command>ss</command></term>
+        <listitem>
+          <para>Аналогично команде <command>netstat</command> показывает активные соединения</para>
+          <indexterm zone="ch-system-iproute2 ss">
+            <primary sortas="b-ss">ss</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tc">
+        <term><command>tc</command></term>
+        <listitem>
+          <para>Исполняемый модуль управления трафиком; реализация сервисов Quality Of Service
+          (QOS) и Class Of Service (COS)</para>
+
+          <para><command>tc qdisc</command> позволяет пользователям настраивать
+		  дисциплину обработки очередей</para>
+
+          <para><command>tc class</command> позволяет пользователям настраивать
+		  классы, на которых основывается планирование дисциплины обработки очередей</para>
+
+          <para><command>tc estimator</command> позволяет пользователям оценить сетевой поток</para>
+
+          <para><command>tc filter</command> позволяет пользователям настроить
+		  фильтрацию пакетов QOS/COS</para>
+
+          <para><command>tc policy</command>  позволяет пользователям настраивать политики QOS/COS</para>
+          <indexterm zone="ch-system-iproute2 ss">
+            <primary sortas="b-tc">tc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

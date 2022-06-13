@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-grub" role="wrap">
+  <?dbhtml filename="grub.html"?>
+
+  <sect1info condition="script">
+    <productname>grub</productname>
+    <productnumber>&grub-version;</productnumber>
+    <address>&grub-url;</address>
+  </sect1info>
+
+  <title>GRUB-&grub-version;</title>
+
+  <indexterm zone="ch-system-grub">
+    <primary sortas="a-Grub">GRUB</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет GRUB содержит загрузчик операционной системы от проекта GNU (GRand Unified Bootloader).</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&grub-fin-sbu;</seg>
+        <seg>&grub-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета GRUB</title>
+
+    <note>
+      <para>
+        If your system has UEFI support and you wish to boot LFS with UEFI,
+        you can skip this package in LFS,
+        and install GRUB with UEFI support (and its dependencies) following
+		Если ваша система поддерживает UEFI и вы хотите загрузить LFS с UEFI, вы
+		можете пропустить установку этого пакета в LFS и установить GRUB с поддержкой
+		UEFI (и его зависимости), следуя инструкции 
+		<ulink url="&blfs-book;postlfs/grub-efi.html">из BLFS</ulink> в конце этой главы.
+      </para>
+    </note>
+
+    <para>Подготовьте GRUB к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr          \
+            --sysconfdir=/etc      \
+            --disable-efiemu       \
+            --disable-werror</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-werror</parameter></term>
+        <listitem>
+          <para>Этот параметр позволяет завершить сборку с предупреждениями,
+		  появившимися в более поздних версиях Flex.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-efiemu</parameter></term>
+        <listitem>
+          <para>Этот параметр уменьшает объем системы, отключает возможности и
+		  программы тестирования, которые не нужны для LFS.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Запуск набора тестов не рекомендуется. Большинство тестов зависят от
+	пакетов, недоступных в ограниченной среде LFS. Если вы все равно хотите запустить
+	тесты, выполните <command>make check</command>.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install
+mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userinput></screen>
+
+  <para>Использование GRUB для обеспечения возможности загрузки вашей системы LFS будет обсуждаться в
+  <xref linkend="ch-bootable-grub"/>.</para>
+
+  </sect2>
+
+  <sect2 id="contents-gRUB" role="content">
+    <title>Содержимое пакета GRUB</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Каталоги установки</segtitle>
+
+      <seglistitem>
+
+       <seg>grub-bios-setup,      grub-editenv,    grub-file,        grub-fstest,
+            grub-glue-efi,        grub-install,    grub-kbdcomp,     grub-macbless,
+            grub-menulst2cfg,     grub-mkconfig,
+                                  grub-mkimage,    grub-mklayout,    grub-mknetdir,
+            grub-mkpasswd-pbkdf2, grub-mkrelpath,  grub-mkrescue,    grub-mkstandalone,
+            grub-ofpathname,      grub-probe,      grub-reboot,      grub-render-label,
+            grub-script-check,
+            grub-set-default,     grub-sparc64-setup, и grub-syslinux2cfg</seg>
+
+        <seg>/usr/lib/grub, /etc/grub.d, /usr/share/grub, и /boot/grub (при первом запуске grub-install)</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="grub-bios-setup">
+        <term><command>grub-bios-setup</command></term>
+        <listitem>
+          <para>Вспомогательная программа для grub-install</para>
+          <indexterm zone="ch-system-grub grub-bios-setup">
+            <primary sortas="b-grub-bios-setup">grub-bios-setup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-editenv">
+        <term><command>grub-editenv</command></term>
+        <listitem>
+          <para>Инструмент для редактирования блока среды окружения (environment block)</para>
+          <indexterm zone="ch-system-grub grub-editenv">
+            <primary sortas="b-grub-editenv">grub-editenv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-file">
+        <term><command>grub-file</command></term>
+        <listitem>
+          <para>Проверяет, относится ли ФАЙЛ к указанному типу.</para>
+          <indexterm zone="ch-system-grub grub-file">
+            <primary sortas="b-grub-file">grub-file</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-fstest">
+        <term><command>grub-fstest</command></term>
+        <listitem>
+          <para>Инструмент для отладки драйвера файловой системы</para>
+          <indexterm zone="ch-system-grub grub-fstest">
+            <primary sortas="b-grub-fstest">grub-fstest</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-glue-efi">
+        <term><command>grub-glue-efi</command></term>
+        <listitem>
+          <para>Объединяет образы EFI ia32 и amd64 в один универсальный в формате Apple</para>
+          <indexterm zone="ch-system-grub grub-glue-efi">
+            <primary sortas="b-grub-glue-efi">grub-glue-efi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-install">
+        <term><command>grub-install</command></term>
+        <listitem>
+          <para>Устанавливает GRUB на устройство</para>
+          <indexterm zone="ch-system-grub grub-install">
+            <primary sortas="b-grub-install">grub-install</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-kbdcomp">
+        <term><command>grub-kbdcomp</command></term>
+        <listitem>
+          <para>Скрипт, который преобразует макет xkb в макет, распознаваемый GRUB</para>
+          <indexterm zone="ch-system-grub grub-kbdcomp">
+            <primary sortas="b-grub-kbdcomp">grub-kbdcomp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-macbless">
+        <term><command>grub-macbless</command></term>
+        <listitem>
+          <para>Загрузка в стиле Mac с HFS или HFS+</para>
+          <indexterm zone="ch-system-grub grub-macbless">
+            <primary sortas="b-grub-macbless">grub-macbless</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-menulst2cfg">
+        <term><command>grub-menulst2cfg</command></term>
+        <listitem>
+          <para>Преобразует GRUB Legacy <filename>menu.lst</filename>
+          в <filename>grub.cfg</filename> для использования с GRUB 2</para>
+          <indexterm zone="ch-system-grub grub-menulst2cfg">
+            <primary sortas="b-grub-menulst2cfg">grub-menulst2cfg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mkconfig">
+        <term><command>grub-mkconfig</command></term>
+        <listitem>
+          <para>Генерирует файл настройки grub</para>
+          <indexterm zone="ch-system-grub grub-mkconfig">
+            <primary sortas="b-grub-mkconfig">grub-mkconfig</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mkimage">
+        <term><command>grub-mkimage</command></term>
+        <listitem>
+          <para>Создаёт загрузочный образ GRUB</para>
+          <indexterm zone="ch-system-grub grub-mkimage">
+            <primary sortas="b-grub-mkimage">grub-mkimage</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mklayout">
+        <term><command>grub-mklayout</command></term>
+        <listitem>
+          <para>Создаёт файл раскладки клавиатуры GRUB</para>
+          <indexterm zone="ch-system-grub grub-mklayout">
+            <primary sortas="b-grub-mklayout">grub-mklayout</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mknetdir">
+        <term><command>grub-mknetdir</command></term>
+        <listitem>
+          <para>Подготавливает сетевой загрузочный каталог GRUB</para>
+          <indexterm zone="ch-system-grub grub-mknetdir">
+            <primary sortas="b-grub-mknetdir">grub-mknetdir</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mkpasswd-pbkdf2">
+        <term><command>grub-mkpasswd-pbkdf2</command></term>
+        <listitem>
+          <para>Генерирует зашифрованный пароль PBKDF2 для использования в меню загрузки</para>
+          <indexterm zone="ch-system-grub grub-mkpasswd-pbkdf2">
+            <primary sortas="b-grub-mkpasswd-pbkdf2">grub-mkpasswd-pbkdf2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mkrelpath">
+        <term><command>grub-mkrelpath</command></term>
+        <listitem>
+          <para>Создает имена системных путей относительно корня</para>
+          <indexterm zone="ch-system-grub grub-mkrelpath">
+            <primary sortas="b-grub-mkrelpath">grub-mkrelpath</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mkrescue">
+        <term><command>grub-mkrescue</command></term>
+        <listitem>
+          <para>Создает загрузочный образ GRUB для USB-накопителя или CDROM/DVD</para>
+          <indexterm zone="ch-system-grub grub-mkrescue">
+            <primary sortas="b-grub-mkrescue">grub-mkrescue</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-mkstandalone">
+        <term><command>grub-mkstandalone</command></term>
+        <listitem>
+          <para>Генерирует автономный образ</para>
+          <indexterm zone="ch-system-grub grub-mkstandalone">
+            <primary sortas="b-grub-mkstandalone">grub-mkstandalone</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-ofpathname">
+        <term><command>grub-ofpathname</command></term>
+        <listitem>
+          <para>Вспомогательная программа, которая выводит путь к устройству GRUB</para>
+          <indexterm zone="ch-system-grub grub-ofpathname">
+            <primary sortas="b-grub-ofpathname">grub-ofpathname</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-probe">
+        <term><command>grub-probe</command></term>
+        <listitem>
+          <para>Собирает информацию об устройстве для заданного пути или устройства</para>
+          <indexterm zone="ch-system-grub grub-probe">
+            <primary sortas="b-grub-probe">grub-probe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-reboot">
+        <term><command>grub-reboot</command></term>
+        <listitem>
+          <para>Устанавливает пункт меню в GRUB для загрузки по умолчанию, только для следующей загрузки</para>
+          <indexterm zone="ch-system-grub grub-reboot">
+            <primary sortas="b-grub-reboot">grub-reboot</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-render-label">
+        <term><command>grub-render-label</command></term>
+        <listitem>
+          <para>Создает Apple .disk_label для Apple Macs</para>
+          <indexterm zone="ch-system-grub grub-render-label">
+            <primary sortas="b-grub-render-label">grub-render-label</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-script-check">
+        <term><command>grub-script-check</command></term>
+        <listitem>
+          <para>Проверяет файл сценария настройки GRUB на синтаксические ошибки</para>
+          <indexterm zone="ch-system-grub grub-script-check">
+            <primary sortas="b-grub-script-check">grub-script-check</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-set-default">
+        <term><command>grub-set-default</command></term>
+        <listitem>
+          <para>Устанавливает для GRUB загрузочную запись по умолчанию</para>
+          <indexterm zone="ch-system-grub grub-set-default">
+            <primary sortas="b-grub-set-default">grub-set-default</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-sparc64-setup">
+        <term><command>grub-sparc64-setup</command></term>
+        <listitem>
+          <para>Вспомогательная программа для grub-setup</para>
+          <indexterm zone="ch-system-grub grub-sparc64-setup">
+            <primary sortas="b-grub-sparc64-setup">grub-setup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grub-syslinux2cfg">
+        <term><command>grub-syslinux2cfg</command></term>
+        <listitem>
+          <para>Преобразует конфигурационный файл syslinux в формат grub.cfg</para>
+          <indexterm zone="ch-system-grub grub-syslinux2cfg">
+            <primary sortas="b-grub-syslinux2cfg">grub-syslinux2cfg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
