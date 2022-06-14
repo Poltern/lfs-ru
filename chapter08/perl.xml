@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-perl" role="wrap">
+  <?dbhtml filename="perl.html"?>
+
+  <sect1info condition="script">
+    <productname>perl</productname>
+    <productnumber>&perl-version;</productnumber>
+    <address>&perl-url;</address>
+  </sect1info>
+
+  <title>Perl-&perl-version;</title>
+
+  <indexterm zone="ch-system-perl">
+    <primary sortas="a-Perl">Perl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Perl содержит практический язык для извлечения данных и составления отчётов 
+    (Practical Extraction and Report Language).</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&perl-fin-sbu;</seg>
+        <seg>&perl-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Perl</title>
+<!--
+    <para>First, apply a patch that fixes an issue highlighted by recent
+    versions of gdbm:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&perl-fix-patch;</userinput></screen>
+-->
+    <para>Эта версия Perl собирает модули Compress::Raw::Zlib и
+	Compress::Raw::BZip2. По умолчанию Perl будет использовать внутреннюю копию
+	исходников для сборки. Выполните следующую команду, чтобы Perl использовал
+	библиотеки, установленные в системе:</para>
+
+<screen><userinput remap="pre">export BUILD_ZLIB=False
+export BUILD_BZIP2=0</userinput></screen>
+
+    <para>Чтобы иметь полный контроль над настройкой Perl, вы можете удалить
+	параметры <quote>-des</quote> из следующей команды и вручную выбрать способ
+	сборки этого пакета. В качестве альтернативы, используйте команду точно так
+	же, как показано ниже, чтобы использовать значения по умолчанию, которые Perl
+	определяет автоматически:</para>
+
+ <screen><userinput remap="configure">sh Configure -des                                         \
+             -Dprefix=/usr                                \
+             -Dvendorprefix=/usr                          \
+             -Dprivlib=/usr/lib/perl5/&perl-version-min;/core_perl      \
+             -Darchlib=/usr/lib/perl5/&perl-version-min;/core_perl      \
+             -Dsitelib=/usr/lib/perl5/&perl-version-min;/site_perl      \
+             -Dsitearch=/usr/lib/perl5/&perl-version-min;/site_perl     \
+             -Dvendorlib=/usr/lib/perl5/&perl-version-min;/vendor_perl  \
+             -Dvendorarch=/usr/lib/perl5/&perl-version-min;/vendor_perl \
+             -Dman1dir=/usr/share/man/man1                \
+             -Dman3dir=/usr/share/man/man3                \
+             -Dpager="/usr/bin/less -isR"                 \
+             -Duseshrplib                                 \
+             -Dusethreads</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров configure:</title>
+
+      <varlistentry>
+        <term><parameter>-Dvendorprefix=/usr</parameter></term>
+        <listitem>
+          <para>Параметр гарантирует, что <command>perl</command> знает, как указать
+		  пакетам, где они должны устанавливать свои модули perl.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dpager="/usr/bin/less -isR"</parameter></term>
+        <listitem>
+          <para>Параметр указывает использовать <userinput>less</userinput> вместо
+		  <userinput>more</userinput>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dman1dir=/usr/share/man/man1
+        -Dman3dir=/usr/share/man/man3</parameter></term>
+        <listitem>
+          <para>Так как Groff еще не установлен, <command>Configure</command>
+          считает, что страницы руководств Perl тоже не нужны. Параметр переопределяет такое
+          поведение.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Duseshrplib</parameter></term>
+        <listitem>
+          <para>Собрать разделяемую библитеку libperl, необходимую некоторым модулям perl.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dusethreads</parameter></term>
+        <listitem>
+          <para>Собрать perl с поддержкой потоков.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dprivlib,-Darchlib,-Dsitelib,...</parameter></term>
+        <listitem>
+          <para>Указывают Perl пути для поиска установленных модулей.
+          Редакторы LFS решили поместить их в структуру каталогов, основанную на версии
+          Perl Major.Minor (&perl-version-min;), что позволяет обновлять Perl до более
+		  новых версий (&perl-version;) без необходимости
+          переустанавливать все модули.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет (примерно 11 SBU), выполните:</para>
+
+<screen><userinput remap="test">make test</userinput></screen>
+
+    <note>
+       <para>Девять тестов завершились неудачей из-за использования самой последней версии zlib.</para>
+    </note>
+
+    <para>Установка пакета и очистка:</para>
+
+<screen><userinput remap="install">make install
+unset BUILD_ZLIB BUILD_BZIP2</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-perl" role="content">
+    <title>Содержимое пакета Perl</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Установленный каталог</segtitle>
+
+      <seglistitem>
+        <seg>corelist, cpan, enc2xs, encguess, h2ph, h2xs, instmodsh,
+        json_pp, libnetcfg, perl, perl&perl-version; (жесткая ссылка на perl),
+        perlbug, perldoc, perlivp, perlthanks (жесткая ссылка на perlbug), piconv,
+        pl2pm, pod2html, pod2man, pod2text, pod2usage, podchecker, podselect,
+        prove, ptar, ptardiff, ptargrep, shasum,
+        splain, xsubpp, и zipdetails</seg>
+        <seg>Список слишком большой для перечисления</seg>
+        <seg>/usr/lib/perl5</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+<!--
+      <varlistentry id="c2ph">
+        <term><command>c2ph</command></term>
+        <listitem>
+          <para>Dumps C structures as generated from
+          <command>cc -g -S</command></para>
+          <indexterm zone="ch-system-perl c2ph">
+            <primary sortas="b-c2ph">c2ph</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+-->
+      <varlistentry id="corelist">
+        <term><command>corelist</command></term>
+        <listitem>
+          <para>Интерфейс командной строки для Module::CoreList</para>
+          <indexterm zone="ch-system-perl corelist">
+            <primary sortas="b-corelist">corelist</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cpan">
+        <term><command>cpan</command></term>
+        <listitem>
+          <para>Позволяет получать из командной строки доступ к архиву документации
+		  и программ Perl (Comprehensive Perl Archive Network - CPAN)</para>
+          <indexterm zone="ch-system-perl cpan">
+            <primary sortas="b-cpan">cpan</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="enc2xs">
+        <term><command>enc2xs</command></term>
+        <listitem>
+          <para>Собирает расширение Perl для модуля Encode либо с использование таблицы
+		  символов Unicode, либо с использованием файлов кодирования Tcl</para>
+          <indexterm zone="ch-system-perl enc2xs">
+            <primary sortas="b-enc2xs">enc2xs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="encguess">
+        <term><command>encguess</command></term>
+        <listitem>
+          <para>Определяет тип кодировки одного или нескольких файлов</para>
+          <indexterm zone="ch-system-perl encguess">
+            <primary sortas="b-encguess">encguess</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="h2ph">
+        <term><command>h2ph</command></term>
+        <listitem>
+          <para>Конвертирует заголовочные файлы Си <filename class="extension">.h</filename>
+          в заголовочные файлы Perl <filename class="extension">.ph</filename></para>
+          <indexterm zone="ch-system-perl h2ph">
+            <primary sortas="b-h2ph">h2ph</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="h2xs">
+        <term><command>h2xs</command></term>
+        <listitem>
+          <para>Конвертирует заголовочные файлы Си <filename class="extension">.h</filename>
+          в расширения Perl</para>
+          <indexterm zone="ch-system-perl h2xs">
+            <primary sortas="b-h2xs">h2xs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="instmodsh">
+        <term><command>instmodsh</command></term>
+        <listitem>
+          <para>Сценарий оболочки для проверки установленных модулей Perl и
+		  создания архива из установленного модуля.</para>
+          <indexterm zone="ch-system-perl instmodsh">
+            <primary sortas="b-instmodsh">instmodsh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="json_pp">
+        <term><command>json_pp</command></term>
+        <listitem>
+          <para>Преобразует данные между определенными входными и выходными форматами</para>
+          <indexterm zone="ch-system-perl json_pp">
+            <primary sortas="b-json_pp">json_pp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libnetcfg">
+        <term><command>libnetcfg</command></term>
+        <listitem>
+          <para>Может использоваться для настройки Perl-модуля
+          <filename class="libraryfile">libnet</filename></para>
+          <indexterm zone="ch-system-perl libnetcfg">
+            <primary sortas="b-libnetcfg">libnetcfg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="perl">
+        <term><command>perl</command></term>
+        <listitem>
+          <para>Объединяет лучшие возможности C, <command>sed</command>,
+          <command>awk</command> и <command>sh</command> в одном языке,
+		  полезном, как швейцарский армейский нож</para>
+          <indexterm zone="ch-system-perl perl">
+            <primary sortas="b-perl">perl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="perl-version">
+        <term><command>perl&perl-version;</command></term>
+        <listitem>
+          <para>Жесткая ссылка на <command>perl</command></para>
+          <indexterm zone="ch-system-perl perl-version">
+            <primary sortas="b-perl&perl-version;">perl&perl-version;</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="perlbug">
+        <term><command>perlbug</command></term>
+        <listitem>
+          <para>Используется для создания отчетов об ошибках в Perl или модулях,
+		  которые поставляются с ним, и отправки их по почте</para>
+          <indexterm zone="ch-system-perl perlbug">
+            <primary sortas="b-perlbug">perlbug</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="perldoc">
+        <term><command>perldoc</command></term>
+        <listitem>
+          <para>Отображает часть документации в формате pod, которая встроена в
+		  дерево установки Perl или в сценарий Perl.</para>
+          <indexterm zone="ch-system-perl perldoc">
+            <primary sortas="b-perldoc">perldoc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="perlivp">
+        <term><command>perlivp</command></term>
+        <listitem>
+          <para>Процедура проверки установки Perl; ее можно использовать для проверки
+		  правильности установки Perl и его библиотек</para>
+          <indexterm zone="ch-system-perl perlivp">
+            <primary sortas="b-perlivp">perlivp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="perlthanks">
+        <term><command>perlthanks</command></term>
+        <listitem>
+          <para>Используется для создания сообщения-благодарности, отсылаемого
+		  разработчикам Perl</para>
+          <indexterm zone="ch-system-perl perlthanks">
+            <primary sortas="b-perlthanks">perlthanks</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="piconv">
+        <term><command>piconv</command></term>
+        <listitem>
+          <para>Perl версия конвертера <command>iconv</command>, используемого
+		  для кодирования символов</para>
+          <indexterm zone="ch-system-perl piconv">
+            <primary sortas="b-piconv">piconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pl2pm">
+        <term><command>pl2pm</command></term>
+        <listitem>
+          <para>Инструмент для грубого конвертирования файлов
+          <filename class="extension">.pl</filename> Perl4 в модули 
+          <filename class="extension">.pm</filename> Perl5</para>
+          <indexterm zone="ch-system-perl pl2pm">
+            <primary sortas="b-pl2pm">pl2pm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pod2html">
+        <term><command>pod2html</command></term>
+        <listitem>
+          <para>Преобразует файлы из формата pod в формат HTML</para>
+          <indexterm zone="ch-system-perl pod2html">
+            <primary sortas="b-pod2html">pod2html</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pod2man">
+        <term><command>pod2man</command></term>
+        <listitem>
+          <para>Преобразует данные pod в форматированный входной поток для *roff</para>
+          <indexterm zone="ch-system-perl pod2man">
+            <primary sortas="b-pod2man">pod2man</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pod2text">
+        <term><command>pod2text</command></term>
+        <listitem>
+          <para>Преобразует данные pod в форматированный текст ASCII</para>
+          <indexterm zone="ch-system-perl pod2text">
+            <primary sortas="b-pod2text">pod2text</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pod2usage">
+        <term><command>pod2usage</command></term>
+        <listitem>
+          <para>Печатает в файл сообщения usage из встроенных документов pod</para>
+          <indexterm zone="ch-system-perl pod2usage">
+            <primary sortas="b-pod2usage">pod2usage</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="podchecker">
+        <term><command>podchecker</command></term>
+        <listitem>
+          <para>Проверяет синтаксис файлов документации формата pod</para>
+          <indexterm zone="ch-system-perl podchecker">
+            <primary sortas="b-podchecker">podchecker</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="podselect">
+        <term><command>podselect</command></term>
+        <listitem>
+          <para>Отображает выбранные разделы документации pod</para>
+          <indexterm zone="ch-system-perl podselect">
+            <primary sortas="b-podselect">podselect</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="prove">
+        <term><command>prove</command></term>
+        <listitem>
+          <para>Инструмент командной строки для выполнения тестов с помощью
+		  модуля Test::Harness</para>
+          <indexterm zone="ch-system-perl prove">
+            <primary sortas="b-prove">prove</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+<!--
+      <varlistentry id="pstruct">
+        <term><command>pstruct</command></term>
+        <listitem>
+          <para>Dumps C structures as generated from <command>cc -g -S</command>
+          stabs</para>
+          <indexterm zone="ch-system-perl pstruct">
+            <primary sortas="b-pstruct">pstruct</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+-->
+      <varlistentry id="ptar">
+        <term><command>ptar</command></term>
+        <listitem>
+          <para>Программа, похожая на <command>tar</command>, написанная на Perl</para>
+          <indexterm zone="ch-system-perl ptar">
+            <primary sortas="b-ptar">ptar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ptardiff">
+        <term><command>ptardiff</command></term>
+        <listitem>
+          <para>Программа на Perl для сравнения распакованного и нераспакованного 
+          архивов</para>
+          <indexterm zone="ch-system-perl ptardiff">
+            <primary sortas="b-ptardiff">ptardiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ptargrep">
+        <term><command>ptargrep</command></term>
+        <listitem>
+          <para>Программа на Perl для текстового поиска по шаблону внутри tar-архива</para>
+          <indexterm zone="ch-system-perl ptargrep">
+            <primary sortas="b-ptargrep">ptargrep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="shasum">
+        <term><command>shasum</command></term>
+        <listitem>
+          <para>Печатает или проверяет контрольные суммы SHA</para>
+          <indexterm zone="ch-system-perl shasum">
+            <primary sortas="b-shasum">shasum</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="splain">
+        <term><command>splain</command></term>
+        <listitem>
+          <para>Включает подробные предупреждения для диагностики в Perl</para>
+          <indexterm zone="ch-system-perl splain">
+            <primary sortas="b-splain">splain</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xsubpp">
+        <term><command>xsubpp</command></term>
+        <listitem>
+          <para>Преобразует код Perl XS в код C</para>
+          <indexterm zone="ch-system-perl xsubpp">
+            <primary sortas="b-xsubpp">xsubpp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zipdetails">
+        <term><command>zipdetails</command></term>
+        <listitem>
+          <para>Отображает сведения о внутренней структуре Zip-файла</para>
+          <indexterm zone="ch-system-perl zipdetails">
+            <primary sortas="b-zipdetails">zipdetails</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

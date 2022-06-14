@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-e2fsprogs" role="wrap">
+  <?dbhtml filename="e2fsprogs.html"?>
+
+  <sect1info condition="script">
+    <productname>e2fsprogs</productname>
+    <productnumber>&e2fsprogs-version;</productnumber>
+    <address>&e2fsprogs-url;</address>
+  </sect1info>
+
+  <title>E2fsprogs-&e2fsprogs-version;</title>
+
+  <indexterm zone="ch-system-e2fsprogs">
+    <primary sortas="a-E2fsprogs">E2fsprogs</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет e2fsprogs содержит утилиты для работы с файловой системой
+    <systemitem class="filesystem">ext2</systemitem>. Также
+    он поддерживает журналируемые файловые системы
+    <systemitem class="filesystem">ext3</systemitem> и
+    <systemitem class="filesystem">ext4</systemitem>.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&e2fsprogs-fin-sbu;</seg>
+        <seg>&e2fsprogs-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета E2fsprogs</title>
+
+    <para>Документация e2fsprogs рекомендует выполнять сборку в подкаталоге папки
+    с исходниками:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <para>Подготовьте e2fsprogs к компиляции:</para>
+
+<screen><userinput remap="configure">../configure --prefix=/usr           \
+             --sysconfdir=/etc       \
+             --enable-elf-shlibs     \
+             --disable-libblkid      \
+             --disable-libuuid       \
+             --disable-uuidd         \
+             --disable-fsck</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--enable-elf-shlibs</parameter></term>
+        <listitem>
+          <para>Параметр создает общие библиотеки, которые используют некоторые
+		  программы в этом пакете.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-*</parameter></term>
+        <listitem>
+          <para>Эти параметры отменяют сборку и установку библиотек
+          <systemitem class="library">libuuid</systemitem> и
+          <systemitem class="library">libblkid</systemitem>, демона
+          <systemitem class="daemon">uuidd</systemitem>, и обертку для
+          <command>fsck</command>, поскольку util-linux устанавливает более поздние версии.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы запустить тесты, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Известно, что один тест, u_direct_io, завершается неудачей в некоторых системах.</para>
+
+<!-- This is a ridiculous amount now! And is it still true?
+     Does not appear to be true for version 1.46.3.  Time with tests
+     26 seconds with tests (With lots of cores and ram and an ssd disk).
+
+    <para>One of the e2fsprogs tests will attempt to allocate 256 MB of memory.
+    If you do not have significantly more RAM than this, be sure to enable
+    sufficient swap space for the test. See <xref
+    linkend="ch-partitioning-creatingfilesystem"/> and <xref
+    linkend="ch-partitioning-mounting"/>
+    for details on creating and enabling swap space.</para>
+
+    <para>On a spinning disk, the tests take a little more than 4 SBUs. They
+    can be much shorter on an SSD (down to about 1.5 SBUs).</para>
+-->
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Удалите ненужные статические библиотеки:</para>
+
+<screen><userinput remap="install">rm -fv /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a</userinput></screen>
+
+    <para>Этот пакет устанавливает сжатый файл
+    <filename class="extension">.info</filename> но не обновляет общесистемный файл
+	<filename>dir</filename>. Разархивируйте этот файл, а затем обновите системный
+	файл <filename>dir</filename>, используя следующие команды:</para>
+
+<screen><userinput remap="install">gunzip -v /usr/share/info/libext2fs.info.gz
+install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info</userinput></screen>
+
+    <para>По желанию, создайте и установите дополнительную документацию, выполнив
+	следующие команды:</para>
+
+<screen><userinput remap="install">makeinfo -o      doc/com_err.info ../lib/et/com_err.texinfo
+install -v -m644 doc/com_err.info /usr/share/info
+install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userinput></screen>
+  </sect2>
+
+  <sect2 id="contents-e2fsprogs" role="content">
+    <title>Содержимое пакета E2fsprogs</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Установленные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>badblocks, chattr, compile_et, debugfs, dumpe2fs, e2freefrag,
+        e2fsck, e2image, e2label, e2mmpstatus, e2scrub, e2scrub_all, e2undo,
+        e4crypt, e4defrag, filefrag, fsck.ext2,
+        fsck.ext3, fsck.ext4, logsave, lsattr, mk_cmds, mke2fs,
+        mkfs.ext2, mkfs.ext3, mkfs.ext4, mklost+found,
+        resize2fs, и tune2fs</seg>
+        <seg>libcom_err.so, libe2p.so, libext2fs.so, и libss.so</seg>
+        <seg>/usr/include/e2p, /usr/include/et, /usr/include/ext2fs,
+        /usr/include/ss, /usr/lib/e2fsprogs, /usr/share/et, и
+        /usr/share/ss</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="badblocks">
+        <term><command>badblocks</command></term>
+        <listitem>
+          <para>Выполняет поиск поврежденных блоков на устройстве (обычно на
+		  разделе диска)</para>
+          <indexterm zone="ch-system-e2fsprogs badblocks">
+            <primary sortas="b-badblocks">badblocks</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="chattr">
+        <term><command>chattr</command></term>
+        <listitem>
+          <para>Изменение атрибутов файлов в файловой системе <systemitem
+          class="filesystem">ext2</systemitem>; изменения также можно делать в файловой
+		  системе <systemitem class="filesystem">ext3</systemitem>
+          - журналируемой версии файловой системы <systemitem
+          class="filesystem">ext2</systemitem></para>
+          <indexterm zone="ch-system-e2fsprogs chattr">
+            <primary sortas="b-chattr">chattr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="compile_et">
+        <term><command>compile_et</command></term>
+        <listitem>
+          <para>Компилятор таблицы ошибок; конвертирует таблицу имен кодов ошибок и
+		  сообщений в файл исходного кода на языке С с тем, чтобы ее можно было
+		  использовать с библиотекой
+          <filename class="libraryfile">com_err</filename></para>
+          <indexterm zone="ch-system-e2fsprogs compile_et">
+            <primary sortas="b-compile_et">compile_et</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="debugfs">
+        <term><command>debugfs</command></term>
+        <listitem>
+          <para>Отладчик файловой системы; его можно использовать для проверки и
+		  изменения состояния файловой системы <systemitem class="filesystem">ext2</systemitem></para>
+          <indexterm zone="ch-system-e2fsprogs debugfs">
+            <primary sortas="b-debugfs">debugfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dumpe2fs">
+        <term><command>dumpe2fs</command></term>
+        <listitem>
+          <para>Выводит информацию о суперблоке и группе блоков для файловой системы,
+		  присутствующей на указанном устройстве.</para>
+          <indexterm zone="ch-system-e2fsprogs dumpe2fs">
+            <primary sortas="b-dumpe2fs">dumpe2fs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2freefrag">
+        <term><command>e2freefrag</command></term>
+        <listitem>
+          <para>Сообщает информацию о фрагментации свободного пространства</para>
+          <indexterm zone="ch-system-e2fsprogs e2freefrag">
+            <primary sortas="b-e2freefrag">e2freefrag</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2fsck">
+        <term><command>e2fsck</command></term>
+        <listitem>
+          <para>Используется для проверки и, при необходимости, восстановления
+		  файловых систем <systemitem
+          class="filesystem">ext2</systemitem> и <systemitem
+          class="filesystem">ext3</systemitem></para>
+          <indexterm zone="ch-system-e2fsprogs e2fsck">
+            <primary sortas="b-e2fsck">e2fsck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2image">
+        <term><command>e2image</command></term>
+        <listitem>
+          <para>Используется для сохранения важных данных файловой системы <systemitem
+          class="filesystem">ext2</systemitem> в файл</para>
+          <indexterm zone="ch-system-e2fsprogs e2image">
+            <primary sortas="b-e2image">e2image</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2label">
+        <term><command>e2label</command></term>
+        <listitem>
+          <para>Отображает или изменяет метку файловой системы в файловой системе <systemitem
+          class="filesystem">ext2</systemitem>, присутствующей на данном устройстве.</para>
+          <indexterm zone="ch-system-e2fsprogs e2label">
+            <primary sortas="b-e2label">e2label</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2mmpstatus">
+        <term><command>e2mmpstatus</command></term>
+        <listitem>
+          <para>Проверяет состояние MMP файловой системы ext4</para>
+          <indexterm zone="ch-system-e2fsprogs e2mmpstatus">
+            <primary sortas="b-e2mmpstatus">e2mmpstatus</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2scrub">
+        <term><command>e2scrub</command></term>
+        <listitem>
+          <para>Проверяет содержимое смонтированной файловой системы ext[234]</para>
+          <indexterm zone="ch-system-e2fsprogs e2scrub">
+            <primary sortas="b-e2scrub">e2scrub</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2scrub_all">
+        <term><command>e2scrub_all</command></term>
+        <listitem>
+          <para>CПроверяет все смонтированные файловые системы ext[234] на наличие ошибок</para>
+          <indexterm zone="ch-system-e2fsprogs e2scrub_all">
+            <primary sortas="b-e2scrub_all">e2scrub_all</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e2undo">
+        <term><command>e2undo</command></term>
+        <listitem>
+          <para>Воспроизводит журнал отмены undo_log для файловой системы
+		  ext2/ext3/ext4, найденной на устройстве [Это можно использовать
+		  для отмены неудачной операции программой e2fsprogs.]</para>
+          <indexterm zone="ch-system-e2fsprogs e2undo">
+            <primary sortas="b-e2undo">e2undo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e4crypt">
+        <term><command>e4crypt</command></term>
+        <listitem>
+          <para>Утилита шифрования файловой системы Ext4</para>
+          <indexterm zone="ch-system-e2fsprogs e4crypt">
+            <primary sortas="b-e4crypt">e4crypt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="e4defrag">
+        <term><command>e4defrag</command></term>
+        <listitem>
+          <para>OОнлайн дефрагментатор для файловой системы ext4</para>
+          <indexterm zone="ch-system-e2fsprogs e4defrag">
+            <primary sortas="b-e4defrag">e4defrag</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="filefrag">
+        <term><command>filefrag</command></term>
+        <listitem>
+          <para>Сообщает о том, насколько сильно может быть фрагментирован конкретный файл</para>
+          <indexterm zone="ch-system-e2fsprogs filefrag">
+            <primary sortas="b-filefrag">filefrag</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fsck.ext2">
+        <term><command>fsck.ext2</command></term>
+        <listitem>
+          <para>По умолчанию проверяет файловые системы
+		  <systemitem class="filesystem">ext2</systemitem> и является жесткой ссылкой
+		  на <command>e2fsck</command></para>
+          <indexterm zone="ch-system-e2fsprogs fsck.ext2">
+            <primary sortas="b-fsck.ext2">fsck.ext2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fsck.ext3">
+        <term><command>fsck.ext3</command></term>
+        <listitem>
+          <para>По умолчанию проверяет файловые системы
+		  <systemitem class="filesystem">ext3</systemitem> и является жесткой ссылкой
+		  на <command>e2fsck</command></para>
+          <indexterm zone="ch-system-e2fsprogs fsck.ext3">
+            <primary sortas="b-fsck.ext3">fsck.ext3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fsck.ext4">
+        <term><command>fsck.ext4</command></term>
+        <listitem>
+          <para>По умолчанию проверяет файловые системы
+		  <systemitem class="filesystem">ext4</systemitem> и является жесткой ссылкой
+		  на <command>e2fsck</command></para>
+          <indexterm zone="ch-system-e2fsprogs fsck.ext4">
+            <primary sortas="b-fsck.ext4">fsck.ext4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="logsave">
+        <term><command>logsave</command></term>
+        <listitem>
+          <para>Сохраняет вывод команды в файл журнала</para>
+          <indexterm zone="ch-system-e2fsprogs logsave">
+            <primary sortas="b-logsave">logsave</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lsattr">
+        <term><command>lsattr</command></term>
+        <listitem>
+          <para>Перечисляет атрибуты файлов во второй расширенной файловой системе.</para>
+          <indexterm zone="ch-system-e2fsprogs lsattr">
+            <primary sortas="b-lsattr">lsattr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mk_cmds">
+        <term><command>mk_cmds</command></term>
+        <listitem>
+          <para>Преобразует таблицу имен команд и справочных сообщений в исходный
+		  файл C, подходящий для использования с библиотекой подсистемы <filename
+          class="libraryfile">libss</filename></para>
+          <indexterm zone="ch-system-e2fsprogs mk_cmds">
+            <primary sortas="b-mk_cmds">mk_cmds</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mke2fs">
+        <term><command>mke2fs</command></term>
+        <listitem>
+          <para>Создает файловую систему <systemitem class="filesystem">ext2</systemitem>
+          или <systemitem class="filesystem">ext3</systemitem> на указанном устройстве</para>
+          <indexterm zone="ch-system-e2fsprogs mke2fs">
+            <primary sortas="b-mke2fs">mke2fs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkfs.ext2">
+        <term><command>mkfs.ext2</command></term>
+        <listitem>
+          <para>По умолчанию создает файловые системы
+		  <systemitem class="filesystem">ext2</systemitem> и является жесткой ссылкой
+		  на <command>mke2fs</command></para>
+          <indexterm zone="ch-system-e2fsprogs mkfs.ext2">
+            <primary sortas="b-mkfs.ext2">mkfs.ext2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkfs.ext3">
+        <term><command>mkfs.ext3</command></term>
+        <listitem>
+          <para>По умолчанию создает файловые системы
+		  <systemitem class="filesystem">ext3</systemitem> и является жесткой ссылкой
+		  на <command>mke2fs</command></para>
+          <indexterm zone="ch-system-e2fsprogs mkfs.ext3">
+            <primary sortas="b-mkfs.ext3">mkfs.ext3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkfs.ext4">
+        <term><command>mkfs.ext4</command></term>
+        <listitem>
+          <para>По умолчанию создает файловые системы
+		  <systemitem class="filesystem">ext4</systemitem> и является жесткой ссылкой
+		  на <command>mke2fs</command></para>
+          <indexterm zone="ch-system-e2fsprogs mkfs.ext4">
+            <primary sortas="b-mkfs.ext4">mkfs.ext4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mklost-found">
+        <term><command>mklost+found</command></term>
+        <listitem>
+          <para>Используется для создания каталога
+		  <filename class="directory">lost+found</filename> в файловой системе
+		  <systemitem class="filesystem">ext2</systemitem>; предварительно выделяет
+		  дисковые блоки для этого каталога, чтобы облегчить задачу
+		  <command>e2fsck</command></para>
+          <indexterm zone="ch-system-e2fsprogs mklost-found">
+            <primary sortas="b-mklost+found">mklost+found</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="resize2fs">
+        <term><command>resize2fs</command></term>
+        <listitem>
+          <para>Может использоваться для увеличения или уменьшения файловой системы <systemitem
+          class="filesystem">ext2</systemitem></para>
+          <indexterm zone="ch-system-e2fsprogs resize2fs">
+            <primary sortas="b-resize2fs">resize2fs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tune2fs">
+        <term><command>tune2fs</command></term>
+        <listitem>
+          <para>Позволяет настроить параметры для файловой системы <systemitem
+          class="filesystem">ext2</systemitem></para>
+          <indexterm zone="ch-system-e2fsprogs tune2fs">
+            <primary sortas="b-tune2fs">tune2fs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcom_err">
+        <term><filename class="libraryfile">libcom_err</filename></term>
+        <listitem>
+          <para>Стандартная процедура отображения ошибок</para>
+          <indexterm zone="ch-system-e2fsprogs libcom_err">
+            <primary sortas="c-libcom_err">libcom_err</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libe2p">
+        <term><filename class="libraryfile">libe2p</filename></term>
+        <listitem>
+          <para>Используется <command>dumpe2fs</command>, <command>chattr</command>,
+          и <command>lsattr</command></para>
+          <indexterm zone="ch-system-e2fsprogs libe2p">
+            <primary sortas="c-libe2p">libe2p</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libext2fs">
+        <term><filename class="libraryfile">libext2fs</filename></term>
+        <listitem>
+          <para>Содержит подпрограммы, позволяющие программам пользовательского
+		  уровня управлять файловой системой
+          <systemitem class="filesystem">ext2</systemitem></para>
+          <indexterm zone="ch-system-e2fsprogs libext2fs">
+            <primary sortas="c-libext2fs">libext2fs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libss">
+        <term><filename class="libraryfile">libss</filename></term>
+        <listitem>
+          <para>Используется <command>debugfs</command></para>
+          <indexterm zone="ch-system-e2fsprogs libss">
+            <primary sortas="c-libss">libss</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
