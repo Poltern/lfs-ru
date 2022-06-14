@@ -40,7 +40,37 @@
     -->
 
     <listitem>
-      <para>2022-05-31</para>
+      <para>2022-06-14</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to python3-3.10.5. Fixes
+          <ulink url="&lfs-ticket-root;5070">#5070</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to meson-0.62.2. Fixes
+          <ulink url="&lfs-ticket-root;5068">#5068</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kbd-2.5.0. Fixes
+          <ulink url="&lfs-ticket-root;5067">#5067</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to file-5.42. Fixes
+          <ulink url="&lfs-ticket-root;5072">#5072</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-5.18.3. Fixes
+          <ulink url="&lfs-ticket-root;5069">#5069</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to bc-5.3.1. Fixes
+          <ulink url="&lfs-ticket-root;5071">#5071</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2022-05-29</para>
       <itemizedlist>
         <listitem>
           <para>[bdubbs] - Update to iana-etc-20220524.

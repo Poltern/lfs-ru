@@ -79,9 +79,9 @@
     <!--<listitem>
        <para>Expect-&expect-version;</para>
     </listitem>-->
-   <!--<listitem>
+    <listitem>
        <para>File-&file-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Findutils-&findutils-version;</para>
     </listitem>-->
@@ -136,9 +136,9 @@
     <listitem revision="systemd">
       <para>Jinja2-&jinja2-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Kbd-&kbd-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Kmod-&kmod-version;</para>
     </listitem>-->

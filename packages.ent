@@ -58,10 +58,10 @@
 <!ENTITY bash-fin-du "50 MB">
 <!ENTITY bash-fin-sbu "1.5 SBU">
 
-<!ENTITY bc-version "5.2.5">
-<!ENTITY bc-size "428 KB">
+<!ENTITY bc-version "5.3.1">
+<!ENTITY bc-size "434 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "7b154ecc65aa07164c09de9fd88c7fc6">
+<!ENTITY bc-md5 "10dbd6425f22987ad7ea6d68d55f3680">
 <!ENTITY bc-home "https://git.yzena.com/gavin/bc">
 <!ENTITY bc-fin-du "7.1 MB">
 <!ENTITY bc-fin-sbu "less than 0.1 SBU">
@@ -179,10 +179,10 @@
 <!ENTITY expect-tmp-du "3.9 MB">
 <!ENTITY expect-tmp-sbu "0.2 SBU">
 
-<!ENTITY file-version "5.41">
-<!ENTITY file-size "1040 KB">
+<!ENTITY file-version "5.42">
+<!ENTITY file-size "1,080 KB">
 <!ENTITY file-url "https://astron.com/pub/file/file-&file-version;.tar.gz">
-<!ENTITY file-md5 "18233bb0a0089dfdc7dfbc93b96f231b">
+<!ENTITY file-md5 "4d4f70c3b08a8a70d8baf67f085d7e92">
 <!ENTITY file-home "https://www.darwinsys.com/file/">
 <!ENTITY file-tmp-du "32 MB">
 <!ENTITY file-tmp-sbu "0.1 SBU">
@@ -361,10 +361,10 @@
 <!ENTITY jinja2-fin-du "3.7 MB">
 <!ENTITY jinja2-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY kbd-version "2.4.0">
-<!ENTITY kbd-size "1,095 KB">
+<!ENTITY kbd-version "2.5.0">
+<!ENTITY kbd-size "1,456 KB">
 <!ENTITY kbd-url "https://www.kernel.org/pub/linux/utils/kbd/kbd-&kbd-version;.tar.xz">
-<!ENTITY kbd-md5 "3cac5be0096fcf7b32dcbd3c53831380">
+<!ENTITY kbd-md5 "9b739cfd88e854f23d906d1990341fda">
 <!ENTITY kbd-home "https://kbd-project.org/">
 <!ENTITY kbd-fin-du "33 MB">
 <!ENTITY kbd-fin-sbu "0.1 SBU">
@@ -427,12 +427,12 @@
 
 <!ENTITY linux-major-version "5">
 <!ENTITY linux-minor-version "18">
-<!ENTITY linux-patch-version "1">
+<!ENTITY linux-patch-version "3">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "126,754 KB">
+<!ENTITY linux-size "126,817 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "5ee0353e80e17cf1dd33474bd05e353e">
+<!ENTITY linux-md5 "a8db20740f7398af70543a645a4cd7ae">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -490,10 +490,10 @@
 <!ENTITY markupsafe-fin-du "520 KB">
 <!ENTITY markupsafe-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY meson-version "0.62.1">
-<!ENTITY meson-size "1,988 KB">
+<!ENTITY meson-version "0.62.2">
+<!ENTITY meson-size "1,991 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "2f5301d0e7fd5544ab0004393ba44cbe">
+<!ENTITY meson-md5 "e6521b43730901bdd67afa2adefa64a3">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "41 MB">
 <!ENTITY meson-fin-sbu "less than 0.1 SBU">
@@ -591,19 +591,19 @@
 <!-- If python minor version changes, updates in python and
      meson pages will be needed: python3.6 and python3.6m -->
 
-<!ENTITY python-version "3.10.4">
+<!ENTITY python-version "3.10.5">
 <!ENTITY python-minor "3.10">
-<!ENTITY python-size "18,890 KB">
+<!ENTITY python-size "18,908 KB">
 <!ENTITY python-url "https://www.python.org/ftp/python/&python-version;/Python-&python-version;.tar.xz">
-<!ENTITY python-md5 "21f2e113e087083a1e8cf10553d93599">
+<!ENTITY python-md5 "f05727cb3489aa93cd57eb561c16747b">
 <!ENTITY python-home "https://www.python.org/">
 <!ENTITY python-tmp-du "359 MB">
 <!ENTITY python-tmp-sbu "1.2 SBU">
 <!ENTITY python-fin-du "275 MB">
 <!ENTITY python-fin-sbu "4.3 SBU">
 <!ENTITY python-docs-url "https://www.python.org/ftp/python/doc/&python-version;/python-&python-version;-docs-html.tar.bz2">
-<!ENTITY python-docs-md5 "f5dce93c8149e45324d87c5e05e5fcb9">
-<!ENTITY python-docs-size "7,098 KB">
+<!ENTITY python-docs-md5 "46a8c3285c6ca87736bc9aad2d8519ba">
+<!ENTITY python-docs-size "7,112 KB">
 
 <!ENTITY readline-version "8.1.2">
 <!ENTITY readline-soversion "8.1"><!-- used for stripping -->
