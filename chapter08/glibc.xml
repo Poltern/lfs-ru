@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-glibc" role="wrap">
+  <?dbhtml filename="glibc.html"?>
+
+  <sect1info condition="script">
+    <productname>glibc</productname>
+    <productnumber>&glibc-version;</productnumber>
+    <address>&glibc-url;</address>
+  </sect1info>
+
+  <title>Glibc-&glibc-version;</title>
+
+  <indexterm zone="ch-system-glibc">
+    <primary sortas="a-Glibc">Glibc</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Glibc содержит основную библиотеку C. Эта библиотека предоставляет
+	основные процедуры для выделения памяти, поиска в каталогах, открытия и закрытия
+	файлов, чтения и записи файлов, обработки строк, сопоставления с образцом, арифметики и т.д.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&glibc-fin-sbu;</seg>
+        <seg>&glibc-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Glibc</title>
+
+<!-- applied in 2.35 (commit b805aebd42364fe696e417808a700fdb9800c9e8)
+    <para>First, fix a security problem identified upstream:</para>
+
+    <screen><userinput remap="pre">sed -e '/NOTIFY_REMOVED)/s/)/ \&amp;\&amp; data.attr != NULL)/' \
+    -i sysdeps/unix/sysv/linux/mq_notify.c</userinput></screen>
+-->
+    <para>Некоторые программы Glibc используют не совместимый с FHS каталог
+	<filename class="directory">/var/db</filename> для хранения своих данных во
+	время выполнения. Примените следующий патч, чтобы эти программы хранили свои
+	данные в каталогах, совместимых с FHS:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
+
+    <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
+
+<screen><userinput remap="pre">mkdir -v build
+cd       build</userinput></screen>
+
+    <para>Убедитесь, что утилиты <command>ldconfig</command> и <command>sln</command>
+	будут установлены в <filename class="directory">/usr/sbin</filename>:</para>
+
+<screen><userinput remap="pre">echo "rootsbindir=/usr/sbin" &gt; configparms</userinput></screen>
+
+    <para>Подготовьте Glibc к компиляции:</para>
+
+<screen><userinput remap="configure">../configure --prefix=/usr                            \
+             --disable-werror                         \
+             --enable-kernel=&min-kernel;                      \
+             --enable-stack-protector=strong          \
+             --with-headers=/usr/include              \
+             libc_cv_slibdir=/usr/lib</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-werror</parameter></term>
+        <listitem>
+          <para>Отключает параметр -Werror, передаваемый GCC. Это необходимо для
+		  запуска набора тестов.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-kernel=&min-kernel;</parameter></term>
+        <listitem>
+          <para>Этот параметр сообщает системе сборки, что этот glibc может использоваться
+		  с ядрами старше &min-kernel;. Это значение используется для создание обходных
+		  путей на случай, если системный вызов, представленный в более поздней версии,
+		  нельзя будет использовать.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-stack-protector=strong</parameter></term>
+        <listitem>
+          <para>Этот параметр повышает безопасность системы за счет добавления
+		  дополнительного кода для проверки переполнения буфера.</para>
+        </listitem>
+      </varlistentry>
+<!-- do we need this one? -->
+      <varlistentry>
+        <term><parameter>--with-headers=/usr/include</parameter></term>
+        <listitem>
+          <para>Сообщает системе сборки местоположение заголовочных файлов API ядра</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>libc_cv_slibdir=/usr/lib</parameter></term>
+        <listitem>
+          <para>Эта переменная устанавливает правильную библиотеку для всех архитектур. Мы
+		  не хотим, чтобы использовалась lib64</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <important>
+      <para>В этом разделе набор тестов для Glibc считается критически важным. Ни в
+	  коем случае не пропускайте его.</para>
+    </important>
+
+    <para>Как правило, несколько тестов не проходят. Ошибки тестирования, перечисленные
+	ниже, можно игнорировать.</para>
+
+<!-- Use remap="make" here to work around a jhalfs issue. -->
+<!--<screen><userinput remap="make">case $(uname -m) in
+  i?86)   ln -sfnv $PWD/elf/ld-linux.so.2        /lib ;;
+  x86_64) ln -sfnv $PWD/elf/ld-linux-x86-64.so.2 /lib ;;
+esac</userinput></screen>
+
+    <note><para>The symbolic link above is needed to run the tests at this
+    stage of building in the chroot environment.  It will be overwritten
+    in the install phase below.</para></note>
+-->
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Вы можете увидеть, что ряд тестов завершились неудачей. Набор тестов Glibc в
+	некоторой степени зависит от хост-системы. Несколько ошибок из более чем 4200 тестов
+	можно игнорировать. Список наиболее распространенных проблем последних версий LFS:</para>
+
+    <itemizedlist>
+
+      <listitem>
+        <para>Известно, что <emphasis>io/tst-lchmod</emphasis> не работает в среде chroot LFS.</para>
+      </listitem>
+
+      <listitem>
+        <para>Известно, что <emphasis>misc/tst-ttyname</emphasis> не работает в среде chroot LFS.</para>
+      </listitem>
+
+      <listitem>
+        <para>Известно, что тест <emphasis>nss/tst-nss-files-hosts-long</emphasis> не
+		проходит, если в системе нет IP-адресов без замыкания на себя.</para> <!-- PR 24816 -->
+      </listitem>
+
+      <listitem>
+        <para>Известно, что тест <emphasis>nss/tst-nss-files-hosts-multi</emphasis> не
+		работает на относительно медленных системах из-за внутреннего тайм-аута.</para>
+      </listitem>
+<!--
+      <listitem>
+        <para>The <emphasis>rt/tst-cputimer{1,2,3}</emphasis> tests depend on
+        the host system kernel. Kernels 4.14.91&ndash;4.14.96,
+        4.19.13&ndash;4.19.18, and 4.20.0&ndash;4.20.5 are known to
+        cause these tests to fail.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>The math tests sometimes fail when running on
+        systems where the CPU is not a relatively new Intel or
+        AMD processor.</para>
+      </listitem>
+-->
+    </itemizedlist>
+
+    <para>На этапе установки Glibc будет жаловаться на отсутствие файла
+	<filename>/etc/ld.so.conf</filename>, хотя это безобидное сообщение, предотвратить
+	его появление можно с помощью команды:</para>
+
+<screen><userinput remap="install">touch /etc/ld.so.conf</userinput></screen>
+
+    <para>Исправьте Makefile, чтобы пропустить ненужную проверку работоспособности,
+	которая завершается неудачей в неполной среде LFS:
+    </para>
+
+<screen><userinput remap="install">sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Исправьте жестко заданный путь к исполняемому загрузчику в скрипте
+    <command>ldd</command>:</para>
+
+<screen><userinput remap="install">sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd</userinput></screen>
+
+    <para>Установите файл настроек и создайте рабочий каталог
+    <command>nscd</command>:</para>
+
+<screen><userinput remap="install">cp -v ../nscd/nscd.conf /etc/nscd.conf
+mkdir -pv /var/cache/nscd</userinput></screen>
+
+    <para revision="systemd">Установите файлы поддержки systemd для
+    <command>nscd</command>:</para>
+
+    <screen revision="systemd"><userinput remap="install">install -v -Dm644 ../nscd/nscd.tmpfiles /usr/lib/tmpfiles.d/nscd.conf
+install -v -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service</userinput></screen>
+
+    <para>Далее установите локали, которые дадут возможность системе отвечать на разных
+    языках. Ни одна из локалей не требуется системе, но если некоторые из них отсутствуют, то 
+    при тестировании последующих пакетов будут пропущены важные проверки.</para>
+
+    <para>Отдельные локали можно установить с помощью программы
+    <command>localedef</command>. Например, вторая команда
+    <command>localedef</command> приведенная ниже, объединяет определение независимой от
+    набора символов локали
+    <filename>/usr/share/i18n/locales/cs_CZ</filename>
+    с набором символов
+    <filename>/usr/share/i18n/charmaps/UTF-8.gz</filename>
+    и добавляет результат в файл
+    <filename>/usr/lib/locale/locale-archive</filename>.
+    Следующие инструкции установят минимальный набор локалей, необходимый для
+	оптимального охвата тестов</para>
+
+<screen role="nodump"><userinput remap="locale-test">mkdir -pv /usr/lib/locale
+localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
+localedef -i de_DE -f ISO-8859-1 de_DE
+localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
+localedef -i de_DE -f UTF-8 de_DE.UTF-8
+localedef -i el_GR -f ISO-8859-7 el_GR
+localedef -i en_GB -f ISO-8859-1 en_GB
+localedef -i en_GB -f UTF-8 en_GB.UTF-8
+localedef -i en_HK -f ISO-8859-1 en_HK
+localedef -i en_PH -f ISO-8859-1 en_PH
+localedef -i en_US -f ISO-8859-1 en_US
+localedef -i en_US -f UTF-8 en_US.UTF-8
+localedef -i es_ES -f ISO-8859-15 es_ES@euro
+localedef -i es_MX -f ISO-8859-1 es_MX
+localedef -i fa_IR -f UTF-8 fa_IR
+localedef -i fr_FR -f ISO-8859-1 fr_FR
+localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro
+localedef -i fr_FR -f UTF-8 fr_FR.UTF-8
+localedef -i is_IS -f ISO-8859-1 is_IS
+localedef -i is_IS -f UTF-8 is_IS.UTF-8
+localedef -i it_IT -f ISO-8859-1 it_IT
+localedef -i it_IT -f ISO-8859-15 it_IT@euro
+localedef -i it_IT -f UTF-8 it_IT.UTF-8
+localedef -i ja_JP -f EUC-JP ja_JP
+localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
+localedef -i ja_JP -f UTF-8 ja_JP.UTF-8
+localedef -i nl_NL@euro -f ISO-8859-15 nl_NL@euro
+localedef -i ru_RU -f KOI8-R ru_RU.KOI8-R
+localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
+localedef -i se_NO -f UTF-8 se_NO.UTF-8
+localedef -i ta_IN -f UTF-8 ta_IN.UTF-8
+localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
+localedef -i zh_CN -f GB18030 zh_CN.GB18030
+localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS
+localedef -i zh_TW -f UTF-8 zh_TW.UTF-8</userinput></screen>
+
+    <para>Кроме того, установите локаль для вашей страны, языка и набора символов.</para>
+
+    <para>В качестве альтернативы, установите сразу все локали перечисленные в файле
+    <filename>glibc-&glibc-version;/localedata/SUPPORTED</filename>
+    (он включает все локали из списка выше и многие другие), выполнив команду:</para>
+
+<screen><userinput remap="locale-full">make localedata/install-locales</userinput></screen>
+
+    <para>Затем используйте команду <command>localedef</command> для создания и
+	установки локалей, не перечисленных в файле
+    <filename>glibc-&glibc-version;/localedata/SUPPORTED</filename>, когда они вам
+	понадобятся. Например, для некоторых тестов в этой главе потребуются
+	следующие две локали:</para>
+
+<screen role="nodump"><userinput remap="locale-full">localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true</userinput></screen>
+
+    <note><para>Glibc теперь использует libidn2 для разрешения интернационализованных
+    доменных имен. Если такая функция необходима, то
+    инструкцию по установке libidn2 можно найти на странице
+    <ulink url="&blfs-book;general/libidn2.html">BLFS libidn2</ulink>.
+    </para></note>
+
+  </sect2>
+
+  <sect2 id="conf-glibc" role="configuration">
+    <title>Настройка Glibc</title>
+
+    <indexterm zone="conf-glibc">
+      <primary sortas="e-/etc/nsswitch.conf">/etc/nsswitch.conf</primary>
+    </indexterm>
+
+    <indexterm zone="conf-glibc">
+      <primary sortas="e-/etc/localtime">/etc/localtime</primary>
+    </indexterm>
+
+  <sect3>
+  <title>Добавление nsswitch.conf</title>
+
+    <para>Необходимо создать файл <filename>/etc/nsswitch.conf</filename>, потому
+    что настроенный по умолчанию Glibc плохо работает в сетевой среде.
+    </para>
+
+    <para>Создайте новый фай <filename>/etc/nsswitch.conf</filename> выполнив
+	следующие действия:</para>
+
+<screen><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
+<literal># Begin /etc/nsswitch.conf
+
+passwd: files
+group: files
+shadow: files
+
+hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End /etc/nsswitch.conf</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+    <sect3>
+    <title>Добавление часового пояса</title>
+
+    <para>Установите и настройте часовой пояс следующим образом:</para>
+<screen><userinput>tar -xf ../../tzdata&tzdata-version;.tar.gz
+
+ZONEINFO=/usr/share/zoneinfo
+mkdir -pv $ZONEINFO/{posix,right}
+
+for tz in etcetera southamerica northamerica europe africa antarctica  \
+          asia australasia backward; do
+    zic -L /dev/null   -d $ZONEINFO       ${tz}
+    zic -L /dev/null   -d $ZONEINFO/posix ${tz}
+    zic -L leapseconds -d $ZONEINFO/right ${tz}
+done
+
+cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
+zic -d $ZONEINFO -p America/New_York
+unset ZONEINFO</userinput></screen>
+
+    <variablelist>
+      <title>Значение команд zic:</title>
+
+      <varlistentry>
+        <term><parameter>zic -L /dev/null ...</parameter></term>
+        <listitem>
+          <para>Создаёт часовые пояса posix без секунд координации. Обычно их помещают как в
+          <filename class="directory">zoneinfo</filename> так и в
+          <filename class="directory">zoneinfo/posix</filename>. Часовые пояса
+          POSIX должны быть прописаны в <filename class="directory">zoneinfo</filename>,
+          иначе различные тесты будут сообщать об ошибках.
+          На встраиваемых системах с небольшим
+          диском, где часовые пояса никогда не будут обновляться, можно сэкономить примерно
+          1.9 MB не используя каталог
+          <filename class="directory">posix</filename>, однако некоторые приложения или
+		  наборы тестов могут вызывать некоторые сбои.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>zic -L leapseconds ...</parameter></term>
+        <listitem>
+          <para>Создаёт правильные часовые пояса с секундами координации.
+          На встраиваемых системах с небольшим
+          диском, где часовые пояса никогда не будут обновляться, а правильность времени
+          неважна, можно выиграть примерно 1.9 MB, исключив каталог <filename class="directory">right</filename>
+          directory.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>zic ... -p ...</parameter></term>
+        <listitem>
+          <para>Создаёт файл <filename>posixrules</filename>. Используется New York,
+          потому что POSIX требует соответсвия правил летнего времени с правилами США.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+
+    <para>Один из способов определить местный часовой пояс — запустить следующий скрипт:</para>
+
+<screen role="nodump"><userinput>tzselect</userinput></screen>
+
+    <para>После нескольких вопросов о местоположении скрипт выдаст наименование
+    часового пояса (например <emphasis>America/Edmonton</emphasis>). В файле
+    <filename class='directory'>/usr/share/zoneinfo</filename> перечислены и другие
+    возможные часовые пояса, такие как
+    <emphasis>Canada/Eastern</emphasis> или <emphasis>EST5EDT</emphasis>, котрые не
+    распознаются скриптом, но могут быть использованы.</para>
+
+    <para>Создайте файл <filename>/etc/localtime</filename> выполнив:</para>
+
+<screen><userinput>ln -sfv /usr/share/zoneinfo/<replaceable>&lt;xxx&gt;</replaceable> /etc/localtime</userinput></screen>
+
+    <para>Замените <replaceable>&lt;xxx&gt;</replaceable> на имя выбранного часового пояса
+    (например, Europe/Moscow).</para>
+
+  </sect3>
+
+  <sect3 id="conf-ld" role="configuration">
+    <title>Настройка динамического загрузчика</title>
+
+    <indexterm zone="conf-ld">
+      <primary sortas="e-/etc/ld.so.conf">/etc/ld.so.conf</primary>
+    </indexterm>
+
+    <para>По умолчанию, во время работы программы динамический загрузчик (<filename
+    class="libraryfile">/lib/ld-linux.so.2</filename>) ищет нужные библиотеки
+    в каталогах <filename class="directory">/lib</filename>
+    и <filename class="directory">/usr/lib</filename>. Если библиотека находится в другом
+    каталоге, то его необходимо указать в файле <filename>/etc/ld.so.conf</filename>, чтобы
+    динамический загрузчик смог найти библиотеку.
+    Два каталога - <filename
+    class="directory">/usr/local/lib</filename> и <filename
+    class="directory">/opt/lib</filename> часто используются для дополнительных библиотек,
+    поэтому добавьте их в пути поиска для динамического загрузчика.</para>
+
+    <para>Создайте новый файл <filename>/etc/ld.so.conf</filename> выполнив:</para>
+
+<screen><userinput>cat &gt; /etc/ld.so.conf &lt;&lt; "EOF"
+<literal># Begin /etc/ld.so.conf
+/usr/local/lib
+/opt/lib
+</literal>
+EOF</userinput></screen>
+
+  <para>Динамический загрузчик может выполнить поиск в каталоге и включить содержимое
+  найденных там файлов. Обычно такие файлы состоят из одной строки и содержат путь к
+  библиотеке. Чтобы добавить эту возможность, выполните следующие команды:</para>
+
+<screen role="nodump"><userinput>cat &gt;&gt; /etc/ld.so.conf &lt;&lt; "EOF"
+<literal># Add an include directory
+include /etc/ld.so.conf.d/*.conf
+</literal>
+EOF
+mkdir -pv /etc/ld.so.conf.d</userinput></screen>
+
+  </sect3>
+  </sect2>
+
+  <sect2 id="contents-glibc" role="content">
+    <title>Содержимое пакета Glibc</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Установленные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>gencat, getconf, getent, iconv, iconvconfig, ldconfig,
+        ldd, lddlibc4,
+        ld.so (symlink to ld-linux-x86-64.so.2 or ld-linux.so.2),
+        locale, localedef, makedb, mtrace, nscd,
+        pcprofiledump, pldd, sln, sotruss, sprof, tzselect, xtrace,
+        zdump, и zic</seg>
+        <seg>ld-linux-x86-64.so.2, ld-linux.so.2,
+        libBrokenLocale.{a,so}, libanl.{a,so},
+        libc.{a,so}, libc_nonshared.a, libc_malloc_debug.so,
+        libcrypt.{a,so}, libdl.{a,so.2}, libg.a, libm.{a,so},
+        libmcheck.a, libmemusage.so, libmvec.{a,so}, libnsl.so.1,
+        libnss_compat.so, libnss_dns.so, libnss_files.so, libnss_hesiod.so,
+        libpcprofile.so, libpthread.{a,so.0},
+        libresolv.{a,so}, librt.{a,so.1},
+        libthread_db.so, и libutil.{a,so.1}</seg>
+        <seg>/usr/include/arpa, /usr/include/bits, /usr/include/gnu,
+        /usr/include/net, /usr/include/netash, /usr/include/netatalk,
+        /usr/include/netax25, /usr/include/neteconet, /usr/include/netinet,
+        /usr/include/netipx, /usr/include/netiucv, /usr/include/netpacket,
+        /usr/include/netrom, /usr/include/netrose, /usr/include/nfs,
+        /usr/include/protocols, /usr/include/rpc,
+        /usr/include/sys, /usr/lib/audit, /usr/lib/gconv, /usr/lib/locale,
+        /usr/libexec/getconf, /usr/share/i18n, /usr/share/zoneinfo,
+        /var/cache/nscd, и /var/lib/nss_db</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gencat">
+        <term><command>gencat</command></term>
+        <listitem>
+          <para>Создает каталоги сообщений</para>
+          <indexterm zone="ch-system-glibc gencat">
+            <primary sortas="b-gencat">gencat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="getconf">
+        <term><command>getconf</command></term>
+        <listitem>
+          <para>Отображает настройки системы для специфичных переменных файловой
+          системы</para>
+          <indexterm zone="ch-system-glibc getconf">
+            <primary sortas="b-getconf">getconf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="getent">
+        <term><command>getent</command></term>
+        <listitem>
+          <para>Получает записи из административной базы данных</para>
+          <indexterm zone="ch-system-glibc getent">
+            <primary sortas="b-getent">getent</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="iconv">
+        <term><command>iconv</command></term>
+        <listitem>
+          <para>Выполняет преобразование набора символов</para>
+          <indexterm zone="ch-system-glibc iconv">
+            <primary sortas="b-iconv">iconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="iconvconfig">
+        <term><command>iconvconfig</command></term>
+        <listitem>
+          <para>Создает быстрозагружаемые файлы настроек модуля <command>iconv</command></para>
+          <indexterm zone="ch-system-glibc iconvconfig">
+            <primary sortas="b-iconvconfig">iconvconfig</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ldconfig">
+        <term><command>ldconfig</command></term>
+        <listitem>
+          <para>Настраивает привязки времени выполнения динамического компоновщика</para>
+          <indexterm zone="ch-system-glibc ldconfig">
+            <primary sortas="b-ldconfig">ldconfig</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ldd">
+        <term><command>ldd</command></term>
+        <listitem>
+          <para>Сообщает, какие общие библиотеки требуются каждой программе
+		  или общей библиотеке</para>
+          <indexterm zone="ch-system-glibc ldd">
+            <primary sortas="b-ldd">ldd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lddlibc4">
+        <term><command>lddlibc4</command></term>
+        <listitem>
+          <para>Помогает <command>ldd</command> работать с объектными файлами. Он
+		  не существует на более новых архитектурах, таких как x86_64</para>
+          <indexterm zone="ch-system-glibc lddlibc4">
+            <primary sortas="b-lddlibc4">lddlibc4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="locale">
+        <term><command>locale</command></term>
+        <listitem>
+          <para>Выводит различную информацию о текущей локали</para>
+          <indexterm zone="ch-system-glibc locale">
+            <primary sortas="b-locale">locale</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="localedef">
+        <term><command>localedef</command></term>
+        <listitem>
+          <para>Компилирует спецификации локали</para>
+          <indexterm zone="ch-system-glibc localedef">
+            <primary sortas="b-localedef">localedef</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="makedb">
+        <term><command>makedb</command></term>
+        <listitem>
+          <para>Создает простую базу данных на основе текстового ввода</para>
+          <indexterm zone="ch-system-glibc makedb">
+            <primary sortas="b-makedb">makedb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mtrace">
+        <term><command>mtrace</command></term>
+        <listitem>
+          <para>Читает и интерпретирует файл трассировки памяти; отображает
+		  сводку в удобочитаемом формате</para>
+          <indexterm zone="ch-system-glibc mtrace">
+            <primary sortas="b-mtrace">mtrace</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="nscd">
+        <term><command>nscd</command></term>
+        <listitem>
+          <para>Демон, который обеспечивает кеширование наиболее распространенных
+		  запросов к службе имен</para>
+          <indexterm zone="ch-system-glibc nscd">
+            <primary sortas="b-nscd">nscd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pcprofiledump">
+        <term><command>pcprofiledump</command></term>
+        <listitem>
+          <para>Создает дамп информации, генерируемой при профилировании ПК</para>
+          <indexterm zone="ch-system-glibc pcprofiledump">
+            <primary sortas="b-pcprofiledump">pcprofiledump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pldd">
+        <term><command>pldd</command></term>
+        <listitem>
+          <para>Перечисляет динамические общие объекты, используемые запущенными процессами.</para>
+          <indexterm zone="ch-system-glibc pldd">
+            <primary sortas="b-pldd">pldd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sln">
+        <term><command>sln</command></term>
+        <listitem>
+          <para>Статически скомпонованная программа <command>ln</command></para>
+          <indexterm zone="ch-system-glibc sln">
+            <primary sortas="b-sln">sln</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sotruss">
+        <term><command>sotruss</command></term>
+        <listitem>
+          <para>Отслеживает вызовы процедур общей библиотеки указанной команды</para>
+          <indexterm zone="ch-system-glibc sotruss">
+            <primary sortas="b-sotruss">sotruss</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sprof">
+        <term><command>sprof</command></term>
+        <listitem>
+          <para>Читает и отображает данные профилирования общих объектов.</para>
+          <indexterm zone="ch-system-glibc sprof">
+            <primary sortas="b-sprof">sprof</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tzselect">
+        <term><command>tzselect</command></term>
+        <listitem>
+          <para>Запрашивает у пользователя информацию о текущем местоположении системы
+		  и выводит описание соответствующего часового пояса.</para>
+          <indexterm zone="ch-system-glibc tzselect">
+            <primary sortas="b-tzselect">tzselect</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xtrace">
+        <term><command>xtrace</command></term>
+        <listitem>
+          <para>Отслеживает выполнение программы, отображая выполняемую в
+		  данный момент функцию</para>
+          <indexterm zone="ch-system-glibc xtrace">
+            <primary sortas="b-xtrace">xtrace</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zdump">
+        <term><command>zdump</command></term>
+        <listitem>
+          <para>Выдает дамп часового пояса</para>
+          <indexterm zone="ch-system-glibc zdump">
+            <primary sortas="b-zdump">zdump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="zic">
+        <term><command>zic</command></term>
+        <listitem>
+          <para>Компилятор часовых поясов</para>
+          <indexterm zone="ch-system-glibc zic">
+            <primary sortas="b-zic">zic</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ld.so">
+        <term><filename class="libraryfile">ld-*.so</filename></term>
+        <listitem>
+          <para>Вспомогательная программа для исполняемых файлов общей библиотеки</para>
+          <indexterm zone="ch-system-glibc ld.so">
+            <primary sortas="c-ld.so">ld-&glibc-version;.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libBrokenLocale">
+        <term><filename class="libraryfile">libBrokenLocale</filename></term>
+        <listitem>
+          <para>Используется внутри Glibc как грубый хак для запуска
+          сломанных программ (например, некоторые приложения Motif). Прочитайте
+          комментарии в <filename>glibc-&glibc-version;/locale/broken_cur_max.c</filename>
+          для получения дополнительной информации</para>
+          <indexterm zone="ch-system-glibc libBrokenLocale">
+            <primary sortas="c-libBrokenLocale">libBrokenLocale</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libanl">
+        <term><filename class="libraryfile">libanl</filename></term>
+        <listitem>
+          <para>Библиотека асинхронного поиска имен</para>
+          <indexterm zone="ch-system-glibc libanl">
+            <primary sortas="c-libanl">libanl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libc">
+        <term><filename class="libraryfile">libc</filename></term>
+        <listitem>
+          <para>Основная библиотека C</para>
+          <indexterm zone="ch-system-glibc libc">
+            <primary sortas="c-libc">libc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libc_malloc_debug">
+        <term><filename class="libraryfile">libc_malloc_debug</filename></term>
+        <listitem>
+          <para>Включает проверку выделения памяти при предварительной загрузке</para>
+          <indexterm zone="ch-system-glibc libc_malloc_debug">
+            <primary sortas="c-libc_malloc_debug">libc_malloc_debug</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcrypt">
+        <term><filename class="libraryfile">libcrypt</filename></term>
+        <listitem>
+          <para>Криптографическая библиотека</para>
+          <indexterm zone="ch-system-glibc libcrypt">
+            <primary sortas="c-libcrypt">libcrypt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libdl">
+        <term><filename class="libraryfile">libdl</filename></term>
+        <listitem>
+          <para>Библиотека-заглушка, не содержащая функций. Ранее была библиотекой
+		  интерфейса динамической компоновки, функции которой теперь находятся в
+          <filename class="libraryfile">libc</filename></para>
+          <indexterm zone="ch-system-glibc libdl">
+            <primary sortas="c-libdl">libdl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libg">
+        <term><filename class="libraryfile">libg</filename></term>
+        <listitem>
+          <para>Библиотека-заглушка без функций. Раньше была библиотекой среды выполнения
+          для <command>g++</command></para>
+          <indexterm zone="ch-system-glibc libg">
+            <primary sortas="c-libg">libg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libm">
+        <term><filename class="libraryfile">libm</filename></term>
+        <listitem>
+          <para>Математическая библиотека</para>
+          <indexterm zone="ch-system-glibc libm">
+            <primary sortas="c-libm">libm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libmvec">
+        <term><filename class="libraryfile">libmvec</filename></term>
+        <listitem>
+          <para>Библиотека векторных математических вычислений, подключаемая по мере
+		  необходимости при использовании <filename class='libraryfile'>libm</filename></para>
+          <indexterm zone="ch-system-glibc libmvec">
+            <primary sortas="c-libmvec">libmvec</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libmcheck">
+        <term><filename class="libraryfile">libmcheck</filename></term>
+        <listitem>
+          <para>Включает проверку выделения памяти при подключении к</para>
+          <indexterm zone="ch-system-glibc libmcheck">
+            <primary sortas="c-libmcheck">libmcheck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libmemusage">
+        <term><filename class="libraryfile">libmemusage</filename></term>
+        <listitem>
+          <para>Используется <command>memusage</command> для сбора информации об использовании
+          памяти программой</para>
+          <indexterm zone="ch-system-glibc libmemusage">
+            <primary sortas="c-libmemusage">libmemusage</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libnsl">
+        <term><filename class="libraryfile">libnsl</filename></term>
+        <listitem>
+          <para>Библиотека сетевых служб, которая в настоящее время устарела</para>
+          <indexterm zone="ch-system-glibc libnsl">
+            <primary sortas="c-libnsl">libnsl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libnss">
+        <term><filename class="libraryfile">libnss_*</filename></term>
+        <listitem>
+          <para>Модули Name Service Switch, содержащие функции для разрешения имен
+		  хостов, имен пользователей, имен групп, псевдонимов, служб, протоколов и т. д.
+		  Загружаются <filename class='libraryfile'>libc</filename> в соответствии с
+		  конфигурацией в <filename>/etc/nsswitch.conf</filename></para>
+          <indexterm zone="ch-system-glibc libnss">
+            <primary sortas="c-libnss">libnss_*</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpcprofile">
+        <term><filename class="libraryfile">libpcprofile</filename></term>
+        <listitem>
+          <para>Содержит функции профилирования, используемые для отслеживания времени,
+		  потраченного процессором в конкретных строках исходного кода</para>
+          <indexterm zone="ch-system-glibc libpcprofile">
+            <primary sortas="c-libpcprofile">libpcprofile</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpthread">
+        <term><filename class="libraryfile">libpthread</filename></term>
+        <listitem>
+          <para>Библиотека-заглушка, не содержащая функций. Ранее содержал функции,
+		  обеспечивающие большинство интерфейсов, указанных в 
+		  POSIX.1b Realtime Extension, теперь эти функции находятся в
+          <filename class="libraryfile">libc</filename></para>
+          <indexterm zone="ch-system-glibc libpthread">
+            <primary sortas="c-libpthread">libpthread</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libresolv">
+        <term><filename class="libraryfile">libresolv</filename></term>
+        <listitem>
+          <para>Содержит функции создания, пересылки и интерпретации пакетов,
+		  используемых на серверах доменных имен в сети интернет</para>
+          <indexterm zone="ch-system-glibc libresolv">
+            <primary sortas="c-libresolv">libresolv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="librt">
+        <term><filename class="libraryfile">librt</filename></term>
+        <listitem>
+          <para>Содержит функции, реализующие большую часть интерфейсов,
+		  определяемых в POSIX.1b Realtime Extension</para>
+          <indexterm zone="ch-system-glibc librt">
+            <primary sortas="c-librt">librt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libthread_db">
+        <term><filename class="libraryfile">libthread_db</filename></term>
+        <listitem>
+          <para>Содержит функции, полезные для сборки отладчиков для многопоточных программ</para>
+          <indexterm zone="ch-system-glibc libthread_db">
+            <primary sortas="c-libthread_db">libthread_db</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libutil">
+        <term><filename class="libraryfile">libutil</filename></term>
+        <listitem>
+          <para>Библиотека-заглушка, не содержащая функций. Ранее содержал код для
+		  <quote>стандартных</quote> функций, используемых во многих утилитах Unix.
+		  Эти функции теперь находятся в <filename class="libraryfile">libc</filename></para>
+          <indexterm zone="ch-system-glibc libutil">
+            <primary sortas="c-libutil">libutil</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
