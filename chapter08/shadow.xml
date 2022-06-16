@@ -627,7 +627,7 @@ useradd -D --gid 999</userinput></screen>
       <varlistentry id="libsubid">
         <term><filename class='libraryfile'>libsubid</filename></term>
         <listitem>
-          <para>library for process subordinate id ranges for users</para>
+          <para>Библиотека подчиненных процессов для диапазонов идентификаторов пользователей</para>
           <indexterm zone="ch-system-shadow libsubid">
             <primary sortas="c-libsubid">libsubid</primary>
           </indexterm>
