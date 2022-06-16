@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-groff" role="wrap">
+  <?dbhtml filename="groff.html"?>
+
+  <sect1info condition="script">
+    <productname>groff</productname>
+    <productnumber>&groff-version;</productnumber>
+    <address>&groff-url;</address>
+  </sect1info>
+
+  <title>Groff-&groff-version;</title>
+
+  <indexterm zone="ch-system-groff">
+    <primary sortas="a-Groff">Groff</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Groff содержит программы для обработки и форматирования текста.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&groff-fin-sbu;</seg>
+        <seg>&groff-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Groff</title>
+
+    <para>Groff ожидает, что переменная окружения <envar>PAGE</envar> будет содержать
+	размер бумаги по умолчанию. Для пользователей из США подходит
+    <parameter>PAGE=letter</parameter>. Для других стран больше подойдет
+    <parameter>PAGE=A4</parameter>. Хотя формат бумаги по умолчанию настраивается
+	во время компиляции, его можно переопределить позже, записав <quote>A4</quote>
+    или <quote>letter</quote> в файл <filename>/etc/papersize</filename>.</para>
+
+    <para>Подготовьте Groff к компиляции:</para>
+
+<screen><userinput remap="configure">PAGE=<replaceable>&lt;paper_size&gt;</replaceable> ./configure --prefix=/usr</userinput></screen>
+
+    <para>Этот пакет не поддерживает параллельную сборку. Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make -j1</userinput></screen>
+
+    <para>С этим пакетом не поставляется набор тестов.</para>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-groff" role="content">
+  <title>Содержимое пакета Groff</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>addftinfo, afmtodit, chem, eqn, eqn2graph, gdiffmk, glilypond,
+        gperl, gpinyin, grap2graph, grn, grodvi, groff, groffer, grog, grolbp,
+        grolj4, gropdf, grops, grotty, hpftodit, indxbib, lkbib, lookbib,
+        mmroff, neqn, nroff, pdfmom, pdfroff, pfbtops, pic, pic2graph,
+        post-grohtml, preconv, pre-grohtml, refer, roff2dvi, roff2html,
+        roff2pdf, roff2ps, roff2text, roff2x, soelim, tbl, tfmtodit, и
+        troff</seg>
+        <seg>/usr/lib/groff и /usr/share/doc/groff-&groff-version;,
+        /usr/share/groff</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="addftinfo">
+        <term><command>addftinfo</command></term>
+        <listitem>
+          <para>Читает файл шрифта troff и добавляет некоторую дополнительную информацию
+		  о метрике шрифта, используемую системой <command>groff</command>.</para>
+          <indexterm zone="ch-system-groff addftinfo">
+            <primary sortas="b-addftinfo">addftinfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="afmtodit">
+        <term><command>afmtodit</command></term>
+        <listitem>
+          <para>Создаёт файл шрифта для использования с <command>groff</command> и
+          <command>grops</command></para>
+          <indexterm zone="ch-system-groff afmtodit">
+            <primary sortas="b-afmtodit">afmtodit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="chem">
+        <term><command>chem</command></term>
+        <listitem>
+          <para>Препроцессор Groff для создания диаграмм химических структур</para>
+          <indexterm zone="ch-system-groff chem">
+            <primary sortas="b-chem">chem</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="eqn">
+        <term><command>eqn</command></term>
+        <listitem>
+          <para>Компилирует описания уравнений, имеющихся внутри входных файлов troff,
+          которые понятны <command>troff</command></para>
+          <indexterm zone="ch-system-groff eqn">
+            <primary sortas="b-eqn">eqn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="eqn2graph">
+        <term><command>eqn2graph</command></term>
+        <listitem>
+          <para>Преобразует a troff EQN (уравнение) во фрагмент изображения</para>
+          <indexterm zone="ch-system-groff eqn2graph">
+            <primary sortas="b-eqn2graph">eqn2graph</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gdiffmk">
+        <term><command>gdiffmk</command></term>
+        <listitem>
+          <para>Отображает различия между файлами groff/nroff/troff</para>
+          <indexterm zone="ch-system-groff gdiffmk">
+            <primary sortas="b-gdiffmk">gdiffmk</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="glilypond">
+        <term><command>glilypond</command></term>
+        <listitem>
+          <para>Преобразует ноты, записанные на языке lilypond
+          в язык groff</para>
+          <indexterm zone="ch-system-groff glilypond">
+            <primary sortas="b-glilypond">glilypond</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gperl">
+        <term><command>gperl</command></term>
+        <listitem>
+          <para>Препроцессор groff позволяющий добавлять код perl
+          в файлы groff</para>
+          <indexterm zone="ch-system-groff gperl">
+            <primary sortas="b-gperl">gperl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gpinyin">
+        <term><command>gpinyin</command></term>
+        <listitem>
+          <para>Препроцессор groff позволяющий добавлять китайский, похожий на европейский
+          язык Pinyin в файлы groff.</para>
+          <indexterm zone="ch-system-groff gpinyin">
+            <primary sortas="b-gpinyin">gpinyin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grap2graph">
+        <term><command>grap2graph</command></term>
+        <listitem>
+          <para>Преобразует диаграммы grap во фрагмент растрового изображения</para>
+          <indexterm zone="ch-system-groff grap2graph">
+            <primary sortas="b-grap2graph">grap2graph</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grn">
+        <term><command>grn</command></term>
+        <listitem>
+          <para>Препроцессор <command>groff</command> для файлов gremlin</para>
+          <indexterm zone="ch-system-groff grn">
+            <primary sortas="b-grn">grn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grodvi">
+        <term><command>grodvi</command></term>
+        <listitem>
+          <para>Драйвер для <command>groff</command>, который позволяет использовать формат TeX dvi</para>
+          <indexterm zone="ch-system-groff grodvi">
+            <primary sortas="b-grodvi">grodvi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="groff">
+        <term><command>groff</command></term>
+        <listitem>
+          <para>Интерфейс к системе форматирования документов groff; обычно он
+		  запускает программу <command>troff</command> и постпроцессор, соответствующий
+		  выбранному устройству</para>
+          <indexterm zone="ch-system-groff groff">
+            <primary sortas="b-groff">groff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="groffer">
+        <term><command>groffer</command></term>
+        <listitem>
+          <para>Отображает файлы groff и справочные страницы на терминалах X и tty</para>
+          <indexterm zone="ch-system-groff groffer">
+            <primary sortas="b-groffer">groffer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grog">
+        <term><command>grog</command></term>
+        <listitem>
+          <para>Читает файлы и пытается определить, какие из параметров <command>groff</command>
+          <option>-e</option>, <option>-man</option>, <option>-me</option>,
+          <option>-mm</option>, <option>-ms</option>, <option>-p</option>,
+          <option>-s</option>, или <option>-t</option> требуются для печати
+		  файлов, и указывает команду <command>groff</command> с этими параметрами</para>
+          <indexterm zone="ch-system-groff grog">
+            <primary sortas="b-grog">grog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grolbp">
+        <term><command>grolbp</command></term>
+        <listitem>
+          <para>Драйвер <command>groff</command>  для принтеров Canon CAPSL
+		  (лазерные принтеры серий LBP-4 и LBP-8)</para>
+          <indexterm zone="ch-system-groff grolbp">
+            <primary sortas="b-grolbp">grolbp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grolj4">
+        <term><command>grolj4</command></term>
+        <listitem>
+          <para>Драйвер для <command>groff</command> который выводит результат в
+		  формате PCL5, подходящем для принтера HP LaserJet 4</para>
+          <indexterm zone="ch-system-groff grolj4">
+            <primary sortas="b-grolj4">grolj4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gropdf">
+        <term><command>gropdf</command></term>
+        <listitem>
+          <para>Переводит выходные данные GNU <command>troff</command> в формат PDF</para>
+          <indexterm zone="ch-system-groff gropdf">
+            <primary sortas="b-gropdf">gropdf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grops">
+        <term><command>grops</command></term>
+        <listitem>
+          <para>Переводит выходные данные GNU <command>troff</command> в формат
+          PostScript</para>
+          <indexterm zone="ch-system-groff grops">
+            <primary sortas="b-grops">grops</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grotty">
+        <term><command>grotty</command></term>
+        <listitem>
+          <para>Переводит вывод GNU <command>troff</command> в форму, подходящую
+		  для устройств, подобных пишущим машинкам.</para>
+          <indexterm zone="ch-system-groff grotty">
+            <primary sortas="b-grotty">grotty</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hpftodit">
+        <term><command>hpftodit</command></term>
+        <listitem>
+          <para>Создает файл шрифта для использования с <command>groff -Tlj4</command>
+          из файла метрик шрифта для HP</para>
+          <indexterm zone="ch-system-groff hpftodit">
+            <primary sortas="b-hpftodit">hpftodit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="indxbib">
+        <term><command>indxbib</command></term>
+        <listitem>
+          <para>Создает инвертированный индекс для библиографических баз данных для
+		  указанного файла, используемый с <command>refer</command>,
+          <command>lookbib</command>, и <command>lkbib</command></para>
+          <indexterm zone="ch-system-groff indxbib">
+            <primary sortas="b-indxbib">indxbib</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lkbib">
+        <term><command>lkbib</command></term>
+        <listitem>
+          <para>Выполняет поиск в библиографических базах данных ссылок, содержащих
+		  указанные ключи, и сообщает о любых найденных ссылках</para>
+          <indexterm zone="ch-system-groff lkbib">
+            <primary sortas="b-lkbib">lkbib</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lookbib">
+        <term><command>lookbib</command></term>
+        <listitem>
+          <para>Выводит приглашение при наличии стандартной ошибки (если устройство
+		  стандартного ввода не является терминалом), читает из устройства стандартного
+		  ввода строку, в которой находится набор ключевых слов, ищет в библиографической
+		  базе данных для указанного файла ссылки, содержащие эти ключевые слова, выводит
+		  все ссылки, найденные в стандартном выводе и повторяет этот процесс до тех
+		  пор, пока не завершится входной поток</para>
+          <indexterm zone="ch-system-groff lookbib">
+            <primary sortas="b-lookbib">lookbib</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mmroff">
+        <term><command>mmroff</command></term>
+        <listitem>
+          <para>Простой препроцессор для <command>groff</command></para>
+          <indexterm zone="ch-system-groff mmroff">
+            <primary sortas="b-mmroff">mmroff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="neqn">
+        <term><command>neqn</command></term>
+        <listitem>
+          <para>Форматирует уравнения для их вывода в формате  American Standard
+		  Code for Information Interchange (ASCII)</para>
+          <indexterm zone="ch-system-groff neqn">
+            <primary sortas="b-neqn">neqn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="nroff">
+        <term><command>nroff</command></term>
+        <listitem>
+          <para>Скрипт, который эмулирует команду <command>nroff</command> с помощью
+		  <command>groff</command></para>
+          <indexterm zone="ch-system-groff nroff">
+            <primary sortas="b-nroff">nroff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pdfmom">
+        <term><command>pdfmom</command></term>
+        <listitem>
+          <para>Это обертка над groff которая упрощает создание PDF-документов
+		  из файлов, отформатированных с помощью макросов mom.</para>
+          <indexterm zone="ch-system-groff pdfmom">
+            <primary sortas="b-pdfmom">pdfmom</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pdfroff">
+        <term><command>pdfroff</command></term>
+        <listitem>
+          <para>Создает pdf-документы с помощью groff</para>
+          <indexterm zone="ch-system-groff pdfroff">
+            <primary sortas="b-pdfroff">pdfroff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pfbtops">
+        <term><command>pfbtops</command></term>
+        <listitem>
+          <para>Преобразует шрифт PostScript в формате
+		  <filename class="extension">.pfb</filename> в формат ASCII</para>
+          <indexterm zone="ch-system-groff pfbtops">
+            <primary sortas="b-pfbtops">pfbtops</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pic">
+        <term><command>pic</command></term>
+        <listitem>
+          <para>Компилирует описания изображений, вставленных во входные файлы
+		  troff или TeX, в команды, понятные TeX или <command>troff</command></para>
+          <indexterm zone="ch-system-groff pic">
+            <primary sortas="b-pic">pic</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pic2graph">
+        <term><command>pic2graph</command></term>
+        <listitem>
+          <para>Преобразует диаграмму PIC во фрагмент изображения</para>
+          <indexterm zone="ch-system-groff pic2graph">
+            <primary sortas="b-pic2graph">pic2graph</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="post-grohtml">
+        <term><command>post-grohtml</command></term>
+        <listitem>
+          <para>Переводит выходной поток GNU <command>troff</command> в HTML</para>
+          <indexterm zone="ch-system-groff post-grohtml">
+            <primary sortas="b-post-grohtml">post-grohtml</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="preconv">
+        <term><command>preconv</command></term>
+        <listitem>
+          <para>Преобразует кодировку входных файлов в формат, понимаемый GNU
+          <command>troff</command></para>
+          <indexterm zone="ch-system-groff preconv">
+            <primary sortas="b-preconv">preconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pre-grohtml">
+        <term><command>pre-grohtml </command></term>
+        <listitem>
+          <para>Переводит выходной поток GNU <command>troff</command> в HTML</para>
+          <indexterm zone="ch-system-groff pre-grohtml">
+            <primary sortas="b-pre-grohtml">pre-grohtml</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="refer">
+        <term><command>refer</command></term>
+        <listitem>
+          <para>Копирует содержимое файла в стандартный вывод, кроме тех символов,
+		  которые расположены между <emphasis>.[</emphasis> и <emphasis>.]</emphasis> и
+		  интерпретируются как цитаты, и кроме строк между <emphasis>.R1</emphasis>
+          и <emphasis>.R2</emphasis>, которые интерпретируются как команды, указывающие
+		  как цитаты должны быть обработаны</para>
+          <indexterm zone="ch-system-groff refer">
+            <primary sortas="b-refer">refer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="roff2dvi">
+        <term><command>roff2dvi</command></term>
+        <listitem>
+          <para>Преобразует файлы roff в формат DVI</para>
+          <indexterm zone="ch-system-groff roff2dvi">
+            <primary sortas="b-roff2dvi">roff2dvi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="roff2html">
+        <term><command>roff2html</command></term>
+        <listitem>
+          <para>Преобразует файлы roff в формат HTML</para>
+          <indexterm zone="ch-system-groff roff2html">
+            <primary sortas="b-roff2html">roff2html</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="roff2pdf">
+        <term><command>roff2pdf</command></term>
+        <listitem>
+          <para>Преобразует файлы roff в формат PDF</para>
+          <indexterm zone="ch-system-groff roff2pdf">
+            <primary sortas="b-roff2pdf">roff2pdf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="roff2ps">
+        <term><command>roff2ps</command></term>
+        <listitem>
+          <para>Преобразует файлы roff в файлы ps</para>
+          <indexterm zone="ch-system-groff roff2ps">
+            <primary sortas="b-roff2ps">roff2ps</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="roff2text">
+        <term><command>roff2text</command></term>
+        <listitem>
+          <para>Преобразует файлы roff в текстовые файлы</para>
+          <indexterm zone="ch-system-groff roff2text">
+            <primary sortas="b-roff2text">roff2text</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="roff2x">
+        <term><command>roff2x</command></term>
+        <listitem>
+          <para>Преобразует файлы roff в другие форматы</para>
+          <indexterm zone="ch-system-groff roff2x">
+            <primary sortas="b-roff2x">roff2x</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="soelim">
+        <term><command>soelim</command></term>
+        <listitem>
+          <para>Читает файлы и заменяет строки вида <emphasis>.so
+          file</emphasis> содержимым указанного файла
+          <emphasis>file</emphasis></para>
+          <indexterm zone="ch-system-groff soelim">
+            <primary sortas="b-soelim">soelim</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tbl">
+        <term><command>tbl</command></term>
+        <listitem>
+          <para>Компилирует описания таблиц, вставленные во входные файлы troff,
+		  в команды, понимаемые <command>troff</command></para>
+          <indexterm zone="ch-system-groff tbl">
+            <primary sortas="b-tbl">tbl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tfmtodit">
+        <term><command>tfmtodit</command></term>
+        <listitem>
+          <para>Создает файл шрифта для использования с <command>groff
+          -Tdvi</command></para>
+          <indexterm zone="ch-system-groff tfmtodit">
+            <primary sortas="b-tfmtodit">tfmtodit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="troff">
+        <term><command>troff</command></term>
+        <listitem>
+          <para>Полностью совместим с Unix <command>troff</command>; его следует
+		  вызывать с помощью команды <command>groff</command>, которая также будет
+		  запускать препроцессоры и постпроцессоры в соответствующем порядке и с
+		  соответствующими параметрами</para>
+          <indexterm zone="ch-system-groff troff">
+            <primary sortas="b-troff">troff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

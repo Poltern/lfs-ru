@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-shadow" role="wrap">
+  <?dbhtml filename="shadow.html"?>
+
+  <sect1info condition="script">
+    <productname>shadow</productname>
+    <productnumber>&shadow-version;</productnumber>
+    <address>&shadow-url;</address>
+  </sect1info>
+
+  <title>Shadow-&shadow-version;</title>
+
+  <indexterm zone="ch-system-shadow">
+    <primary sortas="a-Shadow">Shadow</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Shadow содержит программы для безопасной обработки паролей.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&shadow-fin-sbu;</seg>
+        <seg>&shadow-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Shadow</title>
+
+    <note>
+      <para>Если вы хотите принудительно использовать надежные пароли, обратитесь
+	  к инструкции <ulink url="&blfs-book;postlfs/cracklib.html"/> для установки
+	  CrackLib перед сборкой. Затем добавьте параметр <parameter>--with-libcrack</parameter>
+	  в приведенную ниже команду <command>configure</command>.</para>
+    </note>
+
+    <para>Отключите установку <command>groups</command> и ее справочных страниц,
+	так как Coreutils предоставляет версию лучше. Кроме того, запретите установку
+	страниц руководств, так как они были установлены в 
+    <xref linkend="ch-system-man-pages"/>:</para>
+
+<screen><userinput remap="pre">sed -i 's/groups$(EXEEXT) //' src/Makefile.in
+find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
+find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
+find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></screen>
+
+    <para id="shadow-login_defs">Вместо используемого по умолчанию метода
+	<emphasis>crypt</emphasis>, используйте более безопасный метод шифрования паролей
+	<emphasis>SHA-512</emphasis>, который позволяет использовать пароли длиннее
+	8 символов. Также необходимо изменить устаревшее местоположение
+	<filename class="directory">/var/spool/mail</filename> для почтовых ящиков
+	пользователей, которое Shadow использует по умолчанию, на используемое в настоящее
+	время <filename class="directory">/var/mail</filename>. Избавьтесь от
+	<filename class="directory">/bin</filename> и <filename class="directory">/bin</filename>
+	в <envar>PATH</envar>, поскольку они являются просто символическими ссылками на
+	их аналог в <filename class="directory">/usr</filename>.</para>
+
+    <note>
+      <para>Если <filename class="directory">/bin</filename> и/или
+      <filename class="directory">/sbin</filename> по какой-то причине предпочтительнее
+	  оставить в <envar>PATH</envar>, измените 
+      <envar>PATH</envar> в <filename>.bashrc</filename> после сборки LFS.</para>
+    </note>
+
+<screen><userinput remap="pre">sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
+    -e 's:/var/spool/mail:/var/mail:'                 \
+    -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                \
+    -i etc/login.defs</userinput></screen>
+
+    <note>
+      <para>Если вы выбрали сборку Shadow с поддержкой Cracklib, выполните следующее:</para>
+
+<screen role="nodump"><userinput>sed -i 's:DICTPATH.*:DICTPATH\t/lib/cracklib/pw_dict:' etc/login.defs</userinput></screen>
+    </note>
+<!--
+    <para>Make a minor change to make the first group number generated
+    by useradd 1000:</para>
+
+<screen><userinput remap="pre">sed -i 's/1000/999/' etc/useradd</userinput></screen>
+-->
+<!--
+    <para>Fix a simple programming error by modifying a file with following command:</para>
+
+<screen><userinput remap="pre">sed -e "224s/rounds/min_rounds/" -i libmisc/salt.c</userinput></screen>
+-->
+    <para>Подготовьте Shadow к компиляции:</para>
+
+<screen><userinput remap="configure">touch /usr/bin/passwd
+./configure --sysconfdir=/etc \
+            --disable-static  \
+            --with-group-name-max-length=32</userinput></screen>
+
+    <variablelist>
+      <title>Значение параметров configure:</title>
+
+      <varlistentry>
+        <term><command>touch /usr/bin/passwd</command></term>
+        <listitem>
+          <para>Файл <filename>/usr/bin/passwd</filename> должен существовать, потому
+		  что его местоположение жестко задано в некоторых программах, и если он не
+		  существует, то по умолчанию используется неправильное местоположение.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>--with-group-name-max-length=32</parameter></term>
+        <listitem>
+          <para>Максимальная длина имени пользователя 32 символа. Такую же длину сделайте и
+          для групп.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+    <screen><userinput remap="make">make</userinput></screen>
+
+    <para>С этим пакетом не поставляется набор тестов.</para>
+
+    <para>Установите пакет:</para>
+
+    <screen><userinput remap="install">make exec_prefix=/usr install
+make -C man install-man</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="conf-shadow" role="configuration">
+    <title>Настройка Shadow</title>
+
+    <indexterm zone="conf-shadow">
+      <primary sortas="a-Shadow">Shadow</primary>
+      <secondary>configuring</secondary>
+    </indexterm>
+
+    <para>Этот пакет содержит утилиты для добавления, изменения и удаления пользователей и
+	групп; установки и изменения их паролей; и выполнения других задач администрирования.
+	Полное объяснение того, что означает <emphasis>password shadowing</emphasis>, см.
+	в файле doc/HOWTO в дереве распакованных исходных текстов. При использовании Shadow
+	имейте в виду, что программы, которым необходимо проверять пароли (дисплейные менеджеры,
+	FTP-программы, демоны pop3 и т.д.), Должны быть совместимы с Shadow. То есть они должны
+	уметь работать с теневыми паролями.</para>
+
+    <para>Чтобы включить поддержку теневых паролей, выполните следующую команду::</para>
+
+<screen><userinput>pwconv</userinput></screen>
+
+    <para>Чтобы включить использование теневых паролей для групп, запустите:</para>
+
+<screen><userinput>grpconv</userinput></screen>
+
+    <para>Конфигурация Shadow по умолчанию для утилиты <command>useradd</command> имеет
+	несколько особенностей, требующих пояснений. Во-первых, по умолчанию утилита
+	<command>useradd</command> создает пользователя и группу с тем же именем, что и
+	у пользователя. Номера идентификатора пользователя (UID) и идентификатора группы (GID)
+	начинаются с 1000. Это означает, что если вы не передадите параметры в
+	<command>useradd</command>, каждый пользователь будет членом уникальной группы в системе.
+	Если такое поведение нежелательно, вам нужно передать один из параметров
+	<parameter>-g</parameter> или <parameter>-N</parameter> в <command>useradd</command> или
+	изменить настройку <parameter>USERGROUPS_ENAB</parameter> в <filename>/etc/login.defs</filename>.
+	См. <filename>useradd(8)</filename> для получения дополнительной информации.</para>
+
+    <para>Во-вторых, чтобы изменить параметры по умолчанию, необходимо создать файл
+	<filename>/etc/default/useradd</filename> и настроить его в соответствии с вашими
+	потребностями. Создайте его с помощью:</para>
+
+<screen><userinput>mkdir -p /etc/default
+useradd -D --gid 999</userinput></screen>
+
+    <variablelist>
+      <title>Пояснения к параметрам <filename>/etc/default/useradd</filename></title>
+
+      <varlistentry>
+        <term><parameter>GROUP=999</parameter></term>
+        <listitem>
+          <para>Этот параметр задает начальный номер группы, используемых в файле
+		  <filename>/etc/group</filename>. Значение 999 берется из приведенного выше
+		  параметра <parameter>--gid</parameter>. Значение можно установить любое.
+		  Обратите внимание, что <command>useradd</command> никогда не будет повторно
+		  использовать UID или GID. Если номер, указанный в этом параметре, уже
+		  используется будет выбран следующий доступный номер. Также обратите внимание,
+		  что если в вашей системе нет группы с идентификатором, равным этому номеру,
+		  при первом использовании <command>useradd</command> без параметра
+		  <parameter>-g</parameter> вы получите на терминале следующее сообщение:
+		  <computeroutput>useradd: unknown GID 999</computeroutput>, хотя учетная запись
+		  создана правильно. Поэтому мы создали группу <systemitem class="groupname">users</systemitem>
+		  с этим идентификатором в <xref linkend='ch-tools-createfiles'/>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>CREATE_MAIL_SPOOL=yes</parameter></term>
+        <listitem>
+          <para> Этот параметр заставит утилиту <command>useradd</command> создавать файл
+		  почтового ящика для вновь создаваемого пользователя. <command>useradd</command>
+		  сделает этот файл принадлежащем группе <systemitem class="groupname">mail</systemitem>
+		  с правами доступа 0660. Если вы предпочитаете, чтобы файлы почтовых ящиков не
+		  создавались утилитой <command>useradd</command>, выполните следующую команду: </para>
+
+<screen><userinput>sed -i '/MAIL/s/yes/no/' /etc/default/useradd</userinput></screen>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Задание пароля root</title>
+
+    <para>Придумайте пароль для <emphasis>root</emphasis> и установите командой:</para>
+
+<screen role="nodump"><userinput>passwd root</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-shadow" role="content">
+    <title>Содержимое пакета Shadow</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Установленные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>chage, chfn, chgpasswd, chpasswd, chsh, expiry, faillog,
+        getsubids, gpasswd, groupadd, groupdel, groupmems, groupmod, grpck,
+        grpconv, grpunconv, lastlog, login, logoutd, newgidmap, newgrp,
+        newuidmap, newusers, nologin, passwd, pwck, pwconv, pwunconv,
+        sg (ссылка на newgrp), su, useradd, userdel, usermod,
+        vigr (ссылка на vipw), и vipw</seg>
+        <seg>libsubid.so</seg>
+        <seg>/etc/default</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="chage">
+        <term><command>chage</command></term>
+        <listitem>
+          <para>Используется для изменения максимального количества дней между
+		  обязательными сменами пароля</para>
+          <indexterm zone="ch-system-shadow chage">
+            <primary sortas="b-chage">chage</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="chfn">
+        <term><command>chfn</command></term>
+        <listitem>
+          <para>Используется для изменения полного имени пользователя и другой информации</para>
+          <indexterm zone="ch-system-shadow chfn">
+            <primary sortas="b-chfn">chfn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="chgpasswd">
+        <term><command>chgpasswd</command></term>
+        <listitem>
+          <para>Используется для обновления паролей групп в пакетном режиме.</para>
+          <indexterm zone="ch-system-shadow chgpasswd">
+            <primary sortas="b-chgpasswd">chgpasswd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="chpasswd">
+        <term><command>chpasswd</command></term>
+        <listitem>
+          <para>Используется для обновления паролей пользователей в пакетном режиме.</para>
+          <indexterm zone="ch-system-shadow chpasswd">
+            <primary sortas="b-chpasswd">chpasswd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="chsh">
+        <term><command>chsh</command></term>
+        <listitem>
+          <para>Используется для изменения оболочки входа для пользователя.</para>
+          <indexterm zone="ch-system-shadow chsh">
+            <primary sortas="b-chsh">chsh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="expiry">
+        <term><command>expiry</command></term>
+        <listitem>
+          <para>Проверяет и применяет текущую политику истечения срока действия пароля</para>
+          <indexterm zone="ch-system-shadow expiry">
+            <primary sortas="b-expiry">expiry</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="faillog">
+        <term><command>faillog</command></term>
+        <listitem>
+          <para>Используется для проверки журнала неудачных попыток входа в систему,
+		  для установки максимального количества неудачных попыток до блокировки учетной
+		  записи или для сброса счетчика неудачных попыток.</para>
+          <indexterm zone="ch-system-shadow faillog">
+            <primary sortas="b-faillog">faillog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="getsubids">
+        <term><command>getsubids</command></term>
+        <listitem>
+          <para>Используется для перечисления подчиненных диапазонов идентификаторов
+		  для пользователя</para>
+          <indexterm zone="ch-system-shadow getsubids">
+            <primary sortas="b-getsubids">getsubids</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gpasswd">
+        <term><command>gpasswd</command></term>
+        <listitem>
+          <para>Используется для добавления и удаления пользователей и администраторов
+		  в группы.</para>
+          <indexterm zone="ch-system-shadow gpasswd">
+            <primary sortas="b-gpasswd">gpasswd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="groupadd">
+        <term><command>groupadd</command></term>
+        <listitem>
+          <para>Создает группу с указанным именем</para>
+          <indexterm zone="ch-system-shadow groupadd">
+            <primary sortas="b-groupadd">groupadd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="groupdel">
+        <term><command>groupdel</command></term>
+        <listitem>
+          <para>Удаляет группу с указанным именем</para>
+          <indexterm zone="ch-system-shadow groupdel">
+            <primary sortas="b-groupdel">groupdel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="groupmems">
+        <term><command>groupmems</command></term>
+        <listitem>
+          <para>Позволяет пользователю управлять своим собственным списком
+		  членов группы без привилегий суперпользователя</para>
+          <indexterm zone="ch-system-shadow groupmems">
+            <primary sortas="b-groupmems">groupmems</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="groupmod">
+        <term><command>groupmod</command></term>
+        <listitem>
+          <para>Используется для изменения имени группы или GID</para>
+          <indexterm zone="ch-system-shadow groupmod">
+            <primary sortas="b-groupmod">groupmod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grpck">
+        <term><command>grpck</command></term>
+        <listitem>
+          <para>Проверяет целостность файлов групп
+          <filename>/etc/group</filename> и
+          <filename>/etc/gshadow</filename></para>
+          <indexterm zone="ch-system-shadow grpck">
+            <primary sortas="b-grpck">grpck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grpconv">
+        <term><command>grpconv</command></term>
+        <listitem>
+          <para>Создает или изменяет файл теневых групп, используя для этого
+		  обычный файл групп</para>
+          <indexterm zone="ch-system-shadow grpconv">
+            <primary sortas="b-grpconv">grpconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grpunconv">
+        <term><command>grpunconv</command></term>
+        <listitem>
+          <para>Обновляет <filename>/etc/group</filename> из
+          <filename>/etc/gshadow</filename>, а затем удаляет последний</para>
+          <indexterm zone="ch-system-shadow grpunconv">
+            <primary sortas="b-grpunconv">grpunconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lastlog">
+        <term><command>lastlog</command></term>
+        <listitem>
+          <para>Сообщает о самом последнем входе в систему всех пользователей
+		  или данного пользователя</para>
+          <indexterm zone="ch-system-shadow lastlog">
+            <primary sortas="b-lastlog">lastlog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="login">
+        <term><command>login</command></term>
+        <listitem>
+          <para>Используется системой для того, чтобы пользователь мог войти в систему</para>
+          <indexterm zone="ch-system-shadow login">
+            <primary sortas="b-login">login</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="logoutd">
+        <term><command>logoutd</command></term>
+        <listitem>
+          <para>Это демон, используемый для обеспечения соблюдения ограничений на
+		  время входа в систему и порты</para>
+          <indexterm zone="ch-system-shadow logoutd">
+            <primary sortas="b-logoutd">logoutd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="newgidmap">
+        <term><command>newgidmap</command></term>
+        <listitem>
+          <para>Используется для сопоставления gid пространства имен пользователя</para>
+          <indexterm zone="ch-system-shadow newgidmap">
+            <primary sortas="b-newgidmap">newgidmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="newgrp">
+        <term><command>newgrp</command></term>
+        <listitem>
+          <para>Используется для изменения GID во время сеанса входа в систему</para>
+          <indexterm zone="ch-system-shadow newgrp">
+            <primary sortas="b-newgrp">newgrp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="newuidmap">
+        <term><command>newuidmap</command></term>
+        <listitem>
+          <para>Используется для сопоставления uid пространства имен пользователя</para>
+          <indexterm zone="ch-system-shadow newuidmap">
+            <primary sortas="b-newuidmap">newuidmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="newusers">
+        <term><command>newusers</command></term>
+        <listitem>
+          <para>Используется для создания или изменения последовательности учетных записей</para>
+          <indexterm zone="ch-system-shadow newusers">
+            <primary sortas="b-newusers">newusers</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="nologin">
+        <term><command>nologin</command></term>
+        <listitem>
+          <para>Отображает сообщение о том, что учетная запись недоступна; она
+		  предназначена для использования в качестве оболочки по умолчанию для
+		  учетных записей, которые были отключены</para>
+          <indexterm zone="ch-system-shadow nologin">
+            <primary sortas="b-nologin">nologin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="passwd">
+        <term><command>passwd</command></term>
+        <listitem>
+          <para>Используется для изменения пароля для учетной записи пользователя
+		  или группы.</para>
+          <indexterm zone="ch-system-shadow passwd">
+            <primary sortas="b-passwd">passwd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pwck">
+        <term><command>pwck</command></term>
+        <listitem>
+          <para>Проверяет целостность файлов паролей
+          <filename>/etc/passwd</filename> и
+          <filename>/etc/shadow</filename></para>
+          <indexterm zone="ch-system-shadow pwck">
+            <primary sortas="b-pwck">pwck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pwconv">
+        <term><command>pwconv</command></term>
+        <listitem>
+          <para>Создает или изменяет файл теневых паролей, используя для этого
+		  обычный файл паролей</para>
+          <indexterm zone="ch-system-shadow pwconv">
+            <primary sortas="b-pwconv">pwconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pwunconv">
+        <term><command>pwunconv</command></term>
+        <listitem>
+          <para>Обновляет <filename>/etc/passwd</filename> из
+          <filename>/etc/shadow</filename> а затем удаляет последний</para>
+          <indexterm zone="ch-system-shadow pwunconv">
+            <primary sortas="b-pwunconv">pwunconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sg">
+        <term><command>sg</command></term>
+        <listitem>
+          <para>Выполняет указанную команду в случае, если у пользователя идентификатор
+		  группы GID совпадает с идентификатором указанной группы</para>
+          <indexterm zone="ch-system-shadow sg">
+            <primary sortas="b-sg">sg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="su">
+        <term><command>su</command></term>
+        <listitem>
+          <para>Запускает оболочку с заменой идентификаторов пользователя и группы</para>
+          <indexterm zone="ch-system-shadow su">
+            <primary sortas="b-su">su</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="useradd">
+        <term><command>useradd</command></term>
+        <listitem>
+          <para>Создает нового пользователя с указанным именем, либо изменяет
+		  информацию, задаваемую по умолчанию для нового пользователя</para>
+          <indexterm zone="ch-system-shadow useradd">
+            <primary sortas="b-useradd">useradd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="userdel">
+        <term><command>userdel</command></term>
+        <listitem>
+          <para>Удаляет учетную запись указанного пользователя</para>
+          <indexterm zone="ch-system-shadow userdel">
+            <primary sortas="b-userdel">userdel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="usermod">
+        <term><command>usermod</command></term>
+        <listitem>
+          <para>IИспользуется для изменения имени пользователя, идентификатора
+		  пользователя (UID), оболочки, группы, домашнего каталога и т.д.</para>
+          <indexterm zone="ch-system-shadow usermod">
+            <primary sortas="b-usermod">usermod</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vigr">
+        <term><command>vigr</command></term>
+        <listitem>
+          <para>Редактирует файлы <filename>/etc/group</filename> или
+          <filename>/etc/gshadow</filename></para>
+          <indexterm zone="ch-system-shadow vigr">
+            <primary sortas="b-vigr">vigr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vipw">
+        <term><command>vipw</command></term>
+        <listitem>
+          <para>Редактирует файлы <filename>/etc/passwd</filename> или
+          <filename>/etc/shadow</filename></para>
+          <indexterm zone="ch-system-shadow vipw">
+            <primary sortas="b-vipw">vipw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libsubid">
+        <term><filename class='libraryfile'>libsubid</filename></term>
+        <listitem>
+          <para>library for process subordinate id ranges for users</para>
+          <indexterm zone="ch-system-shadow libsubid">
+            <primary sortas="c-libsubid">libsubid</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
