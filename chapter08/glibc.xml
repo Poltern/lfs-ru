@@ -164,8 +164,17 @@ esac</userinput></screen>
       </listitem>
 
       <listitem>
-        <para>Известно, что тест <emphasis>nss/tst-nss-files-hosts-multi</emphasis> не
-		работает на относительно медленных системах из-за внутреннего тайм-аута.</para>
+        <para>Некоторые тесты, например, <emphasis>nss/tst-nss-files-hosts-multi</emphasis> не
+		работают на относительно медленных системах из-за внутреннего тайм-аута.</para>
+      </listitem>
+      <!--
+        https://lists.linuxfromscratch.org/sympa/arc/lfs-support/2022-06/msg00022.html
+        https://sourceware.org/pipermail/libc-alpha/2022-June/139839.html
+      -->
+      <listitem>
+        <para>Известно, что около 27 тестов, например <emphasis>elf/tst-pldd</emphasis>,
+		завершаются неудачей, если ядро поддерживает пространства имен (подробнее см.
+		<filename>namespaces(7)</filename>), но хост-дистрибутив отключил их через sysctl.</para>
       </listitem>
 <!--
       <listitem>
