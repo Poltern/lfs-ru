@@ -151,22 +151,28 @@ profile-html:
                 stylesheets/lfs-xsl/profile.xsl      \
 	             $(RENDERTMP)/lfs-full.xml
 
-wget-list: $(BASEDIR)/wget-list
+wget-list: $(BASEDIR)/wget-list $(BASEDIR)/wget-list-$(REV)
 $(BASEDIR)/wget-list: stylesheets/wget-list.xsl chapter03/chapter03.xml \
                       packages.ent patches.ent general.ent
 	@echo "Generating consolidated wget list at $(BASEDIR)/wget-list ..."
 	$(Q)mkdir -p $(BASEDIR)
-
-#	$(Q)xsltproc --nonet --xinclude                    \
-#                --stringparam profile.revision $(REV) \
-#                --output $(RENDERTMP)/sysd-wget.xml   \
-#                stylesheets/lfs-xsl/profile.xsl       \
-#                chapter03/chapter03.xml
-
 	$(Q)xsltproc --xinclude --nonet            \
                 --output $(BASEDIR)/wget-list \
 	             stylesheets/wget-list.xsl     \
                 chapter03/chapter03.xml
+
+$(BASEDIR)/wget-list-$(REV): stylesheets/wget-list.xsl \
+                             chapter03/chapter03.xml \
+                             packages.ent patches.ent general.ent
+	$(Q)xsltproc --nonet --xinclude                   \
+                --stringparam profile.revision $(REV) \
+                --output $(RENDERTMP)/wget-list.xml   \
+                stylesheets/lfs-xsl/profile.xsl       \
+                chapter03/chapter03.xml
+	$(Q)xsltproc --xinclude --nonet                  \
+                --output $(BASEDIR)/wget-list-$(REV) \
+                stylesheets/wget-list.xsl            \
+                $(RENDERTMP)/wget-list.xml
 
 md5sums: $(BASEDIR)/md5sums
 $(BASEDIR)/md5sums: stylesheets/wget-list.xsl chapter03/chapter03.xml \
@@ -174,16 +180,16 @@ $(BASEDIR)/md5sums: stylesheets/wget-list.xsl chapter03/chapter03.xml \
 	@echo "Generating consolidated md5sum file at $(BASEDIR)/md5sums ..."
 	$(Q)mkdir -p $(BASEDIR)
 
-	$(Q)xsltproc --nonet --xinclude                    \
+	$(Q)xsltproc --nonet --xinclude                   \
                 --stringparam profile.revision $(REV) \
-                --output $(RENDERTMP)/sysv-md5sum.xml \
+                --output $(RENDERTMP)/md5sum.xml      \
                 stylesheets/lfs-xsl/profile.xsl       \
                 chapter03/chapter03.xml
 
-	$(Q)xsltproc --xinclude --nonet          \
+	$(Q)xsltproc --xinclude --nonet         \
                 --output $(BASEDIR)/md5sums \
                 stylesheets/md5sum.xsl      \
-                $(RENDERTMP)/sysv-md5sum.xml
+                $(RENDERTMP)/md5sum.xml
 	$(Q)sed -i -e \
        "s/BOOTSCRIPTS-MD5SUM/$(shell md5sum lfs-bootscripts*.tar.xz | cut -d' ' -f1)/" \
        $(BASEDIR)/md5sums

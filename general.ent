@@ -72,6 +72,12 @@
 <!ENTITY copyrightdate   "%crdate;">
 ]]>
 
+<![ %sysv; [
+<!ENTITY wget-list       "wget-list-sysv">
+]]>
+<![ %systemd; [
+<!ENTITY wget-list       "wget-list-systemd">
+]]>
 <!ENTITY lfs-root        "https://www.linuxfromscratch.org/">
 <!ENTITY blfs-root       "&lfs-root;blfs/">
 <!ENTITY blfs-book       "&blfs-root;view/&short-version;/">

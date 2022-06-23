@@ -74,17 +74,17 @@
   </itemizedlist>
 
   <para>Чтобы загрузить все пакеты и патчи, используя
-  <ulink url="../wget-list">wget-list</ulink> в качестве входных данных для
+  <ulink url="../&wget-list;">&wget-list;</ulink> в качестве входных данных для
   команды wget, наберите команду:</para>
 
-<screen role="nodump"><userinput>wget --input-file=wget-list --continue --directory-prefix=$LFS/sources</userinput></screen>
-
+<screen role="nodump"><userinput>wget --input-file=&wget-list; --continue --directory-prefix=$LFS/sources</userinput></screen>
+<!--
   <note><para>
     Файл <filename>wget-list</filename> содержит все пакеты как для sysV, так
 	и для systemd версий LFS. Упомянутый ниже файл <filename>md5sums</filename>
 	относится к текущей книге.
   </para></note>
-
+-->
   <para>Начиная с LFS-7.0, существует отдельный файл
   <ulink url="../md5sums">md5sums</ulink>, который можно использовать для проверки
   всех пакетов. Поместите этот файл в <filename class="directory">$LFS/sources</filename>
