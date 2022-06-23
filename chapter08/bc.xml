@@ -42,7 +42,7 @@
 
     <para>Подготовьте Bc к компиляции:</para>
 
-<screen><userinput remap="configure">CC=gcc ./configure --prefix=/usr -G -O3</userinput></screen>
+<screen><userinput remap="configure">CC=gcc ./configure --prefix=/usr -G -O3 -r</userinput></screen>
 
     <variablelist>
       <title>Значение параметров настройки:</title>
@@ -65,6 +65,20 @@
         <term><parameter>-G</parameter></term>
         <listitem>
           <para>Исключает тесты, которые не работают без GNU bc.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>-O3</parameter></term>
+        <listitem>
+          <para>Указывает используемый уровень оптимизации.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-r</parameter></term>
+        <listitem>
+          <para>Включает использование <application>Readline</application> для
+		  улучшения функции редактирования строк в bc.</para>
         </listitem>
       </varlistentry>
     </variablelist>

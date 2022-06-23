@@ -171,15 +171,13 @@ cd       build</userinput></screen>
     <para>Выполните тестирование:</para>
 
 <screen><userinput remap="test">make -k check</userinput></screen>
-<!--
-    <para>Four tests related to zlib are known to fail.</para>
--->
-<!--
-    <para>Seven gold tests are known to fail with gcc-11.1.0</para>
 
-    <para>Four ld tests named <quote>Run property ...</quote> are known to
-    fail.</para>
- -->
+    <!-- Will be fixed in 2.39
+         https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=01ae03b -->
+    <para>Известно, что один тест gold, <filename>pr17704a_test</filename>, не проходит,
+    если параметр <parameter>CONFIG_IA32_EMULATION</parameter> отключен в конфигурации
+	ядра хост-системы.</para>
+
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make tooldir=/usr install</userinput></screen>
