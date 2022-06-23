@@ -65,7 +65,7 @@
       <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
-        <seg>egrep, fgrep, and grep</seg>
+        <seg>egrep, fgrep, и grep</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -77,7 +77,8 @@
       <varlistentry id="egrep">
         <term><command>egrep</command></term>
         <listitem>
-          <para>Выводит строки, соответствующие расширенному регулярному выражению</para>
+          <para>Выводит строки, соответствующие расширенному регулярному выражению.
+		  Команда устарела, вместо неё используйте <command>grep -E</command></para>
           <indexterm zone="ch-system-grep egrep">
             <primary sortas="b-egrep">egrep</primary>
           </indexterm>
@@ -87,7 +88,8 @@
       <varlistentry id="fgrep">
         <term><command>fgrep</command></term>
         <listitem>
-          <para>Выводит строки, соответствующие списку фиксированных строк</para>
+          <para>Выводит строки, соответствующие списку фиксированных строк.
+		  Команда устарела, вместо неё  используйте <command>grep -F</command></para>
           <indexterm zone="ch-system-grep fgrep">
             <primary sortas="b-fgrep">fgrep</primary>
           </indexterm>
