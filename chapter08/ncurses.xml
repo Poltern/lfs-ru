@@ -47,6 +47,7 @@
             --with-shared           \
             --without-debug         \
             --without-normal        \
+            --with-cxx-shared       \
             --enable-pc-files       \
             --enable-widec          \
             --with-pkg-config-libdir=/usr/lib/pkgconfig</userinput></screen>
@@ -55,16 +56,33 @@
       <title>Значение новых параметров настройки:</title>
 
       <varlistentry>
-        <term><parameter>--enable-widec</parameter></term>
+        <term><parameter>--with-shared</parameter></term>
         <listitem>
-          <para>Этот параметр указывает, что при сборке пакета вместо обычных библиотек
-		  (например, <filename class="libraryfile">libncurses.so.&ncurses-version;</filename>)
-		  будут использоваться библиотеки с расширенным набором символов (например, <filename
-          class="libraryfile">libncursesw.so.&ncurses-version;</filename>). Библиотеки с
-		  расширенным набором символов могут использоваться как с многобайтовыми локалями,
-		  так и с традиционными 8-битовыми локалями, тогда как обычные библиотеки работают
-		  только с 8-битовыми локалями. Библиотеки с расширенным набором символов и обычные
-		  библиотеки совместимы на уровне исходного кода, но не совместимыми на уровне двоичного. </para>
+          <para>Этот параметр позволяет Ncurses собирать и устанавливать общие библиотеки C.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-normal</parameter></term>
+        <listitem>
+          <para>Этот параметр отключает сборку и установку большинства статических библиотек C.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-debug</parameter></term>
+        <listitem>
+          <para>Этот параметр предотвращает сборку и установку отладочных
+          библиотек.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-cxx-shared</parameter></term>
+        <listitem>
+          <para>Это аргумент позволяет Ncurses собирать и устанавливать общие привязки C++. А также
+		  предотвращает сборку и установку статических привязок C++.</para>
         </listitem>
       </varlistentry>
 
@@ -77,10 +95,16 @@
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>--without-normal</parameter></term>
+        <term><parameter>--enable-widec</parameter></term>
         <listitem>
-          <para>Этот параметр отключает сборку и установку большинства статических библиотек.
-          </para>
+          <para>Этот параметр указывает, что при сборке пакета вместо обычных библиотек
+		  (например, <filename class="libraryfile">libncurses.so.&ncurses-version;</filename>)
+		  будут использоваться библиотеки с расширенным набором символов (например, <filename
+          class="libraryfile">libncursesw.so.&ncurses-version;</filename>). Библиотеки с
+		  расширенным набором символов могут использоваться как с многобайтовыми локалями,
+		  так и с традиционными 8-битовыми локалями, тогда как обычные библиотеки работают
+		  только с 8-битовыми локалями. Библиотеки с расширенным набором символов и обычные
+		  библиотеки совместимы на уровне исходного кода, но не совместимыми на уровне двоичного.</para>
         </listitem>
       </varlistentry>
 
@@ -111,7 +135,7 @@
 
 <screen><userinput remap="install">make DESTDIR=$PWD/dest install
 install -vm755 dest/usr/lib/libncursesw.so.&ncurses-version; /usr/lib
-rm -v  dest/usr/lib/{libncursesw.so.&ncurses-version;,libncurses++w.a}
+rm -v  dest/usr/lib/libncursesw.so.&ncurses-version;
 cp -av dest/* /</userinput></screen>
 
     <para>Многие приложения ожидают, что компоновщик сможет найти библиотеки Ncurses,

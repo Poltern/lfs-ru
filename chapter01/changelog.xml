@@ -40,6 +40,16 @@
     -->
 
     <listitem>
+      <para>2022-06-29</para>
+      <itemizedlist>
+        <listitem>
+          <para>[pierre] - Generate shared C++ bindings for ncurses, instead
+          of generating and then removing the static ones.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2022-06-14</para>
       <itemizedlist>
         <listitem>

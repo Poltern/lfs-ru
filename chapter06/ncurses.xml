@@ -65,9 +65,10 @@ popd</userinput></screen>
             --mandir=/usr/share/man      \
             --with-manpage-format=normal \
             --with-shared                \
+            --without-normal             \
+            --with-cxx-shared            \
             --without-debug              \
             --without-ada                \
-            --without-normal             \
             --disable-stripping          \
             --enable-widec</userinput></screen>
 
@@ -77,8 +78,38 @@ popd</userinput></screen>
       <varlistentry>
         <term><parameter>--with-manpage-format=normal</parameter></term>
         <listitem>
-          <para>Этот аргумент предотвращает установку Ncurses сжатых страниц руководства, что
+          <para>Этот аргумент предотвращает установку Ncurses сжатых страниц руководства, это
 		  может произойти, если сам дистрибутив хоста содержит сжатые страницы руководства.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-shared</parameter></term>
+        <listitem>
+          <para>Этот аргумент позволяет Ncurses собирать и устанавливать разделяемые библиотеки C.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-normal</parameter></term>
+        <listitem>
+          <para>Этот аргумент предотвращает сборку и установку статических библиотек C.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--without-debug</parameter></term>
+        <listitem>
+          <para>Этот аргумент предотвращает сборку и установку отладочных
+          библиотек.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-cxx-shared</parameter></term>
+        <listitem>
+          <para>Это аргумент позволяет Ncurses собирать и устанавливать общие привязки C++. А также
+		  предотвращает сборку и установку статических привязок C++.</para>
         </listitem>
       </varlistentry>
 
@@ -111,14 +142,7 @@ popd</userinput></screen>
           традиционной 8-битной локали, в то время как обычные библиотеки корректно работают
           только в 8-битных локалях. Библиотеки расширенных символов и обычные совместимы на
 		  уровне исходного кода, но не совместимы в двоичном.</para>
-        </listitem>
-      </varlistentry>
 
-      <varlistentry>
-        <term><parameter>--without-normal</parameter></term>
-        <listitem>
-          <para>Этот аргумент отключает сборку и установку большинства статических библиотек
-          </para>
         </listitem>
       </varlistentry>
 
@@ -132,12 +156,12 @@ popd</userinput></screen>
 
 <screen><userinput remap="install">make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
 echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</userinput></screen>
-
+<!--
     <para>Удалите ненужную статическую библиотеку, не обрабатываемую скриптом
     <command>configure</command>:</para>
 
 	<screen><userinput remap="install">rm -v $LFS/usr/lib/libncurses++w.a</userinput></screen>
-
+-->
     <variablelist>
       <title>Значение параметров установки:</title>
 
