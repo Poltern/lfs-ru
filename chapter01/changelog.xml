@@ -40,6 +40,36 @@
     -->
 
     <listitem>
+      <para>2022-07-01</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to vim-9.0.0006. Addresses
+          <ulink url="&lfs-ticket-root;4500">#4500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20220610. Addresses
+          <ulink url="&lfs-ticket-root;5006">#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to OpenSSL-3.0.4. Fixes
+          <ulink url="&lfs-ticket-root;5076">#5076</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kbd-2.5.1. Fixes
+          <ulink url="&lfs-ticket-root;5075">#5075</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-5.18.8. Fixes
+          <ulink url="&lfs-ticket-root;5074">#5074</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to bc-5.3.3. Fixes
+          <ulink url="&lfs-ticket-root;5073">#5073</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2022-06-29</para>
       <itemizedlist>
         <listitem>

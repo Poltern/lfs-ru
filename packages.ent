@@ -58,10 +58,10 @@
 <!ENTITY bash-fin-du "50 MB">
 <!ENTITY bash-fin-sbu "1.5 SBU">
 
-<!ENTITY bc-version "5.3.1">
-<!ENTITY bc-size "434 KB">
+<!ENTITY bc-version "5.3.3">
+<!ENTITY bc-size "435 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "10dbd6425f22987ad7ea6d68d55f3680">
+<!ENTITY bc-md5 "43d17b905a9f10e2e7598bb81d636f2a">
 <!ENTITY bc-home "https://git.yzena.com/gavin/bc">
 <!ENTITY bc-fin-du "7.1 MB">
 <!ENTITY bc-fin-sbu "less than 0.1 SBU">
@@ -320,10 +320,10 @@
 <!ENTITY gzip-fin-du "20 MB">
 <!ENTITY gzip-fin-sbu "0.1 SBU">
 
-<!ENTITY iana-etc-version "20220524">
-<!ENTITY iana-etc-size "582 KB">
+<!ENTITY iana-etc-version "20220610">
+<!ENTITY iana-etc-size "583 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "a79e10f6c520a237a28522a25a7a4496">
+<!ENTITY iana-etc-md5 "c1561ccb789c4f07403a4e9b62c2b628">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.7 MB">
 <!ENTITY iana-etc-fin-sbu "less than 0.1 SBU">
@@ -361,10 +361,10 @@
 <!ENTITY jinja2-fin-du "3.7 MB">
 <!ENTITY jinja2-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY kbd-version "2.5.0">
-<!ENTITY kbd-size "1,456 KB">
+<!ENTITY kbd-version "2.5.1">
+<!ENTITY kbd-size "1,457 KB">
 <!ENTITY kbd-url "https://www.kernel.org/pub/linux/utils/kbd/kbd-&kbd-version;.tar.xz">
-<!ENTITY kbd-md5 "9b739cfd88e854f23d906d1990341fda">
+<!ENTITY kbd-md5 "10f10c0a9d897807733f2e2419814abb">
 <!ENTITY kbd-home "https://kbd-project.org/">
 <!ENTITY kbd-fin-du "33 MB">
 <!ENTITY kbd-fin-sbu "0.1 SBU">
@@ -385,7 +385,7 @@
 <!ENTITY less-fin-du "4.2 MB">
 <!ENTITY less-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY lfs-bootscripts-version "20220327">      <!-- Scripts depend on this format -->
+<!ENTITY lfs-bootscripts-version "20220623">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
 <!ENTITY lfs-bootscripts-url "&downloads-root;lfs-bootscripts-&lfs-bootscripts-version;.tar.xz">
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">
@@ -427,12 +427,12 @@
 
 <!ENTITY linux-major-version "5">
 <!ENTITY linux-minor-version "18">
-<!ENTITY linux-patch-version "3">
+<!ENTITY linux-patch-version "8">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "126,817 KB">
+<!ENTITY linux-size "126,823 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "a8db20740f7398af70543a645a4cd7ae">
+<!ENTITY linux-md5 "ab8388ad871403f07b403d7bc5e1e056">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -532,10 +532,10 @@
 <!ENTITY ninja-fin-du "64 MB">
 <!ENTITY ninja-fin-sbu "0.2 SBU">
 
-<!ENTITY openssl-version "3.0.3">
-<!ENTITY openssl-size "14,706 KB">
+<!ENTITY openssl-version "3.0.4">
+<!ENTITY openssl-size "14,717 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "07e9048cd2b1a22668b13ec9cd093cb5">
+<!ENTITY openssl-md5 "32c7e6f6274e591e73fc463617078690">
 <!ENTITY openssl-home "https://www.openssl.org/">
 <!ENTITY openssl-fin-du "474 MB">
 <!ENTITY openssl-fin-sbu "5.4 SBU">
@@ -720,13 +720,13 @@
 <!ENTITY util-linux-fin-du "261 MB">
 <!ENTITY util-linux-fin-sbu "1.1 SBU">
 
-<!ENTITY vim-version "8.2.5014">
-<!ENTITY vim-majmin "82">
-<!ENTITY vim-docdir "vim/vim82">
-<!ENTITY vim-size "10,568 KB">
+<!ENTITY vim-version "9.0.0006">
+<!-- <!ENTITY vim-majmin "90"> -->
+<!ENTITY vim-docdir "vim/vim90">
+<!ENTITY vim-size "16,217 KB">
 <!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.xz">
-<!ENTITY vim-md5 "5b27e59fa53b74611422af6fa4149957">
+<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">
+<!ENTITY vim-md5 "8f497ace38b9702427530e2124c55ed2">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "206 MB">
 <!ENTITY vim-fin-sbu "2.4 SBU">
