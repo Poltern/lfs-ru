@@ -120,10 +120,10 @@
         Команда <command>pip3 install</command> по умолчанию не приведёт к
 		переустановке уже установленного модуля. Чтобы использовать команду
 		<command>pip3 install</command> для обновления модуля (например, с
-		meson-0.61.3 до meson-0.62.0), вставьте параметр <parameter>--upgrade</parameter>
+		meson-0.61.3 до meson-0.62.0), добавьте параметр <parameter>--upgrade</parameter>
 		в командную строку. Если по какой-то причине необходимо понизить версию
 		модуля или переустановить ту же версию, используйте параметр
-		<parameter>--force-reinstall</parameter>.
+		<parameter>--force-reinstall --no-deps</parameter>.
       </para>
     </important>
 
