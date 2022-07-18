@@ -328,11 +328,11 @@
 <!ENTITY iana-etc-fin-du "4.7 MB">
 <!ENTITY iana-etc-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY inetutils-version "2.2">
-<!ENTITY inetutils-size "1,494 KB">
+<!ENTITY inetutils-version "2.3">
+<!ENTITY inetutils-size "1,518 KB">
 <!ENTITY inetutils-url "&gnu;inetutils/inetutils-&inetutils-version;.tar.xz">
-<!ENTITY inetutils-md5 "de8c1b49cbde2b30e481c61c65357ad4">
-<!ENTITY inetutils-sha256 "01b9a4bc73a47e63f6e8a07b76122d9ad2a2e46ebf14870e9c91d660b5647a22">
+<!ENTITY inetutils-md5 "e73e2ed42d73ceb47616b20131236036">
+<!ENTITY inetutils-sha256 "">
 <!ENTITY inetutils-home "&gnu-software;inetutils/">
 <!ENTITY inetutils-fin-du "30 MB">
 <!ENTITY inetutils-fin-sbu "0.3 SBU">
@@ -369,10 +369,10 @@
 <!ENTITY kbd-fin-du "33 MB">
 <!ENTITY kbd-fin-sbu "0.1 SBU">
 
-<!ENTITY kmod-version "29">
-<!ENTITY kmod-size "548 KB">
+<!ENTITY kmod-version "30">
+<!ENTITY kmod-size "555 KB">
 <!ENTITY kmod-url "&kernel;linux/utils/kernel/kmod/kmod-&kmod-version;.tar.xz">
-<!ENTITY kmod-md5 "e81e63acd80697d001c8d85c1acb38a0">
+<!ENTITY kmod-md5 "85202f0740a75eb52f2163c776f9b564">
 <!ENTITY kmod-home " ">
 <!ENTITY kmod-fin-du "12 MB">
 <!ENTITY kmod-fin-sbu "0.1 SBU">
@@ -427,12 +427,12 @@
 
 <!ENTITY linux-major-version "5">
 <!ENTITY linux-minor-version "18">
-<!ENTITY linux-patch-version "8">
+<!ENTITY linux-patch-version "11">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "126,823 KB">
+<!ENTITY linux-size "126,787 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "ab8388ad871403f07b403d7bc5e1e056">
+<!ENTITY linux-md5 "3617b3dd0e2d9c8dd216d3bc6ea9f022">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -490,10 +490,10 @@
 <!ENTITY markupsafe-fin-du "520 KB">
 <!ENTITY markupsafe-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY meson-version "0.62.2">
-<!ENTITY meson-size "1,991 KB">
+<!ENTITY meson-version "0.63.0">
+<!ENTITY meson-size "2,013 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "e6521b43730901bdd67afa2adefa64a3">
+<!ENTITY meson-md5 "d9e7d69f73f875004fbb3cc8bfe2a39b">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "41 MB">
 <!ENTITY meson-fin-sbu "less than 0.1 SBU">
@@ -532,10 +532,10 @@
 <!ENTITY ninja-fin-du "64 MB">
 <!ENTITY ninja-fin-sbu "0.2 SBU">
 
-<!ENTITY openssl-version "3.0.4">
-<!ENTITY openssl-size "14,717 KB">
+<!ENTITY openssl-version "3.0.5">
+<!ENTITY openssl-size "14,722 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "32c7e6f6274e591e73fc463617078690">
+<!ENTITY openssl-md5 "163bb3e58c143793d1dc6a6ec7d185d5">
 <!ENTITY openssl-home "https://www.openssl.org/">
 <!ENTITY openssl-fin-du "474 MB">
 <!ENTITY openssl-fin-sbu "5.4 SBU">

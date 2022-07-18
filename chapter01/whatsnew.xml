@@ -124,9 +124,9 @@
     <listitem>
       <para>IANA-Etc-&iana-etc-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Inetutils-&inetutils-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Intltool-&intltool-version;</para>
     </listitem>-->
@@ -139,9 +139,9 @@
     <listitem>
       <para>Kbd-&kbd-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Kmod-&kmod-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Less-&less-version;</para>
     </listitem>-->

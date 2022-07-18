@@ -40,6 +40,32 @@
     -->
 
     <listitem>
+      <para>2022-07-15</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to meson-0.63.0. Fixes
+          <ulink url="&lfs-ticket-root;5079">#5079</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kmod-30. Fixes
+          <ulink url="&lfs-ticket-root;5077">#5077</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to inetutils-2.3. Fixes
+          <ulink url="&lfs-ticket-root;5081">#5081</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-5.18.11. Fixes
+          <ulink url="&lfs-ticket-root;5078">#5078</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to OpenSSL-3.0.5. Fixes
+          <ulink url="&lfs-ticket-root;5080">#5080</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2022-07-01</para>
       <itemizedlist>
         <listitem>
