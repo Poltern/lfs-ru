@@ -1,3 +1,8 @@
+2022-07-23 Thomas Trepl <thomas@linuxfromscratch.org>
+   * Mark an raid array clean when root (/) has been remounted
+     r/o when system goes down. Otherwise, array does remain
+     always 'dirty', causing a resync at next boot.
+
 2022-03-24 Pierre Labastie <pierre dot labastie at neuf dot fr>
    * New semantics for K and S scripts:
      - S scripts only started if not already marked S in the previous runlevel

@@ -67,6 +67,11 @@ case "${1}" in
       # Make all LVM volume groups unavailable, if appropriate
       # This fails if swap or / are on an LVM partition
       #if [ -x /sbin/vgchange ]; then /sbin/vgchange -an > /dev/null; fi
+      if [ -r /etc/mdadm.conf ]; then
+         log_info_msg "Mark arrays as clean..."
+         mdadm --wait-clean --scan
+         evaluate_retval
+      fi
       ;;
 
    *)

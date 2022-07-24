@@ -393,10 +393,10 @@
 <!ENTITY lfs-bootscripts-cfg-du "BOOTSCRIPTS-INSTALL-KB KB">
 <!ENTITY lfs-bootscripts-cfg-sbu "less than 0.1 SBU">
 
-<!ENTITY libcap-version "2.64">
-<!ENTITY libcap-size "172 KB">
+<!ENTITY libcap-version "2.65">
+<!ENTITY libcap-size "176 KB">
 <!ENTITY libcap-url "&kernel;linux/libs/security/linux-privs/libcap2/libcap-&libcap-version;.tar.xz">
-<!ENTITY libcap-md5 "14fb1fa596f58596bdef0bb5033d2586">
+<!ENTITY libcap-md5 "3543e753dd941255c4def6cc67a462bb">
 <!ENTITY libcap-home "https://sites.google.com/site/fullycapable/">
 <!ENTITY libcap-fin-du "2.7 MB">
 <!ENTITY libcap-fin-sbu "less than 0.1 SBU">
@@ -427,12 +427,12 @@
 
 <!ENTITY linux-major-version "5">
 <!ENTITY linux-minor-version "18">
-<!ENTITY linux-patch-version "11">
+<!ENTITY linux-patch-version "14">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "126,787 KB">
+<!ENTITY linux-size "126,808 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "3617b3dd0e2d9c8dd216d3bc6ea9f022">
+<!ENTITY linux-md5 "3191e07cbaa8cad0bcda8847af3c31fa">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
