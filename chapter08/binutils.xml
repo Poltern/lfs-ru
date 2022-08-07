@@ -56,13 +56,13 @@
 
 <screen><computeroutput>The system has no more ptys.
 Ask your system administrator to create more.</computeroutput></screen>
-
+<!--
     <para>Разработчики выпустили патч для устранения проблемы при использовании binutils
 	для сборки некоторых пакетов BLFS с включенной Link Time Optimization (LTO). Примените
 	его сейчас:</para>
 
  <screen><userinput remap="pre">patch -Np1 -i ../&binutils-lto-patch;</userinput></screen>
-
+-->
 <!--
     <para>An error in the building system causes the shipped man pages to
     be empty.  Workaround the issue and remove the shipped man pages, so the
@@ -88,6 +88,7 @@ cd       build</userinput></screen>
     <para>Подготовьте Binutils к компиляции:</para>
 
 <screen><userinput remap="configure">../configure --prefix=/usr       \
+             --sysconfdir=/etc   \
              --enable-gold       \
              --enable-ld=default \
              --enable-plugins    \

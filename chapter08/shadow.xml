@@ -594,7 +594,7 @@ useradd -D --gid 999</userinput></screen>
       <varlistentry id="usermod">
         <term><command>usermod</command></term>
         <listitem>
-          <para>IИспользуется для изменения имени пользователя, идентификатора
+          <para>Используется для изменения имени пользователя, идентификатора
 		  пользователя (UID), оболочки, группы, домашнего каталога и т.д.</para>
           <indexterm zone="ch-system-shadow usermod">
             <primary sortas="b-usermod">usermod</primary>

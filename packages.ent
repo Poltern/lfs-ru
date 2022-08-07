@@ -66,10 +66,10 @@
 <!ENTITY bc-fin-du "7.1 MB">
 <!ENTITY bc-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY binutils-version "2.38">
-<!ENTITY binutils-size "23,098 KB">
+<!ENTITY binutils-version "2.39">
+<!ENTITY binutils-size "24,578 KB">
 <!ENTITY binutils-url "&gnu;binutils/binutils-&binutils-version;.tar.xz">
-<!ENTITY binutils-md5 "6e39cad1bb414add02b5b1169c18fdc5">
+<!ENTITY binutils-md5 "f7e986ae9ff06405cafb2e585ee36d27">
 <!ENTITY binutils-home "&gnu-software;binutils/">
 <!ENTITY binutils-tmpp1-du "620 MB">
 <!ENTITY binutils-tmpp1-sbu "1 SBU">
@@ -257,10 +257,10 @@
 <!ENTITY gettext-fin-du "233 MB">
 <!ENTITY gettext-fin-sbu "2.7 SBU">
 
-<!ENTITY glibc-version "2.35">
-<!ENTITY glibc-size "17,741 KB">
+<!ENTITY glibc-version "2.36">
+<!ENTITY glibc-size "18,175 KB">
 <!ENTITY glibc-url "&gnu;glibc/glibc-&glibc-version;.tar.xz">
-<!ENTITY glibc-md5 "dd571c67d85d89d7f60b854a4e207423">
+<!ENTITY glibc-md5 "00e9b89e043340f688bc93ec03239b57">
 <!ENTITY glibc-home "&gnu-software;libc/">
 <!ENTITY glibc-tmp-du "818 MB">
 <!ENTITY glibc-tmp-sbu "4.3 SBU">
@@ -385,7 +385,7 @@
 <!ENTITY less-fin-du "4.2 MB">
 <!ENTITY less-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY lfs-bootscripts-version "20220623">      <!-- Scripts depend on this format -->
+<!ENTITY lfs-bootscripts-version "20220723">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
 <!ENTITY lfs-bootscripts-url "&downloads-root;lfs-bootscripts-&lfs-bootscripts-version;.tar.xz">
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">
@@ -591,19 +591,19 @@
 <!-- If python minor version changes, updates in python and
      meson pages will be needed: python3.6 and python3.6m -->
 
-<!ENTITY python-version "3.10.5">
+<!ENTITY python-version "3.10.6">
 <!ENTITY python-minor "3.10">
-<!ENTITY python-size "18,908 KB">
+<!ENTITY python-size "19,142 KB">
 <!ENTITY python-url "https://www.python.org/ftp/python/&python-version;/Python-&python-version;.tar.xz">
-<!ENTITY python-md5 "f05727cb3489aa93cd57eb561c16747b">
+<!ENTITY python-md5 "afc7e14f7118d10d1ba95ae8e2134bf0">
 <!ENTITY python-home "https://www.python.org/">
 <!ENTITY python-tmp-du "359 MB">
 <!ENTITY python-tmp-sbu "1.2 SBU">
 <!ENTITY python-fin-du "275 MB">
 <!ENTITY python-fin-sbu "4.3 SBU">
 <!ENTITY python-docs-url "https://www.python.org/ftp/python/doc/&python-version;/python-&python-version;-docs-html.tar.bz2">
-<!ENTITY python-docs-md5 "46a8c3285c6ca87736bc9aad2d8519ba">
-<!ENTITY python-docs-size "7,112 KB">
+<!ENTITY python-docs-md5 "8f32c4f4f0b18ec56e8b3822bbaeb017">
+<!ENTITY python-docs-size "7,321 KB">
 
 <!ENTITY readline-version "8.1.2">
 <!ENTITY readline-soversion "8.1"><!-- used for stripping -->
@@ -710,10 +710,10 @@
 <!ENTITY udev-lfs-home    " ">
 
 <!ENTITY util-linux-minor "2.38">
-<!ENTITY util-linux-version "2.38"> <!-- 2.33.x -->
-<!ENTITY util-linux-size "7,177 KB">
+<!ENTITY util-linux-version "2.38.1"> <!-- 2.33.x -->
+<!ENTITY util-linux-size "7,321 KB">
 <!ENTITY util-linux-url "&kernel;linux/utils/util-linux/v&util-linux-minor;/util-linux-&util-linux-version;.tar.xz">
-<!ENTITY util-linux-md5 "fffdc126809a6d4c1789a9efc1b96623">
+<!ENTITY util-linux-md5 "cd11456f4ddd31f7fbfdd9488c0c0d02">
 <!ENTITY util-linux-home "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/">
 <!ENTITY util-linux-tmp-du "129 MB">
 <!ENTITY util-linux-tmp-sbu "0.7 SBU">

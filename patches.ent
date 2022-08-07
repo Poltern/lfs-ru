@@ -39,11 +39,11 @@
 <!ENTITY file-upstream-fixes-md5 "d99090db596b9db2bed869662199a56a">
 <!ENTITY file-upstream-fixes-patch-size "4.0 KB">
 -->
-<!--
-<!ENTITY gcc-upstream-fixes-patch "gcc-&gcc-version;-upstream_fixes-1.patch">
-<!ENTITY gcc-upstream-fixes-patch-md5 "27266d2a771f2ff812cb6ec9c8b456b4">
-<!ENTITY gcc-upstream-fixes-patch-size "18.0 KB">
--->
+
+<!ENTITY gcc-upstream-fixes-patch "gcc-&gcc-version;-glibc_2.36-1.patch">
+<!ENTITY gcc-upstream-fixes-patch-md5 "8a5a4c3d14b9b2398b32f20b53a4de50">
+<!ENTITY gcc-upstream-fixes-patch-size "1.7 KB">
+
 <!ENTITY glibc-fhs-patch "glibc-&glibc-version;-fhs-1.patch">
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
 <!ENTITY glibc-fhs-patch-size "2.8 KB">
@@ -84,6 +84,10 @@
 <!ENTITY sysvinit-consolidated-patch "sysvinit-&sysvinit-version;-consolidated-1.patch">
 <!ENTITY sysvinit-consolidated-patch-md5 "4900322141d493e74020c9cf437b2cdc">
 <!ENTITY sysvinit-consolidated-patch-size "2.4 KB">
+
+<!ENTITY systemd-upstream-patch "systemd-&systemd-version;-glibc_2.36_fix-1.patch">
+<!ENTITY systemd-upstream-patch-md5 "fd8dc901e73ad00dc72a351a0d4ac48c">
+<!ENTITY systemd-upstream-patch-size "3.0 KB">
 
 <!ENTITY xz-upstream-fix-patch "xz-&xz-version;-upstream_fix-1.patch">
 <!ENTITY xz-upstream-fix-patch-md5 "584c72ea3d8f7502b2770670f3090788">

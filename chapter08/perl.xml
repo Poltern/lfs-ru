@@ -139,10 +139,6 @@ export BUILD_BZIP2=0</userinput></screen>
 
 <screen><userinput remap="test">make test</userinput></screen>
 
-    <note>
-       <para>Девять тестов завершились неудачей из-за использования самой последней версии zlib.</para>
-    </note>
-
     <para>Установка пакета и очистка:</para>
 
 <screen><userinput remap="install">make install
@@ -445,7 +441,7 @@ unset BUILD_ZLIB BUILD_BZIP2</userinput></screen>
       <varlistentry id="pstruct">
         <term><command>pstruct</command></term>
         <listitem>
-          <para>Dumps C structures as generated from <command>cc -g -S</command>
+          <para>Делает дамп структур С, генерируемых <command>cc -g -S</command>
           stabs</para>
           <indexterm zone="ch-system-perl pstruct">
             <primary sortas="b-pstruct">pstruct</primary>

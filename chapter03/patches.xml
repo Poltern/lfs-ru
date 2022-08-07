@@ -34,7 +34,7 @@
       </listitem>
     </varlistentry>
 -->
-
+<!--
     <varlistentry>
       <term>Binutils LTO Fix Patch - <token>&binutils-lto-patch-size;</token>:</term>
       <listitem>
@@ -42,7 +42,7 @@
         <para>Контрольная сумма MD5: <literal>&binutils-lto-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
-
+-->
     <varlistentry>
       <term>Bzip2 Documentation Patch - <token>&bzip2-docs-patch-size;</token>:</term>
       <listitem>
@@ -67,15 +67,15 @@
       </listitem>
    </varlistentry>
 -->
-<!--
+
     <varlistentry>
-      <term>File Upstream Fixes Patch - <token>&file-upstream-fixes-patch-size;</token>:</term>
+      <term>Gcc glibc-2.36 Fixes Patch - <token>&gcc-upstream-fixes-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&file-upstream-fixes-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&file-upstream-fixes-md5;</literal></para>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&gcc-upstream-fixes-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&gcc-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
+
     <varlistentry>
       <term>Glibc FHS Patch - <token>&glibc-fhs-patch-size;</token>:</term>
       <listitem>
@@ -131,6 +131,14 @@
       <listitem>
         <para>Ссылка на загрузку: <ulink url="&patches-root;&sysvinit-consolidated-patch;"/></para>
         <para>Контрольная сумма MD5: <literal>&sysvinit-consolidated-patch-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry revision="systemd">
+      <term>Systemd Upstream Patch - <token>&systemd-upstream-patch-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&systemd-upstream-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&systemd-upstream-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
 
