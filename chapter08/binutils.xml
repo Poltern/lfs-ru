@@ -285,6 +285,16 @@ cd       build</userinput></screen>
         </listitem>
       </varlistentry>
 
+      <varlistentry id="gprofng">
+        <term><command>gprofng</command></term>
+        <listitem>
+          <para>Собирает и анализирует данные о производительности</para>
+          <indexterm zone="ch-system-binutils gprofng">
+            <primary sortas="b-gprofng">gprofng</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
       <varlistentry id="ld">
         <term><command>ld</command></term>
         <listitem>

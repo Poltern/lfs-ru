@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<appendix id="appendixb" xreflabel="Appendix B">
+  <?dbhtml dir="appendices"?>
+  <?dbhtml filename="acknowledgments.html"?>
+
+  <title>Благодарности</title>
+
+  <para>Мы хотели бы поблагодарить следующих людей и организации за их вклад в проект
+  Linux From Scratch.</para>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:gerard@linuxfromscratch.org">Gerard
+      Beekmans</ulink> &lt;gerard@linuxfromscratch.org&gt; &ndash;
+      Основатель проекта LFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:bdubbs@linuxfromscratch.org">Bruce
+      Dubbs</ulink> &lt;bdubbs@linuxfromscratch.org&gt; &ndash; Главный редактор LFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jim@linuxfromscratch.org">Jim
+      Gifford</ulink> &lt;jim@linuxfromscratch.org&gt; &ndash; Второй руководитель проекта CLFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:pierre@linuxfromscratch.org">Pierre Labastie</ulink>
+      &lt;pierre@linuxfromscratch.org&gt; &ndash; Редактор BLFS и руководитель ALFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:dj@linuxfromscratch.org">DJ Lucas</ulink>
+      &lt;dj@linuxfromscratch.org&gt; &ndash; Редактор проектов LFS и BLFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:ken@linuxfromscratch.org">Ken Moffat</ulink>
+      &lt;ken@linuxfromscratch.org&gt; &ndash; Редактор BLFS</para>
+    </listitem>
+
+    <listitem>
+      <para>Бесчисленное множество других людей из различных списков рассылки проектов
+	  LFS и BLFS, которые помогали в создании этой книги, присылая свои предложения,
+	  проверяя книгу и отправляя отчеты об ошибках, инструкции и собственный опыт
+	  установки различных пакетов. </para>
+    </listitem>
+
+  </itemizedlist>
+
+  <bridgehead renderas="sect2">Переводчики</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:macana@macana-es.com">Manuel Canales
+      Esparcia</ulink> &lt;macana@macana-es.com&gt; &ndash; Перевод проекта LFS на испанский язык</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:johan@linuxfromscratch.org">Johan
+      Lenglet</ulink> &lt;johan@linuxfromscratch.org&gt; &ndash; Перевод проекта LFS
+	  на французский язык до 2008 г.</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jmengual@linuxfromscratch.org">Jean-Philippe
+      Mengual </ulink> &lt;jmengual@linuxfromscratch.org&gt; &ndash; Перевод проекта LFS
+	  на французский язык 2008-2016 гг</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jlepiller@linuxfromscratch.org">Julien
+      Lepiller </ulink> &lt;jlepiller@linuxfromscratch.org&gt; &ndash; Перевод проекта LFS
+	  на французский язык с 2017-по настоящее время</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:lizardo@linuxfromscratch.org">Anderson
+      Lizardo</ulink> &lt;lizardo@linuxfromscratch.org&gt; &ndash;
+      Перевод проекта LFS на португальский язык</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:tr@erdfunkstelle.de">Thomas
+      Reitelbach </ulink> &lt;tr@erdfunkstelle.de&gt; &ndash; Перевод проекта LFS на немецкий язык</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:info@linuxfromscratch.org.ru">Vladimir Pertsev</ulink>
+      &lt;info@linuxfromscratch.org.ru&gt; &ndash; Перевод проекта LFS на русский язык</para>
+    </listitem>
+<!--
+    <listitem>
+      <para><ulink url="mailto:helen@linuxfromscratch.org.ru">Elena Shevcova</ulink>
+      &lt;helen@linuxfromscratch.org.ru&gt; &ndash; Russian LFS
+      translation project</para>
+    </listitem>
+-->
+  </itemizedlist>
+
+  <bridgehead renderas="sect2">Зеркала проекта</bridgehead>
+
+  <bridgehead renderas="sect3">Североамериканские зеркала</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:scott@osuosl.org">Scott Kveton</ulink>
+      &lt;scott@osuosl.org&gt; &ndash; зеркало lfs.oregonstate.edu</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:lost@l-w.net">William Astle</ulink>
+      &lt;lost@l-w.net&gt; &ndash; зеркало ca.linuxfromscratch.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:eujon.sellers@gmail.com">Eujon Sellers</ulink>
+      &lt;jpolen@rackspace.com&gt; &ndash; зеркало lfs.introspeed.com</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:justin@knierim.org">Justin Knierim</ulink>
+      &lt;tim@idge.net&gt; &ndash; зеркало lfs-matrix.net</para>
+    </listitem>
+
+  </itemizedlist>
+
+  <bridgehead renderas="sect3">Южноамериканские зеркала</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:manuel@linuxfromscratch.org">Manuel
+      Canales Esparcia</ulink> &lt;manuel@linuxfromscratch.org&gt; &ndash;
+      зеркало lfsmirror.lfs-es.info</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:lfalcon@thymbra.com">Luis Falcon</ulink>
+      &lt;Luis Falcon&gt; &ndash; зеркало torredehanoi.org</para>
+    </listitem>
+
+  </itemizedlist>
+
+  <bridgehead renderas="sect3">Европейские зеркала</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:guido@primerelay.net">Guido Passet</ulink>
+      &lt;guido@primerelay.net&gt; &ndash; зеркало nl.linuxfromscratch.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:baafie@planet.nl">Bastiaan Jacques</ulink>
+      &lt;baafie@planet.nl&gt; &ndash; зеркало lfs.pagefault.net</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:sven.cranshoff@lineo.be">Sven Cranshoff</ulink>
+      &lt;sven.cranshoff@lineo.be&gt; &ndash; зеркало lfs.lineo.be</para>
+    </listitem>
+
+    <listitem>
+      <para>Scarlet Belgium &ndash; зеркало lfs.scarlet.be</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:info@aliensoft.org">Sebastian Faulborn</ulink>
+      &lt;info@aliensoft.org&gt; &ndash; зеркало lfs.aliensoft.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:stuart@dontuse.ms">Stuart Fox</ulink>
+      &lt;stuart@dontuse.ms&gt; &ndash; зеркало lfs.dontuse.ms</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:admin@realhost.de">Ralf Uhlemann</ulink>
+      &lt;admin@realhost.de&gt; &ndash; зеркало lfs.oss-mirror.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:Antonin.Sprinzl@tuwien.ac.at">Antonin
+      Sprinzl</ulink> &lt;Antonin.Sprinzl@tuwien.ac.at&gt; &ndash;
+      зеркало at.linuxfromscratch.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:fredan-lfs@fredan.org">Fredrik
+      Danerklint</ulink> &lt;fredan-lfs@fredan.org&gt; &ndash;
+      зеркало se.linuxfromscratch.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:franck@linuxpourtous.com">Franck</ulink>
+      &lt;franck@linuxpourtous.com&gt; &ndash; зеркало lfs.linuxpourtous.com</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:baque@cict.fr">Philippe Baque</ulink>
+      &lt;baque@cict.fr&gt; &ndash; зеркало lfs.cict.fr</para>
+    </listitem>
+
+ <!--   <listitem>
+      <para><ulink url="mailto:gyouja@pilgrims.ru">Vitaly Chekasin</ulink>
+      &lt;gyouja@pilgrims.ru&gt; &ndash; зеркало lfs.pilgrims.ru</para>
+    </listitem>
+-->
+    <listitem>
+      <para><ulink url="mailto:kontakt@wankoo.org">Benjamin Heil</ulink>
+      &lt;kontakt@wankoo.org&gt; &ndash; зеркало lfs.wankoo.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:info@linuxfromscratch.org.ru">Vladimir Pertsev</ulink>
+      &lt;info@linuxfromscratch.org.ru&gt; &ndash; зеркало linuxfromscratch.org.ru</para>
+    </listitem>
+
+  </itemizedlist>
+
+  <bridgehead renderas="sect3">Азиатские зеркала</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:satit@wbac.ac.th">Satit Phermsawang</ulink>
+      &lt;satit@wbac.ac.th&gt; &ndash; зеркало lfs.phayoune.org</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:info@shizu-net.jp">Shizunet Co.,Ltd.</ulink>
+      &lt;info@shizu-net.jp&gt; &ndash; зеркало lfs.mirror.shizu-net.jp</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="http://www.initworld.com/">Init World</ulink>
+      &lt;http://www.initworld.com/&gt; &ndash; зеркало lfs.initworld.com</para>
+    </listitem>
+
+  </itemizedlist>
+
+  <bridgehead renderas="sect3">Австралийские зеркала</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:jason@dstc.edu.au">Jason Andrade</ulink>
+      &lt;jason@dstc.edu.au&gt; &ndash; зеркало au.linuxfromscratch.org</para>
+    </listitem>
+
+  </itemizedlist>
+
+  <bridgehead renderas="sect2">Бывшие участники проекта</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:theladyskye@linuxfromscratch.org">Christine
+      Barczak</ulink> &lt;theladyskye@linuxfromscratch.org&gt; &ndash; Редактор книги LFS</para>
+    </listitem>
+
+    <listitem>
+      <para>Archaic
+      &lt;archaic@linuxfromscratch.org&gt; &ndash; Технический писатель/редактор LFS,
+	  руководитель проекта HLFS, редактор BLFS, руководитель проекта "Рекомендации и патчи"</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:matthew@linuxfromscratch.org">Matthew
+      Burgess</ulink> &lt;matthew@linuxfromscratch.org&gt; &ndash;
+      Руководитель проекта LFS, технический писатель/редактор LFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:nathan@linuxfromscratch.org">Nathan
+      Coulson</ulink> &lt;nathan@linuxfromscratch.org&gt; &ndash;
+      Поддержка LFS-Bootscripts</para>
+    </listitem>
+
+    <listitem>
+      <para>Timothy Bauscher</para>
+    </listitem>
+
+    <listitem>
+      <para>Robert Briggs</para>
+    </listitem>
+
+    <listitem>
+      <para>Ian Chilton</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jeroen@linuxfromscratch.org">Jeroen
+      Coumans</ulink> &lt;jeroen@linuxfromscratch.org&gt; &ndash; Разработчик веб-сайта, поддержка FAQ</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:manuel@linuxfromscratch.org">Manuel
+      Canales Esparcia</ulink> &lt;manuel@linuxfromscratch.org&gt; &ndash;
+      Поддержка XML и XSL проектов LFS/BLFS/HLFS</para>
+    </listitem>
+
+    <listitem>
+      <para>Alex Groenewoud &ndash; Технический писатель LFS</para>
+    </listitem>
+
+    <listitem>
+      <para>Marc Heerdink</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jhuntwork@linuxfromscratch.org">Jeremy
+      Huntwork</ulink> &lt;jhuntwork@linuxfromscratch.org&gt; &ndash; Технический
+	  писатель LFS, поддержка LFS LiveCD</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:bryan@linuxfromscratch.org">Bryan
+      Kadzban</ulink> &lt;bryan@linuxfromscratch.org&gt; &ndash; Технический
+	  писатель LFS</para>
+    </listitem>
+
+    <listitem>
+      <para>Mark Hymers</para>
+    </listitem>
+
+    <listitem><para>Seth W. Klein &ndash; Поддержка FAQ</para></listitem>
+
+    <listitem>
+      <para><ulink url="mailto:nicholas@linuxfromscratch.org">Nicholas
+      Leippe</ulink> &lt;nicholas@linuxfromscratch.org&gt; &ndash; Поддержка Wiki</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:lizardo@linuxfromscratch.org">Anderson
+      Lizardo</ulink> &lt;lizardo@linuxfromscratch.org&gt; &ndash; Поддержка скриптов
+	  движка сайта</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:randy@linuxfromscratch.org">Randy
+      McMurchy</ulink> &lt;randy@linuxfromscratch.org&gt; &ndash; Руководитель проекта
+	  BLFS, редактор LFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:dnicholson@linuxfromscratch.org">Dan
+      Nicholson</ulink> &lt;dnicholson@linuxfromscratch.org&gt; &ndash; Редактор LFS и BLFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:alexander@linuxfromscratch.org">Alexander
+      E. Patrakov</ulink> &lt;alexander@linuxfromscratch.org&gt; &ndash; Технический
+	  писатель LFS, редактор международной версии LFS, поддержка LFS Live CD</para>
+    </listitem>
+
+    <listitem>
+      <para>Simon Perreault</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:scot@linuxfromscratch.org">Scot Mc
+      Pherson</ulink> &lt;scot@linuxfromscratch.org&gt; &ndash; Поддержка шлюза NNTP
+	  для проекта LFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:renodr@linuxfromscratch.org">Douglas R. Reno</ulink>
+      &lt;renodr@linuxfromscratch.org&gt; &ndash; Редактор Systemd</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:ryan@linuxfromscratch.org">Ryan
+      Oliver</ulink> &lt;ryan@linuxfromscratch.org&gt; &ndash; Второй руководитель
+	  проекта CLFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:gschafer@zip.com.au">Greg Schafer</ulink>
+      &lt;gschafer@zip.com.au&gt; &ndash; Технический писатель проекта LFS и архитектор
+	  методов сборки пакетов следующего поколения, предназначенных для 64-битной архитектуры</para>
+    </listitem>
+
+    <listitem>
+      <para>Jesse Tie-Ten-Quee &ndash; Технический писатель LFS</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jwrober@linuxfromscratch.org">James
+      Robertson</ulink> &lt;jwrober@linuxfromscratch.org&gt; &ndash; Поддержка
+	  багтрекинга Bugzilla</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:tushar@linuxfromscratch.org">Tushar
+      Teredesai</ulink> &lt;tushar@linuxfromscratch.org&gt; &ndash; Редактор книги BLFS,
+	  руководитель проекта Hints and Patches (Рекомендации и патчи)</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jeremy@linuxfromscratch.org">Jeremy
+      Utley</ulink> &lt;jeremy@linuxfromscratch.org&gt; &ndash; Технический писатель
+	  проекта LFS, поддержка багтрекинга Bugzilla, поддержка LFS-Bootscripts</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:zwinkles@gmail.com">Zack Winkles</ulink>
+      &lt;zwinkles@gmail.com&gt; &ndash; Технический писатель
+	  проекта LFS</para>
+    </listitem>
+
+  </itemizedlist>
+
+<!--
+  <bridgehead renderas="sect2">A very special thank you to our
+  donators</bridgehead>
+
+  <itemizedlist>
+
+    <listitem>
+      <para><ulink url="mailto:dean@vipersoft.co.uk">Dean Benson</ulink>
+      &lt;dean@vipersoft.co.uk&gt; for several monetary contributions</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:hrx@hrxnet.de">Hagen Herrschaft</ulink>
+      &lt;hrx@hrxnet.de&gt; for donating a 2.2 GHz P4 system, now running
+      under the name of Lorien</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="http://www.seocompany.ca/">SEO Company Canada</ulink>
+      supports Open Source projects and different Linux distributions</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="http://www.vasoftware.com">VA Software</ulink> who,
+      on behalf of <ulink url="http://www.linux.com">Linux.com</ulink>,
+      donated a VA Linux 420 (former StartX SP2) workstation</para>
+    </listitem>
+
+    <listitem>
+      <para>Mark Stone for donating Belgarath, the first linuxfromscratch.org
+      server</para>
+    </listitem>
+
+  </itemizedlist>
+-->
+</appendix>
