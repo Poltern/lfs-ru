@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<appendix id="appendixa" xreflabel="Appendix A">
+  <?dbhtml dir="appendices"?>
+  <?dbhtml filename="acronymlist.html"?>
+
+  <title>Сокращения и условные обозначения</title>
+
+  <variablelist>
+    <?dbfo list-presentation="list"?>
+    <?dbhtml list-presentation="table"?>
+
+    <varlistentry>
+      <term><emphasis role="bold">ABI</emphasis></term>
+      <listitem>
+        <para>Application Binary Interface - Двоичный (бинарный) интерфейс приложений</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ALFS</emphasis></term>
+      <listitem>
+        <para>Automated Linux From Scratch - Проект автоматической сборки системы LFS</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">API</emphasis></term>
+      <listitem>
+        <para>Application Programming Interface - Программный интерфейс приложения</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ASCII</emphasis></term>
+      <listitem>
+        <para>American Standard Code for Information Interchange — Американский стандартный
+		код для обмена информацией</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">BIOS</emphasis></term>
+      <listitem>
+        <para>Basic Input/Output System - Базовая система ввода/вывода</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">BLFS</emphasis></term>
+      <listitem>
+        <para>Beyond Linux From Scratch - Проект, расширяющий возможности Linux From Scratch</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">BSD</emphasis></term>
+      <listitem>
+        <para>Berkeley Software Distribution - Система распространения программного обеспечения
+		в исходных кодах</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">chroot</emphasis></term>
+      <listitem>
+        <para>change root - Команда изменения корневого каталога</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">CMOS</emphasis></term>
+      <listitem>
+        <para>Complementary Metal Oxide Semiconductor - Комплементарная структура металл-оксид-полупроводник</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">COS</emphasis></term>
+      <listitem>
+        <para>Class Of Service - Класс обслуживания</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">CPU</emphasis></term>
+      <listitem>
+        <para>Central Processing Unit - Центральный процессор, процессор</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">CRC</emphasis></term>
+      <listitem>
+        <para>Cyclic Redundancy Check - Циклический избыточный код</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">CVS</emphasis></term>
+      <listitem>
+        <para>Concurrent Versions System - Централизованная система управления версиями</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">DHCP</emphasis></term>
+      <listitem>
+        <para>Dynamic Host Configuration Protocol - Протокол динамической настройки узла</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">DNS</emphasis></term>
+      <listitem>
+        <para>Domain Name Service - Служба доменных имён</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">EGA</emphasis></term>
+      <listitem>
+        <para>Enhanced Graphics Adapter - Усовершенствованный графический адаптер</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ELF</emphasis></term>
+      <listitem>
+        <para>Executable and Linkable Format - Формат исполняемых и компонуемых файлов</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">EOF</emphasis></term>
+      <listitem>
+        <para>End of File - Конец файла, символ конца файла</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">EQN</emphasis></term>
+      <listitem>
+        <para>equation - уравнение</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ext2</emphasis></term>
+      <listitem>
+        <para>second extended file system - вторая расширенная файловая система</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ext3</emphasis></term>
+      <listitem>
+        <para>third extended file system - третья расширенная файловая система</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ext4</emphasis></term>
+      <listitem>
+        <para>fourth extended file system - четвёртая расширенная файловая система</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">FAQ</emphasis></term>
+      <listitem>
+        <para>Frequently Asked Questions - Часто задаваемые вопросы</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">FHS</emphasis></term>
+      <listitem>
+        <para>Filesystem Hierarchy Standard - Стандарт иерархии файловой системы</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">FIFO</emphasis></term>
+      <listitem>
+        <para>First-In, First Out -  Схема обслуживания очереди "первый пришел — первым ушёл"</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">FQDN</emphasis></term>
+      <listitem>
+        <para>Fully Qualified Domain Name - Полное доменное имя</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">FTP</emphasis></term>
+      <listitem>
+        <para>File Transfer Protocol - Протокол передачи файлов</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">GB</emphasis></term>
+      <listitem>
+        <para>Gigabytes - Гигабайты</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">GCC</emphasis></term>
+      <listitem>
+        <para>GNU Compiler Collection - Коллекция компиляторов GNU</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">GID</emphasis></term>
+      <listitem>
+        <para>Group Identifier - Идентификатор группы</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">GMT</emphasis></term>
+      <listitem>
+        <para>Greenwich Mean Time - Среднее время по Гринвичу</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">HTML</emphasis></term>
+      <listitem>
+        <para>Hypertext Markup Language - Язык гипертекстовой разметки</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">IDE</emphasis></term>
+      <listitem>
+        <para>Integrated Drive Electronics - Интерфейс подключения дисковых устройств</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">IEEE</emphasis></term>
+      <listitem>
+        <para>Institute of Electrical and Electronic Engineers - Институт инженеров электротехники
+		и электроники</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">IO</emphasis></term>
+      <listitem>
+        <para>Input/Output - Ввод/вывод</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">IP</emphasis></term>
+      <listitem>
+        <para>Internet Protocol - Межсетевой протокол</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">IPC</emphasis></term>
+      <listitem>
+        <para>Inter-Process Communication - Обмен данными между потоками одного или разных процессов</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">IRC</emphasis></term>
+      <listitem>
+        <para>Internet Relay Chat - Ретранслируемый интернет-чат</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ISO</emphasis></term>
+      <listitem>
+        <para>International Organization for Standardization - Международная организация по стандартизации</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">ISP</emphasis></term>
+      <listitem>
+        <para>Internet Service Provider - Провайдер интернет услуг</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">KB</emphasis></term>
+      <listitem>
+        <para>Kilobytes - Килобайты</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">LED</emphasis></term>
+      <listitem>
+        <para>Light Emitting Diode - Светодиод</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">LFS</emphasis></term>
+      <listitem>
+        <para>Linux From Scratch - Линукс с нуля</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">LSB</emphasis></term>
+      <listitem>
+        <para>Linux Standard Base - Совместный проект семейства операционных систем,
+		основанных на Linux (то есть дистрибутивов Linux), при организации Linux
+		Foundation, целью которого является стандартизация их внутренней структуры.
+		LSB опирается на существующие спецификации, такие как POSIX, Single UNIX
+		Specification, и другие открытые стандарты, при этом расширяя и дополняя их.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">MB</emphasis></term>
+      <listitem>
+        <para>Megabytes - Мегабайты</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">MBR</emphasis></term>
+      <listitem>
+        <para>Master Boot Record - Главная загрузочная запись</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">MD5</emphasis></term>
+      <listitem>
+        <para>Message Digest 5 - 128-битный алгоритм хеширования</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">NIC</emphasis></term>
+      <listitem>
+        <para>Network Interface Card - Сетевой адаптер</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">NLS</emphasis></term>
+      <listitem>
+        <para>Native Language Support - Поддержка естественного языка</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">NNTP</emphasis></term>
+      <listitem>
+        <para>Network News Transport Protocol - Сетевой транспортный протокол новостных групп</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">NPTL</emphasis></term>
+      <listitem>
+        <para>Native POSIX Threading Library - Библиотека потоков POSIX</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">OSS</emphasis></term>
+      <listitem>
+        <para>Open Sound System - Унифицированный драйвер для звуковых карт и других звуковых устройств</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">PCH</emphasis></term>
+      <listitem>
+        <para>Pre-Compiled Headers - Предварительно скомпилированные заголовки</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">PCRE</emphasis></term>
+      <listitem>
+        <para>Perl Compatible Regular Expression - Регулярные выражения, совместимые с Perl</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">PID</emphasis></term>
+      <listitem>
+        <para>Process Identifier - Идентификатор процесса</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">PTY</emphasis></term>
+      <listitem>
+        <para>pseudo terminal - Псевдотерминал</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">QOS</emphasis></term>
+      <listitem>
+        <para>Quality Of Service - Качество обслуживания</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">RAM</emphasis></term>
+      <listitem>
+        <para>Random Access Memory - Оперативная память</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">RPC</emphasis></term>
+      <listitem>
+        <para>Remote Procedure Call - Удаленный вызов процедур</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">RTC</emphasis></term>
+      <listitem>
+        <para>Real Time Clock - Часы реального времени</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">SBU</emphasis></term>
+      <listitem>
+        <para>Standard Build Unit - Стандартная единица (времени) сборки</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">SCO</emphasis></term>
+      <listitem>
+        <para>The Santa Cruz Operation - Компания-разработчик программного обеспечения</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">SHA1</emphasis></term>
+      <listitem>
+        <para>Secure-Hash Algorithm 1 - Алгоритм криптографического хеширования</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">TLDP</emphasis></term>
+      <listitem>
+        <para>The Linux Documentation Project - Проект документации Linux</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">TFTP</emphasis></term>
+      <listitem>
+        <para>Trivial File Transfer Protocol - Простейший протокол передачи файлов</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">TLS</emphasis></term>
+      <listitem>
+        <para>Thread-Local Storage - Локальное хранилище потока</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">UID</emphasis></term>
+      <listitem>
+        <para>User Identifier - Идентификатор пользователя</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">umask</emphasis></term>
+      <listitem>
+        <para>user file-creation mask - Команда, определяющая маску создания пользовательских файлов</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">USB</emphasis></term>
+      <listitem>
+        <para>Universal Serial Bus - Универсальная последовательная шина</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">UTC</emphasis></term>
+      <listitem>
+        <para>Coordinated Universal Time - Всемирное координированное время</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">UUID</emphasis></term>
+      <listitem>
+        <para>Universally Unique Identifier - Универсальный уникальный идентификатор</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">VC</emphasis></term>
+      <listitem>
+        <para>Virtual Console - Виртуальная консоль</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">VGA</emphasis></term>
+      <listitem>
+        <para>Video Graphics Array - Компонентный видеоинтерфейс</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><emphasis role="bold">VT</emphasis></term>
+      <listitem>
+        <para>Virtual Terminal - Виртуальный терминал</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+</appendix>
