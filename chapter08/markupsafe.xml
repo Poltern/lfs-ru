@@ -47,7 +47,7 @@
 
     <para>Установите пакет:</para>
 
-<screen><userinput remap="install">pip3 install --no-index --find-links dist Markupsafe</userinput></screen>
+<screen><userinput remap="install">pip3 install --no-index --no-user --find-links dist Markupsafe</userinput></screen>
 
   </sect2>
 

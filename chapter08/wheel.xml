@@ -79,11 +79,14 @@
 
     <segmentedlist>
       <segtitle>Установленная программа</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Установленные каталоги</segtitle>
 
       <seglistitem>
         <seg>wheel</seg>
-        <seg>/usr/lib/python&python-minor;/site-packages/wheel</seg>
+        <seg>
+           /usr/lib/python&python-minor;/site-packages/wheel и
+           /usr/lib/python&python-minor;/site-packages/wheel-0.37.1-py3.10.egg-info
+        </seg>
       </seglistitem>
     </segmentedlist>
 

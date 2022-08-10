@@ -100,11 +100,18 @@
 	<systemitem class='username'>root</systemitem> появляется многострочное предупреждение.
 	Основная причина этой рекомендации — избежать конфликта с системным менеджером пакетов
 	(например, <command>dpkg</command>), но в LFS нет общесистемного менеджера пакетов,
-	так что это не проблема. По желанию отключите это предупреждение, выполнив следующую команду:</para>
+	так что это не проблема. По желанию отключите это предупреждение, выполнив следующие команды:</para>
 
+ <screen><userinput remap="install">cat &gt; /etc/pip.conf &lt;&lt; EOF
+[global]
+root-user-action = ignore
+EOF
+</userinput></screen>
+<!--
 <screen><userinput remap="install">sed -e '/def warn_if_run_as_root/a\    return' \
     -i /usr/lib/python3.10/site-packages/pip/_internal/cli/req_command.py
 </userinput></screen>
+-->
 
     <important>
       <para>
