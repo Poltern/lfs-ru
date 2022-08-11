@@ -1,0 +1,3272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<appendix id="appendixc" xreflabel="Appendix C">
+  <?dbhtml dir="appendices"?>
+  <?dbhtml filename="dependencies.html"?>
+
+  <title>Dependencies</title>
+
+  <para>Каждый пакет в системе LFS для правильной сборки и установки может ссылаться на один или 
+  несколько других пакетов.
+  Некоторые пакеты могут иметь циклические зависимости, то есть первый пакет зависит от второго,
+  который в свою очередь, зависит от первого. Именно по этой причине, указанный порядок сборки
+  пакетов в LFS очень важен. Цель этой страницы - документировать зависимости каждого пакета,
+  собранного в LFS</para>
+
+  <para>Для каждого собираемого пакета существует три, а иногда и до пяти типов зависимостей,
+  перечисленных ниже. В первом списке перечислены другие пакеты, которые должны быть доступны
+  для компиляции и установки рассматриваемого пакета.
+  Во втором перечислены пакеты, которые должны быть доступны, когда какие-либо программы или
+  библиотеки из пакета используются во время выполнения. В третьем списке перечислены пакеты,
+  которые в дополнение к пакетам из первого списка должны быть доступны для запуска наборов
+  тестов. Четвертый список зависимостей — это пакеты, которые требуют, чтобы некий пакет был собран
+  и установлен по определенному пути, прежде чем они будут собраны и установлены. В большинстве
+  случаев это связано с тем, что такие пакеты жестко кодируют пути к двоичным файлам в своих сценариях.
+  Если сборка выполняется не в том порядке, это может привести к тому, что пути /tools/bin/[binary]
+  будут размещены внутри скриптов, установленных в готовой системе, что крайне нежелательно.
+</para>
+
+  <para>Последний список зависимостей - это необязательные пакеты, которые не рассматриваются в LFS,
+  но могут быть полезны пользователю. Эти пакеты могут иметь дополнительные как обязательные,  так и
+  необязательные зависимости. Такие зависимости - рекомендуется разрешать после завершения сборки всей
+  системы LFS. В некоторых случаях, повторная установка некоторых таких пакетов рассматривается в BLFS.</para>
+
+<!-- Begin Acl dependency info -->
+  <bridgehead renderas="sect2" id="acl-dep">Acl</bridgehead>
+
+      <segmentedlist id="acl-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Attr, Bash, Binutils, Coreutils, GCC,  Gettext, Grep, M4, Make,
+          Perl, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="acl-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Attr и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="acl-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Automake, Diffutils, Findutils и
+          Libtool</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="acl-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Coreutils, Sed, Tar и Vim</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="acl-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Attr dependency info -->
+  <bridgehead renderas="sect2" id="attr-dep">Attr</bridgehead>
+
+      <segmentedlist id="attr-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, M4, Make,
+          Perl, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="attr-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="attr-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Automake, Diffutils, Findutils и Libtool</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="attr-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Acl и Libcap</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="attr-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Autoconf dependency info -->
+  <bridgehead renderas="sect2" id="autoconf-dep">Autoconf</bridgehead>
+
+      <segmentedlist id="autoconf-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Coreutils, Grep, M4, Make, Perl, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="autoconf-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Coreutils, Grep, M4, Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="autoconf-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Automake, Diffutils, Findutils, GCC и Libtool</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="autoconf-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Automake</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="autoconf-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;postlfs/emacs.html">Emacs</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Automake dependency info -->
+  <bridgehead renderas="sect2" id="automake-dep">Automake</bridgehead>
+
+      <segmentedlist id="automake-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Autoconf, Bash, Coreutils, Gettext, Grep, M4, Make, Perl, Sed,
+          и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="automake-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Coreutils, Grep, M4, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="automake-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Binutils, Bison, Bzip2, DejaGNU, Diffutils, Expect, Findutils,
+          Flex, GCC, Gettext, Gzip, Libtool и Tar</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="automake-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="automake-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Bash dependency info -->
+  <bridgehead renderas="sect2" id="bash-dep">Bash</bridgehead>
+
+      <segmentedlist id="bash-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Bison, Coreutils, Diffutils, Gawk, GCC, Glibc,
+          Grep, Make, Ncurses, Patch, Readline, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bash-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc, Ncurses и Readline</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bash-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Expect и Shadow</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bash-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bash-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;x/installing.html">Xorg</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Bc dependency info -->
+  <bridgehead renderas="sect2" id="bc-dep">Bc</bridgehead>
+
+      <segmentedlist id="bc-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Grep, Make и Readline</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bc-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc, Ncurses и Readline</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bc-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Gawk</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bc-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bc-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Binutils dependency info -->
+  <bridgehead renderas="sect2" id="binutils-dep">Binutils</bridgehead>
+
+      <segmentedlist id="binutils-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, File, Flex, Gawk, GCC,
+          Glibc, Grep, Make, Perl, Sed, Texinfo и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="binutils-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="binutils-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>DejaGNU и Expect</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="binutils-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="binutils-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="https://sourceware.org/elfutils/">Elfutils</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Bison dependency info -->
+  <bridgehead renderas="sect2" id="bison-dep">Bison</bridgehead>
+
+      <segmentedlist id="bison-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, M4, Make,
+          Perl и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bison-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bison-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils, Findutils и Flex</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bison-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Kbd и Tar</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bison-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/doxygen.html">Doxygen</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Bzip2 dependency info -->
+  <bridgehead renderas="sect2" id="bzip2-dep">Bzip2</bridgehead>
+
+      <segmentedlist id="bzip2-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Glibc, Make и
+          Patch</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bzip2-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bzip2-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bzip2-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>File</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="bzip2-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Check dependency info -->
+  <bridgehead renderas="sect2" id="check-dep">Check</bridgehead>
+
+      <segmentedlist id="check-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Gawk, GCC, Grep, Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="check-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash и Gawk</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="check-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="check-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="check-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Coreutils dependency info -->
+  <bridgehead renderas="sect2" id="coreutils-dep">Coreutils</bridgehead>
+
+      <segmentedlist id="coreutils-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, GMP, Grep,
+          Libcap, Make, OpenSSL, Patch, Perl, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="coreutils-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="coreutils-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils, E2fsprogs, Findutils, Shadow и  Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="coreutils-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Bash, Diffutils, Eudev, Findutils и Man-DB</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="coreutils-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="https://metacpan.org/pod/Expect">Expect.pm</ulink>
+            и
+            <ulink url="https://metacpan.org/pod/IO::Tty">IO::Tty</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin D-Bus dependency info -->
+<!--
+  <bridgehead renderas="sect2" id="dbus-dep">D-Bus</bridgehead>
+
+      <segmentedlist>
+        <segtitle>&dependencies;</segtitle>
+
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          Make, Sed и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist>
+        <segtitle>&testsuites;</segtitle>
+
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist>
+        <segtitle>&before;</segtitle>
+
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist>
+        <segtitle>&external;</segtitle>
+
+        <seglistitem>
+          <seg>Xorg Libs</seg>
+        </seglistitem>
+      </segmentedlist>
+-->
+<!-- Begin DejaGNU dependency info -->
+  <bridgehead renderas="sect2" id="dejagnu-dep">DejaGNU</bridgehead>
+
+      <segmentedlist id="dejagnu-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Coreutils, Diffutils, Expect, GCC, Grep, Make, Sed и
+          Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="dejagnu-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Expect и Bash</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="dejagnu-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="dejagnu-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="dejagnu-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Diffutils dependency info -->
+  <bridgehead renderas="sect2" id="diffutils-dep">Diffutils</bridgehead>
+
+      <segmentedlist id="diffutils-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Gettext, Glibc, Grep,
+          Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="diffutils-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="diffutils-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="diffutils-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="diffutils-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin E2fsprogs dependency info -->
+  <bridgehead renderas="sect2" id="e2fsprogs-dep">E2fsprogs</bridgehead>
+
+      <segmentedlist id="e2fsprogs-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          Gzip, Make, Sed, Texinfo и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="e2fsprogs-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="e2fsprogs-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Procps-ng и Psmisc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="e2fsprogs-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="e2fsprogs-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Eudev dependency info -->
+  <bridgehead renderas="sect2" id="eudev-dep">Eudev</bridgehead>
+
+      <segmentedlist id="eudev-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Gperf, Make,
+          Sed и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="eudev-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc, Kmod, Xz, Util-linux и Zlib.</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="eudev-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="eudev-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="eudev-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Expat dependency info -->
+  <bridgehead renderas="sect2" id="expat-dep">Expat</bridgehead>
+
+      <segmentedlist id="expat-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Make и
+          Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expat-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expat-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expat-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Python и XML::Parser</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expat-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Expect dependency info -->
+  <bridgehead renderas="sect2" id="expect-dep">Expect</bridgehead>
+
+      <segmentedlist id="expect-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Glibc, Grep, Make,
+          Patch, Sed и Tcl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expect-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Tcl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expect-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expect-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="expect-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/tk.html">Tk</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin File dependency info -->
+  <bridgehead renderas="sect2" id="file-dep">File</bridgehead>
+
+      <segmentedlist id="file-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Bzip2, Coreutils, Diffutils, Gawk, GCC, Glibc,
+          Grep, Make, Sed, Xz и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="file-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc, Bzip2, Xz и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="file-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="file-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="file-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/libseccomp.html">libseccomp</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Findutils dependency info -->
+  <bridgehead renderas="sect2" id="findutils-dep">Findutils</bridgehead>
+
+      <segmentedlist id="findutils-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, Make, Sed,
+          и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="findutils-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="findutils-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>DejaGNU, Diffutils и Expect</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="findutils-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="findutils-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Flex dependency info -->
+  <bridgehead renderas="sect2" id="flex-dep">Flex</bridgehead>
+
+      <segmentedlist id="flex-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, M4, Make,
+          Patch, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flex-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Glibc и M4</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flex-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Bison и Gawk</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flex-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Binutils, IProute2, Kbd, Kmod и Man-DB</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flex-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Gawk dependency info -->
+  <bridgehead renderas="sect2" id="gawk-dep">Gawk</bridgehead>
+
+      <segmentedlist id="gawk-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, GMP, Grep, Make,
+          MPFR, Patch, Readline, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gawk-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Glibc и Mpfr</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gawk-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gawk-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gawk-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/libsigsegv.html">libsigsegv</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin GCC dependency info -->
+  <bridgehead renderas="sect2" id="gcc-dep">GCC</bridgehead>
+
+      <segmentedlist id="gcc-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Findutils, Gawk, GCC,
+          Gettext, Glibc, GMP, Grep, M4, Make, MPC, MPFR, Patch, Perl, Sed,
+          Tar, Texinfo и Zstd</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gcc-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Glibc, Mpc и Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gcc-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>DejaGNU, Expect и Shadow</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gcc-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gcc-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+             <ulink url="http://gcc.gnu.org/wiki/GNAT">GNAT</ulink>
+             и
+             <ulink url="https://repo.or.cz/isl.git">ISL</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin GDBM dependency info -->
+  <bridgehead renderas="sect2" id="gdbm">GDBM</bridgehead>
+
+      <segmentedlist id="gdbm-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Grep, Make и
+          Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gdbm-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Glibc и Readline</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gdbm-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gdbm-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gdbm-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Gettext dependency info -->
+  <bridgehead renderas="sect2" id="gettext-dep">Gettext</bridgehead>
+
+      <segmentedlist id="gettext-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Make, Ncurses,
+          Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gettext-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Acl, Bash, Gcc и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gettext-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils, Perl и Tcl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gettext-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Automake и Bison</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gettext-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Glibc dependency info -->
+  <bridgehead renderas="sect2" id="glibc-dep">Glibc</bridgehead>
+
+      <segmentedlist id="glibc-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Bison, Coreutils, Diffutils, Gawk, GCC, Gettext,
+          Grep, Gzip, Linux API Headers, Make, Perl, Python, Sed и
+          Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="glibc-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="glibc-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>File</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="glibc-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="glibc-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin GMP dependency info -->
+  <bridgehead renderas="sect2" id="gmp-dep">GMP</bridgehead>
+
+      <segmentedlist id="gmp-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep, M4,
+          Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gmp-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>GCC и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gmp-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gmp-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>MPFR и GCC</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gmp-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Gperf dependency info -->
+  <bridgehead renderas="sect2" id="gperf-dep">Gperf</bridgehead>
+
+      <segmentedlist id="gperf-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Bash, Binutils, Coreutils, GCC, Glibc и Make</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gperf-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>GCC и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gperf-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils и Expect</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gperf-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gperf-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Grep dependency info -->
+  <bridgehead renderas="sect2" id="grep-dep">Grep</bridgehead>
+
+      <segmentedlist id="grep-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Gettext, Glibc, Grep,
+          Make, Patch, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grep-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grep-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Gawk</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grep-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Man-DB</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grep-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/pcre.html">PCRE</ulink>
+            и
+            <ulink url="&blfs-book;general/libsigsegv.html">libsigsegv</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Groff dependency info -->
+  <bridgehead renderas="sect2" id="groff-dep">Groff</bridgehead>
+
+      <segmentedlist id="groff-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Bison, Coreutils, Gawk, GCC, Glibc, Grep, Make,
+          Patch, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="groff-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>GCC, Glibc и Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="groff-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="groff-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Man-DB и Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="groff-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;pst/gs.html">ghostscript</ulink>
+            и
+            <ulink url="&blfs-book;general/uchardet.html">Uchardet</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin GRUB dependency info -->
+  <bridgehead renderas="sect2" id="grub-dep">GRUB</bridgehead>
+
+      <segmentedlist id="grub-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Bison, Coreutils, Diffutils, GCC, Gettext, Glibc,
+          Grep, Make, Ncurses, Sed, Texinfo и Xz</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grub-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, GCC, Gettext, Glibc, Xz и Sed.</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grub-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grub-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="grub-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Gzip dependency info -->
+  <bridgehead renderas="sect2" id="gzip-dep">Gzip</bridgehead>
+
+      <segmentedlist id="gzip-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Grep, Make, Sed и
+          Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gzip-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gzip-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils и Less</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gzip-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Man-DB</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="gzip-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Iana-Etc dependency info -->
+  <bridgehead renderas="sect2" id="iana-etc-dep">Iana-Etc</bridgehead>
+
+      <segmentedlist id="iana-etc-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Coreutils</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iana-etc-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iana-etc-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iana-etc-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iana-etc-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Inetutils dependency info -->
+  <bridgehead renderas="sect2" id="inetutils-dep">Inetutils</bridgehead>
+
+      <segmentedlist id="inetutils-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Grep, Make, Ncurses,
+          Patch, Sed, Texinfo и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="inetutils-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>GCC, Glibc, Ncurses и Readline</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="inetutils-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="inetutils-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Tar</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="inetutils-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Intltool dependency info -->
+  <bridgehead renderas="sect2" id="intltool-dep">Intltool</bridgehead>
+
+      <segmentedlist id="intltool-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Gawk, Glibc, Make, Perl, Sed и XML::Parser</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="intltool-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Autoconf, Automake, Bash, Glibc, Grep, Perl и
+          Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="intltool-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="intltool-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="intltool-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin IProute2 dependency info -->
+  <bridgehead renderas="sect2" id="iproute2-dep">IProute2</bridgehead>
+
+      <segmentedlist id="iproute2-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Bash, Bison, Coreutils, Flex, GCC, Glibc, Make, Libcap, Libelf,
+         Linux API Headers и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iproute2-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Coreutils, Glibc, Libcap, Libelf и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iproute2-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iproute2-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="iproute2-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>
+            и
+            <ulink url="&blfs-book;postlfs/iptables.html">iptables</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Jinja2 dependency info -->
+  <bridgehead renderas="sect2" id="jinja2-dep">Jinja2</bridgehead>
+
+      <segmentedlist id="jinja2-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>MarkupSafe и Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="jinja2-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>MarkupSafe и Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="jinja2-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="jinja2-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Systemd</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="jinja2-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Kbd dependency info -->
+  <bridgehead renderas="sect2" id="kbd-dep">Kbd</bridgehead>
+
+      <segmentedlist id="kbd-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Bash, Binutils, Bison, Check, Coreutils, Flex, GCC, Gettext,
+         Glibc, Gzip, Make, Patch и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kbd-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, Coreutils и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kbd-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kbd-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kbd-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Kmod dependency info -->
+  <bridgehead renderas="sect2" id="kmod-dep">Kmod</bridgehead>
+
+      <segmentedlist id="kmod-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Bison, Coreutils, Flex, GCC, Gettext, Glibc,
+          Gzip, Make, OpenSSL, Pkg-config, Sed, Xz и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kmod-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc, Xz и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kmod-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kmod-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Eudev</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="kmod-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Less dependency info -->
+  <bridgehead renderas="sect2" id="less-dep">Less</bridgehead>
+
+      <segmentedlist id="less-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Glibc, Grep, Make,
+          Ncurses и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="less-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Ncurses</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="less-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="less-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Gzip</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="less-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/pcre.html">PCRE</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Libcap dependency info -->
+  <bridgehead renderas="sect2" id="libcap-dep">Libcap</bridgehead>
+
+      <segmentedlist id="libcap-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Attr, Bash, Binutils, Coreutils, GCC, Glibc, Perl, Make и
+          Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libcap-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libcap-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libcap-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>IProute2 и Shadow</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libcap-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;postlfs/linux-pam.html">Linux-PAM</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Libelf dependency info -->
+  <bridgehead renderas="sect2" id="libelf-dep">Libelf</bridgehead>
+
+      <segmentedlist id="libelf-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc и Make</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libelf-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libelf-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libelf-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>IProute2 и Linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libelf-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Libffi dependency info -->
+  <bridgehead renderas="sect2" id="libffi-dep">Libffi</bridgehead>
+
+      <segmentedlist id="libffi-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make,
+         и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libffi-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libffi-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>DejaGnu</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libffi-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libffi-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Libpipeline dependency info -->
+  <bridgehead renderas="sect2" id="libpipeline-dep">Libpipeline</bridgehead>
+
+      <segmentedlist id="libpipeline-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libpipeline-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libpipeline-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Check</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libpipeline-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Man-DB</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libpipeline-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Libtool dependency info -->
+  <bridgehead renderas="sect2" id="libtool-dep">Libtool</bridgehead>
+
+      <segmentedlist id="libtool-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libtool-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Autoconf, Automake, Bash, Binutils, Coreutils, File, GCC, Glibc,
+          Grep, Make и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libtool-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Autoconf, Automake и Findutils</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libtool-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libtool-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Linux dependency info -->
+  <bridgehead renderas="sect2" id="linux-dep">Linux</bridgehead>
+
+      <segmentedlist id="linux-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Bc, Binutils, Coreutils, Diffutils, Findutils, GCC, Glibc,
+          Grep, Gzip, Kmod, Libelf, Make, Ncurses, OpenSSL, Perl и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/cpio.html">cpio</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Linux dependency info -->
+  <bridgehead renderas="sect2" id="linux-api-headers-dep">Linux API Headers</bridgehead>
+
+      <segmentedlist id="linux-api-headers-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Findutils, GCC, Glibc, Grep, Gzip,
+          Make, Perl и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-api-headers-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-api-headers-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-api-headers-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="linux-api-headers-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin M4 dependency info -->
+  <bridgehead renderas="sect2" id="m4-dep">M4</bridgehead>
+
+      <segmentedlist id="m4-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Grep, Make, Sed и
+          Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="m4-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="m4-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="m4-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Autoconf и Bison</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="m4-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/libsigsegv.html">libsigsegv</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Make dependency info -->
+  <bridgehead renderas="sect2" id="make-dep">Make</bridgehead>
+
+      <segmentedlist id="make-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, Make, Sed,
+          и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="make-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="make-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Perl и Procps-ng</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="make-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="make-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/guile.html">Guile</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Man-DB dependency info -->
+  <bridgehead renderas="sect2" id="man-db-dep">Man-DB</bridgehead>
+
+      <segmentedlist id="man-db-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Bzip2, Coreutils, Flex, GCC, GDBM, Gettext,
+          Glibc, Grep, Groff, Gzip, Less, Libpipeline, Make, Sed и Xz</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-db-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bash, GDBM, Groff, Glibc, Gzip, Less, Libpipeline и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-db-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-db-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-db-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/libseccomp.html">libseccomp</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Man-Pages dependency info -->
+  <bridgehead renderas="sect2" id="man-pages-dep">Man-Pages</bridgehead>
+
+      <segmentedlist id="man-pages-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Bash, Coreutils и Make</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-pages-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-pages-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-pages-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="man-pages-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin MarkupSafe dependency info -->
+  <bridgehead renderas="sect2" id="markupsafe-dep">MarkupSafe</bridgehead>
+
+      <segmentedlist id="markupsafe-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="markupsafe-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="markupsafe-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="markupsafe-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Jinja2</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="markupsafe-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Meson dependency info -->
+  <bridgehead renderas="sect2" id="meson-dep">Meson</bridgehead>
+
+      <segmentedlist id="meson-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Ninja и Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="meson-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="meson-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="meson-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Systemd</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="meson-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin MPC dependency info -->
+  <bridgehead renderas="sect2" id="mpc-dep">MPC</bridgehead>
+
+      <segmentedlist id="mpc-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          GMP, Make, MPFR, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpc-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc, GMP и MPFR</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpc-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpc-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>GCC</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpc-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin MPFR dependency info -->
+  <bridgehead renderas="sect2" id="mpfr-dep">MPFR</bridgehead>
+
+      <segmentedlist id="mpfr-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          GMP, Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpfr-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и GMP</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpfr-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpfr-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Gawk и GCC</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="mpfr-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Ncurses dependency info -->
+  <bridgehead renderas="sect2" id="ncurses-dep">Ncurses</bridgehead>
+
+      <segmentedlist id="ncurses-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          Make, Patch и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ncurses-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ncurses-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ncurses-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Bash, GRUB, Inetutils, Less, Procps-ng, Psmisc, Readline,
+          Texinfo, Util-linux и Vim</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ncurses-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Ninja dependency info -->
+  <bridgehead renderas="sect2" id="ninja-dep">Ninja</bridgehead>
+
+      <segmentedlist id="ninja-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Binutils, Coreutils, GCC и Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ninja-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>GCC и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ninja-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ninja-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Meson</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="ninja-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/asciidoc.html">Asciidoc</ulink>,
+            <ulink url="&blfs-book;general/doxygen.html">Doxygen</ulink>,
+            <ulink url="&blfs-book;postlfs/emacs.html">Emacs</ulink> и
+            <ulink url="https://re2c.org/">re2c</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin OpenSSL dependency info -->
+  <bridgehead renderas="sect2" id="openssl-dep">OpenSSL</bridgehead>
+
+      <segmentedlist id="openssl-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Binutils, Coreutils, GCC, Make и Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="openssl-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="openssl-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="openssl-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Coreutils, Kmod и Linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="openssl-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Patch dependency info -->
+  <bridgehead renderas="sect2" id="patch-dep">Patch</bridgehead>
+
+      <segmentedlist id="patch-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Grep, Make и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="patch-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Patch</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="patch-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="patch-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="patch-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;postlfs/ed.html">Ed</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Perl dependency info -->
+  <bridgehead renderas="sect2" id="perl-dep">Perl</bridgehead>
+
+      <segmentedlist id="perl-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, GDBM, Glibc, Grep, Groff,
+          Make, Sed и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="perl-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>GDBM и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="perl-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Iana-Etc, Less. и Procps-ng</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="perl-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Autoconf</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="perl-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Pkg-config dependency info -->
+  <bridgehead renderas="sect2" id="pkgconfig-dep">Pkg-config</bridgehead>
+
+      <segmentedlist id="pkgconfig-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Make, Popt,
+          и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="pkgconfig-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="pkgconfig-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="pkgoonfig-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Kmod</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="pkgconfig-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;general/glib2.html">Glib2</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Procps dependency info -->
+  <bridgehead renderas="sect2" id="procps-dep">Procps-ng</bridgehead>
+
+      <segmentedlist id="procps-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make и Ncurses</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="procps-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="procps-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>DejaGNU</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="procps-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="procps-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Psmisc dependency info -->
+  <bridgehead renderas="sect2" id="psmisc-dep">Psmisc</bridgehead>
+
+      <segmentedlist id="psmisc-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, Make,
+          Ncurses и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="psmisc-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Ncurses</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="psmisc-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="psmisc-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="psmisc-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Python dependency info -->
+  <bridgehead renderas="sect2" id="python-dep">Python</bridgehead>
+
+      <segmentedlist id="python-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Expat, GCC, Gdbm, Gettext, Glibc,
+          Grep, Libffi, Make, Ncurses, OpenSSL, Sed и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="python-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Bzip2, Expat, Gdbm, Glibc, Libffi, Ncurses, OpenSSL и
+          Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="python-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>GDB и Valgrind</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="python-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Ninja</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="python-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>,
+            <ulink url="&blfs-book;basicnet/libnsl.html">libnsl</ulink>,
+            <ulink url="&blfs-book;server/sqlite.html">SQLite</ulink> и
+            <ulink url="&blfs-book;general/tk.html">Tk</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Readline dependency info -->
+  <bridgehead renderas="sect2" id="readline-dep">Readline</bridgehead>
+
+      <segmentedlist id="readline-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Make, Ncurses,
+          Patch, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="readline-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Ncurses</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="readline-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="readline-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Bash, Bc и Gawk</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="readline-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Sed dependency info -->
+  <bridgehead renderas="sect2" id="sed-dep">Sed</bridgehead>
+
+      <segmentedlist id="sed-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, Make, Sed,
+          и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sed-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Acl, Attr и Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sed-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Diffutils и Gawk</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sed-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>E2fsprogs, File, Libtool и Shadow</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sed-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Shadow dependency info -->
+  <bridgehead renderas="sect2" id="shadow-dep">Shadow</bridgehead>
+
+      <segmentedlist id="shadow-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Acl, Attr, Bash, Binutils, Coreutils, Diffutils, Findutils, Gawk,
+          GCC, Gettext, Glibc, Grep, Libcap, Make и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="shadow-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="shadow-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="shadow-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Coreutils</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="shadow-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;postlfs/cracklib.html">CrackLib</ulink>
+            и
+            <ulink url="&blfs-book;postlfs/linux-pam.html">Linux-PAM</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Sysklogd dependency info -->
+  <bridgehead renderas="sect2" id="sysklogd-dep">Sysklogd</bridgehead>
+
+      <segmentedlist id="sysklogd-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Binutils, Coreutils, GCC, Glibc, Make и Patch</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysklogd-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysklogd-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysklogd-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysklogd-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin systemd dependency info -->
+  <bridgehead renderas="sect2" id="systemd-dep">Systemd</bridgehead>
+
+      <segmentedlist id="systemd-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Acl, Attr, Bash, Binutils, Coreutils, Diffutils, Expat, Gawk,
+         GCC, Glibc, Gperf, Grep, Jinja2, Libcap, Meson, Sed, Util-linux,
+         и Zstd</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="systemd-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Acl, Attr, Glibc, Libcap и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="systemd-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="systemd-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="systemd-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink
+              url="&blfs-book;postlfs/btrfs-progs.html">btrfs-progs</ulink>,
+            <ulink url="&blfs-book;basicnet/curl.html">cURL</ulink>,
+            <ulink url="&blfs-book;postlfs/cryptsetup.html">cryptsetup</ulink>,
+            <ulink url="&blfs-book;pst/docbook.html">docbook-xml</ulink>,
+            <ulink
+              url="&blfs-book;pst/docbook-xsl.html">docbook-xsl-nons</ulink>,
+            <ulink url="https://sourceware.org/elfutils/">elfutils</ulink>,
+            <ulink url="&blfs-book;general/git.html">Git</ulink>,
+            <ulink
+              url="https://sourceforge.net/projects/gnu-efi/">gnu-efi</ulink>,
+            <ulink url="&blfs-book;postlfs/gnutls.html">GnuTLS</ulink>,
+            <ulink url="&blfs-book;postlfs/iptables.html">iptables</ulink>,
+            <ulink url="https://www.kernel.org/pub/linux/utils/kernel/kexec/">
+              kexec-tools</ulink>,
+            <ulink
+              url="https://developers.yubico.com/libfido2/">libfido2</ulink>,
+            <ulink url="&blfs-book;general/libgcrypt.html">libgcrypt</ulink>,
+            <ulink url="&blfs-book;general/libidn2.html">libidn2</ulink>,
+            <ulink url="https://www.gnu.org/software/libmicrohttpd/">
+              Libmicrohttpd</ulink>,
+            <ulink
+              url="&blfs-book;postlfs/libpwquality.html">libpwquality</ulink>,
+            <ulink url="&blfs-book;general/libseccomp.html">libseccomp</ulink>,
+            <ulink
+              url="&blfs-book;general/libxkbcommon.html">libxkbcommon</ulink>,
+            <ulink url="&blfs-book;general/libxslt.html">libxslt</ulink>,
+            <ulink url="&blfs-book;postlfs/linux-pam.html">Linux-PAM</ulink>,
+            <ulink
+              url="&blfs-book;general/python-modules.html#lxml">lxml</ulink>,
+            <ulink url="http://lz4.github.io/lz4/">LZ4</ulink>,
+            <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink>,
+            <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
+            <ulink url="&blfs-book;general/pcre2.html">PCRE2</ulink>,
+            <ulink url="&blfs-book;postlfs/polkit.html">Polkit</ulink>,
+            <ulink url="&blfs-book;postlfs/qemu.html">qemu</ulink>,
+            <ulink url="&blfs-book;general/qrencode.html">qrencode</ulink>,
+            <ulink url="https://sourceforge.net/projects/linuxquota/">
+              quota-tools</ulink>,
+            <ulink url="&blfs-book;basicnet/rsync.html">rsync</ulink>,
+            <ulink url="https://pypi.python.org/pypi/Sphinx">Sphinx</ulink>,
+            <ulink url="https://tpm2-tss.readthedocs.io/en/latest/">
+              tpm2-tss</ulink>,
+            <ulink url="&blfs-book;general/valgrind.html">Valgrind</ulink>,
+            и
+            <ulink url="&blfs-book;postlfs/zsh.html">zsh</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Sysvinit dependency info -->
+  <bridgehead renderas="sect2" id="sysvinit-dep">Sysvinit</bridgehead>
+
+      <segmentedlist id="sysvinit-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Binutils, Coreutils, GCC, Glibc, Make и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysvinit-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysvinit-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysvinit-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="sysvinit-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Tar dependency info -->
+  <bridgehead renderas="sect2" id="tar-dep">Tar</bridgehead>
+
+      <segmentedlist id="tar-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Acl, Attr, Bash, Binutils, Bison, Coreutils, GCC, Gettext, Glibc,
+          Grep, Inetutils, Make, Sed и Texinfo</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tar-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Acl, Attr, Bzip2, Glibc, Gzip и Xz</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tar-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Autoconf, Diffutils, Findutils, Gawk и
+          Gzip</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tar-befors">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tar-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Tcl dependency info -->
+  <bridgehead renderas="sect2" id="tcl-dep">Tcl</bridgehead>
+
+      <segmentedlist id="tcl-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Glibc, Grep, Make и
+          Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tcl-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tcl-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tcl-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="tcl-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Texinfo dependency info -->
+  <bridgehead renderas="sect2" id="texinfo-dep">Texinfo</bridgehead>
+
+      <segmentedlist id="texinfo-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, Make,
+          Ncurses, Patch и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="texinfo-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc и Ncurses</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="texinfo-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="texinfo-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="texinfo-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Util-linux dependency info -->
+  <bridgehead renderas="sect2" id="util-linux-dep">Util-linux</bridgehead>
+
+      <segmentedlist id="util-linux-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Eudev, Findutils, Gawk,
+          GCC, Gettext, Glibc, Grep, Libcap, Make, Ncurses, Sed и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="util-linux-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc, Libcap, Ncurses, Readline и Zlib</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="util-linux-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="util-linux-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="util-linux-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink
+              url="&blfs-book;postlfs/linux-pam.html">Linux-PAM</ulink>
+            и <ulink
+              url="&blfs-book;postlfs/smartmontools.html">smartmontools</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Vim dependency info -->
+  <bridgehead renderas="sect2" id="vim-dep">Vim</bridgehead>
+
+      <segmentedlist id="vim-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Acl, Attr, Bash, Binutils, Coreutils, Diffutils, GCC, Glibc,
+          Grep, Make, Ncurses и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="vim-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Acl, Attr, Glibc, Python, Ncurses и Tcl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="vim-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="vim-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="vim-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="&blfs-book;x/installing.html">Xorg</ulink>,
+            <ulink url="&blfs-book;x/gtk2.html">GTK+2</ulink>,
+            <ulink url="http://lesstif.sourceforge.net/">LessTif</ulink>,
+            <ulink url="&blfs-book;general/ruby.html">Ruby</ulink> и
+            <ulink url="&blfs-book;general/gpm.html">GPM</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Wheel dependency info -->
+  <bridgehead renderas="sect2" id="wheel-dep">wheel</bridgehead>
+
+      <segmentedlist id="wheel-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="wheel-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="wheel-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>No test suite available</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="wheel-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Jinja2</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="wheel-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin XML::Parser dependency info -->
+  <bridgehead renderas="sect2" id="xml-parser-dep">XML::Parser</bridgehead>
+
+      <segmentedlist id="xml-parser-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Expat, GCC, Glibc, Make и
+          Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xml-parser-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Expat, Glibc и Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xml-parser-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Perl</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xml-parser-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Intltool</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xml-parser-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Xz-utils dependency info -->
+  <bridgehead renderas="sect2" id="xz-dep">Xz</bridgehead>
+
+      <segmentedlist id="xz-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Glibc и Make</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xz-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xz-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xz-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Eudev, File, GRUB, Kmod и Man-DB</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="xz-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Zlib dependency info -->
+  <bridgehead renderas="sect2" id="zlib-dep">Zlib</bridgehead>
+
+      <segmentedlist id="zlib-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zlib-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zlib-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zlib-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>File, Kmod, Perl и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zlib-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Zstd dependency info -->
+  <bridgehead renderas="sect2" id="zstd-dep">Zstd</bridgehead>
+
+      <segmentedlist id="zstd-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Binutils, Coreutils, GCC, Glibc, Gzip, Make и Xz</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zstd-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zstd-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zstd-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>GCC и Systemd</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="zstd-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url="http://lz4.github.io/lz4/">LZ4</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+</appendix>

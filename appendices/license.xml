@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<appendix id="Licenses" xreflabel="Appendix E">
+  <?dbhtml dir="appendices"?>
+  <?dbhtml filename="licenses.html"?>
+
+  <title>Лицензии LFS</title>
+
+  <para>Настоящая книга распространяется по лицензии Creative Commons
+  Attribution-NonCommercial-ShareAlike 2.0 License.</para>
+
+  <para>Инструкции, предназначенные для использования на компьютере, могут
+  использоваться отдельно от книги под лицензией MIT.</para>
+
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="creat-comm.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mit-lic.xml"/>
+
+
+</appendix>
