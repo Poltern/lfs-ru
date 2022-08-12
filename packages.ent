@@ -58,10 +58,10 @@
 <!ENTITY bash-fin-du "50 MB">
 <!ENTITY bash-fin-sbu "1.5 SBU">
 
-<!ENTITY bc-version "5.3.3">
-<!ENTITY bc-size "435 KB">
+<!ENTITY bc-version "6.0.1">
+<!ENTITY bc-size "441 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "43d17b905a9f10e2e7598bb81d636f2a">
+<!ENTITY bc-md5 "4c8b8d51eb52ee66f5bcf6a6a1ca576e">
 <!ENTITY bc-home "https://git.yzena.com/gavin/bc">
 <!ENTITY bc-fin-du "7.1 MB">
 <!ENTITY bc-fin-sbu "less than 0.1 SBU">
@@ -320,10 +320,10 @@
 <!ENTITY gzip-fin-du "20 MB">
 <!ENTITY gzip-fin-sbu "0.1 SBU">
 
-<!ENTITY iana-etc-version "20220610">
-<!ENTITY iana-etc-size "583 KB">
+<!ENTITY iana-etc-version "20220803">
+<!ENTITY iana-etc-size "584 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "c1561ccb789c4f07403a4e9b62c2b628">
+<!ENTITY iana-etc-md5 "5c5666e002744168bb0cf63e87fe39ce">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.7 MB">
 <!ENTITY iana-etc-fin-sbu "less than 0.1 SBU">
@@ -345,10 +345,10 @@
 <!ENTITY intltool-fin-du "1.5 MB">
 <!ENTITY intltool-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY iproute2-version "5.18.0">
-<!ENTITY iproute2-size "860 KB">
+<!ENTITY iproute2-version "5.19.0">
+<!ENTITY iproute2-size "872 KB">
 <!ENTITY iproute2-url "&kernel;linux/utils/net/iproute2/iproute2-&iproute2-version;.tar.xz">
-<!ENTITY iproute2-md5 "f666bab8ccf9c972938a0c0d8a4e6a68">
+<!ENTITY iproute2-md5 "415bd9eeb8515a585e245809d2fe45a6">
 <!ENTITY iproute2-home "&kernel;linux/utils/net/iproute2/">
 <!ENTITY iproute2-fin-du "15 MB">
 <!ENTITY iproute2-fin-sbu "0.2 SBU">
@@ -426,13 +426,13 @@
 <!ENTITY libtool-fin-sbu "1.5 SBU">
 
 <!ENTITY linux-major-version "5">
-<!ENTITY linux-minor-version "18">
-<!ENTITY linux-patch-version "14">
+<!ENTITY linux-minor-version "19">
+<!ENTITY linux-patch-version "1">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "126,808 KB">
+<!ENTITY linux-size "128,509 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "3191e07cbaa8cad0bcda8847af3c31fa">
+<!ENTITY linux-md5 "9d0eec53c479f141f30ae9845b115889">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -697,10 +697,10 @@
 <!ENTITY texinfo-fin-du "112 MB">
 <!ENTITY texinfo-fin-sbu "0.6 SBU">
 
-<!ENTITY tzdata-version "2022a">
-<!ENTITY tzdata-size "416 KB">
+<!ENTITY tzdata-version "2022b">
+<!ENTITY tzdata-size "423 KB">
 <!ENTITY tzdata-url "https://www.iana.org/time-zones/repository/releases/tzdata&tzdata-version;.tar.gz">
-<!ENTITY tzdata-md5 "081662184f3b902f8e5d96816568432e">
+<!ENTITY tzdata-md5 "d7844a44d4c622f80f91aa4d5ae8f566">
 <!ENTITY tzdata-home "https://www.iana.org/time-zones">
 
 <!ENTITY udev-lfs-version "udev-lfs-20171102">
@@ -720,13 +720,13 @@
 <!ENTITY util-linux-fin-du "261 MB">
 <!ENTITY util-linux-fin-sbu "1.1 SBU">
 
-<!ENTITY vim-version "9.0.0006">
+<!ENTITY vim-version "9.0.0192">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "16,217 KB">
+<!ENTITY vim-size "16,353 KB">
 <!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
 <!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">
-<!ENTITY vim-md5 "8f497ace38b9702427530e2124c55ed2">
+<!ENTITY vim-md5 "726876f89cd927852eeccddce3712b44">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "206 MB">
 <!ENTITY vim-fin-sbu "2.4 SBU">
