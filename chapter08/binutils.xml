@@ -56,21 +56,7 @@
 
 <screen><computeroutput>The system has no more ptys.
 Ask your system administrator to create more.</computeroutput></screen>
-<!--
-    <para>Разработчики выпустили патч для устранения проблемы при использовании binutils
-	для сборки некоторых пакетов BLFS с включенной Link Time Optimization (LTO). Примените
-	его сейчас:</para>
-
- <screen><userinput remap="pre">patch -Np1 -i ../&binutils-lto-patch;</userinput></screen>
--->
-<!--
-    <para>An error in the building system causes the shipped man pages to
-    be empty.  Workaround the issue and remove the shipped man pages, so the
-    man pages will be regenerated correctly:</para>
-
-<screen><userinput remap="pre">sed -i '63d' etc/texi2pod.pl
-find -name \*.1 -delete</userinput></screen>
--->
+<!-- Fixed in binutils-2.39
 
     <para>
       Теперь внесите исправление, указанное в апстриме, которое влияет на сборку некоторых пакетов:
@@ -78,7 +64,7 @@ find -name \*.1 -delete</userinput></screen>
 
 <screen><userinput remap="pre">sed -e '/R_386_TLS_LE /i \   || (TYPE) == R_386_TLS_IE \\' \
     -i ./bfd/elfxx-x86.h</userinput></screen>
-
+-->
     <para>Документация Binutils рекомендует выполнять компиляцию в
     отдельном каталоге:</para>
 
@@ -173,12 +159,12 @@ cd       build</userinput></screen>
 
 <screen><userinput remap="test">make -k check</userinput></screen>
 
-    <!-- Will be fixed in 2.39
+    <!-- Fixed in 2.39
          https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=01ae03b -->
     <para>Известно, что один тест gold, <filename>pr17704a_test</filename>, не проходит,
     если параметр <parameter>CONFIG_IA32_EMULATION</parameter> отключен в конфигурации
 	ядра хост-системы.</para>
-
+ -->
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make tooldir=/usr install</userinput></screen>
