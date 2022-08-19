@@ -116,6 +116,11 @@ cd       build</userinput></screen>
 
 <screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
 
+    <para>Удалите архивные файлы libtool, поскольку они потенциально опасны при 
+	кросс-компиляции:</para>
+
+<screen><userinput remap="install">rm -v $LFS/usr/lib/lib{stdc++,stdc++fs,supc++}.la</userinput></screen>
+
   </sect2>
 
   <sect2 role="content">

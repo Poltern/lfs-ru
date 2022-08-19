@@ -89,6 +89,10 @@ popd</userinput></screen>
 
 <screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
 
+    <para>Удалите архивный файл libtool, поскольку он потенциально опасен при кросс-компиляции:</para>
+
+<screen><userinput remap="install">rm -v $LFS/usr/lib/libmagic.la</userinput></screen>
+
   </sect2>
 
   <sect2 role="content">
