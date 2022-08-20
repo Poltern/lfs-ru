@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-config-introduction" revision="systemd">
+  <?dbhtml filename="introduction.html"?>
+
+  <title>Введение</title>
+
+  <para>В этой главе рассматриваются конфигурационные файлы и службы systemd.
+  Во-первых, представлены общие конфигурационные файлы, необходимые для настройки сети</para>
+
+  <itemizedlist>
+     <listitem>
+       <para><xref linkend="ch-config-network" role="."/></para>
+     </listitem>
+     <listitem>
+       <para><xref linkend="ch-config-hostname" role="."/></para>
+     </listitem>
+     <listitem>
+       <para><xref linkend="ch-config-hosts" role="."/></para>
+     </listitem>
+  </itemizedlist>
+
+  <para>Во-вторых, обсуждаются вопросы, касающиеся правильной настройки устройств.</para>
+
+  <itemizedlist>
+     <listitem>
+       <para><xref linkend="ch-config-udev" role="."/></para>
+     </listitem>
+     <listitem>
+       <para><xref linkend="ch-config-symlinks" role="."/></para>
+     </listitem>
+  </itemizedlist>
+
+  <para>В-третьих, представлены настройки системных часов и раскладки клавиатуры.</para>
+
+  <itemizedlist>
+     <listitem>
+       <para><xref linkend="ch-config-clock" role="."/></para>
+     </listitem>
+     <listitem>
+       <para><xref linkend="ch-config-console" role="."/></para>
+     </listitem>
+  </itemizedlist>
+
+  <para>В-четвертых, представлено краткое описание сценариев и конфигурационных 
+  файлов, используемых при входе пользователя в систему</para>
+
+  <itemizedlist>
+     <listitem>
+       <para><xref linkend="ch-config-locale" role="."/></para>
+     </listitem>
+     <listitem>
+       <para><xref linkend="ch-config-inputrc" role="."/></para>
+     </listitem>
+  </itemizedlist>
+
+  <para>И, наконец, обсуждается настройка поведения systemd.</para>
+
+  <itemizedlist>
+     <listitem>
+       <para><xref linkend="ch-config-systemd-custom" role="."/></para>
+     </listitem>
+  </itemizedlist>
+
+</sect1>
