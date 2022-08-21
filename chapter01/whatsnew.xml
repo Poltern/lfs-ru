@@ -282,9 +282,11 @@
     <listitem>
       <para>Wheel-&wheel-version;</para>
     </listitem>
+<!--
     <listitem>
       <para>&xz-upstream-fix-patch;</para>
     </listitem>
+-->
     <listitem>
       <para>&zstd-upstream-fixes-patch;</para>
     </listitem>

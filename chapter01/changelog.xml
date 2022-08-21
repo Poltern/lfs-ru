@@ -40,6 +40,44 @@
     -->
 
     <listitem>
+      <para>2022-08-20</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to gcc-12.2.0. Fixes
+          <ulink url="&lfs-ticket-root;5098">#5098</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20220812. Addresses
+          <ulink url="&lfs-ticket-root;5006">#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+	  <para>[bdubbs] - Update to linux-5.19.2 (security fixes). Fixes
+          <ulink url="&lfs-ticket-root;5097">#5097</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to meson-0.63.1. Fixes
+          <ulink url="&lfs-ticket-root;5094">#5094</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to shadow-4.12.2 (security fix). Fixes
+          <ulink url="&lfs-ticket-root;5095">#5095</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to tzdata-2022c. Fixes
+          <ulink url="&lfs-ticket-root;5096">#5096</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to vim-9.0.0228. Addresses
+          <ulink url="&lfs-ticket-root;4500">#4500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to xz-5.2.6. Fixes
+          <ulink url="&lfs-ticket-root;5093">#5093</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2022-08-18</para>
       <itemizedlist>
         <listitem>
@@ -78,6 +116,7 @@
         </listitem>
       </itemizedlist>
     </listitem>
+
     <listitem>
       <para>2022-08-06</para>
       <itemizedlist>

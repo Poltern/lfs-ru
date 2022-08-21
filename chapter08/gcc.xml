@@ -48,10 +48,11 @@
     -e 's/return kAltStackSize/return SIGSTKSZ * 4/' \
     -i libsanitizer/sanitizer_common/sanitizer_posix_libcdep.cpp</userinput></screen>
 -->
-    <para>Сначала устраните проблему с последней версией glibc:</para>
+<!--
+   <para>Сначала устраните проблему с последней версией glibc:</para>
 
     <screen><userinput remap="pre">patch -Np1 -i ../&gcc-upstream-fixes-patch;</userinput></screen>
-
+-->
     <para>При сборке на x86_64 измените имя каталога по умолчанию для 64-битных библиотек
 	на <quote>lib</quote>:</para>
 

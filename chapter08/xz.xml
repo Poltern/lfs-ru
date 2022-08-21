@@ -42,11 +42,11 @@
 
   <sect2 role="installation">
     <title>Установка пакета Xz</title>
-
+<!--
     <para>Примените патч, чтобы исправить проблему в xzgrep:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&xz-upstream-fix-patch;</userinput></screen>
-
+-->
     <para>Подготовьте Xz к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr    \

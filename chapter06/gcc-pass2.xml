@@ -42,11 +42,11 @@
 
   <sect2 role="installation">
     <title>Установка пакета GCC</title>
-
+<!--
     <para>Сначала устраните проблему с последней версией glibc:</para>
 
     <screen><userinput remap="pre">patch -Np1 -i ../&gcc-upstream-fixes-patch;</userinput></screen>
-
+-->
     <para>Как и при первой сборке GCC, требуются пакеты GMP, MPFR и MPC. Распакуйте
 	архивы и переместите их в каталоги с нужными именами:</para>
 

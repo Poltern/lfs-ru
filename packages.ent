@@ -119,8 +119,8 @@
 <!ENTITY dbus-url "https://dbus.freedesktop.org/releases/dbus/dbus-&dbus-version;.tar.xz">
 <!ENTITY dbus-md5 "ddd5570aff05191dbee8e42d751f1b7d">
 <!ENTITY dbus-home "https://www.freedesktop.org/wiki/Software/dbus">
-<!ENTITY dbus-fin-du "18 MB">
-<!ENTITY dbus-fin-sbu "0.1 SBU">
+<!ENTITY dbus-fin-du "19 MB">
+<!ENTITY dbus-fin-sbu "0.2 SBU">
 
 <!ENTITY dejagnu-version "1.6.3">
 <!ENTITY dejagnu-size "608 KB">
@@ -217,11 +217,11 @@
 <!ENTITY gawk-fin-du "43 MB">
 <!ENTITY gawk-fin-sbu "0.4 SBU">
 
-<!ENTITY gcc-version "12.1.0">
-<!ENTITY gcc-size "78,875 KB">
+<!ENTITY gcc-version "12.2.0">
+<!ENTITY gcc-size "82,662 KB">
 <!ENTITY gcc-url "&gnu;gcc/gcc-&gcc-version;/gcc-&gcc-version;.tar.xz">
-<!ENTITY gcc-md5 "ed45b55ee859ada4b25a1e76e0c4d966">
-<!ENTITY gcc-sha256 "62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b">
+<!ENTITY gcc-md5 "73bafd0af874439dcdb9fc063b6fb069">
+<!ENTITY gcc-sha256 "">
 <!ENTITY gcc-home "https://gcc.gnu.org/">
 <!ENTITY gcc-tmpp1-du "3.8 GB">
 <!ENTITY gcc-tmpp1-sbu "11 SBU">
@@ -320,10 +320,10 @@
 <!ENTITY gzip-fin-du "20 MB">
 <!ENTITY gzip-fin-sbu "0.1 SBU">
 
-<!ENTITY iana-etc-version "20220803">
+<!ENTITY iana-etc-version "20220812">
 <!ENTITY iana-etc-size "584 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "5c5666e002744168bb0cf63e87fe39ce">
+<!ENTITY iana-etc-md5 "851a53efd53c77d0ad7b3d2b68d8a3fc">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.7 MB">
 <!ENTITY iana-etc-fin-sbu "less than 0.1 SBU">
@@ -358,7 +358,7 @@
 <!ENTITY jinja2-url "https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-&jinja2-version;.tar.gz">
 <!ENTITY jinja2-md5 "d31148abd89c1df1cdb077a55db27d02">
 <!ENTITY jinja2-home "https://jinja.palletsprojects.com/en/3.0.x/">
-<!ENTITY jinja2-fin-du "3.7 MB">
+<!ENTITY jinja2-fin-du "3.0 MB">
 <!ENTITY jinja2-fin-sbu "less than 0.1 SBU">
 
 <!ENTITY kbd-version "2.5.1">
@@ -427,12 +427,12 @@
 
 <!ENTITY linux-major-version "5">
 <!ENTITY linux-minor-version "19">
-<!ENTITY linux-patch-version "1">
+<!ENTITY linux-patch-version "2">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "128,509 KB">
+<!ENTITY linux-size "128,553 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "9d0eec53c479f141f30ae9845b115889">
+<!ENTITY linux-md5 "391274e2e49a881403b0ff2e0712bf82">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -487,13 +487,13 @@
 <!ENTITY markupsafe-url "https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-&markupsafe-version;.tar.gz">
 <!ENTITY markupsafe-md5 "9809f9fdd98bc835b0c21aa8f79cbf30">
 <!ENTITY markupsafe-home "https://palletsprojects.com/p/markupsafe/">
-<!ENTITY markupsafe-fin-du "520 KB">
+<!ENTITY markupsafe-fin-du "168 KB">
 <!ENTITY markupsafe-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY meson-version "0.63.0">
-<!ENTITY meson-size "2,013 KB">
+<!ENTITY meson-version "0.63.1">
+<!ENTITY meson-size "2,016 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "d9e7d69f73f875004fbb3cc8bfe2a39b">
+<!ENTITY meson-md5 "078e59d11a72b74c3bd78cb8205e9ed7">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "41 MB">
 <!ENTITY meson-fin-sbu "less than 0.1 SBU">
@@ -624,10 +624,10 @@
 <!ENTITY sed-fin-du "31 MB">
 <!ENTITY sed-fin-sbu "0.4 SBU">
 
-<!ENTITY shadow-version "4.11.1">
-<!ENTITY shadow-size "1,618 KB">
-<!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/v&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "5a95ec069aa91508167d02fecafaa912">
+<!ENTITY shadow-version "4.12.2">
+<!ENTITY shadow-size "1,706 KB">
+<!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
+<!ENTITY shadow-md5 "52637cb34c357acf85c617cf95da34a6">
 <!ENTITY shadow-home "https://shadow-maint.github.io/shadow/">
 <!ENTITY shadow-fin-du "49 MB">
 <!ENTITY shadow-fin-sbu "0.2 SBU">
@@ -654,8 +654,8 @@
 <!--<!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-version;-&systemd-stable;.tar.xz">-->
 <!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-man-version;.tar.xz">
 <!ENTITY systemd-man-md5  "87053ffef1cfb74e4fe28f627e12a2a4">
-<!ENTITY systemd-fin-du   "273 MB">
-<!ENTITY systemd-fin-sbu  "2.2 SBU">
+<!ENTITY systemd-fin-du   "251 MB">
+<!ENTITY systemd-fin-sbu  "2.3 SBU">
 
 <!ENTITY sysvinit-version "3.04">
 <!ENTITY sysvinit-size "216 KB">
@@ -697,10 +697,10 @@
 <!ENTITY texinfo-fin-du "112 MB">
 <!ENTITY texinfo-fin-sbu "0.6 SBU">
 
-<!ENTITY tzdata-version "2022b">
+<!ENTITY tzdata-version "2022c">
 <!ENTITY tzdata-size "423 KB">
 <!ENTITY tzdata-url "https://www.iana.org/time-zones/repository/releases/tzdata&tzdata-version;.tar.gz">
-<!ENTITY tzdata-md5 "d7844a44d4c622f80f91aa4d5ae8f566">
+<!ENTITY tzdata-md5 "4e3b2369b68e713ba5d3f7456f20bfdb">
 <!ENTITY tzdata-home "https://www.iana.org/time-zones">
 
 <!ENTITY udev-lfs-version "udev-lfs-20171102">
@@ -720,13 +720,13 @@
 <!ENTITY util-linux-fin-du "261 MB">
 <!ENTITY util-linux-fin-sbu "1.1 SBU">
 
-<!ENTITY vim-version "9.0.0192">
+<!ENTITY vim-version "9.0.0228">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "16,353 KB">
+<!ENTITY vim-size "16,372 KB">
 <!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
 <!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">
-<!ENTITY vim-md5 "726876f89cd927852eeccddce3712b44">
+<!ENTITY vim-md5 "bc7e0a4829d94bb4c03a7a6b4ad6a8cf">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "206 MB">
 <!ENTITY vim-fin-sbu "2.4 SBU">
@@ -748,10 +748,10 @@
 <!ENTITY xml-parser-fin-du "2.4 MB">
 <!ENTITY xml-parser-fin-sbu "less than 0.1 SBU">
 
-<!ENTITY xz-version "5.2.5">
-<!ENTITY xz-size "1,122 KB">
+<!ENTITY xz-version "5.2.6">
+<!ENTITY xz-size "1,234 KB">
 <!ENTITY xz-url "https://tukaani.org/xz/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "aa1621ec7013a19abab52a8aff04fe5b">
+<!ENTITY xz-md5 "d9cd5698e1ec06cf638c0d2d645e8175">
 <!ENTITY xz-home "https://tukaani.org/xz">
 <!ENTITY xz-tmp-du "15 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">
