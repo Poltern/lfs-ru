@@ -223,9 +223,9 @@
     <!--<listitem>
       <para>Sed-&sed-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Shadow-&shadow-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem revision="sysv">
       <para>Sysklogd-&sysklogd-version;</para>
     </listitem>-->
@@ -256,9 +256,9 @@
     <!--<listitem>
       <para>XML-Parser-&xml-parser-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>XZ-Utils-&xz-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Zlib-&zlib-version;</para>
     </listitem>
