@@ -51,9 +51,9 @@
 
 <screen><userinput remap="configure">PAGE=<replaceable>&lt;paper_size&gt;</replaceable> ./configure --prefix=/usr</userinput></screen>
 
-    <para>Этот пакет не поддерживает параллельную сборку. Скомпилируйте пакет:</para>
+    <para>Скомпилируйте пакет:</para>
 
-<screen><userinput remap="make">make -j1</userinput></screen>
+<screen><userinput remap="make">make</userinput></screen>
 
     <para>С этим пакетом не поставляется набор тестов.</para>
 

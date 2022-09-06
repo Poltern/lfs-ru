@@ -190,9 +190,8 @@ cd       build</userinput></screen>
 	  (компиляция и компоновка) нового кросс-тулчейна работают должным образом.
 	  Чтобы выполнить проверку работоспособности, выполните следующие команды:</para>
 
-<screen><userinput>echo 'int main(){}' &gt; dummy.c
-$LFS_TGT-gcc dummy.c
-readelf -l a.out | grep '/ld-linux'</userinput></screen>
+<screen><userinput>echo 'int main(){}' | gcc -xc -
+readelf -l a.out | grep ld-linux</userinput></screen>
 
       <para>Если все работает правильно, ошибок быть не должно, и вывод последней
 	  команды будет иметь вид:</para>
@@ -206,9 +205,9 @@ readelf -l a.out | grep '/ld-linux'</userinput></screen>
 	  не было, значит, что-то не так. Разберитесь с проблемой и повторите шаги выше,
 	  чтобы исправить ее. Эта проблема должна быть решена, прежде чем вы продолжите.</para>
 
-      <para>Как только все будет хорошо, удалите тестовые файлы:</para>
+      <para>Как только все будет хорошо, удалите тестовый файл:</para>
 
-<screen><userinput>rm -v dummy.c a.out</userinput></screen>
+<screen><userinput>rm -v a.out</userinput></screen>
 
     </caution>
 

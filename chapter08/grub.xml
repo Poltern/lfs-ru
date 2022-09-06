@@ -168,7 +168,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-glue-efi">
         <term><command>grub-glue-efi</command></term>
         <listitem>
-          <para>Объединяет образы EFI ia32 и amd64 в один универсальный в формате Apple</para>
+          <para>Объединяет 32-битный и 64-битный бинарники в универсальный в формате Apple</para>
           <indexterm zone="ch-system-grub grub-glue-efi">
             <primary sortas="b-grub-glue-efi">grub-glue-efi</primary>
           </indexterm>

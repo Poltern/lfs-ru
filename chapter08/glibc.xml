@@ -163,20 +163,17 @@ esac</userinput></screen>
 		проходит, если в системе нет IP-адресов без замыкания на себя.</para> <!-- PR 24816 -->
       </listitem>
 
+      <!-- https://sourceware.org/pipermail/libc-alpha/2022-August/141567.html -->
+      <listitem>
+        <para>Известно что тест <emphasis>stdlib/tst-arc4random-thread</emphasis>
+        завершается неудачей, если ядро хоста относительно старое.</para>
+      </listitem>
+
       <listitem>
         <para>Некоторые тесты, например, <emphasis>nss/tst-nss-files-hosts-multi</emphasis> не
 		работают на относительно медленных системах из-за внутреннего тайм-аута.</para>
       </listitem>
       <!--
-        https://lists.linuxfromscratch.org/sympa/arc/lfs-support/2022-06/msg00022.html
-        https://sourceware.org/pipermail/libc-alpha/2022-June/139839.html
-      -->
-      <listitem>
-        <para>Известно, что около 27 тестов, например <emphasis>elf/tst-pldd</emphasis>,
-		завершаются неудачей, если ядро поддерживает пространства имен (подробнее см.
-		<filename>namespaces(7)</filename>), но хост-дистрибутив отключил их через sysctl.</para>
-      </listitem>
-<!--
       <listitem>
         <para>The <emphasis>rt/tst-cputimer{1,2,3}</emphasis> tests depend on
         the host system kernel. Kernels 4.14.91&ndash;4.14.96,
@@ -430,13 +427,12 @@ unset ZONEINFO</userinput></screen>
       <primary sortas="e-/etc/ld.so.conf">/etc/ld.so.conf</primary>
     </indexterm>
 
-    <para>По умолчанию, во время работы программы динамический загрузчик (<filename
-    class="libraryfile">/lib/ld-linux.so.2</filename>) ищет нужные библиотеки
-    в каталогах <filename class="directory">/lib</filename>
-    и <filename class="directory">/usr/lib</filename>. Если библиотека находится в другом
+    <para>По умолчанию, динамический загрузчик (<filename
+    class="libraryfile">/lib/ld-linux.so.2</filename>) ищет 
+    в каталоге <filename class="directory">/usr/lib</filename>, нужные для работы программ
+	библиотеки. Однако, если библиотеки находятся в другом
     каталоге, то его необходимо указать в файле <filename>/etc/ld.so.conf</filename>, чтобы
-    динамический загрузчик смог найти библиотеку.
-    Два каталога - <filename
+    динамический загрузчик мог их найти. Два каталога - <filename
     class="directory">/usr/local/lib</filename> и <filename
     class="directory">/opt/lib</filename> часто используются для дополнительных библиотек,
     поэтому добавьте их в пути поиска для динамического загрузчика.</para>
