@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-config-bootscripts" role="wrap" revision="sysv">
+  <?dbhtml filename="bootscripts.html"?>
+
+  <sect1info condition="script">
+    <productname>bootscripts</productname>
+    <productnumber>&lfs-bootscripts-version;</productnumber>
+    <address>&lfs-bootscripts-url;</address>
+  </sect1info>
+
+  <title>LFS-Bootscripts-&lfs-bootscripts-version;</title>
+
+  <indexterm zone="ch-config-bootscripts">
+    <primary sortas="a-Bootscripts">Bootscripts</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет LFS-Bootscripts содержит набор скриптов для запуска/остановки системы LFS при
+	загрузке/завершении работы</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&lfs-bootscripts-cfg-sbu;</seg>
+        <seg>&lfs-bootscripts-cfg-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета LFS-Bootscripts</title>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-bootscripts" role="content">
+    <title>Содержимое пакета LFS-Bootscripts</title>
+    <segmentedlist>
+      <segtitle>Установленные скрипты</segtitle>
+      <segtitle>Установленные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>checkfs, cleanfs, console, functions, halt, ifdown,
+        ifup, localnet, modules, mountfs, mountvirtfs, network, rc, reboot,
+        sendsignals, setclock, ipv4-static, swap, sysctl, sysklogd, template,
+        udev, и udev_retry</seg>
+        <seg>/etc/rc.d, /etc/init.d (символическая ссылка), /etc/sysconfig,
+        /lib/services, /lib/lsb (символическая ссылка)</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="checkfs-bootscripts">
+        <term><command>checkfs</command></term>
+        <listitem>
+          <para>Проверяет целостность файловых систем перед их монтированием (за исключением
+		  журналируемых и сетевых файловых систем)</para>
+          <indexterm zone="ch-config-bootscripts checkfs-bootscripts">
+            <primary sortas="d-checkfs">checkfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cleanfs-bootscripts">
+        <term><command>cleanfs</command></term>
+        <listitem>
+          <para>Удаляет файлы, которые не должны сохраняться между перезагрузками, например, те,
+		  которые находятся в директориях <filename class="directory">/run/</filename> и
+          <filename class="directory">/var/lock/</filename>; скрипт пересоздает
+          <filename>/run/utmp</filename> и удаляет файлы, которые, возможно, существуют
+          <filename>/etc/nologin</filename>, <filename>/fastboot</filename>, и
+          <filename>/forcefsck</filename></para>
+          <indexterm zone="ch-config-bootscripts cleanfs-bootscripts">
+            <primary sortas="d-cleanfs">cleanfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="console-bootscripts">
+        <term><command>console</command></term>
+        <listitem>
+          <para>Загружает правильную таблицу раскладок для требуемой раскладки клавиатуры; он
+		  также устанавливает экранный шрифт</para>
+          <indexterm zone="ch-config-bootscripts console-bootscripts">
+            <primary sortas="d-console">console</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="functions-bootscripts">
+        <term><command>functions</command></term>
+        <listitem>
+          <para>Содержит общие функции, такие как проверка ошибок и состояния, которые используются
+		  несколькими загрузочными скриптами</para>
+          <indexterm zone="ch-config-bootscripts functions-bootscripts">
+            <primary sortas="d-functions">functions</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="halt-bootscripts">
+        <term><command>halt</command></term>
+        <listitem>
+          <para>Останавливает работу системы</para>
+          <indexterm zone="ch-config-bootscripts halt-bootscripts">
+            <primary sortas="d-halt">halt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ifdown-bootscripts">
+        <term><command>ifdown</command></term>
+        <listitem>
+          <para>Останавливает сетевое устройство</para>
+          <indexterm zone="ch-config-bootscripts ifdown-bootscripts">
+            <primary sortas="d-ifdown">ifdown</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ifup-bootscripts">
+        <term><command>ifup</command></term>
+        <listitem>
+          <para>Инициализирует сетевое устройство</para>
+          <indexterm zone="ch-config-bootscripts ifup-bootscripts">
+            <primary sortas="d-ifup">ifup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="localnet-bootscripts">
+        <term><command>localnet</command></term>
+        <listitem>
+          <para>Настраивает имя хоста системы и локальное устройство loopback</para>
+          <indexterm zone="ch-config-bootscripts localnet-bootscripts">
+            <primary sortas="d-localnet">localnet</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="modules-bootscripts">
+        <term><command>modules</command></term>
+        <listitem>
+          <para>Загружает модули ядра из списка, который находится в файле
+          <filename>/etc/sysconfig/modules</filename>, используя указанные тамже аргументы</para>
+          <indexterm zone="ch-config-bootscripts modules-bootscripts">
+            <primary sortas="d-modules">modules</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mountfs-bootscripts">
+        <term><command>mountfs</command></term>
+        <listitem>
+          <para>Монтирует все файловые системы, кроме тех, которые помечены как
+          <emphasis>noauto</emphasis> или сетевые файловые системы</para>
+          <indexterm zone="ch-config-bootscripts mountfs-bootscripts">
+            <primary sortas="d-mountfs">mountfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mountvirtfs-bootscripts">
+        <term><command>mountvirtfs</command></term>
+        <listitem>
+          <para>Монтирует виртуальные файловые системы, такие какs <systemitem
+          class="filesystem">proc</systemitem></para>
+          <indexterm zone="ch-config-bootscripts mountvirtfs-bootscripts">
+            <primary sortas="d-mountvirtfs">mountvirtfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="network-bootscripts">
+        <term><command>network</command></term>
+        <listitem>
+          <para>Выполняет настройку сетевых интерфейсов, например, сетевых карт, и настаивает
+		  шлюз по-умолчанию (где это применимо)</para>
+          <indexterm zone="ch-config-bootscripts network-bootscripts">
+            <primary sortas="d-network">network</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rc-bootscripts">
+        <term><command>rc</command></term>
+        <listitem>
+          <para>Основной сценарий управления; он отвечает за запуск всех остальных загрузочных
+		  скриптов один за другим в последовательности, определяемой по имени обрабатываемых
+		  символических ссылок.</para>
+          <indexterm zone="ch-config-bootscripts rc-bootscripts">
+            <primary sortas="d-rc">rc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="reboot-bootscripts">
+        <term><command>reboot</command></term>
+        <listitem>
+          <para>Перезагружает систему</para>
+          <indexterm zone="ch-config-bootscripts reboot-bootscripts">
+            <primary sortas="d-reboot">reboot</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sendsignals-bootscripts">
+        <term><command>sendsignals</command></term>
+        <listitem>
+          <para>Обеспечивает завершение каждого процесса перед перезагрузкой или остановкой системы.</para>
+          <indexterm zone="ch-config-bootscripts sendsignals-bootscripts">
+            <primary sortas="d-sendsignals">sendsignals</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="setclock-bootscripts">
+        <term><command>setclock</command></term>
+        <listitem>
+          <para>Сбрасывает часы ядра на местное время, если аппаратные часы не настроены на
+		  всемирное координированное время UTC.</para>
+          <indexterm zone="ch-config-bootscripts setclock-bootscripts">
+            <primary sortas="d-setclock">setclock</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ipv4-static-bootscripts">
+        <term><command>ipv4-static</command></term>
+        <listitem>
+          <para>Предоставляет функциональные возможности, необходимые для назначения
+		  статического адреса сетевому интерфейсу.</para>
+          <indexterm zone="ch-config-bootscripts ipv4-static-bootscripts">
+            <primary sortas="d-ipv4-static">ipv4-static</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="swap-bootscripts">
+        <term><command>swap</command></term>
+        <listitem>
+          <para>Включает и отключает файлы и разделы, используемые для подкачки.</para>
+          <indexterm zone="ch-config-bootscripts swap-bootscripts">
+            <primary sortas="d-swap">swap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sysctl-bootscripts">
+        <term><command>sysctl</command></term>
+        <listitem>
+          <para>Загружает в работающее ядро значения системных настроек из файла
+          <filename>/etc/sysctl.conf</filename>, если этот файл существует</para>
+          <indexterm zone="ch-config-bootscripts sysctl-bootscripts">
+            <primary sortas="d-sysctl">sysctl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sysklogd-bootscripts">
+        <term><command>sysklogd</command></term>
+        <listitem>
+          <para>Запускает и останавливает демоны журналирования сообщений, выдаваемых системой и ядром.</para>
+          <indexterm zone="ch-config-bootscripts sysklogd-bootscripts">
+            <primary sortas="d-sysklogd">sysklogd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="template-bootscripts">
+        <term><command>template</command></term>
+        <listitem>
+          <para>Шаблон для создания пользовательских загрузочных скриптов для других демонов</para>
+          <indexterm zone="ch-config-bootscripts template-bootscripts">
+            <primary sortas="d-template">template</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="udev-bootscripts">
+        <term><command>udev</command></term>
+        <listitem>
+          <para>Подготавливает каталог <filename class="directory">/dev</filename>
+          и запускает Udev</para>
+          <indexterm zone="ch-config-bootscripts udev-bootscripts">
+            <primary sortas="d-udev">udev</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="udev-retry-bootscripts">
+        <term><command>udev_retry</command></term>
+        <listitem>
+          <para>Повторяет неудачные попытки запуска udev uevents и копирует сгенерированные
+		  файлы правил из <filename class="directory">/run/udev</filename> в
+          <filename class="directory">/etc/udev/rules.d</filename> если требуется.</para>
+          <indexterm zone="ch-config-bootscripts udev-retry-bootscripts">
+            <primary sortas="d-udev-retry">udev_retry</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
