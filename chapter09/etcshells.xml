@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE part PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-config-shells" xreflabel="Creating the /etc/shells File">
+  <?dbhtml filename="etcshells.html"?>
+
+  <title>Создание файла /etc/shells</title>
+
+  <indexterm zone="ch-config-shells">
+    <primary sortas="e-etc-shells">/etc/shells</primary>
+  </indexterm>
+
+  <para>Файл <filename>shells</filename> содержит список оболочек входа в систему. Приложения
+  используют этот файл для определения корректности  оболочки. Для каждой оболочки должна присутствовать
+  одна строка, состоящая из пути к файлу оболочки относительно корня структуры каталогов (/).</para>
+
+  <para>Например, <command>chsh</command> обращается к этому файлу, чтобы определить, может ли
+  непривилегированный пользователь изменить оболочку входа для своей учетной записи. Если имя
+  команды не указано в списке, пользователю будет отказано в возможности изменять оболочки.</para>
+
+  <para>Это обязательное условие для таких приложений, как <application>GDM</application>, которые
+  не заполняют список пользователей, если ему не удаётся найти <filename>/etc/shells</filename>,
+  или демонов FTP, которые традиционно запрещают доступ пользователям с оболочками, не включенными
+  в этот файл.</para>
+
+<screen role="root"><userinput>cat &gt; /etc/shells &lt;&lt; "EOF"
+<literal># Begin /etc/shells
+
+/bin/sh
+/bin/bash
+
+# End /etc/shells</literal>
+EOF</userinput></screen>
+
+</sect1>

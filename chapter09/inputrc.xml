@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+   <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-config-inputrc">
+  <?dbhtml filename="inputrc.html"?>
+
+  <title>Создание файла /etc/inputrc</title>
+
+  <indexterm zone="ch-config-inputrc">
+    <primary sortas="e-/etc/inputrc">/etc/inputrc</primary>
+  </indexterm>
+
+  <para>Файл <filename>inputrc</filename> это файл конфигурации библиотеки readline, который
+  предоставляет возможности редактирования, когда пользователь вводит строку с терминала. Он
+  работает путем преобразования ввода с клавиатуры в определенные действия. Readline используется
+  bash и большинством других оболочек, а также многими другими приложениями.</para>
+
+  <para>Большинству людей не нуждаются в специальных настройках, поэтому приведенная ниже команда
+  создает глобальный <filename>/etc/inputrc</filename>, используемый всеми, кто входит в систему.
+  Если позже вы решите, что вам нужно переопределить значения по умолчанию для одного из пользователей,
+  вы можете создать файл <filename>.inputrc</filename> в домашнем каталоге пользователя и указать в нём
+  измененные настройки.</para>
+
+  <para>Дополнительные сведения о редактировании файла <filename>inputrc</filename> см. в разделе
+  <command>info bash</command> в секции <emphasis>Readline Init File</emphasis>. Также хорошим
+  источником информации является <command>info readline</command>.</para>
+
+  <para>Ниже приведен общий глобальный <filename>inputrc</filename> с комментариями, объясняющими,
+  что делают различные параметры. Обратите внимание, что комментарии не могут находиться в той же
+  строке, что и команды. Создайте файл с помощью следующей команды:</para>
+
+<screen><userinput>cat &gt; /etc/inputrc &lt;&lt; "EOF"
+<literal># Begin /etc/inputrc
+# Modified by Chris Lynn &lt;roryo@roryo.dynup.net&gt;
+
+# Разрешить перенос приглашения оболочки на следующую строку
+set horizontal-scroll-mode Off
+
+# Разрешить 8-битный ввод
+set meta-flag On
+set input-meta On
+
+# Отключить обрезание восьмого бита в вводимых символах
+set convert-meta Off
+
+# Выводить на экран все восемь бит
+set output-meta On
+
+# Звуковой сигнал - none, visible или audible, соответственно никакого, видимый или слышимый
+set bell-style none
+
+# Нижеследующие команды привязывают escape-последовательности (первый аргумент)
+# к специфичным для Readline функциям (второй аргумент)
+"\eOd": backward-word
+"\eOc": forward-word
+
+# для консоли linux
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+# для xterm
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+
+# для Konsole
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+
+# End /etc/inputrc</literal>
+EOF</userinput></screen>
+
+</sect1>
