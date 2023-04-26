@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-config-clock" revision="systemd">
+  <?dbhtml filename="clock.html"?>
+
+  <title>Настройка системного времени</title>
+
+  <indexterm zone="ch-config-clock">
+    <primary sortas="d-clock">clock</primary>
+  <secondary>configuring</secondary></indexterm>
+
+  <para>Этот раздел описывает настройку службы
+  <command>systemd-timedated</command>, которая отвечает за системное время и часовой
+  пояс.</para>
+
+  <para>Если вы не помните, установлены ли аппаратные часы в формате UTC, выясните это,
+  выполнив команду <userinput>hwclock --localtime --show</userinput>. Она отобразит
+  текущее время в соответствии с аппаратными часами.
+  Если вывод совпадает с вашим текущим временем, то аппаратные часы настроены на локальное
+  время. Если время <command>hwclock</command> не совпадает с текущим, то возможно
+  системные часы настроены на часовой пояс UTC. Проверьте это добавлением или вычитанием
+  нужного количества часов для вашего часового пояса.
+  Например, если ваш часовй пояс это MSK, так же известный как GMT +0300, то нужно вычесть
+  три часа из локального времени.</para>
+
+  <para><command>systemd-timedated</command> читает файл <filename>/etc/adjtime</filename>
+  и в зависимости от его содержимого устанавливает часы в UTC, либо на местное время.</para>
+
+  <para>Создайте файл <filename>/etc/adjtime</filename> со следующим содержимым
+   если ваши аппаратные часы настроены на местное время:</para>
+
+<screen><userinput>cat &gt; /etc/adjtime &lt;&lt; "EOF"
+<literal>0.0 0 0.0
+0
+LOCAL</literal>
+EOF</userinput></screen>
+
+  <para>Если файл <filename>/etc/adjtime</filename> не будет найден при первой загрузке,
+  то <command>systemd-timedated</command> будет подразумевать, что системные часы
+  настроены на UTC и настроит файл в соответствии с этим.</para>
+
+  <para>Вы можете использовать утилиту <command>timedatectl</command>, чтобы сообщить
+  <command>systemd-timedated</command>, что аппаратные часы настроены на
+   UTC или местное время:</para>
+
+<screen role="nodump"><userinput>timedatectl set-local-rtc 1</userinput></screen>
+
+  <para><command>timedatectl</command> также может использоваться для изменения системного времени
+  и часового пояса.</para>
+
+  <para>Для изменения текущего системного времени выполните:</para>
+
+<screen role="nodump"><userinput>timedatectl set-time YYYY-MM-DD HH:MM:SS</userinput></screen>
+
+  <para>Аппаратные часы будут установлены на соответствующее значение.</para>
+
+  <para>Для изменения текущего часового пояса выполните:</para>
+
+<screen role="nodump"><userinput>timedatectl set-timezone TIMEZONE</userinput></screen>
+
+  <para>Получить список доступных часовых поясов можно выполнив:</para>
+
+<screen role="nodump"><userinput>timedatectl list-timezones</userinput></screen>
+
+  <note><para>Пожалуйста, обратите внимание, что команда <command>timedatectl</command> 
+  не работает в chroot окружении.  Она может использоваться только после загрузки системы 
+  LFS с помощью systemd.</para></note>
+
+  <sect2>
+    <title>Синхронизация времени по сети</title>
+
+    <para>Начиная с версии 213, в состав systemd входит служба
+    <command>systemd-timesyncd</command>, которая занимается синхронизацией системного
+    времени с удаленными NTP серверами.</para>
+
+    <para>Служба не предназначается для замены известной службы NTP,
+    она используется в качестве клиента протокола SNTP, подходящего для
+    простых задач и в системах с ограниченными ресурсами.</para>
+
+    <para>Начиная с systemd версии 216 служба <command>systemd-timesyncd</command>
+    включена по умолчанию. При желании её можно отключить, выполнив</para>
+
+<screen role="nodump"><userinput>systemctl disable systemd-timesyncd</userinput></screen>
+
+    <para>В файле <filename>/etc/systemd/timesyncd.conf</filename> можно настраивать
+    список серверов NTP, используемых <command>systemd-timesyncd</command> для синхронизации.</para>
+
+    <para>Обратите внимание, что если системные часы установлены на местное время,
+    <command>systemd-timesyncd</command> не будет обновлять аппартные часы.</para>
+
+  </sect2>
+
+</sect1>
