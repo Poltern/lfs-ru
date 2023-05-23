@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-finish-theend">
+  <?dbhtml filename="theend.html"?>
+
+  <title>The End</title>
+
+  <indexterm zone="ch-finish-theend">
+    <primary sortas="e-/etc/lfs-release">/etc/lfs-release</primary>
+  </indexterm>
+
+  <indexterm zone="ch-finish-theend">
+    <primary sortas="e-/etc/lsb-release">/etc/lsb-release</primary>
+  </indexterm>
+
+  <indexterm zone="ch-finish-theend">
+    <primary sortas="e-/etc/os-release">/etc/os-release</primary>
+  </indexterm>
+
+  <para>Well done! The new LFS system is installed! We wish you much
+  success with your shiny new custom-built Linux system.</para>
+
+  <para>It may be a good idea to create an
+  <filename>/etc/lfs-release</filename> file. By having this file, it is very
+  easy for you (and for us if you need to ask for help at some point) to find
+  out which LFS version is installed on the system. Create this file by
+  running:</para>
+
+<screen><userinput>echo &version; &gt; /etc/lfs-release</userinput></screen>
+
+  <para>Two files describing the installed system may be used by packages that
+  can be installed on the system later, either in binary form or by building
+  them.</para>
+
+  <para>The first one shows the status of your
+  new system with respect to the Linux Standards Base (LSB).  To create
+  this file, run:</para>
+
+<screen><userinput>cat &gt; /etc/lsb-release &lt;&lt; "EOF"
+DISTRIB_ID="Linux From Scratch"
+DISTRIB_RELEASE="&version;"
+DISTRIB_CODENAME="&lt;your name here&gt;"
+DISTRIB_DESCRIPTION="Linux From Scratch"
+EOF</userinput></screen>
+
+  <para>The second one contains roughly the same information, and is used
+  by systemd and some graphical desktop environments.  To create
+  this file, run:</para>
+
+<screen><userinput>cat &gt; /etc/os-release &lt;&lt; "EOF"
+NAME="Linux From Scratch"
+VERSION="&version;"
+ID=lfs
+PRETTY_NAME="Linux From Scratch &version;"
+VERSION_CODENAME="&lt;your name here&gt;"
+EOF</userinput></screen>
+
+  <para>Be sure to put some sort of customization for the fields
+  'DISTRIB_CODENAME' and 'VERSION_CODENAME' to make the system uniquely
+  yours.</para>
+
+</sect1>
