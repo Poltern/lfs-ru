@@ -268,7 +268,7 @@ cp -av lib/lib*.so.5* /usr/lib</userinput></screen>
       <varlistentry id="ncursesw6-config">
         <term><command>ncursesw6-config</command></term>
         <listitem>
-          <para>Предоставляет информацию о конфигурации пакету ncurses/para>
+          <para>Предоставляет информацию о конфигурации пакету ncurses</para>
           <indexterm zone="ch-system-ncurses ncursesw6-config">
             <primary sortas="b-ncursesw6-config">ncursesw6-config</primary>
           </indexterm>
