@@ -116,8 +116,8 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 
 <screen><userinput remap="test">echo "dummy:x:102:tester" &gt;&gt; /etc/group</userinput></screen>
 
-    <para>Исправьте некоторые разрешения, чтобы пользователь без полномочий &root мог
-	компилировать и запускать тесты::</para>
+    <para>Исправьте некоторые разрешения, чтобы пользователь без полномочий &root; мог
+	компилировать и запускать тесты:</para>
 
 <screen><userinput remap="test">chown -Rv tester . </userinput></screen>
 
