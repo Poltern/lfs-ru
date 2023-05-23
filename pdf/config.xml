@@ -1,0 +1,108 @@
+<fop version="1.0">
+<renderers>
+   <renderer mime="application/pdf">
+       <fonts>
+           <!-- register a particular font -->
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Regular.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="serif" style="normal" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Bold.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="serif" style="normal" weight="bold"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Italic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="serif" style="italic" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-BoldItalic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="serif" style="italic" weight="bold"/>
+           </font>
+
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Regular.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="Symbol" style="normal" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Bold.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="Symbol" style="normal" weight="bold"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Italic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="Symbol" style="italic" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-BoldItalic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="Symbol" style="italic" weight="bold"/>
+           </font>
+
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Regular.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="ZapfDingbats" style="normal" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Bold.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="ZapfDingbats" style="normal" weight="bold"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-Italic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="ZapfDingbats" style="italic" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Open_Sans/OpenSans-BoldItalic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="ZapfDingbats" style="italic" weight="bold"/>
+           </font>
+
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Roboto_Mono/RobotoMono-Regular.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="monospace" style="normal" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Roboto_Mono/RobotoMono-Bold.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="monospace" style="normal" weight="bold"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Roboto_Mono/RobotoMono-Italic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="monospace" style="italic" weight="normal"/>
+           </font>
+
+           <font kerning="yes"
+                 embed-url="file:///fonts/Roboto_Mono/RobotoMono-BoldItalic.ttf"
+                 encoding-mode="auto">
+               <font-triplet name="monospace" style="italic" weight="bold"/>
+           </font>
+
+       </fonts>
+   </renderer>
+</renderers>
+</fop>
