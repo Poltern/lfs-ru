@@ -164,7 +164,7 @@ EOF</userinput></screen>
   с GID 1. GID 5 широко используется для
   группы <systemitem class="groupname">tty</systemitem>, число 5
   также используется в <phrase revision="systemd">systemd</phrase>
-  <phrase Revision="sysv"><filename>/etc/fstab</filename></phrase> для
+  <phrase revision="sysv"><filename>/etc/fstab</filename></phrase> для
   файловой системы <systemitem class="filesystem">devpts</systemitem>.
   Все остальные имена групп и GID могут свободно выбираться системным
   администратором, так как хорошо написанные программы не зависят от номеров GID,

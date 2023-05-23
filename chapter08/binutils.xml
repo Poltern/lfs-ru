@@ -160,7 +160,7 @@ cd       build</userinput></screen>
 <screen><userinput remap="test">make -k check</userinput></screen>
 
     <!-- Fixed in 2.39
-         https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=01ae03b -->
+         https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=01ae03b 
     <para>Известно, что один тест gold, <filename>pr17704a_test</filename>, не проходит,
     если параметр <parameter>CONFIG_IA32_EMULATION</parameter> отключен в конфигурации
 	ядра хост-системы.</para>
