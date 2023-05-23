@@ -98,5 +98,20 @@
     <l:gentext key="Scripts" text="Skripte"/>
 
   </l:l10n>
+   <!-- Russian -->
+  <l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
+          language="ru" english-language-name="Russian">
+
+    <l:gentext key="description" text="Описание"/>
+    <l:gentext key="Bootscripts" text="Загрузочные скрипты"/>
+    <l:gentext key="Configuration Files" text="Файлы конфигурации"/>
+    <l:gentext key="Kernel Configuration" text="Конфигурация ядра"/>
+    <l:gentext key="Libraries" text="Библиотеки"/>
+    <l:gentext key="Others" text="Разное"/>
+    <l:gentext key="Packages" text="Пакеты"/>
+    <l:gentext key="Programs" text="Программы"/>
+    <l:gentext key="Scripts" text="Скрипты"/>
+
+  </l:l10n>
 
 </l:i18n>

@@ -12,7 +12,7 @@
 
   <authorgroup>
     <author>
-      <firstname>Создана Gerard</firstname>
+      <firstname>Создатель: Gerard</firstname>
       <surname>Beekmans</surname>
     </author>
     <author>
@@ -24,12 +24,11 @@
       <firstname>Редактор: Douglas R.</firstname>
       <surname>Reno</surname>
     </author>
-
     <author revision="systemd">
       <firstname>Редактор: DJ</firstname>
       <surname>Lucas</surname>
     </author>
-    <author revision="systemd">
+    <author>
       <firstname>Технический перевод: Владимир</firstname>
       <surname>Перцев</surname>
     </author>
@@ -51,7 +50,7 @@
           <xref linkend="MIT"/>.</para>
 
     <para><trademark class='registered'>Linux</trademark> является зарегистрированным товарным знаком
-    Линус Торвальдс.</para>
+    Линуса Торвальдса.</para>
 
   </legalnotice>
 

@@ -78,7 +78,7 @@
 <![ %systemd; [
 <!ENTITY wget-list       "wget-list-systemd">
 ]]>
-<!ENTITY lfs-root        "https://www.linuxfromscratch.ru/">
+<!ENTITY lfs-root        "https://www.linuxfromscratch.org/">
 <!ENTITY blfs-root       "&lfs-root;blfs/">
 <!ENTITY blfs-book       "&blfs-root;view/&short-version;/">
 <!ENTITY faq-root        "&lfs-root;faq/">
