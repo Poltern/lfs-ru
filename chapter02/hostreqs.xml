@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-partitioning-hostreqs" xreflabel="Host System Requirements">
+<sect1 id="ch-partitioning-hostreqs" xreflabel="Требования к хост-системе">
   <?dbhtml filename="hostreqs.html"?>
 
   <title>Требования к хост-системе</title>

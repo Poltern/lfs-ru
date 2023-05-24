@@ -4,75 +4,75 @@
        <fonts>
            <!-- register a particular font -->
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Regular.ttf"
+                 embed-url="file:///fonts/PT-Astra-Serif/pt-astra-serif_regular.ttf"
                  encoding-mode="auto">
                <font-triplet name="serif" style="normal" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Bold.ttf"
+                 embed-url="file:///fonts/PT-Astra-Serif/pt-astra-serif_bold.ttf"
                  encoding-mode="auto">
                <font-triplet name="serif" style="normal" weight="bold"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Italic.ttf"
+                 embed-url="file:///fonts/PT-Astra-Serif/pt-astra-serif_italic.ttf"
                  encoding-mode="auto">
                <font-triplet name="serif" style="italic" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-BoldItalic.ttf"
+                 embed-url="file:///fonts/PT-Astra-Serif/pt-astra-serif_bold-italic.ttf"
                  encoding-mode="auto">
                <font-triplet name="serif" style="italic" weight="bold"/>
            </font>
 
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Regular.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_regular.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="normal" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Bold.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="normal" weight="bold"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Italic.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_italic.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="italic" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-BoldItalic.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold-italic.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="italic" weight="bold"/>
            </font>
 
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Regular.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_regular.ttf"
                  encoding-mode="auto">
                <font-triplet name="ZapfDingbats" style="normal" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Bold.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold.ttf"
                  encoding-mode="auto">
                <font-triplet name="ZapfDingbats" style="normal" weight="bold"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-Italic.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_italic.ttf"
                  encoding-mode="auto">
                <font-triplet name="ZapfDingbats" style="italic" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/Open_Sans/OpenSans-BoldItalic.ttf"
+                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold-italic.ttf"
                  encoding-mode="auto">
                <font-triplet name="ZapfDingbats" style="italic" weight="bold"/>
            </font>
