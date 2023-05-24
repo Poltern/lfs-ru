@@ -87,7 +87,16 @@ pdf: validate
 
 	$(Q)mkdir -p $(BASEDIR)
 
-	$(Q)fop -q  $(RENDERTMP)/lfs-pdf.fo $(BASEDIR)/$(PDF_OUTPUT) 2>fop.log
+	@echo "Copying fonts to tmp dir"
+
+	$(Q)cp pdf/fonts $(RENDERTMP) -r
+	@echo "Creating configuration file"
+	$(Q)python3 pdf/change_config.py pdf/config.xml $(RENDERTMP)/user_config.xml
+
+	@echo "Running fop"
+#	$(Q)fop -q   $(RENDERTMP)/lfs-pdf.fo $(BASEDIR)/$(PDF_OUTPUT) 2>fop.log
+
+	$(Q)fop -q $(RENDERTMP)/lfs-pdf.fo -c $(RENDERTMP)/user_config.xml $(BASEDIR)/$(PDF_OUTPUT) 2>fop.log
 	@echo "$(BASEDIR)/$(PDF_OUTPUT) created"
 	@echo "fop.log created"
 
