@@ -184,7 +184,7 @@ set spell</literal></screen>
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
        <seg> ex (ссылка на vim), rview (ссылка на vim), rvim (ссылка на vim), vi

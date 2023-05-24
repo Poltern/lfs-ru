@@ -100,7 +100,7 @@
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>dbus-cleanup-sockets, dbus-daemon, dbus-launch, dbus-monitor,

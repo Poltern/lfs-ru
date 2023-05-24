@@ -27,7 +27,7 @@
 <!ENTITY attr-md5 "ac1c5a7a084f0f83b8cace34211f64d8">
 <!ENTITY attr-home "&savannah-nongnu;/projects/attr">
 <!ENTITY attr-fin-du "4.1 MB">
-<!ENTITY attr-fin-sbu "less than 0.1 SBU">
+<!ENTITY attr-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY autoconf-version "2.71">
 <!ENTITY autoconf-size "1,263 KB">
@@ -36,7 +36,7 @@
 <!ENTITY autoconf-home "&gnu-software;autoconf/">
 <!ENTITY autoconf-fin-du "24 MB">
 <!ENTITY autoconf-fin-sbu-tests "6.7">
-<!ENTITY autoconf-fin-sbu "less than 0.1 SBU (about &autoconf-fin-sbu-tests; SBU with tests)">
+<!ENTITY autoconf-fin-sbu "менее 0.1 SBU (около &autoconf-fin-sbu-tests; SBU с тестами)">
 
 <!ENTITY automake-version "1.16.5">
 <!ENTITY am-minor-version "1.16">
@@ -46,7 +46,7 @@
 <!ENTITY automake-sha256 "80facc09885a57e6d49d06972c0ae1089c5fa8f4d4c7cfe5baea58e5085f136d">
 <!ENTITY automake-home "&gnu-software;automake/">
 <!ENTITY automake-fin-du "116 MB">
-<!ENTITY automake-fin-sbu "less than 0.1 SBU (about 7.7 SBU with tests)">
+<!ENTITY automake-fin-sbu "менее 0.1 SBU (около 7.7 SBU с тестами)">
 
 <!ENTITY bash-version "5.1.16">
 <!ENTITY bash-size "10,277 KB">
@@ -64,7 +64,7 @@
 <!ENTITY bc-md5 "4c8b8d51eb52ee66f5bcf6a6a1ca576e">
 <!ENTITY bc-home "https://git.yzena.com/gavin/bc">
 <!ENTITY bc-fin-du "7.4 MB">
-<!ENTITY bc-fin-sbu "less than 0.1 SBU">
+<!ENTITY bc-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY binutils-version "2.39">
 <!ENTITY binutils-size "24,578 KB">
@@ -94,7 +94,7 @@
 <!ENTITY bzip2-md5 "67e051268d0c475ea773822f7500d0e5">
 <!ENTITY bzip2-home "https://sourceware.org/bzip2/">
 <!ENTITY bzip2-fin-du "7.2 MB">
-<!ENTITY bzip2-fin-sbu "less than 0.1 SBU">
+<!ENTITY bzip2-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY check-version "0.15.2">
 <!ENTITY check-size "760 KB">
@@ -102,7 +102,7 @@
 <!ENTITY check-md5 "50fcafcecde5a380415b12e9c574e0b2">
 <!ENTITY check-home "https://libcheck.github.io/check">
 <!ENTITY check-fin-du "12 MB">
-<!ENTITY check-fin-sbu "0.1 SBU (about 3.6 SBU with tests)">
+<!ENTITY check-fin-sbu "0.1 SBU (около 3.6 SBU с тестами)">
 
 <!ENTITY coreutils-version "9.1">
 <!ENTITY coreutils-size "5,570 KB">
@@ -128,7 +128,7 @@
 <!ENTITY dejagnu-md5 "68c5208c58236eba447d7d6d1326b821">
 <!ENTITY dejagnu-home "&gnu-software;dejagnu/">
 <!ENTITY dejagnu-tmp-du "6.9 MB">
-<!ENTITY dejagnu-tmp-sbu "less than 0.1 SBU">
+<!ENTITY dejagnu-tmp-sbu "менее 0.1 SBU">
 
 <!ENTITY diffutils-version "3.8">
 <!ENTITY diffutils-size "1,548 KB">
@@ -146,7 +146,7 @@
 <!ENTITY e2fsprogs-md5 "3da91854c960ad8a819b48b2a404eb43">
 <!ENTITY e2fsprogs-home "http://e2fsprogs.sourceforge.net/">
 <!ENTITY e2fsprogs-fin-du "94 MB">
-<!ENTITY e2fsprogs-fin-sbu "4.4 SBU on a spinning disk, 1.2 SBU on an SSD">
+<!ENTITY e2fsprogs-fin-sbu "4.4 SBU на жестком диске, 1.2 SBU на SSD диске">
 
 <!ENTITY elfutils-version "0.187"> <!-- libelf -->
 <!ENTITY elfutils-size "9,024 KB">
@@ -279,7 +279,7 @@
 <!ENTITY gperf-md5 "9e251c0a618ad0824b51117d5d9db87e">
 <!ENTITY gperf-home "&gnu-software;gperf/">
 <!ENTITY gperf-fin-du "6.0 MB">
-<!ENTITY gperf-fin-sbu "less than 0.1 SBU">
+<!ENTITY gperf-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY grep-version "3.7">
 <!ENTITY grep-size "1,603 KB">
@@ -323,7 +323,7 @@
 <!ENTITY iana-etc-md5 "851a53efd53c77d0ad7b3d2b68d8a3fc">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
-<!ENTITY iana-etc-fin-sbu "less than 0.1 SBU">
+<!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY inetutils-version "2.3">
 <!ENTITY inetutils-size "1,518 KB">
@@ -340,7 +340,7 @@
 <!ENTITY intltool-md5 "12e517cac2b57a0121cda351570f1e63">
 <!ENTITY intltool-home "https://freedesktop.org/wiki/Software/intltool">
 <!ENTITY intltool-fin-du "1.5 MB">
-<!ENTITY intltool-fin-sbu "less than 0.1 SBU">
+<!ENTITY intltool-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY iproute2-version "5.19.0">
 <!ENTITY iproute2-size "872 KB">
@@ -356,7 +356,7 @@
 <!ENTITY jinja2-md5 "d31148abd89c1df1cdb077a55db27d02">
 <!ENTITY jinja2-home "https://jinja.palletsprojects.com/en/3.0.x/">
 <!ENTITY jinja2-fin-du "3.0 MB">
-<!ENTITY jinja2-fin-sbu "less than 0.1 SBU">
+<!ENTITY jinja2-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY kbd-version "2.5.1">
 <!ENTITY kbd-size "1,457 KB">
@@ -380,7 +380,7 @@
 <!ENTITY less-md5 "f029087448357812fba450091a1172ab">
 <!ENTITY less-home "https://www.greenwoodsoftware.com/less/">
 <!ENTITY less-fin-du "4.2 MB">
-<!ENTITY less-fin-sbu "less than 0.1 SBU">
+<!ENTITY less-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY lfs-bootscripts-version "20220723">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
@@ -388,7 +388,7 @@
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">
 <!ENTITY lfs-bootscripts-home " ">
 <!ENTITY lfs-bootscripts-cfg-du "BOOTSCRIPTS-INSTALL-KB KB">
-<!ENTITY lfs-bootscripts-cfg-sbu "less than 0.1 SBU">
+<!ENTITY lfs-bootscripts-cfg-sbu "менее 0.1 SBU">
 
 <!ENTITY libcap-version "2.65">
 <!ENTITY libcap-size "176 KB">
@@ -396,7 +396,7 @@
 <!ENTITY libcap-md5 "3543e753dd941255c4def6cc67a462bb">
 <!ENTITY libcap-home "https://sites.google.com/site/fullycapable/">
 <!ENTITY libcap-fin-du "2.7 MB">
-<!ENTITY libcap-fin-sbu "less than 0.1 SBU">
+<!ENTITY libcap-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY libffi-version "3.4.2">
 <!ENTITY libffi-size "1,320 KB">
@@ -434,8 +434,8 @@
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
  max is allmodconfig  -->
-<!ENTITY linux-knl-du "1200 - 8800 MB (typically about 1700 MB)">
-<!ENTITY linux-knl-sbu "1.5 - 130.0 SBU (typically about 12 SBU)">
+<!ENTITY linux-knl-du "1200 - 8800 MB (обычно около 1700 MB)">
+<!ENTITY linux-knl-sbu "1.5 - 130.0 SBU (обычно около 12 SBU)">
 
 <!ENTITY linux-headers-tmp-du "1.4 GB">
 <!ENTITY linux-headers-tmp-sbu "0.1 SBU">
@@ -477,7 +477,7 @@
 <!ENTITY man-pages-md5 "3ac24e8c6fae26b801cb87ceb63c0a30">
 <!ENTITY man-pages-home "https://www.kernel.org/doc/man-pages/">
 <!ENTITY man-pages-fin-du "33 MB">
-<!ENTITY man-pages-fin-sbu "less than 0.1 SBU">
+<!ENTITY man-pages-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY markupsafe-version "2.1.1">
 <!ENTITY markupsafe-size "20 KB">
@@ -485,7 +485,7 @@
 <!ENTITY markupsafe-md5 "9809f9fdd98bc835b0c21aa8f79cbf30">
 <!ENTITY markupsafe-home "https://palletsprojects.com/p/markupsafe/">
 <!ENTITY markupsafe-fin-du "168 KB">
-<!ENTITY markupsafe-fin-sbu "less than 0.1 SBU">
+<!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY meson-version "0.63.1">
 <!ENTITY meson-size "2,016 KB">
@@ -493,7 +493,7 @@
 <!ENTITY meson-md5 "078e59d11a72b74c3bd78cb8205e9ed7">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "38 MB">
-<!ENTITY meson-fin-sbu "less than 0.1 SBU">
+<!ENTITY meson-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY mpc-version "1.2.1">
 <!ENTITY mpc-size "820 KB">
@@ -583,7 +583,7 @@
 <!ENTITY psmisc-md5 "014f0b5d5ab32478a2c57812ad01e1fb">
 <!ENTITY psmisc-home "https://gitlab.com/psmisc/psmisc">
 <!ENTITY psmisc-fin-du "5.8 MB">
-<!ENTITY psmisc-fin-sbu "less than 0.1 SBU">
+<!ENTITY psmisc-fin-sbu "менее 0.1 SBU">
 
 <!-- If python minor version changes, updates in python and
      meson pages will be needed: python3.6 and python3.6m -->
@@ -635,7 +635,7 @@
 <!ENTITY sysklogd-md5 "c70599ab0d037fde724f7210c2c8d7f8">
 <!ENTITY sysklogd-home "https://www.infodrom.org/projects/sysklogd/">
 <!ENTITY sysklogd-fin-du "0.6 MB">
-<!ENTITY sysklogd-fin-sbu "less than 0.1 SBU">
+<!ENTITY sysklogd-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY systemd-version  "251">
 <!--<!ENTITY systemd-stable   "6b4878d">-->
@@ -660,7 +660,7 @@
 <!ENTITY sysvinit-md5 "9a00e5f15dd2f038f10feee50677ebff">
 <!ENTITY sysvinit-home "&savannah-nongnu;/projects/sysvinit">
 <!ENTITY sysvinit-fin-du "2.7 MB">
-<!ENTITY sysvinit-fin-sbu "less than 0.1 SBU">
+<!ENTITY sysvinit-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY tar-version "1.34">
 <!ENTITY tar-size "2,174 KB">
@@ -735,7 +735,7 @@
 <!ENTITY wheel-md5 "f490f1399e5903706cb1d4fbed9ecb28">
 <!ENTITY wheel-home "https://pypi.org/project/wheel/">
 <!ENTITY wheel-fin-du "956 KB">
-<!ENTITY wheel-fin-sbu "less than 0.1 SBU">
+<!ENTITY wheel-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY xml-parser-version "2.46">
 <!ENTITY xml-parser-size "249 KB">
@@ -743,7 +743,7 @@
 <!ENTITY xml-parser-md5 "80bb18a8e6240fcf7ec2f7b57601c170">
 <!ENTITY xml-parser-home "&github;/chorny/XML-Parser">
 <!ENTITY xml-parser-fin-du "2.3 MB">
-<!ENTITY xml-parser-fin-sbu "less than 0.1 SBU">
+<!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY xz-version "5.2.6">
 <!ENTITY xz-size "1,234 KB">
@@ -761,7 +761,7 @@
 <!ENTITY zlib-md5 "28687d676c04e7103bb6ff2b9694c471">
 <!ENTITY zlib-home "https://www.zlib.net/">
 <!ENTITY zlib-fin-du "6.1 MB">
-<!ENTITY zlib-fin-sbu "less than 0.1 SBU">
+<!ENTITY zlib-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY zstd-version "1.5.2">
 <!ENTITY zstd-size "1,892 KB">

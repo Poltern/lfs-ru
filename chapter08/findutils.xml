@@ -91,7 +91,7 @@ su tester -c "PATH=$PATH make check"</userinput></screen>
 
     <segmentedlist>
       <segtitle>Installed programs</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>Установленные программы</seg>

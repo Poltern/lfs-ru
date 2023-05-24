@@ -85,7 +85,7 @@
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленная библиотека</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>flex, flex++ (ссылка на flex), и lex (ссылка на flex)</seg>

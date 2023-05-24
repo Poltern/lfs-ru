@@ -98,6 +98,7 @@
     <l:gentext key="Scripts" text="Skripte"/>
 
   </l:l10n>
+
    <!-- Russian -->
   <l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
           language="ru" english-language-name="Russian">

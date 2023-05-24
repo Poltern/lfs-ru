@@ -73,7 +73,7 @@ rm /usr/lib/libelf.a</userinput></screen>
 
     <segmentedlist>
       <segtitle>Установленная библиотека</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>

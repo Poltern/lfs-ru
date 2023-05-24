@@ -90,7 +90,7 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>--with-gxx-include-dir=/tools/$LFS_TGT/include/c++/&gcc-version;</parameter></term>
         <listitem>
-          <para>Указывает каталог установки для include-файлов. Поскольку libstdc++
+          <para>Указывает Созданные каталоги для include-файлов. Поскольку libstdc++
 		  является стандартной библиотекой C++ для LFS, этот каталог должен
 		  соответствовать местоположению, в котором компилятор C++
 		  (<command>$LFS_TGT-g++</command>) будет искать стандартные включаемые

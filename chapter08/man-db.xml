@@ -303,7 +303,7 @@
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Установленные каталоги</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>accessdb, apropos (ссылка на whatis), catman, lexgrog, man,

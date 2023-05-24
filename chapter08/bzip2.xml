@@ -107,7 +107,7 @@ done</userinput></screen>
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>bunzip2 (ссылка на bzip2), bzcat (ссылка на bzip2), bzcmp (ссылка на

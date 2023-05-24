@@ -158,7 +158,7 @@ su tester -c "PATH=$PATH make -k check"</userinput></screen>
 
     <para>Каталог сборки GCC теперь принадлежит пользователю <systemitem class="username">
     tester</systemitem>, и владелец на
-	установленный каталог (и его содержимое) указан неверно. Измените владельца
+	Созданные каталоги (и его содержимое) указан неверно. Измените владельца
 	на пользователя и группу <systemitem class="username">root</systemitem>:</para>
 
 <screen><userinput remap="install">chown -v -R root:root \
@@ -291,7 +291,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</userinput></screen>
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Установленные каталоги</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>c++, cc (link to gcc), cpp, g++, gcc,

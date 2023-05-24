@@ -79,7 +79,7 @@
 
     <segmentedlist>
       <segtitle>Установленная программа</segtitle>
-      <segtitle>Установленные каталоги</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>wheel</seg>

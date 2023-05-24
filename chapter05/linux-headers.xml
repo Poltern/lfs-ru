@@ -68,7 +68,7 @@ find usr/include -type f ! -name '*.h' -delete
 
     <segmentedlist>
       <segtitle>Установленные заголовочные файлы:</segtitle>
-      <segtitle>Установленные каталоги:</segtitle>
+      <segtitle>Созданные каталоги:</segtitle>
 
       <seglistitem>
         <seg>/usr/include/asm/*.h, /usr/include/asm-generic/*.h,

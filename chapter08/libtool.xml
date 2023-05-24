@@ -83,7 +83,7 @@
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленная библиотека</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>libtool и libtoolize</seg>

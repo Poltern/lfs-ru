@@ -64,7 +64,7 @@
 
     <segmentedlist>
       <segtitle>Установленная программа</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>gperf</seg>

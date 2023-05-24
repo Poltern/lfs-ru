@@ -72,7 +72,7 @@
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>aclocal, aclocal-&am-minor-version; (жестко связан с aclocal), automake, и

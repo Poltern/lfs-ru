@@ -105,7 +105,7 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
 
     <segmentedlist>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>libhistory.so и libreadline.so</seg>

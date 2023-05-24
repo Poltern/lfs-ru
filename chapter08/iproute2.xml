@@ -88,7 +88,7 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>bridge, ctstat (ссылка на lnstat), genl, ifcfg, ifstat, ip, lnstat,

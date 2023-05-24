@@ -82,7 +82,7 @@
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>autoconf, autoheader, autom4te, autoreconf, autoscan, autoupdate,

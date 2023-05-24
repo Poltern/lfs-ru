@@ -466,7 +466,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Установленные каталоги</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>gencat, getconf, getent, iconv, iconvconfig, ldconfig,

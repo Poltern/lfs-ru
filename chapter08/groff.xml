@@ -68,7 +68,7 @@
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Установленные каталоги</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>addftinfo, afmtodit, chem, eqn, eqn2graph, gdiffmk, glilypond,

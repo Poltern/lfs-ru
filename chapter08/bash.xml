@@ -104,7 +104,7 @@ EOF</userinput></screen>
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>bash, bashbug, and sh (ссылка на bash)</seg>

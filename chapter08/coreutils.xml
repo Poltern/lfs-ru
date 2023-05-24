@@ -152,7 +152,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленная библиотека</segtitle>
-      <segtitle>Установленный каталог</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>[, b2sum, base32, base64, basename, basenc, cat, chcon, chgrp, chmod, chown,

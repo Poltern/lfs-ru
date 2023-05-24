@@ -85,7 +85,7 @@ chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Установленные каталоги</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>autopoint, envsubst, gettext, gettext.sh,

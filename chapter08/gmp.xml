@@ -123,7 +123,7 @@ make install-html</userinput></screen>
 
     <segmentedlist>
       <segtitle>Установленные библиотеки</segtitle>
-      <segtitle>Каталог установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>libgmp.so и libgmpxx.so</seg>

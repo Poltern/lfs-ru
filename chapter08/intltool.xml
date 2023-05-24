@@ -74,7 +74,7 @@ install -v -Dm644 doc/I18N-HOWTO /usr/share/doc/intltool-&intltool-version;/I18N
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Каталоги установки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>intltool-extract, intltool-merge, intltool-prepare,
