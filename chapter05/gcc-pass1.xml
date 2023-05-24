@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-tools-gcc-pass1" role="wrap" xreflabel="gcc-pass1">
+<sect1 id="ch-tools-gcc-pass1" role="wrap" xreflabel="GCC-Проход 1">
   <?dbhtml filename="gcc-pass1.html"?>
 
   <sect1info condition="script">

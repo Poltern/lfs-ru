@@ -19,7 +19,7 @@
 
   </sect2>
 
-  <sect2 id="ch-intro-maillists" xreflabel="Chapter&nbsp;1 - Mailing Lists">
+  <sect2 id="ch-intro-maillists" xreflabel="Глава&nbsp;1 - Списки рассылки">
     <title>Списки рассылки</title>
 
     <para>На сервере <uri>linuxfromscratch.org</uri> размещен ряд списков рассылки, 
@@ -68,7 +68,7 @@
 
   </sect2>  -->
 
-  <sect2 id="ch-intro-mirrors" xreflabel="Chapter&nbsp;1 - Mirror sites">
+  <sect2 id="ch-intro-mirrors" xreflabel="Глава&nbsp;1 - Зеркала проекта">
     <title>Зеркала проекта</title>
 
     <para>Проект LFS имеет несколько зеркал по всему миру, чтобы сделать доступ 

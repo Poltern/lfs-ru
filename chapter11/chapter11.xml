@@ -5,11 +5,11 @@
   %general-entities;
 ]>
 
-<chapter id="chapter-finalizing" xreflabel="Chapter&nbsp;11">
+<chapter id="chapter-finalizing" xreflabel="Глава&nbsp;11">
   <?dbhtml dir="chapter11"?>
   <?dbhtml filename="chapter11.html"?>
 
-  <title>The End</title>
+  <title>Заключение</title>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="theend.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="getcounted.xml"/>

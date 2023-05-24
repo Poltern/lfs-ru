@@ -6,7 +6,7 @@
   %general-entities;
 ]>
 
-<appendix id="rules" xreflabel="Appendix E" revision="sysv">
+<appendix id="rules" xreflabel="Приложение E" revision="sysv">
   <?dbhtml dir="scripts"?>
   <?dbhtml filename="eudev-rules.html"?>
 

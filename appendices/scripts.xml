@@ -32,7 +32,7 @@
   %general-entities;
 ]>
 
-<appendix id="scripts" xreflabel="Appendix D" revision="sysv">
+<appendix id="scripts" xreflabel="Приложение D" revision="sysv">
   <?dbhtml dir="scripts"?>
   <?dbhtml filename="scripts.html"?>
 

@@ -6,7 +6,7 @@
 ]>
 
 <sect1 id="ch-tools-generalinstructions"
-       xreflabel="General Compilation Instructions">
+       xreflabel="Общие инструкции по компиляции">
   <?dbhtml filename="generalinstructions.html"?>
 
   <title>Общие инструкции по компиляции</title>

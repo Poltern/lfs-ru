@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-tools-toolchaintechnotes" xreflabel="Toolchain Technical Notes">
+<sect1 id="ch-tools-toolchaintechnotes" xreflabel="Технические примечания по сборочным инструментам">
   <?dbhtml filename="toolchaintechnotes.html"?>
 
   <title>Технические примечания по сборочным инструментам</title>

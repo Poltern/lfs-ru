@@ -5,11 +5,11 @@
   %general-entities;
 ]>
 
-<appendix id="appendixc" xreflabel="Appendix C">
+<appendix id="appendixc" xreflabel="Приложение C">
   <?dbhtml dir="appendices"?>
   <?dbhtml filename="dependencies.html"?>
 
-  <title>Dependencies</title>
+  <title>Зависимости</title>
 
   <para>Каждый пакет в системе LFS для правильной сборки и установки может ссылаться на один или 
   несколько других пакетов.
