@@ -77,11 +77,11 @@
 
     <informaltable align="center">
       <tgroup cols="5">
-        <colspec colnum="1" align="center"/>
-        <colspec colnum="2" align="center"/>
-        <colspec colnum="3" align="center"/>
-        <colspec colnum="4" align="center"/>
-        <colspec colnum="5" align="left"/>
+        <colspec colnum="1" align="center" colwidth="50pt"/>
+        <colspec colnum="2" align="center" colwidth="50pt"/>
+        <colspec colnum="3" align="center" colwidth="50pt"/>
+        <colspec colnum="4" align="center" colwidth="50pt"/>
+        <colspec colnum="5" align="left" colwidth="300pt"/>
         <thead>
           <row><entry>Этап</entry><entry>Сборщик</entry><entry>Хост</entry>
                <entry>Цель</entry><entry>Действие</entry></row>
@@ -111,11 +111,11 @@
 
     <informaltable align="center">
       <tgroup cols="5">
-        <colspec colnum="1" align="center"/>
-        <colspec colnum="2" align="center"/>
-        <colspec colnum="3" align="center"/>
-        <colspec colnum="4" align="center"/>
-        <colspec colnum="5" align="left"/>
+        <colspec colnum="1" align="center" colwidth="50pt"/>
+        <colspec colnum="2" align="center" colwidth="50pt"/>
+        <colspec colnum="3" align="center" colwidth="50pt"/>
+        <colspec colnum="4" align="center" colwidth="50pt"/>
+        <colspec colnum="5" align="left" colwidth="300pt"/>
         <thead>
           <row><entry>Этап</entry><entry>Сборщик</entry><entry>Хост</entry>
                <entry>Цель</entry><entry>Действие</entry></row>
@@ -179,11 +179,11 @@
 
     <informaltable align="center">
       <tgroup cols="5">
-        <colspec colnum="1" align="center"/>
-        <colspec colnum="2" align="center"/>
-        <colspec colnum="3" align="center"/>
-        <colspec colnum="4" align="center"/>
-        <colspec colnum="5" align="left"/>
+        <colspec colnum="1" align="center" colwidth="50pt"/>
+        <colspec colnum="2" align="center" colwidth="50pt"/>
+        <colspec colnum="3" align="center" colwidth="50pt"/>
+        <colspec colnum="4" align="center" colwidth="50pt"/>
+        <colspec colnum="5" align="left" colwidth="300pt"/>
         <thead>
           <row><entry>Этап</entry><entry>Сборщик</entry><entry>Хост</entry>
                <entry>Цель</entry><entry>Действие</entry></row>
