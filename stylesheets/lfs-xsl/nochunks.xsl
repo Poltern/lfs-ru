@@ -8,7 +8,7 @@
        Replaces {docbook-xsl}/xhtml/profile-docbook.xsl -->
 
   <!-- Upstream XHTML templates -->
-  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/docbook.xsl"/>
+  <xsl:import href="docbook-xsl-1.79.1/xhtml/docbook.xsl"/>
 
   <!-- Fix encoding issues with default UTF-8 output of the xhtml stylesheet -->
   <xsl:output method="html" encoding="UTF-8" indent="no" />

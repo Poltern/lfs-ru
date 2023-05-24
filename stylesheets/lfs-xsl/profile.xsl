@@ -7,11 +7,11 @@
        Replaces {docbook-xsl}/profiling/profile.xsl -->
 
   <!-- Include common profiling stylesheet -->
-  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/profiling/profile-mode.xsl"/>
+  <xsl:import href="docbook-xsl-1.79.1/profiling/profile-mode.xsl"/>
 
   <!-- This file must be included, because profile-mode uses
        templates from it -->
-  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/common/stripns.xsl"/>
+  <xsl:import href="docbook-xsl-1.79.1/common/stripns.xsl"/>
 
   <!-- In two pass processing there is no need for the base URI fixup -->
   <xsl:param name="profile.baseuri.fixup" select="false()"/>
