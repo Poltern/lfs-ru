@@ -8,7 +8,7 @@
 <sect1 id="ch-bootable-fstab">
   <?dbhtml filename="fstab.html"?>
 
-  <title>Creating the /etc/fstab File</title>
+  <title>Создание файла /etc/fstab</title>
 
   <indexterm zone="ch-bootable-fstab">
     <primary sortas="e-/etc/fstab">/etc/fstab</primary>

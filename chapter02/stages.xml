@@ -74,7 +74,7 @@
 
       <listitem>
          <para>При входе в chroot переменная среды LFS должна быть установлена
-		 ​​для пользователя <systemitem class="username">root</systemitem>. После
+		 для пользователя <systemitem class="username">root</systemitem>. После
 		 этого переменная LFS не используется.</para>
       </listitem>
 
@@ -82,8 +82,8 @@
          <para>Виртуальные файловые системы должны быть смонтированы. Это можно
 		 сделать до или после входа в chroot, переключившись на виртуальный терминал
 		 хоста и от имени пользователя <systemitem class="username">root</systemitem>
-		 выполнив команды, описанные в разделах 7.3.2 <xref linkend='ch-tools-bindmount'/>
-		 и 7.3.3 <xref linkend='ch-tools-kernfsmount'/>.</para>
+		 выполнив команды, описанные в разделах <xref linkend='ch-tools-bindmount'/>
+		 и <xref linkend='ch-tools-kernfsmount'/>.</para>
       </listitem>
     </itemizedlist>
   </sect2>

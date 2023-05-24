@@ -20,7 +20,7 @@
   -->
 
   <itemizedlist>
-    <title>Обновлено:</title>
+    <title>Обновлены:</title>
     <listitem><para></para></listitem>  <!-- satisfy build -->
     <!--<listitem>
     <para>None</para>
@@ -277,7 +277,7 @@
   </itemizedlist>-->
 
   <itemizedlist>
-    <title>Добавлено:</title>
+    <title>Добавлены:</title>
     <listitem><para></para></listitem>  <!-- satisfy build -->
     <listitem>
       <para>Wheel-&wheel-version;</para>
@@ -293,7 +293,7 @@
   </itemizedlist>
 
   <itemizedlist>
-    <title>Удалено:</title>
+    <title>Удалены:</title>
     <listitem><para></para></listitem>  <!-- satisfy build -->
 
     <listitem>
