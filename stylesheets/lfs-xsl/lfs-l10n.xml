@@ -21,7 +21,7 @@
 
     <!-- English -->
   <l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
-          language="en" english-language-name="English">
+          language="ru" english-language-name="Russian">
 
     <l:gentext key="description" text="description"/>
     <l:gentext key="Bootscripts" text="Bootscripts"/>
@@ -101,7 +101,7 @@
 
    <!-- Russian -->
   <l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
-          language="ru" english-language-name="Russian">
+          language="en" english-language-name="English">
 
     <l:gentext key="description" text="Описание"/>
     <l:gentext key="Bootscripts" text="Загрузочные скрипты"/>

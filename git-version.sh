@@ -28,8 +28,8 @@ if ! git status > /dev/null; then
 	exit 0
 fi
 
-export LC_ALL=en_US.utf8
-export TZ=US/Pacific
+export LC_ALL=ru_RU.utf8
+export TZ=Europe/Moscow
 
 commit_date=$(git show -s --format=format:"%cd" --date=local)
 

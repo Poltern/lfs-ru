@@ -34,7 +34,7 @@
   <xsl:param name="draft.mode" select="'no'"/>
 
   <!-- Paper size -->
-  <xsl:param name="paper.type" select="'USletter'"/>
+  <xsl:param name="paper.type" select="'A4'"/>
 
   <!-- Paper size required by the publisher
   <xsl:param name="paper.type" select="'Customized'"/>

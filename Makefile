@@ -26,7 +26,7 @@ ifeq ($(REV), sysv)
   BASEDIR         ?= ~/lfs-book
   PDF_OUTPUT      ?= LFS-BOOK.pdf
   NOCHUNKS_OUTPUT ?= LFS-BOOK.html
-  DUMPDIR         ?= ~/cross-lfs-commands
+  DUMPDIR         ?= ~/lfs-commands
 else
   BASEDIR         ?= ~/lfs-systemd
   PDF_OUTPUT      ?= LFS-SYSD-BOOK.pdf
@@ -208,17 +208,12 @@ version:
 
 #dump-commands: validate
 #	@echo "Dumping book commands..."
-#	$(Q)xsltproc --nonet                     \
-#      --output $(RENDERTMP)/lfs-html.xml    \
-#      --stringparam profile.revision $(REV) \
-#      stylesheets/lfs-xsl/profile.xsl       \
-#      $(RENDERTMP)/lfs-full.xml
-
+#
 #	$(Q)rm -rf $(DUMPDIR)
-
+#
 #	$(Q)xsltproc --output $(DUMPDIR)/          \
 #                stylesheets/dump-commands.xsl \
-#                $(RENDERTMP)/lfs-html.xml
+#                $(RENDERTMP)/lfs-full.xml
 #	@echo "Dumping book commands complete in $(DUMPDIR)"
 
 all: book nochunks pdf # dump-commands
