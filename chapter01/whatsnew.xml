@@ -21,7 +21,7 @@
 
   <itemizedlist>
     <title>Обновлены:</title>
-    <listitem><para></para></listitem>  <!-- satisfy build -->
+    <!--<listitem><para></para></listitem>   satisfy build -->
     <!--<listitem>
     <para>None</para>
     </listitem>-->
@@ -278,7 +278,7 @@
 
   <itemizedlist>
     <title>Добавлены:</title>
-    <listitem><para></para></listitem>  <!-- satisfy build -->
+    <!-- <listitem><para></para></listitem>  satisfy build -->
     <listitem>
       <para>Wheel-&wheel-version;</para>
     </listitem>
@@ -294,7 +294,7 @@
 
   <itemizedlist>
     <title>Удалены:</title>
-    <listitem><para></para></listitem>  <!-- satisfy build -->
+    <!-- <listitem><para></para></listitem>  satisfy build -->
 
     <listitem>
       <para>perl-5.34.0-upstream_fixes-1.patch</para>

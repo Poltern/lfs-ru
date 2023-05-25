@@ -99,7 +99,7 @@ cd       build</userinput></screen>
 		  В нашем случае эта информация должна быть указана явно. Компилятор C++ добавит
 		  путь sysroot <filename class="directory">$LFS</filename> (указанный в GCC Проход 1)
 		  к пути поиска include-файлов, поэтому он фактически будет искать в
-		  <filename class="directory">$LFS/tools/$LFS_TGT/include/c++/&gcc-version;</filename>.
+		  <filename class="directory">$LFS/tools/$LFS_TGT/include/c++/&gcc-version;</filename>. 
 		  Комбинация переменной <parameter>DESTDIR</parameter> (в приведенной ниже команде
 		  <command>make install</command>) и этого аргумента обеспечивает установку
 		  заголовочных файлов туда.</para>

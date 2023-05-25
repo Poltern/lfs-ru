@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-config-shells" xreflabel="Создание файла /etc/shells File">
+<sect1 id="ch-config-shells" xreflabel="Создание файла /etc/shells">
   <?dbhtml filename="etcshells.html"?>
 
   <title>Создание файла /etc/shells</title>
