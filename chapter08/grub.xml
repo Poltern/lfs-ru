@@ -42,9 +42,6 @@
 
     <note>
       <para>
-        If your system has UEFI support and you wish to boot LFS with UEFI,
-        you can skip this package in LFS,
-        and install GRUB with UEFI support (and its dependencies) following
 		Если ваша система поддерживает UEFI и вы хотите загрузить LFS с UEFI, вы
 		можете пропустить установку этого пакета в LFS и установить GRUB с поддержкой
 		UEFI (и его зависимости), следуя инструкции 
@@ -116,7 +113,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
             grub-script-check,
             grub-set-default,     grub-sparc64-setup, и grub-syslinux2cfg</seg>
 
-        <seg>/usr/lib/grub, /etc/grub.d, /usr/share/grub, и /boot/grub (при первом запуске grub-install)</seg>
+        <seg>/usr/lib/grub, /etc/grub.d, /usr/share/grub и /boot/grub (при первом запуске grub-install)</seg>
       </seglistitem>
     </segmentedlist>
 
