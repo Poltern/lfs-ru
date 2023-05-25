@@ -14,10 +14,10 @@
     <primary sortas="e-/etc/fstab">/etc/fstab</primary>
   </indexterm>
 
-  <para>The <filename>/etc/fstab</filename> file is used by some programs to
-  determine where file systems are to be mounted by default, in which order, and
-  which must be checked (for integrity errors) prior to mounting. Create a new
-  file systems table like this:</para>
+  <para>Файл <filename>/etc/fstab</filename> используется некоторыми программами для определения 
+  того, какие файловые системы должны монтироваться по умолчанию, в каком порядке и какие из них должны 
+  быть проверены (на наличие ошибок целостности) перед монтированием. Создайте новую таблицу файловых 
+  систем следующим образом:</para>
 
 <screen revision="sysv"><userinput>cat &gt; /etc/fstab &lt;&lt; "EOF"
 <literal># Begin /etc/fstab
@@ -48,43 +48,39 @@ EOF</userinput></screen>
 # End /etc/fstab</literal>
 EOF</userinput></screen>
 
-  <para>Replace <replaceable>&lt;xxx&gt;</replaceable>,
-  <replaceable>&lt;yyy&gt;</replaceable>, and <replaceable>&lt;fff&gt;</replaceable>
-  with the values appropriate for the system, for example, <filename
+  <para>Замените <replaceable>&lt;xxx&gt;</replaceable>,
+  <replaceable>&lt;yyy&gt;</replaceable>, и <replaceable>&lt;fff&gt;</replaceable>
+  подходящими для системы значениями, например, <filename
   class="partition">sda2</filename>, <filename
-  class="partition">sda5</filename>, and <systemitem
-  class="filesystem">ext4</systemitem>. For details on the six
-  fields in this file, see <command>man 5 fstab</command>.</para>
+  class="partition">sda5</filename>, и <systemitem
+  class="filesystem">ext4</systemitem>. Для получения подробной информации о параметрах в этом 
+  файле, смотрите <command>man 5 fstab</command>.</para>
 
-  <para>Filesystems with MS-DOS or Windows origin (i.e. vfat, ntfs, smbfs,
-  cifs, iso9660, udf) need a special option, utf8, in order for non-ASCII
-  characters in file names to be interpreted properly. For non-UTF-8 locales,
-  the value of <option>iocharset</option> should be set to be the same as the
-  character set of the locale, adjusted in such a way that the kernel
-  understands it.  This works if the relevant character set definition (found
-  under File systems -&gt; Native Language Support when configuring the kernel)
-  has been compiled into the kernel or built as a module. However, if the
-  character set of the locale is UTF-8, the corresponding option
-  <option>iocharset=utf8</option> would make the file system case sensitive. To
-  fix this, use the special option <option>utf8</option> instead of
-  <option>iocharset=utf8</option>, for UTF-8 locales. The
-  <quote>codepage</quote> option is also needed for vfat and smbfs filesystems.
-  It should be set to the codepage number used under MS-DOS in your country.
-  For example, in order to mount USB flash drives, a ru_RU.KOI8-R user would
-  need the following in the options portion of its mount line in
+  <para>Файловым системам операционных систем MS DOS и Windows (таким как vfat, ntfs, smbfs,
+  cifs, iso9660, udf) требуется специальная опция utf8, чтобы не-ASCII символы в именах файлов 
+  интерпретировались правильно. Для локалей, отличных от UTF-8, значение <option>iocharset</option> 
+  должно быть таким же, как набор символов локали и настроенно так, чтобы ядро понимало его. 
+  Это будет работать, если соответствующее определение набора символов (находится 
+  в разделе File systems -&gt; Native Language Support при настройке ядра) было скомпилировано в ядро 
+  или собрано как модуль. Однако, если набор символов локали — UTF-8, параметр
+   <option>iocharset=utf8</option> сделает файловую систему чувствительной к регистру. Чтобы
+   исправить это, используйте специальную опцию <option>utf8</option> вместо
+   <option>iocharset=utf8</option> для локалей UTF-8. Параметр
+  <quote>codepage</quote> также необходим для файловых систем vfat и smbfs. Он должен быть установлен 
+  на номер кодовой страницы, используемый в MS-DOS в вашей стране. Например, для монтирования флешек 
+  пользователь локали ru_RU.KOI8-R должен установить следующие значения в группе параметров его строки монтирования в
   <filename>/etc/fstab</filename>:</para>
 
 <screen><literal>noauto,user,quiet,showexec,codepage=866,iocharset=koi8r</literal></screen>
 
-  <para>The corresponding options fragment for ru_RU.UTF-8 users is:</para>
+  <para>Соответствующий фрагмент параметров для пользователей ru_RU.UTF-8 выглядит следующим образом:</para>
 
 <screen><literal>noauto,user,quiet,showexec,codepage=866,utf8</literal></screen>
 
-  <para>Note that using <option>iocharset</option> is the default for
-  <literal>iso8859-1</literal> (which keeps the file system case
-  insensitive), and the <option>utf8</option> option tells
-  the kernel to convert the file names using UTF-8 so they can be
-  interpreted in the UTF-8 locale.</para>
+  <para>Обратите внимание, что <option>iocharset</option> используется по умолчанию для
+   <literal>iso8859-1</literal> (которая сохраняет файловую систему
+   нечувствительной к регистру), а параметр <option>utf8</option> указывает ядру, что нужно 
+   преобразовать имена файлов с использованием UTF-8, чтобы их можно было интерпретировать в локали UTF-8.</para>
 
   <!--note>
     <para>In the latter case, the kernel emits the following message:</para>
@@ -97,29 +93,25 @@ EOF</userinput></screen>
     UTF-8 locales.</para>
   </note-->
 
-  <para>It is also possible to specify default codepage and iocharset values for
-  some filesystems during kernel configuration. The relevant parameters
-  are named
+  <para>Также возможно указать значения кодовой страницы по умолчанию и iocharset для некоторых 
+  файловых систем во время настройки ядра. Соответствующие параметры называются
   <quote>Default NLS Option</quote> (<option>CONFIG_NLS_DEFAULT)</option>,
   <quote>Default Remote NLS Option</quote> (<option>CONFIG_SMB_NLS_DEFAULT</option>),
-  <quote>Default codepage for FAT</quote> (<option>CONFIG_FAT_DEFAULT_CODEPAGE</option>), and
+  <quote>Default codepage for FAT</quote> (<option>CONFIG_FAT_DEFAULT_CODEPAGE</option>), и
   <quote>Default iocharset for FAT</quote> (<option>CONFIG_FAT_DEFAULT_IOCHARSET</option>).
-  There is no way to specify these settings for the
-  ntfs filesystem at kernel compilation time.</para>
+  Нет возможности указать эти параметры для файловой системы ntfs во время компиляции ядра.</para>
 
-  <para>It is possible to make the ext3 filesystem reliable across power
-  failures for some hard disk types.  To do this, add the
-  <option>barrier=1</option> mount option to the appropriate entry in
-  <filename>/etc/fstab</filename>.  To check if the disk drive supports
-  this option, run
+  <para>Для некоторых типов жестких дисков можно сделать файловую систему ext3 более устойчивой к 
+  сбоям питания. Чтобы сделать это, добавьте параметр <option>barrier=1</option> к соответствующей записи в
+  <filename>/etc/fstab</filename>. Чтобы проверить, поддерживает ли диск эту опцию, запустите
   <ulink url="&blfs-book;general/hdparm.html">hdparm</ulink>
-  on the applicable disk drive.  For example, if:</para>
+  на соответствуюшем разделе. Например, если:</para>
 
 <screen role="nodump"><userinput>hdparm -I /dev/sda | grep NCQ</userinput></screen>
 
-  <para>returns non-empty output, the option is supported.</para>
+  <para>возвращает непустой вывод, опция поддерживается.</para>
 
-  <para>Note: Logical Volume Management (LVM) based partitions cannot use the
-  <option>barrier</option> option.</para>
+  <para>Примечание: разделы на основе управления логическими томами (LVM) не могут использовать параметр
+  <option>barrier</option>.</para>
 
 </sect1>
