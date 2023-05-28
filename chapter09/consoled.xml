@@ -8,73 +8,72 @@
 <sect1 id="ch-config-console" revision="systemd">
   <?dbhtml filename="console.html"?>
 
-  <title>Configuring the Linux Console</title>
+  <title>Настройка консоли Linux</title>
 
   <indexterm zone="ch-config-console">
     <primary sortas="d-console">console</primary>
     <secondary>configuring</secondary>
   </indexterm>
 
-  <para>This section discusses how to configure the
-  <command>systemd-vconsole-setup</command> system service, which configures
-  the virtual console font and console keymap.</para>
+  <para>В этом разделе обсуждается, как настроить системную службу 
+  <command>systemd-vconsole-setup</command>, которая за настройку 
+  шрифта виртуальной консоли и раскладки клавиатуры.</para>
 
-  <para>The <command>systemd-vconsole-setup</command> service reads the
-  <filename>/etc/vconsole.conf</filename> file for configuration
-  information. Decide which keymap and screen font will be used. Various
-  language-specific HOWTOs can also help with this, see <ulink
+  <para>Служба <command>systemd-vconsole-setup</command> считывает 
+  <filename>/etc/vconsole.conf</filename> для получения информации о конфигурации. 
+  Решите, какую раскладку клавиатуры и экранный шрифт будете использовать. Инструкции 
+  для разных языков, которые вам помогут настроить консоль, есть на странице <ulink
   url="https://tldp.org/HOWTO/HOWTO-INDEX/other-lang.html"/>.
-  Examine the output of <command>localectl list-keymaps</command> for a list of
-  valid console keymaps. Look in the
+  Изучите вывод команды <command>localectl list-keymaps</command> для получения списка 
+  допустимых консольных раскладок. Посмотрите в каталоге
   <filename class="directory">/usr/share/consolefonts</filename>
-  directory for valid screen fonts.</para>
+  список допустимых экранных шрифтов.</para>
 
-  <para>The <filename>/etc/vconsole.conf</filename> file should contain lines
-  of the form: VARIABLE="value". The following variables are recognized:</para>
+  <para>Файл <filename>/etc/vconsole.conf</filename> должен содержать строки вида: ПЕРЕМЕННАЯ="значение". 
+  Распознаются следующие переменные:</para>
 
   <variablelist>
 
     <varlistentry>
       <term>KEYMAP</term>
       <listitem>
-        <para>This variable specifies the key mapping table for the keyboard. If
-        unset, it defaults to <literal>us</literal>.</para>
+        <para>Эта переменная определяет таблицу сопоставления раскладки клавиатуры. Если значение не 
+		задано, то по умолчанию используется значение <literal>us</literal>.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>KEYMAP_TOGGLE</term>
       <listitem>
-        <para>This variable can be used to configure a second toggle keymap and
-        is unset by default.</para>
+        <para>Эту переменную можно использовать для настройки второй раскладки клавиатуры, 
+		по умолчанию значение не установлено.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>FONT</term>
       <listitem>
-        <para>This variable specifies the font used by the virtual
-        console.</para>
+        <para>Эта переменная определяет шрифт, используемый виртуальной консолью.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>FONT_MAP</term>
       <listitem>
-        <para>This variable specifies the console map to be used.</para>
+        <para>Эта переменная определяет используемую консолью таблицу символов.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>FONT_UNIMAP</term>
       <listitem>
-        <para>This variable specifies the Unicode font map.</para>
+        <para>Эта переменная определяет отображение шрифтов в Unicode.</para>
       </listitem>
     </varlistentry>
 
   </variablelist>
 
-  <para>An example for a German keyboard and console is given below:</para>
+  <para>Ниже приведен пример немецкой клавиатуры и консоли:</para>
 <!-- This is what is used by jhalfs for creating the vconsole.conf file.
      Whenever you want to change the following, please inform the jhalfs
      maintainer(s). -->
@@ -83,23 +82,21 @@
 FONT=Lat2-Terminus16</literal>
 EOF</userinput></screen>
 
-  <para>You can change KEYMAP value at runtime by using the
-  <command>localectl</command> utility:</para>
+  <para>Вы можете изменить значение KEYMAP в процессе работы, используя утилиту
+  <command>localectl</command>:</para>
 
 <screen role="nodump"><userinput>localectl set-keymap MAP</userinput></screen>
 
-  <note><para>Please note that the <command>localectl</command> command
-  doesn't work in the chroot environment.  It can only
-  be used after the LFS system is booted with systemd.</para></note>
+  <note><para>Обратите внимание, что команда <command>localectl</command> 
+  не работает в среде chroot. Её можно использовать только после загрузки системы LFS с помощью systemd.</para></note>
 
-  <para>You can also use <command>localectl</command> utility with the
-  corresponding parameters to change X11 keyboard layout, model, variant
-  and options:</para>
+  <para>Вы также можете использовать утилиту <command>localectl</command> с соответствующими 
+  параметрами, чтобы изменить раскладку клавиатуры X11, модель, модификацию и опции:</para>
 
 <screen role="nodump"><userinput>localectl set-x11-keymap LAYOUT [MODEL] [VARIANT] [OPTIONS]</userinput></screen>
 
-  <para>To list possible values for <command>localectl set-x11-keymap</command>
-  parameters, run <command>localectl</command> with parameters listed below:
+  <para>Чтобы вывести список возможных значений для <command>localectl set-x11-keymap</command> 
+  параметры, запустите <command>localectl</command> с параметрами, перечисленными ниже:
   </para>
 
   <variablelist>
@@ -107,34 +104,34 @@ EOF</userinput></screen>
     <varlistentry>
       <term>list-x11-keymap-models</term>
       <listitem>
-        <para>Shows known X11 keyboard mapping models.</para>
+        <para>Отображает известные модели клавиатуры X11.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>list-x11-keymap-layouts</term>
       <listitem>
-        <para>Shows known X11 keyboard mapping layouts.</para>
+        <para>Отображает известные раскладки клавиатуры X11.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>list-x11-keymap-variants</term>
       <listitem>
-        <para>Shows known X11 keyboard mapping variants.</para>
+        <para>Отображает известные варианты раскладки клавиатуры X11 (специфичное расположение клавиш).</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>list-x11-keymap-options</term>
       <listitem>
-        <para>Shows known X11 keyboard mapping options.</para>
+        <para>Показывает известные дополнительные опции раскладки клавиатуры X11.</para>
       </listitem>
     </varlistentry>
 
   </variablelist>
 
-  <note><para>Using any of the parameters listed above requires the
-  XKeyboard-Config package from BLFS.</para></note>
+  <note><para>Для использования любого из перечисленных выше параметров требуется пакет 
+  XKeyboard-Config из BLFS.</para></note>
 
 </sect1>
