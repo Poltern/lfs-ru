@@ -181,7 +181,7 @@
       <varlistentry id="mountvirtfs-bootscripts">
         <term><command>mountvirtfs</command></term>
         <listitem>
-          <para>Монтирует виртуальные файловые системы, такие какs <systemitem
+          <para>Монтирует виртуальные файловые системы, такие как <systemitem
           class="filesystem">proc</systemitem></para>
           <indexterm zone="ch-config-bootscripts mountvirtfs-bootscripts">
             <primary sortas="d-mountvirtfs">mountvirtfs</primary>
