@@ -8,109 +8,95 @@
 <sect1 id="ch-config-symlinks">
   <?dbhtml filename="symlinks.html"?>
 
-  <title>Managing Devices</title>
+  <title>Управление устройствами</title>
 
   <sect2 revision="sysv">
 
-    <title>Network Devices</title>
+    <title>Сетевые устройства</title>
 
-    <para>Udev, by default, names network devices according to Firmware/BIOS
-    data or physical characteristics like the bus, slot, or MAC address.  The
-    purpose of this naming convention is to ensure that network devices are
-    named consistently and not based on the time the network card was
-    discovered.  For example, on a computer having two network cards made by
-    Intel and Realtek, the network card manufactured by Intel may become eth0
-    and the Realtek card becomes eth1. In some cases, after a reboot the cards
-    could get renumbered the other way around.</para>
+    <para>Udev по умолчанию присваивает имена сетевым устройствам в соответствии с данными прошивки, 
+	BIOS'а или физическими характеристиками, такими как шина, слот или MAC-адрес. Целью такого соглашения 
+	об именовании является обеспечение того, чтобы сетевые устройства именовались последовательно, а не 
+	основывались на времени обнаружения сетевой карты. Например, на компьютере с двумя сетевыми картами 
+	производства Intel и Realtek сетевая карта производства Intel может стать eth0, а карта Realtek-eth1. 
+	В некоторых случаях после перезагрузки, сетевые карты могут быть переименованы в другой последовательности.</para>
 
-    <para>In the new naming scheme, typical network device names would then
-    be something like enp5s0 or wlp3s0.  If this naming convention is not
-    desired, the traditional naming scheme or a custom scheme can be
-    implemented.</para>
+    <para>В новой схеме именования, типичными именами сетевых устройств являются enp5s0 или wlp3s0. Если 
+	такие имена для вас нежелательны, то может быть реализована традиционная схема именования или своя собственная.</para>
 
     <sect3>
-      <title>Disabling Persistent Naming on the Kernel Command Line</title>
+      <title>Отключение постоянного присвоения имен в параметрах загрузки ядра</title>
 
-      <para>The traditional naming scheme using eth0, eth1, etc can be
-      restored by adding <userinput>net.ifnames=0</userinput> on the
-      kernel command line.  This is most appropriate for those systems
-      that have only one ethernet device of the same type.  Laptops
-      often have multiple ethernet connections that are named eth0 and
-      wlan0 and are also candidates for this method.  The command line
-      is passed in the GRUB configuration file.
-      See <xref linkend="grub-cfg"/>.</para>
+      <para>Традиционная схема именования - eth0, eth1, и так далее, может быть 
+	  включена путем добавления параметра <userinput>net.ifnames=0</userinput> в командную строку ядра. 
+	  Это решение подходит для систем, которые имеют только одно сетевое устройство каждого типа. В ноутбуках 
+	  часто есть несколько сетевых устройств(разного типа) с именами eth0 и wlan0. Эта схема вполне применима к ним. 
+	  Командная строка передается в файле конфигурации GRUB. Подробности смотрите на странице <xref linkend="grub-cfg"/>.</para>
     </sect3>
 
     <sect3>
-      <title>Creating Custom Udev Rules</title>
+      <title>Создание пользовательских правил Udev</title>
 
-      <para>The naming scheme can be customized by creating custom udev
-      rules.  A script has been included that generates the initial rules.
-      Generate these rules by running:</para>
+      <para>Схему именования можно настроить, создав пользовательские правила udev. В состав 
+	  книги включен скрипт, который генерирует начальные правила. Чтобы их сгенерировать, 
+	  выполните команду:</para>
 
 <screen role="install"><userinput>bash /usr/lib/udev/init-net-rules.sh</userinput></screen>
 
-      <para> Now, inspect the
-      <filename>/etc/udev/rules.d/70-persistent-net.rules</filename> file, to
-      find out which name was assigned to which network device:</para>
+      <para> Теперь, проверьте файл <filename>/etc/udev/rules.d/70-persistent-net.rules</filename>, 
+	  чтобы узнать какое имя с каким сетевым устройством сопоставлено:</para>
 
 <screen role="nodump"><userinput>cat /etc/udev/rules.d/70-persistent-net.rules</userinput></screen>
 
-      <note><para>In some cases such as when MAC addresses have been assigned to
-      a network card manually or in a virtual environment such as Qemu or Xen,
-      the network rules file may not have been generated because addresses
-      are not consistently assigned.  In these cases, this method cannot
-      be used.</para></note>
+      <note><para>В некоторых случаях, например, когда MAC-адреса были назначены
+      сетевой карте вручную или в виртуальной среде, такой как Qemu или Xen,
+      возможно, файл сетевых правил не будет сгенерирован, поскольку адреса
+      назначаются не последовательно. В таких случаях, этот способ не применим.</para></note>
 
-      <para>The file begins with a comment block followed by two lines for each
-      NIC. The first line for each NIC is a commented description showing its
-      hardware IDs (e.g. its PCI vendor and device IDs, if it's a PCI card),
-      along with its driver in parentheses, if the driver can be found. Neither
-      the hardware ID nor the driver is used to determine which name to give an
-      interface; this information is only for reference. The second line is the
-      udev rule that matches this NIC and actually assigns it a name.</para>
+      <para>Файл начинается с блока комментариев, далее следуют две строки для каждой сетевой 
+	  карты (NIC). Первая строка представляет собой описание с комментариями и содежит аппаратные 
+	  идентификаторы (например, поставщик PCI и идентификаторы устройств, если это PCI-карта), а 
+	  также информацию о драйвере, если его удалось обнаружить. Ни идентификатор оборудования, ни 
+	  драйвер не используются для определения того, какое имя присвоить интерфейсу; эта информация 
+	  предназначена только для справки. Вторая строка - это правило udev, которое соответствует 
+	  этому сетевому адаптеру и фактически присваивает ему имя.</para>
 
-      <para>All udev rules are made up of several keys, separated by commas and
-      optional whitespace. This rule's keys and an explanation of each of them
-      are as follows:</para>
+      <para>Все правила udev состоят из нескольких ключей, разделенных запятыми и необязательными 
+	  пробелами. Ниже приведены ключи правил и пояснения по каждому из них:</para>
 
       <itemizedlist>
         <listitem>
-          <para><literal>SUBSYSTEM=="net"</literal> - This tells udev to ignore
-          devices that are not network cards.</para>
+          <para><literal>SUBSYSTEM=="net"</literal> - указывает Udev игнорировать устройства, 
+		  которые не явлвяются сетевыми картами..</para>
         </listitem>
         <listitem>
-          <para><literal>ACTION=="add"</literal> - This tells udev to ignore this
-          rule for a uevent that isn't an add ("remove" and "change" uevents also
-          happen, but don't need to rename network interfaces).</para>
+          <para><literal>ACTION=="add"</literal> - указывает Udev игнорировать правила для событий, 
+		  отличных от добавления (события "удалить" и "изменить" также происходят, но не требуют 
+		  переименования сетевых интерфейсов).</para>
         </listitem>
         <listitem>
-          <para><literal>DRIVERS=="?*"</literal> - This exists so that udev will
-          ignore VLAN or bridge sub-interfaces (because these sub-interfaces do
-          not have drivers). These sub-interfaces are skipped because the name
-          that would be assigned would collide with their parent devices.</para>
+          <para><literal>DRIVERS=="?*"</literal> - существует для того, чтобы Udev проигнорировал 
+		  подинтерфейсы VLAN или моста (потому что эти подинтерфейсы не имеют драйверов). Эти подинтерфейсы 
+		  пропускаются, потому что назначенные имена будут конфликтовать с именами их родительских устройств.</para>
         </listitem>
         <listitem>
-          <para><literal>ATTR{address}</literal> - The value of this key is the
-          NIC's MAC address.</para>
+          <para><literal>ATTR{address}</literal> - значением этого ключа является MAC-адрес сетевой карты.</para>
         </listitem>
         <listitem>
-          <para><literal>ATTR{type}=="1"</literal> - This ensures the rule only
-          matches the primary interface in the case of certain wireless drivers
-          which create multiple virtual interfaces. The secondary interfaces are
-          skipped for the same reason that VLAN and bridge sub-interfaces are
-          skipped: there would be a name collision otherwise.</para>
+          <para><literal>ATTR{type}=="1"</literal> - этот ключ гарантирует выполнение правила 
+		  соответствующего только основному интерфейсу, при использовании определенных беспроводных драйверов, 
+		  которые создают несколько виртуальных интерфейсов. Дополнительные интерфейсы пропускаются по 
+		  той же причине, что и подинтерфейсы VLAN и мост, в ином случае произошел бы конфликт имен.</para>
         </listitem>
         <listitem>
-          <para><literal>NAME</literal> - The value of this key is the name that
-          udev will assign to this interface.</para>
+          <para><literal>NAME</literal> - значением этого ключа является имя, которое udev присвоит 
+		  этому интерфейсу.</para>
         </listitem>
       </itemizedlist>
 
-      <para>The value of <literal>NAME</literal> is the important part. Make sure
-      you know which name has been assigned to each of your network cards before
-      proceeding, and be sure to use that <literal>NAME</literal> value when
-      creating your configuration files below.</para>
+      <para>Значение <literal>NAME</literal> является очень важным. Прежде чем продолжить, убедитесь, что 
+	  вы знаете, какое имя назначено каждой из сетевых карт, и обязательно используйте это значение 
+	  <literal>NAME</literal> при создании файлов конфигурации далее.</para>
 
     </sect3>
 
@@ -118,121 +104,111 @@
 
   <sect2 revision="sysv">
 
-    <title>CD-ROM symlinks</title>
+    <title>Символические ссылки CD-ROM</title>
 
-    <para>Some software that you may want to install later (e.g., various
-    media players) expect the <filename class="symlink">/dev/cdrom</filename>
-    and <filename class="symlink">/dev/dvd</filename> symlinks to exist, and
-    to point to a CD-ROM or DVD-ROM device. Also, it may be convenient to put
-    references to those symlinks into <filename>/etc/fstab</filename>. Udev
-    comes with a script that will generate rules files to create these symlinks
-    for you, depending on the capabilities of each device, but you need to
-    decide which of two modes of operation you wish to have the script use.</para>
+    <para>Некоторое программное обеспечение, которое вы, возможно, захотите установить позже (например, 
+	различные медиаплееры) ожидают, что устройства <filename class="symlink">/dev/cdrom</filename>
+    или <filename class="symlink">/dev/dvd</filename> и символические ссылки на CD-ROM или DVD-ROM 
+	устройства должны существовать. Кроме того, может быть удобно использовать эти символические ссылки 
+	в <filename>/etc/fstab</filename>. Udev поставляется с файлом сценария, который будет генерировать 
+	правила для создания этих символических ссылок, в зависимости от возможностей каждого устройства, 
+	но вам нужно решить, какой из двух режимов работы вы хотите использовать.</para>
 
-    <para>First, the script can operate in <quote>by-path</quote> mode (used by
-    default for USB and FireWire devices), where the rules it creates depend on
-    the physical path to the CD or DVD device. Second, it can operate in
-    <quote>by-id</quote> mode (default for IDE and SCSI devices), where the
-    rules it creates depend on identification strings stored on the CD or DVD
-    device itself. The path is determined by udev's <command>path_id</command>
-    script, and the identification strings are read from the hardware by its
-    <command>ata_id</command> or <command>scsi_id</command> programs, depending
-    on which type of device you have.</para>
+    <para>Во-первых, скрипт может работать в режиме <quote>by-path</quote> (используется по умолчанию 
+	для USB и FireWire устройств), где создаваемые им правила зависят от физического пути к CD или 
+	DVD устройству. Во-вторых, он может работать в режиме <quote>by-id</quote> (по умолчанию для 
+	устройств IDE и SCSI), где создаваемые им правила зависят от строк идентификации, хранящихся в 
+	самом устройстве CD или DVD. Путь определяется сценарием Udev <command>path_id</command>, а 
+	идентификационные строки считываются с оборудования командами <command>ata_id</command> или 
+	<command>scsi_id</command>, в зависимости от того, какой тип устройства у вас есть.</para>
 
-    <para>There are advantages to each approach; the correct approach to use
-    will depend on what kinds of device changes may happen. If you expect the
-    physical path to the device (that is, the ports and/or slots that it plugs
-    into) to change, for example because you plan on moving the drive to a
-    different IDE port or a different USB connector, then you should use the
-    <quote>by-id</quote> mode. On the other hand, if you expect the device's
-    identification to change, for example because it may die, and you would
-    replace it with a different device with the same capabilities and which
-    is plugged into the same connectors, then you should use the
-    <quote>by-path</quote> mode.</para>
+    <para>У каждого подхода есть свои преимущества; правильный подход к использованию будет зависеть 
+	от того, какие изменения устройств могут произойти. Если вы ожидаете, что физический путь к 
+	устройству (порты и/или слоты, в который оно подключено), изменится, например, потому, что вы 
+	планируете переместить диск в другой порт IDE или другой разъем USB, то вы должны использовать 
+	режим <quote>by-id</quote>. С другой стороны, если вы ожидаете, что идентификация устройства 
+	изменится, например, потому, что оно может выйти из строя, и вы замените его другим устройством 
+	с теми же характеристиками и подключите к тем же разъемам, тогда вы должны использовать режим 
+	<quote>by-path</quote>.</para>
 
-    <para>If either type of change is possible with your drive, then choose a
-    mode based on the type of change you expect to happen more often.</para>
+    <para>Если с вашим устройством возможен любой из вариантов, выберите тот, который по вашему 
+	мнению случается чаще.</para>
 
 <!-- If you use by-id mode, the symlinks will survive even the transition
      to libata for IDE drives, but that is not for the book. -->
 
-    <important><para>External devices (for example, a USB-connected CD drive)
-    should not use by-path persistence, because each time the device is plugged
-    into a new external port, its physical path will change. All
-    externally-connected devices will have this problem if you write udev rules
-    to recognize them by their physical path; the problem is not limited to CD
-    and DVD drives.</para></important>
+    <important><para>Внешние устройства (например, привод компакт-дисков, подключенный через USB) 
+	не следует подключать методом <quote>by-path</quote>, потому что каждый раз, когда устройство 
+	подключено в новый внешний порт, изменится его физический путь. Все внешние устройства подвержены 
+	этой проблеме, если при написании правил Udev применять режим распознавания по их физическому пути. 
+	К тому же, эта проблема не ограничивается CD и DVD-приводами.</para></important>
 
-    <para>If you wish to see the values that the udev scripts will use, then
-    for the appropriate CD-ROM device, find the corresponding directory under
-    <filename class="directory">/sys</filename> (e.g., this can be
-    <filename class="directory">/sys/block/hdd</filename>) and
-    run a command similar to the following:</para>
+    <para>Если вы хотите увидеть значения, которые будут использовать скрипты udev, то для требуемого 
+	устройства CD-ROM найдите соответствующий каталог в
+    <filename class="directory">/sys</filename> (например, это может быть 
+    <filename class="directory">/sys/block/hdd</filename>) и 
+	выполните команду, аналогичную следующей:</para>
 
 <screen role="nodump"><userinput>udevadm test /sys/block/hdd</userinput></screen>
 
-    <para>Look at the lines containing the output of various *_id programs.
-    The <quote>by-id</quote> mode will use the ID_SERIAL value if it exists and
-    is not empty, otherwise it will use a combination of ID_MODEL and
-    ID_REVISION. The <quote>by-path</quote> mode will use the ID_PATH value.</para>
+    <para>Обратите внимание на строки, содержащие вывод различных идентификаторов *_id. Режим 
+	<quote>by-id</quote> будет использовать значение ID_SERIAL если оно существует и не пустое, 
+	иначе будет использована комбинация ID_MODEL и ID_REVISION. Режим <quote>by-path</quote> 
+	будет использовать значение ID_PATH.</para>
 
-    <para>If the default mode is not suitable for your situation, then the
-    following modification can be made to the
-    <filename>/etc/udev/rules.d/83-cdrom-symlinks.rules</filename> file,
-    as follows (where <replaceable>mode</replaceable> is one of
-    <quote>by-id</quote> or <quote>by-path</quote>):</para>
+    <para>Если режим по умолчанию не подходит для вашей ситуации, то в файл
+    <filename>/etc/udev/rules.d/83-cdrom-symlinks.rules</filename> можно внести следующие 
+	изменения (где <replaceable>mode</replaceable> является одним из значений 
+	<quote>by-id</quote> или <quote>by-path</quote>):</para>
 
 <screen role="nodump"><userinput>sed -e 's/"write_cd_rules"/"write_cd_rules <replaceable>mode</replaceable>"/' \
     -i /etc/udev/rules.d/83-cdrom-symlinks.rules</userinput></screen>
 
-    <para>Note that it is not necessary to create the rules files or symlinks
-    at this time because you have bind-mounted the host's
-    <filename class="directory">/dev</filename> directory into the LFS system
-    and we assume the symlinks exist on the host. The rules and symlinks will
-    be created the first time you boot your LFS system.</para>
+    <para>Обратите внимание, что на данный момент, нет необходимости создавать файлы правил 
+	или символические ссылки, так как вы смонтировали каталог <filename class="directory">/dev</filename> 
+	хоста в систему LFS, и мы предполагаем, что символические ссылки уже существуют. Правила и 
+	символические ссылки будут создаваться при первой загрузке LFS системы.</para>
 
-    <para>However, if you have multiple CD-ROM devices, then the symlinks
-    generated at that time may point to different devices than they point to on
-    your host because devices are not discovered in a predictable order. The
-    assignments created when you first boot the LFS system will be stable, so
-    this is only an issue if you need the symlinks on both systems to point to
-    the same device. If you need that, then inspect (and possibly edit) the
-    generated <filename>/etc/udev/rules.d/70-persistent-cd.rules</filename>
-    file after booting, to make sure the assigned symlinks match what you need.</para>
+    <para>Однако, если у вас есть несколько устройств CD-ROM, то символические ссылки, 
+	сгенерированные в это время, могут указывать на другие устройства, и иметь различия от хост 
+	системы, потому что устройства не будут обнаружены в предсказуемом порядке. Назначения, созданные 
+	при первой загрузке системы LFS, будут правильными, проблема возникнет только в том случае, если 
+	символические ссылки в обеих системах указывают на одно и то же устройство. Если потребуется, 
+	проверьте (и, возможно, отредактируйте) сгенерированные правила в файле 
+	<filename>/etc/udev/rules.d/70-persistent-cd.rules</filename> после загрузки, чтобы убедиться, 
+	что назначенные символические ссылки соответствуют тому, что вам нужно.</para>
 
   </sect2>
 
   <sect2>
 
-    <title>Dealing with duplicate devices</title>
+    <title>Работа с дубликатами устройств</title>
 
-    <para>As explained in <xref linkend="ch-config-udev"/>, the order in
-    which devices with the same function appear in
-    <filename class="directory">/dev</filename> is essentially random.
-    E.g., if you have a USB web camera and a TV tuner, sometimes
-    <filename>/dev/video0</filename> refers to the camera and
-    <filename>/dev/video1</filename> refers to the tuner, and sometimes
-    after a reboot the order changes.
-    For all classes of hardware except sound cards and network cards, this is
-    fixable by creating udev rules for custom persistent symlinks.
-    The case of network cards is covered separately in
-    <xref linkend="ch-config-network"/>, and sound card configuration can
-    be found in <ulink url="&blfs-book;postlfs/devices.html">BLFS</ulink>.</para>
+    <para>Как поясняется в <xref linkend="ch-config-udev"/>, порядок отображения
+    устройства с одинаковой функциональностью в <filename class="directory">/dev</filename>
+    является, как правило, случайным. Например, если у вас есть веб камера и TV тюнер,
+    иногда <filename>/dev/video0</filename> ссылается на камеру, а
+    <filename>/dev/video1</filename> ссылается на TV тюнер, а иногда, например, после
+    перезагрузки системы, порядок поменяется на противоположный. Для всех классов оборудования, 
+	за исключением звуковых и сетевых карт, это можно исправить, создав правила udev для 
+	пользовательских постоянных символических ссылок. Случай с сетевыми картами описан отдельно в 
+	<xref linkend="ch-config-network"/>, и инструкции по настройке
+    звуковых карт можно найти в <ulink url="&blfs-book;postlfs/devices.html">BLFS</ulink>.</para>
 
-    <para>For each of your devices that is likely to have this problem
-    (even if the problem doesn't exist in your current Linux distribution),
-    find the corresponding directory under
-    <filename class="directory">/sys/class</filename> or
+    <para>Для каждого из ваших устройств, которые могут иметь такую проблему 
+	(даже если проблема не существует в текущем дистрибутиве Linux ), 
+	найдите соответствующий каталог в
+    <filename class="directory">/sys/class</filename> или
     <filename class="directory">/sys/block</filename>.
-    For video devices, this may be
+    Для видеоустройств это может быть
     <filename
     class="directory">/sys/class/video4linux/video<replaceable>X</replaceable></filename>.
-    Figure out the attributes that identify the device uniquely (usually,
-    vendor and product IDs and/or serial numbers work):</para>
+    Определите атрибуты, которые однозначно идентифицируют устройство (обычно это идентификаторы 
+	поставщика и продукта и/или серийные номера):</para>
 
 <screen role="nodump"><userinput>udevadm info -a -p /sys/class/video4linux/video0</userinput></screen>
 
-    <para>Then write rules that create the symlinks, e.g.:</para>
+    <para>Затем напишите правила, которые создают символические ссылки, например:</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/udev/rules.d/83-duplicate_devs.rules &lt;&lt; "EOF"
 <literal>
@@ -242,12 +218,11 @@ KERNEL=="video*", ATTRS{device}=="0x036f",  ATTRS{vendor}=="0x109e", SYMLINK+="t
 </literal>
 EOF</userinput></screen>
 
-    <para>The result is that <filename>/dev/video0</filename> and
-    <filename>/dev/video1</filename> devices still refer randomly to the tuner
-    and the web camera (and thus should never be used directly), but there are
-    symlinks <filename>/dev/tvtuner</filename> and
-    <filename>/dev/webcam</filename> that always point to the correct
-    device.</para>
+    <para>В результате устройства <filename>/dev/video0</filename> и 
+	<filename>/dev/video1</filename> по-прежнему случайным образом ссылаются на TV 
+	тюнер и веб-камеру (и, следовательно, никогда не должны использоваться напрямую),
+    но есть символические ссылки /dev/tvtuner и /dev/webcam, которые всегда указывают
+    на правильное устройство.</para>
 
  </sect2>
 
