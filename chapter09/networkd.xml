@@ -8,99 +8,87 @@
 <sect1 id="ch-config-network" revision="systemd">
   <?dbhtml filename="network.html"?>
 
-  <title>General Network Configuration</title>
+  <title>Настройка сети</title>
 
   <indexterm zone="ch-config-network">
     <primary sortas="d-network">network</primary>
   <secondary>configuring</secondary></indexterm>
 
-  <para>This section only applies if a network card is to be
-  configured.</para>
+  <para>Этот раздел применяется только в том случае, если требуется настроить сетевую карту.</para>
 
   <sect2>
-    <title>Network Interface Configuration Files</title>
+    <title>Файлы конфигурации сетевого интерфейса</title>
 
-    <para>Starting with version 209, systemd ships a network configuration
-    daemon called <command>systemd-networkd</command> which can be used for
-    basic network configuration. Additionally, since version 213, DNS name
-    resolution can be handled by <command>systemd-resolved</command> in place
-    of a static <filename>/etc/resolv.conf</filename> file. Both services are
-    enabled by default.</para>
+    <para>Начиная с версии  209 systemd поставляется со службой настройки сети
+    <command>systemd-networkd</command>, которую можно использовать для базовой настройки. А начиная 
+	с версии 213, служба DNS работает через <command>systemd-resolved</command> вместо статичного 
+	файла <filename>/etc/resolv.conf</filename>. Обе службы по умолчанию включены.</para>
 
     <note>
       <para>
-        If you will not use <command>systemd-networkd</command> for network
-        configuration (for example, when the system is not connected to
-        network, or you want to use another utility like NetworkManager
-        for network configuration), disable a service to prevent an error
-        message during boot:
+         Если вы не планируете использовать <command>systemd-networkd</command> для настройки сети 
+		 (например, когда система не подключена к сети, или вы хотите использовать другую утилиту 
+		 для настройки, например, NetworkManager), отключите службу, чтобы не получить сообщение 
+		 об ошибке во время загрузки:
       </para>
       <screen role='nodump'><userinput>systemctl disable systemd-networkd-wait-online</userinput></screen>
     </note>
 
-    <para>Configuration files for <command>systemd-networkd</command> (and
-    <command>systemd-resolved</command>) can be placed in
+    <para>Конфигурационные файлы для <command>systemd-networkd</command> (и
+    <command>systemd-resolved</command>) могут находиться в каталоге
     <filename class="directory">/usr/lib/systemd/network</filename>
-    or <filename class="directory">/etc/systemd/network</filename>. Files in
-    <filename class="directory">/etc/systemd/network</filename> have a
-    higher priority than the ones in
+    или <filename class="directory">/etc/systemd/network</filename>. Файлы в каталоге 
+	<filename class="directory">/etc/systemd/network</filename> имеют более высокий приоритет, чем в
     <filename class="directory">/usr/lib/systemd/network</filename>.
-    There are three types of configuration files:
+    Существует три типа конфигурационных файлов:
     <filename class="extension">.link</filename>,
-    <filename class="extension">.netdev</filename> and
-    <filename class="extension">.network</filename> files. For detailed
-    descriptions and example contents of these configuration files, consult
-    the <filename>systemd-link(5)</filename>,
-    <filename>systemd-netdev(5)</filename> and
-    <filename>systemd-network(5)</filename> manual pages.</para>
+    <filename class="extension">.netdev</filename> и
+    <filename class="extension">.network</filename>. Для получения подробной информации с описанием
+	и примерами содержимого этих конфигурационных файлов ознакомьтесь с руководствами
+	<filename>systemd-link(5)</filename>,
+    <filename>systemd-netdev(5)</filename> и
+    <filename>systemd-network(5)</filename>.</para>
 
     <sect3 id="systemd-network-devices">
-      <title>Network Device Naming</title>
+      <title>Именование сетевых устройств</title>
 
       <para>
-        Udev normally assigns network card interface names based
-        on physical system characteristics such as enp2s1. If you are
-        not sure what your interface name is, you can always run
-        <command>ip link</command> after you have booted your system.
+        Udev обычно назначает имена интерфейсам сетевой карты на основе физических характеристик 
+		системы, например enp2s1. Если вы не знаете имя вашего интерфейса, 
+		вы всегда можете запустить <command>ip link</command> после загрузки системы.
       </para>
 
       <note>
-        <para>The interface names depend on the implementation and
-        configuration of the udev daemon running on the system.  The udev
-        daemon for LFS (<command>systemd-udevd</command>, installed in
-        <xref linkend="ch-system-systemd"/>) will not run unless the LFS
-        system is booted.  So it's unreliable to determine the interface
-        names being used in LFS system by running those commands on the host
-        distro,
-        <emphasis>even though you are in the chroot environment</emphasis>.</para>
+        <para>Имена интерфейсов зависят от реализации и конфигурации демона udev, запущенного в системе. 
+		Udev-демон для LFS (установленный в <xref linkend="ch-system-eudev"/>) не будет запускаться до тех 
+		пор, пока не загрузится система LFS. Таким образом, не правильно определять имена интерфейсов, 
+		используемых в системе LFS, путем запуска этой команды в хост-дистрибутиве, 
+		<emphasis>даже в среде chroot</emphasis>.</para>
       </note>
 
       <para>
-        For most systems, there is only one network interface for
-        each type of connection.  For example, the classic interface
-        name for a wired connection is eth0.  A wireless connection
-        will usually have the name wifi0 or wlan0.
+        Большинство систем имеют только один сетевой интерфейс для каждого типа соединения.
+        Например, классическое имя интерфейса для проводного соединения - eth0.
+        Беспроводное соединение обычно называется wifi0 или wlan0.
       </para>
 
       <para>
-        If you prefer to use the classic or customized network interface names,
-        there are three alternative ways to do that:</para>
+        Если вы предпочитаете использовать классические или настраиваемые имена сетевых интерфейсов, 
+		есть три способа сделать это:</para>
 
       <itemizedlist>
         <listitem>
           <para>
-            Mask udev's .link file for the default policy:
+            Замаскируйте файл .link для политики по умолчанию:
 <screen role="nodump"><userinput>ln -s /dev/null /etc/systemd/network/99-default.link</userinput></screen>
           </para>
         </listitem>
 
         <listitem>
           <para>
-             Create a manual naming scheme, for example by naming the
-             interfaces something like "internet0", "dmz0", or "lan0".
-             To do that, create .link files in /etc/systemd/network/ that
-             select an explicit name or a better naming scheme for your
-             network interfaces. For example:
+             Создайте собственную схему именования интерфейсов, например назвав интерфейсы "internet0", 
+			 "dmz0" или "lan0". Для этого создайте файл .link  в каталоге /etc/systemd/network/, в 
+			 котором явно укажите новое имя интерфейса или более подходящую схема именования. Например:
           </para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/systemd/network/10-ether0.link &lt;&lt; "EOF"
@@ -113,25 +101,23 @@ Name=ether0</literal>
 EOF</userinput></screen>
 
           <para>
-             See the man page systemd.link(5) for more information.
+             Смотрите справочную страницу systemd.link(5) для получения дополнительной информации.
           </para>
         </listitem>
 
         <listitem>
           <para>
-            In /boot/grub/grub.cfg, pass the option net.ifnames=0 on the
-            kernel command line.
+            В /boot/grub/grub.cfg передайте опцию net.ifnames=0 в строке ядра.
           </para>
         </listitem>
       </itemizedlist>
     </sect3>
 
     <sect3 id="systemd-networkd-static">
-      <title>Static IP Configuration</title>
+      <title>Настройка статического IP</title>
 
-      <para>The command below creates a basic configuration file for a
-      Static IP setup (using both systemd-networkd and
-      systemd-resolved):</para>
+      <para>Приведенная ниже команда создает базовый конфигурационный файл для настройки 
+	  статического IP (с использованием как systemd-networkd, так и systemd-resolved):</para>
 <!-- jhalfs relies on the values for Name, Address, etc. If you want to change
      them, please inform the jhalfs maintainer(s). -->
 <screen><userinput>cat &gt; /etc/systemd/network/10-eth-static.network &lt;&lt; "EOF"
@@ -142,20 +128,18 @@ Name=<replaceable>&lt;network-device-name&gt;</replaceable>
 Address=192.168.0.2/24
 Gateway=192.168.0.1
 DNS=192.168.0.1
-Domains=<replaceable>&lt;Your Domain Name&gt;</replaceable></literal>
+Domains=<replaceable>&lt;Ваше доменное имя&gt;</replaceable></literal>
 EOF</userinput></screen>
 
-      <para>Multiple DNS entries can be added if you have more than one DNS
-      server. Do not include DNS or Domains entries if you intend to use a
-      static <filename>/etc/resolv.conf</filename> file.</para>
+      <para>Можно добавить несколько записей DNS, если у вас более одного DNS сервера. Не добавляйте 
+	  записи DNS и Domains, если вы собираетесь использовать статический файл <filename>/etc/resolv.conf</filename>.</para>
 
     </sect3>
 
     <sect3 id="systemd-networkd-dhcp">
-      <title>DHCP Configuration</title>
+      <title>Конфигурация DHCP</title>
 
-      <para>The command below creates a basic configuration file for an IPv4
-      DHCP setup:</para>
+      <para>Приведенная ниже команда создаёт базовый файл настройки для IPv4 DHCP:</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/systemd/network/10-eth-dhcp.network &lt;&lt; "EOF"
 <literal>[Match]
@@ -173,42 +157,36 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 id="resolv.conf">
-    <title>Creating the /etc/resolv.conf File</title>
+    <title>Создание файла /etc/resolv.conf</title>
 
     <indexterm zone="resolv.conf">
       <primary sortas="e-/etc/resolv.conf">/etc/resolv.conf</primary>
     </indexterm>
 
-    <para>If the system is going to be connected to the Internet, it will
-    need some means of Domain Name Service (DNS) name resolution to
-    resolve Internet domain names to IP addresses, and vice versa. This is
-    best achieved by placing the IP address of the DNS server, available
-    from the ISP or network administrator, into
-    <filename>/etc/resolv.conf</filename>.</para>
+    <para>Если система будет подключена к интернету, ей понадобится службы разрешения доменных 
+    имен - DNS для того чтобы  преобразовывать доменные имена в Интернете в IP-адреса и наоборот. 
+	Для этого проще всего будет поместить IP адрес DNS сервера, полученного от вашего провайдера 
+	интернета или сетевого администратора, в файл <filename>/etc/resolv.conf</filename>.</para>
 
     <sect3 id="resolv-conf-systemd-resolved">
-      <title>systemd-resolved Configuration</title>
+      <title>Настройка systemd-resolved</title>
 
-      <note><para>If using methods incompatible with systemd-resolved to
-      configure your network interfaces (ex: ppp, etc.), or if using any
-      type of local resolver (ex: bind, dnsmasq, unbound, etc.),
-      or any other software that generates an <filename>/etc/resolv.conf</filename>
-      (ex: a <command>resolvconf</command> program other than the one
-      provided by systemd), the <command>systemd-resolved</command> service
-      should not be used.</para>
+      <note><para>При использовании сетевых интерфейсов, несовместимых с systemd-resolved 
+	  (например, ppp и т.д.), или при использовании любого локального DNS-сервера (например, bind, 
+	  dnsmasq, unbound и т.д.), или любого другого программного обеспечения, которое генерирует 
+	  <filename>/etc/resolv.conf</filename> (например: программа <command>resolvconf</command>, не 
+	  следует использовать службу <command>systemd-resolved</command>.</para>
 
-      <para>To disable systemd-resolved, issue the following command:</para>
+      <para>Чтобы отключить systemd-resolved, выполните следующую команду:</para>
 
 <screen role="nodump"><userinput>systemctl disable systemd-resolved</userinput></screen></note>
 
-      <para>When using <command>systemd-resolved</command> for DNS
-      configuration, it creates the file
-      <filename>/run/systemd/resolve/stub-resolv.conf</filename>.
-      And, if <filename>/etc/resolv.conf</filename> does not exist, it
-      will be created by <command>systemd-resolved</command> as a symlink to
-      <filename>/run/systemd/resolve/stub-resolv.conf</filename>. So it's
-      unnecessary to create a <filename>/etc/resolv.conf</filename>
-      manually.</para>
+      <para>При использовании <command>systemd-resolved</command> для настройки DNS, служба создает файл
+       <filename>/run/systemd/resolve/stub-resolv.conf</filename>.
+       И, если файл <filename>/etc/resolv.conf</filename> не существует, он будет создан службой
+	   <command>systemd-resolved</command> как символическая ссылка на
+       <filename>/run/systemd/resolve/stub-resolv.conf</filename>. Поэтому не нужно создавать 
+	   <filename>/etc/resolv.conf</filename> вручную.</para>
       <!--Create a
       symlink in <filename>/etc</filename> to use the generated file:</para>
 
@@ -218,69 +196,63 @@ EOF</userinput></screen>
     </sect3>
 
     <sect3 id="resolv-conf-static">
-      <title>Static resolv.conf Configuration</title>
+      <title>Статическая конфигурация resolv.conf</title>
 
-      <para>If a static <filename>/etc/resolv.conf</filename> is desired,
-      create it by running the following command:</para>
+      <para>Если требуется статический файл <filename>/etc/resolv.conf</filename>, создайте его 
+	  выполнив следующую команду:</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/resolv.conf &lt;&lt; "EOF"
 <literal># Begin /etc/resolv.conf
 
-domain <replaceable>&lt;Your Domain Name&gt;</replaceable>
-nameserver <replaceable>&lt;IP address of your primary nameserver&gt;</replaceable>
-nameserver <replaceable>&lt;IP address of your secondary nameserver&gt;</replaceable>
+domain <replaceable>&lt;Ваше доменное имя&gt;</replaceable>
+nameserver <replaceable>&lt;IP-адрес вашего основного DNS-сервера&gt;</replaceable>
+nameserver <replaceable>&lt;IP-адрес вашего дополнительного DNS-сервера&gt;</replaceable>
 
 # End /etc/resolv.conf</literal>
 EOF</userinput></screen>
 
-      <para>The <varname>domain</varname> statement can be omitted
-      or replaced with a <varname>search</varname> statement.  See the man page
-      for resolv.conf for more details.</para>
+      <para>Оператор <varname>domain</varname> может быть опущен или заменён оператором 
+	  <varname>search</varname>. Смотрите справочную страницу resolv.conf для получения 
+	  подробной информации.</para>
 
-      <para>Replace
-      <replaceable>&lt;IP address of the nameserver&gt;</replaceable>
-      with the IP address of the DNS server most appropriate for your setup.
-      There will often be more than one entry (requirements demand secondary
-      servers for fallback capability). If you only need or want one DNS server,
-      remove the second <emphasis>nameserver</emphasis> line from the file.
-      The IP address may also be a router on the local network. Another option
-      is to use the Google Public DNS service using the IP addresses below as
-      nameservers.</para>
+      <para>Замените <replaceable>&lt;IP-адрес вашего основного DNS-сервера&gt;</replaceable> 
+	  адресом наиболее подходящего DNS сервера. DNS серверов, может быть указано более одной записи 
+	  (дополнительные серверы необходимы для возможности резервного переключения). Если вам нужен 
+	  только один DNS-сервер, удалите вторую строку <emphasis>nameserver</emphasis> из файла. DNS-сервер 
+	  также может выступать шлюзом в локальной сети. Другой вариант заключается в использовании 
+	  общедоступных DNS Google, прописав указанные ниже IP-адреса в качестве DNS-серверов.</para>
 
-      <note><para>The Google Public IPv4 DNS addresses are
-      <parameter>8.8.8.8</parameter> and <parameter>8.8.4.4</parameter>
-      for IPv4, and <parameter>2001:4860:4860::8888</parameter> and
-      <parameter>2001:4860:4860::8844</parameter> for IPv6.</para></note>
+      <note><para>Адреса общедоступных DNS серверов Google
+      <parameter>8.8.8.8</parameter> и <parameter>8.8.4.4</parameter>
+      для IPv4, а <parameter>2001:4860:4860::8888</parameter> и
+      <parameter>2001:4860:4860::8844</parameter> для IPv6.</para></note>
 
     </sect3>
 
   </sect2>
 
   <sect2 id="ch-config-hostname">
-    <title>Configuring the system hostname</title>
+    <title>Настройка имени хоста</title>
 
     <indexterm zone="ch-config-hostname">
       <primary sortas="d-hostname">hostname</primary>
       <secondary>configuring</secondary>
     </indexterm>
 
-     <para>During the boot process, the file <filename>/etc/hostname</filename>
-     is used for establishing the system's hostname.</para>
+     <para>В процессе загрузки файл <filename>/etc/hostname</filename> используется для 
+	 настройки имени хоста системы.</para>
 
-     <para>Create the <filename>/etc/hostname</filename> file and enter a
-     hostname by running:</para>
+     <para>Создайте файл <filename>/etc/hostname</filename> и внесите имя хоста, выполнив команду:</para>
 
 <screen><userinput>echo "<replaceable>&lt;lfs&gt;</replaceable>" &gt; /etc/hostname</userinput></screen>
 
-     <para><replaceable>&lt;lfs&gt;</replaceable> needs to be replaced with the
-     name given to the computer. Do not enter the Fully Qualified Domain Name
-     (FQDN) here. That information is put in the
-     <filename>/etc/hosts</filename> file.</para>
+     <para><replaceable>&lt;lfs&gt;</replaceable> замените на имя вашего компьютера. Не вносите сюда 
+	 полное доменное имя(FQDN). Эта информация помещается в файл <filename>/etc/hosts</filename>.</para>
 
   </sect2>
 
   <sect2 id="ch-config-hosts">
-     <title>Customizing the /etc/hosts File</title>
+     <title>Настройка файла /etc/hosts</title>
 
      <indexterm zone="ch-config-hosts">
        <primary sortas="e-/etc/hosts">/etc/hosts</primary>
@@ -296,31 +268,28 @@ EOF</userinput></screen>
        <secondary>/etc/hosts</secondary>
      </indexterm>
 
-     <para>Decide on a fully-qualified domain name (FQDN), and possible aliases
-     for use in the <filename>/etc/hosts</filename> file. If using static IP
-     addresses, you'll also need to decide on an IP address. The syntax
-     for a hosts file entry is:</para>
+     <para>Укажите полное доменное имя (FQDN) и возможные псевдонимы.
+      для использования в файле <filename>/etc/hosts</filename>. Если используется статический IP
+      адреса, вам также необходимо указать IP-адрес. Синтаксис строки в файла hosts:</para>
 
 <screen><literal>IP_address myhost.example.org aliases</literal></screen>
 
-     <para>Unless the computer is to be visible to the Internet (i.e., there is
-     a registered domain and a valid block of assigned IP addresses&mdash;most
-     users do not have this), make sure that the IP address is in the private
-     network IP address range. Valid ranges are:</para>
+     <para>Если компьютер не должен быть виден в Интернете (т. е. нет зарегистрированного домена 
+	 и действительного блока назначенных IP-адресов&mdash;у большинства пользователей этого нет), 
+	 убедитесь, что IP-адрес находится в диапазоне внутренних сетевых IP-адресов. Допустимые диапазоны:</para>
 
 <screen><literal>Private Network Address Range      Normal Prefix
 10.0.0.1 - 10.255.255.254           8
-172.x.0.1 - 172.x.255.254           16
-192.168.y.1 - 192.168.y.254         24</literal></screen>
+172.x.0.1 - 172.x.255.254           12
+192.168.y.1 - 192.168.y.254         16</literal></screen>
 
-     <para>x can be any number in the range 16-31. y can be any number in the
-     range 0-255.</para>
+     <para>x может быть любым числом в диапазоне 16-31. y может быть любым числом в диапазоне 0-255.</para>
 
-     <para>A valid private IP address could be 192.168.1.1. A valid FQDN for
-     this IP could be lfs.example.org.</para>
+     <para>Правильный IP адрес может быть 192.168.1.1. Правильный FQDN для этого IP 
+	 адреса может быть lfs.example.org.</para>
 
-     <para>Even if not using a network card, a valid FQDN is still required.
-     This is necessary for certain programs, such as MTAs, to operate properly.</para>
+     <para>Даже если сетевая карта не используется, всё равно требуется указание полного доменного 
+	 имени. Это необходимо для правильной работы некоторых программ.</para>
 
 <!--
      <para>Create the /etc/hosts file using the following command:</para>
@@ -338,8 +307,7 @@ ff02::2   ip6-allrouters
 EOF</userinput></screen>
 -->
 
-     <para>Create the <filename>/etc/hosts</filename> file using the following
-     command:</para>
+     <para>Создайте файл <filename>/etc/hosts</filename>, выполнив команду:</para>
 
 <screen><userinput>cat &gt; /etc/hosts &lt;&lt; "EOF"
 <literal># Begin /etc/hosts
@@ -354,18 +322,16 @@ ff02::2   ip6-allrouters
 # End /etc/hosts</literal>
 EOF</userinput></screen>
 
-     <para>The <replaceable>&lt;192.168.0.2&gt;</replaceable>,
-     <replaceable>&lt;FQDN&gt;</replaceable>, and
-     <replaceable>&lt;HOSTNAME&gt;</replaceable> values need to be
-     changed for specific uses or requirements (if assigned an IP address by a
-     network/system administrator and the machine will be connected to an
-     existing network). The optional alias name(s) can be omitted, and the
-     <replaceable>&lt;192.168.0.2&gt;</replaceable> line can be omitted if you
-     are using a connection configured with DHCP or IPv6 Autoconfiguration.</para>
+     <para>Значения <replaceable>&lt;192.168.0.2&gt;</replaceable>,
+     <replaceable>&lt;FQDN&gt;</replaceable>, и
+     <replaceable>&lt;HOSTNAME&gt;</replaceable> должны быть изменены на необходимые в 
+	 соответствии требованиями сети (если имеется IP-адрес выданный сетевым/системным администратором 
+	 и машина подключена к существующей сети). Необязательные параметры могут быть опущены, а строку
+     <replaceable>&lt;192.168.0.2&gt;</replaceable> можно опустить, если вы используете подключение, 
+	 настроенное с помощью DHCP или автоматической настройки IPv6.</para>
 
-     <para>The ::1 entry is the IPv6 counterpart of 127.0.0.1 and represents
-     the IPv6 loopback interface. 127.0.1.1 is a loopback entry reserved
-     specifically for the FQDN.</para>
+     <para>Запись ::1 является IPv6-аналогом 127.0.0.1 и представляет loopback-интерфейс IPv6. 
+	 127.0.1.1 — это зарезервированная специально для FQDN запись.</para>
 
    </sect2>
 
