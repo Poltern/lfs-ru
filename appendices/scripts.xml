@@ -36,7 +36,7 @@
   <?dbhtml dir="scripts"?>
   <?dbhtml filename="scripts.html"?>
 
-  <title>Версия скриптов загрузки и настройки системы-&lfs-bootscripts-version;</title>
+  <title>Скрипты загрузки и настройки системы-&lfs-bootscripts-version;</title>
 
   <para>Скрипты в приложении перечислены с указанием каталога, в котором они обычно находятся.
   Порядок такой: <filename

@@ -8,7 +8,7 @@
 <sect1 id="ch-config-profile" revision="sysv">
   <?dbhtml filename="profile.html"?>
 
-  <title>The Bash Shell Startup Files</title>
+  <title>Файлы запуска оболочки Bash</title>
 
   <indexterm zone="ch-config-profile">
     <primary sortas="e-/etc/profile">/etc/profile</primary>
