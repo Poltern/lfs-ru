@@ -18,29 +18,24 @@
 
   <note>
     <para>
-      If your system has UEFI support and you wish to boot LFS with UEFI,
-      you should skip this page, and config GRUB with UEFI support
-      using the instructions provided in
-      <ulink url="&blfs-book;postlfs/grub-setup.html">the BLFS page</ulink>.
+      Если ваша система поддерживает UEFI и вы хотите загрузить LFS с помощью UEFI, вам следует 
+	  пропустить эту страницу и сконфигурировать GRUB с поддержкой UEFI используя инструкции, 
+	  приведенные на <ulink url="&blfs-book;postlfs/grub-setup.html">странице BLFS</ulink>.
     </para>
   </note>
 
   <sect2>
-    <title>Introduction</title>
+    <title>Введение</title>
 
-    <warning><para>Configuring GRUB incorrectly can render your system
-    inoperable without an alternate boot device such as a CD-ROM or bootable
-    USB drive. This section is not required to boot your LFS system.  You may
-    just want to modify your current boot loader, e.g. Grub-Legacy, GRUB2, or
-    LILO.</para></warning>
+    <warning><para>При неправильной настройке GRUB ваша система перестанет загружаться без
+    вспомогательно загрузочного CD-ROM или USB-накопителя. Для загрузки системы LFS этот раздел 
+	необязателен. Вы можете просто хотите изменить существующий загрузчик, например Grub-Legacy, 
+	GRUB2 или LILO.</para></warning>
 
-    <para> Ensure that an emergency boot disk is ready to <quote>rescue</quote>
-    the computer if the computer becomes unusable (un-bootable).  If you do not
-    already have a boot device, you can create one.  In order for the procedure
-    below to work, you need to jump ahead to BLFS and install
-    <userinput>xorriso</userinput> from the <ulink
-    url="&blfs-book;multimedia/libisoburn.html">
-    libisoburn</ulink> package.</para>
+    <para>Убедитесь, что аварийный загрузочный диск готов к <quote>спасению</quote> компьютера, 
+	если он перестанет загружаться. Если у вас еще нет загрузочного диска, вы можете создать его. 
+	Для этого необходимо перейти в раздел BLFS и установить программу <userinput>xorriso</userinput> 
+	из пакета <ulink url="&blfs-book;multimedia/libisoburn.html">libisoburn</ulink>.</para>
 
 <screen role="nodump"><userinput>cd /tmp
 grub-mkrescue --output=grub-img.iso
@@ -49,72 +44,64 @@ xorriso -as cdrecord -v dev=/dev/cdrw blank=as_needed grub-img.iso</userinput></
   </sect2>
 
   <sect2>
-    <title>GRUB Naming Conventions</title>
+    <title>Соглашения об именовании GRUB</title>
 
-    <para>GRUB uses its own naming structure for drives and partitions in
-    the form of <emphasis>(hdn,m)</emphasis>, where <emphasis>n</emphasis>
-    is the hard drive number and <emphasis>m</emphasis> is the partition
-    number. The hard drive number starts from zero, but the partition number
-    starts from one for normal partitions and five for extended partitions.
-    Note that this is different from earlier versions where
-    both numbers started from zero. For example, partition <filename
-    class="partition">sda1</filename> is <emphasis>(hd0,1)</emphasis> to
-    GRUB and <filename class="partition">sdb3</filename> is
-    <emphasis>(hd1,3)</emphasis>. In contrast to Linux, GRUB does not
-    consider CD-ROM drives to be hard drives. For example, if using a CD
-    on <filename class="partition">hdb</filename> and a second hard drive
-    on <filename class="partition">hdc</filename>, that second hard drive
-    would still be <emphasis>(hd1)</emphasis>.</para>
+    <para>GRUB использует собственную структуру именования дисков и разделов в
+     виде <emphasis>(hdn,m)</emphasis>, где <emphasis>n</emphasis>
+     — номер жесткого диска, а <emphasis>m</emphasis> — номер раздела. Номер жесткого диска 
+	 начинается с нуля, а номер раздела  начинается с единицы для обычных разделов и с пяти 
+	 для расширенных разделов. Обратите внимание, что это отличается от более ранних версий, 
+	 где оба номера начинались с нуля. Например, раздел <filename class="partition">sda1</filename> 
+	 это <emphasis>(hd0,1)</emphasis> в GRUB, а <filename class="partition">sdb3</filename>
+     <emphasis>(hd1,3)</emphasis>. В отличие от Linux, GRUB не считает приводы CD-ROM жесткими 
+	 дисками. Например, если используемый CD-привода определяется как <filename class="partition">hdb</filename>, 
+	 а второй жесткий диск как <filename class="partition">hdc</filename>, этот второй жесткий 
+	 диск все равно будет <emphasis>(hd1)</emphasis>.</para>
 
   </sect2>
 
   <sect2>
-    <title>Setting Up the Configuration</title>
+    <title>Настройка</title>
 
-    <para>GRUB works by writing data to the first physical track of the
-    hard disk.  This area is not part of any file system.  The programs
-    there access GRUB modules in the boot partition.  The default location
-    is /boot/grub/.</para>
+    <para>GRUB записывает данные на первый физический сектор жесткого диска. Эта область не
+    является частью какой-либо файловой системы. Программа в загрузочном разделе имеет доступ 
+	к модулям GRUB расположенным по умолчанию в /boot/grub/.</para>
 
-    <para>The location of the boot partition is a choice of the user that
-    affects the configuration.  One recommendation is to have a separate small
-    (suggested size is 200 MB) partition just for boot information.  That way
-    each build, whether LFS or some commercial distro, can access the same boot
-    files and access can be made from any booted system.  If you choose to do
-    this, you will need to mount the separate partition, move all files in the
-    current <filename class="directory">/boot</filename> directory (e.g. the
-    linux kernel you just built in the previous section) to the new partition.
-    You will then need to unmount the partition and remount it as <filename
-    class="directory">/boot</filename>.  If you do this, be sure to update
-    <filename>/etc/fstab</filename>.</para>
+    <para>Расположение загрузочного раздела - это выбор пользователя, который влияет на конфигурацию. 
+	Одна из рекомендаций заключается в том, чтобы иметь отдельный небольшой раздел (примерно 200 МБ) 
+	исключительно для загрузочной информации. В этом случае каждая сборка, будь то LFS или другой дистрибутив, 
+	может обращаться к тем же загрузочным файлам, а доступ может быть получен из любой загруженной
+    системы. Если вы решите так сделать, вам необходимо примонтировать отдельный раздел, переместить 
+	все файлы из текущего каталога <filename class="directory">/boot</filename> (например, ядро Linux, 
+	которое вы создали в предыдущем разделе) в новый раздел. Затем нужно отмонтировать раздел и
+    примонтировать его заново в каталог <filename class="directory">/boot</filename>. Когда вы это 
+	сделаете, обязательно обновите данные в файле <filename>/etc/fstab</filename>.</para>
 
-    <para>Using the current lfs partition will also work, but configuration
-    for multiple systems is more difficult.</para>
+    <para>Использование текущего раздела lfs также будет работать, но его настройка для нескольких
+    систем сложнее.</para>
 
-    <para>Using the above information, determine the appropriate
-    designator for the root partition (or boot partition, if a separate
-    one is used). For the following example, it is assumed that the root
-    (or separate boot) partition is <filename
+    <para>Используя информацию выше, определите соответствующие точки монтирования для
+    корневого раздела (или загрузочного раздела, если используется отдельный). В следующем
+    примере предполагается, что корневым (или отдельным загрузочным) разделом является <filename
     class="partition">sda2</filename>.</para>
 
-    <para>Install the GRUB files into <filename
-    class="directory">/boot/grub</filename> and set up the boot track:</para>
+    <para>Установите файлы GRUB в каталог <filename
+    class="directory">/boot/grub</filename> и настройте загрузочный сектор:</para>
 
     <warning>
-      <para>The following command will overwrite the current boot loader. Do not
-      run the command if this is not desired, for example, if using a third party
-      boot manager to manage the Master Boot Record (MBR).</para>
+      <para>Следующая команда перезапишет текущий загрузчик. Не выполняйте эту команду,
+      если это не нужно, например, если вы используете сторонний менеджер загрузки для
+      управления главной загрузочной записью (MBR).</para>
     </warning>
 
 <screen role="nodump"><userinput>grub-install /dev/sda</userinput></screen>
 
     <note>
-      <para>If the system has been booted using UEFI,
-      <command>grub-install</command> will try to install files for the
-      <emphasis>x86_64-efi</emphasis> target, but those files
-      have not been installed in <xref linkend="chapter-building-system"/>.
-      If this is the case, add <option>--target i386-pc</option> to the
-      command above.</para>
+      <para>Если система была загружена с использованием UEFI, 
+      <command>grub-install</command> попытается установить файлы для 
+      <emphasis>x86_64-efi</emphasis>, но эти файлы не были установлены в 
+	  <xref linkend="chapter-building-system"/>. Если это так, добавьте 
+	  <option>--target i386-pc</option> к приведенной выше команде.</para>
     </note>
 
 <!-- This does not seem to be true any more
@@ -131,9 +118,9 @@ xorriso -as cdrecord -v dev=/dev/cdrw blank=as_needed grub-img.iso</userinput></
   </sect2>
 
   <sect2 id="grub-cfg">
-    <title>Creating the GRUB Configuration File</title>
+    <title>Создание файла конфигурации GRUB</title>
 
-    <para>Generate <filename>/boot/grub/grub.cfg</filename>:</para>
+    <para>Создайте файл <filename>/boot/grub/grub.cfg</filename>:</para>
 
     <screen><userinput>cat &gt; /boot/grub/grub.cfg &lt;&lt; "EOF"
 <literal># Begin /boot/grub/grub.cfg
@@ -148,57 +135,51 @@ menuentry "GNU/Linux, Linux &linux-version;-lfs-&version;" {
 }</literal>
 EOF</userinput></screen>
 
-    <note><para>From <application>GRUB</application>'s perspective, the
-    kernel files are relative to the partition used.  If you
-    used a separate /boot partition, remove /boot from the above
-    <emphasis>linux</emphasis> line.  You will also need to change the
-    <emphasis>set root</emphasis> line to point to the boot partition.
-    </para></note>
+    <note><para>С точки зрения <application>GRUB</application>, 
+	файлы ядра относятся к используемому разделу. Если вы используется отдельный раздел 
+	/boot, удалите /boot из приведенной выше строки <emphasis>linux</emphasis>. Вам также 
+	потребуется изменить строка <emphasis>set root</emphasis> так, чтобы она указывала на 
+	загрузочный раздел.</para></note>
 
     <note>
-      <para>The GRUB designator for a partition may change if you added or
-      removed some disks (including removable disks like USB thumb devices).
-      The change may cause boot failure because
-      <filename>grub.cfg</filename> refers to some <quote>old</quote>
-      designators.  If you wish to avoid such a problem, you may use
-      the UUID of partition and filesystem instead of GRUB designator to
-      specify a partition.
-      Run <command>lsblk -o UUID,PARTUUID,PATH,MOUNTPOINT</command> to show
-      the UUID of your filesystems (in <literal>UUID</literal> column) and
-      partitions (in <literal>PARTUUID</literal> column).  Then replace
-      <literal>set root=(hdx,y)</literal> with
-      <literal>search --set=root --fs-uuid <replaceable>&lt;UUID of the filesystem where the kernel is installed&gt;</replaceable></literal>, and replace
-      <literal>root=/dev/sda2</literal> with
-      <literal>root=PARTUUID=<replaceable>&lt;UUID of the partition where LFS is built&gt;</replaceable></literal>.</para>
-      <para>Note that the UUID of a partition and the UUID of the filesystem
-      in this partition is completely different.  Some online resources may
-      instruct you to use
-      <literal>root=UUID=<replaceable>&lt;filesystem UUID&gt;</replaceable></literal>
-      instead of
-      <literal>root=PARTUUID=<replaceable>&lt;partition UUID&gt;</replaceable></literal>,
-      but doing so will require an initramfs which is beyond the scope of
-      LFS.</para>
-      <para>The name of the device node for a partition in
-      <filename class='directory'>/dev</filename> may also change (more
-      unlikely than GRUB designator change though).  You can also replace
-      paths to device nodes like <literal>/dev/sda1</literal> with
-      <literal>PARTUUID=<replaceable>&lt;partition UUID&gt;</replaceable></literal>,
-      in <filename>/etc/fstab</filename>, to avoid a potential boot failure
-      in case the device node name has changed.</para>
+      <para>Наименование раздела для GRUB может измениться, если вы добавили или удалили 
+	  некоторые диски (это могут быть как съемные диски, так и USB-устройства).
+      Изменение может привести к сбою загрузки, потому что <filename>grub.cfg</filename> 
+	  ссылается на <quote>старое</quote> наименование.  Если вы хотите избежать такой проблемы, 
+	  вы можете использовать UUID раздела и файловой системы вместо вместо имени.
+      Запустите команду <command>lsblk -o UUID,PARTUUID,PATH,MOUNTPOINT</command>, чтобы посмотреть 
+      UUID ваших файловых систем (в столбце <literal>UUID</literal>) и разделов (в столбце 
+	  <literal>PARTUUID</literal>).  Затем замените
+      <literal>set root=(hdx,y)</literal> на
+      <literal>search --set=root --fs-uuid <replaceable>&lt;UUID файловой системы, в которой 
+	  установлено ядро&gt;</replaceable></literal>, и замените 
+      <literal>root=/dev/sda2</literal> на
+      <literal>root=PARTUUID=<replaceable>&lt;UUID раздела, в котором собрана LFS&gt;</replaceable></literal>.</para>
+	  
+      <para>Обратите внимание, что UUID раздела и UUID файловой системы на этом разделе это 
+	  совершенно разные вещи. Некоторые онлайн-ресурсы могут предлагать вам использовать
+      <literal>root=UUID=<replaceable>&lt;UUID файловой системы&gt;</replaceable></literal>
+      вместо <literal>root=PARTUUID=<replaceable>&lt;UUID раздела&gt;</replaceable></literal>,
+      но для этого потребуется работа с initramfs, которая выходит за рамки LFS.</para>
+      
+	  <para>Имя узла устройства для раздела в <filename class='directory'>/dev</filename> также 
+	  может измениться (хотя маловероятно, что изменится обозначение GRUB). Вы можете заменить 
+	  пути к узлам устройств, таким как <literal>/dev/sda1</literal> на
+      <literal>PARTUUID=<replaceable>&lt;UUID раздела&gt;</replaceable></literal>,
+      в <filename>/etc/fstab</filename>, чтобы избежать потенциального сбоя загрузки в случае, 
+	  если имя узла устройства изменилось.</para>
     </note>
 
-    <para>GRUB is an extremely powerful program and it provides a tremendous
-    number of options for booting from a wide variety of devices, operating
-    systems, and partition types.  There are also many options for customization
-    such as graphical splash screens, playing sounds, mouse input, etc.  The
-    details of these options are beyond the scope of this introduction.</para>
+    <para>GRUB - чрезвычайно мощная программа, предоставляющая огромное количество вариантов 
+	загрузки с самых разных устройств, работающих систем и типов разделов. Существует также множество 
+	опций настройки, таких как графические экраны-заставки, воспроизведение звука, ввод с помощью мыши 
+	и т. д., детали этих опций выходят за рамки этой инструкции.</para>
 
-    <caution><para>There is a command, <application>grub-mkconfig</application>, that
-    can write a configuration file automatically.  It uses a set of scripts in
-    /etc/grub.d/ and will destroy any customizations that you make.  These scripts
-    are designed primarily for non-source distributions and are not recommended for
-    LFS.  If you install a commercial Linux distribution, there is a good chance
-    that this program will be run.  Be sure to back up your grub.cfg file.</para></caution>
+    <caution><para>Существует команда <application>grub-mkconfig</application>, которая может 
+	автоматически записывать файл конфигурации. Она использует набор скриптов из каталога /etc/grub.d/ 
+	и уничтожит любые сделанные вами настройки. Эти скрипты предназначены в первую очередь для обычных 
+	дистрибутивов и не рекомендуются для LFS. Если вы устанавливаете коммерческий дистрибутив Linux, 
+	есть вероятность, что эта программа будет запущена. Обязательно создайте резервную копию файла grub.cfg.</para></caution>
 
    </sect2>
 
