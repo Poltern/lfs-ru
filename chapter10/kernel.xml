@@ -23,7 +23,7 @@
   <sect2 role="package">
     <title/>
 
-    <para>The Linux package contains the Linux kernel.</para>
+    <para>Этот пакет содержит ядро Linux.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -38,72 +38,67 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of the kernel</title>
+    <title>Установка ядра</title>
 
-    <para>Building the kernel involves a few steps&mdash;configuration,
-    compilation, and installation. Read the <filename>README</filename> file
-    in the kernel source tree for alternative methods to the way this book
-    configures the kernel.</para>
+    <para>Сборка ядра состоит из нескольких этапов&mdash;настройка, компиляция и установка. Ознакомьтесь 
+	с файлом <filename>README</filename> в дереве исходных тектов, чтобы узнать об альтернативных 
+	способах настройки ядра.</para>
 
-    <para>Prepare for compilation by running the following command:</para>
+    <para>Подготовьте пакет к компиляции, выполнив следующую команду:</para>
 
 <screen><userinput remap="pre">make mrproper</userinput></screen>
 
-    <para>This ensures that the kernel tree is absolutely clean. The
-    kernel team recommends that this command be issued prior to each
-    kernel compilation. Do not rely on the source tree being clean after
-    un-tarring.</para>
+    <para>Выполнение этой команды гарантирует, что дерево исходников будет абсолютно чистым. 
+	Разработчики ядра рекомендуют запускать эту команду перед каждой компиляцией. Не следует полагаться 
+	на то, что дерево исходных текстов ядра будет чистым после распаковки.</para>
 
-    <para>There are several ways to configure the kernel options. Usually,
-    This is done through a menu-driven interface, for example:</para>
+    <para>Существует несколько способов настройки параметров ядра. Обычно это делается с помощью 
+	псевдографического интерфейса, например так:</para>
 
 <screen role="nodump"><userinput>make menuconfig</userinput></screen>
 
     <variablelist>
-      <title>The meaning of optional make environment variables:</title>
+      <title>Значения необязательных переменных окружения make:</title>
 
       <varlistentry>
-        <term><parameter>LANG=&lt;host_LANG_value&gt; LC_ALL=</parameter></term>
+        <term><parameter>LANG=&lt;переменная_LANG_хоста&gt; LC_ALL=</parameter></term>
         <listitem>
-          <para>This establishes the locale setting to the one used on the
-          host.  This may be needed for a proper menuconfig ncurses interface
-          line drawing on a UTF-8 linux text console.</para>
+          <para>Устанавливает значение локали на то, которое используется на хосте. Это может 
+		  понадобиться для правильного отображения интерфейса menuconfig с помощью ncurses в текстовой 
+		  консоли Linux с UTF-8.</para>
 
-          <para>If used, be sure to replace
-          <replaceable>&lt;host_LANG_value&gt;</replaceable> by the value of
-          the <envar>$LANG</envar> variable from your host.  You can
-          alternatively use instead the host's value of <envar>$LC_ALL</envar>
-          or <envar>$LC_CTYPE</envar>.</para>
+          <para>Если это необходимо, обязательно замените значение
+          <replaceable>&lt;переменной_LANG&gt;</replaceable> на значение переменной 
+		  <envar>$LANG</envar> вашего хоста. В качестве альтернативы вы можете использовать 
+		  значения переменных <envar>$LC_ALL</envar> или <envar>$LC_CTYPE</envar>.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><command>make menuconfig</command></term>
         <listitem>
-          <para>This launches an ncurses menu-driven interface. For other
-          (graphical) interfaces, type <command>make help</command>.</para>
+          <para>Эта команда запускаеи интерфейс на основе ncurses. Для использования других 
+		  (графических) интерфейсов, выполните <command>make help</command>.</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
     <!-- Support for compiling a keymap into the kernel is deliberately removed -->
 
-    <para>For general information on kernel configuration see <ulink
-    url="&hints-root;kernel-configuration.txt"/>.  BLFS has some information
-    regarding particular kernel configuration requirements of packages outside
-    of LFS at <ulink
-    url="&blfs-book;longindex.html#kernel-config-index"/>.  Additional
-    information about configuring and building the kernel can be found at
-    <ulink url="http://www.kroah.com/lkn/"/> </para>
+    <para>Для получения общей информации о настройке параметров ядра, смотрите <ulink
+    url="&hints-root;kernel-configuration.txt"/>. Книга BLFS содержит некоторую информацию о 
+	требованиях к конфигурации ядра для поддержки пакетов, которые отсутствуют в LFS. Эта 
+	информация доступна по ссылке <ulink url="&blfs-book;longindex.html#kernel-config-index"/>. 
+	Дополнительную информацию о настройке и сборке ядра можно найти по адресу 
+	<ulink url="http://www.kroah.com/lkn/"/>.</para>
 
     <note>
-      <para>A good starting place for setting up the kernel configuration is to
-      run <command>make defconfig</command>. This will set the base
-      configuration to a good state that takes your current system architecture
-      into account.</para>
+      <para>Хорошей отправной точкой для настройки ядра, может стать запуск команды 
+	  <command>make defconfig</command>. В результате её выполнения будет создана базовая 
+	  конфигурация с учётом архитектуры системы.</para>
 
-      <para>Be sure to enable/disable/set the following features or the system might
-      not work correctly or boot at all:</para>
+      <para>Обязательно включите/отключите/настройте следующие параметры, иначе система может 
+	  работаеть некорректно или вообще не загружаться:</para>
 
       <screen role="nodump" revision="sysv">Processor type and features ---&gt;
    [*] Build a relocatable kernel [CONFIG_RELOCATABLE]
@@ -161,12 +156,12 @@ File systems  ---&gt;
        Pseudo filesystems  ---&gt;
         [*] Tmpfs POSIX Access Control Lists [CONFIG_TMPFS_POSIX_ACL]</screen>
 
-      <para>Enable some additional features if you are building a 64-bit
-      system.  If you are using menuconfig, enable them in the order of
-      <parameter>CONFIG_PCI_MSI</parameter> first, then
-      <parameter>CONFIG_IRQ_REMAP</parameter>, at last
-      <parameter>CONFIG_X86_X2APIC</parameter> because an option only
-      shows up after its dependencies are selected.</para>
+      <para>Включите некоторые дополнительные параметры, если вы создаете 64-битную
+       систему. Если вы используете menuconfig, включите их в следующем порядке: сначала
+       <parameter>CONFIG_PCI_MSI</parameter>, затем
+       <parameter>CONFIG_IRQ_REMAP</parameter>, и, наконец, 
+       <parameter>CONFIG_X86_X2APIC</parameter>, это связано с тем что каждый следующий 
+	   вариант появляется после включения зависимостей.</para>
 
       <screen role="nodump">Processor type and features ---&gt;
   [*] Support x2apic [CONFIG_X86_X2APIC]
@@ -178,32 +173,30 @@ Device Drivers ---&gt;
     </note>
 
     <note revision="systemd">
-      <para>While "The IPv6 Protocol" is not strictly
-      required, it is highly recommended by the systemd developers.</para>
+      <para>Хотя "Протокол IPv6" не является строго обязательным, он настоятельно рекомендуется 
+	  разработчиками systemd.</para>
     </note>
 
-    <para revision="sysv">There are several other options that may be desired
-    depending on the requirements for the system. For a list of options needed
-    for BLFS packages, see the <ulink
-    url="&lfs-root;blfs/view/&short-version;/longindex.html#kernel-config-index">BLFS
-    Index of Kernel Settings</ulink>
+    <para revision="sysv">Есть несколько других параметров, которые могут понадобиться 
+	в зависимости от особенностей системы. Для получения списка необходимых опций для пакетов BLFS 
+	смотрите <ulink
+    url="&lfs-root;blfs/view/&short-version;/longindex.html#kernel-config-index">Список опций ядра BLFS</ulink>
     (&lfs-root;blfs/view/&short-version;/longindex.html#kernel-config-index).</para>
 
     <note>
-      <para>If your host hardware is using UEFI and you wish to boot the
-      LFS system with it, you should adjust some kernel configuration
-      following <ulink url="&blfs-book;postlfs/grub-setup.html#uefi-kernel">
-      the BLFS page</ulink>.</para>
+      <para>Если ваша хост поддерживает UEFI и вы хотите загрузить LFS с помощью него, вам необходимо 
+	  настроить некоторые параметры ядра, следуя инструкции 
+	  <ulink url="&blfs-book;postlfs/grub-setup.html#uefi-kernel">на странице BLFS</ulink>.</para>
     </note>
 
     <variablelist>
-      <title>The rationale for the above configuration items:</title>
+      <title>Пояснения для выбранных выше параметров ядра:</title>
 
       <varlistentry>
         <term><parameter>Randomize the address of the kernel image (KASLR)</parameter></term>
         <listitem>
-          <para>Enable ASLR for kernel image, to mitigate some attacks based
-          on fixed addresses of sensitive data or code in the kernel.</para>
+          <para>Включить ASLR для ядра, чтобы уменшить вероятность атаки на фиксированные адреса 
+		  конфиденциальных данных или кода в ядре.</para>
         </listitem>
       </varlistentry>
 
@@ -214,9 +207,8 @@ Device Drivers ---&gt;
           </parameter>
         </term>
         <listitem>
-          <para>This may cause building failure if the compiler and/or
-          configuration are different from those of the kernel
-          developers.</para>
+          <para>Включение этого параметра может привести к сбою сборки, если компилятор и/или конфигурация отличается 
+		  от конфигурации ядра разработчиков.</para>
         </listitem>
       </varlistentry>
 
@@ -227,129 +219,112 @@ Device Drivers ---&gt;
           </parameter>
         </term>
         <listitem>
-          <para>This will require <command>cpio</command> building the kernel.
-          <command>cpio</command> is not installed by LFS.</para>
+          <para>Для сборки ядра с этим параметром необходим пакет <command>cpio</command>.
+          <command>cpio</command> не устанавливается в LFS.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>Strong Stack Protector</parameter></term>
         <listitem>
-          <para>Enable SSP for the kernel.  We've enabled it for the entire
-          userspace with <parameter>--enable-default-ssp</parameter>
-          configuring GCC, but the kernel does not use GCC default setting
-          for SSP.  We enable it explicitly here.</para>
+          <para>Включите SSP для ядра. Мы включили его для всего пользовательского пространства 
+		  с помощью параметра <parameter>--enable-default-ssp</parameter> в настройках GCC, но ядро 
+		  не использует настройки GCC по умолчанию для SSP. Здесь мы включаем это явно.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>Support for uevent helper</parameter></term>
         <listitem>
-          <para>Having this option set may interfere with device
-          management when using Udev/Eudev. </para>
+          <para>Включение этого параметра может вызвать сбои при управление устройствами через Udev/Eudev.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>Maintain a devtmpfs</parameter></term>
         <listitem>
-          <para>This will create automated device nodes which are populated by the
-          kernel, even without Udev running.  Udev then runs on top of this,
-          managing permissions and adding symlinks.  This configuration
-          item is required for all users of Udev/Eudev.</para>
+          <para>С помощью этого параметра узлы устройств создаются автоматически и заполняются самим 
+		  ядром, даже без запуска Udev. Udev будет работать поверх, управляя разрешениями и добавляя 
+		  необходимые символические ссылки. Этот элемент конфигурации необходим всем пользователям Udev/Eudev.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>Automount devtmpfs at /dev</parameter></term>
         <listitem>
-          <para>This will mount the kernel view of the devices on /dev
-          upon switching to root filesystem just before starting
-          init.</para>
+          <para>Этот параметр позволит смонтировать представление ядра устройств в /dev при 
+		  переключении на корневую файловую систему непосредственно перед запуском init.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>Support x2apic</parameter></term>
         <listitem>
-          <para>Support running the interrupt controller of 64-bit x86
-          processors in x2APIC mode.  x2APIC may be enabled by firmware on
-          64-bit x86 systems, and a kernel without this option enabled will
-          panic on boot if x2APIC is enabled by firmware.  This option has
-          has no effect, but also does no harm if x2APIC is disabled by the
-          firmware.</para>
+          <para>Поддержка запуска 64-разрядного контроллера прерываний для x86 процессоров 
+		  в режиме x2APIC. x2APIC может быть включен в BIOS на системах x86 и у ядра собранного 
+		  без этой опции будет kernel panic при загрузке. Эта опция не окажет никакого эффекта, 
+		  но и не причиняет вреда, если x2APIC отключен в BIOS.</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
-    <para>Alternatively, <command>make oldconfig</command> may be more
-    appropriate in some situations. See the <filename>README</filename>
-    file for more information.</para>
+    <para>В качестве альтернативы, в некоторых ситуациях может быть уместно использование команды 
+	<command>make oldconfig</command>. Смотрите файл <filename>README</filename> для получения 
+	дополнительной информации.</para>
 
-    <para>If desired, skip kernel configuration by copying the kernel
-    config file, <filename>.config</filename>, from the host system
-    (assuming it is available) to the unpacked <filename
-    class="directory">linux-&linux-version;</filename> directory. However,
-    we do not recommend this option. It is often better to explore all the
-    configuration menus and create the kernel configuration from
-    scratch.</para>
+    <para>По желанию, вы можете пропустить настройку ядра, скопировав конфигурационный файл ядра 
+	<filename>.config</filename>, из хост системы(если он доступен) в каталог куда было распаковано 
+	ядро <filename class="directory">linux-&linux-version;</filename>. Однако, мы не рекомендуем 
+	этот вариант. Намного лучше изучить все параметры меню и создать конфигурацию ядра с нуля.</para>
 
-    <para>Compile the kernel image and modules:</para>
+    <para>Скомпилируйте образ ядра и модули:</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>If using kernel modules, module configuration in <filename
-    class="directory">/etc/modprobe.d</filename> may be required.
-    Information pertaining to modules and kernel configuration is
-    located in <xref linkend="ch-config-udev"/> and in the kernel
-    documentation in the <filename
-    class="directory">linux-&linux-version;/Documentation</filename> directory.
-    Also, <filename>modprobe.d(5)</filename> may be of interest.</para>
+    <para>При использовании модулей, могут потребоваться файлы конфигурации, которые расположены в 
+	каталоге <filename class="directory">/etc/modprobe.d</filename>. Информация о модулях и конфигурации 
+	ядра находится в <xref linkend="ch-scripts-udev"/> и в документации к ядру <filename
+    class="directory">linux-&linux-version;/Documentation</filename>. Кроме этого, стоит ознакомиться с 
+	руководством <filename>modprobe.d(5)</filename>.</para>
 
-    <para>Unless module support has been disabled in the kernel configuration,
-    install the modules with:</para>
+    <para>Если поддержка модулей не была отключена в параметрах ядра, установите модули с помощью:</para>
 
 <screen><userinput remap="install">make modules_install</userinput></screen>
 
-    <para>After kernel compilation is complete, additional steps are
-    required to complete the installation. Some files need to be copied to
-    the <filename class="directory">/boot</filename> directory.</para>
+    <para>После окончания компиляции, необходимо выполнить еще несколько шагов для завершения 
+	установки ядра. Некоторые файлы должны быть скопированы в каталог 
+	<filename class="directory">/boot</filename>.</para>
 
     <caution>
-      <para>If the host system has a separate /boot partition, the files copied
-      below should go there. The easiest way to do that is to bind /boot on the
-      host (outside chroot) to /mnt/lfs/boot before proceeding.  As the
-      &root; user in the <emphasis>host system</emphasis>:</para>
+      <para>Если хост система содержит отдельный раздел для каталога /boot, файлы скопированные ниже, 
+	  должны находится в нём. Самый простой способ это сделать -  выполнить монтирование каталога /boot 
+	  хост системы (вне chroot) к каталогу /mnt/lfs/boot перед тем, как продолжить. Из-под пользователя 
+	  &root; в <emphasis>хост системе</emphasis> выполните команду:</para>
 
 <screen role="nodump"><userinput>mount --bind /boot /mnt/lfs/boot</userinput></screen>
     </caution>
 
-    <para>The path to the kernel image may vary depending on the platform being
-    used. The filename below can be changed to suit your taste, but the stem of
-    the filename should be <emphasis>vmlinuz</emphasis> to be compatible with
-    the automatic setup of the boot process described in the next section.  The
-    following command assumes an x86 architecture:</para>
+    <para>Путь к образу ядра может различаться в зависимости от используемой платформы. Имя файла, может 
+	быть произвольным, но начинаться должно с <emphasis>vmlinuz</emphasis> для обеспечения 
+	совместимости с автоматической настройкой процесса загрузки, описанного в следующем разделе. 
+	Следующая команда предполагает архитектуру x86:</para>
 
 <screen><userinput remap="install">cp -iv arch/x86/boot/bzImage /boot/vmlinuz-&linux-version;-lfs-&version;</userinput></screen>
 
-    <para><filename>System.map</filename> is a symbol file for the kernel.
-    It maps the function entry points of every function in the kernel API,
-    as well as the addresses of the kernel data structures for the running
-    kernel.  It is used as a resource when investigating kernel problems.
-    Issue the following command to install the map file:</para>
+    <para><filename>System.map</filename> - это символьный файл для ядра. Он содержит точки входа каждой 
+	функции в API ядра, а также адреса структур данных для запущенного ядро. Он используется в качестве 
+	ресурса при исследовании проблем с ядром. Выполните следующую команду для установки файла:</para>
 
 <screen><userinput remap="install">cp -iv System.map /boot/System.map-&linux-version;</userinput></screen>
 
-    <para>The kernel configuration file <filename>.config</filename>
-    produced by the <command>make menuconfig</command> step
-    above contains all the configuration selections for the kernel
-    that was just compiled. It is a good idea to keep this file for future
-    reference:</para>
+    <para>Файл конфигурации ядра <filename>.config</filename> создается на шаге <command>make menuconfig</command> 
+	и содержит все параметры ядра, которое было скомпилировано только что. Рекомендуется сохранить этот 
+	файл на будущее:</para>
 
 <screen><userinput remap="install">cp -iv .config /boot/config-&linux-version;</userinput></screen>
 
-    <para>Install the documentation for the Linux kernel:</para>
+    <para>Установите документацию ядра:</para>
 
 <screen><userinput remap="install">install -d /usr/share/doc/linux-&linux-version;
 cp -r Documentation/* /usr/share/doc/linux-&linux-version;</userinput></screen>
