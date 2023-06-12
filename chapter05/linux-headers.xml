@@ -51,10 +51,10 @@
 
 <screen><userinput remap="pre">make mrproper</userinput></screen>
 
-    <para>Теперь извлеките видимые пользователю заголовки ядра из исходного кода.
+    <para>Теперь извлеките видимые пользователю заголовочные файлы ядра из исходного кода.
 	Рекомендуемый способ make <quote>headers_install</quote> использовать нельзя,
 	так как для этого требуется <application>rsync</application>, который может быть
-	недоступен. Заголовки сначала помещаются в <filename class="directory">/usr</filename>,
+	недоступен. Заголовочные файлы сначала помещаются в <filename class="directory">/usr</filename>,
 	а затем копируются в нужное место.</para>
 
 <screen><userinput remap="make">make headers
@@ -91,7 +91,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="asm">
         <term><filename class="headerfile">/usr/include/asm/*.h</filename></term>
         <listitem>
-          <para>The Linux API ASM Headers</para>
+          <para>Заголовочные файлы Linux API ASM</para>
           <indexterm zone="ch-tools-linux-headers asm">
             <primary sortas="e-/usr/include/asm/*.h">/usr/include/asm/*.h</primary>
           </indexterm>
@@ -101,7 +101,7 @@ find usr/include -type f ! -name '*.h' -delete
      <varlistentry id="asm-generic">
         <term><filename class="headerfile">/usr/include/asm-generic/*.h</filename></term>
         <listitem>
-          <para>The Linux API ASM Generic Headers</para>
+          <para>Заголовочные файлы Linux API ASM Generic</para>
           <indexterm zone="ch-tools-linux-headers asm-generic">
             <primary sortas="e-/usr/include/asm-generic/*.h">/usr/include/asm-generic/*.h</primary>
           </indexterm>
@@ -111,7 +111,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="drm">
         <term><filename class="headerfile">/usr/include/drm/*.h</filename></term>
         <listitem>
-          <para>The Linux API DRM Headers</para>
+          <para>Заголовочные файлы Linux API DRM</para>
           <indexterm zone="ch-tools-linux-headers drm">
             <primary sortas="e-/usr/include/drm/*.h">/usr/include/drm/*.h</primary>
           </indexterm>
@@ -121,7 +121,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="linux">
         <term><filename class="headerfile">/usr/include/linux/*.h</filename></term>
         <listitem>
-          <para>The Linux API Linux Headers</para>
+          <para>Заголовочные файлы Linux API Linux</para>
           <indexterm zone="ch-tools-linux-headers linux">
             <primary sortas="e-/usr/include/linux/*.h">/usr/include/linux/*.h</primary>
           </indexterm>
@@ -131,7 +131,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="misc">
         <term><filename class="headerfile">/usr/include/misc/*.h</filename></term>
         <listitem>
-          <para>The Linux API Miscellaneous Headers</para>
+          <para>Заголовочные файлы Linux API Miscellaneous</para>
           <indexterm zone="ch-tools-linux-headers misc">
             <primary sortas="e-/usr/include/misc/*.h">/usr/include/misc/*.h</primary>
           </indexterm>
@@ -141,7 +141,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="mtd">
         <term><filename class="headerfile">/usr/include/mtd/*.h</filename></term>
         <listitem>
-          <para>The Linux API MTD Headers</para>
+          <para>Заголовочные файлы API MTD</para>
           <indexterm zone="ch-tools-linux-headers mtd">
             <primary sortas="e-/usr/include/mtd/*.h">/usr/include/mtd/*.h</primary>
           </indexterm>
@@ -151,7 +151,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="rdma">
         <term><filename class="headerfile">/usr/include/rdma/*.h</filename></term>
         <listitem>
-          <para>The Linux API RDMA Headers</para>
+          <para>Заголовочные файлы Linux API RDMA</para>
           <indexterm zone="ch-tools-linux-headers rdma">
             <primary sortas="e-/usr/include/rdma/*.h">/usr/include/rdma/*.h</primary>
          </indexterm>
@@ -161,7 +161,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="scsi">
         <term><filename class="headerfile">/usr/include/scsi/*.h</filename></term>
         <listitem>
-          <para>The Linux API SCSI Headers</para>
+          <para>Заголовочные файлы Linux API SCSI</para>
           <indexterm zone="ch-tools-linux-headers scsi">
             <primary sortas="e-/usr/include/scsi/*.h">/usr/include/scsi/*.h</primary>
           </indexterm>
@@ -171,7 +171,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="sound">
         <term><filename class="headerfile">/usr/include/sound/*.h</filename></term>
         <listitem>
-          <para>The Linux API Sound Headers</para>
+          <para>Заголовочные файлы Linux API Sound</para>
           <indexterm zone="ch-tools-linux-headers sound">
            <primary sortas="e-/usr/include/sound/*.h">/usr/include/sound/*.h</primary>
           </indexterm>
@@ -181,7 +181,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="video">
         <term><filename class="headerfile">/usr/include/video/*.h</filename></term>
         <listitem>
-          <para>The Linux API Video Headers</para>
+          <para>Заголовочные файлы Linux API Video</para>
           <indexterm zone="ch-tools-linux-headers video">
             <primary sortas="e-/usr/include/video/*.h">/usr/include/video/*.h</primary>
           </indexterm>
@@ -191,7 +191,7 @@ find usr/include -type f ! -name '*.h' -delete
       <varlistentry id="xen">
         <term><filename class="headerfile">/usr/include/xen/*.h</filename></term>
         <listitem>
-          <para>The Linux API Xen Headers</para>
+          <para>Заголовочные файлы Linux API Xen</para>
           <indexterm zone="ch-tools-linux-headers xen">
             <primary sortas="e-/usr/include/xen/*.h">/usr/include/xen/*.h</primary>
           </indexterm>

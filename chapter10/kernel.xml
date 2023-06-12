@@ -329,70 +329,61 @@ Device Drivers ---&gt;
 <screen><userinput remap="install">install -d /usr/share/doc/linux-&linux-version;
 cp -r Documentation/* /usr/share/doc/linux-&linux-version;</userinput></screen>
 
-    <para>It is important to note that the files in the kernel source
-    directory are not owned by <emphasis>root</emphasis>. Whenever a
-    package is unpacked as user <emphasis>root</emphasis> (like we did
-    inside chroot), the files have the user and group IDs of whatever
-    they were on the packager's computer. This is usually not a problem
-    for any other package to be installed because the source tree is
-    removed after the installation. However, the Linux source tree is
-    often retained for a long time.  Because of this, there is a chance
-    that whatever user ID the packager used will be assigned to somebody
-    on the machine. That person would then have write access to the kernel
-    source.</para>
+    <para>Важно отметить, что файлы в каталоге исходных кодов ядра не принадлежат пользователю 
+	<emphasis>root</emphasis>. Всякий раз, когда пакет распаковывается от пользователя 
+	<emphasis>root</emphasis> (как это и выполнялось внутри среды chroot), файлы имеют те 
+	идентификаторы пользователя и группы, которые были присвоены при распаковке. Обычно 
+	это не вызывает проблем для других устанавливаемых пакетов, так как каталог с исходными 
+	кодами удаляется после установки пакета. Однако исходный код ядра Linux часто сохраняется 
+	в течение длительного времени. Из-за этого существует вероятность того, что идентификатор 
+	пользователя, используемый при распаковке, будет назначен другому пользователю. В таком 
+	случае, этот пользователь будет иметь доступ на запись в этот каталог.</para>
 
     <note>
-      <para>In many cases, the configuration of the kernel will need to be
-      updated for packages that will be installed later in BLFS.  Unlike
-      other packages, it is not necessary to remove the kernel source tree
-      after the newly built kernel is installed.</para>
+      <para>В ряде случаев требуется обновить конфигурацию ядра для пакетов, которые будут 
+	  установлены позже в BLFS.  В отличии от других пакетов, нет необходимости удалять дерево 
+	  исходного кода ядра после установки только что собранного ядра.</para>
 
-      <para>If the kernel source tree is going to be retained, run
-      <command>chown -R 0:0</command> on the <filename
-      class="directory">linux-&linux-version;</filename> directory to ensure
-      all files are owned by user <emphasis>root</emphasis>.</para>
+      <para>Если вы планируете оставить каталог с исходным кодом ядра, выполните команду
+      <command>chown -R 0:0</command> в каталоге <filename
+      class="directory">linux-&linux-version;</filename>, чтобы все файлы принадлежали 
+	  пользователю <emphasis>root</emphasis>.</para>
     </note>
 
     <warning>
-      <para>Some kernel documentation recommends creating a symlink from
-      <filename class="symlink">/usr/src/linux</filename> pointing to the kernel
-      source directory.  This is specific to kernels prior to the 2.6 series and
-      <emphasis>must not</emphasis> be created on an LFS system as it can cause
-      problems for packages you may wish to build once your base LFS system is
-      complete.</para>
+      <para>В некоторой документации по ядру рекомендуется создать символическую ссылку
+	  <filename class="symlink">/usr/src/linux</filename> указывающую на каталог с исходниками 
+	  ядра. Эта рекомендация относится к ядрам до версии 2.6 и <emphasis>не должна</emphasis> 
+	  выполняться в системе LFS, так как это может вызвать проблемы с пакетами, которые вы, возможно, 
+	  захотите собрать, когда ваша базовая система LFS будет готова.</para>
     </warning>
 
     <warning>
-      <para>The headers in the system's <filename
-      class="directory">include</filename> directory (<filename
-      class="directory">/usr/include</filename>) should
-      <emphasis>always</emphasis> be the ones against which Glibc was compiled,
-      that is, the sanitised headers installed in <xref
-      linkend="ch-tools-linux-headers"/>.  Therefore, they should
-      <emphasis>never</emphasis> be replaced by either the raw kernel headers
-      or any other kernel sanitized headers.</para>
+      <para>Заголовочные файлы в системном каталоге <filename class="directory">include</filename> 
+	  (<filename class="directory">/usr/include</filename>) <emphasis>всегда</emphasis> используются те, 
+	  которые применялись при компиляции Glibc, то есть подготовленные заголовочные файлы, установленные в 
+	  <xref linkend="ch-system-linux-headers"/>. Поэтому их <emphasis>никогда</emphasis> не следует заменять 
+	  на чистые заголовочные файлы ядра или любые другие подготовленные заголовочные файлы.</para>
     </warning>
 
   </sect2>
 
   <sect2 id="conf-modprobe" role="configuration">
-    <title>Configuring Linux Module Load Order</title>
+    <title>Настройка порядка загрузки модулей Linux</title>
 
     <indexterm zone="conf-modprobe">
       <primary sortas="e-/etc/modprobe.d/usb.conf">/etc/modprobe.d/usb.conf</primary>
     </indexterm>
 
-    <para>Most of the time Linux modules are loaded automatically, but
-    sometimes it needs some specific direction.  The program that loads
-    modules, <command>modprobe</command> or <command>insmod</command>, uses
-    <filename>/etc/modprobe.d/usb.conf</filename> for this purpose.  This file
-    needs to be created so that if the USB drivers (ehci_hcd, ohci_hcd and
-    uhci_hcd) have been built as modules, they will be loaded in the correct
-    order; ehci_hcd needs to be loaded prior to ohci_hcd and uhci_hcd in order
-    to avoid a warning being output at boot time.</para>
+    <para>В большинстве случаев модули Linux загружаются автоматически, но иногда требуется 
+	определенный порядок. Программа, которая загружает модули, <command>modprobe</command> 
+	или <command>insmod</command>, использует файл  <filename>/etc/modprobe.d/usb.conf</filename> 
+	как раз для этой цели. Этот файл должен быть заполнен таким образом, что если USB-драйверы 
+	(ehci_hcd, ohci_hcd и uhci_hcd) были собраны в виде модулей, то они будут загружены в правильном 
+	порядке; ehci_hcd должен быть загружен до ohci_hcd и uhci_hcd для того, чтобы избежать 
+	предупреждений во время загрузки.</para>
 
-    <para>Create a new file <filename>/etc/modprobe.d/usb.conf</filename> by running
-    the following:</para>
+    <para>Создайте новый файл <filename>/etc/modprobe.d/usb.conf</filename>, выполнив следующую команду:</para>
 
 <screen><userinput>install -v -m755 -d /etc/modprobe.d
 cat &gt; /etc/modprobe.d/usb.conf &lt;&lt; "EOF"
@@ -407,29 +398,29 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 id="contents-kernel" role="content">
-    <title>Contents of Linux</title>
+    <title>Содержимое пакета Linux</title>
 
     <segmentedlist>
-      <segtitle>Installed files</segtitle>
-      <segtitle>Installed directories</segtitle>
+      <segtitle>Установленные файлы</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>config-&linux-version;,
         vmlinuz-&linux-version;-lfs-&version;,
-        and System.map-&linux-version;</seg>
+        и System.map-&linux-version;</seg>
         <seg>/lib/modules, /usr/share/doc/linux-&linux-version;</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="config">
         <term><filename>config-&linux-version;</filename></term>
         <listitem>
-          <para>Contains all the configuration selections for the kernel</para>
+          <para>Содержит в себе все параметры конфигурации ядра</para>
           <indexterm zone="ch-bootable-kernel config">
             <primary sortas="e-/boot/config">/boot/config-&linux-version;</primary>
           </indexterm>
@@ -439,12 +430,11 @@ EOF</userinput></screen>
       <varlistentry id="lfskernel">
         <term><filename>vmlinuz-&linux-version;-lfs-&version;</filename></term>
         <listitem>
-          <para>The engine of the Linux system. When turning on the computer,
-          the kernel is the first part of the operating system that gets loaded.
-          It detects and initializes all components of the computer's hardware,
-          then makes these components available as a tree of files to the
-          software and turns a single CPU into a multitasking machine capable
-          of running scores of programs seemingly at the same time</para>
+          <para>Ядро системы Linux. При включении компьютера ядро — это первая загружаемая часть 
+		  операционной системы. Оно обнаруживает и инициализирует все компоненты аппаратного 
+		  обеспечения компьютера, делает их доступными в виде дерева каталогов с файлами для доступа 
+		  к ним программам и превращает один процессор в мультизадачную машину, способную выполнять 
+		  множество программ как будто одновременно.</para>
           <indexterm zone="ch-bootable-kernel lfskernel">
             <primary sortas="b-lfskernel">lfskernel-&linux-version;</primary>
           </indexterm>
@@ -454,9 +444,8 @@ EOF</userinput></screen>
       <varlistentry id="System.map">
         <term><filename>System.map-&linux-version;</filename></term>
         <listitem>
-          <para>A list of addresses and symbols; it maps the entry points and
-          addresses of all the functions and data structures in the
-          kernel</para>
+          <para>Список адресов и символов; файл содержит точки входа и адреса всех функций и структур 
+		  данных в ядре</para>
           <indexterm zone="ch-bootable-kernel System.map">
             <primary sortas="e-/boot/System.map">/boot/System.map-&linux-version;</primary>
           </indexterm>
