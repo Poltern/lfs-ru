@@ -284,7 +284,7 @@ Device Drivers ---&gt;
 
     <para>При использовании модулей, могут потребоваться файлы конфигурации, которые расположены в 
 	каталоге <filename class="directory">/etc/modprobe.d</filename>. Информация о модулях и конфигурации 
-	ядра находится в <xref linkend="ch-scripts-udev"/> и в документации к ядру <filename
+	ядра находится в <xref linkend="ch-config-udev"/> и в документации к ядру <filename
     class="directory">linux-&linux-version;/Documentation</filename>. Кроме этого, стоит ознакомиться с 
 	руководством <filename>modprobe.d(5)</filename>.</para>
 
@@ -362,7 +362,7 @@ cp -r Documentation/* /usr/share/doc/linux-&linux-version;</userinput></screen>
       <para>Заголовочные файлы в системном каталоге <filename class="directory">include</filename> 
 	  (<filename class="directory">/usr/include</filename>) <emphasis>всегда</emphasis> используются те, 
 	  которые применялись при компиляции Glibc, то есть подготовленные заголовочные файлы, установленные в 
-	  <xref linkend="ch-system-linux-headers"/>. Поэтому их <emphasis>никогда</emphasis> не следует заменять 
+	  <xref linkend="ch-tools-linux-headers"/>. Поэтому их <emphasis>никогда</emphasis> не следует заменять 
 	  на чистые заголовочные файлы ядра или любые другие подготовленные заголовочные файлы.</para>
     </warning>
 
