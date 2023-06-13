@@ -9,7 +9,7 @@
 <sect1 id="ch-config-usage" revision="sysv">
   <?dbhtml filename="usage.html"?>
 
-  <title>System V Bootscript Usage and Configuration</title>
+  <title>Настройка и использование загрузочных скриптов System V</title>
 
   <indexterm zone="ch-config-usage">
     <primary sortas="a-Bootscripts">Bootscripts</primary>
@@ -17,44 +17,42 @@
   </indexterm>
 
   <sect2>
-    <title>How Do the System V Bootscripts Work?</title>
+    <title>Как работают загрузочные скрипты System V?</title>
 
-    <para>Linux uses a special booting facility named SysVinit that is based on a
-    concept of <emphasis>run-levels</emphasis>. It can be quite different from one
-    system to another, so it cannot be assumed that because things worked in one
-    particular Linux distribution, they should work the same in LFS too. LFS has its
-    own way of doing things, but it respects generally accepted standards.</para>
+    <para>В Linux используется специальное средство загрузки под названием SysVinit, основанное на 
+	концепции уровней выполнения (<emphasis>run-levels</emphasis>). Его настройка может сильно отличаться 
+	от одной системы к другой, и корректная работа в одном дистрибутиве Linux, не гарантирует 
+	работоспособность в LFS. LFS работает по-своему, но соблюдает общепринятые стандарты.</para>
 
-    <para>SysVinit (which will be referred to as <quote>init</quote> from now on)
-    works using a run-levels scheme. There are seven (numbered 0 to 6) run-levels
-    (actually, there are more run-levels, but they are for special cases and are
-    generally not used. See <filename>init(8)</filename> for more details), and
-    each one of those corresponds to the actions the computer is supposed to
-    perform when it starts up. The default run-level is 3. Here are the
-    descriptions of the different run-levels as they are implemented in LFS:</para>
+    <para>SysVinit (в дальнейшем именуемый <quote>init</quote>) работает по схеме уровней выполнения. 
+	Существует семь (пронумерованных от 0 до 6) уровней выполнения (на самом деле уровней  
+	больше, но они предназначены для особых случаев и обычно не используются. Подробности смотрите в 
+	руководстве <filename>init(8)</filename>), и каждый из них соответствует действиям, которые компьютер 
+	должен выполнить при запуске. Уровень выполнения по умолчанию — 3. Ниже приведены описания различных 
+	уровней в том виде, в каком они реализованы в LFS:</para>
 
-<literallayout>0: halt the computer
-1: single-user mode
-2: reserved for customization, otherwise does the same as 3
-3: multi-user mode with networking
-4: reserved for customization, otherwise does the same as 3
-5: same as 4, it is usually used for GUI login (like GNOME's <command>gdm</command> or LXDE's <command>lxdm</command>)
-6: reboot the computer</literallayout>
+<literallayout>0: выключение компьютера
+1: однопользовательский режим
+2: зарезервировано для настройки, в остальном аналогично 3
+3: многопользовательский режим с поддержкой сети
+4: зарезервировано для настройки, в остальном аналогично 3
+5: то же, что и 4, обычно используется для входа в систему с графическим интерфейсом (например, 
+<command>gdm</command> от GNOME или <command>lxdm</command> от LXDE)
+6: перезагрузка компьютера</literallayout>
 
     <note>
        <para>
-          Classically, run level 2 above was defined as
-          "multi-user mode without networking", but this was only the case
-          many years ago when multiple users could log into a system connected via
-          serial ports.  In today's environment it makes no sense and
-          we designate it now as "reserved".
+          Раньше, много лет назад, уровень выполнения 2 обозначался как "многопользовательский 
+		  режим без поддержки сети", тогда несколько пользователей могли войти в систему, подключившись 
+		  через последовательные порты. В сегодняшних условиях это не имеет смысла, и мы обозначаем этот 
+		  уровень как "зарезервировано".
        </para>
     </note>
 
   </sect2>
 
   <sect2 id="conf-sysvinit" role="configuration">
-  <title>Configuring Sysvinit</title>
+  <title>Настройка Sysvinit</title>
 
   <indexterm zone="conf-sysvinit">
     <primary sortas="a-Sysvinit">Sysvinit</primary>
@@ -65,10 +63,9 @@
     <primary sortas="e-/etc/inittab">/etc/inittab</primary>
   </indexterm>
 
-  <para>During the kernel initialization, the first program that is run
-  is either specified on the command line or, by default
-  <command>init</command>.  This program reads the initialization file
-  <filename>/etc/inittab</filename>.  Create this file with:</para>
+  <para>Во время инициализации ядра первая запущенная программа указывается либо в
+  командной строке, либо по умолчанию в <command>init</command>. Эта программа читает файл 
+  инициализации <filename>/etc/inittab</filename>. Создайте этот файл:</para>
 
 <screen><userinput>cat &gt; /etc/inittab &lt;&lt; "EOF"
 <literal># Begin /etc/inittab
@@ -100,63 +97,56 @@ s1:1:respawn:/sbin/sulogin
 # End /etc/inittab</literal>
 EOF</userinput></screen>
 
-  <para>An explanation of this initialization file is in the man page for
-  <emphasis>inittab</emphasis>.  For LFS, the key command that is run is
-  <command>rc</command>. The initialization file above will instruct
-  <command>rc</command> to run all the scripts starting with an S in the
-  <filename class="directory">/etc/rc.d/rcS.d</filename> directory
-  followed by all the scripts starting with an S in the <filename
-  class="directory">/etc/rc.d/rc?.d</filename> directory where the question
-  mark is specified by the initdefault value.</para>
+  <para>Пояснения по содержимому этого файла инициализации находится на справочной
+  странице <emphasis>inittab</emphasis>. Для LFS ключевой командой является <command>rc</command>.
+  В приведенном выше файле инициализации, <command>rc</command> будет выполнять все сценарии, 
+  начинающиеся с символа S в каталоге <filename class="directory">/etc/rc.d/rcS.d</filename>, за
+  которыми следуют все скрипты, начинающиеся с S в каталоге <filename
+  class="directory">/etc/rc.d/rc?.d</filename>, где знак вопроса задается значением initdefault.</para>
 
-  <para>As a convenience, the <command>rc</command> script reads a library of
-  functions in <filename class="directory">/lib/lsb/init-functions</filename>.
-  This library also reads an optional configuration file,
-  <filename>/etc/sysconfig/rc.site</filename>.  Any of the system
-  configuration file parameters described in subsequent sections can be
-  alternatively placed in this file allowing consolidation of all system
-  parameters in this one file.</para>
+  <para>Для удобства, скрипт <command>rc</command> читает функции из библиотеки 
+  <filename class="directory">/lib/lsb/init-functions</filename>. Эта библиотека также читает 
+  необязательный файл конфигурации <filename>/etc/sysconfig/rc.site</filename>. Любой из 
+  параметров файла конфигурации системы, описанный в последующих разделах, можно поместить 
+  в этот файл, что позволит объединить все системные параметры в одном файле.</para>
 
-  <para>As a debugging convenience, the functions script also logs all output
-  to <filename>/run/var/bootlog</filename>.  Since the <filename
-  class="directory">/run</filename> directory is a tmpfs, this file is not
-  persistent across boots, however it is appended to the more permanent file
-  <filename>/var/log/boot.log</filename> at the end of the boot process.</para>
+  <para>Для удобства отладки скрипт functions также записывает весь вывод в 
+  <filename>/run/var/bootlog</filename>. Поскольку каталог <filename class="directory">/run</filename> 
+  является tmpfs, этого файла может не быть при загрузке, однако его содержимое добавляется к 
+  файлу <filename>/var/log/boot.log</filename> по окончании процесса загрузки.</para>
 
   <sect3 id="init-levels" >
-  <title>Changing Run Levels</title>
+  <title>Изменение уровней выполнения</title>
 
-  <para>Changing run-levels is done with <command>init
-  <replaceable>&lt;runlevel&gt;</replaceable></command>, where
-  <replaceable>&lt;runlevel&gt;</replaceable> is the target run-level. For example, to
-  reboot the computer, a user could issue the <command>init 6</command> command,
-  which is an alias for the <command>reboot</command> command. Likewise,
-  <command>init 0</command> is an alias for the <command>halt</command>
-  command.</para>
+  <para>Изменить уровень выполнения можно с помощью команды <command>init 
+  <replaceable>&lt;runlevel&gt;</replaceable></command>, где 
+  <replaceable>&lt;runlevel&gt;</replaceable> - это целевой уровнем выполнения. 
+  Например, чтобы перезагрузить компьютер, пользователь должен выполнить команду 
+  <command>init 6</command>, которая является псевдонимом для команды 
+  <command>reboot</command>. Аналогично, init 0 является псевдонимом для 
+  команды <command>halt</command>.</para>
 
-  <para>There are a number of directories under <filename
-  class="directory">/etc/rc.d</filename> that look like <filename
-  class="directory">rc?.d</filename> (where ? is the number of the run-level) and
-  <filename class="directory">rcS.d</filename>, all containing a number of
-  symbolic links. Some begin with a <emphasis>K</emphasis>, the others begin with
-  an <emphasis>S</emphasis>, and all of them have two numbers following the
-  initial letter. The K means to stop (kill) a service and the S means to start a
-  service. The numbers determine the order in which the scripts are run, from 00
-  to 99&mdash;the lower the number the earlier it gets executed. When
-  <command>init</command> switches to another run-level, the appropriate services
-  are either started or stopped, depending on the runlevel chosen.</para>
+  <para>В каталоге <filename
+  class="directory">/etc/rc.d</filename> есть ещё несколько каталогов, которые выглядят
+  как <filename class="directory">rc?.d</filename> (где ? - номер уровня выполнения), 
+  все они содержат ряд символических ссылок. Некоторые начинаются с <emphasis>K</emphasis>, 
+  другие начинаются с <emphasis>S</emphasis>, и все они содержат две цифры после начальной буквы. 
+  K означает остановить (убить) службу, а S означает запустить службу. Числа определяют порядок
+  выполнения сценариев от 00 до 99&mdash;чем меньше число, тем раньше он запустится.
+  Когда <command>init</command> переключается на другой уровень выполнения,
+  соответствующие службы запускаются или останавливаются в зависимости от выбранного
+  уровня.</para>
 
-  <para>The real scripts are in <filename
-  class="directory">/etc/rc.d/init.d</filename>. They do the actual work, and
-  the symlinks all point to them. K links and S links point to
-  the same script in <filename class="directory">/etc/rc.d/init.d</filename>.
-  This is because the scripts can be called with different parameters like
-  <parameter>start</parameter>, <parameter>stop</parameter>,
-  <parameter>restart</parameter>, <parameter>reload</parameter>, and
-  <parameter>status</parameter>. When a K link is encountered, the appropriate
-  script is run with the <parameter>stop</parameter> argument. When an S link
-  is encountered, the appropriate script is run with the
-  <parameter>start</parameter> argument.</para>
+  <para>Реальные скрипты находятся в каталоге <filename
+  class="directory">/etc/rc.d/init.d</filename>. Они выполняют фактическую работу,
+  и символические ссылки указывают на них. Ссылки К и S указывают на один и тот
+  же скрипт в <filename class="directory">/etc/rc.d/init.d</filename>. Это
+  связано с тем, что скрипты могут вызываться с разными параметрами, такими
+  как <parameter>start</parameter>, <parameter>stop</parameter>,
+  <parameter>restart</parameter>, <parameter>reload</parameter>, и
+  <parameter>status</parameter>. Когда встречается ссылка K, соответствующий скрипт
+  запускается с аргументом <parameter>stop</parameter>. Когда встречается S-ссылка,
+  соответствующий скрипт запускается с аргументом <parameter>start</parameter>.</para>
 <!-- Changed for March 24th, 2022 version of bootscripts
   <para>There is one exception to this explanation. Links that start
   with an <emphasis>S</emphasis> in the <filename
@@ -171,125 +161,110 @@ EOF</userinput></screen>
   <parameter>stop</parameter> parameter.
   </para>
 -->
-  <para>These are descriptions of what the arguments make the scripts
-  do:</para>
+  <para>Ниже приведено описание к аргументам скриптов:</para>
 
   <variablelist>
 
     <varlistentry>
       <term><parameter>start</parameter></term>
       <listitem>
-        <para>The service is started.</para>
+        <para>Служба запущена.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term><parameter>stop</parameter></term>
       <listitem>
-        <para>The service is stopped.</para>
+        <para>Служба остановлена.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term><parameter>restart</parameter></term>
       <listitem>
-        <para>The service is stopped and then started again.</para>
+        <para>Служба остановлена и снова запущена.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term><parameter>reload</parameter></term>
       <listitem>
-        <para>The configuration of the service is updated.
-        This is used after the configuration file of a service was modified, when
-        the service does not need to be restarted.</para>
+        <para>Конфигурация сервиса обновлена. Используется после изменения файла 
+		конфигурации службы, когда перезапуск не требуется.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term><parameter>status</parameter></term>
       <listitem>
-        <para>Tells if the service is running and with which PIDs.</para>
+        <para> Сообщает, запущена ли служба и с какими ИД процессов.</para>
       </listitem>
     </varlistentry>
 
   </variablelist>
 
-  <para>Feel free to modify the way the boot process works (after all,
-  it is your own LFS system). The files given here are an example of how
-  it can be done.</para>
+  <para>Не стесняйтесь изменять работу процесса загрузки (в конце концов,
+  это ваша собственная система LFS). Приведенные здесь файлы являются примером того, как
+  это можно сделать.</para>
 
   </sect3>
   </sect2>
 
   <sect2>
-    <title>Udev Bootscripts</title>
+    <title>Загрузочные скрипты Udev</title>
 
-      <para>The <filename>/etc/rc.d/init.d/udev</filename> initscript starts
-      <command>udevd</command>, triggers any "coldplug" devices that have
-      already been created by the kernel and waits for any rules to complete.
-      The script also unsets the uevent handler from the default of
-      <filename>/sbin/hotplug </filename>.  This is done because the kernel no
-      longer needs to call out to an external binary.  Instead
-      <command>udevd</command> will listen on a netlink socket for uevents that
-      the kernel raises.</para>
+      <para>Инит-скрипт <filename>/etc/rc.d/init.d/udev</filename> запускает <command>udevd</command>, 
+	  который инициализирует все устройства "холодного подключения", которые уже были созданы ядром, и 
+	  ожидает выполнения всех правил. Скрипт также отключает обработчик uevent по умолчанию 
+	  <filename>/sbin/hotplug</filename>. Это сделано потому, что ядру больше не нужно обращаться к 
+	  внешнему бинарному файлу. Вместо этого <command>udevd</command> будет прослушивать сокет netlink 
+	  для событий uevents, которые вызывает ядро.</para>
 
-      <para>The <command>/etc/rc.d/init.d/udev_retry</command> initscript takes
-      care of re-triggering events for subsystems whose rules may rely on
-      filesystems that are not mounted until the <command>mountfs</command>
-      script is run (in particular, <filename class="directory">/usr</filename>
-      and <filename class="directory">/var</filename> may cause this).  This
-      script runs after the <command>mountfs</command> script, so those rules
-      (if re-triggered) should succeed the second time around.  It is
-      configured from the <filename>/etc/sysconfig/udev_retry</filename> file;
-      any words in this file other than comments are considered subsystem names
-      to trigger at retry time.  To find the subsystem of a device, use
-      <command>udevadm info --attribute-walk &lt;device&gt;</command> where
-      &lt;device&gt; is an absolute path in /dev or /sys such as /dev/sr0 or
-      /sys/class/rtc.</para>
+      <para>Инит-скрипт <command>/etc/rc.d/init.d/udev_retry</command> решает задачу повторного запуска 
+	  событий для подсистем, правила которых могут зависеть от файловых систем, которые не монтируются до 
+	  запуска скрипта <command>mountfs</command> (в частности, его вызывают <filename class="directory">/usr</filename>
+      и <filename class="directory">/var</filename>). Этот скрипт запускается после скрипта 
+	  <command>mountfs</command>, поэтому правила (при повторном запуске) должны выполняться успешно. Он 
+	  настраивается из файла <filename>/etc/sysconfig/udev_retry</filename>; любые слова в этом файле, 
+	  кроме комментариев, являются именами подсистем, которые могут выполняться повторно. Чтобы найти 
+	  подсистему устройства, используйте <command>udevadm info --attribute-walk &lt;device&gt;</command>, 
+	  где &lt;device&gt; - это абсолютный путь в /dev или /sys, такой как /dev/sr0 или /sys/class/rtc.</para>
 
-      <para>For information on kernel module loading and udev, see
+      <para>Для получения информации о загрузке модуля ядра и udev смотрите
       <xref linkend="module-loading"/>.</para>
   </sect2>
 
   <sect2 id="ch-config-clock">
-    <title>Configuring the System Clock</title>
+    <title>Настройка системного времени</title>
 
     <indexterm zone="ch-config-clock">
       <primary sortas="d-setclock">setclock</primary>
     <secondary>configuring</secondary></indexterm>
 
-    <para>The <command>setclock</command> script reads the time from the hardware
-    clock, also known as the BIOS or the Complementary Metal Oxide Semiconductor
-    (CMOS) clock. If the hardware clock is set to UTC, this script will convert the
-    hardware clock's time to the local time using the
-    <filename>/etc/localtime</filename> file (which tells the
-    <command>hwclock</command> program which timezone to use). There is no
-    way to detect whether or not the hardware clock is set to UTC, so this
-    needs to be configured manually.</para>
+    <para>Скрипт <command>setclock</command> считывает время с аппаратных часов, также известных как 
+	часы BIOS или CMOS (Complementary Metal Oxide Semiconductor). Если на аппаратных часах установлено 
+	время UTC (всемирное скоординированное время), этот скрипт преобразует полученное значение в 
+	локальное время, используя файл <filename>/etc/localtime</filename> (который сообщает программе 
+	<command>hwclock</command>, в какой временной зоне находится пользователь). Невозможно определить, 
+	установлено на аппаратных часах UTC или же локальное время, поэтому необходимо указать его вручную.</para>
 
-    <para>The <command>setclock</command> program is run via
-    <application>udev</application> when the kernel detects the hardware
-    capability upon boot.  It can also be run manually with the stop parameter to
-    store the system time to the CMOS clock.</para>
+    <para>Скрипт <command>setclock</command> запускается системой <application>udev</application> при 
+	загрузке, когда ядро определяет возможности аппаратного обеспечения. Также его можно запустить 
+	вручную с параметром stop, чтобы сохранить системное время в аппаратные часы CMOS.</para>
 
-    <para>If you cannot remember whether or not the hardware clock is set to UTC,
-    find out by running the <userinput>hwclock --localtime --show</userinput>
-    command. This will display what the current time is according to the hardware
-    clock. If this time matches whatever your watch says, then the hardware clock is
-    set to local time. If the output from <command>hwclock</command> is not local
-    time, chances are it is set to UTC time. Verify this by adding or subtracting
-    the proper amount of hours for the timezone to the time shown by
-    <command>hwclock</command>. For example, if you are currently in the MST
-    timezone, which is also known as GMT -0700, add seven hours to the local
-    time.</para>
+    <para>  Если Вы не можете вспомнить, установлено на аппаратных часах UTC или локальное время, 
+	запустите команду <userinput>hwclock --localtime --show</userinput>. Она отобразит текущее 
+	время в соответствии с аппаратными часами. Если оно совпадает с тем, что показывают ваши 
+	настенные/наручные часы, значит на часах CMOS установлено локальное время. Если вывод 
+	<command>hwclock</command> не совпадает с локальным временем, скорее всего, это UTC. Проверьте 
+	это, добавляя или вычитая правильное смещение к времени, выводимому <command>hwclock</command>. 
+	Например, если ваш часовй пояс это MSK, так же известный как GMT +0300, то нужно вычесть 
+	три часа из локального времени.</para>
 
-    <para>Change the value of the <envar>UTC</envar> variable below
-    to a value of <parameter>0</parameter> (zero) if the hardware clock
-    is <emphasis>NOT</emphasis> set to UTC time.</para>
+    <para>Измените значение переменной <envar>UTC</envar> ниже на <parameter>0</parameter> (ноль), 
+	если на аппаратных часах установлено <emphasis>НЕ</emphasis> UTC.</para>
 
-    <para>Create a new file <filename>/etc/sysconfig/clock</filename> by running
-    the following:</para>
+    <para>Создайте новый файл <filename>/etc/sysconfig/clock</filename> выполнив:</para>
 
 <screen><userinput>cat &gt; /etc/sysconfig/clock &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/clock
@@ -303,100 +278,88 @@ CLOCKPARAMS=
 # End /etc/sysconfig/clock</literal>
 EOF</userinput></screen>
 
-    <para>A good hint explaining how to deal with time on LFS is available
-    at <ulink url="&hints-root;time.txt"/>. It explains issues such as
-    time zones, UTC, and the <envar>TZ</envar> environment variable.</para>
+    <para>Хороший совет, объясняющий, как обращаться с временем в LFS, доступен по адресу 
+	<ulink url="&hints-root;time.txt"/>. Там объясняются такие вопросы, как часовые пояса, 
+	UTC и переменная окружения <envar>TZ</envar>.</para>
 
-    <note><para>The CLOCKPARAMS and UTC parameters may also be set
-    in the <filename>/etc/sysconfig/rc.site</filename> file.</para></note>
+    <note><para>Параметры CLOCKPARAMS и UTC также могут быть указаны в файле 
+	<filename>/etc/sysconfig/rc.site</filename>.</para></note>
 
   </sect2>
 
   <sect2 id="ch-config-console">
   <?dbhtml filename="console.html"?>
 
-  <title>Configuring the Linux Console</title>
+  <title>Настройка консоли Linux</title>
 
   <indexterm zone="ch-config-console">
     <primary sortas="d-console">console</primary>
     <secondary>configuring</secondary>
   </indexterm>
 
-  <para>This section discusses how to configure the <command>console</command>
-  bootscript that sets up the keyboard map, console font, and console kernel log
-  level. If non-ASCII characters (e.g., the copyright sign, the British pound
-  sign and Euro symbol) will not be used and the keyboard is a U.S. one, much
-  of this section can be skipped. Without the configuration file, (or
-  equivalent settings in <filename>rc.site</filename>), the
-  <command>console</command> bootscript will do nothing.</para>
+  <para>Эта секция описывает настройку скрипта <command>console</command>, который устанавливает 
+  раскладку клавиатуры, шрифт консоли и уровень подробности информации, выводимой ядром на 
+  консоль. Если Вы не планируете использовать символы, не соответствующие стандарту ASCII 
+  (например, знак копирайта, символы фунта и евро), и собираетесь печатать только в английской 
+  раскладке, то можете пропустить большую часть секции. Без файла конфигурации (или эквивалентных 
+  настроек в <filename>rc.site</filename>), скрипт <command>console</command> не будет ничего делать.</para>
 
-  <para>The <command>console</command> script reads the
-  <filename>/etc/sysconfig/console</filename> file for configuration
-  information.  Decide which keymap and screen font will be used. Various
-  language-specific HOWTOs can also help with this, see <ulink
-  url="https://tldp.org/HOWTO/HOWTO-INDEX/other-lang.html"/>. If still in
-  doubt, look in the <filename class="directory">/usr/share/keymaps</filename>
-  and <filename class="directory">/usr/share/consolefonts</filename> directories
-  for valid keymaps and screen fonts. Read <filename>loadkeys(1)</filename> and
-  <filename>setfont(8)</filename> manual pages to determine the correct
-  arguments for these programs.</para>
+  <para>Скрипт <command>console</command> считывает конфигурацию из файла 
+  <filename>/etc/sysconfig/console</filename>. Решите для себя, какую раскладку клавиатуры и 
+  какой шрифт намерены использовать. В этом также могут помочь различные HOWTO для конкретных языков, 
+  смотрите <ulink url="https://tldp.org/HOWTO/HOWTO-INDEX/other-lang.html"/>. Если вы все еще 
+  сомневаетесь, посмотрите в каталогах <filename class="directory">/usr/share/keymaps</filename>
+  и <filename class="directory">/usr/share/consolefonts</filename> допустимые раскладки и экранные 
+  шрифты. Прочтите справочные страницы  <filename>loadkeys(1)</filename> и
+  <filename>setfont(8)</filename>, чтобы определить правильные аргументы для этих программ.</para>
 
-  <para>The <filename>/etc/sysconfig/console</filename> file should contain lines
-  of the form: VARIABLE="value". The following variables are recognized:</para>
+  <para>Файл <filename>/etc/sysconfig/console</filename> должен содержать строки вида: 
+  ПЕРЕМЕННАЯ="значение". Допустимы следующие переменные:</para>
   <variablelist>
 
     <varlistentry>
       <term>LOGLEVEL</term>
       <listitem>
-        <para>This variable specifies the log level for kernel messages sent
-        to the console as set by <command>dmesg -n</command>. Valid levels are
-        from "1" (no messages) to "8". The default level is "7".</para>
+        <para>Эта переменная задает уровень подробности сообщений, посылаемых ядром на системную 
+		консоль. Значение этой переменной передается в качестве аргумента утилите 
+		<command>dmesg -n</command>. Допустимы уровни от "1" (нет сообщений) до "8". По умолчанию 
+		"7".</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>KEYMAP</term>
       <listitem>
-        <para>This variable specifies the arguments for the
-        <command>loadkeys</command> program, typically, the name of keymap
-        to load, e.g., <quote>it</quote>. If this variable is not set, the
-        bootscript will not run the <command>loadkeys</command> program,
-        and the default kernel keymap will be used.  Note that a few keymaps
-        have multiple versions with the same name (cz and its variants in
-        qwerty/ and qwertz/, es in olpc/ and qwerty/, and trf in fgGIod/ and
-        qwerty/). In these cases the parent directory should also be specified
-        (e.g. qwerty/es) to ensure the proper keymap is loaded.
-        </para>
+        <para>Эта переменная указывает аргументы для программы <command>loadkeys</command>, обычно 
+		это имя загружаемой раскладки, например, <quote>it</quote>. Если эта переменная не 
+		установлена, загрузочный скрипт не будет запускать программу loadkeys, и будет использоваться 
+		раскладка по умолчанию. Обратите внимание, что некоторые раскладки имеют несколько версий с 
+		одним и тем же именем (cz и его варианты в qwerty/ и qwertz/, es в olpc/ и qwerty/ и trf в 
+		fgGIod/ и qwerty/). В этих случаях также следует указать родительский каталог (например, 
+		qwerty/es), чтобы обеспечить загрузку правильной раскладки.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>KEYMAP_CORRECTIONS</term>
       <listitem>
-        <para>This (rarely used) variable
-        specifies the arguments for the second call to the
-        <command>loadkeys</command> program. This is useful if the stock keymap
-        is not completely satisfactory and a small adjustment has to be made. E.g.,
-        to include the Euro sign into a keymap that normally doesn't have it,
-        set this variable to <quote>euro2</quote>.</para>
+        <para>Эта (крайне редко используемая) переменная задает аргументы для второго вызова 
+		программы <command>loadkeys</command>. Она полезна, если стандартная раскладка вас не 
+		совсем устраивает и необходимо внести небольшую корректировку. Например, чтобы добавить 
+		символ евро в раскладку, которая его не содержит, присвойте этой переменной значение 
+		<quote>euro2</quote>.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>FONT</term>
       <listitem>
-        <para>This variable specifies the arguments for the
-        <command>setfont</command> program. Typically, this includes the font
-        name, <quote>-m</quote>, and the name of the application character
-        map to load. E.g., in order to load the <quote>lat1-16</quote> font
-        together with the <quote>8859-1</quote> application character map
-        (as it is appropriate in the USA),
-        <!-- because of the copyright sign -->
-        set this variable to <quote>lat1-16 -m 8859-1</quote>.
-        In UTF-8 mode, the kernel uses the application character map for
-        conversion of composed 8-bit key codes in the keymap to UTF-8, and thus
-        the argument of the "-m" parameter should be set to the encoding of the
-        composed key codes in the keymap.</para>
+        <para>Эта переменная определяет аргументы для программы <command>setfont</command>. Обычно 
+		она включает в себя имя шрифта <quote>-m</quote> и имя загружаемой таблицы символов. Например, 
+		чтобы загрузить шрифт <quote>lat1-16</quote> вместе с таблицей символов <quote>8859-1</quote> 
+		(подходящий для США), установите эту переменную в <quote>lat1-16 -m 8859-1</quote>. В режиме 
+		UTF-8 ядро использует таблицу символов для преобразования 8-битных кодов клавиш в раскладку UTF-8, 
+		поэтому аргумент параметра "-m" должен быть указывать кодировку таблицы символов в раскладке.</para>
 
       </listitem>
     </varlistentry>
@@ -404,32 +367,30 @@ EOF</userinput></screen>
     <varlistentry>
       <term>UNICODE</term>
       <listitem>
-        <para>Set this variable to <quote>1</quote>, <quote>yes</quote> or
-        <quote>true</quote> in order to put the
-        console into UTF-8 mode. This is useful in UTF-8 based locales and
-        harmful otherwise.</para>
+        <para>Присвойте этой переменной значение <quote>1</quote>, <quote>yes</quote> или 
+		<quote>true</quote>, чтобы переключить консоль в режим UTF-8. Это полезно при использовании 
+		локали, основанной на UTF-8, и не рекомендуется в иных случаях.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>LEGACY_CHARSET</term>
       <listitem>
-        <para>For many keyboard layouts, there is no stock Unicode keymap in
-        the Kbd package. The <command>console</command> bootscript will
-        convert an available keymap to UTF-8 on the fly if this variable is
-        set to the encoding of the available non-UTF-8 keymap.</para>
+        <para>Для многих раскладок клавиатуры в пакете Kbd не существует готового Unicode-варианта. 
+		Скрипт <command>console</command> будет на лету конвертировать имеющуюся раскладку в UTF-8, 
+		если присвоить этой переменной имя доступной не-UTF-8 раскладки.</para>
       </listitem>
     </varlistentry>
 
   </variablelist>
 
-  <para>Some examples:</para>
+  <para>Несколько примеров:</para>
 
   <itemizedlist>
 
     <listitem>
-      <para>For a non-Unicode setup, only the KEYMAP and FONT variables are
-      generally needed. E.g., for a Polish setup, one would use:</para>
+      <para>Для не-Unicode настройки необходимы только переменные KEYMAP и FONT. Например, 
+	  для польских пользователей может подойти такой вариант:</para>
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
 
@@ -441,9 +402,8 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
-      <para>As mentioned above, it is sometimes necessary to adjust a
-      stock keymap slightly. The following example adds the Euro symbol to the
-      German keymap:</para>
+      <para>Как упоминалось выше, иногда бывает необходимо подкорректировать раскладку. Следующий 
+	  пример добавляет символ евро к немецкой раскладке:</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -458,8 +418,8 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
-      <para>The following is a Unicode-enabled example for Bulgarian, where a
-      stock UTF-8 keymap exists:</para>
+      <para>Ниже приведен пример с поддержкой Unicode для болгарского языка, где существует 
+	  стандартная раскладка UTF-8:</para>
 <!-- This is what is used by jhalfs for creating the console file: whenever
      you change the following, please inform the jhalfs maintainer(s). -->
 <screen><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
@@ -474,12 +434,11 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
-      <para>Due to the use of a 512-glyph LatArCyrHeb-16 font in the previous
-      example, bright colors are no longer available on the Linux console unless
-      a framebuffer is used. If one wants to have bright colors without a
-      framebuffer and can live without characters not belonging to his language,
-      it is still possible to use a language-specific 256-glyph font, as
-      illustrated below:</para>
+      <para>Из-за использования 512-символьного шрифта LatArCyrHeb-16 в предыдущем примере, 
+	  яркие цвета больше не доступны в консоли Linux, если используется фреймбуфер. Если Вы 
+	  хотите использовать яркие цвета без фреймбуфера и можете обходиться без символов, не 
+	  относящихся к вашему языку, тогда можно использовать специфичный для вашего языка 
+	  256-символьный шрифт, как показано ниже:</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -493,8 +452,8 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
-      <para>The following example illustrates keymap autoconversion from
-      ISO-8859-15 to UTF-8 and enabling dead keys in Unicode mode:</para>
+      <para>Следующий пример демонстрирует автоматическое преобразование раскладки из ISO-8859-15 в 
+	  UTF-8 и включает "мертвые" клавиши в режиме Unicode:</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -510,28 +469,25 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
-      <para>Some keymaps have dead keys (i.e., keys that don't produce a
-      character by themselves, but put an accent on the character produced
-      by the next key) or define composition rules (such as: <quote>press
-      Ctrl+. A E to get &AElig;</quote> in the default keymap).
-      Linux-&linux-version; interprets dead keys and composition rules in the
-      keymap correctly only when the source characters to be composed together
-      are not multibyte. This deficiency doesn't affect keymaps for European
-      languages, because there accents are added to unaccented ASCII
-      characters, or two ASCII characters are composed together. However, in
-      UTF-8 mode it is a problem; e.g., for the Greek language, where one
-      sometimes needs to put an accent on the letter <quote>alpha</quote>.
-      The solution is either to avoid the use of UTF-8, or to install the
-      X window system that doesn't have this limitation in its input
-      handling.</para>
+      <para>Некоторые раскладки включают в себя "мертвые" клавиши (то есть клавиши, нажатие 
+	  которых само по себе не приводит к появлению на экране символа, но которые влияют на 
+	  символ, генерируемый следующей клавишей) или определяют слияние символов (например: 
+	  <quote>нажмите Ctrl+. A E чтобы получить &AElig;</quote> в раскладке по умолчанию). 
+	  Linux-&linux-version; правильно интерпретирует "мертвые" клавиши и слияния, только 
+	  когда исходные символы имеют 8-битные коды. Эта особенность не влияет на раскладки 
+	  для европейских языков, поскольку в них "сливаются" два ASCII-символа или добавляются 
+	  подчеркивания к неподчеркнутым ASCII-символам. Однако, в режиме UTF-8 могут быть проблемы, 
+	  например, для греческого языка, когда необходимо подчеркнуть символ <quote>alpha</quote>. 
+	  Решением в этой ситуации будет отказ от использования UTF-8 или установка графической 
+	  системы X Window, не имеющих подобных ограничений.</para>
     </listitem>
 
     <listitem>
-      <para>For Chinese, Japanese, Korean, and some other languages, the Linux
-      console cannot be configured to display the needed characters. Users
-      who need such languages should install the X Window System, fonts that
-      cover the necessary character ranges, and the proper input method (e.g.,
-      SCIM, supports a wide variety of languages).</para>
+      <para>Для китайского, японского, корейского и некоторых других языков невозможно насторить 
+	  консоль Linux так, чтобы она отображала все необходимые символы. Пользователи, которым 
+	  требуются эти языки, должны установить систему X Window, шрифты, покрывающие необходимый 
+	  диапазон символов, и правильный метод ввода (например, SCIM, он поддерживает большое число 
+	  разнообразных языков).</para>
     </listitem>
 
   </itemizedlist>
@@ -539,140 +495,127 @@ EOF</userinput></screen>
   <!-- Added because folks keep posting their console file with X questions
   to blfs-support list -->
   <note>
-    <para>The <filename>/etc/sysconfig/console</filename> file only controls
-    the Linux text console localization. It has nothing to do with setting
-    the proper keyboard layout and terminal fonts in the X Window System, with
-    ssh sessions, or with a serial console. In such situations, limitations
-    mentioned in the last two list items above do not apply.</para>
+    <para>Файл <filename>/etc/sysconfig/console</filename> управляет только локализацией 
+	текстовой консоли Linux. Он никак не влияет на настройки раскладки клавиатуры и шрифтов 
+	в системе X Window, в сессиях SSH или на последовательном терминале. В этих ситуациях 
+	ограничения, описанные в двух расположенных выше абзацах, не применяются.</para>
   </note>
 
   </sect2>
 
   <sect2 id="ch-config-createfiles">
-    <title>Creating Files at Boot</title>
+    <title>Создание файлов при загрузке</title>
 
     <indexterm zone="ch-config-createfiles">
       <primary sortas="d-createfiles">File creation at boot</primary>
       <secondary>configuring</secondary>
     </indexterm>
 
-    <para>At times, it is desirable to create files at boot time.  For instance,
-    the <filename class="directory">/tmp/.ICE-unix</filename> directory
-    is often needed.  This can be done by creating an entry in the
-    <filename>/etc/sysconfig/createfiles</filename> configuration script.
-    The format of this file is embedded in the comments of the default
-    configuration file.</para>
+    <para>Иногда необходимо создавать файлы во время загрузки. Например, часто требуется 
+	каталог <filename class="directory">/tmp/.ICE-unix</filename> . Это можно сделать, создав 
+	запись в скрипте <filename>/etc/sysconfig/createfiles</filename>. Формат этого файла описан 
+	в комментариях файла конфигурации по умолчанию.</para>
   </sect2>
 
   <sect2 id="ch-config-sysklogd">
-    <title>Configuring the sysklogd Script</title>
+    <title>Настройка скрипта sysklogd</title>
 
     <indexterm zone="ch-config-sysklogd">
       <primary sortas="d-sysklogd">sysklogd</primary>
       <secondary>configuring</secondary>
     </indexterm>
 
-    <para>The <filename>sysklogd</filename> script invokes the
-    <command>syslogd</command> program as a part of System V initialization.  The
-    <parameter>-m 0</parameter> option turns off the periodic timestamp mark that
-    <command>syslogd</command> writes to the log files every 20 minutes by
-    default.  If you want to turn on this periodic timestamp mark, edit
-    <filename>/etc/sysconfig/rc.site</filename> and define the variable
-    SYSKLOGD_PARMS to the desired value.  For instance, to remove all parameters,
-    set the variable to a null value:</para>
+    <para>Скрипт <filename>sysklogd</filename> вызывает программу <command>syslogd</command> 
+	как часть инициализации System V. Параметр <parameter>-m 0</parameter> отключает периодическую 
+	(по умолчанию - каждые 20 минут) запись временных меток в файлы журналов, производимую 
+	<command>syslogd</command>. Если Вам необходимо включить периодическую запись временных меток, 
+	отредактируйте файл <filename>/etc/sysconfig/rc.site</filename> и присвойте переменной 
+	SYSKLOGD_PARMS требуемое значение. Например, чтобы сбросить все параметры, присвойте переменной 
+	пустое значение:</para>
 
 <screen role="nodump">SYSKLOGD_PARMS=</screen>
 
-    <para>See <userinput>man syslogd</userinput> for more options.</para>
+    <para>Дополнительные параметры смотрите в <userinput>man syslogd</userinput>.</para>
 
   </sect2>
 
   <sect2 id="ch-config-site">
-    <title>The rc.site File</title>
+    <title>Файл rc.site</title>
 
     <indexterm zone="ch-config-site">
       <primary sortas="a-rc.site">rc.site</primary>
     </indexterm>
 
-    <para>The optional <filename>/etc/sysconfig/rc.site</filename> file contains
-    settings that are automatically set for each SystemV boot script.  It can
-    alternatively set the values specified in the <filename>hostname</filename>,
-    <filename>console</filename>, and <filename>clock</filename> files in the
-    <filename class='directory'>/etc/sysconfig/</filename> directory.  If the
-    associated variables are present in both these separate files and
-    <filename>rc.site</filename>, the values in the script specific files have
-    precedence. </para>
+    <para>Необязательный файл <filename>/etc/sysconfig/rc.site</filename> содержит настройки, 
+	автоматически применяемые всеми загрузочными скриптами. Этот файл может содержать парамеры, 
+	обычно указываемые в файлах <filename>hostname</filename>, <filename>console</filename> и 
+	<filename>clock</filename> из каталога <filename class='directory'>/etc/sysconfig/</filename>. 
+	Если значение одной и той же переменной присваивается и в одном из этих файлов, и в 
+	<filename>rc.site</filename>, приоритет имеет значение из специализированного файла.</para>
 
-    <para><filename>rc.site</filename> also contains parameters that can
-    customize other aspects of the boot process.  Setting the IPROMPT variable
-    will enable selective running of bootscripts.  Other options are described
-    in the file comments.  The default version of the file is as follows:</para>
+    <para><filename>rc.site</filename> также содержит параметры, которые могут настраивать 
+	другие аспекты процесса загрузки. Установка переменной IPROMPT позволит выборочно запускать 
+	загрузочные скрипты. Другие параметры описаны в комментариях к файлу. Версия файла по 
+	умолчанию выглядит следующим образом:</para>
 
     <!-- Use role to fix a pdf generation problem -->
     <screen role="auto">&site;</screen>
 
     <sect3>
-      <title>Customizing the Boot and Shutdown Scripts</title>
+      <title>Настройка скриптов загрузки и завершения работы</title>
 
-      <para>The LFS boot scripts boot and shut down a system in a fairly
-      efficient manner, but there are a few tweaks that you can make in the
-      rc.site file to improve speed even more and to adjust messages according
-      to your preferences. To do this, adjust the settings in
-      the <filename>/etc/sysconfig/rc.site</filename> file above.</para>
+      <para>Загрузочные скрипты LFS загружают и завершают работу системы довольно эффективно, 
+	  но есть несколько настроек, которые вы можете внести в файл rc.site, чтобы еще больше 
+	  повысить скорость и настроить сообщения в соответствии с вашими предпочтениями. Чтобы 
+	  сделать это, измените настройки в приведенном выше файле 
+	  <filename>/etc/sysconfig/rc.site</filename>.</para>
 
       <itemizedlist>
 
-      <listitem><para>During the boot script <filename>udev</filename>, there is
-      a call to <command>udev settle</command> that requires some time to
-      complete. This time may or may not be required depending on devices present
-      in the system.  If you only have simple partitions and a single ethernet
-      card, the boot process will probably not need to wait for this command.  To
-      skip it, set the variable OMIT_UDEV_SETTLE=y.</para></listitem>
+      <listitem><para>Во время работы загрузочного скрипта <filename>udev</filename> происходит 
+	  вызов <command>udev settle</command>, для завершения которого требуется некоторое время. 
+	  Это время может и не потребоваться в зависимости от конфигурации устройств в системе. Если 
+	  у вас имеются только простые разделы и одна сетевая карта, процессу загрузки, вероятно, 
+	  не нужно будет ждать завершения работы этой команды. Чтобы пропустить её, установите переменную 
+	  OMIT_UDEV_SETTLE=y.</para></listitem>
 
-      <listitem><para>The boot script <filename>udev_retry</filename> also runs
-      <command>udev settle</command> by default.  This command is only needed by
-      default if the <filename class='directory'>/var</filename> directory is
-      separately mounted.  This is because the clock needs the file
-      <filename>/var/lib/hwclock/adjtime</filename>.  Other customizations may
-      also need to wait for udev to complete, but in many installations it is not
-      needed.  Skip the command by setting the variable OMIT_UDEV_RETRY_SETTLE=y.
+      <listitem><para>Скрипт загрузки <filename>udev_retry</filename> также по умолчанию 
+	  запускает <command>udev settle</command>. Команда требуется только тогда, когда
+	  каталог <filename class='directory'>/var</filename> смонтирован в отдельный раздел. 
+	  Это связано с тем, что часам нужен доступ к файлу <filename>/var/lib/hwclock/adjtime</filename>. 
+	  Пропустите команду, установив переменную OMIT_UDEV_RETRY_SETTLE=y.
       </para></listitem>
 
-      <listitem><para>By default, the file system checks are silent.  This can
-      appear to be a delay during the bootup process.  To turn on the
-      <command>fsck</command> output, set the variable VERBOSE_FSCK=y.
+      <listitem><para>По умолчанию проверка файловой системы выполняется в "тихом" режиме. 
+	  Это может показаться задержкой во время процесса загрузки. Чтобы включить вывод 
+	  <command>fsck</command>, установите переменную VERBOSE_FSCK=y.
       </para></listitem>
 
-      <listitem><para>When rebooting, you may want to skip the filesystem check,
-      <command>fsck</command>, completely.  To do this, either create the file
-      <filename>/fastboot</filename> or reboot the system with the command
-      <command>/sbin/shutdown -f -r now</command>.  On the other hand, you can
-      force all file systems to be checked by creating
-      <filename>/forcefsck</filename> or running <command>shutdown</command> with
-      the <parameter>-F</parameter> parameter instead of <parameter>-f</parameter>.
-      </para>
+      <listitem><para>При перезагрузке вы, возможно, захотите полностью пропустить проверку 
+	  файловой системы, <command>fsck</command>. Чтобы сделать это, либо создайте файл 
+	  <filename>/fastboot</filename>, либо перезагрузите систему командой 
+	  <command>/sbin/shutdown -f -r now</command>. С другой стороны, вы можете принудительно 
+	  проверить все файловые системы, создав <filename>/forcefsck</filename>  или запустив 
+	  <command>shutdown</command> с параметром <parameter>-F</parameter> вместо <parameter>-f</parameter>.</para>
 
-      <para>Setting the variable FASTBOOT=y will disable <command>fsck</command>
-      during the boot process until it is removed.  This is not recommended
-      on a permanent basis.</para></listitem>
+      <para>Установка переменной FASTBOOT=y отключит <command>fsck</command> во время процесса 
+	  загрузки до тех пор, пока она не будет удалена. Это не рекомендуется делать на постоянной 
+	  основе.</para></listitem>
 
-      <listitem><para>Normally, all files in the <filename
-      class='directory'>/tmp</filename> directory are deleted at boot time.
-      Depending on the number of files or directories present, this can cause a
-      noticeable delay in the boot process.  To skip removing these files set the
-      variable SKIPTMPCLEAN=y.</para></listitem>
+      <listitem><para>Обычно все файлы в каталоге <filename class='directory'>/tmp</filename> 
+	  удаляются во время загрузки. В зависимости от количества имеющихся файлов или каталогов 
+	  это может привести к заметной задержке в процессе загрузки. Чтобы пропустить удаление 
+	  этих файлов, установите переменную SKIPTMPCLEAN=y.</para></listitem>
 
-      <listitem><para>During shutdown, the <command>init</command> program sends
-      a TERM signal to each program it has started (e.g. agetty), waits for a set
-      time (default 3 seconds), and sends each process a KILL signal and waits
-      again.  This process is repeated in the <command>sendsignals</command>
-      script for any processes that are not shut down by their own scripts.  The
-      delay for <command>init</command> can be set by passing a parameter.  For
-      example to remove the delay in <command>init</command>, pass the -t0
-      parameter when shutting down or rebooting (e.g.  <command>/sbin/shutdown
-      -t0 -r now</command>).  The delay for the  <command>sendsignals</command>
-      script can be skipped by setting the parameter
-      KILLDELAY=0.</para></listitem>
+      <listitem><para>Во время завершения работы, <command>init</command> отправляет сигнал TERM 
+	  каждой запущенной программе (например, agetty), ожидает установленное время (по умолчанию 3 
+	  секунды), посылает каждому процессу сигнал завершения(KILL) и снова ждёт. Этот процесс 
+	  повторяется в сценарии <command>sendsignals</command> для любых процессов, которые не завершаются 
+	  их собственными скриптами. Задержка для <command>init</command> может быть установлена путем 
+	  передачи параметра. Например, чтобы устранить задержку в <command>init</command>, передайте 
+	  параметр -t0 при выключении или перезагрузке (например, <command>/sbin/shutdown -t0 -r now</command>). 
+	  Задержку для скрипта <command>sendsignals</command> можно пропустить, установив параметр 
+	  KILLDELAY=0.</para></listitem>
 
       </itemizedlist>
 

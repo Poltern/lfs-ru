@@ -42,7 +42,7 @@
 
 <screen><userinput>ln -sv /proc/self/mounts /etc/mtab</userinput></screen>
 
-  <para>:Создайте файл <filename>/etc/hosts</filename>, на который будут ссылаться
+  <para>Создайте файл <filename>/etc/hosts</filename>, на который будут ссылаться
   некоторые наборы тестов, а также один из файлов конфигурации Perl:</para>
 
 <screen><userinput>cat &gt; /etc/hosts &lt;&lt; EOF

@@ -160,7 +160,7 @@
         <term><command>modules</command></term>
         <listitem>
           <para>Загружает модули ядра из списка, который находится в файле
-          <filename>/etc/sysconfig/modules</filename>, используя указанные тамже аргументы</para>
+          <filename>/etc/sysconfig/modules</filename>, используя указанные там же аргументы</para>
           <indexterm zone="ch-config-bootscripts modules-bootscripts">
             <primary sortas="d-modules">modules</primary>
           </indexterm>
