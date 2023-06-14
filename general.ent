@@ -1,8 +1,8 @@
 <!-- Editing  up to the line of ==== should be enough
      to generate a book for development, release, or rc-->
-<!ENTITY % development "INCLUDE"><!-- set to INCLUDE for development,
+<!ENTITY % development "IGNORE"><!-- set to INCLUDE for development,
                                       set to IGNORE for release or rc -->
-<!ENTITY % release     "IGNORE"> <!-- set to INCLUDE for release,
+<!ENTITY % release     "INCLUDE"> <!-- set to INCLUDE for release,
                                       set to IGNORE for development or rc -->
 <!ENTITY % rc          "IGNORE"> <!-- set to INCLUDE for rc,
                                       set to IGNORE for development or
@@ -79,6 +79,7 @@
 <!ENTITY wget-list       "wget-list-systemd">
 ]]>
 <!ENTITY lfs-root        "https://mirror.linuxfromscratch.ru/">
+<!ENTITY lfs-root-en     "https://linuxfromscratch.org/">
 <!ENTITY blfs-root       "&lfs-root;blfs/">
 <!ENTITY blfs-book       "&blfs-root;view/&short-version;/">
 <!ENTITY faq-root        "&lfs-root;faq/">
