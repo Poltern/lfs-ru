@@ -262,7 +262,7 @@ make DESTDIR=/usr/pkg/libfoo/1.1 install</userinput></screen>
       <para>Этот подход используется большинством менеджеров пакетов, имеющихся в
 	  коммерческих дистрибутивах. Примерами менеджеров пакетов, которые следуют этому
 	  подходу, являются RPM (который, кстати, требуется согласно спецификации <ulink
-      url="http://refspecs.linuxfoundation.org/lsb.shtml">Linux
+      url="https://refspecs.linuxfoundation.org/lsb.shtml">Linux
       Standard Base Specification</ulink>), pkg-utils, apt Debian и система Portage
 	  Gentoo. Описание того, как использовать этот стиль управления пакетами для систем
 	  LFS, находится по адресу <ulink url="&hints-root;fakeroot.txt"/>.</para>
@@ -273,7 +273,7 @@ make DESTDIR=/usr/pkg/libfoo/1.1 install</userinput></screen>
       <para>Slackware использует систему на основе <command>tar</command>  для архивов
 	  пакетов. Эта система намеренно не обрабатывает зависимости пакетов, как это
 	  делают более сложные менеджеры пакетов. Подробнее об управлении пакетами Slackware
-	  см. <ulink url="http://www.slackbook.org/html/package-management.html"/>.</para>
+	  см. <ulink url="https://www.slackbook.org/html/package-management.html"/>.</para>
     </sect3>
 
     <sect3>

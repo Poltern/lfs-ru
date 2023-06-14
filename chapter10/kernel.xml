@@ -100,15 +100,10 @@
       <para>Обязательно включите/отключите/настройте следующие параметры, иначе система может 
 	  работаеть некорректно или вообще не загружаться:</para>
 
-      <screen role="nodump" revision="sysv">Processor type and features ---&gt;
-   [*] Build a relocatable kernel [CONFIG_RELOCATABLE]
-   [*]   Randomize the address of the kernel image (KASLR) [CONFIG_RANDOMIZE_BASE]
-General setup ---&gt;
+
+      <screen role="nodump" revision="sysv">General setup -->
    [ ] Compile the kernel with warnings as errors [CONFIG_WERROR]
    &lt; &gt; Enable kernel headers through /sys/kernel/kheaders.tar.xz [CONFIG_IKHEADERS]
-General architecture-dependent options  ---&gt;
-   [*] Stack Protector buffer overflow detection [CONFIG_STACKPROTECTOR]
-   [*]   Strong Stack Protector [CONFIG_STACKPROTECTOR_STRONG]
 Device Drivers  ---&gt;
   Graphics support ---&gt;
    Frame buffer Devices ---&gt;
@@ -118,10 +113,7 @@ Device Drivers  ---&gt;
    [*] Maintain a devtmpfs filesystem to mount at /dev [CONFIG_DEVTMPFS]
    [*]   Automount devtmpfs at /dev, after the kernel mounted the rootfs [CONFIG_DEVTMPFS_MOUNT]</screen>
 
-      <screen role="nodump" revision="systemd">Processor type and features ---&gt;
-   [*] Build a relocatable kernel [CONFIG_RELOCATABLE]
-   [*]   Randomize the address of the kernel image (KASLR) [CONFIG_RANDOMIZE_BASE]
-General setup ---&gt;
+      <screen role="nodump" revision="systemd">General setup -->
    [ ] Compile the kernel with warnings as errors [CONFIG_WERROR]
    [ ] Auditing Support [CONFIG_AUDIT]
    CPU/Task time and stats accounting ---&gt;
@@ -134,8 +126,6 @@ General setup ---&gt;
       [*] open by fhandle syscalls [CONFIG_FHANDLE]
 General architecture-dependent options  ---&gt;
    [*] Enable seccomp to safely compute untrusted bytecode [CONFIG_SECCOMP]
-   [*] Stack Protector buffer overflow detection [CONFIG_STACKPROTECTOR]
-   [*]   Strong Stack Protector [CONFIG_STACKPROTECTOR_STRONG]
 Networking support  ---&gt;
   Networking options  ---&gt;
    &lt;*&gt; The IPv6 protocol [CONFIG_IPV6]
@@ -165,6 +155,8 @@ File systems  ---&gt;
 
       <screen role="nodump">Processor type and features ---&gt;
   [*] Support x2apic [CONFIG_X86_X2APIC]
+Memory Management options  ---&gt;
+  [ ] Enable userfaultfd() system call [CONFIG_USERFAULTFD]
 Device Drivers ---&gt;
   [*] PCI Support ---&gt; [CONFIG_PCI]
     [*] Message Signaled Interrupts (MSI and MSI-X) [CONFIG_PCI_MSI]
@@ -192,13 +184,6 @@ Device Drivers ---&gt;
     <variablelist>
       <title>Пояснения для выбранных выше параметров ядра:</title>
 
-      <varlistentry>
-        <term><parameter>Randomize the address of the kernel image (KASLR)</parameter></term>
-        <listitem>
-          <para>Включить ASLR для ядра, чтобы уменшить вероятность атаки на фиксированные адреса 
-		  конфиденциальных данных или кода в ядре.</para>
-        </listitem>
-      </varlistentry>
 
       <varlistentry>
         <term>
@@ -221,15 +206,6 @@ Device Drivers ---&gt;
         <listitem>
           <para>Для сборки ядра с этим параметром необходим пакет <command>cpio</command>.
           <command>cpio</command> не устанавливается в LFS.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term><parameter>Strong Stack Protector</parameter></term>
-        <listitem>
-          <para>Включите SSP для ядра. Мы включили его для всего пользовательского пространства 
-		  с помощью параметра <parameter>--enable-default-ssp</parameter> в настройках GCC, но ядро 
-		  не использует настройки GCC по умолчанию для SSP. Здесь мы включаем это явно.</para>
         </listitem>
       </varlistentry>
 
@@ -264,6 +240,16 @@ Device Drivers ---&gt;
 		  в режиме x2APIC. x2APIC может быть включен в BIOS на системах x86 и у ядра собранного 
 		  без этой опции будет kernel panic при загрузке. Эта опция не окажет никакого эффекта, 
 		  но и не причиняет вреда, если x2APIC отключен в BIOS.</para>
+        </listitem>
+      </varlistentry>
+	  
+      <varlistentry>
+        <term><parameter>Enable userfaultfd() system call</parameter></term>
+        <listitem>
+          <para>Если этот параметр включен, уязвимость в системе безопасности ядра
+          Linux-&linux-version; не исправлена, и доступна для эксплуатации. Отключите 
+		  эту опцию, чтобы предотвратить эксплуатацию уязвимости. Этот системный вызов 
+		  не используется ни одной частью LFS или BLFS.</para>
         </listitem>
       </varlistentry>
 

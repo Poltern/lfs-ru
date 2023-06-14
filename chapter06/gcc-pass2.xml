@@ -89,6 +89,7 @@ cd       build</userinput></screen>
     LDFLAGS_FOR_TARGET=-L$PWD/$LFS_TGT/libgcc      \
     --prefix=/usr                                  \
     --with-build-sysroot=$LFS                      \
+    --enable-initfini-array                        \
     --disable-nls                                  \
     --disable-multilib                             \
     --disable-decimal-float                        \
@@ -138,6 +139,15 @@ cd       build</userinput></screen>
            общую библиотеку <filename class="libraryfile">libgcc</filename>,
            собранную на этом проходе, вместо статической версии, собранной в GCC
            Проход 1. Это необходимо для поддержки обработки исключения C++</para>
+        </listitem>
+      </varlistentry>
+	  
+      <varlistentry>
+        <term><parameter>--enable-initfini-array</parameter></term>
+        <listitem>
+          <para>Этот параметр автоматически включается при сборке нативного компилятора с родным 
+		  компилятором на x86. Но здесь мы собираем кросс-компилятор, поэтому нам нужно явно 
+		  указать эту опцию.</para>
         </listitem>
       </varlistentry>
 

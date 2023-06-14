@@ -158,7 +158,7 @@ EOF</userinput></screen>
   9, и частично соглашением, используемым рядом существующих Linux
   дистрибутивов. Кроме того, некоторые наборы тестов зависят от конкретных пользователей или
   групп. Специфкация LSB (доступна по адресу <ulink
-  url="http://refspecs.linuxfoundation.org/lsb.shtml"/>) рекомендует, чтобы,
+  url="https://refspecs.linuxfoundation.org/lsb.shtml"/>) рекомендует, чтобы,
   помимо группы <systemitem class="groupname">root</systemitem> с
   идентификатор (GID) 0 присутствовала группа <systemitem class="groupname">bin</systemitem>
   с GID 1. GID 5 широко используется для
