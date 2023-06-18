@@ -16,8 +16,8 @@
   </indexterm>
 
   <para>В этом разделе обсуждается, как настроить системную службу 
-  <command>systemd-vconsole-setup</command>, которая за настройку 
-  шрифта виртуальной консоли и раскладки клавиатуры.</para>
+  <command>systemd-vconsole-setup</command>, которая настраивает 
+  шрифт виртуальной консоли и раскладки клавиатуры.</para>
 
   <para>Служба <command>systemd-vconsole-setup</command> считывает 
   <filename>/etc/vconsole.conf</filename> для получения информации о конфигурации. 
@@ -73,7 +73,7 @@
 
   </variablelist>
 
-  <para>Ниже приведен пример немецкой клавиатуры и консоли:</para>
+  <para>Ниже приведен пример немецкой раскладки клавиатуры и консоли:</para>
 <!-- This is what is used by jhalfs for creating the vconsole.conf file.
      Whenever you want to change the following, please inform the jhalfs
      maintainer(s). -->
