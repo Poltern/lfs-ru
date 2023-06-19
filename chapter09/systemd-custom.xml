@@ -112,7 +112,7 @@ cp /usr/lib/tmpfiles.d/tmp.conf /etc/tmpfiles.d</userinput></screen>
     <title>Переопределение поведения служб по умолчанию</title>
 
     <para>Параметры юнита можно переопределить, создав каталог и файл конфигурации в 
-	<filename class="directory">/etc/systemd/system</filename>. Например:</para>
+	<filename class="directory">/etc/systemd/system</filename>. Пример для условного юнита foobar:</para>
 
 <screen role="nodump"><userinput>mkdir -pv /etc/systemd/system/foobar.service.d
 
@@ -181,7 +181,7 @@ EOF</userinput></screen>
          показывает записи журнала, связанные с указанным юнит-файлом.</para>
        </listitem>
        <listitem>
-         <para><command>journalctl -b[=ID] -r</command>: показывает записи журнал с момента последней 
+         <para><command>journalctl -b[=ID] -r</command>: показывает записи журнала с момента последней 
 		 успешной загрузки (или для идентификатора загрузки) в обратном порядке хронологический порядоке.</para>
        </listitem>
        <listitem>
@@ -213,7 +213,7 @@ EOF</userinput></screen>
 		дампа ядра.</para>
       </listitem>
       <listitem>
-        <para><command>coredumpctl -1 debug</command>: загружает последний дамп ядра 
+        <para><command>coredumpctl -1 debug</command>: загружает последний дамп ядра в 
 		<ulink url="&blfs-book;general/gdb.html">GDB</ulink>.
         </para>
       </listitem>
@@ -269,7 +269,7 @@ EOF</userinput></screen>
         <para>
           <emphasis>Включенить долгосрочные процессы в системе(глобально)</emphasis>:
           Вы можете установить <parameter>KillUserProcesses=no</parameter> в 
-          <filename>/etc/systemd/logind.conf</filename> для включения лолгосрочных процессов 
+          <filename>/etc/systemd/logind.conf</filename> для включения долгосрочных процессов 
 		  глобально для всех пользователей. Преимуществом этого метода является то, что 
 		  вы оставляете старый метод доступным всем пользователям за счет явного контроля.
         </para>
