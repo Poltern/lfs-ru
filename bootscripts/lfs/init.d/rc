@@ -183,7 +183,7 @@ fi
 
 # Start all services marked as S in this runlevel, except if marked as
 # S in the previous runlevel
-# it is the responsabily of the script to not try to start an already running
+# it is the responsibility of the script to not try to start an already running
 # service
 for i in $( ls -v /etc/rc.d/rc${runlevel}.d/S* 2> /dev/null)
 do

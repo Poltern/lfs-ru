@@ -8,7 +8,7 @@
 # Version     : 00.00
 #
 # Notes       : The syntax of this file is as follows:
-#  		<module> [<arg1> <arg2> ...]
+#               <module> [<arg1> <arg2> ...]
 #
 # Each module should be on its own line, and any options that you want
 # passed to the module should follow it.  The line deliminator is either

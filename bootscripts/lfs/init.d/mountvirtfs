@@ -38,8 +38,8 @@ case "${1}" in
          mount /run || failed=1
       fi
 
-      mkdir -p /run/lock /run/shm
-      chmod 1777 /run/shm /run/lock
+      mkdir -p   /run/lock 
+      chmod 1777 /run/lock
 
       log_info_msg "Mounting virtual file systems: ${INFO}/run"
 
@@ -58,7 +58,9 @@ case "${1}" in
          mount -o mode=0755,nosuid /dev  || failed=1
       fi
 
-      ln -sfn /run/shm /dev/shm
+      mkdir -p /dev/shm
+      log_info_msg2 " ${INFO}/dev/shm"
+      mount -o nosuid,nodev /dev/shm || failed=1
 
       (exit ${failed})
       evaluate_retval

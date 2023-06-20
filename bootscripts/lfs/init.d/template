@@ -45,7 +45,7 @@ case "${1}" in
     # if it is possible to use killproc
       killproc fully_qualified_path
     # if it is not possible to use killproc
-    # (the daemon shoudn't be stopped by killing it)
+    # (the daemon shouldn't be stopped by killing it)
       if pidofproc daemon_name_as_reported_by_ps >/dev/null; then
          command_to_stop_the_service
       fi

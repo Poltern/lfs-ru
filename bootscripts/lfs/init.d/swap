@@ -20,8 +20,8 @@
 # Should-Stop:         $local_fs
 # Default-Start:       S
 # Default-Stop:        0 6
-# Short-Description:   Mounts and unmounts swap partitions.
-# Description:         Mounts and unmounts swap partitions defined in
+# Short-Description:   Activates and deactivates swap partitions.
+# Description:         Activates and deactivates swap partitions defined in
 #                      /etc/fstab.
 # X-LFS-Provided-By:   LFS
 ### END INIT INFO

@@ -34,7 +34,7 @@
 # Default-Start:       S
 # Default-Stop:
 # Short-Description:   Checks local filesystems before mounting.
-# Description:         Checks local filesystmes before mounting.
+# Description:         Checks local filesystems before mounting.
 # X-LFS-Provided-By:   LFS
 ### END INIT INFO
 

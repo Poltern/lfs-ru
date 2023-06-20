@@ -32,7 +32,7 @@
 #FAILURE_PREFIX="${FAILURE}*****${NORMAL} "
 #WARNING_PREFIX="${WARNING} *** ${NORMAL} "
 
-# Manually seet the right edge of message output (characters)
+# Manually set the right edge of message output (characters)
 # Useful when resetting console font during boot to override
 # automatic screen width detection
 #COLUMNS=120

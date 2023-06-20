@@ -1,3 +1,6 @@
+2022-09-30 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Mount /dev/shm as a tmpfs.
+
 2022-07-23 Thomas Trepl <thomas@linuxfromscratch.org>
    * Mark an raid array clean when root (/) has been remounted
      r/o when system goes down. Otherwise, array does remain

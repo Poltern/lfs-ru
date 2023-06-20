@@ -155,7 +155,7 @@ start_daemon()
         fi
 
         # Return a value ONLY
-        # It is the init script's (or distribution's functions) responsibilty
+        # It is the init script's (or distribution's functions) responsibility
         # to log messages!
         case "${retval}" in
 
@@ -271,7 +271,7 @@ killproc()
     fi
 
     # Return a value ONLY
-    # It is the init script's (or distribution's functions) responsibilty
+    # It is the init script's (or distribution's functions) responsibility
     # to log messages!
     case "${retval}" in
 
