@@ -7,7 +7,7 @@
 <!ENTITY % rc          "IGNORE"> <!-- set to INCLUDE for rc,
                                       set to IGNORE for development or
                                        release -->
-<!ENTITY % relnum "11.2"><!-- must be given for release or rc -->
+<!ENTITY % relnum "11.3"><!-- must be given for release or rc -->
 <!ENTITY % reldate "1 марта 2023"><!-- must ve given for release or rc -->
 <!ENTITY % crdate "1999-2023"><!-- must ve given for release or rc -->
 <!ENTITY % rcnum  "2"><!-- must be given only for rc -->
@@ -79,7 +79,7 @@
 <!ENTITY wget-list       "wget-list-systemd">
 ]]>
 <!ENTITY lfs-root        "https://mirror.linuxfromscratch.ru/">
-<!ENTITY lfs-root-en     "https://linuxfromscratch.org/">
+<!ENTITY lfs-root-en     "https://www.linuxfromscratch.org/">
 <!ENTITY blfs-root       "&lfs-root;blfs/">
 <!ENTITY blfs-book       "&blfs-root;view/&short-version;/">
 <!ENTITY faq-root        "&lfs-root;faq/">
@@ -118,9 +118,17 @@
 <!ENTITY savannah        "https://download.savannah.gnu.org">
 <!ENTITY savannah-nongnu "https://savannah.nongnu.org">
 <!ENTITY github          "https://github.com">
+<!ENTITY pypi-home       "https://pypi.org/project">
+<!ENTITY pypi-src        "https://pypi.org/packages/source">
 
 <!ENTITY root            "<systemitem class='username'>root</systemitem>">
 <!ENTITY lfs-user        "<systemitem class='username'>lfs</systemitem>">
+<!ENTITY devtmpfs        "<systemitem class='filesystem'>devtmpfs</systemitem>">
+<!ENTITY fstab           "<filename>/etc/fstab</filename>">
+<!ENTITY boot-dir        "<filename class='directory'>/boot</filename>">
+<!ENTITY ch-final        "<xref linkend='chapter-building-system'/>">
+<!ENTITY ch-tmp-cross    "<xref linkend='chapter-temporary-tools'/>">
+<!ENTITY ch-tmp-chroot   "<xref linkend='chapter-chroot-temporary-tools'/>">
 
 <!ENTITY % packages-entities SYSTEM "packages.ent">
 %packages-entities;

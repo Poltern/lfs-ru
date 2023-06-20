@@ -9,8 +9,8 @@
 -->
 <!--
 <!ENTITY bash-fixes-patch "bash-&bash-version;-upstream_fixes-1.patch">
-<!ENTITY bash-fixes-patch-md5 "c1545da2ad7d78574b52c465ec077ed9">
-<!ENTITY bash-fixes-patch-size "22 KB">
+<!ENTITY bash-fixes-patch-md5 "5f20760139d6a97e55124988fcddae44">
+<!ENTITY bash-fixes-patch-size "2.0 KB">
 -->
 <!--
 <!ENTITY binutils-lto-patch "binutils-&binutils-version;-lto_fix-1.patch">
@@ -50,11 +50,9 @@
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
 <!ENTITY glibc-fhs-patch-size "2.8 KB">
 
-<!--
-<!ENTITY glibc-upstream-patch "glibc-&glibc-version;-upstream_fixes-1.patch">
-<!ENTITY glibc-upstream-patch-md5 "e602b6c3a332f4a06e2914e02ae2b295">
-<!ENTITY glibc-upstream-patch-size "16 KB">
--->
+<!ENTITY grub-upstream-fixes-patch "grub-&grub-version;-upstream_fixes-1.patch">
+<!ENTITY grub-upstream-fixes-patch-md5 "da388905710bb4cbfbc7bd7346ff9174">
+<!ENTITY grub-upstream-fixes-patch-size "8 KB">
 
 <!ENTITY kbd-backspace-patch "kbd-&kbd-version;-backspace-1.patch">
 <!ENTITY kbd-backspace-patch-md5 "f75cca16a38da6caa7d52151f7136895">
@@ -78,24 +76,31 @@
 <!ENTITY perl-fix-patch-md5 "fb42558b59ed95ee00eb9f1c1c9b8056">
 <!ENTITY perl-fix-patch-size "1.6 KB">
 -->
+<!ENTITY readline-fixes-patch "readline-&readline-version;-upstream_fix-1.patch">
+<!ENTITY readline-fixes-patch-md5 "dd1764b84cfca6b677f44978218a75da">
+<!ENTITY readline-fixes-patch-size "1.3 KB">
+
 <!--
 <!ENTITY shadow-segfault-patch "shadow-&shadow-version;-useradd_segfault-1.patch">
 <!ENTITY shadow-segfault-patch-md5 "66b299c0c9ac66fdb7c91b40df5984c0">
 <!ENTITY shadow-segfault-patch-size "1.7 KB">
 -->
 <!ENTITY sysvinit-consolidated-patch "sysvinit-&sysvinit-version;-consolidated-1.patch">
-<!ENTITY sysvinit-consolidated-patch-md5 "4900322141d493e74020c9cf437b2cdc">
-<!ENTITY sysvinit-consolidated-patch-size "2.4 KB">
+<!ENTITY sysvinit-consolidated-patch-md5 "17ffccbb8e18c39e8cedc32046f3a475">
+<!ENTITY sysvinit-consolidated-patch-size "2.5 KB">
 
-<!ENTITY systemd-upstream-patch "systemd-&systemd-version;-glibc_2.36_fix-1.patch">
-<!ENTITY systemd-upstream-patch-md5 "fd8dc901e73ad00dc72a351a0d4ac48c">
-<!ENTITY systemd-upstream-patch-size "3.0 KB">
+
+<!ENTITY systemd-upstream-patch "systemd-&systemd-version;-security_fix-1.patch">
+<!ENTITY systemd-upstream-patch-md5 "da817e69e897d35cdffd7c45ea06be39">
+<!ENTITY systemd-upstream-patch-size "76.0 KB">
+
 <!--
 <!ENTITY xz-upstream-fix-patch "xz-&xz-version;-upstream_fix-1.patch">
 <!ENTITY xz-upstream-fix-patch-md5 "584c72ea3d8f7502b2770670f3090788">
 <!ENTITY xz-upstream-fix-patch-size "3.7 KB">
 -->
+<!--
 <!ENTITY zstd-upstream-fixes-patch "zstd-&zstd-version;-upstream_fixes-1.patch">
 <!ENTITY zstd-upstream-fixes-patch-md5 "a7e576e3f87415fdf388392b257cdcf3">
 <!ENTITY zstd-upstream-fixes-patch-size "4 KB">
-
+-->

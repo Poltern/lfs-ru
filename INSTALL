@@ -1,7 +1,7 @@
 Инструкции по конвертации книги LFS в другие форматы
 
 После того, как был загружен исходный код этой книги, необходимо настроить 
-программное обеспечение, для того, чтобы вы могли выполнять конвертацию 
+программное обеспечение, для того, чтобы вы могли выполнить конвертацию 
 исходного кода в формате XML в другой формат, например - в HTML, TXT или PDF.
 
 Если Вам это необходимо, прочитайте инструкции, расположенные ниже.
@@ -18,26 +18,27 @@ lfs-dev. Вместо этого, Вам следует прочитать ру�
 следующие пакеты:
 
 * libxml2
-  - http://www.linuxfromscratch.org/blfs/view/svn/general/libxml2.html
+  - https://www.linuxfromscratch.org/blfs/view/svn/general/libxml2.html
 
 * libxslt
-  - http://www.linuxfromscratch.org/blfs/view/svn/general/libxslt.html
+  - https://www.linuxfromscratch.org/blfs/view/svn/general/libxslt.html
 
-* DocBook DTD
-  - http://www.linuxfromscratch.org/blfs/view/svn/pst/xml.html
+* DocBook 4.5 XML DTD
+  - https://www.linuxfromscratch.org/blfs/view/svn/pst/docbook.html
 
 * DocBook XSL Stylesheets
-  - http://www.linuxfromscratch.org/blfs/view/svn/pst/docbook-xsl.html
+  - https://www.linuxfromscratch.org/blfs/view/svn/pst/docbook-xsl.html
 
 * HTMLTidy
-  - http://www.linuxfromscratch.org/blfs/view/svn/general/tidy-html5.html
+  - https://www.linuxfromscratch.org/blfs/view/svn/general/tidy-html5.html
 
 -------------------------------------------------------------------------------
+
 Если необходимо выполнить конвертацию книги из XML в TXT, установите 
 перечисленные выше пакеты, а затем установите следующие:
 
 * lynx
-  - http://www.linuxfromscratch.org/blfs/view/svn/basicnet/lynx.html
+  - https://www.linuxfromscratch.org/blfs/view/svn/basicnet/lynx.html
 
 -------------------------------------------------------------------------------
 
@@ -45,7 +46,7 @@ lfs-dev. Вместо этого, Вам следует прочитать ру�
 перечисленные выше пакеты (кроме lynx), а затем установите следующие:
 
 * JDK
-  - http://www.linuxfromscratch.org/blfs/view/svn/general/openjdk.html
+  - https://www.linuxfromscratch.org/blfs/view/svn/general/openjdk.html
 
 * FOP and JAI
-  - http://www.linuxfromscratch.org/blfs/view/svn/pst/fop.html
+  - https://www.linuxfromscratch.org/blfs/view/svn/pst/fop.html

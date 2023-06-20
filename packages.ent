@@ -19,7 +19,7 @@
 <!ENTITY acl-md5 "95ce715fe09acca7c12d3306d0f076b2">
 <!ENTITY acl-home "&savannah-nongnu;/projects/acl">
 <!ENTITY acl-fin-du "6.1 MB">
-<!ENTITY acl-fin-sbu "0.1 SBU">
+<!ENTITY acl-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY attr-version "2.5.1">
 <!ENTITY attr-size "456 KB">
@@ -35,7 +35,7 @@
 <!ENTITY autoconf-md5 "12cfa1687ffa2606337efe1a64416106">
 <!ENTITY autoconf-home "&gnu-software;autoconf/">
 <!ENTITY autoconf-fin-du "24 MB">
-<!ENTITY autoconf-fin-sbu-tests "6.7">
+<!ENTITY autoconf-fin-sbu-tests "6.2">
 <!ENTITY autoconf-fin-sbu "менее 0.1 SBU (около &autoconf-fin-sbu-tests; SBU с тестами)">
 
 <!ENTITY automake-version "1.16.5">
@@ -45,38 +45,38 @@
 <!ENTITY automake-md5 "4017e96f89fca45ca946f1c5db6be714">
 <!ENTITY automake-sha256 "80facc09885a57e6d49d06972c0ae1089c5fa8f4d4c7cfe5baea58e5085f136d">
 <!ENTITY automake-home "&gnu-software;automake/">
-<!ENTITY automake-fin-du "116 MB">
-<!ENTITY automake-fin-sbu "менее 0.1 SBU (около 7.7 SBU с тестами)">
+<!ENTITY automake-fin-du "114 MB">
+<!ENTITY automake-fin-sbu "менее 0.1 SBU (около 7.3 SBU с тестами)">
 
-<!ENTITY bash-version "5.1.16">
-<!ENTITY bash-size "10,277 KB">
+<!ENTITY bash-version "5.2.15">
+<!ENTITY bash-size "10,695 KB">
 <!ENTITY bash-url "&gnu;bash/bash-&bash-version;.tar.gz">
-<!ENTITY bash-md5 "c17b20a09fc38d67fb303aeb6c130b4e">
+<!ENTITY bash-md5 "4281bb43497f3905a308430a8d6a30a5">
 <!ENTITY bash-home "&gnu-software;bash/">
-<!ENTITY bash-tmp-du "64 MB">
-<!ENTITY bash-tmp-sbu "0.5 SBU">
-<!ENTITY bash-fin-du "50 MB">
-<!ENTITY bash-fin-sbu "1.4 SBU">
+<!ENTITY bash-tmp-du "67 MB">
+<!ENTITY bash-tmp-sbu "0.2 SBU">
+<!ENTITY bash-fin-du "52 MB">
+<!ENTITY bash-fin-sbu "1.2 SBU">
 
-<!ENTITY bc-version "6.0.1">
-<!ENTITY bc-size "441 KB">
+<!ENTITY bc-version "6.2.4">
+<!ENTITY bc-size "447 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "4c8b8d51eb52ee66f5bcf6a6a1ca576e">
-<!ENTITY bc-home "https://git.yzena.com/gavin/bc">
-<!ENTITY bc-fin-du "7.4 MB">
+<!ENTITY bc-md5 "5245ff400df17b66be7621c7a6498953">
+<!ENTITY bc-home "https://git.gavinhoward.com/gavin/bc">
+<!ENTITY bc-fin-du "7.6 MB">
 <!ENTITY bc-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY binutils-version "2.39">
-<!ENTITY binutils-size "24,578 KB">
-<!ENTITY binutils-url "&gnu;binutils/binutils-&binutils-version;.tar.xz">
-<!ENTITY binutils-md5 "f7e986ae9ff06405cafb2e585ee36d27">
+<!ENTITY binutils-version "2.40">
+<!ENTITY binutils-size "24,650 KB">
+<!ENTITY binutils-url "https://sourceware.org/pub/binutils/releases/binutils-&binutils-version;.tar.xz">
+<!ENTITY binutils-md5 "007b59bd908a737c06e5a8d3d2c737eb">
 <!ENTITY binutils-home "&gnu-software;binutils/">
-<!ENTITY binutils-tmpp1-du "629 MB">
+<!ENTITY binutils-tmpp1-du "639 MB">
 <!ENTITY binutils-tmpp1-sbu "1 SBU">
-<!ENTITY binutils-tmpp2-du "514 MB">
-<!ENTITY binutils-tmpp2-sbu "1.4 SBU">
-<!ENTITY binutils-fin-du "2.7 GB">
-<!ENTITY binutils-fin-sbu "8.2 SBU">
+<!ENTITY binutils-tmpp2-du "525 MB">
+<!ENTITY binutils-tmpp2-sbu "0.4 SBU">
+<!ENTITY binutils-fin-du "2.6 GB">
+<!ENTITY binutils-fin-sbu "2.2 SBU">
 
 <!ENTITY bison-version "3.8.2">
 <!ENTITY bison-size "2,752 KB">
@@ -84,9 +84,9 @@
 <!ENTITY bison-md5 "c28f119f405a2304ff0a7ccdcc629713">
 <!ENTITY bison-home "&gnu-software;bison/">
 <!ENTITY bison-tmp-du "57 MB">
-<!ENTITY bison-tmp-sbu "0.3 SBU">
-<!ENTITY bison-fin-du "63 MB">
-<!ENTITY bison-fin-sbu "8.7 SBU">
+<!ENTITY bison-tmp-sbu "0.2 SBU">
+<!ENTITY bison-fin-du "62 MB">
+<!ENTITY bison-fin-sbu "2.3 SBU">
 
 <!ENTITY bzip2-version "1.0.8">
 <!ENTITY bzip2-size "792 KB">
@@ -102,25 +102,25 @@
 <!ENTITY check-md5 "50fcafcecde5a380415b12e9c574e0b2">
 <!ENTITY check-home "https://libcheck.github.io/check">
 <!ENTITY check-fin-du "12 MB">
-<!ENTITY check-fin-sbu "0.1 SBU (около 3.6 SBU с тестами)">
+<!ENTITY check-fin-sbu "0.1 SBU (около 1.7 SBU с тестами)">
 
 <!ENTITY coreutils-version "9.1">
 <!ENTITY coreutils-size "5,570 KB">
 <!ENTITY coreutils-url "&gnu;coreutils/coreutils-&coreutils-version;.tar.xz">
 <!ENTITY coreutils-md5 "8b1ca4e018a7dce9bb937faec6618671">
 <!ENTITY coreutils-home "&gnu-software;coreutils/">
-<!ENTITY coreutils-tmp-du "163 MB">
-<!ENTITY coreutils-tmp-sbu "0.6 SBU">
-<!ENTITY coreutils-fin-du "159 MB">
-<!ENTITY coreutils-fin-sbu "2.8 SBU">
+<!ENTITY coreutils-tmp-du "162 MB">
+<!ENTITY coreutils-tmp-sbu "0.3 SBU">
+<!ENTITY coreutils-fin-du "156 MB">
+<!ENTITY coreutils-fin-sbu "0.9 SBU">
 
-<!ENTITY dbus-version "1.14.0">
-<!ENTITY dbus-size "1,332 KB">
+<!ENTITY dbus-version "1.14.6">
+<!ENTITY dbus-size "1,339 KB">
 <!ENTITY dbus-url "https://dbus.freedesktop.org/releases/dbus/dbus-&dbus-version;.tar.xz">
-<!ENTITY dbus-md5 "ddd5570aff05191dbee8e42d751f1b7d">
+<!ENTITY dbus-md5 "e809d7aa905ad82adeaf1d59db5445b1">
 <!ENTITY dbus-home "https://www.freedesktop.org/wiki/Software/dbus">
 <!ENTITY dbus-fin-du "19 MB">
-<!ENTITY dbus-fin-sbu "0.2 SBU">
+<!ENTITY dbus-fin-sbu "0.1 SBU">
 
 <!ENTITY dejagnu-version "1.6.3">
 <!ENTITY dejagnu-size "608 KB">
@@ -128,45 +128,45 @@
 <!ENTITY dejagnu-md5 "68c5208c58236eba447d7d6d1326b821">
 <!ENTITY dejagnu-home "&gnu-software;dejagnu/">
 <!ENTITY dejagnu-tmp-du "6.9 MB">
-<!ENTITY dejagnu-tmp-sbu "менее 0.1 SBU">
+<!ENTITY dejagnu-tmp-sbu "0.1 SBU">
 
-<!ENTITY diffutils-version "3.8">
-<!ENTITY diffutils-size "1,548 KB">
+<!ENTITY diffutils-version "3.9">
+<!ENTITY diffutils-size "1,551 KB">
 <!ENTITY diffutils-url "&gnu;diffutils/diffutils-&diffutils-version;.tar.xz">
-<!ENTITY diffutils-md5 "6a6b0fdc72acfe3f2829aab477876fbc">
+<!ENTITY diffutils-md5 "cf0a65266058bf22fe3feb69e57ffc5b">
 <!ENTITY diffutils-home "&gnu-software;diffutils/">
 <!ENTITY diffutils-tmp-du "26 MB">
 <!ENTITY diffutils-tmp-sbu "0.2 SBU">
 <!ENTITY diffutils-fin-du "35 MB">
-<!ENTITY diffutils-fin-sbu "0.6 SBU">
+<!ENTITY diffutils-fin-sbu "0.3 SBU">
 
-<!ENTITY e2fsprogs-version "1.46.5">
-<!ENTITY e2fsprogs-size "9,307 KB">
+<!ENTITY e2fsprogs-version "1.47.0">
+<!ENTITY e2fsprogs-size "9,412 KB">
 <!ENTITY e2fsprogs-url "https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v&e2fsprogs-version;/e2fsprogs-&e2fsprogs-version;.tar.gz">
-<!ENTITY e2fsprogs-md5 "3da91854c960ad8a819b48b2a404eb43">
+<!ENTITY e2fsprogs-md5 "6b4f18a33873623041857b4963641ee9">
 <!ENTITY e2fsprogs-home "http://e2fsprogs.sourceforge.net/">
-<!ENTITY e2fsprogs-fin-du "94 MB">
-<!ENTITY e2fsprogs-fin-sbu "4.4 SBU на жестком диске, 1.2 SBU на SSD диске">
+<!ENTITY e2fsprogs-fin-du "95 MB">
+<!ENTITY e2fsprogs-fin-sbu "2.4 SBU на жестком диске, 0.4 SBU на SSD диске">
 
-<!ENTITY elfutils-version "0.187"> <!-- libelf -->
-<!ENTITY elfutils-size "9,024 KB">
+<!ENTITY elfutils-version "0.188"> <!-- libelf -->
+<!ENTITY elfutils-size "8,900 KB">
 <!ENTITY elfutils-url "https://sourceware.org/ftp/elfutils/&elfutils-version;/elfutils-&elfutils-version;.tar.bz2">
-<!ENTITY elfutils-md5 "cc04f07b53a71616b22553c0a458cf4b">
+<!ENTITY elfutils-md5 "efb25a91873b2eec4df9f31e6a4f4e5c">
 <!ENTITY elfutils-home "https://sourceware.org/elfutils/">
-<!ENTITY elfutils-fin-du "117 MB">
-<!ENTITY elfutils-fin-sbu "0.9 SBU">
+<!ENTITY elfutils-fin-du "120 MB">
+<!ENTITY elfutils-fin-sbu "0.3 SBU">
 
 <!ENTITY eudev-version "3.2.11">
 <!ENTITY eudev-size "2,075 KB">
 <!ENTITY eudev-url "https://github.com/eudev-project/eudev/releases/download/v&eudev-version;/eudev-&eudev-version;.tar.gz">
 <!ENTITY eudev-md5 "417ba948335736d4d81874fba47a30f7">
 <!ENTITY eudev-fin-du "83 MB">
-<!ENTITY eudev-fin-sbu "0.2 SBU">
+<!ENTITY eudev-fin-sbu "0.1 SBU">
 
-<!ENTITY expat-version "2.4.8">
-<!ENTITY expat-size "444 KB">
+<!ENTITY expat-version "2.5.0">
+<!ENTITY expat-size "450 KB">
 <!ENTITY expat-url "&sourceforge;expat/expat-&expat-version;.tar.xz">
-<!ENTITY expat-md5 "0584a7318a4c007f7ec94778799d72fe">
+<!ENTITY expat-md5 "ac6677b6d1b95d209ab697ce8b688704">
 <!ENTITY expat-home "https://libexpat.github.io/">
 <!ENTITY expat-fin-du "12 MB">
 <!ENTITY expat-fin-sbu "0.1 SBU">
@@ -179,13 +179,13 @@
 <!ENTITY expect-tmp-du "3.9 MB">
 <!ENTITY expect-tmp-sbu "0.2 SBU">
 
-<!ENTITY file-version "5.42">
-<!ENTITY file-size "1,080 KB">
+<!ENTITY file-version "5.44">
+<!ENTITY file-size "1,159 KB">
 <!ENTITY file-url "https://astron.com/pub/file/file-&file-version;.tar.gz">
-<!ENTITY file-md5 "4d4f70c3b08a8a70d8baf67f085d7e92">
+<!ENTITY file-md5 "a60d586d49d015d842b9294864a89c7a">
 <!ENTITY file-home "https://www.darwinsys.com/file/">
-<!ENTITY file-tmp-du "34 MB">
-<!ENTITY file-tmp-sbu "0.2 SBU">
+<!ENTITY file-tmp-du "36 MB">
+<!ENTITY file-tmp-sbu "0.1 SBU">
 <!ENTITY file-fin-du "16 MB">
 <!ENTITY file-fin-sbu "0.1 SBU">
 
@@ -196,8 +196,8 @@
 <!ENTITY findutils-home "&gnu-software;findutils/">
 <!ENTITY findutils-tmp-du "42 MB">
 <!ENTITY findutils-tmp-sbu "0.2 SBU">
-<!ENTITY findutils-fin-du "52 MB">
-<!ENTITY findutils-fin-sbu "0.8 SBU">
+<!ENTITY findutils-fin-du "51 MB">
+<!ENTITY findutils-fin-sbu "0.4 SBU">
 
 <!ENTITY flex-version "2.6.4">
 <!ENTITY flex-size "1,386 KB">
@@ -205,17 +205,17 @@
 <!ENTITY flex-md5 "2882e3179748cc9f9c23ec593d6adc8d">
 <!ENTITY flex-home "&github;/westes/flex">
 <!ENTITY flex-fin-du "33 MB">
-<!ENTITY flex-fin-sbu "0.4 SBU">
+<!ENTITY flex-fin-sbu "0.1 SBU">
 
-<!ENTITY gawk-version "5.1.1">
-<!ENTITY gawk-size "3,075 KB">
+<!ENTITY gawk-version "5.2.1">
+<!ENTITY gawk-size "3,332 KB">
 <!ENTITY gawk-url "&gnu;gawk/gawk-&gawk-version;.tar.xz">
-<!ENTITY gawk-md5 "83650aa943ff2fd519b2abedf8506ace">
+<!ENTITY gawk-md5 "02956bc5d117a7437bb4f7039f23b964">
 <!ENTITY gawk-home "&gnu-software;gawk/">
-<!ENTITY gawk-tmp-du "45 MB">
-<!ENTITY gawk-tmp-sbu "0.2 SBU">
-<!ENTITY gawk-fin-du "44 MB">
-<!ENTITY gawk-fin-sbu "0.4 SBU">
+<!ENTITY gawk-tmp-du "47 MB">
+<!ENTITY gawk-tmp-sbu "0.1 SBU">
+<!ENTITY gawk-fin-du "43 MB">
+<!ENTITY gawk-fin-sbu "0.2 SBU">
 
 <!ENTITY gcc-version "12.2.0">
 <!ENTITY gcc-size "82,662 KB">
@@ -224,18 +224,18 @@
 <!ENTITY gcc-sha256 "">
 <!ENTITY gcc-home "https://gcc.gnu.org/">
 <!ENTITY gcc-tmpp1-du "3.8 GB">
-<!ENTITY gcc-tmpp1-sbu "12 SBU">
-<!ENTITY gcc-tmpp2-du "4.5 GB">
-<!ENTITY gcc-tmpp2-sbu "15 SBU">
+<!ENTITY gcc-tmpp1-sbu "3.3 SBU">
+<!ENTITY gcc-tmpp2-du "4.7 GB">
+<!ENTITY gcc-tmpp2-sbu "4.6 SBU">
 <!ENTITY gcc-fin-du "5.1 GB ">
-<!ENTITY gcc-fin-sbu "160 SBU (with tests)">
+<!ENTITY gcc-fin-sbu "43 SBU (с тестами)">
 <!ENTITY libquadmath-version "0.0.0">
 <!ENTITY libstdcpp-version   "6.0.30">
 <!ENTITY libitm-version      "1.0.0">
 <!ENTITY libatomic-version   "1.2.0">
 
 <!ENTITY libstdcpp-tmpp1-du "1.1 GB">
-<!ENTITY libstdcpp-tmpp1-sbu "0.4 SBU">
+<!ENTITY libstdcpp-tmpp1-sbu "0.2 SBU">
 
 <!ENTITY gdbm-version "1.23">
 <!ENTITY gdbm-size "1,092 KB">
@@ -243,69 +243,69 @@
 <!ENTITY gdbm-md5 "8551961e36bf8c70b7500d255d3658ec">
 <!ENTITY gdbm-home "&gnu-software;gdbm/">
 <!ENTITY gdbm-fin-du "13 MB">
-<!ENTITY gdbm-fin-sbu "0.1 SBU">
+<!ENTITY gdbm-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY gettext-version "0.21">
-<!ENTITY gettext-size "9,487 KB">
+<!ENTITY gettext-version "0.21.1">
+<!ENTITY gettext-size "9,819 KB">
 <!ENTITY gettext-url "&gnu;gettext/gettext-&gettext-version;.tar.xz">
-<!ENTITY gettext-md5 "40996bbaf7d1356d3c22e33a8b255b31">
+<!ENTITY gettext-md5 "27fcc8a42dbc8f334f23a08f1f2fe00a">
 <!ENTITY gettext-home "&gnu-software;gettext/">
-<!ENTITY gettext-tmp-du "282 MB">
-<!ENTITY gettext-tmp-sbu "1.6 SBU">
-<!ENTITY gettext-fin-du "235 MB">
-<!ENTITY gettext-fin-sbu "2.7 SBU">
+<!ENTITY gettext-tmp-du "287 MB">
+<!ENTITY gettext-tmp-sbu "1.0 SBU">
+<!ENTITY gettext-fin-du "241 MB">
+<!ENTITY gettext-fin-sbu "1.3 SBU">
 
-<!ENTITY glibc-version "2.36">
-<!ENTITY glibc-size "18,175 KB">
+<!ENTITY glibc-version "2.37">
+<!ENTITY glibc-size "18,244 KB">
 <!ENTITY glibc-url "&gnu;glibc/glibc-&glibc-version;.tar.xz">
-<!ENTITY glibc-md5 "00e9b89e043340f688bc93ec03239b57">
+<!ENTITY glibc-md5 "e89cf3dcb64939d29f04b4ceead5cc4e">
 <!ENTITY glibc-home "&gnu-software;libc/">
-<!ENTITY glibc-tmp-du "821 MB">
-<!ENTITY glibc-tmp-sbu "4.4 SBU">
-<!ENTITY glibc-fin-du "2.8 GB">
-<!ENTITY glibc-fin-sbu "24 SBU">
+<!ENTITY glibc-tmp-du "822 MB">
+<!ENTITY glibc-tmp-sbu "1.5 SBU">
+<!ENTITY glibc-fin-du "2.9 GB">
+<!ENTITY glibc-fin-sbu "11 SBU">
 
 <!ENTITY gmp-version "6.2.1">
 <!ENTITY gmp-size "1,980 KB">
 <!ENTITY gmp-url "&gnu;gmp/gmp-&gmp-version;.tar.xz">
 <!ENTITY gmp-md5 "0b82665c4a92fd2ade7440c13fcaa42b">
 <!ENTITY gmp-home "&gnu-software;gmp/">
-<!ENTITY gmp-fin-du "53 MB">
-<!ENTITY gmp-fin-sbu "0.9 SBU">
+<!ENTITY gmp-fin-du "52 MB">
+<!ENTITY gmp-fin-sbu "0.3 SBU">
 
 <!ENTITY gperf-version "3.1">
 <!ENTITY gperf-size "1,188 KB">
 <!ENTITY gperf-url "&gnu;gperf/gperf-&gperf-version;.tar.gz">
 <!ENTITY gperf-md5 "9e251c0a618ad0824b51117d5d9db87e">
 <!ENTITY gperf-home "&gnu-software;gperf/">
-<!ENTITY gperf-fin-du "6.0 MB">
+<!ENTITY gperf-fin-du "6.1 MB">
 <!ENTITY gperf-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY grep-version "3.7">
-<!ENTITY grep-size "1,603 KB">
+<!ENTITY grep-version "3.8">
+<!ENTITY grep-size "1,670 KB">
 <!ENTITY grep-url "&gnu;grep/grep-&grep-version;.tar.xz">
-<!ENTITY grep-md5 "7c9cca97fa18670a21e72638c3e1dabf">
+<!ENTITY grep-md5 "dc6e4d18d4659e6e7552fc4a183c8ac9">
 <!ENTITY grep-home "&gnu-software;grep/">
 <!ENTITY grep-tmp-du "25 MB">
 <!ENTITY grep-tmp-sbu "0.2 SBU">
 <!ENTITY grep-fin-du "37 MB">
-<!ENTITY grep-fin-sbu "0.8 SBU">
+<!ENTITY grep-fin-sbu "0.4 SBU">
 
 <!ENTITY groff-version "1.22.4">
 <!ENTITY groff-size "4,044 KB">
 <!ENTITY groff-url "&gnu;groff/groff-&groff-version;.tar.gz">
 <!ENTITY groff-md5 "08fb04335e2f5e73f23ea4c3adbf0c5f">
 <!ENTITY groff-home "&gnu-software;groff/">
-<!ENTITY groff-fin-du "88 MB">
-<!ENTITY groff-fin-sbu "0.5 SBU">
+<!ENTITY groff-fin-du "89 MB">
+<!ENTITY groff-fin-sbu "0.2 SBU">
 
 <!ENTITY grub-version "2.06">
 <!ENTITY grub-size "6,428 KB">
 <!ENTITY grub-url "https://ftp.gnu.org/gnu/grub/grub-&grub-version;.tar.xz">
 <!ENTITY grub-md5 "cf0fd928b1e5479c8108ee52cb114363">
 <!ENTITY grub-home "&gnu-software;grub/">
-<!ENTITY grub-fin-du "159 MB">
-<!ENTITY grub-fin-sbu "0.7 SBU">
+<!ENTITY grub-fin-du "161 MB">
+<!ENTITY grub-fin-sbu "0.3 SBU">
 
 <!ENTITY gzip-version "1.12">
 <!ENTITY gzip-size "807 KB">
@@ -317,22 +317,22 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20220812">
-<!ENTITY iana-etc-size "584 KB">
+<!ENTITY iana-etc-version "20230202">
+<!ENTITY iana-etc-size "586 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "851a53efd53c77d0ad7b3d2b68d8a3fc">
+<!ENTITY iana-etc-md5 "e64685d046cd0dfe94b5c66e294cf9ef">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY inetutils-version "2.3">
-<!ENTITY inetutils-size "1,518 KB">
+<!ENTITY inetutils-version "2.4">
+<!ENTITY inetutils-size "1,522 KB">
 <!ENTITY inetutils-url "&gnu;inetutils/inetutils-&inetutils-version;.tar.xz">
-<!ENTITY inetutils-md5 "e73e2ed42d73ceb47616b20131236036">
+<!ENTITY inetutils-md5 "319d65bb5a6f1847c4810651f3b4ba74">
 <!ENTITY inetutils-sha256 "">
 <!ENTITY inetutils-home "&gnu-software;inetutils/">
 <!ENTITY inetutils-fin-du "31 MB">
-<!ENTITY inetutils-fin-sbu "0.3 SBU">
+<!ENTITY inetutils-fin-sbu "0.2 SBU">
 
 <!ENTITY intltool-version "0.51.0">
 <!ENTITY intltool-size "159 KB">
@@ -342,20 +342,20 @@
 <!ENTITY intltool-fin-du "1.5 MB">
 <!ENTITY intltool-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY iproute2-version "5.19.0">
-<!ENTITY iproute2-size "872 KB">
+<!ENTITY iproute2-version "6.1.0">
+<!ENTITY iproute2-size "885 KB">
 <!ENTITY iproute2-url "&kernel;linux/utils/net/iproute2/iproute2-&iproute2-version;.tar.xz">
-<!ENTITY iproute2-md5 "415bd9eeb8515a585e245809d2fe45a6">
+<!ENTITY iproute2-md5 "f3ff4461e25dbc5ef1fb7a9167a9523d">
 <!ENTITY iproute2-home "&kernel;linux/utils/net/iproute2/">
-<!ENTITY iproute2-fin-du "16 MB">
-<!ENTITY iproute2-fin-sbu "0.2 SBU">
+<!ENTITY iproute2-fin-du "17 MB">
+<!ENTITY iproute2-fin-sbu "0.1 SBU">
 
 <!ENTITY jinja2-version "3.1.2">
 <!ENTITY jinja2-size "262 KB">
-<!ENTITY jinja2-url "https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-&jinja2-version;.tar.gz">
+<!ENTITY jinja2-url "&pypi-src;/J/Jinja2/Jinja2-&jinja2-version;.tar.gz">
 <!ENTITY jinja2-md5 "d31148abd89c1df1cdb077a55db27d02">
 <!ENTITY jinja2-home "https://jinja.palletsprojects.com/en/3.0.x/">
-<!ENTITY jinja2-fin-du "3.0 MB">
+<!ENTITY jinja2-fin-du "3.4 MB">
 <!ENTITY jinja2-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY kbd-version "2.5.1">
@@ -372,17 +372,17 @@
 <!ENTITY kmod-md5 "85202f0740a75eb52f2163c776f9b564">
 <!ENTITY kmod-home " ">
 <!ENTITY kmod-fin-du "12 MB">
-<!ENTITY kmod-fin-sbu "0.1 SBU">
+<!ENTITY kmod-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY less-version "590">
-<!ENTITY less-size "348 KB">
+<!ENTITY less-version "608">
+<!ENTITY less-size "354 KB">
 <!ENTITY less-url "https://www.greenwoodsoftware.com/less/less-&less-version;.tar.gz">
-<!ENTITY less-md5 "f029087448357812fba450091a1172ab">
+<!ENTITY less-md5 "1cdec714569d830a68f4cff11203cdba">
 <!ENTITY less-home "https://www.greenwoodsoftware.com/less/">
-<!ENTITY less-fin-du "4.2 MB">
+<!ENTITY less-fin-du "4.3 MB">
 <!ENTITY less-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY lfs-bootscripts-version "20220723">      <!-- Scripts depend on this format -->
+<!ENTITY lfs-bootscripts-version "20230101">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
 <!ENTITY lfs-bootscripts-url "&downloads-root;lfs-bootscripts-&lfs-bootscripts-version;.tar.xz">
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">
@@ -390,27 +390,27 @@
 <!ENTITY lfs-bootscripts-cfg-du "BOOTSCRIPTS-INSTALL-KB KB">
 <!ENTITY lfs-bootscripts-cfg-sbu "менее 0.1 SBU">
 
-<!ENTITY libcap-version "2.65">
-<!ENTITY libcap-size "176 KB">
+<!ENTITY libcap-version "2.67">
+<!ENTITY libcap-size "183 KB">
 <!ENTITY libcap-url "&kernel;linux/libs/security/linux-privs/libcap2/libcap-&libcap-version;.tar.xz">
-<!ENTITY libcap-md5 "3543e753dd941255c4def6cc67a462bb">
+<!ENTITY libcap-md5 "06333f4301657298890fd8d6f1fb4793">
 <!ENTITY libcap-home "https://sites.google.com/site/fullycapable/">
-<!ENTITY libcap-fin-du "2.7 MB">
+<!ENTITY libcap-fin-du "2.9 MB">
 <!ENTITY libcap-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY libffi-version "3.4.2">
-<!ENTITY libffi-size "1,320 KB">
+<!ENTITY libffi-version "3.4.4">
+<!ENTITY libffi-size "1,331 KB">
 <!ENTITY libffi-url "https://github.com/libffi/libffi/releases/download/v&libffi-version;/libffi-&libffi-version;.tar.gz">
-<!ENTITY libffi-md5 "294b921e6cf9ab0fbaea4b639f8fdbe8">
+<!ENTITY libffi-md5 "0da1a5ed7786ac12dcbaf0d499d8a049">
 <!ENTITY libffi-home "https://sourceware.org/libffi/">
-<!ENTITY libffi-fin-du "10 MB">
+<!ENTITY libffi-fin-du "11 MB">
 <!ENTITY libffi-fin-sbu "1.8 SBU">
 
-<!ENTITY libpipeline-version "1.5.6">
-<!ENTITY libpipeline-size "954 KB">
+<!ENTITY libpipeline-version "1.5.7">
+<!ENTITY libpipeline-size "956 KB">
 <!ENTITY libpipeline-url "&savannah;/releases/libpipeline/libpipeline-&libpipeline-version;.tar.gz">
-<!ENTITY libpipeline-md5 "829c9ba46382b0b3e12dd11fcbc1bb27">
-<!ENTITY libpipeline-home "http://libpipeline.nongnu.org/">
+<!ENTITY libpipeline-md5 "1a48b5771b9f6c790fb4efdb1ac71342">
+<!ENTITY libpipeline-home "https://libpipeline.nongnu.org/">
 <!ENTITY libpipeline-fin-du "10 MB">
 <!ENTITY libpipeline-fin-sbu "0.1 SBU">
 
@@ -419,17 +419,17 @@
 <!ENTITY libtool-url "&gnu;libtool/libtool-&libtool-version;.tar.xz">
 <!ENTITY libtool-md5 "2fc0b6ddcd66a89ed6e45db28fa44232">
 <!ENTITY libtool-home "&gnu-software;libtool/">
-<!ENTITY libtool-fin-du "43 MB">
-<!ENTITY libtool-fin-sbu "1.5 SBU">
+<!ENTITY libtool-fin-du "44 MB">
+<!ENTITY libtool-fin-sbu "1.4 SBU">
 
-<!ENTITY linux-major-version "5">
-<!ENTITY linux-minor-version "19">
-<!ENTITY linux-patch-version "2">
+<!ENTITY linux-major-version "6">
+<!ENTITY linux-minor-version "1">
+<!ENTITY linux-patch-version "11">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "128,553 KB">
+<!ENTITY linux-size "131,653 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "391274e2e49a881403b0ff2e0712bf82">
+<!ENTITY linux-md5 "f91621912cd58ac6d4128d4057980e7d">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -437,105 +437,102 @@
 <!ENTITY linux-knl-du "1200 - 8800 MB (обычно около 1700 MB)">
 <!ENTITY linux-knl-sbu "1.5 - 130.0 SBU (обычно около 12 SBU)">
 
-<!ENTITY linux-headers-tmp-du "1.4 GB">
-<!ENTITY linux-headers-tmp-sbu "0.1 SBU">
-<!-- Removed in this book
-<!ENTITY linux-headers-fin-du "1 GB">
-<!ENTITY linux-headers-fin-sbu "0.1 SBU">-->
+<!ENTITY linux-headers-tmp-du "1.5 GB">
+<!ENTITY linux-headers-tmp-sbu "менее 0.1 SBU">
 
 <!ENTITY m4-version "1.4.19">
 <!ENTITY m4-size "1,617 KB">
 <!ENTITY m4-url "&gnu;m4/m4-&m4-version;.tar.xz">
 <!ENTITY m4-md5 "0d90823e1426f1da2fd872df0311298d">
 <!ENTITY m4-home "&gnu-software;m4/">
-<!ENTITY m4-tmp-du "32 MB">
-<!ENTITY m4-tmp-sbu "0.2 SBU">
+<!ENTITY m4-tmp-du "31 MB">
+<!ENTITY m4-tmp-sbu "0.1 SBU">
 <!ENTITY m4-fin-du "49 MB">
-<!ENTITY m4-fin-sbu "0.6 SBU">
+<!ENTITY m4-fin-sbu "0.3 SBU">
 
-<!ENTITY make-version "4.3">
-<!ENTITY make-size "2,263 KB">
+<!ENTITY make-version "4.4">
+<!ENTITY make-size "2,254 KB">
 <!ENTITY make-url "&gnu;make/make-&make-version;.tar.gz">
-<!ENTITY make-md5 "fc7a67ea86ace13195b0bce683fd4469">
+<!ENTITY make-md5 "d7575a26a94ee8427130e9db23cdaa78">
 <!ENTITY make-home "&gnu-software;make/">
 <!ENTITY make-tmp-du "15 MB">
-<!ENTITY make-tmp-sbu "0.1 SBU">
-<!ENTITY make-fin-du "14 MB">
+<!ENTITY make-tmp-sbu "менее 0.1 SBU">
+<!ENTITY make-fin-du "13 MB">
 <!ENTITY make-fin-sbu "0.5 SBU">
 
-<!ENTITY man-db-version "2.10.2">
-<!ENTITY man-db-size "1,860 KB">
+<!ENTITY man-db-version "2.11.2">
+<!ENTITY man-db-size "1,908 KB">
 <!ENTITY man-db-url "&savannah;/releases/man-db/man-db-&man-db-version;.tar.xz">
-<!ENTITY man-db-md5 "e327f7af3786d15e5851658ae7ef47ed">
+<!ENTITY man-db-md5 "a7d59fb2df6158c44f8f7009dcc6d875">
 <!ENTITY man-db-home "https://www.nongnu.org/man-db/">
 <!ENTITY man-db-fin-du "40 MB">
-<!ENTITY man-db-fin-sbu "0.4 SBU">
+<!ENTITY man-db-fin-sbu "0.2 SBU">
 
-<!ENTITY man-pages-version "5.13">
-<!ENTITY man-pages-size "1,752 KB">
+<!ENTITY man-pages-version "6.03">
+<!ENTITY man-pages-size "2,134 KB">
 <!ENTITY man-pages-url "&kernel;linux/docs/man-pages/man-pages-&man-pages-version;.tar.xz">
-<!ENTITY man-pages-md5 "3ac24e8c6fae26b801cb87ceb63c0a30">
+<!ENTITY man-pages-md5 "c62b7c944bb0887a35edab7cab301357">
 <!ENTITY man-pages-home "https://www.kernel.org/doc/man-pages/">
-<!ENTITY man-pages-fin-du "33 MB">
+<!ENTITY man-pages-fin-du "32 MB">
 <!ENTITY man-pages-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY markupsafe-version "2.1.1">
-<!ENTITY markupsafe-size "20 KB">
-<!ENTITY markupsafe-url "https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-&markupsafe-version;.tar.gz">
-<!ENTITY markupsafe-md5 "9809f9fdd98bc835b0c21aa8f79cbf30">
+<!ENTITY markupsafe-version "2.1.2">
+<!ENTITY markupsafe-size "19 KB">
+<!ENTITY markupsafe-url "&pypi-src;/M/MarkupSafe/MarkupSafe-&markupsafe-version;.tar.gz">
+<!ENTITY markupsafe-md5 "02f337b98aef11bd0fee9c5ae860173b">
 <!ENTITY markupsafe-home "https://palletsprojects.com/p/markupsafe/">
-<!ENTITY markupsafe-fin-du "168 KB">
+<!ENTITY markupsafe-fin-du "544 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY meson-version "0.63.1">
-<!ENTITY meson-size "2,016 KB">
+<!ENTITY meson-version "1.0.0">
+<!ENTITY meson-size "2,051 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "078e59d11a72b74c3bd78cb8205e9ed7">
+<!ENTITY meson-md5 "009b78125467cd9ee4d467175a5c12e1">
 <!ENTITY meson-home "https://mesonbuild.com">
-<!ENTITY meson-fin-du "38 MB">
+<!ENTITY meson-fin-du "41 MB">
 <!ENTITY meson-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY mpc-version "1.2.1">
-<!ENTITY mpc-size "820 KB">
+<!ENTITY mpc-version "1.3.1">
+<!ENTITY mpc-size "756 KB">
 <!ENTITY mpc-url "https://ftp.gnu.org/gnu/mpc/mpc-&mpc-version;.tar.gz">
-<!ENTITY mpc-md5 "9f16c976c25bb0f76b50be749cd7a3a8">
-<!ENTITY mpc-home "http://www.multiprecision.org/">
-<!ENTITY mpc-fin-du "21 MB">
-<!ENTITY mpc-fin-sbu "0.3 SBU">
+<!ENTITY mpc-md5 "5c9bc658c9fd0f940e8e3e0f09530c62">
+<!ENTITY mpc-home "https://www.multiprecision.org/">
+<!ENTITY mpc-fin-du "22 MB">
+<!ENTITY mpc-fin-sbu "0.1 SBU">
 
-<!ENTITY mpfr-version "4.1.0">
-<!ENTITY mpfr-size "1,490 KB">
+<!ENTITY mpfr-version "4.2.0">
+<!ENTITY mpfr-size "1,443 KB">
 <!ENTITY mpfr-url "https://ftp.gnu.org/gnu/mpfr/mpfr-&mpfr-version;.tar.xz">
-<!ENTITY mpfr-md5 "bdd3d5efba9c17da8d83a35ec552baef">
+<!ENTITY mpfr-md5 "a25091f337f25830c16d2054d74b5af7">
 <!ENTITY mpfr-home "https://www.mpfr.org/">
-<!ENTITY mpfr-fin-du "39 MB">
-<!ENTITY mpfr-fin-sbu "0.8 SBU">
+<!ENTITY mpfr-fin-du "43 MB">
+<!ENTITY mpfr-fin-sbu "0.2 SBU">
 
-<!ENTITY ncurses-version "6.3">
-<!ENTITY ncurses-size "3,500 KB">
+<!ENTITY ncurses-version "6.4">
+<!ENTITY ncurses-size "3,528 KB">
 <!ENTITY ncurses-url "https://invisible-mirror.net/archives/ncurses/ncurses-&ncurses-version;.tar.gz">
-<!ENTITY ncurses-md5 "a2736befde5fee7d2b7eb45eb281cdbe">
+<!ENTITY ncurses-md5 "5a62487b5d4ac6b132fe2bf9f8fad29b">
 <!ENTITY ncurses-home "&gnu-software;ncurses/">
-<!ENTITY ncurses-tmp-du "50 MB">
-<!ENTITY ncurses-tmp-sbu "0.7 SBU">
+<!ENTITY ncurses-tmp-du "51 MB">
+<!ENTITY ncurses-tmp-sbu "0.3 SBU">
 <!ENTITY ncurses-fin-du "45 MB">
-<!ENTITY ncurses-fin-sbu "0.4 SBU">
+<!ENTITY ncurses-fin-sbu "0.2 SBU">
 
-<!ENTITY ninja-version "1.11.0">
-<!ENTITY ninja-size "228 KB">
+<!ENTITY ninja-version "1.11.1">
+<!ENTITY ninja-size "225 KB">
 <!ENTITY ninja-url "&github;/ninja-build/ninja/archive/v&ninja-version;/ninja-&ninja-version;.tar.gz">
-<!ENTITY ninja-md5 "7d1a1a2f5cdc06795b3054df5c17d5ef">
+<!ENTITY ninja-md5 "32151c08211d7ca3c1d832064f6939b0">
 <!ENTITY ninja-home "https://ninja-build.org/">
-<!ENTITY ninja-fin-du "79 MB">
-<!ENTITY ninja-fin-sbu "0.6 SBU">
+<!ENTITY ninja-fin-du "77 MB">
+<!ENTITY ninja-fin-sbu "0.3 SBU">
 
-<!ENTITY openssl-version "3.0.5">
-<!ENTITY openssl-size "14,722 KB">
+<!ENTITY openssl-version "3.0.8">
+<!ENTITY openssl-size "14,800 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "163bb3e58c143793d1dc6a6ec7d185d5">
+<!ENTITY openssl-md5 "61e017cf4fea1b599048f621f1490fbd">
 <!ENTITY openssl-home "https://www.openssl.org/">
-<!ENTITY openssl-fin-du "476 MB">
-<!ENTITY openssl-fin-sbu "5.0 SBU">
+<!ENTITY openssl-fin-du "520 MB">
+<!ENTITY openssl-fin-sbu "3.2 SBU">
 
 <!ENTITY patch-version "2.7.6">
 <!ENTITY patch-size "766 KB">
@@ -545,7 +542,7 @@
 <!ENTITY patch-tmp-du "12 MB">
 <!ENTITY patch-tmp-sbu "0.1 SBU">
 <!ENTITY patch-fin-du "12 MB">
-<!ENTITY patch-fin-sbu "0.2 SBU">
+<!ENTITY patch-fin-sbu "0.1 SBU">
 
 <!ENTITY perl-version-major "5">
 <!ENTITY perl-version-minor "36">
@@ -556,10 +553,10 @@
 <!ENTITY perl-url "https://www.cpan.org/src/5.0/perl-&perl-version;.tar.xz">
 <!ENTITY perl-md5 "826e42da130011699172fd655e49cfa2">
 <!ENTITY perl-home "https://www.perl.org/">
-<!ENTITY perl-tmp-du "282 MB">
-<!ENTITY perl-tmp-sbu "1.6 SBU">
-<!ENTITY perl-fin-du "236 MB">
-<!ENTITY perl-fin-sbu "9.4 SBU">
+<!ENTITY perl-tmp-du "281 MB">
+<!ENTITY perl-tmp-sbu "0.6 SBU">
+<!ENTITY perl-fin-du "234 MB">
+<!ENTITY perl-fin-sbu "7.9 SBU">
 
 <!ENTITY pkgconfig-version "0.29.2">
 <!ENTITY pkgconfig-size "1,970 KB">
@@ -567,99 +564,99 @@
 <!ENTITY pkgconfig-md5 "f6e931e319531b736fadc017f470e68a">
 <!ENTITY pkgconfig-home "https://www.freedesktop.org/wiki/Software/pkg-config">
 <!ENTITY pkgconfig-fin-du "29 MB">
-<!ENTITY pkgconfig-fin-sbu "0.3 SBU">
+<!ENTITY pkgconfig-fin-sbu "0.1 SBU">
 
-<!ENTITY procps-ng-version "4.0.0">
-<!ENTITY procps-ng-size "979 KB">
+<!ENTITY procps-ng-version "4.0.2">
+<!ENTITY procps-ng-size "1250 KB">
 <!ENTITY procps-ng-url "https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-&procps-ng-version;.tar.xz">
-<!ENTITY procps-ng-md5 "eedf93f2f6083afb7abf72188018e1e5">
+<!ENTITY procps-ng-md5 "691748c4767f19b9d94ed9d088e40c4d">
 <!ENTITY procps-ng-home "https://sourceforge.net/projects/procps-ng">
-<!ENTITY procps-ng-fin-du "19 MB">
+<!ENTITY procps-ng-fin-du "26 MB">
 <!ENTITY procps-ng-fin-sbu "0.1 SBU">
 
-<!ENTITY psmisc-version "23.5">
-<!ENTITY psmisc-size "395 KB">
+<!ENTITY psmisc-version "23.6">
+<!ENTITY psmisc-size "415 KB">
 <!ENTITY psmisc-url "https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-&psmisc-version;.tar.xz">
-<!ENTITY psmisc-md5 "014f0b5d5ab32478a2c57812ad01e1fb">
+<!ENTITY psmisc-md5 "ed3206da1184ce9e82d607dc56c52633">
 <!ENTITY psmisc-home "https://gitlab.com/psmisc/psmisc">
-<!ENTITY psmisc-fin-du "5.8 MB">
+<!ENTITY psmisc-fin-du "6.5 MB">
 <!ENTITY psmisc-fin-sbu "менее 0.1 SBU">
 
 <!-- If python minor version changes, updates in python and
      meson pages will be needed: python3.6 and python3.6m -->
 
-<!ENTITY python-version "3.10.6">
-<!ENTITY python-minor "3.10">
-<!ENTITY python-size "19,142 KB">
+<!ENTITY python-version "3.11.2">
+<!ENTITY python-minor "3.11">
+<!ENTITY python-size "19,428 KB">
 <!ENTITY python-url "https://www.python.org/ftp/python/&python-version;/Python-&python-version;.tar.xz">
-<!ENTITY python-md5 "afc7e14f7118d10d1ba95ae8e2134bf0">
+<!ENTITY python-md5 "a957cffb58a89303b62124896881950b">
 <!ENTITY python-home "https://www.python.org/">
-<!ENTITY python-tmp-du "364 MB">
-<!ENTITY python-tmp-sbu "0.9 SBU">
-<!ENTITY python-fin-du "283 MB">
-<!ENTITY python-fin-sbu "3.4 SBU">
+<!ENTITY python-tmp-du "529 MB">
+<!ENTITY python-tmp-sbu "0.4 SBU">
+<!ENTITY python-fin-du "372 MB">
+<!ENTITY python-fin-sbu "2.0 SBU">
 <!ENTITY python-docs-url "https://www.python.org/ftp/python/doc/&python-version;/python-&python-version;-docs-html.tar.bz2">
-<!ENTITY python-docs-md5 "8f32c4f4f0b18ec56e8b3822bbaeb017">
-<!ENTITY python-docs-size "7,321 KB">
+<!ENTITY python-docs-md5 "eb4132c780b60b5782a4f66b29b08d5c">
+<!ENTITY python-docs-size "7,598 KB">
 
-<!ENTITY readline-version "8.1.2">
-<!ENTITY readline-soversion "8.1"><!-- used for stripping -->
-<!ENTITY readline-size "2,923 KB">
+<!ENTITY readline-version "8.2">
+<!ENTITY readline-soversion "8.2"><!-- used for stripping -->
+<!ENTITY readline-size "2,973 KB">
 <!ENTITY readline-url "&gnu;readline/readline-&readline-version;.tar.gz">
-<!ENTITY readline-md5 "12819fa739a78a6172400f399ab34f81">
+<!ENTITY readline-md5 "4aa1b31be779e6b84f9a96cb66bc50f6">
 <!ENTITY readline-home "https://tiswww.case.edu/php/chet/readline/rltop.html">
-<!ENTITY readline-fin-du "15 MB">
-<!ENTITY readline-fin-sbu "0.1 SBU">
+<!ENTITY readline-fin-du "16 MB">
+<!ENTITY readline-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY sed-version "4.8">
-<!ENTITY sed-size "1,317 KB">
+<!ENTITY sed-version "4.9">
+<!ENTITY sed-size "1,365 KB">
 <!ENTITY sed-url "&gnu;sed/sed-&sed-version;.tar.xz">
-<!ENTITY sed-md5 "6d906edfdb3202304059233f51f9a71d">
+<!ENTITY sed-md5 "6aac9b2dbafcd5b7a67a8a9bcb8036c3">
 <!ENTITY sed-home "&gnu-software;sed/">
-<!ENTITY sed-tmp-du "20 MB">
-<!ENTITY sed-tmp-sbu "0.1 SBU">
+<!ENTITY sed-tmp-du "19 MB">
+<!ENTITY sed-tmp-sbu "0.2 SBU">
 <!ENTITY sed-fin-du "31 MB">
-<!ENTITY sed-fin-sbu "0.4 SBU">
+<!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY shadow-version "4.12.2">
-<!ENTITY shadow-size "1,706 KB">
+<!ENTITY shadow-version "4.13">
+<!ENTITY shadow-size "1,722 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "52637cb34c357acf85c617cf95da34a6">
+<!ENTITY shadow-md5 "b1ab01b5462ddcf43588374d57bec123">
 <!ENTITY shadow-home "https://shadow-maint.github.io/shadow/">
 <!ENTITY shadow-fin-du "46 MB">
-<!ENTITY shadow-fin-sbu "0.2 SBU">
+<!ENTITY shadow-fin-sbu "0.1 SBU">
 
 <!ENTITY sysklogd-version "1.5.1">
 <!ENTITY sysklogd-size "88 KB">
 <!ENTITY sysklogd-url "https://www.infodrom.org/projects/sysklogd/download/sysklogd-&sysklogd-version;.tar.gz">
 <!ENTITY sysklogd-md5 "c70599ab0d037fde724f7210c2c8d7f8">
 <!ENTITY sysklogd-home "https://www.infodrom.org/projects/sysklogd/">
-<!ENTITY sysklogd-fin-du "0.6 MB">
+<!ENTITY sysklogd-fin-du "0.7 MB">
 <!ENTITY sysklogd-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY systemd-version  "251">
+<!ENTITY systemd-version  "252">
 <!--<!ENTITY systemd-stable   "6b4878d">-->
 <!-- The above entity is used whenever we move to a stable backport branch. In the event of a critical problem or kernel
      change that is incompatible, we will switch to the backport branch until the next stable release. -->
-<!ENTITY systemd-size     "11,168 KB">
+<!ENTITY systemd-size     "11,488 KB">
 <!ENTITY systemd-url      "&github;/systemd/systemd/archive/v&systemd-version;/systemd-&systemd-version;.tar.gz">
 <!--<!ENTITY systemd-url      "&anduin-sources;/systemd-&systemd-version;-&systemd-stable;.tar.xz">-->
-<!ENTITY systemd-md5      "8090fcccc3a2ec20995e89d56fed61b1">
+<!ENTITY systemd-md5      "b9456750a212dd54d81caeb3c38134b6">
 <!ENTITY systemd-home     "https://www.freedesktop.org/wiki/Software/systemd/">
-<!ENTITY systemd-man-version "251">
-<!ENTITY systemd-man-size "596 KB">
+<!ENTITY systemd-man-version "252-2">
+<!ENTITY systemd-man-size "628 KB">
 <!--<!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-version;-&systemd-stable;.tar.xz">-->
 <!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-man-version;.tar.xz">
-<!ENTITY systemd-man-md5  "87053ffef1cfb74e4fe28f627e12a2a4">
-<!ENTITY systemd-fin-du   "251 MB">
-<!ENTITY systemd-fin-sbu  "2.3 SBU">
+<!ENTITY systemd-man-md5  "c1df1aefdbc4840b5f82a8783f3b72c1">
+<!ENTITY systemd-fin-du   "258 MB">
+<!ENTITY systemd-fin-sbu  "0.7 SBU">
 
-<!ENTITY sysvinit-version "3.04">
-<!ENTITY sysvinit-size "216 KB">
-<!ENTITY sysvinit-url "&savannah;/releases/sysvinit/sysvinit-&sysvinit-version;.tar.xz">
-<!ENTITY sysvinit-md5 "9a00e5f15dd2f038f10feee50677ebff">
+<!ENTITY sysvinit-version "3.06">
+<!ENTITY sysvinit-size "247 KB">
+<!ENTITY sysvinit-url "&github;/slicer69/sysvinit/releases/download/&sysvinit-version;/sysvinit-&sysvinit-version;.tar.xz">
+<!ENTITY sysvinit-md5 "96771d0a88315c91199830ea49b859ca">
 <!ENTITY sysvinit-home "&savannah-nongnu;/projects/sysvinit">
-<!ENTITY sysvinit-fin-du "2.7 MB">
+<!ENTITY sysvinit-fin-du "4.4 MB">
 <!ENTITY sysvinit-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY tar-version "1.34">
@@ -668,36 +665,36 @@
 <!ENTITY tar-md5 "9a08d29a9ac4727130b5708347c0f5cf">
 <!ENTITY tar-home "&gnu-software;tar/">
 <!ENTITY tar-tmp-du "38 MB">
-<!ENTITY tar-tmp-sbu "0.2 SBU">
+<!ENTITY tar-tmp-sbu "0.1 SBU">
 <!ENTITY tar-fin-du "40 MB">
-<!ENTITY tar-fin-sbu "1.7 SBU">
+<!ENTITY tar-fin-sbu "1.5 SBU">
 
-<!ENTITY tcl-version "8.6.12">
+<!ENTITY tcl-version "8.6.13">
 <!ENTITY tcl-major-version "8.6">
-<!ENTITY tcl-size "10,112 KB">
+<!ENTITY tcl-size "10,581 KB">
 <!ENTITY tcl-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-src.tar.gz">
-<!ENTITY tcl-md5 "87ea890821d2221f2ab5157bc5eb885f">
+<!ENTITY tcl-md5 "0e4358aade2f5db8a8b6f2f6d9481ec2">
 <!ENTITY tcl-home "http://tcl.sourceforge.net/">
 <!ENTITY tcl-docs-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-html.tar.gz">
-<!ENTITY tcl-docs-md5 "a0d1a5b60bbb68f2f0bd3066a19c527a">
-<!ENTITY tcl-docs-size "1,176 KB">
-<!ENTITY tcl-tmp-du "88 MB">
-<!ENTITY tcl-tmp-sbu "3.2 SBU">
+<!ENTITY tcl-docs-md5 "4452f2f6d557f5598cca17b786d6eb68">
+<!ENTITY tcl-docs-size "1,165 KB">
+<!ENTITY tcl-tmp-du "89 MB">
+<!ENTITY tcl-tmp-sbu "2.7 SBU">
 
-<!ENTITY texinfo-version "6.8">
-<!ENTITY texinfo-size "4,848 KB">
+<!ENTITY texinfo-version "7.0.2">
+<!ENTITY texinfo-size "4,762 KB">
 <!ENTITY texinfo-url "&gnu;texinfo/texinfo-&texinfo-version;.tar.xz">
-<!ENTITY texinfo-md5 "a91b404e30561a5df803e6eb3a53be71">
+<!ENTITY texinfo-md5 "be9500f3a361525622850ecb1b1fc024">
 <!ENTITY texinfo-home "&gnu-software;texinfo/">
-<!ENTITY texinfo-tmp-du "113 MB">
+<!ENTITY texinfo-tmp-du "116 MB">
 <!ENTITY texinfo-tmp-sbu "0.2 SBU">
-<!ENTITY texinfo-fin-du "114 MB">
-<!ENTITY texinfo-fin-sbu "0.6 SBU">
+<!ENTITY texinfo-fin-du "128 MB">
+<!ENTITY texinfo-fin-sbu "0.3 SBU">
 
-<!ENTITY tzdata-version "2022c">
-<!ENTITY tzdata-size "423 KB">
+<!ENTITY tzdata-version "2022g">
+<!ENTITY tzdata-size "430 KB">
 <!ENTITY tzdata-url "https://www.iana.org/time-zones/repository/releases/tzdata&tzdata-version;.tar.gz">
-<!ENTITY tzdata-md5 "4e3b2369b68e713ba5d3f7456f20bfdb">
+<!ENTITY tzdata-md5 "884250fd2a8a55f6322900ad4ab94d7b">
 <!ENTITY tzdata-home "https://www.iana.org/time-zones">
 
 <!ENTITY udev-lfs-version "udev-lfs-20171102">
@@ -712,29 +709,28 @@
 <!ENTITY util-linux-url "&kernel;linux/utils/util-linux/v&util-linux-minor;/util-linux-&util-linux-version;.tar.xz">
 <!ENTITY util-linux-md5 "cd11456f4ddd31f7fbfdd9488c0c0d02">
 <!ENTITY util-linux-home "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/">
-<!ENTITY util-linux-tmp-du "149 MB">
-<!ENTITY util-linux-tmp-sbu "0.6 SBU">
+<!ENTITY util-linux-tmp-du "150 MB">
+<!ENTITY util-linux-tmp-sbu "0.2 SBU">
 <!ENTITY util-linux-fin-du "283 MB">
-<!ENTITY util-linux-fin-sbu "1.0 SBU">
+<!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.0.0228">
+<!ENTITY vim-version "9.0.1273">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "16,372 KB">
+<!ENTITY vim-size "10,892 KB">
 <!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">
-<!ENTITY vim-md5 "bc7e0a4829d94bb4c03a7a6b4ad6a8cf">
+<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.xz">
+<!ENTITY vim-md5 "9c80755d2d95ec4ef713f66e57671797">
 <!ENTITY vim-home "https://www.vim.org">
-<!ENTITY vim-fin-du "217 MB">
-<!ENTITY vim-fin-sbu "2.5 SBU">
+<!ENTITY vim-fin-du "235 MB">
+<!ENTITY vim-fin-sbu "2.4 SBU">
 
-<!-- From https://files.pythonhosted.org/packages/c0/6c/9f840c2e55b67b90745af06a540964b73589256cb10cc10057c87ac78fc2/wheel-0.37.1.tar.gz -->
-<!ENTITY wheel-version "0.37.1">
-<!ENTITY wheel-size "65 KB">
-<!ENTITY wheel-url "&anduin-sources;/wheel-&wheel-version;.tar.gz">
-<!ENTITY wheel-md5 "f490f1399e5903706cb1d4fbed9ecb28">
-<!ENTITY wheel-home "https://pypi.org/project/wheel/">
-<!ENTITY wheel-fin-du "956 KB">
+<!ENTITY wheel-version "0.38.4">
+<!ENTITY wheel-size "66 KB">
+<!ENTITY wheel-url "&pypi-src;/w/wheel/wheel-&wheel-version;.tar.gz">
+<!ENTITY wheel-md5 "83bb4e7bd4d687d398733f341a64ab91">
+<!ENTITY wheel-home "&pypi-home;/wheel/">
+<!ENTITY wheel-fin-du "1.3 MB">
 <!ENTITY wheel-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY xml-parser-version "2.46">
@@ -745,29 +741,29 @@
 <!ENTITY xml-parser-fin-du "2.3 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xz-version "5.2.6">
-<!ENTITY xz-size "1,234 KB">
+<!ENTITY xz-version "5.4.1">
+<!ENTITY xz-size "1,451 KB">
 <!ENTITY xz-url "https://tukaani.org/xz/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "d9cd5698e1ec06cf638c0d2d645e8175">
+<!ENTITY xz-md5 "47d831c659e94071d5dd384d0d1ed4c6">
 <!ENTITY xz-home "https://tukaani.org/xz">
-<!ENTITY xz-tmp-du "16 MB">
+<!ENTITY xz-tmp-du "20 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">
-<!ENTITY xz-fin-du "16 MB">
-<!ENTITY xz-fin-sbu "0.2 SBU">
+<!ENTITY xz-fin-du "21 MB">
+<!ENTITY xz-fin-sbu "0.1 SBU">
 
-<!ENTITY zlib-version "1.2.12">
-<!ENTITY zlib-size "1259 KB">
+<!ENTITY zlib-version "1.2.13">
+<!ENTITY zlib-size "1267 KB">
 <!ENTITY zlib-url "https://zlib.net/zlib-&zlib-version;.tar.xz">
-<!ENTITY zlib-md5 "28687d676c04e7103bb6ff2b9694c471">
+<!ENTITY zlib-md5 "7d9fc1d78ae2fa3e84fe98b77d006c63">
 <!ENTITY zlib-home "https://www.zlib.net/">
-<!ENTITY zlib-fin-du "6.1 MB">
+<!ENTITY zlib-fin-du "6.2 MB">
 <!ENTITY zlib-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY zstd-version "1.5.2">
-<!ENTITY zstd-size "1,892 KB">
+<!ENTITY zstd-version "1.5.4">
+<!ENTITY zstd-size "2,111 KB">
 <!ENTITY zstd-url "https://github.com/facebook/zstd/releases/download/v&zstd-version;/zstd-&zstd-version;.tar.gz">
-<!ENTITY zstd-md5 "072b10f71f5820c24761a65f31f43e73">
+<!ENTITY zstd-md5 "2352b1f9ccc7446641046bb3d440c3ed">
 <!ENTITY zstd-home "https://facebook.github.io/zstd/">
-<!ENTITY zstd-fin-du "56 MB">
-<!ENTITY zstd-fin-sbu "1.1 SBU">
+<!ENTITY zstd-fin-du "75 MB">
+<!ENTITY zstd-fin-sbu "0.4 SBU">
 
