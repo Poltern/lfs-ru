@@ -18,37 +18,38 @@
 
     <itemizedlist>
       <listitem>
-        <para><ulink url="http://pubs.opengroup.org/onlinepubs/9699919799/">
+        <para><ulink url="https://pubs.opengroup.org/onlinepubs/9699919799/">
         POSIX.1-2008</ulink>.</para>
       </listitem>
       <listitem>
         <para><ulink
-        url="http://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html">
+        url="https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html">
         Filesystem Hierarchy Standard (FHS) Version 3.0</ulink></para>
 
       </listitem>
       <listitem>
-        <para><ulink url="http://refspecs.linuxfoundation.org/lsb.shtml">Linux
+        <para><ulink url="https://refspecs.linuxfoundation.org/lsb.shtml">Linux
         Standard Base (LSB) Version 5.0 (2015)</ulink></para>
 
 		<para>LSB имеет четыре отдельных стандарта: Core, Desktop, Runtime Languages 
-		и Imaging. Кроме того, существуют требования специфичные для архитектуры. Есть 
+		и Imaging. Некоторые части спецификаций Core и Desktop зависят от архитектуры. Есть 
 		также две области не являющиеся обязательными: Gtk3 и Graphics. 
-		LFS старается архитектурно соответствовать стандартам, рассмотренным в предыдущем разделе.</para>
+		LFS старается соответствовать стандартам LSB, для архитектур IA32 (32-bit x86) или 
+		AMD64 (x86_64), рассмотренным в предыдущем разделе.</para>
 
         <note><para>
 		Многие не согласны с требованиями LSB. Основные цели стандартов - быть уверенным в том,
 		что проприетарное ПО будет правильно установлено и сможет корректно работать на 
 		совместимой системе. Поскольку в LFS установка программ идёт из исходных кодов, у 
-		пользователя имеется полный контроль над тем, какие пакеты ему необходимы и многие 
-		предпочитают не устанавливать некоторые пакеты, которые определяются в стандартах LSB.</para></note>
+		пользователя имеется полный контроль над тем, какие пакеты ему необходимы, вы можете не 
+		устанавливать некоторые пакеты, определяемые в LSB.</para></note>
 
       </listitem>
     </itemizedlist>
 
-    <para>Создание законченной системы LFS, способной успешно выполнять сертификационные 
-	тесты LSB - возможно с установкой некоторых дополнительных пакетов, которые выходят 
-	за рамки этой книги. Но инструкции по их установке есть в книге BLFS.</para>
+    <para>Создать законченную систему, которая пройдет сертификационные тесты LSB "с нуля" 
+	возможно, но этого нельзя сделать без установки множества дополнительных пакетов, которые 
+	выходят за рамки этой книги. Однако, инструкции по их установке можно найти в книге BLFS.</para>
 
     <variablelist>
       <bridgehead renderas="sect3">Пакеты LFS, которые необходимы для удовлетворения 
@@ -87,7 +88,7 @@
       </varlistentry>
 
       <varlistentry>
-        <term><emphasis>LSB Gtk3 and LSB Graphics (Trial Use):</emphasis></term>
+        <term><emphasis>LSB Gtk3 и LSB Graphics (Необязательные):</emphasis></term>
         <listitem>
           <para>Нет</para>
         </listitem>
@@ -105,7 +106,7 @@
         <term><emphasis>LSB Core:</emphasis></term>
         <listitem>
           <para>At, Batch (a part of At), Cpio, Ed, Fcrontab, LSB-Tools, NSPR,
-          NSS, PAM, Pax, Sendmail (or Postfix or Exim), time
+          NSS, PAM, Pax, Sendmail (или Postfix, или Exim), time
           </para>
         </listitem>
       </varlistentry>
@@ -134,7 +135,7 @@
       </varlistentry>
 
       <varlistentry>
-        <term><emphasis>LSB Gtk3 and LSB Graphics (Trial Use):</emphasis></term>
+        <term><emphasis>LSB Gtk3 и LSB Graphics (Необязательные):</emphasis></term>
         <listitem>
           <para>GTK3+</para>
         </listitem>
@@ -177,7 +178,7 @@
       </varlistentry>
 
       <varlistentry>
-        <term><emphasis>LSB Gtk3 and LSB Graphics (Trial Use):</emphasis></term>
+        <term><emphasis>LSB Gtk3 и LSB Graphics (Необязательные):</emphasis></term>
         <listitem>
           <para>Нет</para>
         </listitem>
