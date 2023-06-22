@@ -3201,9 +3201,8 @@
       <segmentedlist id="xz-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg><phrase revision="sysv">Eudev, </phrase>File, GRUB, Kmod,
-          <phrase revision="sysv">and </phrase>Man-DB<phrase
-          revision="systemd">, and Systemd</phrase></seg>
+          <seg><phrase revision="sysv">Eudev, </phrase>File, GRUB, Kmod, 
+          Man-DB <phrase revision="systemd">и Systemd</phrase></seg>
         </seglistitem>
       </segmentedlist>
 

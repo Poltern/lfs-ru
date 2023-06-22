@@ -44,14 +44,15 @@
     <title>Установка кросс-пакета Binutils</title>
 
     <note><para>Вернитесь назад и перечитайте примечания в разделе <xref
-    linkend="ch-tools-generalinstructions"/>. Понимание нформации, помеченной
+    linkend="ch-tools-generalinstructions"/>. Понимание информации, помеченной
 	как важная, может впоследствии избавить вас от многих проблем.</para></note>
 
     <para>Очень важно, чтобы Binutils был скомпилированным первым, потому что и
 	Glibc, и GCC выполняют различные тесты на доступных компоновщике и ассемблере,
 	чтобы определить, какие из их функций следует включить.</para>
 
-    <para>В документации пакета Binutils рекомендуется выполнять сборку в отдельном каталоге:</para>
+    <para>В документации пакета Binutils рекомендуется выполнять сборку в отдельном каталоге, 
+	создадим его:</para>
 
 <screen><userinput remap="pre">mkdir -v build
 cd       build</userinput></screen>
@@ -62,7 +63,7 @@ cd       build</userinput></screen>
 	  начиная с настройки и заканчивая установкой. Чтобы добиться этого, оберните
 	  команды сборки командой <command>time</command>:
 	  <userinput>time { ../configure ... &amp;&amp; make
-      &amp;&amp; make install; }.</userinput>.</para>
+      &amp;&amp; make install; }</userinput>.</para>
     </note>
 
     <para>Теперь подготовьте Binutils к компиляции:</para>
@@ -99,7 +100,7 @@ cd       build</userinput></screen>
           <para>Поскольку название машины в значении переменной
 		  <envar>LFS_TGT</envar> может отличаться от значения, которое
 		  возвращает сценарий <command>config.guess</command>, этот аргумент
-		  укажет сценарию <command>configure</command> настроить систему
+		  укажет сценарию <command>configure</command> как настроить систему
 		  сборки пакета Binutils для создания кросс-компоновщика.</para>
         </listitem>
       </varlistentry>

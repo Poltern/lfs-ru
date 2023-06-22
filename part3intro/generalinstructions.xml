@@ -50,7 +50,7 @@
 
     <important>
 
-      <para>Инструкции по сборке предполагают, что <xref
+      <para>Инструкции по сборке предполагают, что все <xref
       linkend='ch-partitioning-hostreqs'/>, включая символические ссылки,
 	  установлены правильно:</para>
 
@@ -85,7 +85,7 @@
         <listitem>
           <para>Перейдите в каталог с исходными кодами.</para>
         </listitem>
-        <listitem id='buildinstr' xreflabel='Package build instructions'>
+        <listitem id='buildinstr' xreflabel='Инструкции по сборке пакетов'>
           <para>Для каждого пакета:</para>
           <orderedlist numeration="loweralpha" spacing="compact">
             <listitem>

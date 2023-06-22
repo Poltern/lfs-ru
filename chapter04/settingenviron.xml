@@ -164,7 +164,7 @@ EOF</userinput></screen>
 
   <important>
 
-     <para>Некоторые коммерческие дистрибутивы добавляют недокументированный экземпляр
+     <para>Некоторые дистрибутивы добавляют недокументированный экземпляр
 	 <filename>/etc/bash.bashrc</filename> к инициализации <command>bash</command>.
 	 Этот файл потенциально может изменить среду пользователя
 	 <systemitem class="username">lfs</systemitem> таким образом, что это может

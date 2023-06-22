@@ -151,7 +151,7 @@ tar -cJpf $HOME/lfs-temp-tools-&version;.tar.xz .</userinput></screen>
 
     <warning><para>Следующие команды чрезвычайно опасны. Если вы запустите команду
 	<command>rm -rf ./*</command> от имени пользователя &root; и не перейдете в каталог
-	$LFS или переменная окружения <envar>LFS</envar> не будет установлена ​​для
+	$LFS или переменная окружения <envar>LFS</envar> не будет установлена для
 	пользователя &root;, это уничтожит всю вашу хост-систему. ВЫ ПРЕДУПРЕЖДЕНЫ.</para></warning>
 
 <screen role="nodump"><computeroutput>cd $LFS
@@ -159,7 +159,7 @@ rm -rf ./*
 tar -xpf $HOME/lfs-temp-tools-&version;.tar.xz</computeroutput></screen>
 
     <para>
-       Еще раз дважды проверьте, правильно ли настроено окружение, и продолжайте сборку системы.
+       Еще раз проверьте, правильно ли настроено окружение, и продолжайте сборку системы.
     </para>
 
     <important>
