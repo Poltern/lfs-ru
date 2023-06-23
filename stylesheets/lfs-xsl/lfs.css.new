@@ -14,12 +14,12 @@ body {
 /* Links */
 a:link {
   color:           #22b;
-  font-weight:     bold; 
+  font-weight:     bold;
   text-decoration: none;
 }
 
 a.ulink:link {
-  font-weight:     bold; 
+  font-weight:     bold;
   color:           #55f;
   text-decoration: none;
 }
@@ -29,7 +29,7 @@ a:visited {
   text-decoration: none;
 }
 
-a:hover, 
+a:hover,
 a:focus {
   color:           #d30e08 ! important;
   text-decoration: underline;
@@ -81,10 +81,10 @@ div.navfooter a:active {
 }
 
 /* Sections */
-div.sect1, 
-div.appendix, 
-div.wrap, 
-div.chapter, 
+div.sect1,
+div.appendix,
+div.wrap,
+div.chapter,
 div.part,
 div.preface,
 div.toc,
@@ -100,10 +100,10 @@ div.index,
 }
 
 @media(max-width:1220px) and (min-height:550px){
-  div.sect1, 
-  div.appendix, 
-  div.wrap, 
-  div.chapter, 
+  div.sect1,
+  div.appendix,
+  div.wrap,
+  div.chapter,
   div.part,
   div.preface,
   div.legalnotice,
@@ -120,10 +120,10 @@ div.index,
 @media(max-width:1050px),
       (max-width:1050px) and (min-width:800px) and (max-height:550px){
 
-  div.sect1, 
-  div.appendix, 
-  div.wrap, 
-  div.chapter, 
+  div.sect1,
+  div.appendix,
+  div.wrap,
+  div.chapter,
   div.part,
   div.preface,
   div.legalnotice,
@@ -138,10 +138,10 @@ div.index,
 
 @media(max-width:550px),
       (max-width:800px) and (max-height:550px){
-  div.sect1, 
-  div.appendix, 
-  div.wrap, 
-  div.chapter, 
+  div.sect1,
+  div.appendix,
+  div.wrap,
+  div.chapter,
   div.part,
   div.preface,
   div.legalnotice,
@@ -169,12 +169,12 @@ div.important ul li p {
   padding: 0em  0.6em;
 }
 
-.package, 
-.kernel, 
-.installation, 
-.commands, 
-.testing, 
-.configuration, 
+.package,
+.kernel,
+.installation,
+.commands,
+.testing,
+.configuration,
 .content {
   padding: 0em 0.5em 0.2em 0em;
   margin:  0em;
@@ -222,12 +222,12 @@ h1 {
   padding:    0.7em;
 }
 
-.preface h1, 
-.part h1, 
-.chapter h1, 
-.appendix h1, 
-.index h1, 
-.sect1 h1, 
+.preface h1,
+.part h1,
+.chapter h1,
+.appendix h1,
+.index h1,
+.sect1 h1,
 .wrap h1 {
   background:    none; /*#f5f6f7;*/
   border-bottom: 1px solid #EEE; /*1em solid #dbddec;*/
@@ -246,7 +246,7 @@ h2 {
   padding:.3em;
 }
 
-.titlepage h2, 
+.titlepage h2,
 div.navheader  h2 {
   font-size:     120%;
   border-bottom: none;
@@ -276,14 +276,14 @@ h4 {
   padding:       0.2em;
 }
 
-.titlepage h3, 
+.titlepage h3,
 div.navheader  h3 {
   font-size:     120%;
   border-bottom: none;
   padding:       0.25em;
 }
 
-.titlepage h4, 
+.titlepage h4,
 div.navheader h4 {
   font-size:     110%;
   border-bottom: none;
@@ -291,21 +291,21 @@ div.navheader h4 {
 }
 
 @media(max-width:550px){
-  .titlepage h2, 
+  .titlepage h2,
   div.navheader  h2 {
     font-size:     4.7vmin;
     border-bottom: none;
     padding:       0.25em;
   }
 
-  .titlepage h3, 
+  .titlepage h3,
   div.navheader  h3 {
     font-size:     4.5vmin;
     border-bottom: none;
     padding:       0.25em;
   }
 
-  .titlepage h4, 
+  .titlepage h4,
   div.navheader h4 {
     font-size:     4.3vmin;
     border-bottom: none;
@@ -337,7 +337,7 @@ div.navheader ul {
   display:none;
 }
 
-@media(min-width:550px) and (min-height:550px), 
+@media(min-width:550px) and (min-height:550px),
       (min-width:1220px) and (min-height:550px){
   div.navfooter{
     top:        0px;
@@ -406,7 +406,7 @@ div.navfooter ul{
   width:    0px;
 }
 
-div.navheader ul li.prev, 
+div.navheader ul li.prev,
 div.navfooter ul li.prev {
   position:       fixed;
   display:        block;
@@ -421,7 +421,7 @@ div.navfooter ul li.prev {
   /*padding-bottom: 3em;*/
 }
 /*
-div.navheader ul li.next, 
+div.navheader ul li.next,
 div.navfooter ul li.next {
   position:     fixed;
   display:      block;
@@ -433,7 +433,7 @@ div.navfooter ul li.next {
   max-width:    170px;
 }
 */
-div.navheader ul li.next, 
+div.navheader ul li.next,
 div.navfooter ul li.next {
   position:     fixed;
   display:      block;
@@ -445,9 +445,9 @@ div.navfooter ul li.next {
   max-width:    170px;
 }
 
-div.navheader ul li.prev p, 
+div.navheader ul li.prev p,
 div.navfooter ul li.prev p,
-div.navheader ul li.next p, 
+div.navheader ul li.next p,
 div.navfooter ul li.next p {
   padding:        0em;
   padding-bottom: 3em;
@@ -458,7 +458,7 @@ div.navfooter ul li.next p {
   font-weight:    bold;
 }
 
-div.navheader ul li.home, 
+div.navheader ul li.home,
 div.navfooter ul li.home {
   position:    fixed;
   text-align:  left;
@@ -472,7 +472,7 @@ div.navfooter ul li.home {
   max-width:   200px;
 }
 
-div.navheader ul li.up, 
+div.navheader ul li.up,
 div.navfooter ul li.up {
   position:    fixed;
   text-align:  left;
@@ -487,7 +487,7 @@ div.navfooter ul li.up {
   /*border:      1px solid black;*/
 }
 
-div.navheader ul li.up a, 
+div.navheader ul li.up a,
 div.navfooter ul li.up a {
   display:         block;
   padding:         10px 5px 10px 28px;
@@ -495,7 +495,7 @@ div.navfooter ul li.up a {
   background-size: 20px 20px;
 }
 
-div.navheader ul li.home a, 
+div.navheader ul li.home a,
 div.navfooter ul li.home a {
   display:         block;
   padding:         10px 5px  10px 28px;
@@ -503,7 +503,7 @@ div.navfooter ul li.home a {
   background-size: 20px 20px;
 }
 
-div.navheader ul li.prev a, 
+div.navheader ul li.prev a,
 div.navfooter ul li.prev a {
   display:         block;
   padding:         10px 5px  10px 35px;
@@ -522,7 +522,7 @@ div.navheader ul li.prev p {
   border: 1px solid blue;
 }
 */
-div.navheader ul li.next a, 
+div.navheader ul li.next a,
 div.navfooter ul li.next a{
   display:         block;
   padding:         10px 35px 10px 5px;
@@ -531,25 +531,25 @@ div.navfooter ul li.next a{
 }
 
 @media(max-width:1220px) and (min-height:550px){
-  div.navheader ul li, 
+  div.navheader ul li,
   div.navfooter ul li{
     width: 120px;
   }
-  
-  div.navheader ul li.prev p, 
+
+  div.navheader ul li.prev p,
   div.navheader ul li.next p,
-  div.navfooter ul li.prev p, 
+  div.navfooter ul li.prev p,
   div.navfooter ul li.next p{
     text-align: center;
     /*border:     1px solid blue;
     margin:     2px;*/
     height:     7.5vh;  /* 7.5% ov viewport height */
-    overflow:   hidden; 
+    overflow:   hidden;
   }
 /*
-  div.navheader ul li.prev p:after, 
-  div.navheader ul li.next p:after, 
-  div.navfooter ul li.prev p:after, 
+  div.navheader ul li.prev p:after,
+  div.navheader ul li.next p:after,
+  div.navfooter ul li.prev p:after,
   div.navfooter ul li.next p:after{
     content:    "";
     text-align: right;
@@ -558,12 +558,12 @@ div.navfooter ul li.next a{
     right:      0px;
     width:      100%;
     height:     2.8em;
-    
+
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(255, 255, 255, 1) 100%);
-    
+
   }
 */
-  div.navheader ul li.prev, 
+  div.navheader ul li.prev,
   div.navfooter ul li.prev {
     position: fixed;
     display:  block;
@@ -573,7 +573,7 @@ div.navfooter ul li.next a{
     margin:   0px;
   }
 
-  div.navheader ul li.prev a, 
+  div.navheader ul li.prev a,
   div.navfooter ul li.prev a{
     display:         block;
     text-align:      center;
@@ -582,8 +582,8 @@ div.navfooter ul li.next a{
     background:      url(../images/chevron-left.png) no-repeat center 5vh;
     background-size: 25px 25px;
   }
-  
-  div.navheader ul li.next, 
+
+  div.navheader ul li.next,
   div.navfooter ul li.next {
     position: fixed;
     display:  block;
@@ -592,8 +592,8 @@ div.navfooter ul li.next a{
     padding:  0px;
     margin:   0px;
   }
-  
-  div.navheader ul li.next a, 
+
+  div.navheader ul li.next a,
   div.navfooter ul li.next a {
     display:         block;
     text-align:      center;
@@ -602,10 +602,10 @@ div.navfooter ul li.next a{
     background:      url(../images/chevron-right.png) no-repeat center 5vh;
     background-size: 25px 25px;
   }
-  
-  div.navheader ul li.home, 
+
+  div.navheader ul li.home,
   div.navheader ul li.up,
-  div.navfooter ul li.home, 
+  div.navfooter ul li.home,
   div.navfooter ul li.up {
     position: fixed;
     padding:  0px;
@@ -615,17 +615,17 @@ div.navfooter ul li.next a{
     margin:   0px;
   }
 
-  div.navheader ul li.home, 
+  div.navheader ul li.home,
   div.navfooter ul li.home{
     top:25vh;
   }
 
-  div.navheader ul li.up, 
+  div.navheader ul li.up,
   div.navfooter ul li.up{
     top:10vh;
   }
-  
-  div.navheader ul li.home a, 
+
+  div.navheader ul li.home a,
   div.navfooter ul li.home a{
     display:         block;
     text-align:      center;
@@ -635,7 +635,7 @@ div.navfooter ul li.next a{
     background-size: 25px 25px;
   }
 
-  div.navheader ul li.up a, 
+  div.navheader ul li.up a,
   div.navfooter ul li.up a{
     display:         block;
     text-align:      center;
@@ -647,28 +647,28 @@ div.navfooter ul li.next a{
 }
 /* End media */
 
-@media(max-width:1220px) and (max-height:550px) and (min-width:800px), 
+@media(max-width:1220px) and (max-height:550px) and (min-width:800px),
       (min-width:1220px) and (max-height:350px){
-  div.navheader ul li.prev p, 
+  div.navheader ul li.prev p,
   div.navfooter ul li.prev p,
-  div.navheader ul li.next p, 
+  div.navheader ul li.next p,
   div.navfooter ul li.next p
   {
     display: none;
   }
-  
-  div.navheader ul li.prev, 
+
+  div.navheader ul li.prev,
   div.navfooter ul li.prev {
     max-width:   120px;
     position:    fixed;
     display:     block;
-    top:         45vmin;  /* smaller of 60% viewport height, width */ 
+    top:         45vmin;  /* smaller of 60% viewport height, width */
     padding:     0px;
     margin-left: 10px;
     font-size:   90%;
   }
-  
-  div.navheader ul li.next, 
+
+  div.navheader ul li.next,
   div.navfooter ul li.next {
     max-width:   120px;
     position:    fixed;
@@ -679,13 +679,13 @@ div.navfooter ul li.next a{
     margin-left: 10px;
     font-size:   90%;
   }
-  
-  div.navheader ul li.prev a, 
+
+  div.navheader ul li.prev a,
   div.navfooter ul li.prev a {
     background-size: 20px 20px;
   }
-  
-  div.navheader ul li.next a, 
+
+  div.navheader ul li.next a,
   div.navfooter ul li.next a{
     display:         block;
     padding:         10px 5px  10px 35px;
@@ -693,10 +693,10 @@ div.navfooter ul li.next a{
     background-size: 20px 20px;
     text-align:      left;
   }
-  
-  div.navheader ul li.home, 
+
+  div.navheader ul li.home,
   div.navheader ul li.up,
-  div.navfooter ul li.home, 
+  div.navfooter ul li.home,
   div.navfooter ul li.up {
     max-width:   120px;
     position:    fixed;
@@ -706,20 +706,20 @@ div.navfooter ul li.next a{
     color:       #dbddec;
     font-size:   90%;
   }
-  
-  div.navheader ul li.home, 
+
+  div.navheader ul li.home,
   div.navfooter ul li.home{
     top: 35vmin;
   }
-  
-  div.navheader ul li.up, 
+
+  div.navheader ul li.up,
   div.navfooter ul li.up{
     top: 10vmin;
   }
-  
-  div.navheader ul li.home a, 
+
+  div.navheader ul li.home a,
   div.navfooter ul li.home a,
-  div.navheader ul li.up a, 
+  div.navheader ul li.up a,
   div.navfooter ul li.up a{
     padding: 10px 5px  10px 35px;
   }
@@ -728,14 +728,14 @@ div.navfooter ul li.next a{
 
 @media(max-width:550px),
       (max-width:800px) and (max-height:550px){
-  div.navheader ul li.prev p, 
+  div.navheader ul li.prev p,
   div.navfooter ul li.prev p,
-  div.navheader ul li.next p, 
+  div.navheader ul li.next p,
   div.navfooter ul li.next p {
     display: none;
   }
-  
-  div.navheader ul li.prev, 
+
+  div.navheader ul li.prev,
   div.navfooter ul li.prev {
     position: fixed;
     display:  block;
@@ -744,8 +744,8 @@ div.navfooter ul li.next a{
     padding:  0px;
     margin:   0px;
   }
-  
-  div.navheader ul li.prev a, 
+
+  div.navheader ul li.prev a,
   div.navfooter ul li.prev a{
     display:         block;
     width:           0px;
@@ -757,8 +757,8 @@ div.navfooter ul li.next a{
     background-size: 6vmin 6vmin;
     overflow:        hidden;
   }
-  
-  div.navheader ul li.next, 
+
+  div.navheader ul li.next,
   div.navfooter ul li.next {
     position: fixed;
     display:  block;
@@ -767,8 +767,8 @@ div.navfooter ul li.next a{
     padding:  0px;
     margin:   0px;
   }
-  
-  div.navheader ul li.next a, 
+
+  div.navheader ul li.next a,
   div.navfooter ul li.next a{
     display:         block;
     width:           0px;
@@ -780,10 +780,10 @@ div.navfooter ul li.next a{
     background-size: 6vmin 6vmin;
     overflow:        hidden;
   }
-  
-  div.navheader ul li.home, 
+
+  div.navheader ul li.home,
   div.navheader ul li.up,
-  div.navfooter ul li.home, 
+  div.navfooter ul li.home,
   div.navfooter ul li.up {
     position: fixed;
     padding:  0px;
@@ -792,18 +792,18 @@ div.navfooter ul li.next a{
     color:    #dbddec;
     left:     0px;
   }
-  
-  div.navheader ul li.home, 
+
+  div.navheader ul li.home,
   div.navfooter ul li.home{
     top: 40vmin;
   }
-  
-  div.navheader ul li.up, 
+
+  div.navheader ul li.up,
   div.navfooter ul li.up{
     top: 20vmin;
   }
-  
-  div.navheader ul li.home a, 
+
+  div.navheader ul li.home a,
   div.navfooter ul li.home a{
     display:         block;
     width:           0px;
@@ -814,8 +814,8 @@ div.navfooter ul li.next a{
     background-size: 6vmin 6vmin;
     overflow:        hidden;
   }
-  
-  div.navheader ul li.up a, 
+
+  div.navheader ul li.up a,
   div.navfooter ul li.up a{
     display:         block;
     width:           0px;
@@ -830,14 +830,14 @@ div.navfooter ul li.next a{
 /* End media */
 
 /* TOC */
-div.toc ul, 
-div.index ul, 
-div.navheader ul, 
+div.toc ul,
+div.index ul,
+div.navheader ul,
 div.navfooter ul {
   list-style: none;
 }
 
-li.preface, 
+li.preface,
 .part li.appendix {
   margin-left: 1em;
 }
@@ -846,8 +846,8 @@ div.toc h3 {
   margin: 1em 0em 0.3em 0em;
 }
 
-li.appendix h3, 
-li.glossary h3, 
+li.appendix h3,
+li.glossary h3,
 li.index h3 {
   margin: 0.5em
 }
@@ -911,13 +911,13 @@ li.chapter h4 a {
     width:       100%;
     margin-left: 1em;
   }
-  
+
   .item + .indexref {
     display:      inline-block;
     padding-left: 0px;
     margin-left:  1em;
   }
-  
+
   .secitem + .indexref {
     display:      inline-block;
     padding-left: 0px;
@@ -947,7 +947,7 @@ div.admon pre {
   margin: 0.5em 3em;
 }
 
-div.note, 
+div.note,
 div.tip {
   margin:        1em;
   padding:       0.2em 0.5em 0.75em 0.75em;
@@ -958,8 +958,8 @@ div.tip {
   line-height:   1.4em;
 }
 
-div.important, 
-div.warning, 
+div.important,
+div.warning,
 div.caution {
   margin:        1em;
   padding:       0.2em 0.5em 0.75em 0.75em;
@@ -970,14 +970,14 @@ div.caution {
   line-height:   1.4em;
 }
 
-div.important h3, 
-div.warning h3, 
+div.important h3,
+div.warning h3,
 div.caution h3 {
   color: #900;
 }
 
-div.important em, 
-div.warning em, 
+div.important em,
+div.warning em,
 div.caution em {
   color:       #000;
   font-weight: bold;
@@ -995,7 +995,7 @@ div.caution em {
   margin-right: auto;
 }
 
-.table table th, 
+.table table th,
 .table table td {
   padding:    0.2em 2em 0.2em 2em;
   text-align: left;
@@ -1038,7 +1038,7 @@ div.caution em {
 }
 /* End media */
 
-.variablelist td span, 
+.variablelist td span,
 td p {
   margin:  0.25em;
   padding: 0px;
@@ -1112,7 +1112,7 @@ div.materials dd {
     display: block;
     width:   100%;
   }
-  
+
   .package .segbody, .content .segbody {
     display:      inline-block;
     padding-left: 0px;
@@ -1194,17 +1194,17 @@ ol.compact li p {
 }
 
 /* Indented blocks */
-p, 
+p,
 blockquote {
   padding-left:  1em;
   padding-right: 1em;
 }
 
 /* Monospaced elements */
-tt, 
-code, 
-kbd, 
-pre, 
+tt,
+code,
+kbd,
+pre,
 .command {
   font-family: monospace;
 }
@@ -1229,7 +1229,7 @@ pre.screen {
   font-weight: normal;
 }
 
-.literal, 
+.literal,
 .prompt {
   font-weight: normal;
 }
