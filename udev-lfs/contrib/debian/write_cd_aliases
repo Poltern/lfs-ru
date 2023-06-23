@@ -107,7 +107,7 @@ match="BUS==\"$PHYSDEVBUS\", ID==\"$id\""
 
 comment="$ID_MODEL ($ID_PATH)"
 
-			  write_rule "$match" "cdrom$link_num" "$comment"
+                          write_rule "$match" "cdrom$link_num" "$comment"
 [ "$ID_CDROM_CD_RW" ]  && write_rule "$match" "cdrw$link_num"
 [ "$ID_CDROM_DVD" ]    && write_rule "$match" "dvd$link_num"
 [ "$ID_CDROM_DVD_RW" ] && write_rule "$match" "dvdrw$link_num"
