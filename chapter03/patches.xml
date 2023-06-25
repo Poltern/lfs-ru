@@ -85,6 +85,14 @@
     </varlistentry>
 
     <varlistentry>
+      <term>GRUB Upstream Fixes Patch - <token>&grub-upstream-fixes-patch-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&grub-upstream-fixes-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&grub-upstream-fixes-patch-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Kbd Backspace/Delete Fix Patch - <token>&kbd-backspace-patch-size;</token>:</term>
       <listitem>
         <para>Ссылка на загрузку: <ulink url="&patches-root;&kbd-backspace-patch;"/></para>
@@ -117,15 +125,15 @@
       </listitem>
     </varlistentry>
 -->
-<!--
+
     <varlistentry>
-      <term>Shadow Segfault Fix Patch - <token>&shadow-segfault-patch-size;</token>:</term>
+      <term>Readline Upstream Fix Patch - <token>&readline-fixes-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&shadow-segfault-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&shadow-segfault-patch-md5;</literal></para>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&readline-fixes-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&readline-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
+
     <varlistentry revision="sysv">
       <term>Sysvinit Consolidated Patch - <token>&sysvinit-consolidated-patch-size;</token>:</term>
       <listitem>
@@ -141,6 +149,7 @@
         <para>Контрольная сумма MD5: <literal>&systemd-upstream-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
+
 <!--
     <varlistentry>
       <term>Xz Upstream Fix Patch - <token>&xz-upstream-fix-patch-size;</token>:</term>
@@ -150,6 +159,7 @@
       </listitem>
     </varlistentry>
 -->
+<!--
     <varlistentry>
       <term>Zstd Upstream Fixes Patch - <token>&zstd-upstream-fixes-patch-size;</token>:</term>
       <listitem>
@@ -157,6 +167,7 @@
         <para>Контрольная сумма MD5: <literal>&zstd-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
+-->
   </variablelist>
 
   <para>Общий размер этих патчей: примерно <returnvalue/></para>
