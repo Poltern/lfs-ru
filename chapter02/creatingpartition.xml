@@ -176,8 +176,8 @@
       <listitem revision='sysv'><para>/tmp &ndash; Отдельный каталог /tmp используется редко,
 	  он полезен при настройке тонкого клиента. Обычно, его размер
 	  не должен превышать пару гигабайт. Если у вас достаточно оперативной памяти, 
-	  вы можете смонтировать <systemitem class='filesystem'>tmpfs</systemitem> в 
-	  /tmp, чтобы ускорить доступ к временным файлам.</para></listitem>
+	  вы можете смонтировать /tmp как <systemitem class='filesystem'>tmpfs</systemitem>, чтобы 
+	  ускорить доступ к временным файлам.</para></listitem>
 	  
 	  <listitem revision='systemd'><para>/tmp &ndash; По умолчанию, systemd 
 	  монтирует здесь <systemitem class='filesystem'>tmpfs</systemitem>. Если 
