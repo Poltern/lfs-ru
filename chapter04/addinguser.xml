@@ -10,15 +10,14 @@
 
   <title>Создание пользователя LFS</title>
 
-  <para>При входе в систему под пользователем
+  <para>При входе в систему под учетной записью
   <systemitem class="username">root</systemitem> допущение одной ошибки может
   привести к повреждению или разрушению системы. Поэтому пакеты в следующих
   двух главах собираются из-под учетной записи непривилегированного пользователя.
   Вы можете использовать свое собственное имя пользователя, но чтобы упростить
   настройку рабочей среды, создайте нового пользователя с именем <systemitem
-  class="username">lfs</systemitem> в качестве члена новой группы (также
-  называемой <systemitem class="groupname">lfs</systemitem>) и используйте этого
-  пользователя в течение всего процесса сборки пакетов временного набора инструментов.
+  class="username">lfs</systemitem>, который является членом одноименной группы 
+  и выполняйте команды из-под этой учетной записи в процессе установки.
   От имени пользователя <systemitem class="username">root</systemitem> выполните
   следующие команды, чтобы добавить нового пользователя:</para>
 
@@ -58,30 +57,30 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</userinput></screen>
         <para>Этот параметр предотвращает возможное копирование файлов из
 		предустановленного набора каталогов (по умолчанию
 		<filename class="directory">/etc/skel</filename>) путем изменения
-		местоположения ввода на специальное null-устройство</para>
+		местоположения ввода на специальное null-устройство.</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term><parameter>lfs</parameter></term>
       <listitem>
-        <para> Это фактическое имя созданного пользователя.</para>
+        <para>Это имя нового пользователя.</para>
       </listitem>
     </varlistentry>
 
   </variablelist>
 
-  <para>Чтобы войти в систему как пользователь <systemitem class="username">lfs</systemitem>
-  (в отличие от переключения на пользователя <systemitem class="username">lfs</systemitem>
-  при входе в систему как <systemitem class="username">root</systemitem>, для которого не
-  требуется, чтобы пользователь <systemitem class="username">lfs</systemitem> имел пароль),
-  задайте пароль пользователя <systemitem class="username">lfs</systemitem> :</para>
+  <para>Если вы хотите войти в систему как &lfs-user; или переключиться на &lfs-user; 
+  из учетной записи непривилегированного пользователя (в отличие от переключения на 
+  пользователя &lfs-user; при входе в систему как &root;, для которого не требуется 
+  пароль пользователя &lfs-user;), вам необходимо установить пароль для &lfs-user;. 
+  Выполните следующую команду от имени пользователя &root;, чтобы установить пароль:</para>
 
 <screen role="nodump"><userinput>passwd lfs</userinput></screen>
 
   <para>Предоставьте пользователю <systemitem class="username">lfs</systemitem> полный
-  доступ ко всем каталогам в папке <filename class="directory">$LFS</filename>, сделав
-  <systemitem class="username">lfs</systemitem> владельцем каталога:</para>
+  доступ ко всем каталогам в папке <filename class="directory">$LFS</filename>, назначив
+  <systemitem class="username">lfs</systemitem> владельцем:</para>
 
 <screen><userinput>chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
 case $(uname -m) in
@@ -93,15 +92,15 @@ esac</userinput></screen>
   подсказка "lfs:~$" не появляется сразу, ввод команды <command>fg</command>
   устранит проблему.</para></note>
 
-  <para>Затем войдите в систему как пользователь <systemitem class="username">lfs</systemitem>.
-  Это можно сделать через виртуальную консоль, через графическую оболочку или с помощью
-  следующей команды замены/переключения пользователя:</para>
+  <para>Затем запустите оболочку, работающую от имени пользователя &lfs-user;. 
+  Это можно сделать, войдя в систему как &lfs-user; на виртуальной консоли или 
+  с помощью следующей команды замены/переключения пользователя:</para>
 
 <screen role="nodump"><userinput>su - lfs</userinput></screen>
 
   <para>Аргумент <quote><parameter>-</parameter></quote> передает значение команде
   <command>su</command> для запуска оболочки входа в систему, а не обычной оболочки.
-  Разнличия между этими двумя типами оболочек можно найти в <filename>bash(1)</filename>
+  Разница между этими двумя типами оболочек подробно описана в <filename>bash(1)</filename>
   и <command>info bash</command>.</para>
 
 </sect1>
