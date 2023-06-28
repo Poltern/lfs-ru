@@ -90,7 +90,7 @@ cd       build</userinput></screen>
         <term><parameter>--with-sysroot=$LFS</parameter></term>
         <listitem>
           <para>Для кросс-компляции указывает системе сборки искать в $LFS
-		  библиотеки целевой системы по мере необходимости..</para>
+		  библиотеки целевой системы, если необходимо.</para>
         </listitem>
       </varlistentry>
 
@@ -131,7 +131,7 @@ cd       build</userinput></screen>
 
     </variablelist>
 
-    <para>Продолжайте компиляцию пакета:</para>
+    <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
