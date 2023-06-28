@@ -58,7 +58,7 @@ esac</userinput></screen>
     <note>
       <para>
         Приведенная выше команда верна. Команда <command>ln</command> имеет несколько
-		синтаксических версий, поэтому обязательно ознакомтесь с <command>info coreutils ln</command>
+		вариантов синтаксиса, поэтому обязательно ознакомьтесь с <command>info coreutils ln</command>
 		и <filename>ln(1)</filename>, прежде чем сообщать об ошибке.
       </para>
     </note>
@@ -157,9 +157,10 @@ cd       build</userinput></screen>
     <warning><para>Если переменная <envar>LFS</envar> настроена неправильно, и,
 	несмотря на рекомендации, вы выполняете сборку от имени пользователя 
 	<systemitem class="username">root</systemitem>, следующая команда установит
-	только что собранный glibc в вашу хост-систему, что, скорее всего, сделает её
+	только что собранный Glibc в вашу хост-систему, что, скорее всего, сделает её
 	непригодной для использования. Поэтому дважды проверьте, правильность настройки
-	среды, прежде чем запускать следующую команду.</para></warning>
+	среды и что вы вошли в систему не под учетной записью &root;, прежде чем 
+	запускать следующую команду.</para></warning>
 
 <screen><userinput remap="install">make DESTDIR=$LFS install</userinput></screen>
 
@@ -173,14 +174,14 @@ cd       build</userinput></screen>
 		  всеми пакетами для определения места установки пакета. Если она
 		  не задана, по умолчанию для установки используется корневой каталог (<filename
           class="directory">/</filename>). Здесь мы указываем, что пакет должен
-		  быть установлен в $LFS, который станет корневым после <xref linkend=
+		  быть установлен в $LFS, который станет корневым каталогом в <xref linkend=
           "ch-tools-chroot"/>.</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
-    <para>Исправьте жестко заданный путь к исполняемому загрузчику в скрипте
+    <para>Исправьте жестко запрограммированный путь к исполняемому загрузчику в 
     <command>ldd</command>:</para>
 
 <screen><userinput remap="install">sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd</userinput></screen>
@@ -190,7 +191,7 @@ cd       build</userinput></screen>
 	  (компиляция и компоновка) нового кросс-тулчейна работают должным образом.
 	  Чтобы выполнить проверку работоспособности, выполните следующие команды:</para>
 
-<screen><userinput>echo 'int main(){}' | gcc -xc -
+<screen><userinput>echo 'int main(){}' | $LFS_TGT-gcc -xc -
 readelf -l a.out | grep ld-linux</userinput></screen>
 
       <para>Если все работает правильно, ошибок быть не должно, и вывод последней
@@ -202,7 +203,7 @@ readelf -l a.out | grep ld-linux</userinput></screen>
       <filename>/lib/ld-linux.so.2</filename>.</para>
 
       <para>Если выходные данные отображаются не так, как указано выше, или их вообще
-	  не было, значит, что-то не так. Разберитесь с проблемой и повторите шаги выше,
+	  нет, значит, что-то не так. Разберитесь с проблемой и повторите шаги выше,
 	  чтобы исправить ее. Эта проблема должна быть решена, прежде чем вы продолжите.</para>
 
       <para>Как только все будет хорошо, удалите тестовый файл:</para>
@@ -217,7 +218,7 @@ readelf -l a.out | grep ld-linux</userinput></screen>
 	пошло не так с установленными ранее Binutils, GCC, или Glibc.</para></note>
 
     <para>Теперь, когда наш кросс-тулчейн собран, завершите установку заголовочного
-	файла limits.h. Для этого запустите утилиту, предоставленную разработчиками GCC:</para>
+	файла limits.h. Для этого запустите утилиту, предоставляемую разработчиками GCC:</para>
 
 <screen><userinput>$LFS/tools/libexec/gcc/$LFS_TGT/&gcc-version;/install-tools/mkheaders</userinput></screen>
 
