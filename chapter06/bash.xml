@@ -45,9 +45,9 @@
 
     <para>Подготовьте Bash к компиляции:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr                   \
-            --build=$(support/config.guess) \
-            --host=$LFS_TGT                 \
+<screen><userinput remap="configure">./configure --prefix=/usr                      \
+            --build=$(sh support/config.guess) \
+            --host=$LFS_TGT                    \
             --without-bash-malloc</userinput></screen>
 
     <variablelist>

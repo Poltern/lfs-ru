@@ -48,7 +48,7 @@
     <screen><userinput remap="pre">patch -Np1 -i ../&gcc-upstream-fixes-patch;</userinput></screen>
 -->
     <para>Как и при первой сборке GCC, требуются пакеты GMP, MPFR и MPC. Распакуйте
-	архивы и переместите их в каталоги с нужными именами:</para>
+	архивы и переименуйте каталоги:</para>
 
 <screen><userinput remap="pre">tar -xf ../mpfr-&mpfr-version;.tar.xz
 mv -v mpfr-&mpfr-version; mpfr
@@ -89,10 +89,10 @@ cd       build</userinput></screen>
     LDFLAGS_FOR_TARGET=-L$PWD/$LFS_TGT/libgcc      \
     --prefix=/usr                                  \
     --with-build-sysroot=$LFS                      \
-    --enable-initfini-array                        \
+    --enable-default-pie                           \
+    --enable-default-ssp                           \
     --disable-nls                                  \
     --disable-multilib                             \
-    --disable-decimal-float                        \
     --disable-libatomic                            \
     --disable-libgomp                              \
     --disable-libquadmath                          \
@@ -111,7 +111,7 @@ cd       build</userinput></screen>
 		  что он должен искать заголовочные файлы и библиотеки в <filename
           class="directory">$LFS</filename>. Но сборочная система GCC использует
 		  другие инструменты, которые не знают об этом местоположении. Этот
-		  переключатель необходим для того, чтобы они могли находить нужные файлы в <filename
+		  параметр необходим для того, чтобы они могли найти нужные файлы в <filename
           class="directory">$LFS</filename>, а не на хосте.</para>
         </listitem>
       </varlistentry>
@@ -121,14 +121,13 @@ cd       build</userinput></screen>
         <listitem>
           <para>Поскольку мы выполняем кросс-компиляцию GCC, невозможно создать
 		  целевые библиотеки (<filename class="libraryfile">libgcc</filename>
-          и <filename class="libraryfile">libstdc++</filename>) со скомпилированными
+          и <filename class="libraryfile">libstdc++</filename>) с ранее скомпилированными
 		  двоичными файлами GCC, потому что эти двоичные файлы не будут работать на
-		  хост-дистрибутиве. Система сборки GCC попытается использовать 
-		  компиляторы C и C++ в хост-дистрибутиве в качестве обходного пути.
-          Сейчас не поддерживается создание целевых библиотек GCC с другими версиями GCC,
-		  поэтому использование хост-компиляторов может привести к отказу сборки. Этот
-		  параметр обеспечивает сборку библиотек с помощью GCC собранного на первом проходе,
-		  чтобы предотвратить проблему</para>
+		  хост-дистрибутиве. Система сборки GCC по умолчанию попытается использовать 
+		  компиляторы C и C++ хоста в качестве обходного пути.
+          Сейчас не поддерживается создание целевых библиотек GCC с помощью другой версии GCC,
+		  поэтому использование компиляторов хоста может привести к сбою сборки. Этот
+		  параметр гарантирует сборку библиотек с помощью GCC собранного на первом проходе.</para>
         </listitem>
       </varlistentry>
 
@@ -137,19 +136,11 @@ cd       build</userinput></screen>
         <listitem>
           <para>Разрешить <filename class="libraryfile">libstdc++</filename> использовать
            общую библиотеку <filename class="libraryfile">libgcc</filename>,
-           собранную на этом проходе, вместо статической версии, собранной в GCC
+           собранную на этом этапе, вместо статической версии, собранной в GCC
            Проход 1. Это необходимо для поддержки обработки исключения C++</para>
         </listitem>
       </varlistentry>
-	  
-      <varlistentry>
-        <term><parameter>--enable-initfini-array</parameter></term>
-        <listitem>
-          <para>Этот параметр автоматически включается при сборке нативного компилятора с родным 
-		  компилятором на x86. Но здесь мы собираем кросс-компилятор, поэтому нам нужно явно 
-		  указать эту опцию.</para>
-        </listitem>
-      </varlistentry>
+
 
     </variablelist>
 

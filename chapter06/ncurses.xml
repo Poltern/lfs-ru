@@ -125,8 +125,8 @@ popd</userinput></screen>
       <varlistentry>
         <term><parameter>--disable-stripping</parameter></term>
         <listitem>
-          <para>Этот аргумент не позволяет системе сборки удалять пакеты с
-		  помощью программы <command>strip</command> с хоста. Использование инструментов
+          <para>Этот аргумент не позволяет системе сборки использовать программу 
+		  <command>strip</command> с хоста. Использование инструментов
 		  хоста в кросс-компилируемой программе может привести к сбою.</para>
         </listitem>
       </varlistentry>
@@ -168,9 +168,9 @@ echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</userinput></screen>
       <varlistentry>
         <term><parameter>TIC_PATH=$(pwd)/build/progs/tic</parameter></term>
         <listitem>
-          <para>Нам нужно передать путь только что собранного <command>tic</command>,
-		  способного работать на машине сборки, чтобы база данных терминала была
-		  создана без ошибок.</para>
+          <para>Нам нужно передать путь до только что собранной программы 
+		  <command>tic</command>, которая работает на сборочной машине, чтобы база 
+		  данных терминала  была создана без ошибок.</para>
         </listitem>
       </varlistentry>
 
