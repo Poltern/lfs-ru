@@ -10,12 +10,12 @@
 
   <title>Вход в окружение Chroot</title>
 
-  <para>Теперь, когда все пакеты, необходимые для сборки остальных инструментов находятся
+  <para>Теперь, когда все пакеты, необходимые для сборки остальных инструментов установлены
   в системе, пришло время войти в окружение chroot и завершить установку временных
-  инструментов. Это окружение также будет использоваться для установки конечной системы.
+  инструментов. Эта среда также будет использоваться для установки конечной системы.
   От имени пользователя <systemitem class="username">root</systemitem> выполните
-  следующую команду для входа в окружение, которое на данный момент заполнено только
-  временными инструментами:</para>
+  следующую команду для входа в chroot, в которой на данный момент нет ничего, кроме 
+  временных инструментов:</para>
 
 <screen role="nodump"><userinput>chroot "$LFS" /usr/bin/env -i   \
     HOME=/root                  \
@@ -24,25 +24,25 @@
     PATH=/usr/bin:/usr/sbin     \
     /bin/bash --login</userinput></screen>
 
-  <para>Параметр <parameter>-i</parameter> команды <command>env</command>
-  очищает все переменные в окружении chroot. После этого переменные
+  <para>Параметр <parameter>-i</parameter> команды <command>env</command>, очистит 
+  все переменные в среде chroot. После этого переменные
   <envar>HOME</envar>, <envar>TERM</envar>, <envar>PS1</envar> и
   <envar>PATH</envar> будут установлены заново. Конструкция 
   <parameter>TERM=$TERM</parameter> установит переменную TERM внутри chroot 
-  в то же значение, что и вне chroot. Эта переменная необходима для корректной работы таким
-  программам как <command>vim</command> и <command>less</command>. Если понадобятся 
+  в то же значение, что и вне chroot. Эта переменная необходима для корректной работы таких
+  программ как <command>vim</command> и <command>less</command>. Если понадобятся 
   другие переменные окружения, такие как <envar>CFLAGS</envar> или <envar>CXXFLAGS</envar>,
   то это подходящее место для их установки.</para>
 
   <para>С этого момента больше нет необходимости использовать переменную 
   <envar>LFS</envar>, поскольку вся работа будет ограничена файловой системой
-  LFS. Это связано с тем, что оболочке Bash сообщается, что 
-  <filename class="directory">$LFS</filename> теперь является корневым 
-  каталогом (<filename class="directory">/</filename>).</para>
+  LFS; команда <command>chroot</command> запускает оболочку Bash с корневым 
+  каталогом (<filename class="directory">/</filename>), установленным в 
+  <filename class="directory">$LFS</filename>.</para>
 
   <para>Обратите внимание, что каталог <filename class="directory">/tools/bin</filename> не 
   указан в переменной окружения <envar>PATH</envar>. Это означает, что кросс-тулчейн
-  больше не будет использоваться внутри chroot окружения.</para>
+  больше не будет использоваться.</para>
 
   <para>Обратите внимание, что в командной строке <command>bash</command> будет указано
   <computeroutput>I have no name!</computeroutput>. Это нормально, поскольку файл 
