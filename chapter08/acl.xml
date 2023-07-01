@@ -23,8 +23,9 @@
   <sect2 role="package">
     <title/>
 
-    <para>Пакет Acl содержит утилиты для администрирования списков контроля доступа,
-	которые используются для более детальной настройки прав доступа к файлам и каталогам.</para>
+    <para>Пакет Acl содержит утилиты для администрирования списков контроля доступа, 
+	которые используются для определения расширенных дискреционных прав доступа 
+	к файлам и каталогам.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -52,9 +53,10 @@
 <screen><userinput remap="make">make</userinput></screen>
 
     <para>Тесты Acl необходимо запускать в файловой системе, поддерживающей списки
-	контроля доступа, после сборки <application>Coreutils</application> с библиотекой
-	Acl. При желании вернитесь к этому пакету и запустите <command>make
-    check</command> после того, как будет собран пакет <application>Coreutils</application>.</para>
+	контроля доступа, после сборки пакета <application>Coreutils</application> с 
+	использованием библиотек Acl. По желанию вернитесь к этому пакету и запустите 
+	<command>make check</command> после того, как будет собран пакет 
+	<application>Coreutils</application>.</para>
 
     <para>Установите пакет:</para>
 

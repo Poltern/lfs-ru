@@ -55,18 +55,13 @@
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-O3</parameter></term>
+        <term><parameter>-G</parameter></term>
         <listitem>
-          <para>Указывает уровень оптимизации.</para>
+          <para>Пропусткает часть тестов, которые не будут работать, пока не будет 
+		  установлена программа bc.</para>
         </listitem>
       </varlistentry>
 
-      <varlistentry>
-        <term><parameter>-G</parameter></term>
-        <listitem>
-          <para>Исключает тесты, которые не работают без GNU bc.</para>
-        </listitem>
-      </varlistentry>
       <varlistentry>
         <term><parameter>-O3</parameter></term>
         <listitem>

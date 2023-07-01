@@ -23,7 +23,7 @@
   <sect2 role="package">
     <title/>
 
-    <para>Пакет Bash содержит Bourne-Again SHell.</para>
+    <para>Пакет Bash содержит Bourne-Again Shell.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -42,10 +42,10 @@
 
     <para>Подготовьте Bash к компиляции:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr                      \
-            --docdir=/usr/share/doc/bash-&bash-version; \
-            --without-bash-malloc              \
-            --with-installed-readline</userinput></screen>
+    <screen><userinput remap="configure">./configure --prefix=/usr             \
+            --without-bash-malloc     \
+            --with-installed-readline \
+            --docdir=/usr/share/doc/bash-&bash-version;</userinput></screen>
 
     <variablelist>
       <title>Значение нового параметра настройки:</title>
@@ -87,6 +87,18 @@ expect eof
 lassign [wait] _ _ _ value
 exit $value
 EOF</userinput></screen>
+
+    <para>Набор тестов использует <command>diff</command> для определения 
+	разницы между выводом тестового сценария и ожидаемым результатом. Любой 
+	вывод <command>diff</command> (с префиксом <computeroutput>&lt;</computeroutput> и 
+	<computeroutput>&gt;</computeroutput>) указывает на сбой теста, если нет 
+	сообщение о том, что различия можно проигнорировать.
+    <!-- Some host distros set core file size hard limit < 1000, then the
+         test "ulimit -c -S 1000" attempts to set soft limit > hard limit
+         and fail.  -->
+    Известно, что один тест с именем <filename>run-builtins</filename> не 
+	работает на некоторых хост-дистрибутивах, указывая на различия в первой 
+	строке выходных данных.</para>
 
     <para>Установите пакет:</para>
 
