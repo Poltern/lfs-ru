@@ -57,7 +57,7 @@
       <varlistentry>
         <term><parameter>-G</parameter></term>
         <listitem>
-          <para>Пропусткает часть тестов, которые не будут работать, пока не будет 
+          <para>Пропускает часть тестов, которые не будут работать, пока не будет 
 		  установлена программа bc.</para>
         </listitem>
       </varlistentry>

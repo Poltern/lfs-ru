@@ -141,10 +141,10 @@ cd       build</userinput></screen>
 		  x86_64 преобразуют это значение в
 		  <filename class="directory">/usr/x86_64-unknown-linux-gnu</filename>. Поскольку
 		  это пользовательская система, то целевой каталог в <filename
-          class="directory">/usr</filename> не требуется. <filename
-          class="directory">$(exec_prefix)/$(target_alias)</filename> будет использоваться,
-		  если система используется для кросс-компиляции (например, при компиляции пакета
-		  на компьютере Intel, который генерирует код, который может быть выполнен на компьютерах PowerPC).</para>
+          class="directory">/usr</filename> не требуется. Параметр <filename
+          class="directory">$(exec_prefix)/$(target_alias)</filename> использовался, если бы система 
+		  применялась для кросс-компиляции (например, при компиляции пакета на компьютере 
+		  Intel, который генерирует код, который может быть выполнен на компьютерах PowerPC).</para>
         </listitem>
       </varlistentry>
 
@@ -159,19 +159,23 @@ cd       build</userinput></screen>
 
 <screen><userinput remap="test">make -k check</userinput></screen>
 
-    <!-- Fixed in 2.39
-         https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=01ae03b 
-    <para>Известно, что один тест gold, <filename>pr17704a_test</filename>, не проходит,
-    если параметр <parameter>CONFIG_IA32_EMULATION</parameter> отключен в конфигурации
-	ядра хост-системы.</para>
- -->
+    <para>Чтобы получить список неудачных тестов, запустите:</para>
+
+<screen><userinput remap="test">grep '^FAIL:' $(find -name '*.log')</userinput></screen>
+
+    <para>Двенадцать тестов завершаются неудачно в наборе тестов gold, когда GCC 
+	собирается с параметрами
+    <option>--enable-default-pie</option> и
+    <option>--enable-default-ssp</option>.</para>
+
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make tooldir=/usr install</userinput></screen>
 
-    <para>Удалите ненужные статические библиотеки:</para>
+    <para>Удалите бесполезные статические библиотеки и пустую справочную страницу:</para>
 
-<screen><userinput remap="install">rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a</userinput></screen>
+<screen><userinput remap="install">rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,sframe,opcodes}.a
+rm -fv /usr/share/man/man1/{gprofng,gp-*}.1</userinput></screen>
 
   </sect2>
 
@@ -184,9 +188,9 @@ cd       build</userinput></screen>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>addr2line, ar, as, c++filt, dwp, elfedit, gprof, ld, ld.bfd, ld.gold, nm,
+        <seg>addr2line, ar, as, c++filt, dwp, elfedit, gprof, gprofng, ld, ld.bfd, ld.gold, nm,
         objcopy, objdump, ranlib, readelf, size, strings, и strip</seg>
-        <seg>libbfd.so, libctf.so, libctf-nobfd.so, и libopcodes.so</seg>
+        <seg>libbfd.so, libctf.so, libctf-nobfd.so, libopcodes.so и libsframe.so</seg>
         <seg>/usr/lib/ldscripts</seg>
       </seglistitem>
     </segmentedlist>
@@ -254,7 +258,7 @@ cd       build</userinput></screen>
       <varlistentry id="elfedit">
         <term><command>elfedit</command></term>
         <listitem>
-          <para>Обновляет ELF заголовок в ELF файлах</para>
+          <para>Обновляет ELF заголовки в ELF файлах</para>
           <indexterm zone="ch-system-binutils elfedit">
             <primary sortas="b-elfedit">elfedit</primary>
           </indexterm>
@@ -443,6 +447,16 @@ cd       build</userinput></screen>
         </listitem>
       </varlistentry>
 
+      <varlistentry id="libsframe">
+        <term><filename class="libraryfile">libsframe</filename></term>
+        <listitem>
+           <para>Библиотека для поддержки обратной онлайн-трассировки с использованием 
+		   простого декодера разделов .sframe.</para>
+          <indexterm zone="ch-system-binutils libsframe">
+            <primary sortas="c-libsframe">libsframe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
     </variablelist>
 
   </sect2>
