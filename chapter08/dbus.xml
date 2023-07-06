@@ -55,7 +55,7 @@
             --disable-static                     \
             --disable-doxygen-docs               \
             --disable-xml-docs                   \
-            --docdir=/usr/share/doc/dbus-&dbus-version; \
+            --docdir=/usr/share/doc/dbus-&dbus-version;  \
             --with-system-socket=/run/dbus/system_bus_socket</userinput></screen>
 
     <variablelist>
@@ -63,11 +63,11 @@
 
       <varlistentry>
         <term>
-          <parameter>--runstatedir=/run</parameter> and
+          <parameter>--runstatedir=/run</parameter> и 
           <parameter>--with-system-socket=/run/dbus/system_bus_socket</parameter>
         </term>
         <listitem>
-          <para>Параметр устанавливает расположение файла PID и сокета системной шины
+          <para>Параметр устанавливает расположение PID-файла и сокета системной шины
 		  в <filename class="directory">/run</filename> вместо устаревшего
 		  <filename class="directory">/var/run</filename>.</para>
         </listitem>

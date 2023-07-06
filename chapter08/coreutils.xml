@@ -23,8 +23,7 @@
   <sect2 role="package">
     <title/>
 
-    <para>Пакет Coreutils содержит утилиты для отображения и настройки основных характеристик
-	системы.</para>
+    <para>Пакет Coreutils содержит основные утилиты, необходимые каждой операционной системе.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -48,9 +47,8 @@
 <screen><userinput remap="pre">patch -Np1 -i ../&coreutils-i18n-patch;</userinput></screen>
 
     <note>
-      <para>В прошлом, в этом патче было найдено много ошибок. Перед тем, как сообщать о
-	  новых ошибках в пакете Coreutils, пожалуйста, сначала проверьте, будет ли эта ошибка
-	  воспроизводится без этого исправления. </para>
+      <para>В этом патче было обнаружено много ошибок. Сообщая о новых ошибках разработчикам 
+	  Coreutils, сначала проверьте, воспроизводятся ли эти ошибки без этого исправления.</para>
     </note>
 
    <!-- this has been fixed in upstream gnulib, when a new version of
@@ -82,7 +80,8 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
       <varlistentry>
         <term><envar>FORCE_UNSAFE_CONFIGURE=1</envar></term>
         <listitem>
-          <para>Эта переменная среды позволяет собрать пакет от имени пользователя <systemitem class="username">root</systemitem>.
+          <para>Эта переменная среды позволяет собрать пакет от имени пользователя 
+		  <systemitem class="username">root</systemitem>.
           </para>
         </listitem>
       </varlistentry>
@@ -90,8 +89,8 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
       <varlistentry>
         <term><parameter>--enable-no-install-program=kill,uptime</parameter></term>
         <listitem>
-          <para>Назначение этого параметра — запретить Coreutils устанавливать двоичные
-		  файлы, которые позже будут установлены другими пакетами.
+          <para>Назначение этого параметра — запретить Coreutils устанавливать программы, 
+		  которые будут установлены другими пакетами.
           </para>
         </listitem>
       </varlistentry>
@@ -125,11 +124,10 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 
 <screen><userinput remap="test">su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"</userinput></screen>
 
-<!-- test-getlogin is now skipped
-    <para>The test-getlogin test is known to fail in the LFS chroot environment.</para>
--->
-<!-- should be fixed at next release, coreutils-9.2 -->
-    <para>Известно, что тест sort-NaN-infloop не работает с GCC-12.</para>
+<!-- Sometimes skipped, but if not it may fail.
+     Please DO NOT remove or comment out this unless we can fully
+     understand it!  -->
+    <para>Тест test-getlogin может завершиться ошибкой в среде chroot LFS.</para>
 
     <para>Удалить временную группу:</para>
 
@@ -359,8 +357,8 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="date">
         <term><command>date</command></term>
         <listitem>
-          <para>Отображает текущее время в заданном формате или устанавливает
-		  системную дату</para>
+          <para>Отображает текущее дату и время в заданном формате или устанавливает
+		  системные дату и время</para>
           <indexterm zone="ch-system-coreutils date">
             <primary sortas="b-date">date</primary>
           </indexterm>
@@ -415,7 +413,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="dirname">
         <term><command>dirname</command></term>
         <listitem>
-          <para>Удаляет суффикс, не относящийся к каталогу, из имени файла</para>
+          <para>Извлекает часть(части) каталога из заданного(х) имени(имён)</para>
           <indexterm zone="ch-system-coreutils dirname">
             <primary sortas="b-dirname">dirname</primary>
           </indexterm>
@@ -477,7 +475,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="factor">
         <term><command>factor</command></term>
         <listitem>
-          <para>Выводит простые множители всех указанных целых чисел</para>
+          <para>Выводит простые множители указанных целых чисел</para>
           <indexterm zone="ch-system-coreutils factor">
             <primary sortas="b-factor">factor</primary>
           </indexterm>
@@ -582,7 +580,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="link">
         <term><command>link</command></term>
         <listitem>
-          <para>Создает жесткую ссылку с указанным именем на файл</para>
+          <para>Создает жесткую ссылку (с указанным именем) на файл</para>
           <indexterm zone="ch-system-coreutils link">
             <primary sortas="b-link">link</primary>
           </indexterm>
@@ -1222,8 +1220,8 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="wc">
         <term><command>wc</command></term>
         <listitem>
-          <para>Сообщает о количестве строк, слов и байтов в каждом указанном файле, а
-		  также об общем количестве строк, если задано более одного файла</para>
+          <para>Сообщает количество строк, слов и байт для каждого заданного файла, а
+		  также общее количество строк, если указано более одного файла</para>
           <indexterm zone="ch-system-coreutils wc">
             <primary sortas="b-wc">wc</primary>
           </indexterm>
@@ -1254,8 +1252,8 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="yes">
         <term><command>yes</command></term>
         <listitem>
-          <para>Выводит <quote>y</quote> или указанную строку до тех пор, пока
-		  команда не будет завешена с помощью kill</para>
+          <para>Повторно выводит <quote>y</quote> или указанную строку, до тех пор, пока
+		  команда не будет завершена с помощью kill</para>
           <indexterm zone="ch-system-coreutils yes">
             <primary sortas="b-yes">yes</primary>
           </indexterm>

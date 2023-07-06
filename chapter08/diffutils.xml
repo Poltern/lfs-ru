@@ -79,7 +79,7 @@
       <varlistentry id="cmp">
         <term><command>cmp</command></term>
         <listitem>
-          <para>Сравнивает два файла и, если они различаются, сообщает в каких байтах</para>
+          <para>Сравнивает побайтно два файла и сообщает о любых различиях</para>
           <indexterm zone="ch-system-diffutils cmp">
             <primary sortas="b-cmp">cmp</primary>
           </indexterm>
