@@ -38,16 +38,11 @@
 
   <sect2 role="installation">
     <title>Установка пакета Eudev</title>
-<!--
-    <para>First, fix a test script:</para>
 
-<screen><userinput remap="pre">sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl</userinput></screen>
--->
-<!--
-    <para>Next, remove an unneeded line that causes a build failure:</para>
 
-<screen><userinput remap="pre">sed -i '/keyboard_lookup_key/d' src/udev/udev-builtin-keyboard.c</userinput></screen>
--->
+    <para>Сначала исправьте местоположение правил udev в .pc-файле:</para>
+
+<screen><userinput remap="pre">sed -i '/udevdir/a udev_dir=${udevdir}' src/udev/udev.pc.in</userinput></screen>
 
     <para>Подготовьте Eudev к компиляции:</para>
 

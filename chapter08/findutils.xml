@@ -24,9 +24,11 @@
     <title/>
 
     <para>Пакет Findutils содержит программы для поиска файлов. Эти программы
-	предназначены для рекурсивного поиска по дереву каталогов, а также для создания,
+	предназначены для поиска по всем файлам в дереве каталогов, а также для создания,
 	обслуживания и поиска в базе данных (часто быстрее, чем рекурсивный поиск, но
-	ненадежно, если база данных давно не обновлялась)</para>
+	ненадежно, если база данных давно не обновлялась).Findutils также предоставляет 
+	программу <command>xargs</command>, которую можно использовать для запуска 
+	указанной команды для каждого файла, выбранного при поиске.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -63,9 +65,9 @@ esac</userinput></screen>
       <varlistentry>
         <term><parameter>--localstatedir</parameter></term>
         <listitem>
-          <para>Этот параметр изменяет расположение базы данных команды <command>locate</command>
-		  на <filename class="directory">/var/lib/locate</filename>, что соответствует
-		  стандарту FHS</para>
+          <para>Этот параметр перемещает базу данных команды <command>locate</command>
+		  в <filename class="directory">/var/lib/locate</filename>, что соответствует
+		  расположению, совместимому со стандартом FHS.</para>
         </listitem>
       </varlistentry>
 

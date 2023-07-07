@@ -58,9 +58,21 @@
 
     <para>Установите пакет:</para>
 
-<screen><userinput remap="install">make install</userinput></screen>
+<screen><userinput remap="install">make LN='ln -f' install</userinput></screen>
 
-    <para>По желанию установите документацию:</para>
+    <variablelist>
+      <title>Значение переопределенной переменной make:</title>
+
+      <varlistentry>
+        <term><envar>LN='ln -f'</envar></term>
+        <listitem>
+           <para>Эта переменная гарантирует, что предыдущая жесткая ссылка, установленая 
+            в <xref linkend='ch-tools-gawk'/>, будет обновлена здесь.</para>
+       </listitem>
+      </varlistentry>
+   </variablelist>
+
+    <para>По желанию, установите документацию:</para>
 
 <screen><userinput remap="install">mkdir -pv                                   /usr/share/doc/gawk-&gawk-version;
 cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}} /usr/share/doc/gawk-&gawk-version;</userinput></screen>
@@ -76,11 +88,11 @@ cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}} /usr/share/doc/gawk-&gawk-version;</
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>awk (ссылка на gawk), gawk, and awk-&gawk-version;</seg>
+        <seg>awk (ссылка на gawk), gawk и gawk-&gawk-version;</seg>
         <seg>filefuncs.so, fnmatch.so, fork.so, inplace.so, intdiv.so, ordchr.so,
         readdir.so, readfile.so, revoutput.so, revtwoway.so, rwarray.so,
         и time.so (все в /usr/lib/gawk)</seg>
-        <seg>/usr/lib/gawk, /usr/libexec/awk, /usr/share/awk, и
+        <seg>/usr/lib/gawk, /usr/libexec/awk, /usr/share/awk и
         /usr/share/doc/gawk-&gawk-version;</seg>
       </seglistitem>
     </segmentedlist>
