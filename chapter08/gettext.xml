@@ -60,8 +60,8 @@
         <term><parameter>BISON_LOCALEDIR=/usr/share/locale</parameter></term>
         <listitem>
           <para>Since bison is not yet installed in /usr, configure hardcodes
-          the directory containing translations for the bison program (the
-	  "locale" directory) as /tools/share/locale. Passing this variable
+          the directory containing translations for the bison program (the 
+		  "locale" directory) as /tools/share/locale. Passing this variable
            to make allows overriding the choice made by configure.</para>
         </listitem>
       </varlistentry>
@@ -337,7 +337,7 @@ chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
       <varlistentry id="libasprintf">
         <term><filename class="libraryfile">libasprintf</filename></term>
         <listitem>
-          <para>определяет класс <emphasis>autosprintf</emphasis>, который делает
+          <para>Определяет класс <emphasis>autosprintf</emphasis>, который делает
 		  подпрограммы вывода в формате C пригодными для использования в программах
 		  на C++ для использования со строками <emphasis>&lt;string&gt;</emphasis> и
 		  потоками <emphasis>&lt;iostream&gt;</emphasis></para>
@@ -350,9 +350,8 @@ chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
       <varlistentry id="libgettextlib">
         <term><filename class="libraryfile">libgettextlib</filename></term>
         <listitem>
-          <para>Приватная библиотека, в которой находятся общие подпрограммы,
-		  используемые в различных программах Gettext; они не предназначены
-		  для общего использования</para>
+          <para>Содержит общие подпрограммы, используемые различными программами 
+		  Gettext; они не предназначены для общего использования</para>
           <indexterm zone="ch-system-gettext libgettextlib">
             <primary sortas="c-libgettextlib">libgettextlib</primary>
           </indexterm>
@@ -376,9 +375,8 @@ chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
       <varlistentry id="libgettextsrc">
         <term><filename class="libraryfile">libgettextsrc</filename></term>
         <listitem>
-          <para>Приватная библиотека, в которой находятся общие подпрограммы,
-		  используемые в различных программах Gettext; они не предназначены
-		  для общего использования</para>
+          <para>Предоставляет общие подпрограммы, используемые различными программами 
+		  Gettext; они не предназначены для общего использования</para>
           <indexterm zone="ch-system-gettext libgettextsrc">
             <primary sortas="c-libgettextsrc">libgettextsrc</primary>
           </indexterm>
