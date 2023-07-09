@@ -45,9 +45,28 @@
 		Если ваша система поддерживает UEFI и вы хотите загрузить LFS с UEFI, вы
 		можете пропустить установку этого пакета в LFS и установить GRUB с поддержкой
 		UEFI (и его зависимости), следуя инструкции 
-		<ulink url="&blfs-book;postlfs/grub-efi.html">из BLFS</ulink> в конце этой главы.
+		<ulink url="&blfs-book;postlfs/grub-efi.html">из BLFS</ulink>.
       </para>
     </note>
+
+    <warning>
+      <para>Сбросьте переменные окружения, которые могут повлиять на сборку:</para>
+
+      <screen><userinput remap='pre'>unset {C,CPP,CXX,LD}FLAGS</userinput></screen>
+
+      <para>Не пытайтесь <quote>настраивать</quote> этот пакет с помощью пользовательских 
+	  флагов компиляции. Этот пакет является загрузчиком. Низкоуровневые операции в исходном 
+	  коде могут быть нарушены из-за агрессивной оптимизации.</para>
+    </warning>
+
+    <para>
+      Устранена проблема, приводившая к сбою <command>grub-install</command>, когда раздел 
+	  <filename class='directory'>/boot</filename> (или корневой раздел, если 
+	  <filename class='directory'>/boot</filename> не является отдельным разделом) создается 
+	  e2fsprogs-1.47.0 или более поздней версии:
+    </para>
+
+<screen><userinput remap='pre'>patch -Np1 -i ../grub-&grub-version;-upstream_fixes-1.patch</userinput></screen>
 
     <para>Подготовьте GRUB к компиляции:</para>
 
@@ -70,8 +89,8 @@
       <varlistentry>
         <term><parameter>--disable-efiemu</parameter></term>
         <listitem>
-          <para>Этот параметр уменьшает объем системы, отключает возможности и
-		  программы тестирования, которые не нужны для LFS.</para>
+          <para>Этот параметр запрещает установку компонента, отключает функции и
+		  некоторые программы тестирования, которые не нужны для LFS.</para>
         </listitem>
       </varlistentry>
 
@@ -90,7 +109,7 @@
 <screen><userinput remap="install">make install
 mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userinput></screen>
 
-  <para>Использование GRUB для обеспечения возможности загрузки вашей системы LFS будет обсуждаться в
+  <para>Создание загружаемой системы LFS с помощью GRUB будет обсуждаться в 
   <xref linkend="ch-bootable-grub"/>.</para>
 
   </sect2>
@@ -111,7 +130,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
             grub-mkpasswd-pbkdf2, grub-mkrelpath,  grub-mkrescue,    grub-mkstandalone,
             grub-ofpathname,      grub-probe,      grub-reboot,      grub-render-label,
             grub-script-check,
-            grub-set-default,     grub-sparc64-setup, и grub-syslinux2cfg</seg>
+            grub-set-default,     grub-sparc64-setup и grub-syslinux2cfg</seg>
 
         <seg>/usr/lib/grub, /etc/grub.d, /usr/share/grub и /boot/grub (при первом запуске grub-install)</seg>
       </seglistitem>
@@ -125,7 +144,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-bios-setup">
         <term><command>grub-bios-setup</command></term>
         <listitem>
-          <para>Вспомогательная программа для grub-install</para>
+          <para>Вспомогательная программа для <command>grub-install</command></para>
           <indexterm zone="ch-system-grub grub-bios-setup">
             <primary sortas="b-grub-bios-setup">grub-bios-setup</primary>
           </indexterm>
@@ -135,7 +154,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-editenv">
         <term><command>grub-editenv</command></term>
         <listitem>
-          <para>Инструмент для редактирования блока среды окружения (environment block)</para>
+          <para>Инструмент для редактирования блока окружения (environment block)</para>
           <indexterm zone="ch-system-grub grub-editenv">
             <primary sortas="b-grub-editenv">grub-editenv</primary>
           </indexterm>
@@ -145,7 +164,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-file">
         <term><command>grub-file</command></term>
         <listitem>
-          <para>Проверяет, относится ли ФАЙЛ к указанному типу.</para>
+          <para>Проверяет, относится ли данный файл к указанному типу</para>
           <indexterm zone="ch-system-grub grub-file">
             <primary sortas="b-grub-file">grub-file</primary>
           </indexterm>
@@ -165,7 +184,8 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-glue-efi">
         <term><command>grub-glue-efi</command></term>
         <listitem>
-          <para>Объединяет 32-битный и 64-битный бинарники в универсальный в формате Apple</para>
+          <para>Объединяет 32-разрядные и 64-разрядные бинарные файлы в один файл (для 
+		  компьютеров Apple)</para>
           <indexterm zone="ch-system-grub grub-glue-efi">
             <primary sortas="b-grub-glue-efi">grub-glue-efi</primary>
           </indexterm>
@@ -175,7 +195,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-install">
         <term><command>grub-install</command></term>
         <listitem>
-          <para>Устанавливает GRUB на устройство</para>
+          <para>Устанавливает GRUB на ваш диск</para>
           <indexterm zone="ch-system-grub grub-install">
             <primary sortas="b-grub-install">grub-install</primary>
           </indexterm>
@@ -195,7 +215,9 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-macbless">
         <term><command>grub-macbless</command></term>
         <listitem>
-          <para>Загрузка в стиле Mac с HFS или HFS+</para>
+          <para>Это аналог bless в стиле Mac для файловых систем HFS или HFS+ (команда 
+		  <command>bless</command> характерна для компьютеров Apple; она делает устройство 
+		  загрузочным)</para>
           <indexterm zone="ch-system-grub grub-macbless">
             <primary sortas="b-grub-macbless">grub-macbless</primary>
           </indexterm>
@@ -216,7 +238,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-mkconfig">
         <term><command>grub-mkconfig</command></term>
         <listitem>
-          <para>Генерирует файл настройки grub</para>
+          <para>Генерирует файл <filename>grub.cfg</filename></para>
           <indexterm zone="ch-system-grub grub-mkconfig">
             <primary sortas="b-grub-mkconfig">grub-mkconfig</primary>
           </indexterm>
@@ -276,7 +298,8 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-mkrescue">
         <term><command>grub-mkrescue</command></term>
         <listitem>
-          <para>Создает загрузочный образ GRUB для USB-накопителя или CDROM/DVD</para>
+          <para>Создает загрузочный образ GRUB, подходящий для дискеты, CDROM/DVD или 
+		  USB-накопителя</para>
           <indexterm zone="ch-system-grub grub-mkrescue">
             <primary sortas="b-grub-mkrescue">grub-mkrescue</primary>
           </indexterm>
@@ -306,7 +329,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-probe">
         <term><command>grub-probe</command></term>
         <listitem>
-          <para>Собирает информацию об устройстве для заданного пути или устройства</para>
+          <para>Проверяет информацию об устройстве для заданного пути или устройства</para>
           <indexterm zone="ch-system-grub grub-probe">
             <primary sortas="b-grub-probe">grub-probe</primary>
           </indexterm>
@@ -326,7 +349,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-render-label">
         <term><command>grub-render-label</command></term>
         <listitem>
-          <para>Создает Apple .disk_label для Apple Macs</para>
+          <para>Отображает .disk_label для компьютеров Apple Mac</para>
           <indexterm zone="ch-system-grub grub-render-label">
             <primary sortas="b-grub-render-label">grub-render-label</primary>
           </indexterm>
@@ -336,7 +359,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-script-check">
         <term><command>grub-script-check</command></term>
         <listitem>
-          <para>Проверяет файл сценария настройки GRUB на синтаксические ошибки</para>
+          <para>Проверяет скрипт настройки GRUB на наличие синтаксических ошибок</para>
           <indexterm zone="ch-system-grub grub-script-check">
             <primary sortas="b-grub-script-check">grub-script-check</primary>
           </indexterm>
@@ -366,7 +389,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-syslinux2cfg">
         <term><command>grub-syslinux2cfg</command></term>
         <listitem>
-          <para>Преобразует конфигурационный файл syslinux в формат grub.cfg</para>
+          <para>Преобразует файл конфигурации syslinux в формат grub.cfg</para>
           <indexterm zone="ch-system-grub grub-syslinux2cfg">
             <primary sortas="b-grub-syslinux2cfg">grub-syslinux2cfg</primary>
           </indexterm>

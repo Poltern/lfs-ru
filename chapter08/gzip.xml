@@ -66,7 +66,7 @@
 
       <seglistitem>
         <seg>gunzip, gzexe, gzip, uncompress (жесткая ссылка на gunzip), zcat, zcmp,
-        zdiff, zegrep, zfgrep, zforce, zgrep, zless, zmore, и znew</seg>
+        zdiff, zegrep, zfgrep, zforce, zgrep, zless, zmore и znew</seg>
       </seglistitem>
     </segmentedlist>
 

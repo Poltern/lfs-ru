@@ -78,7 +78,7 @@ install -v -Dm644 doc/I18N-HOWTO /usr/share/doc/intltool-&intltool-version;/I18N
 
       <seglistitem>
         <seg>intltool-extract, intltool-merge, intltool-prepare,
-        intltool-update, и intltoolize</seg>
+        intltool-update и intltoolize</seg>
         <seg>/usr/share/doc/intltool-&intltool-version; и
         /usr/share/intltool</seg>
       </seglistitem>

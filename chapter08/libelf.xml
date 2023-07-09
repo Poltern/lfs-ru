@@ -42,7 +42,7 @@
     <title>Установка пакета Libelf</title>
 
       <para>Libelf является частью пакета elfutils-&elfutils-version;. Используйте
-	  elfutils-&elfutils-version;.tar.bz2 в качестве исходного архива</para>
+	  elfutils-&elfutils-version;.tar.bz2 в качестве исходного архива.</para>
 
     <para>Подготовьте Libelf к компиляции:</para>
 
@@ -58,7 +58,9 @@
 
 <screen><userinput remap="test">make check</userinput></screen>
 
-<!--    <para>One test, run-elfclassify.sh, is known to fail.</para>-->
+    <!-- https://sourceware.org/bugzilla/show_bug.cgi?id=30047 -->
+    <para>Известно, что тест с именем <filename>run-native-test.sh</filename> завершается 
+	ошибкой.</para>
 
     <para>Установите только Libelf:</para>
 

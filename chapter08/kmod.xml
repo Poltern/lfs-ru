@@ -79,11 +79,10 @@
 <screen><userinput remap="make">make</userinput></screen>
 
     <para>Набору тестов этого пакета необходимы необработанные заголовочные файлы ядра
-	(а не <quote>очищенные</quote>, установленных ранее), это выходит за рамки LFS,
-	поэтому тестирование будет пропущено.</para>
+	(а не <quote>очищенные</quote>, установленных ранее), это выходит за рамки LFS.</para>
 
     <para>Установите пакет и создайте символические ссылки для совместимости с
-	Module-Init-Tools (пакетом, который ранее обрабатывал модули ядра Linux).:</para>
+	Module-Init-Tools (пакетом, который ранее обрабатывал модули ядра Linux):</para>
 
 <screen><userinput remap="install">make install
 
@@ -104,7 +103,7 @@ ln -sfv kmod /usr/bin/lsmod</userinput></screen>
 
       <seglistitem>
         <seg>depmod (ссылка на kmod), insmod (ссылка на kmod), kmod,
-        lsmod (ссылка на kmod), modinfo (ссылка на kmod), modprobe (ссылка на kmod),
+        lsmod (ссылка на kmod), modinfo (ссылка на kmod), modprobe (ссылка на kmod)
         и rmmod (ссылка на kmod)</seg>
         <seg>libkmod.so</seg>
       </seglistitem>

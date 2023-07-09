@@ -127,7 +127,7 @@
 
       <seglistitem>
         <seg>dnsdomainname, ftp, ifconfig, hostname, ping, ping6,
-        talk, telnet, tftp, и traceroute</seg>
+        talk, telnet, tftp и traceroute</seg>
       </seglistitem>
     </segmentedlist>
 

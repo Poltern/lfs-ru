@@ -76,7 +76,7 @@
       <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
-        <seg>less, lessecho, и lesskey</seg>
+        <seg>less, lessecho и lesskey</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -100,7 +100,7 @@
         <term><command>lessecho</command></term>
         <listitem>
           <para>Требуется для расширения метасимволов, таких как <emphasis>*</emphasis>
-          и <emphasis>?</emphasis>, в именах файлов в системах Unix.</para>
+          и <emphasis>?</emphasis>, в именах файлов в системах Unix</para>
           <indexterm zone="ch-system-less lessecho">
             <primary sortas="b-lessecho">lessecho</primary>
           </indexterm>

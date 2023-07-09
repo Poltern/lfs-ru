@@ -41,12 +41,11 @@
     <title>Установка пакета IPRoute2</title>
 
     <para>Программа <command>arpd</command>, входящая в этот пакет, не будет собрана,
-	поскольку зависит от базы данных Berkeley DB, которая не установлена ​​в LFS. Однако
-	каталог для <command>arpd</command> и справочная страница все равно будут
-	установлены. Предотвратить это можно, выполнив приведенные ниже команды.
-	Если наличие <command>arpd</command> важно, инструкции по компиляции
-	Berkeley DB можно найти в книге BLFS по адресу <ulink url="&blfs-book;server/db.html"/>.
-    </para>
+	поскольку зависит от Berkeley DB, которая не установлена в LFS. Однако каталог и 
+	справочная страница для <command>arpd</command> все равно будут установлены. 
+	Предотвратить это можно, выполнив приведенные ниже команды. (Если вам нужна 
+	<command>arpd</command>, инструкции по компиляции Berkeley DB можно найти в книге 
+	BLFS по адресу <ulink url="&blfs-book;server/db.html"/>.)</para>
 
 <screen><userinput remap="pre">sed -i /ARPD/d Makefile
 rm -fv man/man8/arpd.8</userinput></screen>
@@ -76,7 +75,7 @@ rm -fv man/man8/arpd.8</userinput></screen>
 
 <screen><userinput remap="install">make SBINDIR=/usr/sbin install</userinput></screen>
 
-    <para>По желанию установите документацию:</para>
+    <para>По желанию, установите документацию:</para>
 
 <screen><userinput remap="install">mkdir -pv             /usr/share/doc/iproute2-&iproute2-version;
 cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></screen>
@@ -91,10 +90,10 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>bridge, ctstat (ссылка на lnstat), genl, ifcfg, ifstat, ip, lnstat,
-        nstat, routef, routel, rtacct, rtmon, rtpr, rtstat (ссылка на lnstat), ss,
+        <seg>bridge, ctstat (ссылка на lnstat), genl, ifstat, ip, lnstat,
+        nstat, routel, rtacct, rtmon, rtpr, rtstat (ссылка на lnstat), ss
         и tc</seg>
-        <seg>/etc/iproute2, /usr/lib/tc, и /usr/share/doc/iproute2-&iproute2-version;
+        <seg>/etc/iproute2, /usr/lib/tc и /usr/share/doc/iproute2-&iproute2-version;
         </seg>
       </seglistitem>
     </segmentedlist>
@@ -127,22 +126,9 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
       <varlistentry id="genl">
         <term><command>genl</command></term>
         <listitem>
-          <para>Общий интерфейс утилиты netlink</para>
+          <para>Универсальный интерфейс утилиты netlink</para>
           <indexterm zone="ch-system-iproute2 genl">
             <primary sortas="b-genl">genl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ifcfg">
-        <term><command>ifcfg</command></term>
-        <listitem>
-          <para>Скрипт-обертка для команды <command>ip</command> [Обратите внимание,
-		  что для этого требуются программы <command>arping</command> и
-          <command>rdisk</command> из пакета iputils, который можно найти по
-		  адресу <ulink url="http://www.skbuff.net/iputils/"/>.]</para>
-          <indexterm zone="ch-system-iproute2 ifcfg">
-            <primary sortas="b-ifcfg">ifcfg</primary>
           </indexterm>
         </listitem>
       </varlistentry>
@@ -161,7 +147,7 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
       <varlistentry id="ip">
         <term><command>ip</command></term>
         <listitem>
-          <para>Основной исполняемый файл. Он имеет несколько различных функций:</para>
+          <para>Основной исполняемый файл. Он имеет несколько различных функций, в том числе эти:</para>
 
           <para><command>ip link <replaceable>&lt;device&gt;</replaceable></command>
           позволяет пользователям просматривать состояние устройств и вносить изменения</para>
@@ -209,20 +195,9 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
       <varlistentry id="nstat">
         <term><command>nstat</command></term>
         <listitem>
-          <para>Показывает статистику сети</para>
+          <para>Отображает сетевую статистику</para>
           <indexterm zone="ch-system-iproute2 nstat">
             <primary sortas="b-nstat">nstat</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="routef">
-        <term><command>routef</command></term>
-        <listitem>
-          <para>Компонент <command>ip route</command>. Служит для очистки
-		  таблиц маршрутизации</para>
-          <indexterm zone="ch-system-iproute2 routef">
-            <primary sortas="b-routef">routef</primary>
           </indexterm>
         </listitem>
       </varlistentry>
@@ -230,8 +205,7 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
       <varlistentry id="routel">
         <term><command>routel</command></term>
         <listitem>
-          <para>Компонент <command>ip route</command>. Служит для просмотра
-		  таблиц маршрутизации</para>
+          <para>Компонент <command>ip route</command> для просмотра таблиц маршрутизации</para>
           <indexterm zone="ch-system-iproute2 routel">
             <primary sortas="b-routel">routel</primary>
           </indexterm>
@@ -292,21 +266,21 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
       <varlistentry id="tc">
         <term><command>tc</command></term>
         <listitem>
-          <para>Исполняемый модуль управления трафиком; реализация сервисов Quality Of Service
-          (QOS) и Class Of Service (COS)</para>
+          <para>Управление трафиком для реализаций качества обслуживания (QoS) и класса 
+		  обслуживания (CoS)</para>
 
-          <para><command>tc qdisc</command> позволяет пользователям настраивать
+          <para><command>tc qdisc</command> позволяет пользователям настроить
 		  дисциплину обработки очередей</para>
 
           <para><command>tc class</command> позволяет пользователям настраивать
-		  классы, на которых основывается планирование дисциплины обработки очередей</para>
-
-          <para><command>tc estimator</command> позволяет пользователям оценить сетевой поток</para>
+		  классы, на основе планирования дисциплины обработки очередей</para>
 
           <para><command>tc filter</command> позволяет пользователям настроить
 		  фильтрацию пакетов QOS/COS</para>
 
-          <para><command>tc policy</command>  позволяет пользователям настраивать политики QOS/COS</para>
+          <para><command>tc monitor</command> может использоваться для просмотра 
+		  изменений, внесенных в управление трафиком в ядре</para>
+          
           <indexterm zone="ch-system-iproute2 ss">
             <primary sortas="b-tc">tc</primary>
           </indexterm>

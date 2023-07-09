@@ -24,8 +24,8 @@
     <title/>
 
     <para>Пакет Libcap реализует интерфейсы пользовательского пространства для
-	возможностей POSIX 1003.1e, доступных в ядрах Linux. Эти возможности представляют
-	собой разделение привилегий root на набор отдельных привилегий.</para>
+	возможностей POSIX 1003.1e, доступных в ядрах Linux. Эти возможности разделяют 
+	полномочия суперпользователя root на набор отдельных привилегий.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -81,7 +81,7 @@
       <segtitle>Установленные библиотеки</segtitle>
 
       <seglistitem>
-        <seg>capsh, getcap, getpcaps, и setcap</seg>
+        <seg>capsh, getcap, getpcaps и setcap</seg>
         <seg>libcap.so и libpsx.so</seg>
       </seglistitem>
     </segmentedlist>
@@ -114,7 +114,7 @@
       <varlistentry id="getpcaps">
         <term><command>getpcaps</command></term>
         <listitem>
-          <para>Отображает возможности запрошенного процесса (процессов)</para>
+          <para>Отображает возможности запрашиваемого процесса (процессов)</para>
           <indexterm zone="ch-system-libcap getpcaps">
             <primary sortas="b-getpcaps">getpcaps</primary>
           </indexterm>
