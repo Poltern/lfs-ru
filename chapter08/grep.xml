@@ -40,6 +40,13 @@
   <sect2 role="installation">
     <title>Установка пакета Grep</title>
 
+    <para>
+       Во-первых, удалите предупреждение об использовании egrep и fgrep, которое 
+	   приводит к сбою тестов некоторых пакетов:
+    </para>
+
+<screen><userinput remap="pre">sed -i "s/echo/#echo/" src/egrep.sh</userinput></screen>
+
     <para>Подготовьте Grep к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>

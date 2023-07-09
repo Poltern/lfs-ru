@@ -42,18 +42,22 @@
   <sect2 role="installation">
     <title>Установка пакета Glibc</title>
 
-<!-- applied in 2.35 (commit b805aebd42364fe696e417808a700fdb9800c9e8)
-    <para>First, fix a security problem identified upstream:</para>
-
-    <screen><userinput remap="pre">sed -e '/NOTIFY_REMOVED)/s/)/ \&amp;\&amp; data.attr != NULL)/' \
-    -i sysdeps/unix/sysv/linux/mq_notify.c</userinput></screen>
--->
     <para>Некоторые программы Glibc используют не совместимый с FHS каталог
 	<filename class="directory">/var/db</filename> для хранения своих данных во
 	время выполнения. Примените следующий патч, чтобы эти программы хранили свои
 	данные в каталогах, совместимых с FHS:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
+
+    <!-- https://sourceware.org/bugzilla/show_bug.cgi?id=30068
+         Upstream fix also added a test case and renamed "prec" to
+         "prec_inc".  We'll test this with MPFR test suite so we don't
+         need the test here, and the renaming does not affect program
+         behavior.  -->
+    <para>Исправьте проблему безопасности, обнаруженную разработчиками:</para>
+
+<screen><userinput remap="pre">sed '/width -=/s/workend - string/number_length/' \
+    -i stdio-common/vfprintf-process-arg.c</userinput></screen>
 
     <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
 
@@ -88,7 +92,7 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>--enable-kernel=&min-kernel;</parameter></term>
         <listitem>
-          <para>Этот параметр сообщает системе сборки, что этот glibc может использоваться
+          <para>Этот параметр сообщает системе сборки, что Glibc может использоваться
 		  с ядрами старше &min-kernel;. Это значение используется для создание обходных
 		  путей на случай, если системный вызов, представленный в более поздней версии,
 		  нельзя будет использовать.</para>
@@ -145,7 +149,7 @@ esac</userinput></screen>
 <screen><userinput remap="test">make check</userinput></screen>
 
     <para>Вы можете увидеть, что ряд тестов завершились неудачей. Набор тестов Glibc в
-	некоторой степени зависит от хост-системы. Несколько ошибок из более чем 4200 тестов
+	некоторой степени зависит от хост-системы. Несколько ошибок из более чем 5000 тестов
 	можно игнорировать. Список наиболее распространенных проблем последних версий LFS:</para>
 
     <itemizedlist>
@@ -156,11 +160,7 @@ esac</userinput></screen>
 
       <listitem>
         <para>Известно, что <emphasis>misc/tst-ttyname</emphasis> не работает в среде chroot LFS.</para>
-      </listitem>
 
-      <listitem>
-        <para>Известно, что тест <emphasis>nss/tst-nss-files-hosts-long</emphasis> не
-		проходит, если в системе нет IP-адресов без замыкания на себя.</para> <!-- PR 24816 -->
       </listitem>
 
       <!-- https://sourceware.org/pipermail/libc-alpha/2022-August/141567.html -->
@@ -223,9 +223,9 @@ mkdir -pv /var/cache/nscd</userinput></screen>
     <screen revision="systemd"><userinput remap="install">install -v -Dm644 ../nscd/nscd.tmpfiles /usr/lib/tmpfiles.d/nscd.conf
 install -v -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service</userinput></screen>
 
-    <para>Далее установите локали, которые дадут возможность системе отвечать на разных
-    языках. Ни одна из локалей не требуется системе, но если некоторые из них отсутствуют, то 
-    при тестировании последующих пакетов будут пропущены важные проверки.</para>
+    <para>Затем установите локали, которые дадут возможность системе отвечать на разных
+    языках. Ни одна из локалей не требуется системе, но если некоторые из них отсутствуют, 
+	то наборы тестов ряда пакетов будут пропускать важные тестовые сценарии.</para>
 
     <para>Отдельные локали можно установить с помощью программы
     <command>localedef</command>. Например, вторая команда
@@ -343,7 +343,7 @@ EOF</userinput></screen>
     </sect3>
 
     <sect3>
-    <title>Добавление часового пояса</title>
+    <title>Добавление данных о часовом поясе</title>
 
     <para>Установите и настройте часовой пояс следующим образом:</para>
 <screen><userinput>tar -xf ../../tzdata&tzdata-version;.tar.gz
@@ -377,7 +377,7 @@ unset ZONEINFO</userinput></screen>
           диском, где часовые пояса никогда не будут обновляться, можно сэкономить примерно
           1.9 MB не используя каталог
           <filename class="directory">posix</filename>, однако некоторые приложения или
-		  наборы тестов могут вызывать некоторые сбои.</para>
+		  наборы тестов могут вызывать сбои.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -474,7 +474,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
         ld.so (symlink to ld-linux-x86-64.so.2 or ld-linux.so.2),
         locale, localedef, makedb, mtrace, nscd,
         pcprofiledump, pldd, sln, sotruss, sprof, tzselect, xtrace,
-        zdump, и zic</seg>
+        zdump и zic</seg>
         <seg>ld-linux-x86-64.so.2, ld-linux.so.2,
         libBrokenLocale.{a,so}, libanl.{a,so},
         libc.{a,so}, libc_nonshared.a, libc_malloc_debug.so,
@@ -483,7 +483,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
         libnss_compat.so, libnss_dns.so, libnss_files.so, libnss_hesiod.so,
         libpcprofile.so, libpthread.{a,so.0},
         libresolv.{a,so}, librt.{a,so.1},
-        libthread_db.so, и libutil.{a,so.1}</seg>
+        libthread_db.so и libutil.{a,so.1}</seg>
         <seg>/usr/include/arpa, /usr/include/bits, /usr/include/gnu,
         /usr/include/net, /usr/include/netash, /usr/include/netatalk,
         /usr/include/netax25, /usr/include/neteconet, /usr/include/netinet,
@@ -492,7 +492,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
         /usr/include/protocols, /usr/include/rpc,
         /usr/include/sys, /usr/lib/audit, /usr/lib/gconv, /usr/lib/locale,
         /usr/libexec/getconf, /usr/share/i18n, /usr/share/zoneinfo,
-        /var/cache/nscd, и /var/lib/nss_db</seg>
+        /var/cache/nscd и /var/lib/nss_db</seg>
       </seglistitem>
     </segmentedlist>
 

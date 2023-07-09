@@ -23,7 +23,7 @@
   <sect2 role="package">
     <title/>
 
-    <para>Пакет Groff содержит программы для обработки и форматирования текста.</para>
+    <para>Пакет Groff содержит программы для обработки и форматирования текста и изображений.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -51,9 +51,9 @@
 
 <screen><userinput remap="configure">PAGE=<replaceable>&lt;paper_size&gt;</replaceable> ./configure --prefix=/usr</userinput></screen>
 
-    <para>Этот пакет не поддерживает параллельную сборку. Скомпилируйте пакет:</para>
+    <para>Соберите пакет:</para>
 
-<screen><userinput remap="make">make -j1</userinput></screen>
+<screen><userinput remap="make">make</userinput></screen>
 
     <para>С этим пакетом не поставляется набор тестов.</para>
 
@@ -165,7 +165,7 @@
       <varlistentry id="gperl">
         <term><command>gperl</command></term>
         <listitem>
-          <para>Препроцессор groff позволяющий добавлять код perl
+          <para>Препроцессор для groff, позволяющий вставлять код perl
           в файлы groff</para>
           <indexterm zone="ch-system-groff gperl">
             <primary sortas="b-gperl">gperl</primary>
@@ -176,8 +176,8 @@
       <varlistentry id="gpinyin">
         <term><command>gpinyin</command></term>
         <listitem>
-          <para>Препроцессор groff позволяющий добавлять китайский, похожий на европейский
-          язык Pinyin в файлы groff.</para>
+          <para>Препроцессор groff, позволяющий вставлять Pinyin (запись звуков китайского 
+		  языка с помощью латинского алфавита) в файлы groff.</para>
           <indexterm zone="ch-system-groff gpinyin">
             <primary sortas="b-gpinyin">gpinyin</primary>
           </indexterm>
@@ -187,7 +187,8 @@
       <varlistentry id="grap2graph">
         <term><command>grap2graph</command></term>
         <listitem>
-          <para>Преобразует диаграммы grap во фрагмент растрового изображения</para>
+          <para>Преобразует диаграммы grap во фрагмент растрового изображения (grap - это 
+		  старый язык программирования Unix для создания диаграмм)</para>
           <indexterm zone="ch-system-groff grap2graph">
             <primary sortas="b-grap2graph">grap2graph</primary>
           </indexterm>
@@ -207,7 +208,7 @@
       <varlistentry id="grodvi">
         <term><command>grodvi</command></term>
         <listitem>
-          <para>Драйвер для <command>groff</command>, который позволяет использовать формат TeX dvi</para>
+          <para>Драйвер для <command>groff</command>, создающий выходные файлы в формате TeX dvi</para>
           <indexterm zone="ch-system-groff grodvi">
             <primary sortas="b-grodvi">grodvi</primary>
           </indexterm>
@@ -217,7 +218,7 @@
       <varlistentry id="groff">
         <term><command>groff</command></term>
         <listitem>
-          <para>Интерфейс к системе форматирования документов groff; обычно он
+          <para>Внешний интерфейс к системе форматирования документов groff; обычно он
 		  запускает программу <command>troff</command> и постпроцессор, соответствующий
 		  выбранному устройству</para>
           <indexterm zone="ch-system-groff groff">
