@@ -26,6 +26,11 @@
     <para>Библиотека Libffi предоставляет переносимый высокоуровневый программный
 	интерфейс для различных соглашений о вызовах. Это позволяет программисту вызывать
 	любую функцию, указанную в описании интерфейса вызова во время выполнения.</para>
+  
+    <para>FFI расшифровывается как интерфейс внешних функций. FFI позволяет программе, 
+	написанной на одном языке, вызывать программу, написанную на другом языке. В 
+	частности, Libffi может обеспечить связь между интерпретатором, таким как Perl или 
+	Python, и подпрограммами общей библиотеки, написанными на C или C++.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -43,19 +48,19 @@
     <title>Установка пакета Libffi</title>
 
     <note>
-      <para>Подобно GMP, libffi собирается с оптимизацией, специфичной для используемого
+      <para>Как и GMP, Libffi собирается с учетом оптимизаций, специфичных для используемого
 	  процессора. При сборке для другой системы измените значение параметра
 	  <parameter>--with-gcc-arch=</parameter> в следующей команде на имя архитектуры,
 	  полностью реализованной процессором в этой системе. Если этого не сделать,
-	  все приложения, ссылающиеся на libffi, будут выдавать ошибку <quote>Illegal Operation Errors</quote>.</para>
+	  все приложения, ссылающиеся на <filename class='libraryfile'>libffi</filename>, 
+	  будут вызывать ошибку <quote>Illegal Operation - недопустимая операция</quote>.</para>
     </note>
 
-    <para>Подготовьте libffi к компиляции:</para>
+    <para>Подготовьте Libffi к компиляции:</para>
 
     <screen><userinput remap="configure">./configure --prefix=/usr          \
             --disable-static       \
-            --with-gcc-arch=native \
-            --disable-exec-static-tramp</userinput></screen>
+            --with-gcc-arch=native</userinput></screen>
 
     <variablelist>
       <title>Значение параметров configure:</title>
@@ -63,26 +68,15 @@
       <varlistentry>
         <term><parameter>--with-gcc-arch=native</parameter></term>
         <listitem>
-          <para>Убедитесь, что GCC оптимизируется для текущей системы. Если значение
-		  не указано, то архитектура системы угадывается, и созданный код может
-		  быть неправильным для некоторых систем. Если созданный код будет скопирован
-		  из родной системы в менее мощную, используйте менее мощную систему в качестве
-		  параметра. Дополнительные сведения об альтернативных типах систем см. в <ulink
-          url='https://gcc.gnu.org/onlinedocs/gcc-&gcc-version;/gcc/x86-Options.html'>
+          <para>Убедитесь, что GCC оптимизируется для текущей системы. Если значение 
+		  не указано, то архитектура системы угадывается и сгенерированный код может 
+		  быть неправильным. Если сгенерированный код будет скопирован из родной 
+		  системы в менее мощную, используйте архитектуру менее мощной системы в качестве 
+		  параметра. Дополнительные сведения об альтернативных типах систем смотрите в 
+		  <ulink url='https://gcc.gnu.org/onlinedocs/gcc-&gcc-version;/gcc/x86-Options.html'> 
           описании параметров x86 в руководстве GCC</ulink>.</para>
         </listitem>
       </varlistentry>
-
-      <varlistentry>
-        <!-- To editors: try to remove it once GJS fixed (at GNOME 43) -->
-        <term><parameter>--disable-exec-static-tramp</parameter></term>
-        <listitem>
-          <para>Отключить поддержку предотвращения наращивания стека. Это новая функция
-		  безопасности в libffi, но некоторые пакеты BLFS (в частности,
-		  <application>GJS</application>) не были адаптированы для работы с ней</para>
-        </listitem>
-      </varlistentry>
-
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>
@@ -118,7 +112,7 @@
       <varlistentry id="libffi">
         <term><filename class="libraryfile">libffi</filename></term>
         <listitem>
-          <para>содержит внешний интерфейс для API-функций</para>
+          <para>Содержит внешний интерфейс для API-функций</para>
           <indexterm zone="ch-system-libffi">
             <primary sortas="c-libffi">libffi</primary>
           </indexterm>

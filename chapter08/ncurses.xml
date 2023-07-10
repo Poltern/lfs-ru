@@ -129,9 +129,7 @@
 	<filename class="libraryfile">libncursesw.so.&ncurses-version;</filename>. Это
 	может привести к сбою процесса оболочки, который использует код и данные из
 	файла библиотеки. Установите пакет с помощью <literal>DESTDIR</literal> и правильно
-	замените файл библиотеки с помощью команды <command>install</command>. Ненужный
-	статический архив, который не обрабатывается <command>configure</command>, также
-	удаляется:</para>
+	замените файл библиотеки с помощью команды <command>install</command>.</para>
 
 <screen><userinput remap="install">make DESTDIR=$PWD/dest install
 install -vm755 dest/usr/lib/libncursesw.so.&ncurses-version; /usr/lib
@@ -211,6 +209,7 @@ cp -av lib/lib*.so.5* /usr/lib</userinput></screen>
            libformw.so,
            libmenuw.so,
            libncursesw.so,
+           libncurses++w.so,
            libpanelw.so, и их аналоги без "w" в именах библиотек.</seg>
         <seg>
            /usr/share/tabset,
@@ -359,6 +358,16 @@ cp -av lib/lib*.so.5* /usr/lib</userinput></screen>
 		  отображаемое командой <command>make menuconfig</command> при настройке ядра </para>
           <indexterm zone="ch-system-ncurses libncursesw">
             <primary sortas="c-libncursesw">libncursesw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libncurses__w">
+        <term><filename class="libraryfile">libncurses++w</filename></term>
+        <listitem>
+          <para>Содержит функции связывания C++ с другими библиотеками в пакете</para>
+          <indexterm zone="ch-system-ncurses libncurses__w">
+            <primary sortas="c-libncurses++w">libncurses++w</primary>
           </indexterm>
         </listitem>
       </varlistentry>

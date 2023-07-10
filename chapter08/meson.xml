@@ -23,8 +23,8 @@
   <sect2 role="package">
     <title/>
 
-    <para>Meson — это система сборки с открытым исходным кодом, призванная быть
-	чрезвычайно быстрой и максимально удобной для пользователя.</para>
+    <para>Meson — это система сборки с открытым исходным кодом, разработанная таким 
+	образом, чтобы быть очень быстрой и максимально удобной для пользователя.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -36,10 +36,10 @@
     </segmentedlist>
 
     <tip revision="sysv">
-      <para>Этот раздел не является строго обязательным, если LFS не использует
-	  systemd. С другой стороны, meson/ninja - это мощная система сборки,
-	  которая, скорее всего, будет использоваться все чаще и чаще. Meson необходим для
-	  нескольких пакетов в <ulink url="&blfs-book;">книге BLFS</ulink>.</para>
+      <para>Этот раздел не обязателен, если LFS не использует systemd. С другой стороны, 
+	  Meson вместе с Ninja составляет мощную комбинацию систем сборки, которая, вероятно, 
+	  будет использоваться все чаще и чаще. Meson необходим для нескольких пакетов 
+	  в <ulink url="&blfs-book;">книге BLFS</ulink>.</para>
     </tip>
 
   </sect2>
@@ -69,7 +69,7 @@ install -vDm644 data/shell-completions/zsh/_meson /usr/share/zsh/site-functions/
       <varlistentry>
         <term><parameter>-w dist</parameter></term>
         <listitem>
-           <para> Поместить собранный wheels в каталог
+           <para>Помещает собранный wheels в каталог
            <filename class='directory'>dist</filename>.</para>
         </listitem>
       </varlistentry>
@@ -77,7 +77,7 @@ install -vDm644 data/shell-completions/zsh/_meson /usr/share/zsh/site-functions/
       <varlistentry>
         <term><parameter>--find-links dist</parameter></term>
         <listitem>
-           <para>Установить wheels из каталога
+           <para>Устанавливает wheels из каталога
            <filename class='directory'>dist</filename>.</para>
         </listitem>
       </varlistentry>

@@ -81,7 +81,7 @@ echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h</userinput></screen>
 
       <varlistentry id="m4">
          <!-- Don't remove the extra space, it prevet a FOP warning. -->
-        <term><command>m4 </command></term>
+        <term><command>m4</command></term>
         <listitem>
           <para>Копирует указанные файлы, одновременно расширяя содержащиеся в них
 		  макросы. Эти макросы являются либо встроенными, либо определяемыми
@@ -89,7 +89,7 @@ echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h</userinput></screen>
 		  выполнения макросов, <command>m4</command> имеет встроенные функции для
 		  включения указанных файлов, выполнения команд Unix, выполнения целочисленной
 		  арифметики, манипулирования текстом, рекурсии и т.д. Программа <command>m4</command>
-		  может использоваться либо как интерфейс компилятора, либо как самостоятельный
+		  может использоваться либо как интерфейс к компилятору, либо как самостоятельный
 		  макропроцессор</para>
           <indexterm zone="ch-system-m4 m4">
             <primary sortas="b-m4">m4</primary>

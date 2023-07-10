@@ -77,7 +77,7 @@
       <varlistentry>
         <term><parameter>--enable-cache-owner=bin</parameter></term>
         <listitem>
-          <para>Устаналивает владельцем файлов общесистемного кеша пользователя
+          <para>Изменяет владельца файлов общесистемного кеша на пользователя
           <systemitem class="username">bin</systemitem>.</para>
         </listitem>
       </varlistentry>

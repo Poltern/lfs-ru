@@ -43,7 +43,7 @@
 
 <screen><userinput remap="make">pip3 wheel -w dist --no-build-isolation --no-deps $PWD</userinput></screen>
 
-    <para>С этим пакетом не поставляется набор тестов.</para>
+    <para>С этим пакетом не поставляется тестов.</para>
 
     <para>Установите пакет:</para>
 
