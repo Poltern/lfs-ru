@@ -56,8 +56,8 @@ export BUILD_BZIP2=0</userinput></screen>
 
     <para>Чтобы иметь полный контроль над настройкой Perl, вы можете удалить
 	параметры <quote>-des</quote> из следующей команды и вручную выбрать способ
-	сборки этого пакета. В качестве альтернативы, используйте команду точно так
-	же, как показано ниже, чтобы использовать значения по умолчанию, которые Perl
+	сборки этого пакета. В качестве альтернативы, используйте команду точно так, 
+	как указано ниже, чтобы использовать значения по умолчанию, которые Perl
 	определяет автоматически:</para>
 
  <screen><userinput remap="configure">sh Configure -des                                         \
@@ -82,7 +82,7 @@ export BUILD_BZIP2=0</userinput></screen>
         <term><parameter>-Dvendorprefix=/usr</parameter></term>
         <listitem>
           <para>Параметр гарантирует, что <command>perl</command> знает, как указать
-		  пакетам, где они должны устанавливать свои модули perl.</para>
+		  пакетам, где они должны устанавливать свои модули Perl.</para>
         </listitem>
       </varlistentry>
 
@@ -98,34 +98,33 @@ export BUILD_BZIP2=0</userinput></screen>
         <term><parameter>-Dman1dir=/usr/share/man/man1
         -Dman3dir=/usr/share/man/man3</parameter></term>
         <listitem>
-          <para>Так как Groff еще не установлен, <command>Configure</command>
-          считает, что страницы руководств Perl тоже не нужны. Параметр переопределяет такое
-          поведение.</para>
+          <para>Так как Groff еще не установлен, <command>Configure</command> не 
+		  будет создавать man-страницы для Perl. Эти параметры переопределяют это поведение.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>-Duseshrplib</parameter></term>
         <listitem>
-          <para>Собрать разделяемую библитеку libperl, необходимую некоторым модулям perl.</para>
+          <para>Собрать общую библитеку libperl, необходимую некоторым модулям Perl.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>-Dusethreads</parameter></term>
         <listitem>
-          <para>Собрать perl с поддержкой потоков.</para>
+          <para>Собрать Perl с поддержкой потоков.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>-Dprivlib,-Darchlib,-Dsitelib,...</parameter></term>
         <listitem>
-          <para>Указывают Perl пути для поиска установленных модулей.
-          Редакторы LFS решили поместить их в структуру каталогов, основанную на версии
-          Perl Major.Minor (&perl-version-min;), что позволяет обновлять Perl до более
-		  новых версий (&perl-version;) без необходимости
-          переустанавливать все модули.</para>
+          <para>Эти настройки определяют, где Perl ищет установленные модули.
+          Редакторы LFS решили поместить их в структуру каталогов, основанную на 
+		  MAJOR.MINOR версии Perl (&perl-version-min;), что позволяет обновлять Perl 
+		  до более новых версий (&perl-version;) без необходимости переустанавливать 
+		  все модули.</para>
         </listitem>
       </varlistentry>
 
@@ -160,7 +159,7 @@ unset BUILD_ZLIB BUILD_BZIP2</userinput></screen>
         perlbug, perldoc, perlivp, perlthanks (жесткая ссылка на perlbug), piconv,
         pl2pm, pod2html, pod2man, pod2text, pod2usage, podchecker, podselect,
         prove, ptar, ptardiff, ptargrep, shasum,
-        splain, xsubpp, и zipdetails</seg>
+        splain, xsubpp и zipdetails</seg>
         <seg>Список слишком большой для перечисления</seg>
         <seg>/usr/lib/perl5</seg>
       </seglistitem>
@@ -249,8 +248,8 @@ unset BUILD_ZLIB BUILD_BZIP2</userinput></screen>
       <varlistentry id="instmodsh">
         <term><command>instmodsh</command></term>
         <listitem>
-          <para>Сценарий оболочки для проверки установленных модулей Perl и
-		  создания архива из установленного модуля.</para>
+          <para>Сценарий оболочки для проверки установленных модулей Perl; он может 
+		  создать архив из установленного модуля.</para>
           <indexterm zone="ch-system-perl instmodsh">
             <primary sortas="b-instmodsh">instmodsh</primary>
           </indexterm>
@@ -282,8 +281,7 @@ unset BUILD_ZLIB BUILD_BZIP2</userinput></screen>
         <term><command>perl</command></term>
         <listitem>
           <para>Объединяет лучшие возможности C, <command>sed</command>,
-          <command>awk</command> и <command>sh</command> в одном языке,
-		  полезном, как швейцарский армейский нож</para>
+          <command>awk</command> и <command>sh</command> в одном языке</para>
           <indexterm zone="ch-system-perl perl">
             <primary sortas="b-perl">perl</primary>
           </indexterm>
@@ -315,7 +313,7 @@ unset BUILD_ZLIB BUILD_BZIP2</userinput></screen>
         <term><command>perldoc</command></term>
         <listitem>
           <para>Отображает часть документации в формате pod, которая встроена в
-		  дерево установки Perl или в сценарий Perl.</para>
+		  дерево установки Perl или в сценарий Perl</para>
           <indexterm zone="ch-system-perl perldoc">
             <primary sortas="b-perldoc">perldoc</primary>
           </indexterm>

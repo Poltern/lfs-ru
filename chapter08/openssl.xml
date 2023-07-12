@@ -83,14 +83,14 @@ make MANSUFFIX=ssl install</userinput></screen>
 
     <note>
       <para>
-        Вы должны обновить OpenSSL, когда будет объявлена новая версия, исправляющая
+        Вы должны обновить OpenSSL, когда будет выпущена новая версия, исправляющая
 		уязвимости. Начиная с OpenSSL 3.0.0, схема управления версиями OpenSSL следует
 		формату MAJOR.MINOR.PATCH. Совместимость API/ABI гарантируется для одной и той
-		же MAJOR версии. Поскольку LFS устанавливает только общие библиотеки, нет
-		необходимости перекомпилировать пакеты, которые ссылаются на 
+		же ОСНОВНОЙ (MAJOR) версии. Поскольку LFS устанавливает только общие библиотеки, 
+		нет необходимости перекомпилировать пакеты, которые ссылаются на 
 		<filename class="libraryfile">libcrypto.so</filename> или
-        <filename class="libraryfile">libssl.so</filename>, <emphasis>когда MAJOR
-		версии не изменяется</emphasis>.
+        <filename class="libraryfile">libssl.so</filename>, <emphasis>при обновлении 
+		до версии с тем же ОСНОВНЫМ номером версии</emphasis>.
       </para>
 
       <para>
@@ -184,7 +184,7 @@ make MANSUFFIX=ssl install</userinput></screen>
           <para>
             реализует протокол безопасности транспортного уровня (TLS v1). Он
 			предоставляет богатый API, документацию по которому можно найти,
-			выполнив команду: <command>man 3 ssl</command>
+			выполнив команду: <command>man 7 ssl</command>
           </para>
           <indexterm zone="ch-system-openssl libssl">
             <primary sortas="c-libssl">libssl.so</primary>

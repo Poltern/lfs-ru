@@ -80,8 +80,8 @@
         <term><command>patch</command></term>
         <listitem>
           <para>Изменяет файлы в соответствии с файлом исправления (патч обычно
-		  представляет собой список различий, созданный с помощью программы
-		  <command>diff</command>. Применяя эти различия к исходным файлам,
+		  представляет собой список отличий, создаваемый с помощью программы
+		  <command>diff</command>. Применяя их к исходным файлам,
 		  <command>patch</command> создает исправленные версии.)</para>
           <indexterm zone="ch-system-patch patch">
             <primary sortas="b-patch">patch</primary>
