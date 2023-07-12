@@ -24,7 +24,7 @@
     <title/>
 
     <para>Пакет Readline представляет собой набор библиотек, предлагающих возможности
-	редактирования и просмотра истории команд.</para>
+	редактирования прямо в командной строке и просмотра истории команд.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -44,10 +44,14 @@
     <para>Переустановка пакета Readline приводит к перемещению старых библиотек
     в &lt;libraryname&gt;.old. Обычно это не вызывает проблем, но в некоторых случаях могут
     возникать ошибки линковки с <command>ldconfig</command>.
-    Этого можно иизбежать, выполнив следующие две команды sed::</para>
+    Этого можно избежать, выполнив следующие две команды sed:</para>
 
 <screen><userinput remap="pre">sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
+
+    <para>Теперь устраните проблему, выявленную разработчиками:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&readline-fixes-patch;</userinput></screen>
 
     <para>Подготовьте Readline к компиляции:</para>
 
@@ -57,13 +61,13 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
             --docdir=/usr/share/doc/readline-&readline-version;</userinput></screen>
 
      <variablelist>
-      <title>Значение параметра configure:</title>
+      <title>Значение нового параметра configure:</title>
 
       <varlistentry>
         <term><parameter>--with-curses</parameter></term>
         <listitem>
-          <para>Этот параметр сообщает Readline, что он может использовать функции
-		  библиотеки termcap из библиотеки curses, а не устанавливать для этого
+          <para>Этот параметр сообщает Readline, что он может найти функции
+		  библиотеки termcap в библиотеке curses, а не в отдельной библиотеке 
 		  termcap. Это позволит сгенерировать корректный файл
 	       <filename>readline.pc</filename>.</para>
         </listitem>

@@ -64,7 +64,7 @@
       <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
-        <seg>fuser, killall, peekfd, prtstat, pslog, pstree, и pstree.x11 (ссылка на pstree)</seg>
+        <seg>fuser, killall, peekfd, prtstat, pslog, pstree и pstree.x11 (ссылка на pstree)</seg>
       </seglistitem>
     </segmentedlist>
 

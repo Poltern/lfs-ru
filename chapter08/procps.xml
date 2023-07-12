@@ -40,17 +40,17 @@
   <sect2 role="installation">
     <title>Установка пакета Procps-ng</title>
 
-    <para>Подготовьте procps-ng для компиляции:</para>
+    <para>Подготовьте Procps-ng к компиляции:</para>
 
-<screen revision="sysv"><userinput remap="configure">./configure --prefix=/usr                            \
+<screen revision="sysv"><userinput remap="configure">./configure --prefix=/usr                           \
             --docdir=/usr/share/doc/procps-ng-&procps-ng-version; \
-            --disable-static                         \
+            --disable-static                        \
             --disable-kill</userinput></screen>
 
-<screen revision="systemd"><userinput remap="configure">./configure --prefix=/usr                            \
+<screen revision="systemd"><userinput remap="configure">./configure --prefix=/usr                           \
             --docdir=/usr/share/doc/procps-ng-&procps-ng-version; \
-            --disable-static                         \
-            --disable-kill                           \
+            --disable-static                        \
+            --disable-kill                          \
             --with-systemd</userinput></screen>
 
     <variablelist>
@@ -59,8 +59,8 @@
       <varlistentry>
         <term><parameter>--disable-kill</parameter></term>
         <listitem>
-          <para>Этот параметр отключает сборку команды <command>kill</command>,
-		  которая будет установлена ​​пакетом Util-linux.</para>
+          <para>Этот параметр отключает сборку команды <command>kill</command>;
+		  она будет установлена из ​​пакета Util-linux.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -109,7 +109,7 @@ make check</userinput></screen>
 
       <seglistitem>
         <seg>free, pgrep, pidof, pkill, pmap, ps, pwdx, slabtop,
-        sysctl, tload, top, uptime, vmstat, w, и watch</seg>
+        sysctl, tload, top, uptime, vmstat, w и watch</seg>
         <seg>libproc-2.so</seg>
         <seg>/usr/include/procps и /usr/share/doc/procps-ng-&procps-ng-version;</seg>
       </seglistitem>
@@ -181,7 +181,7 @@ make check</userinput></screen>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="pwait">
+      <!-- <varlistentry id="pwait">
         <term><command>pwait</command></term>
         <listitem>
           <para>ожидает завершения каждого из заданных процессов.</para>
@@ -189,7 +189,8 @@ make check</userinput></screen>
             <primary sortas="b-pwait">pwait</primary>
           </indexterm>
         </listitem>
-      </varlistentry>
+      </varlistentry> This program no longer exists; 
+      it's already been removed from the Installed programs list. -->
 
       <varlistentry id="pwdx">
         <term><command>pwdx</command></term>
