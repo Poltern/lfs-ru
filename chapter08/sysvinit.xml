@@ -115,7 +115,7 @@
       <varlistentry id="fstab-decode">
         <term><command>fstab-decode</command></term>
         <listitem>
-          <para>Запускает команды с аргументами, заданными в fstab</para>
+          <para>Запускает команду с аргументами, заданными в fstab</para>
           <indexterm zone="ch-system-sysvinit fstab-decode">
             <primary sortas="b-fstab-decode">fstab-decode</primary>
           </indexterm>
@@ -126,9 +126,10 @@
         <term><command>halt</command></term>
         <listitem>
           <para>Обычно вызывает команду <command>shutdown</command> с параметром
-		  <parameter>-h</parameter>, за исключением случаев, когда система уже
-		  находится на уровне запуска 0, затем сообщает ядру остановить систему;
-		  в файле <filename>/var/log/wtmp</filename> отмечается, что система завершает работу.</para>
+		  <parameter>-h</parameter>, за исключением случаев, когда уровень запуска 
+		  уже равен 0, тогда он посылает ядру сигнал на остановку системы; Кроме 
+		  этого отмечает в файле <filename>/var/log/wtmp</filename>, что система 
+		  завершает работу</para>
           <indexterm zone="ch-system-sysvinit halt-sysv">
             <primary sortas="b-halt">halt</primary>
           </indexterm>
@@ -138,9 +139,9 @@
       <varlistentry id="init-sysv">
         <term><command>init</command></term>
         <listitem>
-          <para>Первый процесс, который будет запущен, когда ядро ​​​​инициализирует
-		  оборудование, init берет на себя процесс загрузки и запускает все
-		  процессы, которые указанны в его файле конфигурации</para>
+          <para>Первый процесс, который запускается после инициализации оборудования; 
+		  init берет на себя процесс загрузки и запускает все процессы, которые 
+		  указанны в его файле конфигурации</para>
           <indexterm zone="ch-system-sysvinit init-sysv">
             <primary sortas="b-init">init</primary>
           </indexterm>
@@ -150,9 +151,8 @@
       <varlistentry id="killall5">
         <term><command>killall5</command></term>
         <listitem>
-          <para>Посылает сигнал во все процессы, за исключением собственных
-		  процессов сессии, так что вы не уничтожите командную оболочку, в
-		  которой работает скрипт, запустивший данную команду</para>
+          <para>Посылает сигнал всем процессам, за исключением процессов в его 
+		  собственном сеансе; он не завершит свою родительскую оболочку</para>
           <indexterm zone="ch-system-sysvinit killall5">
             <primary sortas="b-killall5">killall5</primary>
           </indexterm>

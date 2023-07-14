@@ -3,8 +3,8 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
   %general-entities;
-  <!ENTITY tdbc-ver          "1.1.3">
-  <!ENTITY itcl-ver          "4.2.2">
+  <!ENTITY tdbc-ver          "1.1.5">
+  <!ENTITY itcl-ver          "4.2.3">
 ]>
 
 <sect1 id="ch-system-tcl" role="wrap">
@@ -27,7 +27,7 @@
 
     <para>Пакет <application>Tcl</application> содержит Tool Command Language,
 	надежный скриптовый язык общего назначения. Пакет <application>Expect</application>
-	написан на языке <application>Tcl</application>.</para>
+	написан на языке <application>Tcl</application> (произносится как "тикл").</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -45,17 +45,10 @@
     <title>Установка пакета Tcl</title>
 
     <para>Этот пакет и следующие два (Expect и DejaGNU) устанавливаются для поддержки
-	возможности тестирования binutils, GCC и других пакетов. Установка трех пакетов для
-	целей тестирования может показаться избыточной, но это успокаивает, когда
-	необходимо знать, что наиболее важные инструменты работают правильно.</para>
+	возможности тестирования Binutils, GCC и других пакетов. Установка трех пакетов 
+	для целей тестирования может показаться избыточной, но вы будете чувствовать себя 
+	увереннее, когда знаете, что наиболее важные инструменты работают правильно.</para>
 
-<!--    <para>Note that the Tcl package used here is a minimal version needed
-    to run the LFS tests.  For the full package, see the
-    <ulink url='&blfs-book;general/tcl.html'>BLFS Tcl procedures</ulink>.</para>-->
-
-    <para>Сначала распакуйте документацию, выполнив следующую команду:</para>
-
-<screen><userinput remap="pre">tar -xf ../tcl&tcl-version;-html.tar.gz --strip-components=1</userinput></screen>
 
     <para>Подготовьте Tcl к компиляции:</para>
 
@@ -87,9 +80,8 @@ unset SRCDIR</userinput></screen>
 
     <para>Различные инструкции <quote>sed</quote> после команды
     <quote>make</quote> удаляют ссылки на каталог сборки из файлов конфигурации и заменяют
-    их на Созданные каталоги.
-    Это необязательно для оставшейся части LFS, но может понадобится в случае, если пакет,
-	собранный позже, использует Tcl.</para>
+    их на созданные каталоги. Это необязательно для остальной части LFS, но может 
+	понадобиться в случае, когда пакет, собранный позже, использует Tcl.</para>
 
     <para>Чтобы протестировать пакет, выполните:</para>
 
@@ -116,11 +108,12 @@ unset SRCDIR</userinput></screen>
 
     <screen><userinput remap="install">mv /usr/share/man/man3/{Thread,Tcl_Thread}.3</userinput></screen>
 
-    <para>Если вы загрузили дополнительную документацию, установите ее, выполнив
-	следующие команды:</para>
+    <para>При необходимости установите документацию, выполнив следующие команды:</para>
 
- <screen><userinput remap="install">mkdir -v -p /usr/share/doc/tcl-&tcl-version;
-cp -v -r  ../html/* /usr/share/doc/tcl-&tcl-version;</userinput></screen>
+<screen><userinput remap="install">cd ..
+tar -xf ../tcl&tcl-version;-html.tar.gz --strip-components=1
+mkdir -v -p /usr/share/doc/tcl-&tcl-version;
+cp -v -r  ./html/* /usr/share/doc/tcl-&tcl-version;</userinput></screen>
 
   </sect2>
 

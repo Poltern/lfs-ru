@@ -59,29 +59,32 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
 
     <para id="shadow-login_defs">Вместо используемого по умолчанию метода
 	<emphasis>crypt</emphasis>, используйте более безопасный метод шифрования паролей
-	<emphasis>SHA-512</emphasis>, который позволяет использовать пароли длиннее
-	8 символов. Также необходимо изменить устаревшее местоположение
-	<filename class="directory">/var/spool/mail</filename> для почтовых ящиков
-	пользователей, которое Shadow использует по умолчанию, на используемое в настоящее
-	время <filename class="directory">/var/mail</filename>. Избавьтесь от
-	<filename class="directory">/bin</filename> и <filename class="directory">/bin</filename>
-	в <envar>PATH</envar>, поскольку они являются просто символическими ссылками на
-	их аналог в <filename class="directory">/usr</filename>.</para>
+	<emphasis>SHA-512</emphasis>, который также позволяет использовать пароли длиннее
+	8 символов. Кроме того, установите количество раундов на 500 000 вместо 5000 по 
+	умолчанию, что слишком мало для предотвращения атак методом перебора пароля. Также 
+	необходимо изменить устаревшее местоположение для почтовых ящиков
+	пользователей <filename class="directory">/var/spool/mail</filename>, которое 
+	Shadow использует по умолчанию, на используемое в настоящее 
+	время <filename class="directory">/var/mail</filename>. И удалите
+	<filename class="directory">/bin</filename> и <filename class="directory">/sbin</filename>
+	из <envar>PATH</envar>, поскольку они являются просто символическими ссылками на
+	их аналоги в <filename class="directory">/usr</filename>.</para>
 
     <note>
-      <para>Если <filename class="directory">/bin</filename> и/или
-      <filename class="directory">/sbin</filename> по какой-то причине предпочтительнее
-	  оставить в <envar>PATH</envar>, измените 
-      <envar>PATH</envar> в <filename>.bashrc</filename> после сборки LFS.</para>
+      <para>Если вы по какой-либо причине хотите включить 
+	  <filename class="directory">/bin</filename> и/или 
+	  <filename class="directory">/sbin</filename> в <envar>PATH</envar>, измените 
+	  <envar>PATH</envar> в файле <filename>.bashrc</filename> после сборки LFS.</para>
     </note>
 
 <screen><userinput remap="pre">sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
+    -e 's@#\(SHA_CRYPT_..._ROUNDS 5000\)@\100@'       \
     -e 's:/var/spool/mail:/var/mail:'                 \
     -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                \
     -i etc/login.defs</userinput></screen>
 
     <note>
-      <para>Если вы выбрали сборку Shadow с поддержкой Cracklib, выполните следующее:</para>
+      <para>Если вы решили собрать Shadow с поддержкой Cracklib, выполните эту команду:</para>
 
 <screen role="nodump"><userinput>sed -i 's:DICTPATH.*:DICTPATH\t/lib/cracklib/pw_dict:' etc/login.defs</userinput></screen>
     </note>
@@ -104,21 +107,21 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
             --with-group-name-max-length=32</userinput></screen>
 
     <variablelist>
-      <title>Значение параметров configure:</title>
+      <title>Значение новых параметров конфигурации:</title>
 
       <varlistentry>
         <term><command>touch /usr/bin/passwd</command></term>
         <listitem>
           <para>Файл <filename>/usr/bin/passwd</filename> должен существовать, потому
-		  что его местоположение жестко задано в некоторых программах, и если он не
-		  существует, то по умолчанию используется неправильное местоположение.</para>
+		  что его местоположение жестко задано в некоторых программах; если он не
+		  существует, скрипт установки создаст его не в том месте.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><parameter>--with-group-name-max-length=32</parameter></term>
         <listitem>
-          <para>Максимальная длина имени пользователя 32 символа. Такую же длину сделайте и
-          для групп.</para>
+          <para>Максимально допустимая длина имени пользователя составляет 32 символа. 
+		  Сделайте такую же длину для названия группы.</para>
         </listitem>
       </varlistentry>
 
@@ -150,7 +153,7 @@ make -C man install-man</userinput></screen>
 	Полное объяснение того, что означает <emphasis>password shadowing</emphasis>, см.
 	в файле doc/HOWTO в дереве распакованных исходных текстов. При использовании Shadow
 	имейте в виду, что программы, которым необходимо проверять пароли (дисплейные менеджеры,
-	FTP-программы, демоны pop3 и т.д.), Должны быть совместимы с Shadow. То есть они должны
+	FTP-программы, демоны pop3 и т.д.), должны быть совместимы с Shadow. То есть они должны
 	уметь работать с теневыми паролями.</para>
 
     <para>Чтобы включить поддержку теневых паролей, выполните следующую команду::</para>
@@ -162,19 +165,20 @@ make -C man install-man</userinput></screen>
 <screen><userinput>grpconv</userinput></screen>
 
     <para>Конфигурация Shadow по умолчанию для утилиты <command>useradd</command> имеет
-	несколько особенностей, требующих пояснений. Во-первых, по умолчанию утилита
-	<command>useradd</command> создает пользователя и группу с тем же именем, что и
-	у пользователя. Номера идентификатора пользователя (UID) и идентификатора группы (GID)
-	начинаются с 1000. Это означает, что если вы не передадите параметры в
-	<command>useradd</command>, каждый пользователь будет членом уникальной группы в системе.
-	Если такое поведение нежелательно, вам нужно передать один из параметров
+	несколько особенностей, требующих пояснения. Во-первых, по умолчанию утилита
+	<command>useradd</command> создает пользователя и группу с тем же названием, что и
+	имя пользователя. По умолчанию, идентификатора пользователя (UID) и идентификатора 
+	группы (GID) начинаются с 1000. Это означает, что если вы не передадите дополнительные 
+	параметры в <command>useradd</command>, каждый пользователь будет членом уникальной 
+	группы в системе. Если такое поведение нежелательно, вам нужно передать один из параметров
 	<parameter>-g</parameter> или <parameter>-N</parameter> в <command>useradd</command> или
-	изменить настройку <parameter>USERGROUPS_ENAB</parameter> в <filename>/etc/login.defs</filename>.
-	См. <filename>useradd(8)</filename> для получения дополнительной информации.</para>
+	изменить настройку <parameter>USERGROUPS_ENAB</parameter> в файле <filename>/etc/login.defs</filename>.
+	Смотрите справочную страницу <filename>useradd(8)</filename> для получения дополнительной 
+	информации.</para>
 
     <para>Во-вторых, чтобы изменить параметры по умолчанию, необходимо создать файл
 	<filename>/etc/default/useradd</filename> и настроить его в соответствии с вашими
-	потребностями. Создайте его с помощью:</para>
+	потребностями. Создайте его:</para>
 
 <screen><userinput>mkdir -p /etc/default
 useradd -D --gid 999</userinput></screen>
@@ -187,26 +191,27 @@ useradd -D --gid 999</userinput></screen>
         <listitem>
           <para>Этот параметр задает начальный номер группы, используемых в файле
 		  <filename>/etc/group</filename>. Значение 999 берется из приведенного выше
-		  параметра <parameter>--gid</parameter>. Значение можно установить любое.
+		  параметра <parameter>--gid</parameter>. Вы можете установить любое значение.
 		  Обратите внимание, что <command>useradd</command> никогда не будет повторно
 		  использовать UID или GID. Если номер, указанный в этом параметре, уже
 		  используется будет выбран следующий доступный номер. Также обратите внимание,
 		  что если в вашей системе нет группы с идентификатором, равным этому номеру,
 		  при первом использовании <command>useradd</command> без параметра
-		  <parameter>-g</parameter> вы получите на терминале следующее сообщение:
-		  <computeroutput>useradd: unknown GID 999</computeroutput>, хотя учетная запись
-		  создана правильно. Поэтому мы создали группу <systemitem class="groupname">users</systemitem>
+		  <parameter>-g</parameter> &mdash; вы получите следующее сообщение об ошибке:
+		  <computeroutput>useradd: unknown GID 999</computeroutput>, даже если учетная 
+		  запись была создана правильно. Поэтому мы создали группу 
+		  <systemitem class="groupname">users</systemitem> 
 		  с этим идентификатором в <xref linkend='ch-tools-createfiles'/>.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><parameter>CREATE_MAIL_SPOOL=yes</parameter></term>
         <listitem>
-          <para> Этот параметр заставит утилиту <command>useradd</command> создавать файл
-		  почтового ящика для вновь создаваемого пользователя. <command>useradd</command>
-		  сделает этот файл принадлежащем группе <systemitem class="groupname">mail</systemitem>
-		  с правами доступа 0660. Если вы предпочитаете, чтобы файлы почтовых ящиков не
-		  создавались утилитой <command>useradd</command>, выполните следующую команду: </para>
+          <para>Этот параметр заставит утилиту <command>useradd</command> создавать файл
+		  почтового ящика для каждого нового пользователя. <command>useradd</command>
+		  сделает этот файл принадлежащим группе <systemitem class="groupname">mail</systemitem>
+		  с правами доступа 0660. Если вы предпочитаете, не создавать эти файлы, выполните 
+		  следующую команду:</para>
 
 <screen><userinput>sed -i '/MAIL/s/yes/no/' /etc/default/useradd</userinput></screen>
         </listitem>
@@ -217,7 +222,7 @@ useradd -D --gid 999</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Задание пароля root</title>
+    <title>Установка пароля пользователя root</title>
 
     <para>Придумайте пароль для <emphasis>root</emphasis> и установите командой:</para>
 
@@ -239,9 +244,9 @@ useradd -D --gid 999</userinput></screen>
         grpconv, grpunconv, lastlog, login, logoutd, newgidmap, newgrp,
         newuidmap, newusers, nologin, passwd, pwck, pwconv, pwunconv,
         sg (ссылка на newgrp), su, useradd, userdel, usermod,
-        vigr (ссылка на vipw), и vipw</seg>
+        vigr (ссылка на vipw) и vipw</seg>
         <seg>libsubid.so</seg>
-        <seg>/etc/default</seg>
+        <seg>/etc/default и /usr/include/shadow</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -316,7 +321,7 @@ useradd -D --gid 999</userinput></screen>
         <listitem>
           <para>Используется для проверки журнала неудачных попыток входа в систему,
 		  для установки максимального количества неудачных попыток до блокировки учетной
-		  записи или для сброса счетчика неудачных попыток.</para>
+		  записи и для сброса счетчика неудачных попыток.</para>
           <indexterm zone="ch-system-shadow faillog">
             <primary sortas="b-faillog">faillog</primary>
           </indexterm>
@@ -497,7 +502,7 @@ useradd -D --gid 999</userinput></screen>
         <listitem>
           <para>Отображает сообщение о том, что учетная запись недоступна; она
 		  предназначена для использования в качестве оболочки по умолчанию для
-		  учетных записей, которые были отключены</para>
+		  отключенных учетных записей</para>
           <indexterm zone="ch-system-shadow nologin">
             <primary sortas="b-nologin">nologin</primary>
           </indexterm>
@@ -627,7 +632,7 @@ useradd -D --gid 999</userinput></screen>
       <varlistentry id="libsubid">
         <term><filename class='libraryfile'>libsubid</filename></term>
         <listitem>
-          <para>Библиотека подчиненных процессов для диапазонов идентификаторов пользователей</para>
+          <para>библиотека для обработки подчиненных диапазонов идентификаторов пользователей и групп</para>
           <indexterm zone="ch-system-shadow libsubid">
             <primary sortas="c-libsubid">libsubid</primary>
           </indexterm>
