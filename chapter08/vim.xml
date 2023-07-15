@@ -53,7 +53,7 @@
 
 <screen><userinput remap="pre">echo '#define SYS_VIMRC_FILE "/etc/vimrc"' &gt;&gt; src/feature.h</userinput></screen>
 
-    <para>Подготовьте vim к компиляции:</para>
+    <para>Подготовьте Vim к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
 
@@ -80,7 +80,7 @@
 
 <screen><userinput remap="install">make install</userinput></screen>
 
-    <para>Многие пользователи привыкли использовать <command>vi</command> вместо
+    <para>Многие пользователи рефлекторно набирают <command>vi</command> вместо 
 	<command>vim</command>. Чтобы разрешить выполнение <command>vim</command>,
 	когда пользователи вводят <command>vi</command>, создайте символическую ссылку
 	как для двоичного файла, так и для справочной страницы:</para>
@@ -90,7 +90,7 @@ for L in  /usr/share/man/{,*/}man1/vim.1; do
     ln -sv vim.1 $(dirname $L)/vi.1
 done</userinput></screen>
 
-    <para>По умолчанию документация vim установлена в каталог <filename
+    <para>По умолчанию документация Vim установливается в каталог <filename
     class="directory">/usr/share/vim</filename>. Следующая символическая ссылка
     позволяет получить доступ к документации через каталог <filename
     class="directory">/usr/share/doc/vim-&vim-version;</filename>, что
@@ -98,11 +98,11 @@ done</userinput></screen>
 
 <screen><userinput remap="install">ln -sv ../&vim-docdir;/doc /usr/share/doc/vim-&vim-version;</userinput></screen>
 
-    <para>Если в LFS планируется установить систему X Window, может потребоваться
-	перекомпилировать vim после установки X. Vim поставляется с версией редактора
-	с графическим интерфейсом, для которой требуется установка X и некоторых
-	дополнительных библиотек. Для получения дополнительной информации об этом процессе
-	обратитесь к документации по vim и странице установки vim в книге BLFS по адресу <ulink
+    <para>Если в LFS будет установлена система X Window, может потребоваться
+	перекомпилировать Vim после установки X. Vim поставляется с графической версией 
+	редактора, для которой требуется установка X и некоторых дополнительных библиотек. 
+	Для получения дополнительной информации об этом процессе обратитесь к документации 
+	по Vim и странице установки Vim в книге BLFS по адресу <ulink
     url="&blfs-book;postlfs/vim.html"/>.</para>
 
   </sect2>
@@ -161,20 +161,19 @@ EOF</userinput></screen>
 
     <note>
       <para>По умолчанию vim устанавливает файлы проверки орфограции только для английского
-      языка. Для установки файлов проверки орфограции других языков, скачайте файлы
-      <filename>*.spl</filename> и, при необходимости, <filename>*.sug</filename>
-      для вашего языка и кодировки символов по ссылке <ulink
-      url="ftp://ftp.vim.org/pub/vim/runtime/spell/"/>, сохраните их в
+      языка. Для установки файлов проверки орфограции других языков, скопируйте файлы
+      <filename class='extension'>.spl</filename> и, при необходимости, 
+	  <filename class='extension'>.sug</filename> для вашего языка и кодировки символов из
+	  <filename class='directory'>runtime/spell</filename>, сохраните их в
       <filename class='directory'>/usr/share/&vim-docdir;/spell/</filename>.</para>
 
-      <para>Для подключения этих файлов понадобится небольшая настройка
-      <filename>/etc/vimrc</filename>, например:</para>
+      <para>Чтобы использовать эти файлы проверки орфографии, необходимо указать параметры 
+	  для vim в файле <filename>/etc/vimrc</filename>, пример:</para>
 
 <screen><literal>set spelllang=en,ru
 set spell</literal></screen>
 
-      <para>Для получения дополнительной информации см. соответствующий файл
-	  README, расположенный по указанному выше URL-адресу.</para>
+      <para>Дополнительные сведения смотрите в файле <filename>runtime/spell/README.txt</filename>.</para>
     </note>
 
   </sect2>
@@ -188,7 +187,7 @@ set spell</literal></screen>
 
       <seglistitem>
        <seg> ex (ссылка на vim), rview (ссылка на vim), rvim (ссылка на vim), vi
-       (ссылка на vim), view (ссылка на vim), vim, vimdiff (ссылка на vim), vimtutor,
+       (ссылка на vim), view (ссылка на vim), vim, vimdiff (ссылка на vim), vimtutor
        и xxd</seg>
         <seg>/usr/share/vim</seg>
       </seglistitem>
@@ -287,8 +286,8 @@ set spell</literal></screen>
       <varlistentry id="xxd">
         <term><command>xxd</command></term>
         <listitem>
-          <para>Создает шестнадцатеричный дамп данного файла; он также может делать
-		  обратное, поэтому его можно использовать для бинарных патчей</para>
+          <para>Создает шестнадцатеричный дамп данного файла; он также может выполнять 
+		  обратную операцию, поэтому его можно использовать для бинарных патчей</para>
           <indexterm zone="ch-system-vim xxd">
             <primary sortas="b-xxd">xxd</primary>
           </indexterm>

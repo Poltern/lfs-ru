@@ -42,10 +42,6 @@
   <sect2 role="installation">
     <title>Установка пакета Zstd</title>
 
-    <para>Примените патч, чтобы исправить некоторые выявленные проблемы:</para>
-
-<screen><userinput remap="pre">patch -Np1 -i ../&zstd-upstream-fixes-patch;</userinput></screen>
-
     <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">make prefix=/usr</userinput></screen>
@@ -81,7 +77,7 @@
              zstdcat (ссылка на zstd),
              zstdgrep,
              zstdless,
-             zstdmt (ссылка на zstd), и
+             zstdmt (ссылка на zstd) и
              unzstd (ссылка на zstd)
         </seg>
 
@@ -128,7 +124,7 @@
         <term><filename class="libraryfile">libzstd</filename></term>
         <listitem>
           <para>Библиотека, реализующая сжатие данных без потерь, с использованием
-		  алгоритма ZSTD.</para>
+		  алгоритма ZSTD</para>
           <indexterm zone="ch-system-zstd libzstd">
             <primary sortas="c-libzstd">libzstd</primary>
           </indexterm>

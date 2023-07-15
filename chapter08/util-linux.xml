@@ -47,7 +47,6 @@
             --bindir=/usr/bin    \
             --libdir=/usr/lib    \
             --sbindir=/usr/sbin  \
-            --docdir=/usr/share/doc/util-linux-&util-linux-version; \
             --disable-chfn-chsh  \
             --disable-login      \
             --disable-nologin    \
@@ -58,13 +57,13 @@
             --disable-static     \
             --without-python     \
             --without-systemd    \
-            --without-systemdsystemunitdir</userinput></screen>
+            --without-systemdsystemunitdir \
+            --docdir=/usr/share/doc/util-linux-&util-linux-version;</userinput></screen>
 
 <screen revision="systemd"><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime   \
             --bindir=/usr/bin    \
             --libdir=/usr/lib    \
             --sbindir=/usr/sbin  \
-            --docdir=/usr/share/doc/util-linux-&util-linux-version; \
             --disable-chfn-chsh  \
             --disable-login      \
             --disable-nologin    \
@@ -73,7 +72,8 @@
             --disable-runuser    \
             --disable-pylibmount \
             --disable-static     \
-            --without-python</userinput></screen>
+            --without-python     \
+            --docdir=/usr/share/doc/util-linux-&util-linux-version;</userinput></screen>
 
     <para>Параметры --disable и --without предотвращают появление предупреждений о сборке 
 	компонентов, для которых требуются пакеты, отсутствующие в LFS, или которые несовместимы 
@@ -89,7 +89,7 @@
 	может повредить вашу систему. Чтобы запустить тесты, опция CONFIG_SCSI_DEBUG для ядра должна 
 	быть доступна в текущей работающей системе и должна быть собрана как модуль. Включение её в ядро 
 	будет прерывать загрузку. Для полного охвата тестами в систему необходимо установить другие 
-	пакеты из BLFS. По желанию этот тест можно запустить после перезагрузки в готовую систему LFS:</para>
+	пакеты из BLFS. По желанию, этот тест можно запустить после загрузки в готовую систему LFS:</para>
 
 <screen role="nodump"><userinput>bash tests/run.sh --srcdir=$PWD --builddir=$PWD</userinput></screen>
     </warning>
@@ -98,7 +98,8 @@
 su tester -c "make -k check"</userinput></screen>
 
     <para>Тесты с <emphasis>жесткими ссылками</emphasis> завершатся неудачей, если в ядре хоста 
-	не установлена опция CONFIG_CRYPTO_USER_API_HASH.</para>
+	не установлена опция CONFIG_CRYPTO_USER_API_HASH. Кроме того, известно, что два подтеста из 
+	misc: mbsencode и один подтест из script: replay не проходят.</para>
 
     <para>Установите пакет:</para>
 
@@ -122,16 +123,17 @@ su tester -c "make -k check"</userinput></screen>
         <seg>addpart, agetty, blkdiscard, blkid, blkzone, blockdev, cal, cfdisk, chcpu,
         chmem, choom, chrt, col, colcrt, colrm, column, ctrlaltdel, delpart, dmesg,
         eject, fallocate, fdisk, fincore, findfs, findmnt, flock, fsck,
-        fsck.cramfs, fsck.minix, fsfreeze, fstrim, getopt, hexdump, hwclock,
-        i386, ionice, ipcmk, ipcrm, ipcs, irqtop, isosize, kill, last, lastb (ссылка на
-        last), ldattach, linux32, linux64, logger, look, losetup, lsblk, lscpu,
-        lsipc, lsirq, lslocks, lslogins, lsmem, lsns, mcookie, mesg, mkfs, mkfs.bfs, mkfs.cramfs, mkfs.minix, mkswap,
+        fsck.cramfs, fsck.minix, fsfreeze, fstrim, getopt, hardlink, hexdump, hwclock,
+        i386 (ссылка на setarch), ionice, ipcmk, ipcrm, ipcs, irqtop, isosize, kill, last, 
+        lastb (ссылка на last), ldattach, linux32 (link to setarch), linux64 (ссылка на setarch),
+        logger, look, losetup, lsblk, lscpu, lsipc, lsirq, lsfd, lslocks, lslogins,
+        lsmem, lsns, mcookie, mesg, mkfs, mkfs.bfs, mkfs.cramfs, mkfs.minix, mkswap,
         more, mount, mountpoint, namei, nsenter, partx, pivot_root, prlimit,
         readprofile, rename, renice, resizepart, rev, rfkill, rtcwake, script,
         scriptlive, scriptreplay, setarch, setsid, setterm, sfdisk, sulogin, swaplabel,
-        swapoff (сслка на swapon), swapon, switch_root, taskset, uclampset, ul,
-        umount, uname26, unshare, utmpdump, uuidd, uuidgen, uuidparse, wall, wdctl, whereis,
-        wipefs, x86_64 и zramctl</seg>
+        swapoff, swapon, switch_root, taskset, uclampset, ul,
+        umount, uname26 (ссылка на setarch), unshare, utmpdump, uuidd, uuidgen, uuidparse,
+        wall, wdctl, whereis, wipefs, x86_64 (ссылка на setarch) и zramctl</seg>
         <seg>libblkid.so, libfdisk.so, libmount.so,
         libsmartcols.so и libuuid.so</seg>
         <seg>/usr/include/blkid,
@@ -139,7 +141,7 @@ su tester -c "make -k check"</userinput></screen>
              /usr/include/libmount,
              /usr/include/libsmartcols,
              /usr/include/uuid,
-             /usr/share/doc/util-linux-&util-linux-version;,
+             /usr/share/doc/util-linux-&util-linux-version;
          и /var/lib/hwclock</seg>
       </seglistitem>
     </segmentedlist>
@@ -193,7 +195,7 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="blkzone">
         <term><command>blkzone</command></term>
         <listitem>
-          <para>Утилита для работы с зонированными блочными устройствами</para>
+          <para>Используется для управления зонированными блочными системами хранения</para>
           <indexterm zone="ch-system-util-linux blkzone">
             <primary sortas="b-blkzone">blkzone</primary>
           </indexterm>
@@ -253,7 +255,8 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="choom">
         <term><command>choom</command></term>
         <listitem>
-          <para>Показывает состояние и настраивает OOM-killer</para>
+          <para>Отображает и регулирует оценки OOM-killer, используемые для определения того, 
+		  какой процесс следует завершить первым, когда в Linux заканчивается память</para>
           <indexterm zone="ch-system-util-linux choom">
             <primary sortas="b-choom">choom</primary>
           </indexterm>
@@ -474,10 +477,21 @@ su tester -c "make -k check"</userinput></screen>
         </listitem>
       </varlistentry>
 
+      <varlistentry id="hardlink">
+        <term><command>hardlink</command></term>
+        <listitem>
+          <para>Объединяет дубликаты файлов путем создания жестких ссылок</para>
+          <indexterm zone="ch-system-util-linux hardlink">
+            <primary sortas="b-hardlink">hardlink</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
       <varlistentry id="hexdump">
         <term><command>hexdump</command></term>
         <listitem>
-          <para>Создает дамп указанного файла в шестнадцатеричном или другом заданном формате</para>
+          <para>Создает дамп указанного файла в шестнадцатеричном, десятичном, восьмеричном 
+		  или ascii-формате</para>
           <indexterm zone="ch-system-util-linux hexdump">
             <primary sortas="b-hexdump">hexdump</primary>
           </indexterm>
@@ -682,6 +696,16 @@ su tester -c "make -k check"</userinput></screen>
         </listitem>
       </varlistentry>
 
+      <varlistentry id="lsfd">
+        <term><command>lsfd</command></term>
+        <listitem>
+          <para>Отображает информацию об открытых файлах; заменяет <command>lsof</command></para>
+          <indexterm zone="ch-system-util-linux lsfd">
+            <primary sortas="b-lsfd">lsfd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
       <varlistentry id="lsipc">
         <term><command>lsipc</command></term>
         <listitem>
@@ -850,8 +874,8 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="namei">
         <term><command>namei</command></term>
         <listitem>
-          <para>Показывает информацию, следуя по указанному пути, пока не будет найдена 
-		  конечная точка</para>
+          <para>Разделяет на составляющие путь к файлу или каталогу, показывая информацию о 
+		  типе каждого элемента</para>
           <indexterm zone="ch-system-util-linux namei">
             <primary sortas="b-namei">namei</primary>
           </indexterm>
@@ -1055,7 +1079,7 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="swaplabel">
         <term><command>swaplabel</command></term>
         <listitem>
-          <para>Позволяет изменять UUID и метку раздела подкачки</para>
+          <para>Изменяет UUID и метку раздела подкачки</para>
           <indexterm zone="ch-system-util-linux swaplabel">
             <primary sortas="b-swaplabel">swaplabel</primary>
           </indexterm>
@@ -1075,8 +1099,8 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="swapon">
         <term><command>swapon</command></term>
         <listitem>
-          <para>Включает устройства и файлы, используемые для раздела подкачки и выводит 
-		  список устройств и файлов, используемых для этого в данный момент</para>
+          <para>Включает устройства и файлы, применяемые для раздела подкачки, а также 
+		  выводит список устройств и файлов, используемых в данный момент</para>
           <indexterm zone="ch-system-util-linux swapon">
             <primary sortas="b-swapon">swapon</primary>
           </indexterm>
@@ -1096,7 +1120,7 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="taskset">
         <term><command>taskset</command></term>
         <listitem>
-          <para>Назначает ядро CPU процессу</para>
+          <para>Устанавливает привязку процессора к процессу</para>
           <indexterm zone="ch-system-util-linux taskset">
             <primary sortas="b-taskset">taskset</primary>
           </indexterm>
@@ -1157,8 +1181,8 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="utmpdump">
         <term><command>utmpdump</command></term>
         <listitem>
-          <para>Отображает содержимое указанного файла входа в систему в более удобном 
-		  для пользователя формате</para>
+          <para>Отображает содержимое указанного файла входа в систему в удобном для 
+		  пользователя формате</para>
           <indexterm zone="ch-system-util-linux utmpdump">
             <primary sortas="b-utmpdump">utmpdump</primary>
           </indexterm>
@@ -1179,9 +1203,10 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="uuidgen">
         <term><command>uuidgen</command></term>
         <listitem>
-          <para>Создает новые идентификаторы UUID. Каждый новый идентификатор UUID может 
-		  считаться уникальным среди всех идентификаторов UUID, созданных как на локальной 
-		  машине, так и на любых других машинах, как в прошлом, так и в будущем</para>
+          <para>Создает новые идентификаторы (UUID). Каждый новый UUID - это случайное число, 
+		  которое, будет с очень высокой вероятностью (примерно 3,4 х 10 в 38 степени вариантов) 
+		  уникальным среди всех идентификаторов, созданных как на локальной машине, так и на 
+		  любых других системах, в прошлом и будущем</para>
           <indexterm zone="ch-system-util-linux uuidgen">
             <primary sortas="b-uuidgen">uuidgen</primary>
           </indexterm>
@@ -1222,8 +1247,8 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="whereis">
         <term><command>whereis</command></term>
         <listitem>
-          <para>Для указанной команды сообщает местоположение двоичного файла, исходного 
-		  кода и справочной страницы</para>
+          <para>Сообщает местоположение двоичного файла, исходного кода и справочной 
+		  страницы для указанной команды</para>
           <indexterm zone="ch-system-util-linux whereis">
             <primary sortas="b-whereis">whereis</primary>
           </indexterm>

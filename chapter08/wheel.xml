@@ -40,38 +40,65 @@
   <sect2 role="installation">
     <title>Установка пакета Wheel</title>
 
-    <para>Установите Wheel с помощью следующей команды:</para>
+    <para>Скомпилируйте Wheel с помощью следующей команды:</para>
 
-<screen><userinput remap="install">pip3 install --no-index $PWD</userinput></screen>
+<screen><userinput remap="make">PYTHONPATH=src pip3 wheel -w dist --no-build-isolation --no-deps $PWD</userinput></screen>
+
+    <para>Установите Wheel:</para>
+
+<screen><userinput remap="install">pip3 install --no-index --find-links=dist wheel</userinput></screen>
 
     <variablelist>
-      <title>Значение параметров pip3:</title>
+      <title>Значение параметров конфигурации и команд pip3:</title>
+
+      <varlistentry>
+        <term><envar>PYTHONPATH=src</envar></term>
+        <listitem>
+           <para>Позволяет этому пакету (еще не установленному) создавать для себя архив wheel.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><command>wheel</command></term>
+        <listitem>
+           <para>Эта команда создает архив wheel для этого пакета.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-w dist</parameter></term>
+        <listitem>
+           <para>Указывает pip поместить созданный архив в каталог
+           <filename class='directory'>dist</filename>.</para>
+        </listitem>
+      </varlistentry>
 
       <varlistentry>
         <term><command>install</command></term>
         <listitem>
-           <para>Установить пакет.</para>
+           <para>Эта команда устанавливает пакет.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>--no-index</parameter></term>
+        <term><parameter>--no-build-isolation</parameter>,
+              <parameter>--no-deps</parameter> и
+              <parameter>--no-index</parameter></term>
         <listitem>
           <para>Запретить pip извлекать файлы из онлайн-репозитория пакетов (PyPI).
 		  Если пакеты установлены в правильном порядке, то нет необходимости загружать
-		  какие-либо файлы, эта опция усиливает безопасность в случае ошибки пользователя.</para>
+		  какие-либо файлы, эти параметры усиливают безопасность в случае ошибки пользователя.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>$PWD</parameter></term>
+        <term><parameter>--find-links dist</parameter></term>
         <listitem>
-           <para>Искать файлы для установки в текущем рабочем каталоге.</para>
+           <para>Указывает pip искать архивы wheel в каталоге
+           <filename class='directory'>dist</filename>.</para>
         </listitem>
       </varlistentry>
-
     </variablelist>
-
   </sect2>
 
   <sect2 id="contents-wheel" role="content">
@@ -85,7 +112,7 @@
         <seg>wheel</seg>
         <seg>
            /usr/lib/python&python-minor;/site-packages/wheel и
-           /usr/lib/python&python-minor;/site-packages/wheel-0.37.1-py3.10.egg-info
+           /usr/lib/python&python-minor;/site-packages/wheel-&wheel-version;.dist-info
         </seg>
       </seglistitem>
     </segmentedlist>
@@ -99,7 +126,7 @@
         <term><command>wheel</command></term>
         <listitem>
           <para>
-            это утилита для распаковки, упаковки или преобразования пакетов Wheel
+            это утилита для распаковки, упаковки или преобразования wheel-архивов
           </para>
           <indexterm zone="ch-system-wheel">
             <primary sortas="b-wheel">wheel</primary>
