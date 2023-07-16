@@ -24,7 +24,8 @@
     <title/>
 
     <para>Пакет LFS-Bootscripts содержит набор скриптов для запуска/остановки системы LFS при
-	загрузке/завершении работы</para>
+	загрузке/завершении работы. Файлы конфигурации и процедуры, необходимые для настройки 
+	/процесса загрузки, описаны в следующих разделах.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -57,7 +58,7 @@
         <seg>checkfs, cleanfs, console, functions, halt, ifdown,
         ifup, localnet, modules, mountfs, mountvirtfs, network, rc, reboot,
         sendsignals, setclock, ipv4-static, swap, sysctl, sysklogd, template,
-        udev, и udev_retry</seg>
+        udev и udev_retry</seg>
         <seg>/etc/rc.d, /etc/init.d (символическая ссылка), /etc/sysconfig,
         /lib/services, /lib/lsb (символическая ссылка)</seg>
       </seglistitem>
@@ -171,7 +172,7 @@
         <term><command>mountfs</command></term>
         <listitem>
           <para>Монтирует все файловые системы, кроме тех, которые помечены как
-          <emphasis>noauto</emphasis> или сетевые файловые системы</para>
+          <emphasis>noauto</emphasis> или сетевых файловых систем</para>
           <indexterm zone="ch-config-bootscripts mountfs-bootscripts">
             <primary sortas="d-mountfs">mountfs</primary>
           </indexterm>
@@ -204,8 +205,8 @@
         <term><command>rc</command></term>
         <listitem>
           <para>Основной сценарий управления; он отвечает за запуск всех остальных загрузочных
-		  скриптов один за другим в последовательности, определяемой по имени обрабатываемых
-		  символических ссылок.</para>
+		  скриптов один за другим, в последовательности, определяемой именами символических ссылок 
+		  на другие скрипты.</para>
           <indexterm zone="ch-config-bootscripts rc-bootscripts">
             <primary sortas="d-rc">rc</primary>
           </indexterm>
@@ -235,8 +236,8 @@
       <varlistentry id="setclock-bootscripts">
         <term><command>setclock</command></term>
         <listitem>
-          <para>Сбрасывает часы ядра на местное время, если аппаратные часы не настроены на
-		  всемирное координированное время UTC.</para>
+          <para>Сбрасывает системные часы на местное время, если аппаратные часы не установлены на 
+		  всемирное координированное время (UTC).</para>
           <indexterm zone="ch-config-bootscripts setclock-bootscripts">
             <primary sortas="d-setclock">setclock</primary>
           </indexterm>
@@ -299,7 +300,7 @@
         <term><command>udev</command></term>
         <listitem>
           <para>Подготавливает каталог <filename class="directory">/dev</filename>
-          и запускает Udev</para>
+          и запускает демон udev</para>
           <indexterm zone="ch-config-bootscripts udev-bootscripts">
             <primary sortas="d-udev">udev</primary>
           </indexterm>
