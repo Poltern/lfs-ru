@@ -44,7 +44,7 @@ EOF</userinput></screen>
 
   </sect2>
 
-  <sect2>
+  <sect2 id='systemd-no-tmpfs'>
     <title>Отключение tmpfs для /tmp</title>
 
     <para>По умолчанию каталог <filename class="directory">/tmp</filename> монтируется как
@@ -279,7 +279,7 @@ EOF</userinput></screen>
           <emphasis>Отключить во время сборки</emphasis>: вы можете запретить завершение процессов 
 		  при сборке systemd, добавив ключ <parameter>-Ddefault-kill-user-processes=false</parameter> 
 		  в команде <command>meson</command> для systemd. Это полностью отключает возможность systemd 
-		  убивать пользовательские процессы во время сеанса.
+		  убивать пользовательские процессы в конце сеанса.
         </para>
       </listitem>
     </itemizedlist>
