@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="afterlfs">
+  <?dbhtml filename="afterlfs.html"?>
+
+  <title>Getting Started After LFS</title>
+
+  <sect2>
+  <title>Deciding what to do next</title>
+
+     <para>
+       Now that LFS is complete and you have a bootable system, what do you do?
+       The next step is to decide how to use it. Generally, there are two broad
+       categories to consider: workstation or server. Indeed, these categories
+       are not mutually exclusive. The applications needed for each category
+       can be combined onto a single system, but let's look at them separately
+       for now.
+     </para>
+
+     <para>
+        A server is the simpler category. Generally this consists of a web
+        server such as the
+        <ulink url="&blfs-book;server/apache.html">Apache HTTP Server</ulink>
+        and a database server such as
+        <ulink url="&blfs-book;server/mariadb.html">MariaDB</ulink>.
+        However other services are possible. The operating system
+        embedded in a single use device falls into this category.
+     </para>
+
+     <para>
+        On the other hand, a workstation is much more complex. It generally
+        requires a graphical user environment such as
+        <ulink url="&blfs-book;lxde/lxde.html">LXDE</ulink>,
+        <ulink url="&blfs-book;xfce/xfce.html">XFCE</ulink>,
+        <ulink url="&blfs-book;kde/kde.html">KDE</ulink>, or
+        <ulink url="&blfs-book;gnome/gnome.html">Gnome</ulink>
+        based on a basic
+        <ulink url="&blfs-book;x/installing.html">graphical environment</ulink>
+        and several graphical based applications such as the
+        <ulink url="&blfs-book;xsoft/firefox.html">Firefox web browser</ulink>,
+        <ulink url="&blfs-book;xsoft/thunderbird.html">Thunderbird email client</ulink>,
+        or
+        <ulink url="&blfs-book;xsoft/libreoffice.html">LibreOffice office suite</ulink>.
+        These applications require many (several hundred depending on
+        desired capabilities) more packages of support applications and
+        libraries.
+     </para>
+
+     <para>
+        In addition to the above, there is a set of applications for system
+        management for all kinds of systems. These applications are all in the
+        BLFS book. Not all packages are needed in every environments. For
+        example <ulink url="&blfs-book;basicnet/dhcpcd.html">dhcpcd</ulink>, is
+        not normally appropriate for a server and <ulink
+        url="&blfs-book;basicnet/wireless_tools.html">wireless_tools</ulink>,
+        are normally only useful for a laptop system. 
+     </para>
+
+  </sect2>
+
+  <sect2>
+  <title>Working in a basic LFS environment</title>
+
+    <para>
+      When you initially boot into LFS, you have all the internal tools to build
+      additional packages. Unfortunately, the user environment is quite sparse.
+      There are a couple of ways to improve this:
+    </para>
+
+  <sect3>
+  <title>Work from the LFS host in chroot</title>
+
+    <para>
+      This method provides a complete graphical environment where a full
+      featured browser and copy/paste capabilities are available. This method
+      allows using applications like the host's version of wget to download
+      package sources to a location available when working in the chroot
+      envirnment.
+    </para>
+
+    <para>
+       In order to properly build packages in chroot, you will also need to
+       remember to mount the virtual file systems if they are not already
+       mounted. One way to do this is to create a script on the
+       <emphasis role="bold">HOST</emphasis> system:
+    </para>
+
+<screen><command>cat &gt; ~/mount-virt.sh &lt;&lt; "EOF"
+#!/bin/bash
+
+function mountbind
+{
+   if ! mountpoint $LFS/$1 >/dev/null; then
+     $SUDO mount --bind /$1 $LFS/$1
+     echo $LFS/$1 mounted
+   else
+     echo $LFS/$1 already mounted
+   fi
+}
+
+function mounttype
+{
+   if ! mountpoint $LFS/$1 >/dev/null; then
+     $SUDO mount -t $2 $3 $4 $5 $LFS/$1
+     echo $LFS/$1 mounted
+   else
+     echo $LFS/$1 already mounted
+   fi
+}
+
+if [ $EUID -ne 0 ]; then
+  SUDO=sudo
+else
+  SUDO=""
+fi
+
+if [ x$LFS == x ]; then
+  echo "LFS not set"
+  exit 1
+fi
+
+mountbind dev
+mounttype dev/pts devpts devpts -o gid=5,mode=620
+mounttype proc    proc   proc
+mounttype sys     sysfs  sysfs
+mounttype run     tmpfs  run
+if [ -h $LFS/dev/shm ]; then
+  mkdir -pv $LFS/$(readlink $LFS/dev/shm)
+else
+  mounttype dev/shm tmpfs tmpfs -o nosuid,nodev
+fi 
+
+#mountbind usr/src
+#mountbind boot
+#mountbind home
+EOF</command></screen>
+
+    <para>
+       Note that the last three commands in the script are commented out. These
+       are useful if those directories are mounted as separate partitions on the
+       host system and will be mounted when booting the completed LFS/BLFS system.
+    </para>
+
+    <para>
+        The script can be run with <command>bash ~/mount-virt.sh</command> as
+        either a regular user (recommended) or as &root;. If run as a regular
+        user, sudo is required on the host system.
+    </para>
+
+    <para>
+        Another issue pointed out by the script is where to store downloaded
+        package files. This location is arbitrary. It can be in a regular
+        user's home directory such as ~/sources or in a global location like
+        /usr/src. Our recommendation is not to mix BLFS sources and LFS sources
+        in (from the chroot environment) /sources. In any case, the packages
+        must be accessible inside the chroot environment.
+    </para>
+
+    <para>
+        A last convenience feature presented here is to streamline the process
+        of entering the chroot environment. This can be done with an alias
+        placed in a user's ~/.bashrc file on the host system:
+    </para>
+
+<screen><command>alias lfs='sudo /usr/sbin/chroot /mnt/lfs /usr/bin/env -i HOME=/root TERM="$TERM" PS1="\u:\w\\\\$ "
+PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
+
+     <para>
+       This alias is a little tricky because of the quoting and levels of
+       backslash characters. It must be all on a single line. The above command
+       has been split in two for presentation purposes.
+    </para>
+
+  </sect3>
+
+  <sect3>
+  <title>Work remotely via ssh</title>
+
+    <para>
+       This method also provides a full graphical environment, but first
+       requires installing
+        <ulink url="&blfs-book;postlfs/openssh.html">sshd</ulink> and
+        <ulink url="&blfs-book;basicnet/wget.html">wget</ulink>
+       on the LFS system, usually in chroot. It also requires a second
+       computer. This method has the advantage of being simple by not requiring
+       the complexity of the chroot environment. It also uses your LFS built
+       kernel for all additional packages and still provides a complete system
+       for installing packages.
+    </para>
+
+  </sect3>
+
+  <sect3>
+  <title>Work from the LFS command line</title>
+
+    <para>
+       This method requires installing
+        <ulink url="&blfs-book;general/libtasn1.html">libtasn1</ulink>,
+        <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
+        <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink>,
+        <ulink url="&blfs-book;basicnet/wget.html">wget</ulink>,
+        <ulink url="&blfs-book;general/gpm.html">gpm</ulink>, and
+        <ulink url="&blfs-book;basicnet/links.html">links</ulink>
+        (or <ulink url="&blfs-book;basicnet/lynx.html">lynx</ulink>)
+       in chroot and then rebooting into the new LFS system. At this
+       point the default system has six virtual consoles. Switching
+       consoles is as easy as using the
+       <keycombo>
+         <keycap>Alt</keycap>
+         <keycap>Fx</keycap>
+       </keycombo>
+       key combinations where <keycap>Fx</keycap> is
+       between <keycap>F1</keycap> and <keycap>F6</keycap>.
+       The
+       <keycombo>
+         <keycap>Alt</keycap>
+         <keycap function='left'/>
+       </keycombo>
+       and
+       <keycombo>
+         <keycap>Alt</keycap>
+         <keycap function='right'/>
+       </keycombo>
+       combinations also will change the console.
+     </para>
+
+     <para>
+       At this point you can log into two different virtual consoles and run
+       the links or lynx browser in one console and bash in the other. GPM
+       then allows copying commands from the browser with the left mouse
+       button, switching consoles, and pasting into the other console.
+      </para>
+
+      <note>
+        <para>
+          As a side note, switching of virtual consoles can also be done from
+          an X Window instance with the
+          <keycombo>
+            <keycap>Ctrl</keycap>
+            <keycap>Alt</keycap>
+            <keycap>Fx</keycap>
+          </keycombo>
+          key combination, but the mouse copy operation does not work
+          between the graphical interface and a virtual console. You can
+          return to the X Window display with the
+          <keycombo>
+            <keycap>Ctrl</keycap>
+            <keycap>Alt</keycap>
+            <keycap>Fx</keycap>
+          </keycombo>
+          combination, where <keycap>Fx</keycap> is usually 
+          <keycap>F1</keycap> but may be <keycap>F7</keycap>.
+        </para>
+      </note>
+
+  </sect3>
+
+  </sect2>
+
+
+</sect1>

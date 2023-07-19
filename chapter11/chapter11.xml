@@ -15,5 +15,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="getcounted.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="reboot.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="whatnow.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="afterlfs.xml"/>
 
 </chapter>
