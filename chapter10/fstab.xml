@@ -32,6 +32,7 @@ sysfs          /sys         sysfs    nosuid,noexec,nodev 0     0
 devpts         /dev/pts     devpts   gid=5,mode=620      0     0
 tmpfs          /run         tmpfs    defaults            0     0
 devtmpfs       /dev         devtmpfs mode=0755,nosuid    0     0
+tmpfs          /dev/shm     tmpfs    nosuid,nodev        0     0
 
 # End /etc/fstab</literal>
 EOF</userinput></screen>
@@ -97,7 +98,7 @@ EOF</userinput></screen>
   файловых систем во время настройки ядра. Соответствующие параметры называются
   <quote>Default NLS Option</quote> (<option>CONFIG_NLS_DEFAULT)</option>,
   <quote>Default Remote NLS Option</quote> (<option>CONFIG_SMB_NLS_DEFAULT</option>),
-  <quote>Default codepage for FAT</quote> (<option>CONFIG_FAT_DEFAULT_CODEPAGE</option>), и
+  <quote>Default codepage for FAT</quote> (<option>CONFIG_FAT_DEFAULT_CODEPAGE</option>) и
   <quote>Default iocharset for FAT</quote> (<option>CONFIG_FAT_DEFAULT_IOCHARSET</option>).
   Нет возможности указать эти параметры для файловой системы ntfs во время компиляции ядра.</para>
 
