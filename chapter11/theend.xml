@@ -57,7 +57,7 @@ PRETTY_NAME="Linux From Scratch &version;"
 VERSION_CODENAME="&lt;your name here&gt;"
 EOF</userinput></screen>
 
-  <para>Обязательно внесите в поля 'DISTRIB_CODENAME' и 'VERSION_CODENAME' 
-  уникальное название вашей новой системы, на ваше усмотрение.</para>
+  <para>Обязательно настройте значения 'DISTRIB_CODENAME' и 'VERSION_CODENAME',  
+  чтобы сделать название вашей новой системы уникальным.</para>
 
 </sect1>
