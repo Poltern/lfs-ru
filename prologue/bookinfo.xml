@@ -29,7 +29,7 @@
       <surname>Lucas</surname>
     </author>
     <author>
-      <firstname>Технический перевод: Владимир</firstname>
+      <firstname>Автор перевода: Владимир</firstname>
       <surname>Перцев</surname>
     </author>
   </authorgroup>
@@ -41,7 +41,7 @@
 
   <legalnotice>
 
-    <para>Авторские права &copy; &copyrightdate;, Gerard Beekmans</para>
+    <!--<para>Авторские права &copy; &copyrightdate;, Gerard Beekmans</para>-->
 
     <para>Все права защищены.</para>
 
