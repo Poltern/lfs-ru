@@ -11,15 +11,11 @@
   <title>Перезагрузка системы</title>
 
   <para>Теперь, когда все программное обеспечение установлено, пришло время перезагрузить 
-  ваш компьютер. Однако вы должны знать о нескольких вещах. Система, которую вы создали в 
-  этой книге, довольно минималистична и, скорее всего, не будет обладать функциональностью, 
-  необходимой вам для дальнейшей работы. Установив несколько дополнительных пакетов из 
-  книги BLFS, пока вы находитесь в текущей среде chroot, вы сможете получить гораздо больше 
-  возможностей для продолжения работы после перезагрузки в новой системе LFS. Вот некоторые 
+  ваш компьютер. Однако есть несколько вещей, которые нужно проверить. Вот некоторые 
   предложения:</para>
 
   <itemizedlist>
-
+<!--
     <listitem><para>Текстовый браузер, например, <ulink
     url='&blfs-book;basicnet/lynx.html'>Lynx</ulink>
     позволит вам легко просматривать книгу BLFS в одном окне виртуального терминала, по мере 
@@ -54,13 +50,13 @@
      установите <ulink
     url='&blfs-book;basicnet/wpa_supplicant.html'>wpa_supplicant</ulink>.
     </para></listitem>
-
+-->
     <listitem><para>Установить <ulink
     url='&blfs-book;postlfs/firmware.html'>прошивки</ulink>, если они необходимы для правильной 
 	работы вашего оборудования.
     </para></listitem>
 
-    <listitem><para>И наконец, обзор следующих файлов конфигурации будет уместным на данном этапе.</para>
+    <listitem><para>На данном этапе также уместно ознакомиться со следующими конфигурационными файлами.</para>
 
       <itemizedlist>
         <listitem><para>/etc/bashrc                  </para></listitem>
@@ -78,19 +74,16 @@
     </listitem>
   </itemizedlist>
 
-  <para>Теперь, после всего, давайте перейдём к процессу загрузки нашей новой, созданной системы LFS. 
-  Для начала, выйдем из chroot-окружения :</para>
+  <para>Теперь, после всего, давайте перейдём к первой загрузке нашей новой системы LFS. 
+  Для начала, выйдем из chroot-окружения:</para>
 
 <screen><userinput>logout</userinput></screen>
-<!-- We need to show the user the details...
-  <para>Unmount the LFS file system hierarchy:</para>
-
-<screen><userinput>umount -Rv $LFS</userinput></screen>
--->
+<!-- We need to show the user the details...-->
 
   <para>Затем размонтируйте виртуальные файловые системы:</para>
 
 <screen><userinput>umount -v $LFS/dev/pts
+mountpoint -q $LFS/dev/shm &amp;&amp; umount $LFS/dev/shm
 umount -v $LFS/dev
 umount -v $LFS/run
 umount -v $LFS/proc
@@ -99,22 +92,22 @@ umount -v $LFS/sys</userinput></screen>
   <para>Если было создано несколько разделов, размонтируйте их перед размонтированием 
   основного, вот так:</para>
 
-<screen role="nodump"><userinput>umount -v $LFS/usr
-umount -v $LFS/home
-</userinput></screen>
+<screen role="nodump"><userinput>umount -v $LFS/home
+umount -v $LFS/usr</userinput></screen>
 
   <para>Размонтируйте саму файловую систему LFS:</para>
 
 <screen role="nodump"><userinput>umount -v $LFS</userinput></screen>
 
-  <para>Теперь, выполним перезагрузку системы:</para>
+  <para>Теперь, выполните перезагрузку системы.</para>
 
-<screen role="nodump"><userinput>shutdown -r now</userinput></screen>
+<!--<screen role="nodump"><userinput>shutdown -r now</userinput></screen>-->
 
-  <para>Предполагая, что загрузчик GRUB был настроен, как описано выше, пункт меню
+  <para>Предполагается, что загрузчик GRUB был настроен ранее, поэтому пункт меню
    <emphasis>LFS &version;</emphasis> будет загружен автоматически.</para>
 
-  <para>После завершения перезагрузки система LFS будет готова к использованию, и 
-  при необходимости может быть установлено дополнительное программное обеспечение.</para>
+  <para>После завершения перезагрузки система LFS будет готова к использованию, и, 
+  при необходимости, в систему может быть установлено дополнительное программное 
+  обеспечение.</para>
 
 </sect1>
