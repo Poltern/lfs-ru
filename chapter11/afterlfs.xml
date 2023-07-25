@@ -164,7 +164,7 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
 
      <para>
        Этот псевдоним немного сложен для восприятия из-за кавычек и слэшей. Всё это должно 
-	   быть в одной строке. Вышеупомянутая команда была разделена на две части для презентационных 
+	   быть в одной строке. Вышеуказанная команда была разделена на две части для презентационных 
 	   целей.
     </para>
 
@@ -198,15 +198,16 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
         <ulink url="&blfs-book;general/gpm.html">gpm</ulink> и
         <ulink url="&blfs-book;basicnet/links.html">links</ulink>
         (или <ulink url="&blfs-book;basicnet/lynx.html">lynx</ulink>)
-       в chroot, а затем перезагрузитесь в новую систему LFS. На данный момент система 
+       в chroot, а затем перезагрузки в новую систему LFS. На данный момент система 
 	   по умолчанию имеет шесть виртуальных консолей. Переключать консоли так же просто, 
-	   как использовать
+	   как использовать комбинации клавиш 
        <keycombo>
          <keycap>Alt</keycap>
          <keycap>Fx</keycap>
        </keycombo>
-       комбинации клавиш, где <keycap>Fx</keycap> это 
+       , где <keycap>Fx</keycap> это 
        клавиши от <keycap>F1</keycap> до <keycap>F6</keycap>.
+	   Комбинации 
        <keycombo>
          <keycap>Alt</keycap>
          <keycap function='left'/>
@@ -216,35 +217,35 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
          <keycap>Alt</keycap>
          <keycap function='right'/>
        </keycombo>
-       комбинации также изменят консоль.
+       также переключают консоль.
      </para>
 
      <para>
        На этом этапе вы можете войти в две разные виртуальные консоли и запустить браузер 
-	   links или lynx в одной консоли и bash в другой. А GPM позволяет копировать команды 
+	   links или lynx в одной консоли и bash в другой. GPM позволяет копировать команды 
 	   из браузера с помощью левой кнопки мыши, переключать консоли и вставлять их в другую 
 	   консоль.
       </para>
 
       <note>
         <para>
-          В качестве примечания, переключение виртуальных консолей также может быть 
-		  выполнено из экземпляра X Window с помощью
+          Вместо примечания: переключение виртуальных консолей также может быть 
+		  выполнено из экземпляра X Window с помощью комбинации клавиш
           <keycombo>
             <keycap>Ctrl</keycap>
             <keycap>Alt</keycap>
             <keycap>Fx</keycap>
           </keycombo>
-          комбинации клавиш, но операция копирования мышью не работает между графическим 
+          ,но операция копирования мышью не работает между графическим 
 		  интерфейсом и виртуальной консолью. Вы можете вернуться к дисплею X Window с 
-		  помощью
+		  помощью комбинации
           <keycombo>
             <keycap>Ctrl</keycap>
             <keycap>Alt</keycap>
             <keycap>Fx</keycap>
           </keycombo>
-          комбинация, где <keycap>Fx</keycap> обычно 
-          <keycap>F1</keycap> но может быть <keycap>F7</keycap>.
+          ,где <keycap>Fx</keycap> обычно 
+          <keycap>F1</keycap>, но может быть <keycap>F7</keycap>.
         </para>
       </note>
 
