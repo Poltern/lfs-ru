@@ -8,86 +8,78 @@
 <sect1 id="afterlfs">
   <?dbhtml filename="afterlfs.html"?>
 
-  <title>Getting Started After LFS</title>
+  <title>Начало работы после сборки LFS</title>
 
   <sect2>
-  <title>Deciding what to do next</title>
+  <title>Что делать дальше?</title>
 
      <para>
-       Now that LFS is complete and you have a bootable system, what do you do?
-       The next step is to decide how to use it. Generally, there are two broad
-       categories to consider: workstation or server. Indeed, these categories
-       are not mutually exclusive. The applications needed for each category
-       can be combined onto a single system, but let's look at them separately
-       for now.
+       Теперь, когда LFS собрана и у вас есть загружаемая система, необходимо решить, что же 
+	   делать дальше? Следующий шаг - определиться, как использовать систему. Как правило, следует 
+	   учитывать две широкие категории: рабочая станция или сервер. Действительно, эти категории 
+	   не являются взаимоисключающими. Приложения, необходимые для каждой категории, можно объединить 
+	   в одну систему, но пока давайте рассмотрим их по отдельности.
      </para>
 
      <para>
-        A server is the simpler category. Generally this consists of a web
-        server such as the
-        <ulink url="&blfs-book;server/apache.html">Apache HTTP Server</ulink>
-        and a database server such as
-        <ulink url="&blfs-book;server/mariadb.html">MariaDB</ulink>.
-        However other services are possible. The operating system
-        embedded in a single use device falls into this category.
+        Сервер — более простая категория. Как правило, это веб-сервер, такой как 
+		<ulink url="&blfs-book;server/apache.html">Apache</ulink>, и сервер баз данных, например, 
+		<ulink url="&blfs-book;server/mariadb.html">MariaDB</ulink>. Однако возможны и другие 
+		варианты. К этой же категории относятся операционные системы для встраиваемых устройств.
      </para>
 
      <para>
-        On the other hand, a workstation is much more complex. It generally
-        requires a graphical user environment such as
+        Рабочая станция же, гораздо сложнее. Обычно для нее требуется среда рабочего стола, 
+        например,
         <ulink url="&blfs-book;lxde/lxde.html">LXDE</ulink>,
         <ulink url="&blfs-book;xfce/xfce.html">XFCE</ulink>,
-        <ulink url="&blfs-book;kde/kde.html">KDE</ulink>, or
+        <ulink url="&blfs-book;kde/kde.html">KDE</ulink>, или
         <ulink url="&blfs-book;gnome/gnome.html">Gnome</ulink>
-        based on a basic
-        <ulink url="&blfs-book;x/installing.html">graphical environment</ulink>
-        and several graphical based applications such as the
-        <ulink url="&blfs-book;xsoft/firefox.html">Firefox web browser</ulink>,
-        <ulink url="&blfs-book;xsoft/thunderbird.html">Thunderbird email client</ulink>,
-        or
-        <ulink url="&blfs-book;xsoft/libreoffice.html">LibreOffice office suite</ulink>.
-        These applications require many (several hundred depending on
-        desired capabilities) more packages of support applications and
-        libraries.
+        основанные на базовом
+        <ulink url="&blfs-book;x/installing.html">графическом окружении</ulink>
+        и набор графических приложений, таких как 
+        <ulink url="&blfs-book;xsoft/firefox.html">веб-браузер Firefox</ulink>,
+        <ulink url="&blfs-book;xsoft/thunderbird.html">почтовый клиент Thunderbird</ulink>,
+        или 
+        <ulink url="&blfs-book;xsoft/libreoffice.html">пакет офисных приложений LibreOffice</ulink>.
+        Для этих приложений требуется множество (может быть несколько сотен, в зависимости от ваших 
+		потребностей) пакетов вспомогательных приложений и библиотек.
      </para>
 
      <para>
-        In addition to the above, there is a set of applications for system
-        management for all kinds of systems. These applications are all in the
-        BLFS book. Not all packages are needed in every environments. For
-        example <ulink url="&blfs-book;basicnet/dhcpcd.html">dhcpcd</ulink>, is
-        not normally appropriate for a server and <ulink
-        url="&blfs-book;basicnet/wireless_tools.html">wireless_tools</ulink>,
-        are normally only useful for a laptop system. 
+        В дополнение к вышесказанному, существует набор приложений для управления системой. Все эти 
+		приложения есть в справочнике BLFS, но не все пакеты необходимы в каждом конкретном окружении. 
+		Например <url-адрес ulink="&blfs-book;basicnet/dhcpcd.html ">клиент dhcpcd</ulink>, обычно 
+		не требуется на серверах или <url ulink="&blfs-book;basicnet/wireless_tools.html ">управление 
+		параметрами беспроводныъ сетей</ulink> - полезно только для ноутбуков и других портативных 
+		систем. 
      </para>
 
   </sect2>
 
   <sect2>
-  <title>Working in a basic LFS environment</title>
+  <title>Работа в базовой среде LFS</title>
 
     <para>
-      When you initially boot into LFS, you have all the internal tools to build
-      additional packages. Unfortunately, the user environment is quite sparse.
-      There are a couple of ways to improve this:
+      Когда вы впервые загружаетесь в LFS, у вас есть все необходимые инструменты для сборки 
+	  дополнительных пакетов. К сожалению, набор программ пользовательского окружения довольно 
+	  скудный. Есть несколько способов исправить это:
     </para>
 
   <sect3>
-  <title>Work from the LFS host in chroot</title>
+  <title>Работа с хоста LFS в chroot</title>
 
     <para>
-      This method provides a complete graphical environment where a full
-      featured browser and copy/paste capabilities are available. This method
-      allows using applications like the host's version of wget to download
-      package sources to a location available when working in the chroot
-      envirnment.
+      Этот метод обеспечивает полноценную графическую среду, в которой доступен полнофункциональный 
+	  браузер и возможности копирования/вставки. Также он позволяет использовать приложения хоста, 
+	  такие как wget, для загрузки исходных текстов пакетов в каталог, доступный при работе в среде 
+	  chroot.
     </para>
 
     <para>
-       In order to properly build packages in chroot, you will also need to
-       remember to mount the virtual file systems if they are not already
-       mounted. One way to do this is to create a script on the
-       <emphasis role="bold">HOST</emphasis> system:
+       Чтобы правильно собрать пакеты в chroot, вам необходимо не забыть смонтировать виртуальные 
+	   файловые системы, если они еще не смонтированы. Один из способов сделать это — создать 
+	   скрипт в <emphasis role="bold">ХОСТОВОЙ</emphasis> системе:
     </para>
 
 <screen><command>cat &gt; ~/mount-virt.sh &lt;&lt; "EOF"
@@ -141,120 +133,118 @@ fi
 EOF</command></screen>
 
     <para>
-       Note that the last three commands in the script are commented out. These
-       are useful if those directories are mounted as separate partitions on the
-       host system and will be mounted when booting the completed LFS/BLFS system.
+       Обратите внимание, что последние три команды в скрипте закомментированы. Они пригодятся, 
+	   если эти каталоги монтируются как отдельные разделы в хост-системе и будут монтироваться 
+	   при загрузке завершенной системы LFS/BLFS.
     </para>
 
     <para>
-        The script can be run with <command>bash ~/mount-virt.sh</command> as
-        either a regular user (recommended) or as &root;. If run as a regular
-        user, sudo is required on the host system.
+        Скрипт можно запустить с помощью <command>bash ~/mount-virt.sh </command> либо от имени 
+		обычного пользователя (рекомендуется), либо от имени &root;. При запуске от имени 
+		обычного пользователя в хост-системе требуется sudo.
     </para>
 
     <para>
-        Another issue pointed out by the script is where to store downloaded
-        package files. This location is arbitrary. It can be in a regular
-        user's home directory such as ~/sources or in a global location like
-        /usr/src. Our recommendation is not to mix BLFS sources and LFS sources
-        in (from the chroot environment) /sources. In any case, the packages
-        must be accessible inside the chroot environment.
+        Еще одна проблема, на которую указывает скрипт, заключается в том, где хранить 
+		загруженные файлы пакетов. Это местоположение является произвольным. Оно может 
+		находиться в домашнем каталоге обычного пользователя, таком как ~/sources, или 
+		в глобальном каталоге /usr/src. Наша рекомендация - не смешивать источники BLFS 
+		и источники LFS в (из среды chroot) /sources. В любом случае, пакеты должны быть 
+		доступны внутри среды chroot.
     </para>
 
     <para>
-        A last convenience feature presented here is to streamline the process
-        of entering the chroot environment. This can be done with an alias
-        placed in a user's ~/.bashrc file on the host system:
+        Последняя удобная функция, представленная здесь, предназначена для упрощения 
+		процесса входа в среду chroot. Это можно сделать с помощью псевдонима, помещенного 
+		в пользовательский файл ~/.bashrc в хост-системе:
     </para>
 
 <screen><command>alias lfs='sudo /usr/sbin/chroot /mnt/lfs /usr/bin/env -i HOME=/root TERM="$TERM" PS1="\u:\w\\\\$ "
 PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
 
      <para>
-       This alias is a little tricky because of the quoting and levels of
-       backslash characters. It must be all on a single line. The above command
-       has been split in two for presentation purposes.
+       Этот псевдоним немного сложен для восприятия из-за кавычек и слэшей. Всё это должно 
+	   быть в одной строке. Вышеупомянутая команда была разделена на две части для презентационных 
+	   целей.
     </para>
 
   </sect3>
 
   <sect3>
-  <title>Work remotely via ssh</title>
+  <title>Работа удаленно по ssh</title>
 
     <para>
-       This method also provides a full graphical environment, but first
-       requires installing
-        <ulink url="&blfs-book;postlfs/openssh.html">sshd</ulink> and
+       Этот метод также предоставляет полноценную графическую среду, но сначала требует 
+	   установки
+        <ulink url="&blfs-book;postlfs/openssh.html">sshd</ulink> и 
         <ulink url="&blfs-book;basicnet/wget.html">wget</ulink>
-       on the LFS system, usually in chroot. It also requires a second
-       computer. This method has the advantage of being simple by not requiring
-       the complexity of the chroot environment. It also uses your LFS built
-       kernel for all additional packages and still provides a complete system
-       for installing packages.
+       в системе LFS, обычно в chroot. Кроме этого потребуется второй компьютер. 
+	   Преимущество этого метода в том, что он прост, поскольку не требует сложной среды 
+	   chroot. Он также использует собранное вами ядро LFS для всех дополнительных пакетов 
+	   и по-прежнему предоставляет полную систему для установки пакетов.
     </para>
 
   </sect3>
 
   <sect3>
-  <title>Work from the LFS command line</title>
+  <title>Работа из командной строки LFS</title>
 
     <para>
-       This method requires installing
+       Этот метот требует установки 
         <ulink url="&blfs-book;general/libtasn1.html">libtasn1</ulink>,
         <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
         <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink>,
         <ulink url="&blfs-book;basicnet/wget.html">wget</ulink>,
-        <ulink url="&blfs-book;general/gpm.html">gpm</ulink>, and
+        <ulink url="&blfs-book;general/gpm.html">gpm</ulink> и
         <ulink url="&blfs-book;basicnet/links.html">links</ulink>
-        (or <ulink url="&blfs-book;basicnet/lynx.html">lynx</ulink>)
-       in chroot and then rebooting into the new LFS system. At this
-       point the default system has six virtual consoles. Switching
-       consoles is as easy as using the
+        (или <ulink url="&blfs-book;basicnet/lynx.html">lynx</ulink>)
+       в chroot, а затем перезагрузитесь в новую систему LFS. На данный момент система 
+	   по умолчанию имеет шесть виртуальных консолей. Переключать консоли так же просто, 
+	   как использовать
        <keycombo>
          <keycap>Alt</keycap>
          <keycap>Fx</keycap>
        </keycombo>
-       key combinations where <keycap>Fx</keycap> is
-       between <keycap>F1</keycap> and <keycap>F6</keycap>.
-       The
+       комбинации клавиш, где <keycap>Fx</keycap> это 
+       клавиши от <keycap>F1</keycap> до <keycap>F6</keycap>.
        <keycombo>
          <keycap>Alt</keycap>
          <keycap function='left'/>
        </keycombo>
-       and
+       и
        <keycombo>
          <keycap>Alt</keycap>
          <keycap function='right'/>
        </keycombo>
-       combinations also will change the console.
+       комбинации также изменят консоль.
      </para>
 
      <para>
-       At this point you can log into two different virtual consoles and run
-       the links or lynx browser in one console and bash in the other. GPM
-       then allows copying commands from the browser with the left mouse
-       button, switching consoles, and pasting into the other console.
+       На этом этапе вы можете войти в две разные виртуальные консоли и запустить браузер 
+	   links или lynx в одной консоли и bash в другой. А GPM позволяет копировать команды 
+	   из браузера с помощью левой кнопки мыши, переключать консоли и вставлять их в другую 
+	   консоль.
       </para>
 
       <note>
         <para>
-          As a side note, switching of virtual consoles can also be done from
-          an X Window instance with the
+          В качестве примечания, переключение виртуальных консолей также может быть 
+		  выполнено из экземпляра X Window с помощью
           <keycombo>
             <keycap>Ctrl</keycap>
             <keycap>Alt</keycap>
             <keycap>Fx</keycap>
           </keycombo>
-          key combination, but the mouse copy operation does not work
-          between the graphical interface and a virtual console. You can
-          return to the X Window display with the
+          комбинации клавиш, но операция копирования мышью не работает между графическим 
+		  интерфейсом и виртуальной консолью. Вы можете вернуться к дисплею X Window с 
+		  помощью
           <keycombo>
             <keycap>Ctrl</keycap>
             <keycap>Alt</keycap>
             <keycap>Fx</keycap>
           </keycombo>
-          combination, where <keycap>Fx</keycap> is usually 
-          <keycap>F1</keycap> but may be <keycap>F7</keycap>.
+          комбинация, где <keycap>Fx</keycap> обычно 
+          <keycap>F1</keycap> но может быть <keycap>F7</keycap>.
         </para>
       </note>
 
