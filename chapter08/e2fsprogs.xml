@@ -198,7 +198,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
         <term><command>chattr</command></term>
         <listitem>
           <para>Изменяет атрибуты файлов в файловых системах 
-		  <systemitem class="файловая система">ext{234}</systemitem></para>
+		  <systemitem class="filesystem">ext{234}</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs chattr">
             <primary sortas="b-chattr">chattr</primary>
           </indexterm>

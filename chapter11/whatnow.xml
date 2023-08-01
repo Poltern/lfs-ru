@@ -37,8 +37,8 @@
         </listitem>
 
         <listitem>
-          <ulink url="https://seclists.org/oss-sec/">Список рассылки по безопасности ПО с 
-		  открытым исходным кодом</ulink>
+          <para><ulink url="https://seclists.org/oss-sec/">Список рассылки по безопасности ПО с 
+		  открытым исходным кодом</ulink></para>
 
           <para>Это список рассылки для обсуждения недостатков безопасности, концепций 
 		  и практик в сообществе Open Source.</para>
