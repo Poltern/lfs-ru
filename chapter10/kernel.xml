@@ -100,20 +100,30 @@
       <para>Обязательно включите/отключите/настройте следующие параметры, иначе система может 
 	  работаеть некорректно или вообще не загружаться:</para>
 
-
-      <screen role="nodump" revision="sysv">General setup -->
+      <screen role="nodump" revision="sysv">Processor type and features ---&gt;
+   [*] Build a relocatable kernel [CONFIG_RELOCATABLE]
+   [*]   Randomize the address of the kernel image (KASLR) [CONFIG_RANDOMIZE_BASE]
+General setup ---&gt;
    [ ] Compile the kernel with warnings as errors [CONFIG_WERROR]
    &lt; &gt; Enable kernel headers through /sys/kernel/kheaders.tar.xz [CONFIG_IKHEADERS]
+General architecture-dependent options  ---&gt;
+   [*] Stack Protector buffer overflow detection [CONFIG_STACKPROTECTOR]
+   [*]   Strong Stack Protector [CONFIG_STACKPROTECTOR_STRONG]
 Device Drivers  ---&gt;
   Graphics support ---&gt;
    Frame buffer Devices ---&gt;
-      [*] Support for frame buffer devices ----
+      &lt;*&gt; Support for frame buffer devices ---&gt;
+   Console display driver support ---&gt;
+      [*] Framebuffer Console support [CONFIG_FRAMEBUFFER_CONSOLE]
   Generic Driver Options  ---&gt;
    [ ] Support for uevent helper [CONFIG_UEVENT_HELPER]
    [*] Maintain a devtmpfs filesystem to mount at /dev [CONFIG_DEVTMPFS]
    [*]   Automount devtmpfs at /dev, after the kernel mounted the rootfs [CONFIG_DEVTMPFS_MOUNT]</screen>
 
-      <screen role="nodump" revision="systemd">General setup -->
+      <screen role="nodump" revision="systemd">Processor type and features ---&gt;
+   [*] Build a relocatable kernel [CONFIG_RELOCATABLE]
+   [*]   Randomize the address of the kernel image (KASLR) [CONFIG_RANDOMIZE_BASE]
+General setup ---&gt;
    [ ] Compile the kernel with warnings as errors [CONFIG_WERROR]
    [ ] Auditing Support [CONFIG_AUDIT]
    CPU/Task time and stats accounting ---&gt;
@@ -126,6 +136,8 @@ Device Drivers  ---&gt;
       [*] open by fhandle syscalls [CONFIG_FHANDLE]
 General architecture-dependent options  ---&gt;
    [*] Enable seccomp to safely compute untrusted bytecode [CONFIG_SECCOMP]
+   [*] Stack Protector buffer overflow detection [CONFIG_STACKPROTECTOR]
+   [*]   Strong Stack Protector [CONFIG_STACKPROTECTOR_STRONG]
 Networking support  ---&gt;
   Networking options  ---&gt;
    &lt;*&gt; The IPv6 protocol [CONFIG_IPV6]
@@ -141,6 +153,8 @@ Device Drivers  ---&gt;
   Graphics support ---&gt;
    Frame buffer Devices ---&gt;
       &lt;*&gt; Support for frame buffer devices ---&gt;
+   Console display driver support ---&gt;
+      [*] Framebuffer Console support [CONFIG_FRAMEBUFFER_CONSOLE]
 File systems  ---&gt;
    [*] Inotify support for userspace [CONFIG_INOTIFY_USER]
        Pseudo filesystems  ---&gt;
@@ -155,8 +169,6 @@ File systems  ---&gt;
 
       <screen role="nodump">Processor type and features ---&gt;
   [*] Support x2apic [CONFIG_X86_X2APIC]
-Memory Management options  ---&gt;
-  [ ] Enable userfaultfd() system call [CONFIG_USERFAULTFD]
 Device Drivers ---&gt;
   [*] PCI Support ---&gt; [CONFIG_PCI]
     [*] Message Signaled Interrupts (MSI and MSI-X) [CONFIG_PCI_MSI]
@@ -184,6 +196,13 @@ Device Drivers ---&gt;
     <variablelist>
       <title>Пояснения для выбранных выше параметров ядра:</title>
 
+      <varlistentry>
+        <term><parameter>Randomize the address of the kernel image (KASLR)</parameter></term>
+        <listitem>
+          <para>Включите ASLR для образа ядра, чтобы уменшить вероятность некоторых атак, 
+		  основанных на фиксированных адресах конфиденциальных данных или кода в ядре.</para>
+        </listitem>
+      </varlistentry>
 
       <varlistentry>
         <term>
@@ -206,6 +225,15 @@ Device Drivers ---&gt;
         <listitem>
           <para>Для сборки ядра с этим параметром необходим пакет <command>cpio</command>.
           <command>cpio</command> не устанавливается в LFS.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>Strong Stack Protector</parameter></term>
+        <listitem>
+          <para>Включите SSP для ядра. Мы включили его для всего пользовательского пространства 
+		  с помощью <parameter>--enable-default-ssp</parameter>, настроив GCC, но ядро не 
+		  использует настройки GCC по умолчанию для SSP. Мы включаем это явно здесь.</para>
         </listitem>
       </varlistentry>
 
@@ -234,6 +262,18 @@ Device Drivers ---&gt;
       </varlistentry>
 
       <varlistentry>
+        <term><parameter>Framebuffer Console support</parameter></term>
+        <listitem>
+          <para>Это параметр необходим для отображения консоли Linux на устройстве с фреймбуфером. 
+		  Чтобы ядро могло печатать отладочные сообщения на ранней стадии загрузки, его не следует 
+		  собирать как модуль (если только не будет использоваться initramfs). И, если 
+		  <option>CONFIG_DRM</option> (Direct Rendering Manager - Диспетчер прямого рендеринга) 
+		  включен, скорее всего, также должен быть включен <option>CONFIG_DRM_FBDEV_EMULATION</option> 
+		  (включить устаревшую поддержку fbdev для вашего modesetting драйвера).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><parameter>Support x2apic</parameter></term>
         <listitem>
           <para>Поддержка запуска 64-разрядного контроллера прерываний для x86 процессоров 
@@ -243,15 +283,6 @@ Device Drivers ---&gt;
         </listitem>
       </varlistentry>
 	  
-      <varlistentry>
-        <term><parameter>Enable userfaultfd() system call</parameter></term>
-        <listitem>
-          <para>Если этот параметр включен, уязвимость в системе безопасности ядра
-          Linux-&linux-version; не исправлена, и доступна для эксплуатации. Отключите 
-		  эту опцию, чтобы предотвратить эксплуатацию уязвимости. Этот системный вызов 
-		  не используется ни одной частью LFS или BLFS.</para>
-        </listitem>
-      </varlistentry>
 
     </variablelist>
 
@@ -283,12 +314,16 @@ Device Drivers ---&gt;
 	<filename class="directory">/boot</filename>.</para>
 
     <caution>
-      <para>Если хост система содержит отдельный раздел для каталога /boot, файлы скопированные ниже, 
-	  должны находится в нём. Самый простой способ это сделать -  выполнить монтирование каталога /boot 
-	  хост системы (вне chroot) к каталогу /mnt/lfs/boot перед тем, как продолжить. Из-под пользователя 
-	  &root; в <emphasis>хост системе</emphasis> выполните команду:</para>
+      <para>Если вы решили использовать отдельный &boot-dir; раздел для системы LFS (возможно, 
+	  общий раздел &boot-dir; с хост-дистрибутивом), скопированные ниже файлы должны быть 
+	  помещены туда. Самый простой способ сделать это — сначала создать запись для &boot-dir; 
+	  в &fstab;  (подробности читайте в предыдущем разделе), затем выполните следующую команду 
+	  от имени пользователя &root; в среде <emphasis>chroot</emphasis>:</para>
 
-<screen role="nodump"><userinput>mount --bind /boot /mnt/lfs/boot</userinput></screen>
+<screen role="nodump"><userinput>mount /boot</userinput></screen>
+
+      <para>Путь к узлу устройства в команде опущен, поскольку <command>mount</command> может 
+	  прочитать его из &fstab;.</para>
     </caution>
 
     <para>Путь к образу ядра может различаться в зависимости от используемой платформы. Имя файла, может 
