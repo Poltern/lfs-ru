@@ -342,8 +342,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="e4defrag">
         <term><command>e4defrag</command></term>
         <listitem>
-          <para>Онлайн дефрагментатор для файловой системы <systemitem 
-+          class="filesystem">ext4</systemitem></para>
+          <para>Онлайн дефрагментатор для файловой системы 
+		  <systemitem class="filesystem">ext4</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs e4defrag">
             <primary sortas="b-e4defrag">e4defrag</primary>
           </indexterm>
@@ -492,8 +492,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="resize2fs">
         <term><command>resize2fs</command></term>
         <listitem>
-          <para>Может использоваться для увеличения или уменьшения файловой системы <systemitem 
-+          class="filesystem">ext{234}</systemitem></para>
+          <para>Может использоваться для увеличения или уменьшения файловой системы 
+		  <systemitem class="filesystem">ext{234}</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs resize2fs">
             <primary sortas="b-resize2fs">resize2fs</primary>
           </indexterm>
