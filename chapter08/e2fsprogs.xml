@@ -503,8 +503,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="tune2fs">
         <term><command>tune2fs</command></term>
         <listitem>
-          <para>Позволяет настроить параметры для файловой системы <systemitem 
-+          class="filesystem">ext{234}</systemitem></para>
+          <para>Позволяет настроить параметры для файловой системы 
+		  <systemitem class="filesystem">ext{234}</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs tune2fs">
             <primary sortas="b-tune2fs">tune2fs</primary>
           </indexterm>
