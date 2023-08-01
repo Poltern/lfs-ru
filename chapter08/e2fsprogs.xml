@@ -254,8 +254,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
         <term><command>e2fsck</command></term>
         <listitem>
           <para>Используется для проверки и, при необходимости, восстановления
-		  файловых систем <systemitem
-+          class="filesystem">ext{234}</systemitem></para>
+		  файловых систем <systemitem class="filesystem">ext{234}</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs e2fsck">
             <primary sortas="b-e2fsck">e2fsck</primary>
           </indexterm>
@@ -265,7 +264,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="e2image">
         <term><command>e2image</command></term>
         <listitem>
-          <para>Используется для сохранения важных данных файловых систем <systemitem
+          <para>Используется для сохранения важных данных файловых систем <systemitem 
           class="filesystem">ext{234}</systemitem> в файл</para>
           <indexterm zone="ch-system-e2fsprogs e2image">
             <primary sortas="b-e2image">e2image</primary>
@@ -276,7 +275,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="e2label">
         <term><command>e2label</command></term>
         <listitem>
-          <para>Отображает или изменяет метку файловой системы в файловой системе <systemitem
+          <para>Отображает или изменяет метку файловой системы в файловой системе <systemitem 
           class="filesystem">ext{234}</systemitem> на данном устройстве.</para>
           <indexterm zone="ch-system-e2fsprogs e2label">
             <primary sortas="b-e2label">e2label</primary>
@@ -343,7 +342,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="e4defrag">
         <term><command>e4defrag</command></term>
         <listitem>
-          <para>Онлайн дефрагментатор для файловой системы <systemitem
+          <para>Онлайн дефрагментатор для файловой системы <systemitem 
 +          class="filesystem">ext4</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs e4defrag">
             <primary sortas="b-e4defrag">e4defrag</primary>
@@ -493,7 +492,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="resize2fs">
         <term><command>resize2fs</command></term>
         <listitem>
-          <para>Может использоваться для увеличения или уменьшения файловой системы <systemitem
+          <para>Может использоваться для увеличения или уменьшения файловой системы <systemitem 
 +          class="filesystem">ext{234}</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs resize2fs">
             <primary sortas="b-resize2fs">resize2fs</primary>
@@ -504,7 +503,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="tune2fs">
         <term><command>tune2fs</command></term>
         <listitem>
-          <para>Позволяет настроить параметры для файловой системы <systemitem
+          <para>Позволяет настроить параметры для файловой системы <systemitem 
 +          class="filesystem">ext{234}</systemitem></para>
           <indexterm zone="ch-system-e2fsprogs tune2fs">
             <primary sortas="b-tune2fs">tune2fs</primary>
