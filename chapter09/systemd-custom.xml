@@ -21,7 +21,8 @@
 	основными операциями systemd. Изначально все записи в этом файле закомментированы с 
 	указанием настроек по умолчанию. В этом файле может быть изменен уровень логирования, а также 
 	некоторые базовые настройки ведения файлов логов. Смотрите страницу руководства 
-	<filename>systemd-system.conf(5)</filename> для получения подробной информации по каждому параметру.</para>
+	<filename>systemd-system.conf(5)</filename> для получения подробной информации по каждому 
+	параметру.</para>
 
   </sect2>
 
@@ -38,9 +39,9 @@ cat &gt; /etc/systemd/system/getty@tty1.service.d/noclear.conf &lt;&lt; EOF
 TTYVTDisallocate=no</literal>
 EOF</userinput></screen>
 
-    <para>Сообщения, отображаемые при загрузке всегда можно просмотреть, используя команду
+    <para>Сообщения, отображаемые при загрузке всегда можно просмотреть, выполнив команду
     <userinput>journalctl -b</userinput> от имени пользователя 
-    <systemitem class="username">root</systemitem> user.</para>
+    <systemitem class="username">root</systemitem>.</para>
 
   </sect2>
 
@@ -182,7 +183,7 @@ EOF</userinput></screen>
        </listitem>
        <listitem>
          <para><command>journalctl -b[=ID] -r</command>: показывает записи журнала с момента последней 
-		 успешной загрузки (или для идентификатора загрузки) в обратном порядке хронологический порядоке.</para>
+		 успешной загрузки (или для идентификатора загрузки) в обратном порядке хронологический порядке.</para>
        </listitem>
        <listitem>
          <para><command>journalctl -f</command>: предоставляет функциональность, аналогичную tail -f 
@@ -267,7 +268,7 @@ EOF</userinput></screen>
       </listitem>
       <listitem>
         <para>
-          <emphasis>Включенить долгосрочные процессы в системе(глобально)</emphasis>:
+          <emphasis>Включить долгосрочные процессы в системе(глобально)</emphasis>:
           Вы можете установить <parameter>KillUserProcesses=no</parameter> в 
           <filename>/etc/systemd/logind.conf</filename> для включения долгосрочных процессов 
 		  глобально для всех пользователей. Преимуществом этого метода является то, что 

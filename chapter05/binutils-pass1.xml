@@ -81,7 +81,7 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>--prefix=$LFS/tools</parameter></term>
         <listitem>
-          <para>Указывает сценарию configure подготовить к установке пакет binutils в каталог <filename
+          <para>Указывает сценарию configure подготовить к установке пакет Binutils в каталог <filename
           class="directory">$LFS/tools</filename>.</para>
         </listitem>
       </varlistentry>

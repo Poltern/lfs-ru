@@ -91,7 +91,7 @@ EOF</userinput></screen>
     список серверов NTP, используемых <command>systemd-timesyncd</command> для синхронизации.</para>
 
     <para>Обратите внимание, что если системные часы установлены на местное время,
-    <command>systemd-timesyncd</command> не будет обновлять аппартные часы.</para>
+    <command>systemd-timesyncd</command> не будет обновлять аппаратные часы.</para>
 
   </sect2>
 

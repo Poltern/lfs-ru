@@ -124,7 +124,7 @@
       вызвать <command>/sbin/modprobe</command> с содержимым, которое находится в значении
       переменной окружения <envar>MODALIAS</envar> uevent (которое должно совпадать с
       содержимым файла <filename>modalias</filename> в sysfs), тем самым загружая все
-      модули, чьи псевдонимы совпадают в строке после расширение подстановочных
+      модули, чьи псевдонимы совпадают в строке после расширения подстановочных
       знаков</para>
 
       <para>В указанном примере, это означает, что в дополнение к <emphasis>snd-fm801</emphasis>
@@ -183,7 +183,7 @@
 	  будет исправлена в более поздних версиях ядра.</para>
 
       <para>Udev не предназначен для загрузки драйверов <quote>обёрток</quote>, таких как 
-      <emphasis>snd-pcm-oss</emphasis>и неаппаратных драйверов, например, 
+      <emphasis>snd-pcm-oss</emphasis>и не аппаратных драйверов, например, 
       <emphasis>loop</emphasis>.</para>
 
     </sect3>
@@ -199,7 +199,8 @@
       для OSS приложений),  настройте <command>modprobe</command> для загрузки оболочки
       после того, как Udev загрузит обернутый модуль. Для этого добавьте строку
       <quote>softdep</quote> в файл, который находится в каталоге 
-	  <filename>/etc/modprobe.d/<replaceable>&lt;filename&gt;</replaceable>.conf</filename>. Например:</para>
+	  <filename>/etc/modprobe.d/<replaceable>&lt;filename&gt;</replaceable>.conf</filename>. 
+	  Например:</para>
 
 <screen role="nodump"><literal>softdep snd-pcm post: snd-pcm-oss</literal></screen>
 

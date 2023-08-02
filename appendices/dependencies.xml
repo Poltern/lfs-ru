@@ -463,7 +463,7 @@
         <segtitle>&before;</segtitle>
         <seglistitem>
           <seg>Bash, Diffutils, <phrase revision="sysv">Eudev, </phrase>
-          Findutils, <phrase revision="sysv">и </phrase>Man-DB<phrase
+          Findutils, <phrase revision="sysv">и </phrase>Man-DB <phrase
           revision="systemd">и Systemd</phrase></seg>
         </seglistitem>
       </segmentedlist>
@@ -3122,7 +3122,7 @@
         <segtitle>&before;</segtitle>
         <seglistitem>
           <seg>
-            <phrase revision='sysv'>None</phrase>
+            <phrase revision='sysv'>Нет</phrase>
             <phrase revision='systemd'>Jinja2</phrase>
           </seg>
         </seglistitem>

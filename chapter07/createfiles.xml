@@ -86,7 +86,7 @@ EOF</userinput></screen>
   <para>Пароль пользователя <systemitem class="username">root</systemitem>
   будет задан позднее.</para>
 
-  <para>Создайте файл <filename>/etc/group</filename> выполнив следующую команду:</para>
+  <para>Создайте файл <filename>/etc/group</filename>, выполнив следующую команду:</para>
 
 <screen revision="sysv"><userinput>cat &gt; /etc/group &lt;&lt; "EOF"
 <literal>root:x:0:
@@ -157,7 +157,7 @@ EOF</userinput></screen>
   определяемые частично требованиями конфигурации Udev в главе 9, а частично 
   общими соглашениями, используемыми в ряде существующих дистрибутивов Linux. 
   Кроме того, некоторые наборы тестов зависят от конкретных пользователей или
-  групп. Специфкация LSB (доступна по адресу <ulink
+  групп. Спецификация LSB (доступна по адресу <ulink
   url="https://refspecs.linuxfoundation.org/lsb.shtml"/>) рекомендует, чтобы,
   помимо группы <systemitem class="groupname">root</systemitem> с
   идентификатор (GID) 0 присутствовала группа <systemitem class="groupname">bin</systemitem>
