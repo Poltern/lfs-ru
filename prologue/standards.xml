@@ -105,7 +105,7 @@
       <varlistentry>
         <term><emphasis>LSB Core:</emphasis></term>
         <listitem>
-          <para>At, Batch (a part of At), Cpio, Ed, Fcrontab, LSB-Tools, NSPR,
+          <para>At, Batch (часть At), Cpio, Ed, Fcrontab, LSB-Tools, NSPR,
           NSS, PAM, Pax, Sendmail (или Postfix, или Exim), time
           </para>
         </listitem>

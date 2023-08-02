@@ -538,7 +538,7 @@
       <listitem revision="sysv">
         <para>Sysvinit</para>
 
-        <para>Этот пакет содержит систему инициализации<application>init</application>, 
+        <para>Этот пакет содержит систему инициализации <application>init</application>, 
 		родительской элемент всех остальных процессов в работающей системе Linux.</para>
       </listitem>
 

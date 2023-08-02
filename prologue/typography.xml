@@ -11,7 +11,7 @@
   <title>Оформление</title>
 
   <para>Чтобы облегчить понимание, в этой книге используются условные 
-  обозначения. Этот раздел содержит примеры оформления, используемого в Linux From Scratch.</para>
+  обозначения. Этот раздел содержит примеры оформления, используемые в Linux From Scratch.</para>
 
 <screen role="nodump"><userinput>./configure --prefix=/usr</userinput></screen>
 
