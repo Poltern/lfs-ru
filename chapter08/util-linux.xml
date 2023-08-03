@@ -533,7 +533,7 @@ su tester -c "make -k check"</userinput></screen>
       <varlistentry id="ipcmk">
         <term><command>ipcmk</command></term>
         <listitem>
-          <para>Создает различные ресурсы межпроцессного взаимодействия IPC</para>
+          <para>Создает различные ресурсы межпроцессного взаимодействия (IPC)</para>
           <indexterm zone="ch-system-util-linux ipcmk">
             <primary sortas="b-ipcmk">ipcmk</primary>
           </indexterm>

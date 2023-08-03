@@ -97,7 +97,7 @@
     <title>Содержимое пакета Libffi</title>
 
     <segmentedlist>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
 
       <seglistitem>
         <seg>libffi.so</seg>

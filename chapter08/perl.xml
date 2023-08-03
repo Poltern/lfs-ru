@@ -106,7 +106,7 @@ export BUILD_BZIP2=0</userinput></screen>
       <varlistentry>
         <term><parameter>-Duseshrplib</parameter></term>
         <listitem>
-          <para>Собрать общую библитеку libperl, необходимую некоторым модулям Perl.</para>
+          <para>Собрать общую библиотеку libperl, необходимую некоторым модулям Perl.</para>
         </listitem>
       </varlistentry>
 

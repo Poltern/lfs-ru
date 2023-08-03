@@ -105,7 +105,7 @@ install -vDm644 misc/zsh-completion  /usr/share/zsh/site-functions/_ninja</useri
     <title>Содержимое пакета Ninja</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
         <seg>ninja</seg>

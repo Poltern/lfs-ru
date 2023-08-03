@@ -60,7 +60,7 @@
         <term><parameter>--disable-kill</parameter></term>
         <listitem>
           <para>Этот параметр отключает сборку команды <command>kill</command>;
-		  она будет установлена из ​​пакета Util-linux.</para>
+		  она будет установлена из пакета Util-linux.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -104,7 +104,7 @@ make check</userinput></screen>
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>

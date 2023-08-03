@@ -70,7 +70,7 @@
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
 
       <seglistitem>
         <seg>zstd,

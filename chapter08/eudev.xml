@@ -52,7 +52,7 @@
             --enable-manpages       \
             --disable-static</userinput></screen>
 
-    <para>Скомплируйте пакет:</para>
+    <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 

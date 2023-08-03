@@ -189,7 +189,7 @@ rm -fv /usr/share/man/man1/{gprofng,gp-*}.1</userinput></screen>
 
       <seglistitem>
         <seg>addr2line, ar, as, c++filt, dwp, elfedit, gprof, gprofng, ld, ld.bfd, ld.gold, nm,
-        objcopy, objdump, ranlib, readelf, size, strings, и strip</seg>
+        objcopy, objdump, ranlib, readelf, size, strings и strip</seg>
         <seg>libbfd.so, libctf.so, libctf-nobfd.so, libopcodes.so и libsframe.so</seg>
         <seg>/usr/lib/ldscripts</seg>
       </seglistitem>

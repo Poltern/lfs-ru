@@ -63,7 +63,7 @@
     <title>Содержимое пакета Libpipeline</title>
 
     <segmentedlist>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
 
       <seglistitem>
         <seg>libpipeline.so</seg>
@@ -78,7 +78,8 @@
       <varlistentry id="libpipeline">
         <term><filename class="libraryfile">libpipeline</filename></term>
         <listitem>
-          <para>Эта библиотека используется для безопасного построения конвейеров между подпроцессами.</para>
+          <para>Эта библиотека используется для безопасного построения конвейеров между 
+		  подпроцессами.</para>
           <indexterm zone="ch-system-libpipeline">
             <primary sortas="c-libpipeline">libpipeline</primary>
           </indexterm>

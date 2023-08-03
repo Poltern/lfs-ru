@@ -100,7 +100,7 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>Если не планруете запускать набор тестов, перейдите к разделу <quote>Установка пакет</quote> .</para>
+    <para>Если вы не планируете запускать набор тестов, перейдите к разделу <quote>Установка пакета</quote>.</para>
 
     <para>Теперь набор тестов готов к запуску. Сначала запустите тесты, предназначенные для
 	запуска от имени пользователя <systemitem class="username">root</systemitem>:</para>
@@ -149,7 +149,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
@@ -162,7 +162,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
         rmdir, runcon, seq, sha1sum, sha224sum, sha256sum, sha384sum,
         sha512sum, shred, shuf, sleep, sort, split, stat, stdbuf, stty, sum,
         sync, tac, tail, tee, test, timeout, touch, tr, true, truncate, tsort,
-        tty, uname, unexpand, uniq, unlink, users, vdir, wc, who, whoami, и
+        tty, uname, unexpand, uniq, unlink, users, vdir, wc, who, whoami и
         yes</seg>
         <seg>libstdbuf.so (in /usr/libexec/coreutils)</seg>
         <seg>/usr/libexec/coreutils</seg>
@@ -413,7 +413,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="dirname">
         <term><command>dirname</command></term>
         <listitem>
-          <para>Извлекает часть(части) каталога из заданного(х) имени(имён)</para>
+          <para>Извлекает часть(части) каталога из заданного(заданных) имени(имён)</para>
           <indexterm zone="ch-system-coreutils dirname">
             <primary sortas="b-dirname">dirname</primary>
           </indexterm>
@@ -1067,7 +1067,8 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="tee">
         <term><command>tee</command></term>
         <listitem>
-          <para>Считывает данные со стандартного потока ввода, записывает как в стандартный вывод, так и в указанные файлы</para>
+          <para>Считывает данные со стандартного потока ввода, записывает как в стандартный вывод, 
+		  так и в указанные файлы</para>
           <indexterm zone="ch-system-coreutils tee">
             <primary sortas="b-tee">tee</primary>
           </indexterm>

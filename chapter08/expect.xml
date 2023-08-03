@@ -96,8 +96,8 @@ ln -svf expect&expect-version;/libexpect&expect-version;.so /usr/lib</userinput>
     <title>Содержимое пакета Expect</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
 
       <seglistitem>
         <seg>expect</seg>

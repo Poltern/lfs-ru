@@ -93,9 +93,9 @@ chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
         msgexec, msgfilter, msgfmt, msggrep, msginit, msgmerge, msgunfmt, msguniq,
         ngettext, recode-sr-latin, и xgettext</seg>
         <seg>libasprintf.so, libgettextlib.so, libgettextpo.so,
-        libgettextsrc.so, libtextstyle.so, и preloadable_libintl.so</seg>
+        libgettextsrc.so, libtextstyle.so и preloadable_libintl.so</seg>
         <seg>/usr/lib/gettext, /usr/share/doc/gettext-&gettext-version;,
-        /usr/share/gettext, и /usr/share/gettext-0.19.8</seg>
+        /usr/share/gettext и /usr/share/gettext-0.19.8</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -398,7 +398,7 @@ chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
         <listitem>
           <para>Библиотека, предназначенная для использования LD_PRELOAD, которая
 		  помогает <filename class="libraryfile">libintl</filename> записывать в
-		  журнал непереведенные сообщения</para>
+		  журнал непереведённые сообщения</para>
           <indexterm zone="ch-system-gettext preloadable_libintl">
             <primary sortas="c-preloadable_libintl">preloadable_libintl</primary>
           </indexterm>

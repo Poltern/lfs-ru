@@ -120,7 +120,7 @@ popd</userinput></screen>
       <seglistitem>
         <seg>info, install-info, makeinfo (ссылка на texi2any),
         pdftexi2dvi, pod2texi, texi2any, texi2dvi, texi2pdf, и texindex</seg>
-        <seg>MiscXS.so, Parsetexi.so, и XSParagraph.so
+        <seg>MiscXS.so, Parsetexi.so и XSParagraph.so
         (все в /usr/lib/texinfo)</seg>
         <seg>/usr/share/texinfo и /usr/lib/texinfo</seg>
       </seglistitem>

@@ -66,7 +66,7 @@ install -m644 doc/sed.html /usr/share/doc/sed-&sed-version;</userinput></screen>
     <title>Содержимое пакета Sed</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>

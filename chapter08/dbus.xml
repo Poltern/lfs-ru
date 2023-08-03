@@ -105,10 +105,10 @@
       <seglistitem>
         <seg>dbus-cleanup-sockets, dbus-daemon, dbus-launch, dbus-monitor,
         dbus-run-session, dbus-send, dbus-test-tool,
-        dbus-update-activation-environment, и dbus-uuidgen</seg>
+        dbus-update-activation-environment и dbus-uuidgen</seg>
         <seg>libdbus-1.{a,so}</seg>
         <seg>/etc/dbus-1, /usr/include/dbus-1.0, /usr/lib/dbus-1.0,
-        /usr/share/dbus-1, /usr/share/doc/dbus-&dbus-version;,
+        /usr/share/dbus-1, /usr/share/doc/dbus-&dbus-version; 
         и /var/lib/dbus</seg>
       </seglistitem>
     </segmentedlist>
@@ -151,7 +151,7 @@
       <varlistentry id="dbus-monitor">
         <term><command>dbus-monitor</command></term>
         <listitem>
-          <para>Отслеживает сообщения, проходящие через шину сообщений D-Bus.</para>
+          <para>Отслеживает сообщения, проходящие через шину сообщений D-Bus</para>
           <indexterm zone="ch-system-dbus dbus-monitor">
             <primary sortas="b-dbus-monitor">dbus-monitor</primary>
           </indexterm>
@@ -162,7 +162,7 @@
         <term><command>dbus-run-session</command></term>
         <listitem>
           <para>Запускает экземпляр шины <command>dbus-daemon</command> из
-		  сценария оболочки и запускает указанную программу в этом сеансе.</para>
+		  сценария оболочки и запускает указанную программу в этом сеансе</para>
           <indexterm zone="ch-system-dbus dbus-run-session">
             <primary sortas="b-dbus-run-session">dbus-run-session</primary>
           </indexterm>
@@ -194,7 +194,7 @@
       <varlistentry id="dbus-update-activation-environment">
         <term><command>dbus-update-activation-environment</command></term>
         <listitem>
-          <para>Обновляет переменные среды, которые будут установлены для сеансовых служб D-Bus.
+          <para>Обновляет переменные среды, которые будут установлены для сеансовых служб 
           <application>D-Bus</application></para>
           <indexterm zone="ch-system-dbus dbus-update-activation-environment">
             <primary sortas="b-dbus-update-activation-environment">dbus-update-activation-environment</primary>

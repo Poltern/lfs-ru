@@ -67,7 +67,7 @@ echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h</userinput></screen>
     <title>Содержимое пакета M4</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
         <seg>m4</seg>

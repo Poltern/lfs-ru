@@ -63,8 +63,8 @@
     <title>Содержимое пакета File</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
 
       <seglistitem>
         <seg>file</seg>
@@ -81,7 +81,8 @@
         <term><command>file</command></term>
         <listitem>
           <para>Пытается классифицировать каждый указанный файл; он делает это,
-		  выполняя серию тестов&mdash;тесты файловой системы, тесты магических чисел и языковые тесты.</para>
+		  выполняя серию тестов&mdash;тесты файловой системы, тесты магических чисел 
+		  и языковые тесты.</para>
           <indexterm zone="ch-system-file file">
             <primary sortas="b-file">file</primary>
           </indexterm>

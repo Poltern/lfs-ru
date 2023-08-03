@@ -87,7 +87,7 @@ make install-html</userinput></screen>
     <title>Содержимое пакета MPFR</title>
 
     <segmentedlist>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>

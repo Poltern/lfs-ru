@@ -44,7 +44,7 @@
   <sect2 role="installation">
     <title>Установка пакета E2fsprogs</title>
 
-    <para>Документация E2fsprogs рекомендует выполнять сборку в подкаталоге папки
+    <para>В документации к E2fsprogs рекомендуется выполнять сборку в подкаталоге папки
     с исходниками:</para>
 
 <screen><userinput remap="pre">mkdir -v build
@@ -170,7 +170,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
         e4crypt, e4defrag, filefrag, fsck.ext2,
         fsck.ext3, fsck.ext4, logsave, lsattr, mk_cmds, mke2fs,
         mkfs.ext2, mkfs.ext3, mkfs.ext4, mklost+found,
-        resize2fs, и tune2fs</seg>
+        resize2fs и tune2fs</seg>
         <seg>libcom_err.so, libe2p.so, libext2fs.so, и libss.so</seg>
         <seg>/usr/include/e2p, /usr/include/et, /usr/include/ext2fs,
         /usr/include/ss, /usr/lib/e2fsprogs, /usr/share/et и
@@ -442,7 +442,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="mkfs.ext2">
         <term><command>mkfs.ext2</command></term>
         <listitem>
-          <para>По умолчанию создает файловые системы
+          <para>По умолчанию создает файловую систему
 		  <systemitem class="filesystem">ext2</systemitem> и является жесткой ссылкой
 		  на <command>mke2fs</command></para>
           <indexterm zone="ch-system-e2fsprogs mkfs.ext2">
@@ -454,7 +454,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="mkfs.ext3">
         <term><command>mkfs.ext3</command></term>
         <listitem>
-          <para>По умолчанию создает файловые системы
+          <para>По умолчанию создает файловую систему
 		  <systemitem class="filesystem">ext3</systemitem> и является жесткой ссылкой
 		  на <command>mke2fs</command></para>
           <indexterm zone="ch-system-e2fsprogs mkfs.ext3">
@@ -466,7 +466,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
       <varlistentry id="mkfs.ext4">
         <term><command>mkfs.ext4</command></term>
         <listitem>
-          <para>По умолчанию создает файловые системы
+          <para>По умолчанию создает файловую систему
 		  <systemitem class="filesystem">ext4</systemitem> и является жесткой ссылкой
 		  на <command>mke2fs</command></para>
           <indexterm zone="ch-system-e2fsprogs mkfs.ext4">

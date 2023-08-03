@@ -76,7 +76,7 @@
         grolj4, gropdf, grops, grotty, hpftodit, indxbib, lkbib, lookbib,
         mmroff, neqn, nroff, pdfmom, pdfroff, pfbtops, pic, pic2graph,
         post-grohtml, preconv, pre-grohtml, refer, roff2dvi, roff2html,
-        roff2pdf, roff2ps, roff2text, roff2x, soelim, tbl, tfmtodit, и
+        roff2pdf, roff2ps, roff2text, roff2x, soelim, tbl, tfmtodit и
         troff</seg>
         <seg>/usr/lib/groff и /usr/share/doc/groff-&groff-version;,
         /usr/share/groff</seg>

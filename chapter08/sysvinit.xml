@@ -93,7 +93,7 @@
       <seglistitem>
         <seg>bootlogd, fstab-decode, halt, init, killall5,
         poweroff (ссылка на halt), reboot (ссылка на halt), runlevel,
-        shutdown, и telinit (ссылка на init)</seg>
+        shutdown и telinit (ссылка на init)</seg>
       </seglistitem>
     </segmentedlist>
 

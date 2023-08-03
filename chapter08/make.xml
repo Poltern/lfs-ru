@@ -23,7 +23,8 @@
   <sect2 role="package">
     <title/>
 
-    <para>Пакет Make содержит программу, управляющую генерацией исполняемых и других файлов, из исходного кода.</para>
+    <para>Пакет Make содержит программу, управляющую генерацией исполняемых и других файлов, 
+	из исходного кода.</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -69,7 +70,7 @@
     <title>Содержимое пакета Make</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
         <seg>make</seg>

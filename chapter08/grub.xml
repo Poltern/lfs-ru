@@ -339,7 +339,8 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
       <varlistentry id="grub-reboot">
         <term><command>grub-reboot</command></term>
         <listitem>
-          <para>Устанавливает пункт меню в GRUB для загрузки по умолчанию, только для следующей загрузки</para>
+          <para>Устанавливает пункт меню в GRUB для загрузки по умолчанию, только для 
+		  следующей загрузки(однократно)</para>
           <indexterm zone="ch-system-grub grub-reboot">
             <primary sortas="b-grub-reboot">grub-reboot</primary>
           </indexterm>

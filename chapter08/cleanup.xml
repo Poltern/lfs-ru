@@ -26,8 +26,8 @@
    <para>Дополнительные сведения об архивных файлах libtool см. в разделе BLFS  <ulink
    url="&blfs-book;introduction/la-files.html">"О файлах архива Libtool (.la)"</ulink>.</para>
 
-   <para>Компилятор, собраный в <xref linkend="chapter-temporary-tools"/> и
-   <xref linkend="chapter-chroot-temporary-tools"/> все еще установлен но больше
+   <para>Компилятор, собранный в <xref linkend="chapter-temporary-tools"/> и
+   <xref linkend="chapter-chroot-temporary-tools"/> все еще установлен, но больше
    не нужен. Удалите его с помощью команды:</para>
 
 <screen><userinput>find /usr -depth -name $(uname -m)-lfs-linux-gnu\* | xargs rm -rf</userinput></screen>

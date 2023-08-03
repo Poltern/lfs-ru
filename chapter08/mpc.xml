@@ -68,7 +68,7 @@ make install-html</userinput></screen>
     <title>Содержимое пакета MPC</title>
 
     <segmentedlist>
-      <segtitle>Установленная библиотека</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>

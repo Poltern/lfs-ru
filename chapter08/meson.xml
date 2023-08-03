@@ -89,7 +89,7 @@ install -vDm644 data/shell-completions/zsh/_meson /usr/share/zsh/site-functions/
     <title>Содержимое пакета Meson</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>

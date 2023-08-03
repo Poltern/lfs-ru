@@ -25,7 +25,8 @@
 
     <para>Пакет Glibc содержит основную библиотеку C. Эта библиотека предоставляет
 	основные процедуры для выделения памяти, поиска в каталогах, открытия и закрытия
-	файлов, чтения и записи файлов, обработки строк, сопоставления с образцом, арифметики и т.д.</para>
+	файлов, чтения и записи файлов, обработки строк, сопоставления с образцом, арифметики 
+	и так далее</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -117,7 +118,7 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>libc_cv_slibdir=/usr/lib</parameter></term>
         <listitem>
-          <para>Эта переменная устанавливает правильную библиотеку для всех архитектур. Мы
+          <para>Эта переменная устанавливает правильную библиотеку для всей системы. Мы
 		  не хотим, чтобы использовалась lib64</para>
         </listitem>
       </varlistentry>
@@ -293,7 +294,7 @@ localedef -i zh_TW -f UTF-8 zh_TW.UTF-8</userinput></screen>
 <screen role="nodump"><userinput remap="locale-full">localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
 localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true</userinput></screen>
 
-    <note><para>Glibc теперь использует libidn2 для разрешения интернационализованных
+    <note><para>Glibc теперь использует libidn2 для разрешения интернационализированных 
     доменных имен. Если такая функция необходима, то
     инструкцию по установке libidn2 можно найти на странице
     <ulink url="&blfs-book;general/libidn2.html">BLFS libidn2</ulink>.
@@ -319,7 +320,7 @@ localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true</userinput></scr
     что настроенный по умолчанию Glibc плохо работает в сетевой среде.
     </para>
 
-    <para>Создайте новый фай <filename>/etc/nsswitch.conf</filename> выполнив
+    <para>Создайте новый фай <filename>/etc/nsswitch.conf</filename>, выполнив
 	следующие действия:</para>
 
 <screen><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
@@ -386,15 +387,15 @@ unset ZONEINFO</userinput></screen>
           <para>Создаёт правильные часовые пояса с секундами координации.
           На встраиваемых системах с небольшим
           диском, где часовые пояса никогда не будут обновляться, а правильность времени
-          неважна, можно выиграть примерно 1.9 MB, исключив каталог <filename class="directory">right</filename>
-          directory.</para>
+          неважна, можно выиграть примерно 1.9 MB, исключив каталог 
+		  <filename class="directory">right</filename>.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><parameter>zic ... -p ...</parameter></term>
         <listitem>
           <para>Создаёт файл <filename>posixrules</filename>. Используется New York,
-          потому что POSIX требует соответсвия правил летнего времени с правилами США.</para>
+          потому что POSIX требует соответствия правил летнего времени с правилами США.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -408,7 +409,7 @@ unset ZONEINFO</userinput></screen>
     часового пояса (например <emphasis>America/Edmonton</emphasis>). В файле
     <filename class='directory'>/usr/share/zoneinfo</filename> перечислены и другие
     возможные часовые пояса, такие как
-    <emphasis>Canada/Eastern</emphasis> или <emphasis>EST5EDT</emphasis>, котрые не
+    <emphasis>Canada/Eastern</emphasis> или <emphasis>EST5EDT</emphasis>, которые не
     распознаются скриптом, но могут быть использованы.</para>
 
     <para>Создайте файл <filename>/etc/localtime</filename> выполнив:</para>

@@ -54,7 +54,7 @@
         <term><parameter>--with-installed-readline</parameter></term>
         <listitem>
           <para>Этот параметр указывает Bash использовать библиотеку <filename
-          class="libraryfile">readline</filename>, которая уже установлена ​​в системе,
+          class="libraryfile">readline</filename>, которая уже установлена в системе,
 		  а не собственную версию readline.</para>
         </listitem>
       </varlistentry>
@@ -65,7 +65,7 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>Перейдите к разелу <quote>Установка пакета</quote>, если не планируете запускать
+    <para>Перейдите к разделу <quote>Установка пакета</quote>, если не планируете запускать
     тесты.</para>
 
     <para>Перед запуском тестов, убедитесь, что пользователь
@@ -119,7 +119,7 @@ EOF</userinput></screen>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>bash, bashbug, and sh (ссылка на bash)</seg>
+        <seg>bash, bashbug и sh (ссылка на bash)</seg>
         <seg>/usr/include/bash, /usr/lib/bash, and
         /usr/share/doc/bash-&bash-version;</seg>
       </seglistitem>

@@ -89,7 +89,7 @@ make -C doc install-html docdir=/usr/share/doc/tar-&tar-version;</userinput></sc
     <title>Содержимое пакета Tar</title>
 
     <segmentedlist>
-      <segtitle>Установленная программа</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
@@ -106,7 +106,7 @@ make -C doc install-html docdir=/usr/share/doc/tar-&tar-version;</userinput></sc
       <varlistentry id="tar">
         <term><command>tar</command></term>
         <listitem>
-          <para>Создает, извлекает файлы и составляет список содержимого архивов,
+          <para>Создает архивы, извлекает файлы и отображает содержимое архивов,
 		  также известных как Тарболл.</para>
           <indexterm zone="ch-system-tar tar">
             <primary sortas="b-tar">tar</primary>

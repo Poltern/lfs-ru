@@ -160,8 +160,8 @@ EOF</userinput></screen>
 <screen role="nodump"><userinput>vim -c ':options'</userinput></screen>
 
     <note>
-      <para>По умолчанию vim устанавливает файлы проверки орфограции только для английского
-      языка. Для установки файлов проверки орфограции других языков, скопируйте файлы
+      <para>По умолчанию vim устанавливает файлы проверки орфографии только для английского
+      языка. Для установки файлов проверки орфографии других языков, скопируйте файлы
       <filename class='extension'>.spl</filename> и, при необходимости, 
 	  <filename class='extension'>.sug</filename> для вашего языка и кодировки символов из
 	  <filename class='directory'>runtime/spell</filename>, сохраните их в
