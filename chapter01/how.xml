@@ -17,14 +17,13 @@
   новой системы. Выберите опцию <quote>разработка</quote> во время установки дистрибутива,
   чтобы получить доступ к этим инструментам.</para>
 
+  <note><para>Существует множество способов установки дистрибутива Linux, и значения 
+  по умолчанию обычно не оптимальны для сборки системы LFS. Предложения по настройке 
+  дистрибутива смотрите: <ulink url="&lfs-root;hints/downloads/files/partitioning-for-lfs.txt"/>.
+  </para></note>
+ 
   <para>В качестве альтернативы установке отдельного дистрибутива на свой компьютер вы
-  можете использовать LiveCD другого дистрибутива. <!-- The LFS LiveCD works well as a host system,
-  providing all the tools you need to successfully follow the instructions in
-  this book. The LiveCD version is behind the current book, but is still useful
-  as a host for building the current book.  The <quote>-nosrc</quote> or
-  <quote>-min</quote> editions of the LiveCD are the most appropriate for
-  building a current LFS system.  For more information about the LFS LiveCD or
-  to download a copy, visit <ulink url="&livecd-root;"/>. --></para>
+  можете использовать LiveCD другого дистрибутива.</para>
 
   <!--
   <note>
