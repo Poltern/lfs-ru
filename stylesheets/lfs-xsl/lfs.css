@@ -265,6 +265,9 @@ li.chapter h4 a {
   margin: .6em 0 .2em 0;
 }
 
+span.blue {
+  color: #2ac;
+}
 
 /* Index */
 .item {
