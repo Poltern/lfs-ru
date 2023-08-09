@@ -14,9 +14,7 @@ Makefile.lfs         - The LFS Makefile.  Installs udev rules for LFS.
 
 contrib              - Useful rules from debian
 contrib/debian
-contrib/debian/83-cdrom-symlinks.rules
 contrib/debian/write_cd_aliases
-contrib/debian/81-cdrom.rules
 
 55-lfs.rules         - LFS custom rules
 write_net_rules      - Scripts for LFS rules

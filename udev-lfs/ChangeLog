@@ -1,3 +1,7 @@
+2023-07-28  <bdubbs@linuxfromscratch.org>
+   * Remove obsolete 83-cdrom-symlinks.rules and 81-cdrom.rules
+	* Remove references to obsolete ISDN devices
+
 2017-10-27  <bdubbs@linuxfromscratch.org>
    * 83-cdrom-symlinks.rules: Adjust test for writable root directory.
 

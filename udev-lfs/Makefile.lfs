@@ -3,7 +3,7 @@
 
 # vim: tabstop=3
 
-VERSION=20171102
+VERSION=20230728
 SHELL=/bin/bash
 
 ifeq ($(V),)
@@ -16,15 +16,14 @@ all:
 	@echo "Use the install target"
 
 install:
-	@mkdir -pv $(DESTDIR)/lib/udev/rules.d \
+	@mkdir -pv $(DESTDIR)/usr/lib/udev/rules.d \
               $(DESTDIR)/etc/udev/rules.d \
               $(DESTDIR)/usr/share/doc/udev-$(VERSION)/lfs
 
    # Copy rules
 	@cp -v udev-lfs-$(VERSION)/*.rules $(DESTDIR)/etc/udev/rules.d
-	@cp -v udev-lfs-$(VERSION)/*_rules           \
-          udev-lfs-$(VERSION)/init-net-rules.sh \
-          udev-lfs-$(VERSION)/rule_generator.functions $(DESTDIR)/lib/udev
+	@cp -v udev-lfs-$(VERSION)/init-net-rules.sh \
+          udev-lfs-$(VERSION)/rule_generator.functions $(DESTDIR)/usr/lib/udev
 
    # Copy documentation
 	@cp -v udev-lfs-$(VERSION)/README     $(DESTDIR)/usr/share/doc/udev-$(VERSION)/lfs
