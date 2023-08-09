@@ -385,7 +385,7 @@
       <segmentedlist id="bzip2-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>File</seg>
+          <seg>File и Libelf</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -430,7 +430,9 @@
       <segmentedlist id="check-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
-          <seg>Нет</seg>
+          <seg>
+            <ulink url='&github;/testing-cabal/subunit'>libsubunit</ulink>
+          </seg>
         </seglistitem>
       </segmentedlist>
 
@@ -462,9 +464,7 @@
       <segmentedlist id="coreutils-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>Bash, Diffutils, <phrase revision="sysv">Eudev, </phrase>
-          Findutils, <phrase revision="sysv">и </phrase>Man-DB <phrase
-          revision="systemd">и Systemd</phrase></seg>
+          <seg>Bash, Diffutils, Findutils, Man-DB и &systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -487,7 +487,7 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
-          Make, Sed, Systemd и Util-linux</seg>
+          Make, Pkgconf, Sed, Systemd и Util-linux</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -603,7 +603,9 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
-          Gzip, Make, Sed, Texinfo и Util-linux</seg>
+          Gzip, Make, Pkgconf, Sed,
+          <phrase revision='systemd'>Systemd, </phrase>Texinfo и
+          Util-linux</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -629,45 +631,6 @@
       </segmentedlist>
 
       <segmentedlist id="e2fsprogs-optdeps">
-        <segtitle>&external;</segtitle>
-        <seglistitem>
-          <seg>Нет</seg>
-        </seglistitem>
-      </segmentedlist>
-
-<!-- Begin Eudev dependency info -->
-  <bridgehead renderas="sect2" id="eudev-dep" revision="sysv">Eudev</bridgehead>
-
-      <segmentedlist id="eudev-depends" revision="sysv">
-        <segtitle>&dependencies;</segtitle>
-        <seglistitem>
-          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Gperf, Make,
-          Sed и Util-linux</seg>
-        </seglistitem>
-      </segmentedlist>
-
-      <segmentedlist id="eudev-rundeps" revision="sysv">
-        <segtitle>&runtime;</segtitle>
-        <seglistitem>
-          <seg>Glibc, Kmod, Xz, Util-linux и Zlib.</seg>
-        </seglistitem>
-      </segmentedlist>
-
-      <segmentedlist id="eudev-testdeps" revision="sysv">
-        <segtitle>&testsuites;</segtitle>
-        <seglistitem>
-          <seg>Нет</seg>
-        </seglistitem>
-      </segmentedlist>
-
-      <segmentedlist id="eudev-before" revision="sysv">
-        <segtitle>&before;</segtitle>
-        <seglistitem>
-          <seg>Нет</seg>
-        </seglistitem>
-      </segmentedlist>
-
-      <segmentedlist id="eudev-optdeps" revision="sysv">
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>Нет</seg>
@@ -873,6 +836,48 @@
         </seglistitem>
       </segmentedlist>
 
+<!-- Begin Flit-core dependency info -->
+  <bridgehead renderas="sect2" id="flit-core-dep">Flit-Core</bridgehead>
+
+      <segmentedlist id="flit-core-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flit-core-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flit-core-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Набор тестов недоступен</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flit-core-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Wheel</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="flit-core-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>
+            <ulink url='&blfs-book;general/python-modules.html#pytest'>pytest</ulink>
+            и
+            <ulink url='&pypi-home;/testpath'>testpath</ulink>
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
 <!-- Begin Gawk dependency info -->
   <bridgehead renderas="sect2" id="gawk-dep">Gawk</bridgehead>
 
@@ -921,8 +926,8 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Diffutils, Findutils, Gawk, GCC,
-          Gettext, Glibc, GMP, Grep, M4, Make, MPC, MPFR, Patch, Perl, Sed,
-          Tar, Texinfo и Zstd</seg>
+          Gettext, Glibc, GMP, Grep, Libxcrypt, M4, Make, MPC, MPFR, Patch,
+          Perl, Sed, Tar, Texinfo и Zstd</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -951,8 +956,9 @@
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>
-             <ulink url="https://gcc.gnu.org/wiki/GNAT">GNAT</ulink>
-             и
+             <ulink url="https://www.gdcproject.org/">GDC</ulink>,
+             <ulink url="https://gcc.gnu.org/wiki/GNAT">GNAT</ulink>,
+             и 
              <ulink url="https://repo.or.cz/isl.git">ISL</ulink>
           </seg>
         </seglistitem>
@@ -1469,9 +1475,11 @@
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>
-            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>
-            и
-            <ulink url="&blfs-book;postlfs/iptables.html">iptables</ulink>
+            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>,
+            <ulink url="&blfs-book;postlfs/iptables.html">iptables</ulink>,
+            <ulink url="&github;/libbpf/libbpf">libbpf</ulink>,
+            <ulink url="&blfs-book;basicnet/libmnl.html">libmnl</ulink> и 
+            <ulink url="&blfs-book;basicnet/libtirpc.html">libtirpc</ulink>
           </seg>
         </seglistitem>
       </segmentedlist>
@@ -1581,8 +1589,7 @@
       <segmentedlist id="kmod-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg><phrase revision="sysv">Eudev</phrase>
-          <phrase revision="systemd">Systemd</phrase></seg>
+         <seg>&systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -1682,14 +1689,15 @@
       <segmentedlist id="libelf-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, GCC, Glibc и Make</seg>
+          <seg>Bash, Binutils, Bzip2, Coreutils, GCC, Glibc, Make, Xz,
+          Zlib и Zstd</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="libelf-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>Glibc и Zlib</seg>
+          <seg>Bzip2, Glibc, Xz, Zlib и Zstd</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -1720,7 +1728,7 @@
       <segmentedlist id="libffi-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-         <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make,
+         <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make 
          и Sed</seg>
         </seglistitem>
       </segmentedlist>
@@ -1774,7 +1782,7 @@
       <segmentedlist id="libpipeline-testdeps">
         <segtitle>&testsuites;</segtitle>
         <seglistitem>
-          <seg>Check</seg>
+          <seg>Check и Pkgconf</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -1826,6 +1834,45 @@
       </segmentedlist>
 
       <segmentedlist id="libtool-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+<!-- Begin Libxcrypt dependency info -->
+  <bridgehead renderas="sect2" id="libxcrypt-dep">Libxcrypt</bridgehead>
+
+      <segmentedlist id="libxcrypt-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Bash, Binutils, Coreutils, Diffutils, Gawk, GCC, Glibc, Grep,
+          Make, Perl и Sed</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libxcrypt-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Glibc</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libxcrypt-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libxcrypt-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>GCC, Perl, Python, Shadow и &systemd-udev;</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="libxcrypt-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>Нет</seg>
@@ -2003,7 +2050,8 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Bzip2, Coreutils, Flex, GCC, GDBM, Gettext,
-          Glibc, Grep, Groff, Gzip, Less, Libpipeline, Make, Sed и Xz</seg>
+          Glibc, Grep, Groff, Gzip, Less, Libpipeline, Make, Pkgconf, Sed,
+          <phrase revision='systemd'>Systemd, </phrase>и Xz</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2141,10 +2189,7 @@
       <segmentedlist id="meson-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>
-            <phrase revision='sysv'>Нет</phrase>
-            <phrase revision='systemd'>Systemd</phrase>
-          </seg>
+          <seg>&systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2343,7 +2388,7 @@
       <segmentedlist id="openssl-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>Coreutils, Kmod и Linux</seg>
+          <seg>Coreutils, Kmod, Linux и &systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2401,21 +2446,21 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Gawk, GCC, GDBM, Glibc, Grep, Groff,
-          Make, Sed и Zlib</seg>
+          Libxcrypt, Make, Sed и Zlib</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="perl-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>GDBM и Glibc</seg>
+          <seg>GDBM, Glibc и Libxcrypt</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="perl-testdeps">
         <segtitle>&testsuites;</segtitle>
         <seglistitem>
-          <seg>Iana-Etc, Less. и Procps-ng</seg>
+          <seg>Iana-Etc, Less и Procps-ng</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2436,9 +2481,9 @@
       </segmentedlist>
 
 <!-- Begin Pkg-config dependency info -->
-  <bridgehead renderas="sect2" id="pkgconfig-dep">Pkg-config</bridgehead>
+  <bridgehead renderas="sect2" id="pkgconf-dep">Pkgconf</bridgehead>
 
-      <segmentedlist id="pkgconfig-depends">
+      <segmentedlist id="pkgconf-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Make,
@@ -2446,33 +2491,33 @@
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="pkgconfig-rundeps">
+      <segmentedlist id="pkgconf-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
           <seg>Glibc</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="pkgconfig-testdeps">
+      <segmentedlist id="pkgconf-testdeps">
         <segtitle>&testsuites;</segtitle>
         <seglistitem>
           <seg>Нет</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="pkgoonfig-before">
+      <segmentedlist id="pkgconf-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>Kmod</seg>
+          <seg><phrase revision='systemd'>D-Bus, </phrase>E2fsprogs,
+          IProute2, Kmod, Man-DB, Procps-ng, Python,
+		  &systemd-udev; и Util-linux</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="pkgconfig-optdeps">
+      <segmentedlist id="pkgconf-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
-          <seg>
-            <ulink url="&blfs-book;general/glib2.html">Glib2</ulink>
-          </seg>
+          <seg>Нет</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2482,7 +2527,9 @@
       <segmentedlist id="procps-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make и Ncurses</seg>
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make, Ncurses,
+          <phrase revision='sysv'>и </phrase>Pkgconf<phrase
+          revision='systemd'> и Systemd</phrase></seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2510,7 +2557,12 @@
       <segmentedlist id="procps-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
-          <seg>Нет</seg>
+          <seg>
+            <phrase revision='systemd'>Нет</phrase>
+            <phrase revision='sysv'>
+              <ulink url='&blfs-book;general/elogind.xml'>elogind</ulink>
+            </phrase>
+          </seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2560,15 +2612,16 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Expat, GCC, Gdbm, Gettext, Glibc,
-          Grep, Libffi, Make, Ncurses, OpenSSL, Sed и Util-linux</seg>
+          Grep, Libffi, Libxcrypt, Make, Ncurses, OpenSSL, Pkgconf, Sed и 
+          Util-linux</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="python-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>Bzip2, Expat, Gdbm, Glibc, Libffi, Ncurses, OpenSSL и
-          Zlib</seg>
+          <seg>Bzip2, Expat, Gdbm, Glibc, Libffi, Libxcrypt, Ncurses,
+          OpenSSL и Zlib</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2683,14 +2736,14 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Acl, Attr, Bash, Binutils, Coreutils, Diffutils, Findutils, Gawk,
-          GCC, Gettext, Glibc, Grep, Libcap, Make и Sed</seg>
+          GCC, Gettext, Glibc, Grep, Libcap, Libxcrypt, Make и Sed</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="shadow-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>Glibc</seg>
+          <seg>Glibc и Libxcrypt</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2763,16 +2816,17 @@
       <segmentedlist id="systemd-depends" revision='systemd'>
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-         <seg>Acl, Attr, Bash, Binutils, Coreutils, Diffutils, Expat, Gawk,
-         GCC, Glibc, Gperf, Grep, Jinja2, Libcap, Meson, Sed, Util-linux,
-         и Zstd</seg>
+         <seg>Acl, Bash, Binutils, Coreutils, Diffutils, Gawk,
+         GCC, Glibc, Gperf, Grep, Jinja2, Libcap, Libxcrypt, Meson,
+         OpenSSL, Pkgconf, Sed, Util-linux и Zstd</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="systemd-rundeps" revision='systemd'>
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>Acl, Attr, Glibc, Libcap и Util-linux</seg>
+          <seg>Acl, Glibc, Libcap, Libxcrypt, OpenSSL, Util-linux, Xz,
+          Zlib и Zstd</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2786,7 +2840,7 @@
       <segmentedlist id="systemd-before" revision='systemd'>
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>Нет</seg>
+          <seg>D-Bus, E2fsprogs, Man-DB, Procps-ng и Util-linux</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -3001,23 +3055,62 @@
         </seglistitem>
       </segmentedlist>
 
+<!-- Begin Udev dependency info -->
+  <bridgehead renderas="sect2" id="udev-dep" revision="sysv">Udev</bridgehead>
+
+      <segmentedlist id="udev-depends" revision="sysv">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+         <seg>Acl, Bash, Binutils, Coreutils, Diffutils, Gawk,
+         GCC, Glibc, Gperf, Grep, Jinja2, Libcap, Libxcrypt, Meson,
+         OpenSSL, Pkgconf, Sed, Util-linux и Zstd</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="udev-rundeps" revision="sysv">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Acl, Glibc, Libcap, OpenSSL и Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="udev-testdeps" revision="sysv">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="udev-before" revision="sysv">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Util-linux</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="udev-optdeps" revision="sysv">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
 <!-- Begin Util-linux dependency info -->
   <bridgehead renderas="sect2" id="util-linux-dep">Util-linux</bridgehead>
 
       <segmentedlist id="util-linux-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, Diffutils,
-          <phrase revision="sysv">Eudev, </phrase>Findutils, Gawk,
-          GCC, Gettext, Glibc, Grep, Make, Ncurses, Sed,
-          <phrase revision="systemd">Systemd </phrase>и Zlib</seg>
+          <seg>Bash, Binutils, Coreutils, Diffutils, File, Findutils, Gawk,
+          GCC, Gettext, Glibc, Grep, Make, Ncurses, Pkgconf, Sed,
+          &systemd-udev; и Zlib</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="util-linux-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>Glibc, Ncurses, Readline и Zlib</seg>
+          <seg>Glibc, Ncurses, Readline, &systemd-udev; и Zlib</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -3041,10 +3134,14 @@
           <seg>
             <ulink
               url="https://people.redhat.com/sgrubb/libcap-ng/">Libcap-NG</ulink>,
+            <ulink url="&github;/openSUSE/libeconf">libeconf</ulink>,
+            <ulink url="https://pagure.io/libuser/">libuser</ulink>,
+            <ulink url="&github;/altlinux/libutempter">libutempter</ulink>,
             <ulink
-              url="&blfs-book;postlfs/linux-pam.html">Linux-PAM</ulink>
-            и <ulink
-              url="&blfs-book;postlfs/smartmontools.html">smartmontools</ulink>
+              url="&blfs-book;postlfs/linux-pam.html">Linux-PAM</ulink>,
+            <ulink
+              url="&blfs-book;postlfs/smartmontools.html">smartmontools</ulink> и
+            <ulink url="&blfs-book;general/slang.html">slang</ulink>
           </seg>
         </seglistitem>
       </segmentedlist>
@@ -3100,7 +3197,7 @@
       <segmentedlist id="wheel-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Python</seg>
+          <seg>Python и Flit-core</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -3201,8 +3298,7 @@
       <segmentedlist id="xz-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg><phrase revision="sysv">Eudev, </phrase>File, GRUB, Kmod, 
-          Man-DB <phrase revision="systemd">и Systemd</phrase></seg>
+         <seg>File, GRUB, Kmod, Libelf, Man-DB и &systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -3240,7 +3336,7 @@
       <segmentedlist id="zlib-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>File, Kmod, Perl и Util-linux</seg>
+          <seg>File, Kmod, Libelf, Perl и Util-linux</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -3257,7 +3353,7 @@
       <segmentedlist id="zstd-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Binutils, Coreutils, GCC, Glibc, Gzip, Make и Xz</seg>
+          <seg>Binutils, Coreutils, GCC, Glibc, Gzip, Make, Xz и Zlib</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -3278,7 +3374,7 @@
       <segmentedlist id="zstd-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>GCC <phrase revision='systemd'>и Systemd</phrase></seg>
+          <seg>GCC, Libelf и &systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 

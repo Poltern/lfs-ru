@@ -86,7 +86,13 @@
     <listitem>
       <para><ulink url="mailto:lizardo@linuxfromscratch.org">Anderson
       Lizardo</ulink> &lt;lizardo@linuxfromscratch.org&gt; &ndash;
-      Перевод проекта LFS на португальский язык</para>
+      Перевод проекта LFS на португальский язык до 2022 г.</para>
+    </listitem>
+
+    <listitem>
+      <para><ulink url="mailto:jafesp@gmail.com">Jamenson
+      Espindula</ulink> &lt;jafesp@gmail.com&gt; &ndash;
+      Перевод проекта LFS на португальский язык 2022-по настоящее время</para>
     </listitem>
 
     <listitem>
@@ -95,16 +101,20 @@
     </listitem>
 
     <listitem>
-      <para><ulink url="mailto:info@linuxfromscratch.ru">Vladimir Pertsev</ulink>
-      &lt;info@linuxfromscratch.ru&gt; &ndash; Перевод проекта LFS на русский язык</para>
+      <para><ulink url="mailto:info@linuxfromscratch.org.ru">Anton Maisak</ulink>
+      &lt;info@linuxfromscratch.ru&gt; &ndash; Перевод проекта LFS на русский язык 2018-2020 гг</para>
     </listitem>
-<!--
+
     <listitem>
       <para><ulink url="mailto:helen@linuxfromscratch.org.ru">Elena Shevcova</ulink>
-      &lt;helen@linuxfromscratch.org.ru&gt; &ndash; Russian LFS
-      translation project</para>
+      &lt;info@linuxfromscratch.ru&gt; &ndash; Перевод проекта LFS на русский язык 2018-2020 гг</para>
     </listitem>
--->
+
+    <listitem>
+      <para><ulink url="mailto:info@linuxfromscratch.ru">Vladimir Pertsev</ulink>
+      &lt;info@linuxfromscratch.ru&gt; &ndash; Перевод проекта LFS на русский язык 2022-по настоящее время</para>
+    </listitem>
+
   </itemizedlist>
 
   <bridgehead renderas="sect2">Зеркала проекта</bridgehead>
