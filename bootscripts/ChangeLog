@@ -1,3 +1,17 @@
+2023-07-28 Xi Ruoyao <xry111@xry111.site>
+   * In mountvirtfs, mount /sys/fs/cgroup for udev from systemd-254.
+
+2023-07-22 Xi Ruoyao <xry111@xry111.site>
+   * In mountvirtfs, create symlinks /dev/{fd,std{in,out,err}} and
+     /dev/core (optional).
+
+2023-07-16 Xi Ruoyao <xry111@xry111.site>
+   * In udev, set SYSTEMD_LOG_TARGET=kmsg so systemd-udevd will correctly
+     log messages.
+
+2023-07-15 Xi Ruoyao <xry111@xry111.site>
+   * Use /bin/udevadm instead of /sbin/udevadm.
+
 2022-09-30 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Mount /dev/shm as a tmpfs.
 
@@ -1135,7 +1149,7 @@ n/a - January 30, 2004:
 
    * Changed the loadkeys script to run "loadkeys -d" and removed the need
      for the /etc/sysconfig/keyboard file. The kbd patch fixes the
-     "loadkeys -d" behaviour.
+     "loadkeys -d" behavior.
 
 1.6 - February 26th, 2002:
 

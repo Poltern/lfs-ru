@@ -7,8 +7,9 @@
 # Authors     : Zack Winkles, Alexander E. Patrakov
 #               DJ Lucas - dj@linuxfromscratch.org
 # Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#               Xi Ruoyao - xry111@xry111.site
 #
-# Version     : LFS 7.0
+# Version     : LFS 12.0
 #
 ########################################################################
 
@@ -45,17 +46,17 @@ case "${1}" in
 
       # Start the udev daemon to continually watch for, and act on,
       # uevents
-      /sbin/udevd --daemon
+      SYSTEMD_LOG_TARGET=kmsg /sbin/udevd --daemon
 
       # Now traverse /sys in order to "coldplug" devices that have
       # already been discovered
-      /sbin/udevadm trigger --action=add    --type=subsystems
-      /sbin/udevadm trigger --action=add    --type=devices
-      /sbin/udevadm trigger --action=change --type=devices
+      /bin/udevadm trigger --action=add    --type=subsystems
+      /bin/udevadm trigger --action=add    --type=devices
+      /bin/udevadm trigger --action=change --type=devices
 
       # Now wait for udevd to process the uevents we triggered
       if ! is_true "$OMIT_UDEV_SETTLE"; then
-         /sbin/udevadm settle
+         /bin/udevadm settle
       fi
 
       # If any LVM based partitions are on the system, ensure they

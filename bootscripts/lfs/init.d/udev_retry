@@ -34,8 +34,6 @@ case "${1}" in
    start)
       log_info_msg "Retrying failed uevents, if any..."
 
-      # As of udev-186, the --run option is no longer valid
-      #rundir=$(/sbin/udevadm info --run)
       rundir=/run/udev
       # From Debian: "copy the rules generated before / was mounted
       # read-write":
@@ -52,13 +50,13 @@ case "${1}" in
       /bin/sed -e 's/#.*$//' /etc/sysconfig/udev_retry | /bin/grep -v '^$' | \
       while read line ; do
          for subsystem in $line ; do
-            /sbin/udevadm trigger --subsystem-match=$subsystem --action=add
+            /bin/udevadm trigger --subsystem-match=$subsystem --action=add
          done
       done
 
       # Now wait for udevd to process the uevents we triggered
       if ! is_true "$OMIT_UDEV_RETRY_SETTLE"; then
-         /sbin/udevadm settle
+         /bin/udevadm settle
       fi
 
       evaluate_retval
