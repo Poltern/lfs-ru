@@ -21,6 +21,7 @@
 
   <sect2>
      <title>Программное обеспечение</title>
+
     <para>Ваша хост-система должна иметь следующее программное обеспечение с 
 	указанными минимальными версиями. Это не должно быть проблемой для 
 	большинства современных дистрибутивов Linux. Также обратите внимание на то, 
@@ -50,7 +51,7 @@
     </listitem>
 
     <listitem>
-      <para><emphasis role="strong">Coreutils-6.9</emphasis></para>
+      <para><emphasis role="strong">Coreutils-7.0</emphasis></para>
     </listitem>
 
     <listitem>
@@ -85,19 +86,27 @@
     <listitem>
       <para><emphasis role="strong">Linux Kernel-&min-kernel;</emphasis></para>
 
-      <para>Требования к версии ядра заключается в том, что мы указываем эту
-	  версию при сборке <application>glibc</application> в 
-	  <xref linkend="chapter-cross-tools"/> и <xref linkend="chapter-building-system"/> по рекомендации
-	  разработчиков.</para>
+      <para>Причиной, по которой указаны минимальные требования к версии ядра, является то, что 
+	  мы указываем эту версию при сборке <application>glibc</application> в 
+	  <xref linkend="chapter-cross-tools"/> и <xref linkend="chapter-building-system"/>. Так как  
+	  более старые ядра не поддерживаются, скомпилированный пакет <application>glibc</application> 
+	  немного меньше и быстрее. По состоянию на июнь 2023 г. &min-kernel; является самой старой 
+	  версией ядра, поддерживаемой разработчиками ядра.</para>
 
-      <para>Если версия ядра хоста меньше, чем &min-kernel;, вам необходимо обновить
-	  ядро на более позднюю версию. Есть два способа сделать это. Во-первых,
+      <para>Если версия ядра хоста более ранняя, чем &min-kernel;, вам необходимо обновить
+	  ядро на более современную версию. Есть два способа сделать это. Во-первых,
 	  посмотрите, предоставляет ли ваш дистрибутив Linux пакет ядра &min-kernel;
 	  или более позднюю версию. Если это так, установите его. Если ваш дистрибутив
 	  не предлагает приемлемый пакет ядра или вы предпочитаете не устанавливать
 	  его, вы можете скомпилировать ядро самостоятельно. Инструкции по компиляции
 	  ядра и настройке загрузчика (при условии, что хост использует GRUB)
 	  находятся в <xref linkend="chapter-bootable"/>.</para>
+	  
+	  <para>Для сборки LFS необходимо, чтобы ядро хоста поддерживало псевдотерминал 
+	  UNIX 98 (PTY). Обычно он включен на всех настольных или серверных дистрибутивах, 
+	  поставляющих Linux &min-kernel; или более новое ядро. Если вы собираете 
+	  собственное хоста, убедитесь, что для параметра <option>CONFIG_UNIX98_PTYS</option> 
+	  установлено значение <literal>y</literal> в конфигурационном файле ядра.</para>
 
     </listitem>
 
@@ -160,77 +169,92 @@
 
 <screen role="nodump"><userinput>cat &gt; version-check.sh &lt;&lt; "EOF"
 <literal>#!/bin/bash
-# Simple script to list version numbers of critical development tools
-export LC_ALL=C
-bash --version | head -n1 | cut -d" " -f2-4
-MYSH=$(readlink -f /bin/sh)
-echo "/bin/sh -&gt; $MYSH"
-echo $MYSH | grep -q bash || echo "ERROR: /bin/sh does not point to bash"
-unset MYSH
+# A script to list version numbers of critical development tools
 
-echo -n "Binutils: "; ld --version | head -n1 | cut -d" " -f3-
-bison --version | head -n1
+# If you have tools installed in other directories, adjust PATH here AND
+# in ~lfs/.bashrc (section 4.4) as well.
 
-if [ -h /usr/bin/yacc ]; then
-  echo "/usr/bin/yacc -> `readlink -f /usr/bin/yacc`";
-elif [ -x /usr/bin/yacc ]; then
-  echo yacc is `/usr/bin/yacc --version | head -n1`
-else
-  echo "yacc not found"
-fi
+LC_ALL=C 
+PATH=/usr/bin:/bin
 
-echo -n "Coreutils: "; chown --version | head -n1 | cut -d")" -f2
-diff --version | head -n1
-find --version | head -n1
-gawk --version | head -n1
+bail() { echo "FATAL: $1"; exit 1; }
+grep --version > /dev/null 2> /dev/null || bail "grep does not work"
+sed '' /dev/null || bail "sed does not work"
+sort   /dev/null || bail "sort does not work"
 
-if [ -h /usr/bin/awk ]; then
-  echo "/usr/bin/awk -&gt; `readlink -f /usr/bin/awk`";
-elif [ -x /usr/bin/awk ]; then
-  echo awk is `/usr/bin/awk --version | head -n1`
-else
-  echo "awk not found"
-fi
+ver_check()
+{
+   if ! type -p $2 &amp;>/dev/null
+   then 
+     echo "ERROR: Cannot find $2 ($1)"; return 1; 
+   fi
+   v=$($2 --version 2>&amp;1 | grep -E -o '[0-9]+\.[0-9\.]+[a-z]*' | head -n1)
+   if printf '%s\n' $3 $v | sort --version-sort --check &amp;>/dev/null
+   then 
+     printf "OK:    %-9s %-6s >= $3\n" "$1" "$v"; return 0;
+   else 
+     printf "ERROR: %-9s is TOO OLD ($3 or later required)\n" "$1"; 
+     return 1; 
+   fi
+}
 
-gcc --version | head -n1
-g++ --version | head -n1
-grep --version | head -n1
-gzip --version | head -n1
-cat /proc/version
-m4 --version | head -n1
-make --version | head -n1
-patch --version | head -n1
-echo Perl `perl -V:version`
-python3 --version
-sed --version | head -n1
-tar --version | head -n1
-makeinfo --version | head -n1  # texinfo version
-xz --version | head -n1
+ver_kernel()
+{
+   kver=$(uname -r | grep -E -o '^[0-9\.]+')
+   if printf '%s\n' $1 $kver | sort --version-sort --check &amp;>/dev/null
+   then 
+     printf "OK:    Linux Kernel $kver >= $1\n"; return 0;
+   else 
+     printf "ERROR: Linux Kernel ($kver) is TOO OLD ($1 or later required)\n" "$kver"; 
+     return 1; 
+   fi
+}
 
-echo 'int main(){}' &gt; dummy.c &amp;&amp; g++ -o dummy dummy.c
-if [ -x dummy ]
-  then echo "g++ compilation OK";
-  else echo "g++ compilation failed"; fi
-rm -f dummy.c dummy</literal>
+# Coreutils first because-sort needs Coreutils >= 7.0
+ver_check Coreutils      sort     7.0 || bail "--version-sort unsupported"
+ver_check Bash           bash     3.2
+ver_check Binutils       ld       2.13.1
+ver_check Bison          bison    2.7
+ver_check Diffutils      diff     2.8.1
+ver_check Findutils      find     4.2.31
+ver_check Gawk           gawk     4.0.1
+ver_check GCC            gcc      5.1
+ver_check "GCC (C++)"    g++      5.1
+ver_check Grep           grep     2.5.1a
+ver_check Gzip           gzip     1.3.12
+ver_check M4             m4       1.4.10
+ver_check Make           make     4.0
+ver_check Patch          patch    2.5.4
+ver_check Perl           perl     5.8.8
+ver_check Python         python3  3.4
+ver_check Sed            sed      4.1.5
+ver_check Tar            tar      1.22
+ver_check Texinfo        texi2any 4.7
+ver_check Xz             xz       5.0.0
+ver_kernel &min-kernel;
+
+if mount | grep -q 'devpts on /dev/pts' &amp;&amp; [ -e /dev/ptmx ]
+then echo "OK:    Linux Kernel supports UNIX 98 PTY";
+else echo "ERROR: Linux Kernel does NOT support UNIX 98 PTY"; fi
+
+alias_check() {
+   if $1 --version 2>&amp;1 | grep -qi $2
+   then printf "OK:    %-4s is $2\n" "$1";
+   else printf "ERROR: %-4s is NOT $2\n" "$1"; fi
+}
+echo "Aliases:"
+alias_check awk GNU
+alias_check yacc Bison
+alias_check sh Bash
+
+echo "Compiler check:"
+if printf "int main(){}" | g++ -x c++ -
+then echo "OK:    g++ works";
+else echo "ERROR: g++ does NOT work"; fi
+rm -f a.out</literal>
 EOF
 
 bash version-check.sh</userinput></screen>
-<!--
-  <para>Also check for some library consistency:</para>
 
-<screen role="nodump"><userinput>cat &gt; library-check.sh &lt;&lt; "EOF"
-<literal>#!/bin/bash
-for lib in lib{gmp,mpfr,mpc}.la; do
-  echo $lib: $(if find /usr/lib* -name $lib|
-               grep -q $lib;then :;else echo not;fi) found
-done
-unset lib</literal>
-EOF
-
-bash library-check.sh</userinput></screen>
-
-<para>The files identified by this script should be all present
-or all absent, but not only one or two present.</para>
--->
  </sect2>
 </sect1>
