@@ -86,7 +86,7 @@ cd       build</userinput></screen>
       --prefix=/usr                      \
       --host=$LFS_TGT                    \
       --build=$(../scripts/config.guess) \
-      --enable-kernel=&min-kernel;                \
+      --enable-kernel=&min-kernel;               \
       --with-headers=$LFS/usr/include    \
       libc_cv_slibdir=/usr/lib</userinput></screen>
 
@@ -217,11 +217,12 @@ readelf -l a.out | grep ld-linux</userinput></screen>
 	Binutils или GCC, не удается собрать, это указывает на то, что что-то
 	пошло не так с установленными ранее Binutils, GCC, или Glibc.</para></note>
 
+<!--
     <para>Теперь, когда наш кросс-тулчейн собран, завершите установку заголовочного
 	файла limits.h. Для этого запустите утилиту, предоставляемую разработчиками GCC:</para>
 
 <screen><userinput>$LFS/tools/libexec/gcc/$LFS_TGT/&gcc-version;/install-tools/mkheaders</userinput></screen>
-
+-->
   </sect2>
 
   <sect2 role="content">

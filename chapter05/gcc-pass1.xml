@@ -213,7 +213,7 @@ cd       build</userinput></screen>
 
 <screen><userinput remap="install">cd ..
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
-  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/install-tools/include/limits.h</userinput></screen>
+  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include/limits.h</userinput></screen>
   </sect2>
 
   <sect2 role="content">
