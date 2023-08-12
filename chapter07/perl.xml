@@ -48,6 +48,7 @@
     <screen><userinput remap="configure">sh Configure -des                                        \
              -Dprefix=/usr                               \
              -Dvendorprefix=/usr                         \
+             -Duseshrplib                                \
              -Dprivlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
              -Darchlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
              -Dsitelib=/usr/lib/perl5/&perl-version-min;/site_perl     \
