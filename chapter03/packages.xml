@@ -62,7 +62,6 @@
         <para>Домашняя страница: <ulink url="&automake-home;"/></para>
         <para>Ссылка на загрузку: <ulink url="&automake-url;"/></para>
         <para>Контрольная сумма MD5: <literal>&automake-md5;</literal></para>
-        <para>Контрольная сумма SHA256: <literal>&automake-sha256;</literal></para>
       </listitem>
     </varlistentry>
 
@@ -174,14 +173,6 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="sysv">
-      <term>Eudev (&eudev-version;) - <token>&eudev-size;</token>:</term>
-      <listitem>
-        <para>Ссылка на загрузку: <ulink url="&eudev-url;"/></para>
-        <para>Контрольная сумма MD5: <literal>&eudev-md5;</literal></para>
-      </listitem>
-    </varlistentry>
-
     <varlistentry>
       <term>Expat (&expat-version;) - <token>&expat-size;</token>:</term>
       <listitem>
@@ -224,6 +215,15 @@
         <para>Домашняя страница: <ulink url="&flex-home;"/></para>
         <para>Ссылка на загрузку: <ulink url="&flex-url;"/></para>
         <para>Контрольная сумма MD5: <literal>&flex-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Flit-core (&flit-core-version;) - <token>&flit-core-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&flit-core-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&flit-core-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&flit-core-md5;</literal></para>
       </listitem>
     </varlistentry>
 
@@ -378,7 +378,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="systemd">
+    <varlistentry>
       <term>Jinja2 (&jinja2-version;) - <token>&jinja2-size;</token>:</term>
       <listitem>
         <para>Домашняя страница: <ulink url="&jinja2-home;"/></para>
@@ -460,6 +460,15 @@
     </varlistentry>
 
     <varlistentry>
+      <term>Libxcrypt (&libxcrypt-version;) - <token>&libxcrypt-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&libxcrypt-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&libxcrypt-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&libxcrypt-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Linux (&linux-version;) - <token>&linux-size;</token>:</term>
       <listitem>
         <para>Домашняя страница: <ulink url="&linux-home;"/></para>
@@ -518,7 +527,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="systemd">
+    <varlistentry>
       <term>MarkupSafe (&markupsafe-version;) - <token>&markupsafe-size;</token>:</term>
       <listitem>
         <para>Домашняя страница: <ulink url="&markupsafe-home;"/></para>
@@ -600,11 +609,11 @@
     </varlistentry>
 
     <varlistentry>
-      <term>Pkg-config (&pkgconfig-version;) - <token>&pkgconfig-size;</token>:</term>
+      <term>Pkgconf (&pkgconf-version;) - <token>&pkgconf-size;</token>:</term>
       <listitem>
-        <para>Домашняя страница: <ulink url="&pkgconfig-home;"/></para>
-        <para>Ссылка на загрузку: <ulink url="&pkgconfig-url;"/></para>
-        <para>Контрольная сумма MD5: <literal>&pkgconfig-md5;</literal></para>
+        <para>Домашняя страница: <ulink url="&pkgconf-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&pkgconf-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&pkgconf-md5;</literal></para>
       </listitem>
     </varlistentry>
 
@@ -679,7 +688,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="systemd">
+    <varlistentry>
       <term>Systemd (&systemd-version;) - <token>&systemd-size;</token>:</term>
       <listitem>
         <para>Домашняя страница: <ulink url="&systemd-home;"/></para>
@@ -688,7 +697,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="systemd">
+    <varlistentry>
       <term>Systemd Man Pages(&systemd-version;) - <token>&systemd-man-size;</token>:</term>
       <listitem>
         <para>Домашняя страница: <ulink url="&systemd-home;"/></para>

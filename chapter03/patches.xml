@@ -142,6 +142,7 @@
       </listitem>
     </varlistentry>
 
+<!--
     <varlistentry revision="systemd">
       <term>Systemd Upstream Patch - <token>&systemd-upstream-patch-size;</token>:</term>
       <listitem>
@@ -149,7 +150,7 @@
         <para>Контрольная сумма MD5: <literal>&systemd-upstream-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
-
+-->
 <!--
     <varlistentry>
       <term>Xz Upstream Fix Patch - <token>&xz-upstream-fix-patch-size;</token>:</term>
