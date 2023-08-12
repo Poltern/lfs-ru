@@ -42,12 +42,6 @@
   <sect2 role="installation">
     <title>Установка пакета Make</title>
 	
-    <para>Сначала устраните проблему, обнаруженную в make:</para>
-
-<screen><userinput remap="pre">sed -e '/ifdef SIGPIPE/,+2 d' \
-    -e '/undef  FATAL_SIG/i FATAL_SIG (SIGPIPE);' \
-    -i src/main.c</userinput></screen>
-
     <para>Подготовьте Make к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr   \

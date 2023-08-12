@@ -96,6 +96,7 @@ cd       build</userinput></screen>
     --disable-libatomic                            \
     --disable-libgomp                              \
     --disable-libquadmath                          \
+    --disable-libsanitizer                         \
     --disable-libssp                               \
     --disable-libvtv                               \
     --enable-languages=c,c++</userinput></screen>
@@ -137,10 +138,22 @@ cd       build</userinput></screen>
           <para>Разрешить <filename class="libraryfile">libstdc++</filename> использовать
            общую библиотеку <filename class="libraryfile">libgcc</filename>,
            собранную на этом этапе, вместо статической версии, собранной в GCC
-           Проход 1. Это необходимо для поддержки обработки исключения C++</para>
+           Проход 1. Это необходимо для поддержки обработки исключений C++</para>
         </listitem>
       </varlistentry>
 
+
+      <varlistentry>
+        <term><parameter>--disable-libsanitizer</parameter></term>
+        <listitem>
+          <para>Отключает библиотеки среды выполнения GCC sanitizer. Они не нужны для 
+		  временного набора инструментов. Этот параметр необходим для сборки GCC без
+          установки <systemitem class='library'>libcrypt</systemitem> для целевого 
+		  объекта. В <xref linkend='ch-tools-gcc-pass1'/> это решалось с помощью 
+		  параметра <parameter>--disable-libstdcxx</parameter>, но теперь мы должны 
+		  передать его явно.</para>
+        </listitem>
+      </varlistentry>
 
     </variablelist>
 

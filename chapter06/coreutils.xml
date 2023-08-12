@@ -43,13 +43,17 @@
   <sect2 role="installation">
     <title>Установка пакета Coreutils</title>
 
+<!--
+<screen><userinput remap="configure">export gl_cv_macro_MB_CUR_MAX_good=y</userinput></screen>
+-->
     <para>Подготовьте Coreutils к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
-            --enable-no-install-program=kill,uptime</userinput></screen>
+            --enable-no-install-program=kill,uptime \
+            gl_cv_macro_MB_CUR_MAX_good=y</userinput></screen>
 
     <variablelist>
       <title>Значение параметров настройки:</title>
@@ -57,9 +61,17 @@
       <varlistentry>
         <term><envar>--enable-install-program=hostname</envar></term>
         <listitem>
-          <para>Это позволяет создать и установить двоичный файл 
+          <para>Этот параметр позволяет создать и установить двоичный файл 
 		  <command>hostname</command> &ndash; по умолчанию он отключен, но 
 		  требуется для набора тестов Perl.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><envar>gl_cv_macro_MB_CUR_MAX_good=y</envar></term>
+        <listitem>
+          <para>Этот параметр необходим, чтобы обойти проблему с копией gnulib, 
+		  поставляемой пакетом, которая нарушит кросс-компиляцию.</para>
         </listitem>
       </varlistentry>
     </variablelist>

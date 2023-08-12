@@ -101,7 +101,7 @@ cd       build</userinput></screen>
     <para>Удалите архивные файлы libtool, поскольку они потенциально опасны при 
 	кросс-компиляции, также удалите ненужные статические библиотеки</para>
 
-<screen><userinput remap="install">rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}</userinput></screen>
+<screen><userinput remap="install">rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}</userinput></screen>
 
   </sect2>
 
