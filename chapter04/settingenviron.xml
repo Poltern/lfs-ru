@@ -103,7 +103,7 @@ EOF</userinput></screen>
     </varlistentry>
 
     <varlistentry>
-      <term><parameter>LFS_TGT=(uname -m)-lfs-linux-gnu</parameter></term>
+      <term><parameter>LFS_TGT=$(uname -m)-lfs-linux-gnu</parameter></term>
       <listitem>
   <para>Переменная <envar>LFS_TGT</envar> устанавливает нестандартное, но
   совместимое описание компьютера для использования при создании кросс-компилятора
