@@ -16,7 +16,7 @@
   </indexterm>
 
   <para>В <xref linkend="chapter-building-system"/>, мы установили демон udev
-  во время сборки <phrase revision="sysv">eudev</phrase>
+  во время сборки <phrase revision="sysv">udev</phrase>
   <phrase revision="systemd">systemd</phrase>. Прежде чем мы углубимся в детали того, как 
   работает udev, необходимо кратко рассказать о предыдущих методах взаимодействия с устройствами.</para>
 
