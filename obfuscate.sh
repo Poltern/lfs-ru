@@ -4,7 +4,7 @@
 # obfuscate email addresses in XML/HTML
 # Script written (and slight perl modification) by Archaic <archaic AT linuxfromscratch D0T org>
 # Modified from "sed -i" to old style "sed -e" by Manuel Canales <manuel AT linuxfromscratch D0T org>
-# to prevent hangs on very long files, like nonckunked books.
+# to prevent hangs on very long files, like nonchunked books.
 # Original Perl expression by Anderson Lizardo <lizardo AT linuxfromscratch D0T org>
 # Released under the GNU General Public License
 #

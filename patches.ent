@@ -23,7 +23,7 @@
 <!ENTITY bzip2-docs-patch-size "1.6 KB">
 
 <!ENTITY coreutils-i18n-patch "coreutils-&coreutils-version;-i18n-1.patch">
-<!ENTITY coreutils-i18n-patch-md5 "c1ac7edf095027460716577633da9fc5">
+<!ENTITY coreutils-i18n-patch-md5 "3c6340b3ddd62f4acdf8d3caa6fad6b0">
 <!ENTITY coreutils-i18n-patch-size "166 KB">
 <!--
 <!ENTITY coreutils-chmod-patch "coreutils-&coreutils-version;-chmod_fix-1.patch">
@@ -89,11 +89,11 @@
 <!ENTITY sysvinit-consolidated-patch-md5 "17ffccbb8e18c39e8cedc32046f3a475">
 <!ENTITY sysvinit-consolidated-patch-size "2.5 KB">
 
-
+<!--
 <!ENTITY systemd-upstream-patch "systemd-&systemd-version;-security_fix-1.patch">
 <!ENTITY systemd-upstream-patch-md5 "da817e69e897d35cdffd7c45ea06be39">
 <!ENTITY systemd-upstream-patch-size "76.0 KB">
-
+-->
 <!--
 <!ENTITY xz-upstream-fix-patch "xz-&xz-version;-upstream_fix-1.patch">
 <!ENTITY xz-upstream-fix-patch-md5 "584c72ea3d8f7502b2770670f3090788">

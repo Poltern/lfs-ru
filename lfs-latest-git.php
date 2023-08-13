@@ -12,12 +12,10 @@ $exceptions = array();
 
 $regex = array();
 //$regex[ 'bzip2'    ] = "/^.*current version is ([\d\.]+).*$/";
-$regex[ 'check'    ] = "/^.*Check (\d[\d\.]+\d).*$/";
 $regex[ 'intltool' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'less'     ] = "/^.*current released version is less-(\d+).*$/";
 $regex[ 'mpfr'     ] = "/^mpfr-([\d\.]+)\.tar.*$/";
 $regex[ 'Python'   ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
-$regex[ 'systemd'  ] = "/^.*systemd v([\d]+)$/";
 //$regex[ 'sysvinit' ] = "/^.*sysvinit-([\d\.]+)dsf\.tar.*$/";
 $regex[ 'tzdata'   ] = "/^.*tzdata([\d]+[a-z]).*$/";
 $regex[ 'xz'       ] = "/^.*xz-([\d\.]*\d).*$/";
@@ -69,17 +67,7 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
 function http_get_file( $url )
 {
-  if ( ! preg_match( "/sourceforge/", $url ) &&
-       ! preg_match( "/mpfr/",        $url ) &&
-       ! preg_match( "/psmisc/",      $url ) )
-  {
-    exec( "curl --location --silent --max-time 30 $url", $dir );
-
-    $s   = implode( "\n", $dir );
-    $dir = strip_tags( $s );
-    return explode( "\n", $dir );
-  }
-  else if ( preg_match( "/mpfr/", $url ) )
+  if ( preg_match( "/mpfr/", $url ) )
   {
     # There seems to be a problem with the mpfs certificate
     exec( "curl --location --silent --insecure --max-time 30 $url", $dir );
@@ -87,11 +75,19 @@ function http_get_file( $url )
     $dir = strip_tags( $s );
     return explode( "\n", $dir );
   }
-  else
+
+  if ( preg_match( "/sourceforge/", $url ) ||
+       preg_match( "/psmisc/",      $url ) )
   {
     exec( "lynx -dump $url 2>/dev/null", $lines );
     return $lines;
   }
+
+  exec( "curl --location --silent --max-time 30 $url", $dir );
+
+  $s   = implode( "\n", $dir );
+  $dir = strip_tags( $s );
+  return explode( "\n", $dir );
 }
 
 function max_parent( $dirpath, $prefix )
@@ -103,11 +99,16 @@ function max_parent( $dirpath, $prefix )
 
   $lines = http_get_file( $dirpath );
 
-  $regex_match   = "#${prefix}[\d\.]+/#";
-  $regex_replace = "#^.*(${prefix}[\d\.]+)/.*$#";
+  $regex_match   = "#{$prefix}[\d\.]+/#";
+  $regex_replace = "#^.*({$prefix}[\d\.]+)/.*$#";
   $max           = find_max( $lines, $regex_match, $regex_replace );
 
   return "$dirpath/$max";
+}
+
+function github( $path )
+{
+  return "https://api.github.com/repos/$path/releases/latest";
 }
 
 function get_packages( $package, $dirpath )
@@ -117,38 +118,39 @@ function get_packages( $package, $dirpath )
 
 //if ( $package != "psmisc" ) return 0; // debug
 
-if ( $package == "bc"         ) $dirpath = "https://github.com/gavinhoward/bc/releases";
-if ( $package == "check"      ) $dirpath = "https://github.com/libcheck/check/releases";
+if ( $package == "bc"         ) $dirpath = github("gavinhoward/bc");
+if ( $package == "check"      ) $dirpath = github("libcheck/check");
 if ( $package == "e2fsprogs"  ) $dirpath = "https://sourceforge.net/projects/e2fsprogs/files/e2fsprogs";
 if ( $package == "expat"      ) $dirpath = "https://sourceforge.net/projects/expat/files";
 if ( $package == "elfutils"   ) $dirpath = "https://sourceware.org/ftp/elfutils";
 if ( $package == "expect"     ) $dirpath = "https://sourceforge.net/projects/expect/files";
-if ( $package == "eudev"      ) $dirpath = "https://github.com/eudev-project/eudev/releases";
 if ( $package == "file"       ) $dirpath = "https://github.com/file/file/tags";
-if ( $package == "flex"       ) $dirpath = "https://github.com/westes/flex/releases";
+if ( $package == "flex"       ) $dirpath = github("westes/flex");
+if ( $package == "flit_core"  ) $dirpath = "https://pypi.org/project/flit-core/";
 if ( $package == "gcc"        ) $dirpath = max_parent( $dirpath, "gcc-" );
-if ( $package == "iana-etc"   ) $dirpath = "https://github.com/Mic92/iana-etc/releases";
+if ( $package == "iana-etc"   ) $dirpath = github("Mic92/iana-etc");
 if ( $package == "intltool"   ) $dirpath = "https://launchpad.net/intltool/trunk";
-if ( $package == "libffi"     ) $dirpath = "https://github.com/libffi/libffi/releases";
-if ( $package == "meson"      ) $dirpath = "https://github.com/mesonbuild/meson/releases";
+if ( $package == "libffi"     ) $dirpath = github("libffi/libffi");
+if ( $package == "libxcrypt"  ) $dirpath = github("besser82/libxcrypt");
+if ( $package == "meson"      ) $dirpath = github("mesonbuild/meson");
 if ( $package == "mpc"        ) $dirpath = "https://ftp.gnu.org/gnu/mpc";
 if ( $package == "mpfr"       ) $dirpath = "https://mpfr.loria.fr/mpfr-current";
 if ( $package == "ncurses"    ) $dirpath = "https://invisible-mirror.net/archives/ncurses";
-if ( $package == "ninja"      ) $dirpath = "https://github.com/ninja-build/ninja/releases";
+if ( $package == "ninja"      ) $dirpath = github("ninja-build/ninja");
 if ( $package == "procps-ng"  ) $dirpath = "https://gitlab.com/procps-ng/procps/-/tags";
 if ( $package == "psmisc"     ) $dirpath = "https://gitlab.com/psmisc/psmisc/-/tags";
 if ( $package == "Python"     ) $dirpath = "https://www.python.org/downloads/source/";
-if ( $package == "shadow"     ) $dirpath = "https://github.com/shadow-maint/shadow/releases";
-if ( $package == "sysvinit"   ) $dirpath = "https://github.com/slicer69/sysvinit/releases";
+if ( $package == "shadow"     ) $dirpath = github("shadow-maint/shadow");
+if ( $package == "sysvinit"   ) $dirpath = github("slicer69/sysvinit");
 if ( $package == "MarkupSafe" ) $dirpath = "https://pypi.python.org/pypi/MarkupSafe/";
 if ( $package == "Jinja"      ) $dirpath = "https://pypi.python.org/pypi/Jinja2/";
-if ( $package == "systemd"    ) $dirpath = "https://github.com/systemd/systemd/releases";
+if ( $package == "systemd"    ) $dirpath = github("systemd/systemd");
 //if ( $package == "tcl"        ) $dirpath = "https://sourceforge.net/projects/tcl/files";
 if ( $package == "tcl"        ) $dirpath = "https://www.tcl.tk/software/tcltk/download.html";
 if ( $package == "util-linux" ) $dirpath = max_parent( $dirpath, "v." );
 if ( $package == "vim"        ) $dirpath = "https://github.com/vim/vim/tags";
 if ( $package == "wheel"      ) $dirpath = "https://pypi.org/project/wheel/#files";
-if ( $package == "zstd"       ) $dirpath = "https://github.com/facebook/zstd/releases";
+if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
 
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) )
@@ -258,26 +260,11 @@ if ( $package == "zstd"       ) $dirpath = "https://github.com/facebook/zstd/rel
   if ( $package == "e2fsprogs" )
      return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]+\d).*$/" );
 
-  if ( $package == "eudev" )
-     return find_max( $lines, "/Release/", "/^.*Release (\d[\d\.]+\d).*$/" );
-
   if ( $package == "expect" )
      return find_max( $lines, "/expect/", "/^.*expect(\d[\d\.]+\d).tar.*$/" );
 
   if ( $package == "elfutils" )
      return find_max( $lines, "/^\d/", "/^(\d[\d\.]+\d)\/.*$/" );
-
-  if ( $package == "iana-etc" )
-     return find_max( $lines, "/^\s*20\d\d/", "/^\s+(\d+).*$/" );
-
-  if ( $package == "meson" )
-     return find_max( $lines, "/^\s+\d\./", "/^\s+([\d\.]+)$/" );
-
-  if ( $package == "shadow" )
-     return find_max( $lines, "/^\s+\d\./", "/^\s+([\d\.]+)$/" );
-
-  if ( $package == "sysvinit" )
-     return find_max( $lines, "/^\s+\d\./", "/^\s+([\d\.]+)$/" );
 
   if ( $package == "XML-Parser" )
   {
@@ -289,9 +276,6 @@ if ( $package == "zstd"       ) $dirpath = "https://github.com/facebook/zstd/rel
 
   if ( $package == "tcl" )
      return find_max( $lines, "/tcl\d/", "/^.*tcl(\d\.[\d\.]*\d)-src.*$/" );
-
-  if ( $package == "ninja" )
-     return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]*\d).*$/" );
 
   if ( $package == "gmp" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\._]*\d[a-z]?).tar.*$/" );
@@ -305,8 +289,8 @@ if ( $package == "zstd"       ) $dirpath = "https://github.com/facebook/zstd/rel
      return str_replace( "_", ".", $max );
   }
 
-  if ( $package == "libffi" )
-     return find_max( $lines, "/v\d/", "/^.*v([\d\.]+)$/" );
+  if ( $package == "flit_core" )
+     return find_max( $lines, "/flit-core /", "/^.*flit-core ([\d\.]+)$/" );
 
   if ( $package == "procps-ng" )
      return find_max( $lines, "/v\d/", "/^.*v([\d\.]+)$/" );
@@ -326,8 +310,8 @@ if ( $package == "zstd"       ) $dirpath = "https://github.com/facebook/zstd/rel
   if ( $package == "vim" )
      return find_max( $lines, "/v\d\./", "/^.*v([\d\.]+).*$/" );
 
-  if ( $package == "zstd" )
-     return find_max( $lines, "/Zstandard v/", "/^.*v([\d\.]+).*$/" );
+  if ( preg_match( "/api.github.com/", $dirpath) )
+     return ltrim(json_decode(join("", $lines))->tag_name, "v");
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
@@ -342,13 +326,15 @@ function get_current()
    // Fetech from git and get wget-list
    $current = array();
    #$lfssvn = "svn://svn.linuxfromscratch.org/LFS/trunk";
-   $lfsgit = "git://git.linuxfromscratch.org/lfs.git";
+   $lfsgit = "https://git.linuxfromscratch.org/lfs.git";
 
    $tmpdir = exec( "mktemp -d /tmp/lfscheck.XXXXXX" );
    $cdir   = getcwd();
    chdir( $tmpdir );
-   #exec ( "svn --quiet export $lfssvn LFS" );
-   exec ( "git clone $lfsgit LFS" );
+
+   # git-version.sh needs the history since the rx.y tag.
+   exec ( "git clone $lfsgit LFS --depth 1 --branch r11.2" );
+   exec ( "git -C LFS pull origin trunk" );
 
    # Make version.ent
    chdir( "$tmpdir/LFS" );
@@ -503,7 +489,7 @@ table td {
    {
       $v    = get_packages( $pkg, $dir );
       $flag = ( $vers[ $pkg ] != $v ) ? "*" : "";
-      echo "<tr><td>$pkg</td> <td>${vers[ $pkg ]}</td> <td>$v</td> <td>$flag</td></tr>\n";
+      echo "<tr><td>$pkg</td> <td>{$vers[ $pkg ]}</td> <td>$v</td> <td>$flag</td></tr>\n";
    }
 
    echo "</table>

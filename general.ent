@@ -10,7 +10,7 @@
 <!ENTITY % relnum "11.3"><!-- must be given for release or rc -->
 <!ENTITY % reldate "1 августа 2023"><!-- must ve given for release or rc -->
 <!ENTITY % crdate "1999-2023"><!-- must ve given for release or rc -->
-<!ENTITY % rcnum  "2"><!-- must be given only for rc -->
+<!ENTITY % rcnum  "0"><!-- must be given only for rc -->
 <!-- ================================================================== -->
 <!-- Do not change anything below unless the www or book layouts change -->
 
@@ -91,7 +91,11 @@
 <!ENTITY livecd-root     "&lfs-root;livecd/">
 <!ENTITY test-results    "&lfs-root;lfs/build-logs/&generic-version;/">
 <!ENTITY secadv          "&lfs-root;lfs/advisories/">
-<!ENTITY min-kernel      "3.2">
+
+<!-- 4.14 EOL is Jan 2024
+     so for LFS 11.5 we may consider moving to 4.19 -->
+<!ENTITY min-kernel      "4.14">
+
 <!--
 <!ENTITY patches-rootd   "&lfs-root;patches/lfs/&generic-versiond;/">
 <!ENTITY downloads-rootd "&lfs-root;lfs/downloads/&generic-versiond;/">
