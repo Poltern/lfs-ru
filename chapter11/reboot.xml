@@ -14,6 +14,14 @@
   ваш компьютер. Однако есть несколько вещей, которые нужно проверить. Вот некоторые 
   предложения:</para>
 
+<!--
+  The system you
+  have created in this book is quite minimal, and most likely will not have
+  the functionality you would need to be able to continue forward. By installing
+  a few extra packages from the BLFS book while still in our current chroot
+  environment, you can leave yourself in a much better position to continue on
+  once you reboot into your new LFS installation. Here are some suggestions:</para>
+-->
   <itemizedlist>
 <!--
     <listitem><para>Текстовый браузер, например, <ulink
@@ -51,12 +59,23 @@
     url='&blfs-book;basicnet/wpa_supplicant.html'>wpa_supplicant</ulink>.
     </para></listitem>
 -->
-    <listitem><para>Установить <ulink
-    url='&blfs-book;postlfs/firmware.html'>прошивки</ulink>, если они необходимы для правильной 
-	работы вашего оборудования.
-    </para></listitem>
+    <listitem>
+      <para>Установить <ulink
+        url='&blfs-book;postlfs/firmware.html'>прошивки</ulink>, если они необходимы для правильной 
+	    работы вашего оборудования.
+      </para>
+    </listitem>
 
-    <listitem><para>На данном этапе также уместно ознакомиться со следующими конфигурационными файлами.</para>
+    <listitem>
+      <para>
+        Убедитесь, что установлен пароль для пользователя &root;.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	    На данном этапе также уместно ознакомиться со следующими конфигурационными файлами.
+	  </para>
 
       <itemizedlist>
         <listitem><para>/etc/bashrc                  </para></listitem>
@@ -101,13 +120,23 @@ umount -v $LFS/usr</userinput></screen>
 
   <para>Теперь, выполните перезагрузку системы.</para>
 
+<!-- Commented out because we don't have a host system requirement on
+     its init, and different init system may recommend different commands
+     for reboot.  -->
 <!--<screen role="nodump"><userinput>shutdown -r now</userinput></screen>-->
 
   <para>Предполагается, что загрузчик GRUB был настроен ранее, поэтому пункт меню
    <emphasis>LFS &version;</emphasis> будет загружен автоматически.</para>
 
-  <para>После завершения перезагрузки система LFS будет готова к использованию, и, 
-  при необходимости, в систему может быть установлено дополнительное программное 
-  обеспечение.</para>
+  <para>После завершения перезагрузки, система LFS будет готова к использованию. Вы 
+  увидите простую подсказку <quote>login: </quote>. На этом этапе вы можете перейти 
+  к <ulink url="&blfs-book;">книге BLFS</ulink>, где вы установите дополнительное 
+  программное обеспечение в соответствии с вашими потребностями.</para>
+
+  <para>
+    Если перезагрузка завершилась <emphasis role="bold">неудачей</emphasis>, самое 
+	время устранить эти неполадки. Советы по решению проблем с начальной загрузкой, смотрите 
+	на странице <ulink url="https://www.linuxfromscratch.org/lfs/troubleshooting.html"/>.
+  </para>
 
 </sect1>
