@@ -77,6 +77,14 @@
     </varlistentry>
 -->
     <varlistentry>
+      <term>Glibc Memalign Patch - <token>&glibc-memalign-patch-size;</token>:</term>
+      <listitem>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&glibc-memalign-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&glibc-memalign-patch-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Glibc FHS Patch - <token>&glibc-fhs-patch-size;</token>:</term>
       <listitem>
         <para>Ссылка на загрузку: <ulink url="&patches-root;&glibc-fhs-patch;"/></para>

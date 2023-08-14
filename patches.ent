@@ -50,6 +50,10 @@
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
 <!ENTITY glibc-fhs-patch-size "2.8 KB">
 
+<!ENTITY glibc-memalign-patch "glibc-&glibc-version;-memalign_fix-1.patch">
+<!ENTITY glibc-memalign-patch-md5 "2c3552bded42a83ad6a7087c5fbf3857">
+<!ENTITY glibc-memalign-patch-size "20 KB">
+
 <!ENTITY grub-upstream-fixes-patch "grub-&grub-version;-upstream_fixes-1.patch">
 <!ENTITY grub-upstream-fixes-patch-md5 "da388905710bb4cbfbc7bd7346ff9174">
 <!ENTITY grub-upstream-fixes-patch-size "8 KB">
