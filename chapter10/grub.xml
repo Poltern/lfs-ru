@@ -127,6 +127,7 @@ xorriso -as cdrecord -v dev=/dev/cdrw blank=as_needed grub-img.iso</userinput></
 set default=0
 set timeout=5
 
+insmod part_gpt
 insmod ext2
 set root=(hd0,2)
 
@@ -134,6 +135,21 @@ menuentry "GNU/Linux, Linux &linux-version;-lfs-&version;" {
         linux   /boot/vmlinuz-&linux-version;-lfs-&version; root=/dev/sda2 ro
 }</literal>
 EOF</userinput></screen>
+
+    <para>
+      Команды <command>insmod</command> загружают модули <application>GRUB</application> 
+	  с именами <filename>part_gpt</filename> и <filename>ext2</filename>. Несмотря на 
+	  название, <filename>ext2</filename> фактически поддерживаются файловые системы 
+	  <systemitem class='filesystem'>ext2</systemitem>, 
+	  <systemitem class='filesystem'>ext3</systemitem> и 
+	  <systemitem class='filesystem' >ext4</systemitem>.  Команда 
+	  <command>grub-install</command> встроила некоторые модули в основной образ 
+	  <application>GRUB</application> (установленный в MBR или раздел GRUB BIOS) для доступа 
+	  к другим модулям (в <filename class= 'directory'>/boot/grub/i386-pc</filename>), 
+	  поэтому в стандартной конфигурации эти два модуля уже встроены и эти две команды 
+	  <command>insmod</command> ничего не будут делать. В любом случае, от них нет никакого 
+	  вреда, но они могут понадобиться в некоторых редких конфигурациях.
+    </para>
 
     <note><para>С точки зрения <application>GRUB</application>, 
 	файлы ядра относятся к используемому разделу. Если вы используется отдельный раздел 

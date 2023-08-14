@@ -44,6 +44,34 @@
 	Ознакомьтесь с файлом <filename>README</filename> в дереве исходных текстов, чтобы 
 	узнать об альтернативных способах настройки ядра.</para>
 
+
+    <important>
+      <para>
+        Сборка ядра Linux в первый раз — одна из самых сложных задач в LFS. Правильный выбор 
+		параметров зависит от конкретного оборудования для целевой системы и ваших потребностей. 
+		Для ядра доступно почти 12 000 элементов конфигурации, хотя для большинства компьютеров 
+		требуется только около трети из них. Редакторы LFS рекомендуют пользователям, не знакомым 
+		с этим процессом, внимательно следовать описанным ниже процедурам. Главная цель сейчас 
+		состоит в том, чтобы довести первоначальную систему до состояния, когда вы сможете войти 
+		в систему из командной строки при последующей перезагрузке в <xref linkend="ch-finish-reboot"/>. 
+		Вопросы оптимизация и кастомизация второстепенны.
+      </para>
+
+      
+      <para>
+        Для получения общей информации о конфигурации ядра смотрите <ulink
+        url="&hints-root;kernel-configuration.txt"/>. Дополнительную информацию о настройке и 
+		сборке ядра можно найти по адресу <ulink url="&anduin-sources;/kernel-nutshell/"/>. Эти 
+		ссылки немного устарели, но все же дают разумное представление о процессе.
+      </para>
+
+      <para>
+        Если ничего не помогает, вы можете обратиться за помощью в список рассылки 
+		<link url="https://www.linuxfromscratch.org/mail.html">lfs-support</ulink>. Обратите 
+		внимание, что подписка необходима для того, чтобы рассылка не содержала спама.
+      </para>
+    </important>
+
     <para>Подготовьте пакет к компиляции, выполнив следующую команду:</para>
 
 <screen><userinput remap="pre">make mrproper</userinput></screen>
@@ -85,13 +113,6 @@
 
     <!-- Support for compiling a keymap into the kernel is deliberately removed -->
 
-    <para>Для получения общей информации о настройке параметров ядра, смотрите <ulink
-    url="&hints-root;kernel-configuration.txt"/>. Книга BLFS содержит некоторую информацию о 
-	требованиях к конфигурации ядра для поддержки пакетов, которые отсутствуют в LFS. Эта 
-	информация доступна по ссылке <ulink url="&blfs-book;longindex.html#kernel-config-index"/>. 
-	Дополнительную информацию о настройке и сборке ядра можно найти по адресу 
-	<ulink url="http://www.kroah.com/lkn/"/>.</para>
-
     <note>
       <para>Хорошей отправной точкой для настройки ядра, может стать запуск команды 
 	  <command>make defconfig</command>. В результате её выполнения будет создана базовая 
@@ -100,80 +121,39 @@
       <para>Обязательно включите/отключите/настройте следующие параметры, иначе система может 
 	  работать некорректно или вообще не загружаться:</para>
 
-      <screen role="nodump" revision="sysv">Processor type and features ---&gt;
-   [*] Build a relocatable kernel [CONFIG_RELOCATABLE]
-   [*]   Randomize the address of the kernel image (KASLR) [CONFIG_RANDOMIZE_BASE]
-General setup ---&gt;
-   [ ] Compile the kernel with warnings as errors [CONFIG_WERROR]
-   &lt; &gt; Enable kernel headers through /sys/kernel/kheaders.tar.xz [CONFIG_IKHEADERS]
-General architecture-dependent options  ---&gt;
-   [*] Stack Protector buffer overflow detection [CONFIG_STACKPROTECTOR]
-   [*]   Strong Stack Protector [CONFIG_STACKPROTECTOR_STRONG]
-Device Drivers  ---&gt;
-  Graphics support ---&gt;
-   Frame buffer Devices ---&gt;
-      &lt;*&gt; Support for frame buffer devices ---&gt;
-   Console display driver support ---&gt;
-      [*] Framebuffer Console support [CONFIG_FRAMEBUFFER_CONSOLE]
-  Generic Driver Options  ---&gt;
-   [ ] Support for uevent helper [CONFIG_UEVENT_HELPER]
-   [*] Maintain a devtmpfs filesystem to mount at /dev [CONFIG_DEVTMPFS]
-   [*]   Automount devtmpfs at /dev, after the kernel mounted the rootfs [CONFIG_DEVTMPFS_MOUNT]</screen>
+      <!-- To editors: for updating kernel configuration, edit
+           kernel/*.toml and regenerate kernel/*.xml with
+           "make -C kernel KERNEL_TREE=</usr/src/linux-&linux-version> -->
 
-      <screen role="nodump" revision="systemd">Processor type and features ---&gt;
-   [*] Build a relocatable kernel [CONFIG_RELOCATABLE]
-   [*]   Randomize the address of the kernel image (KASLR) [CONFIG_RANDOMIZE_BASE]
-General setup ---&gt;
-   [ ] Compile the kernel with warnings as errors [CONFIG_WERROR]
-   [ ] Auditing Support [CONFIG_AUDIT]
-   CPU/Task time and stats accounting ---&gt;
-      [*] Pressure stall information tracking [CONFIG_PSI]
-   &lt; &gt; Enable kernel headers through /sys/kernel/kheaders.tar.xz [CONFIG_IKHEADERS]
-   [*] Control Group support [CONFIG_CGROUPS]   ---&gt;
-      [*] Memory controller [CONFIG_MEMCG]
-   [ ] Enable deprecated sysfs features to support old userspace tools [CONFIG_SYSFS_DEPRECATED]
-   [*] Configure standard kernel features (expert users) [CONFIG_EXPERT] ---&gt;
-      [*] open by fhandle syscalls [CONFIG_FHANDLE]
-General architecture-dependent options  ---&gt;
-   [*] Enable seccomp to safely compute untrusted bytecode [CONFIG_SECCOMP]
-   [*] Stack Protector buffer overflow detection [CONFIG_STACKPROTECTOR]
-   [*]   Strong Stack Protector [CONFIG_STACKPROTECTOR_STRONG]
-Networking support  ---&gt;
-  Networking options  ---&gt;
-   &lt;*&gt; The IPv6 protocol [CONFIG_IPV6]
-Device Drivers  ---&gt;
-  Generic Driver Options  ---&gt;
-   [ ] Support for uevent helper [CONFIG_UEVENT_HELPER]
-   [*] Maintain a devtmpfs filesystem to mount at /dev [CONFIG_DEVTMPFS]
-   [*]   Automount devtmpfs at /dev, after the kernel mounted the rootfs [CONFIG_DEVTMPFS_MOUNT]
-   Firmware Loader ---&gt;
-      [ ] Enable the firmware sysfs fallback mechanism [CONFIG_FW_LOADER_USER_HELPER]
-  Firmware Drivers   ---&gt;
-   [*] Export DMI identification via sysfs to userspace [CONFIG_DMIID]
-  Graphics support ---&gt;
-   Frame buffer Devices ---&gt;
-      &lt;*&gt; Support for frame buffer devices ---&gt;
-   Console display driver support ---&gt;
-      [*] Framebuffer Console support [CONFIG_FRAMEBUFFER_CONSOLE]
-File systems  ---&gt;
-   [*] Inotify support for userspace [CONFIG_INOTIFY_USER]
-       Pseudo filesystems  ---&gt;
-        [*] Tmpfs POSIX Access Control Lists [CONFIG_TMPFS_POSIX_ACL]</screen>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="kernel/sysv.xml"/>
 
-      <para>Включите некоторые дополнительные параметры, если вы создаете 64-битную
-       систему. Если вы используете menuconfig, включите их в следующем порядке: сначала
-       <parameter>CONFIG_PCI_MSI</parameter>, затем
-       <parameter>CONFIG_IRQ_REMAP</parameter>, и, наконец, 
-       <parameter>CONFIG_X86_X2APIC</parameter>, это связано с тем что каждый следующий 
-	   вариант появляется после включения зависимостей.</para>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="kernel/systemd.xml"/>
 
-      <screen role="nodump">Processor type and features ---&gt;
-  [*] Support x2apic [CONFIG_X86_X2APIC]
-Device Drivers ---&gt;
-  [*] PCI Support ---&gt; [CONFIG_PCI]
-    [*] Message Signaled Interrupts (MSI and MSI-X) [CONFIG_PCI_MSI]
-  [*] IOMMU Hardware Support ---&gt; [CONFIG_IOMMU_SUPPORT]
-    [*] Support for Interrupt Remapping [CONFIG_IRQ_REMAP]</screen>
+      <para>Включите некоторые дополнительные функции, если вы собираете 64-битную систему. 
+	  Если вы используете menuconfig, включите их в следующем порядке: сначала 
+	  <parameter>CONFIG_PCI_MSI</parameter>, затем 
+	  <parameter>CONFIG_IRQ_REMAP</parameter>, и, наконец, 
+	  <parameter>CONFIG_X86_X2APIC</parameter>, потому что параметр отображается только 
+	  после выбора его зависимости.</para>
+
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="kernel/x2apic.xml"/>
+
+      <para>Если вы создаете 32-разрядную систему, работающую на оборудовании с объемом 
+	  оперативной памяти более 4 ГБ, измените конфигурацию таким образом, чтобы ядро могло 
+	  использовать до 64 ГБ оперативной памяти:</para>
+
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="kernel/highmem.xml"/>
+
+      <para>Если раздел для системы LFS находится на NVME SSD (то есть узлом устройства 
+	  для раздела является <filename>/dev/nvme*</filename>, а не <filename>/dev/sd*</filename>), 
+	  включите параметр NVME support, иначе система LFS не будет загружается:</para>
+
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+        href="kernel/nvme.xml"/>
     </note>
 
     <note revision="systemd">
@@ -181,16 +161,18 @@ Device Drivers ---&gt;
 	  разработчиками systemd.</para>
     </note>
 
-    <para revision="sysv">Есть несколько других параметров, которые могут понадобиться 
+    <para>Есть несколько других параметров, которые могут понадобиться 
 	в зависимости от особенностей системы. Для получения списка необходимых опций для пакетов BLFS 
-	смотрите <ulink
-    url="&lfs-root;blfs/view/&short-version;/longindex.html#kernel-config-index">Список опций ядра BLFS</ulink>
-    (&lfs-root;blfs/view/&short-version;/longindex.html#kernel-config-index).</para>
+	смотрите <ulink 
+        url="&lfs-root;blfs/view/&short-version;/longindex.html#kernel-config-index">Список опций ядра BLFS</ulink>.
+    </para>
 
     <note>
       <para>Если ваша хост поддерживает UEFI и вы хотите загрузить LFS с помощью него, вам необходимо 
 	  настроить некоторые параметры ядра, следуя инструкции 
-	  <ulink url="&blfs-book;postlfs/grub-setup.html#uefi-kernel">на странице BLFS</ulink>.</para>
+	  <ulink url="&blfs-book;postlfs/grub-setup.html#uefi-kernel">на странице BLFS</ulink>, 
+          <emphasis role='bold'>даже если вы будете использовать загрузчик UEFI из основного 
+          дистрибутива</emphasis>.</para>
     </note>
 
     <variablelist>
@@ -229,6 +211,19 @@ Device Drivers ---&gt;
       </varlistentry>
 
       <varlistentry>
+        <term>
+          <parameter>
+            Configure standard kernel features (expert users)
+          </parameter>
+        </term>
+        <listitem>
+          <para>Эта опция приведет к отображению некоторых параметров в интерфейсе конфигурации, 
+		  но изменение этих параметров может быть опасным. Не используйте её, если вы не знаете, 
+		  что делаете.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><parameter>Strong Stack Protector</parameter></term>
         <listitem>
           <para>Включите SSP для ядра. Мы включили его для всего пользовательского пространства 
@@ -240,7 +235,7 @@ Device Drivers ---&gt;
       <varlistentry>
         <term><parameter>Support for uevent helper</parameter></term>
         <listitem>
-          <para>Включение этого параметра может вызвать сбои при управление устройствами через Udev/Eudev.</para>
+          <para>Включение этого параметра может вызвать сбои при управление устройствами через Udev.</para>
         </listitem>
       </varlistentry>
 
@@ -250,7 +245,7 @@ Device Drivers ---&gt;
           <para>С помощью этого параметра узлы устройств создаются автоматически и заполняются самим 
 		  ядром, даже без запуска Udev. Udev будет работать поверх, управляя разрешениями и добавляя 
 		  необходимые символические ссылки. Этот элемент конфигурации необходим всем пользователям 
-		  Udev/Eudev.</para>
+		  Udev.</para>
         </listitem>
       </varlistentry>
 
@@ -348,8 +343,8 @@ Device Drivers ---&gt;
 
     <para>Установите документацию ядра:</para>
 
-<screen><userinput remap="install">install -d /usr/share/doc/linux-&linux-version;
-cp -r Documentation/* /usr/share/doc/linux-&linux-version;</userinput></screen>
+<screen><userinput remap="install">cp -r Documentation -T /usr/share/doc/linux-&linux-version;</userinput></screen>
+
 
     <para>Важно отметить, что файлы в каталоге исходных кодов ядра не принадлежат пользователю 
 	<emphasis>root</emphasis>. Всякий раз, когда пакет распаковывается от пользователя 
