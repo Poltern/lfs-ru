@@ -39,6 +39,15 @@
     appropriate for the entry or if needed the entire day's listitem.
     -->
     <listitem>
+      <para>2023-08-18</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to udev-lfs-20230818.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-08-15</para>
       <itemizedlist>
         <listitem>
@@ -64,7 +73,7 @@
         </listitem>
         <listitem>
           <para>[rahul] - Update to pkgconf-2.0.1. Fixes
-          <ulink url='&lfs-ticket-root;5315'>#5316</ulink>.</para>
+          <ulink url='&lfs-ticket-root;5316'>#5316</ulink>.</para>
         </listitem>
       </itemizedlist>
     </listitem>

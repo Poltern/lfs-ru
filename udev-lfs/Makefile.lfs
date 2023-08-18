@@ -3,7 +3,7 @@
 
 # vim: tabstop=3
 
-VERSION=20230728
+VERSION=20230818
 SHELL=/bin/bash
 
 ifeq ($(V),)
@@ -23,6 +23,7 @@ install:
    # Copy rules
 	@cp -v udev-lfs-$(VERSION)/*.rules $(DESTDIR)/etc/udev/rules.d
 	@cp -v udev-lfs-$(VERSION)/init-net-rules.sh \
+          udev-lfs-$(VERSION)/write_net_rules   \
           udev-lfs-$(VERSION)/rule_generator.functions $(DESTDIR)/usr/lib/udev
 
    # Copy documentation

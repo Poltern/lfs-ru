@@ -119,7 +119,7 @@
 <!ENTITY dbus-url "https://dbus.freedesktop.org/releases/dbus/dbus-&dbus-version;.tar.xz">
 <!ENTITY dbus-md5 "da42f55aeec51b355587bc3062fc2d41">
 <!ENTITY dbus-home "https://www.freedesktop.org/wiki/Software/dbus">
-<!ENTITY dbus-fin-du "19 MB">
+<!ENTITY dbus-fin-du "20 MB">
 <!ENTITY dbus-fin-sbu "0.1 SBU">
 
 <!ENTITY dejagnu-version "1.6.3">
@@ -657,7 +657,7 @@
 <!--<!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-version;-&systemd-stable;.tar.xz">-->
 <!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-man-version;.tar.xz">
 <!ENTITY systemd-man-md5  "fc32faeac581e1890ca27fcea3858410">
-<!ENTITY systemd-fin-du   "258 MB">
+<!ENTITY systemd-fin-du   "238 MB">
 <!ENTITY systemd-fin-sbu  "0.7 SBU">
 
 <!ENTITY sysvinit-version "3.07">
@@ -709,10 +709,10 @@
 <!ENTITY udev-fin-du "138 MB">
 <!ENTITY udev-fin-sbu "0.2 SBU">
 
-<!ENTITY udev-lfs-version "udev-lfs-20230728">
+<!ENTITY udev-lfs-version "udev-lfs-20230818">
 <!ENTITY udev-lfs-size    "10 KB">
 <!ENTITY udev-lfs-url     "&anduin-sources;/&udev-lfs-version;.tar.xz">
-<!ENTITY udev-lfs-md5     "8a3b921e3a28d36ac46d17137d920268">
+<!ENTITY udev-lfs-md5     "acd4360d8a5c3ef320b9db88d275dae6">
 <!ENTITY udev-lfs-home    " ">
 
 <!ENTITY util-linux-minor "2.39">

@@ -1,3 +1,6 @@
+2023-08-18  <bdubbs@linuxfromscratch.org>
+   * Fix regression when removing cdrom entries
+
 2023-07-28  <bdubbs@linuxfromscratch.org>
    * Remove obsolete 83-cdrom-symlinks.rules and 81-cdrom.rules
 	* Remove references to obsolete ISDN devices
