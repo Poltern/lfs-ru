@@ -765,7 +765,7 @@
 
 <!ENTITY zlib-version "1.2.13">
 <!ENTITY zlib-size "1267 KB">
-<!ENTITY zlib-url "https://zlib.net/zlib-&zlib-version;.tar.xz">
+<!ENTITY zlib-url "&anduin-sources;/zlib-&zlib-version;.tar.xz">
 <!ENTITY zlib-md5 "7d9fc1d78ae2fa3e84fe98b77d006c63">
 <!ENTITY zlib-home "https://www.zlib.net/">
 <!ENTITY zlib-fin-du "6.2 MB">
