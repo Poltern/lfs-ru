@@ -433,12 +433,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "4">
-<!ENTITY linux-patch-version "10">
+<!ENTITY linux-patch-version "12">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "134,621 KB">
+<!ENTITY linux-size "134,616 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "2e19e7badc3d4b080bf6b4864912f2d3">
+<!ENTITY linux-md5 "24570ba0ef9dd592bd640a1a41686fac">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,

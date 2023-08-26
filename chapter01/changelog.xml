@@ -39,6 +39,15 @@
     appropriate for the entry or if needed the entire day's listitem.
     -->
     <listitem>
+      <para>2023-08-25</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.4.12.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-08-18</para>
       <itemizedlist>
         <listitem>
