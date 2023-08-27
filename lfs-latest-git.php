@@ -150,6 +150,7 @@ if ( $package == "tcl"        ) $dirpath = "https://www.tcl.tk/software/tcltk/do
 if ( $package == "util-linux" ) $dirpath = max_parent( $dirpath, "v." );
 if ( $package == "vim"        ) $dirpath = "https://github.com/vim/vim/tags";
 if ( $package == "wheel"      ) $dirpath = "https://pypi.org/project/wheel/#files";
+if ( $package == "zlib"       ) $dirpath = "https://www.zlib.net";
 if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
 
   // Check for ftp

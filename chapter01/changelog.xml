@@ -42,7 +42,8 @@
       <para>2023-08-25</para>
       <itemizedlist>
         <listitem>
-          <para>[bdubbs] - Update to linux-6.4.12.</para>
+          <para>[bdubbs] - Update to linux-6.4.12. Fixes 
+          <ulink url='&lfs-ticket-root;5320'>#5320</ulink>.</para>
         </listitem>
       </itemizedlist>
     </listitem>
