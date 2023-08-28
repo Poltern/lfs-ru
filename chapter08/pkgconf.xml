@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-pkgconf" role="wrap">
+  <?dbhtml filename="pkgconf.html"?>
+
+  <sect1info condition="script">
+    <productname>pkgconf</productname>
+    <productnumber>&pkgconf-version;</productnumber>
+    <address>&pkgconf-url;</address>
+  </sect1info>
+
+  <title>Pkgconf-&pkgconf-version;</title>
+
+  <indexterm zone="ch-system-pkgconf">
+    <primary sortas="a-pkgconf">Pkgconf</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет pkgconf является преемником pkg-config и содержит инструмент, который 
+	позволяет передавать пути установки или пути к библиотекам для инструментов сборки 
+	на этапе настройки (configure) и сборки(make) пакетов.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&pkgconf-fin-sbu;</seg>
+        <seg>&pkgconf-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+
+    <title>Установка пакета Pkgconf</title>
+<!--
+    <para>Pkgconf-2.0.0 explicitly errors when attempting to run
+    <option>- -modversion</option> with multiple arguments, even if these
+    arguments are constraints for the same package.  This breaks many
+    packages in BLFS. Run this sed to reinstate the old
+    output for pkgconf:</para>
+
+     <screen><userinput remap="pre">sed -i '1330,1336s|^|//|' cli/main.c</userinput></screen>
+-->
+    <para>Подготовьте Pkgconf к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr              \
+            --disable-static           \
+            --docdir=/usr/share/doc/pkgconf-&pkgconf-version;</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <para>Для обеспечения совместимости с исходным Pkg-config, создайте две символические 
+	ссылки:</para>
+
+<screen><userinput remap="install">ln -sv pkgconf   /usr/bin/pkg-config
+ln -sv pkgconf.1 /usr/share/man/man1/pkg-config.1</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-pkgconf" role="content">
+    <title> Содержимое пакета Pkgconf</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>pkgconf, pkg-config (ссылка на pkgconf) и bomtool</seg>
+        <seg>libpkgconf.so</seg>
+        <seg>/usr/share/doc/pkgconf-&pkgconf-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="pkgconf">
+        <term><command>pkgconf</command></term>
+        <listitem>
+          <para>Возвращает метаданные указанной библиотеки или пакета</para>
+          <indexterm zone="ch-system-pkgconf pkgconf">
+            <primary sortas="b-pkgconf">pkgconf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="bomtool">
+        <term><command>bomtool</command></term>
+        <listitem>
+          <para>Генерирует спецификацию программного обеспечения из файлов pkg-config с 
+		  расширением .pc</para>
+          <indexterm zone="ch-system-pkgconf bomtool">
+            <primary sortas="b-bomtool">bomtool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpkgconf">
+        <term><filename class="libraryfile">libpkgconf</filename></term>
+        <listitem>
+          <para>Содержит большую часть функций pkgconf, позволяя другим инструментам, 
+		  таким как IDE и компиляторы, использовать его фреймворки</para>
+          <indexterm zone="ch-system-pkgconf libpkgconf">
+            <primary sortas="c-libpkgconf">libpkgconf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>

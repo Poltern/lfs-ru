@@ -5,58 +5,51 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-wheel" role="wrap">
-  <?dbhtml filename="wheel.html"?>
+<sect1 id="ch-system-flit-core" role="wrap">
+  <?dbhtml filename="flit-core.html"?>
 
   <sect1info condition="script">
-    <productname>wheel</productname>
-    <productnumber>&wheel-version;</productnumber>
-    <address>&wheel-url;</address>
+    <productname>flit-core</productname>
+    <productnumber>&flit-core-version;</productnumber>
+    <address>&flit-core-url;</address>
   </sect1info>
 
-  <title>Wheel-&wheel-version;</title>
+  <title>Flit-Core-&flit-core-version;</title>
 
-  <indexterm zone="ch-system-wheel">
-    <primary sortas="a-wheel">wheel</primary>
+  <indexterm zone="ch-system-flit-core">
+    <primary sortas="a-flit-core">Flit-core</primary>
   </indexterm>
 
   <sect2 role="package">
     <title/>
 
-    <para>Wheel — это библиотека Python, которая является эталонной реализацией
-	стандарта упаковки программ на языке Python.</para>
+    <para>Flit-core — это часть Flit, предназначенная для сборки дистрибутива (инструмента 
+	для упаковки простых модулей Python).</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
       <seglistitem>
-        <seg>&wheel-fin-sbu;</seg>
-        <seg>&wheel-fin-du;</seg>
+        <seg>&flit-core-fin-sbu;</seg>
+        <seg>&flit-core-fin-du;</seg>
       </seglistitem>
     </segmentedlist>
 
   </sect2>
 
   <sect2 role="installation">
-    <title>Установка пакета Wheel</title>
+    <title>Установка пакета Flit-Core</title>
 
-    <para>Скомпилируйте Wheel с помощью следующей команды:</para>
+    <para>Соберите пакет:</para>
 
-<screen><userinput remap="make">PYTHONPATH=src pip3 wheel -w dist --no-build-isolation --no-deps $PWD</userinput></screen>
+<screen><userinput remap="install">pip3 wheel -w dist --no-build-isolation --no-deps $PWD</userinput></screen>
 
-    <para>Установите Wheel:</para>
+    <para>Установите пакет:</para>
 
-<screen><userinput remap="install">pip3 install --no-index --find-links=dist wheel</userinput></screen>
+<screen><userinput remap="install">pip3 install --no-index --no-user --find-links dist flit_core</userinput></screen>
 
     <variablelist>
       <title>Значение параметров конфигурации и команд pip3:</title>
-
-      <varlistentry>
-        <term><envar>PYTHONPATH=src</envar></term>
-        <listitem>
-           <para>Позволяет этому пакету (еще не установленному) создавать для себя архив wheel.</para>
-        </listitem>
-      </varlistentry>
 
       <varlistentry>
         <term><command>wheel</command></term>
@@ -82,7 +75,7 @@
 
       <varlistentry>
         <term><parameter>--no-build-isolation</parameter>,
-              <parameter>--no-deps</parameter> и
+              <parameter>--no-deps</parameter> и 
               <parameter>--no-index</parameter></term>
         <listitem>
           <para>Эти параметры предотвращают получение файлов из онлайн-репозитория пакетов (PyPI).
@@ -101,39 +94,19 @@
     </variablelist>
   </sect2>
 
-  <sect2 id="contents-wheel" role="content">
-    <title>Содержимое пакета Wheel</title>
+  <sect2 id="contents-flit-core" role="content">
+    <title>Содержимое пакета Flit-Core</title>
 
     <segmentedlist>
-      <segtitle>Установленные программы</segtitle>
       <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>wheel</seg>
-        <seg>
-           /usr/lib/python&python-minor;/site-packages/wheel и
-           /usr/lib/python&python-minor;/site-packages/wheel-&wheel-version;.dist-info
-        </seg>
+         <seg>
+            /usr/lib/python&python-minor;/site-packages/flit_core и 
+            /usr/lib/python&python-minor;/site-packages/flit_core-&flit-core-version;.dist-info
+         </seg>
       </seglistitem>
     </segmentedlist>
-
-    <variablelist>
-      <bridgehead renderas="sect3">Краткое описание</bridgehead>
-      <?dbfo list-presentation="list"?>
-      <?dbhtml list-presentation="table"?>
-
-      <varlistentry id="wheel-wheel">
-        <term><command>wheel</command></term>
-        <listitem>
-          <para>
-            это утилита для распаковки, упаковки или преобразования wheel-архивов
-          </para>
-          <indexterm zone="ch-system-wheel">
-            <primary sortas="b-wheel">wheel</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-    </variablelist>
 
   </sect2>
 
