@@ -55,7 +55,7 @@
       <varlistentry>
         <term><parameter>--enable-hashes=strong,glibc</parameter></term>
         <listitem>
-          <para>Создает пароли, используя надежные алгоритмы хэширования, рекомендуемые 
+          <para>Создает хэши, используя надежные алгоритмы хэширования, рекомендуемые 
 		  для безопасности, и алгоритмы хэширования, предоставляемые традиционной 
 		  библиотекой Glibc <systemitem class='library'>libcrypt</systemitem> для 
 		  совместимости.</para>
