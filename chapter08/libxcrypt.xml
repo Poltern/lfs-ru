@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-libxcrypt" role="wrap">
+  <?dbhtml filename="libxcrypt.html"?>
+
+  <sect1info condition="script">
+    <productname>libxcrypt</productname>
+    <productnumber>&libxcrypt-version;</productnumber>
+    <address>&libxcrypt-url;</address>
+  </sect1info>
+
+  <title>Libxcrypt-&libxcrypt-version;</title>
+
+  <indexterm zone="ch-system-libxcrypt">
+    <primary sortas="a-Libxcrypt">Libxcrypt</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Libxcrypt содержит современную библиотеку для одностороннего 
+	хэширования паролей.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&libxcrypt-fin-sbu;</seg>
+        <seg>&libxcrypt-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Libxcrypt</title>
+
+    <para>Подготовьте Libxcrypt к компиляции:</para>
+
+<screen><userinput remap="configure">./configure --prefix=/usr                \
+            --enable-hashes=strong,glibc \
+            --enable-obsolete-api=no     \
+            --disable-static             \
+            --disable-failure-tokens</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--enable-hashes=strong,glibc</parameter></term>
+        <listitem>
+          <para>Создает надежные алгоритмы хэширования, рекомендуемые для использования 
+		  в целях безопасности, и алгоритмы хэширования, предоставляемые традиционной 
+		  библиотекой Glibc <systemitem class='library'>libcrypt</systemitem> для 
+		  совместимости.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-obsolete-api=no</parameter></term>
+        <listitem>
+          <para>Отключает устаревшие функции API. Они не нужны для современной системы 
+		  Linux, собранной из исходного кода.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-failure-tokens</parameter></term>
+        <listitem>
+          <para>Отключает признак токена сбоя. Он необходим для совместимости с 
+		  традиционными хэш-библиотеками некоторых платформ, но система Linux, основанная 
+		  на Glibc, в нем не нуждается.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+    <note>
+
+      <para>С помощью приведенных выше инструкций были отключены устаревшие функции 
+	  API, поскольку ни один пакет, установленный путем компиляции из исходных кодов, 
+	  не будет связываться с ними во время выполнения. Однако известные двоичные 
+	  приложения, которые используют эти функции, требуют ABI версии 1. Если вам 
+	  необходим этот функционал для какого-либо приложения, предоставляемого только в 
+	  бинарном виде, или для совместимости с LSB, соберите пакет заново с помощью 
+	  следующих команд:</para>
+
+<screen role="nodump"><userinput>make distclean
+./configure --prefix=/usr                \
+            --enable-hashes=strong,glibc \
+            --enable-obsolete-api=glibc  \
+            --disable-static             \
+            --disable-failure-tokens
+make
+cp -av .libs/libcrypt.so.1* /usr/lib</userinput></screen>
+    </note>
+
+  </sect2>
+
+  <sect2 id="contents-libxcrypt" role="content">
+    <title>Содержимое пакета Libxcrypt</title>
+
+    <segmentedlist>
+      <segtitle>Установленные библиотеки</segtitle>
+
+      <seglistitem>
+        <seg>libcrypt.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libcrypt">
+        <term><filename class="libraryfile">libcrypt</filename></term>
+        <listitem>
+          <para>Содержит функции для хэширования паролей</para>
+          <indexterm zone="ch-system-libxcrypt libcrypt">
+            <primary sortas="c-libcrypt">libcrypt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
