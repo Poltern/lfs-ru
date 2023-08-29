@@ -139,7 +139,7 @@
     </listitem>
 
     <listitem>
-      <para><emphasis role="strong">Texinfo-4.7</emphasis></para>
+      <para><emphasis role="strong">Texinfo-5.0</emphasis></para>
     </listitem>
 
     <listitem>
@@ -229,7 +229,7 @@ ver_check Perl           perl     5.8.8
 ver_check Python         python3  3.4
 ver_check Sed            sed      4.1.5
 ver_check Tar            tar      1.22
-ver_check Texinfo        texi2any 4.7
+ver_check Texinfo        texi2any 5.0
 ver_check Xz             xz       5.0.0
 ver_kernel &min-kernel;
 
