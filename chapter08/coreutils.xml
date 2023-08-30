@@ -51,13 +51,12 @@
 	  Coreutils, сначала проверьте, воспроизводятся ли эти ошибки без этого исправления.</para>
     </note>
 
-   <!-- this has been fixed in upstream gnulib, when a new version of
-   coreutils is released, please check #4055 to see if the change has been
-   picked up in this package -->
+   <!-- https://bugs.gnu.org/62403 -->
 <!--
-   <para>Now, fix a problem with chmod return values:</para>
+    <para>Fix a bug in checksum utilities causing failed checks not
+    reported correctly:</para>
 
-<screen><userinput remap="pre">patch -Np1 -i ../&coreutils-chmod-patch;</userinput></screen>
+<screen><userinput remap="pre">sed '/if ( ! match/s/ed_checksums//' -i src/digest.c</userinput></screen>
 -->
     <para>Теперь подготовьте Coreutils к компиляции:</para>
 
@@ -113,7 +112,7 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 	добавьте временную группу и включите в неё пользователя
 	<systemitem class="username">tester</systemitem>:</para>
 
-<screen><userinput remap="test">echo "dummy:x:102:tester" &gt;&gt; /etc/group</userinput></screen>
+<screen><userinput remap="test">groupadd -g 102 dummy -U tester</userinput></screen>
 
     <para>Исправьте некоторые разрешения, чтобы пользователь без полномочий &root; мог
 	компилировать и запускать тесты:</para>
@@ -131,7 +130,8 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 
     <para>Удалить временную группу:</para>
 
-<screen><userinput remap="test">sed -i '/dummy/d' /etc/group</userinput></screen>
+<screen><userinput remap="test">groupdel dummy</userinput></screen>
+
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make install</userinput></screen>

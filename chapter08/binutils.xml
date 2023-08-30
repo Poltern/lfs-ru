@@ -41,30 +41,6 @@
   <sect2 role="installation">
     <title>Установка пакета Binutils</title>
 
-    <para>Убедитесь в правильной работе псевдотерминалов (PTY) в среде chroot,
-    запустив простой тест:</para>
-
-<screen><userinput remap="test">expect -c "spawn ls"</userinput></screen>
-
-    <para>Эта команда должна вывести следующее:</para>
-
-<screen><computeroutput>spawn ls</computeroutput></screen>
-
-    <para>Если вместо этого выходные данные содержат приведенное ниже сообщение,
-	значит, среда не настроена для правильной работы PTY. Эту проблему необходимо
-	решить перед запуском тестов для Binutils и GCC:</para>
-
-<screen><computeroutput>The system has no more ptys.
-Ask your system administrator to create more.</computeroutput></screen>
-<!-- Fixed in binutils-2.39
-
-    <para>
-      Теперь внесите исправление, указанное в апстриме, которое влияет на сборку некоторых пакетов:
-     </para>
-
-<screen><userinput remap="pre">sed -e '/R_386_TLS_LE /i \   || (TYPE) == R_386_TLS_IE \\' \
-    -i ./bfd/elfxx-x86.h</userinput></screen>
--->
     <para>Документация Binutils рекомендует выполнять компиляцию в
     отдельном каталоге:</para>
 
@@ -168,14 +144,15 @@ cd       build</userinput></screen>
     <option>--enable-default-pie</option> и
     <option>--enable-default-ssp</option>.</para>
 
+    <para>Также известно, что завершаются неудачно три теста в пакете gprofng.</para>
+
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make tooldir=/usr install</userinput></screen>
 
-    <para>Удалите бесполезные статические библиотеки и пустую справочную страницу:</para>
+    <para>Удалите бесполезные статические библиотеки:</para>
 
-<screen><userinput remap="install">rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,sframe,opcodes}.a
-rm -fv /usr/share/man/man1/{gprofng,gp-*}.1</userinput></screen>
+<screen><userinput remap="install">rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a</userinput></screen>
 
   </sect2>
 
@@ -190,7 +167,8 @@ rm -fv /usr/share/man/man1/{gprofng,gp-*}.1</userinput></screen>
       <seglistitem>
         <seg>addr2line, ar, as, c++filt, dwp, elfedit, gprof, gprofng, ld, ld.bfd, ld.gold, nm,
         objcopy, objdump, ranlib, readelf, size, strings и strip</seg>
-        <seg>libbfd.so, libctf.so, libctf-nobfd.so, libopcodes.so и libsframe.so</seg>
+        <seg>libbfd.so, libctf.so, libctf-nobfd.so, libgprofng.so,
+        libopcodes.so и libsframe.so</seg>
         <seg>/usr/lib/ldscripts</seg>
       </seglistitem>
     </segmentedlist>
@@ -364,7 +342,7 @@ rm -fv /usr/share/man/man1/{gprofng,gp-*}.1</userinput></screen>
       <varlistentry id="readelf">
         <term><command>readelf</command></term>
         <listitem>
-          <para>тображает информацию о двоичных файлах типа ELF</para>
+          <para>Отображает информацию о двоичных файлах типа ELF</para>
           <indexterm zone="ch-system-binutils readelf">
             <primary sortas="b-readelf">readelf</primary>
           </indexterm>
@@ -430,6 +408,17 @@ rm -fv /usr/share/man/man1/{gprofng,gp-*}.1</userinput></screen>
           <para>Вариант libctf, не использующий функциональность libbfd.</para>
           <indexterm zone="ch-system-binutils libctf-nobfd">
             <primary sortas="c-libctf-nobfd">libctf-nobfd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgprofng">
+        <term><filename class="libraryfile">libgprofng</filename></term>
+        <listitem>
+          <para>Библиотека, содержащая большинство подпрограмм, используемых 
+          <command>gprofng</command></para>
+          <indexterm zone="ch-system-binutils libgprofng">
+            <primary sortas="c-libgprofng">libgprofng</primary>
           </indexterm>
         </listitem>
       </varlistentry>

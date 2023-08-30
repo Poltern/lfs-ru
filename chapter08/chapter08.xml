@@ -29,7 +29,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tcl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expect.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dejagnu.xml"/>
-
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="binutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gmp.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mpfr.xml"/>
@@ -37,9 +36,10 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="attr.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="acl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libcap.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libxcrypt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="shadow.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gcc.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pkgconfig.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pkgconf.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ncurses.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sed.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="psmisc.xml"/>
@@ -63,6 +63,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libelf.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libffi.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="python.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flit-core.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wheel.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ninja.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="meson.xml"/>
@@ -90,7 +91,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dbus.xml"/>
 
   <!-- sysv only -->
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="eudev.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="udev.xml"/>
 
   <!-- Both sysv on systemd builds -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="man-db.xml"/>

@@ -52,6 +52,7 @@
             --sysconfdir=/etc                    \
             --localstatedir=/var                 \
             --runstatedir=/run                   \
+            --enable-user-session                \
             --disable-static                     \
             --disable-doxygen-docs               \
             --disable-xml-docs                   \
@@ -73,15 +74,31 @@
         </listitem>
       </varlistentry>
 
+      <varlistentry>
+        <term>
+          <parameter>--enable-user-session</parameter>
+        </term>
+        <listitem>
+          <para>Это гарантирует, что юнит-файлы (service и socket) D-Bus демона Systemd 
+		  будут установлены для каждого пользователя. Они бесполезны (но при этом безвредны) 
+		  при базовой установке LFS, однако их можно использовать после пересборки systemd 
+		  с поддержкой PAM в BLFS.</para>
+        </listitem>
+      </varlistentry>
+
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>Этот пакет поставляется с набором тестов, но для него требуется несколько
-	пакетов, не включенных в LFS. Инструкции по запуску набора тестов можно найти в
-	книге BLFS по адресу <ulink url="&blfs-book;general/dbus.html"/>.</para>
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Многие тесты отключены, поскольку для них требуются дополнительные пакеты, 
+	которые не включены в LFS. Инструкции по запуску полного набора тестов можно найти 
+	в <ulink url="&blfs-book;general/dbus.html">книге BLFS</ulink>.</para>
 
     <para>Установите пакет:</para>
 
@@ -106,7 +123,7 @@
         <seg>dbus-cleanup-sockets, dbus-daemon, dbus-launch, dbus-monitor,
         dbus-run-session, dbus-send, dbus-test-tool,
         dbus-update-activation-environment и dbus-uuidgen</seg>
-        <seg>libdbus-1.{a,so}</seg>
+        <seg>libdbus-1.so</seg>
         <seg>/etc/dbus-1, /usr/include/dbus-1.0, /usr/lib/dbus-1.0,
         /usr/share/dbus-1, /usr/share/doc/dbus-&dbus-version; 
         и /var/lib/dbus</seg>
