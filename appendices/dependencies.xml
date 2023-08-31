@@ -142,7 +142,7 @@
       <segmentedlist id="autoconf-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>Automake</seg>
+          <seg>Automake и Coreutils</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -184,7 +184,7 @@
       <segmentedlist id="automake-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>Нет</seg>
+          <seg>Coreutils</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -442,8 +442,9 @@
       <segmentedlist id="coreutils-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, GMP, Grep,
-          Libcap, Make, OpenSSL, Patch, Perl, Sed и Texinfo</seg>
+          <seg>Autoconf, Automake, Bash, Binutils, Coreutils, GCC, Gettext,
+          Glibc, GMP, Grep, Libcap, Make, OpenSSL, Patch, Perl, Sed и
+          Texinfo</seg>
         </seglistitem>
       </segmentedlist>
 
