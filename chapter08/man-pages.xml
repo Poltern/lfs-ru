@@ -40,6 +40,12 @@
   <sect2 role="installation">
     <title>Установка пакета Man-pages</title>
 
+    <para>Удалите две справочные страницы для функций хэширования паролей. 
+	<application>Libxcrypt</application> предоставит улучшенную версию этих справочных 
+	страниц:</para>
+
+<screen><userinput remap="pre">rm -v man3/crypt*</userinput></screen>
+
     <para>Установите пакет Man-pages выполнив команду:</para>
 
 <screen><userinput remap="install">make prefix=/usr install</userinput></screen>

@@ -54,10 +54,12 @@
       <para>Настройки GMP по умолчанию собирают библиотеки, оптимизированные для
 	  процессора хоста. Если требуются библиотеки, подходящие для процессоров с
 	  меньшей производительностью, чем у процессора хоста, можно собрать
-	  общие библиотеки, выполнив следующие команды:
+	  общие библиотеки, добавив параметр <option>--host=none-linux-gnu</option> в 
+	  команде <command>configure</command>.</para>
 
-<screen role="nodump"><userinput>cp -v configfsf.guess config.guess
-cp -v configfsf.sub   config.sub</userinput></screen></para>
+      <!-- To editors: the configure script says "the none host is obsolete,
+           use - -disable-assembly", but don't believe it: with the latter
+           CFLAGS is still automatically set to -march=something.  -->
     </note>
 
     <para>Подготовьте GMP к компиляции:</para>
@@ -104,9 +106,11 @@ make html</userinput></screen>
 	собран. Иногда код, определяющий процессор, неверно определяет возможности
 	системы, и в тестах или других приложениях, использующих библиотеки gmp, возникают
 	ошибки с сообщением "Illegal instruction". В этом случае gmp следует переконфигурировать
-	с параметром --build=x86_64-pc-linux-gnu и пересобрать.</para></caution>
+	с параметром <option>--host=none-linux-gnu</option> и пересобрать.</para></caution>
 
-    <para>Убедитесь, что все 197 тестов в наборе тестов пройдены. Проверьте
+    <!-- Some tests PASS on a specific uarch but SKIP on other CPUs.
+         For example on K8 the following command outputs 200.  -->
+    <para>Убедитесь, что все 199 тестов в наборе тестов пройдены. Проверьте
 	результат, выполнив следующую команду:</para>
 
 <screen><userinput remap="test">awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log</userinput></screen>

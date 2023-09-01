@@ -83,16 +83,6 @@ make check</userinput></screen>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
-    <!-- It's because "free -v" shows "used" greater than "total", and
-         a negative "free" for "Comm" line.  The "total" value is from
-         "CommitLimit" in /proc/meminfo, which is the limit for one process.
-         But the "used" value is from "Committed_AS" in the same file,
-         which is the total commited virtual memory space of all processes.
-         I'll make a report to upstream anyway.  -->
-    <para>Один тест с именем <filename>free with commit</filename> может завершиться
-	неудачей, если в дистрибутиве хоста запущены некоторые приложения с настраиваемым
-	распределителем памяти (например, JVM и веб-браузеры).</para>
-
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make install</userinput></screen>

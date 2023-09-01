@@ -41,12 +41,6 @@
   <sect2 role="installation">
     <title>Установка пакета Make</title>
 
-    <para>Во-первых, исправьте некоторые проблемы, выявленные разработчиками:</para>
-
-<screen><userinput remap="pre">sed -e '/ifdef SIGPIPE/,+2 d' \
-    -e '/undef  FATAL_SIG/i FATAL_SIG (SIGPIPE);' \
-    -i src/main.c</userinput></screen>
-
     <para>Подготовьте Make к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
@@ -55,9 +49,12 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
+    <!-- Running tests as root causes failures:
+         https://savannah.gnu.org/bugs/?63852 -->
     <para>Чтобы протестировать пакет, выполните:</para>
 
-<screen><userinput remap="test">make check</userinput></screen>
+<screen><userinput remap="test">chown -Rv tester .
+su tester -c "PATH=$PATH make check"</userinput></screen>
 
     <para>Установите пакет:</para>
 

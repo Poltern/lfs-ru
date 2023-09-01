@@ -59,10 +59,8 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
 
     <para id="shadow-login_defs">Вместо используемого по умолчанию метода
 	<emphasis>crypt</emphasis>, используйте более безопасный метод шифрования паролей
-	<emphasis>SHA-512</emphasis>, который также позволяет использовать пароли длиннее
-	8 символов. Кроме того, установите количество раундов на 500 000 вместо 5000 по 
-	умолчанию, что слишком мало для предотвращения атак методом перебора пароля. Также 
-	необходимо изменить устаревшее местоположение для почтовых ящиков
+	<emphasis>YESCRYPT</emphasis>, который также позволяет использовать пароли длиннее
+	8 символов. Также необходимо изменить устаревшее местоположение для почтовых ящиков
 	пользователей <filename class="directory">/var/spool/mail</filename>, которое 
 	Shadow использует по умолчанию, на используемое в настоящее 
 	время <filename class="directory">/var/mail</filename>. И удалите
@@ -77,8 +75,8 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
 	  <envar>PATH</envar> в файле <filename>.bashrc</filename> после сборки LFS.</para>
     </note>
 
-<screen><userinput remap="pre">sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
-    -e 's@#\(SHA_CRYPT_..._ROUNDS 5000\)@\100@'       \
+
+<screen><userinput remap="pre">sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD YESCRYPT:' \
     -e 's:/var/spool/mail:/var/mail:'                 \
     -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                \
     -i etc/login.defs</userinput></screen>
@@ -104,6 +102,7 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
 <screen><userinput remap="configure">touch /usr/bin/passwd
 ./configure --sysconfdir=/etc \
             --disable-static  \
+            --with-{b,yes}crypt \
             --with-group-name-max-length=32</userinput></screen>
 
     <variablelist>
@@ -117,6 +116,20 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
 		  существует, скрипт установки создаст его не в том месте.</para>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-{b,yes}crypt</parameter></term>
+        <listitem>
+          <para>Оболочка расширяет это значение до двух параметров: 
+		  <parameter>--with-bcrypt</parameter> и 
+		  <parameter>--with-yescrypt</parameter>. Они позволяют Shadow использовать 
+		  алгоритмы Bcrypt и Yescrypt, реализованные в <application>Libxcrypt</application>, 
+		  для хеширования паролей. Эти алгоритмы более безопасны (в частности, гораздо 
+		  более устойчивы к атакам с использованием графических процессоров), чем 
+		  традиционные алгоритмы SHA.</para>
+        </listitem>
+      </varlistentry>
+
       <varlistentry>
         <term><parameter>--with-group-name-max-length=32</parameter></term>
         <listitem>

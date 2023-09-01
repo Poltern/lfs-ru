@@ -58,10 +58,6 @@
 
 <screen><userinput remap="test">make check</userinput></screen>
 
-    <!-- https://sourceware.org/bugzilla/show_bug.cgi?id=30047 -->
-    <para>Известно, что тест с именем <filename>run-native-test.sh</filename> завершается 
-	ошибкой.</para>
-
     <para>Установите только Libelf:</para>
 
 <screen><userinput remap="install">make -C libelf install
@@ -79,7 +75,7 @@ rm /usr/lib/libelf.a</userinput></screen>
 
       <seglistitem>
         <seg>
-          libelf.so (символическая ссылка) и libelf-&elfutils-version;.so
+          libelf.so 
         </seg>
         <seg>
           /usr/include/elfutils
@@ -94,7 +90,7 @@ rm /usr/lib/libelf.a</userinput></screen>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="libelf">
-        <term><filename class="libraryfile">libelf</filename></term>
+        <term><filename class="libraryfile">libelf.so</filename></term>
         <listitem>
           <para>Содержит функции API для обработки объектных файлов ELF</para>
           <indexterm zone="ch-system-libelf libelf">

@@ -61,7 +61,9 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>С этим пакетом не поставляются наборы тестов.</para>
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
 
     <para>Установите пакет:</para>
 

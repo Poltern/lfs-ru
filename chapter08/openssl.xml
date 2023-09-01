@@ -64,9 +64,12 @@
 
 <screen><userinput remap="test">make test</userinput></screen>
 
-    <para>Известно, что один тест (30-test_afalg.t) завершается ошибкой при некоторых
-	конфигурациях ядра (в зависимости от несовместимых параметров CONFIG_CRYPTO_USER_API*).
-	Если этот тест не пройден, его можно смело игнорировать.</para>
+    <para>Известно, что один тест, 30-test_afalg.t, завершится ошибкой, если в ядре 
+	хоста не включен параметр <option>CONFIG_CRYPTO_USER_API_SKCIPHER</option> или 
+	отсутствуют какие-либо опции, обеспечивающих реализацию AES с CBC (например, комбинация 
+	<option>CONFIG_CRYPTO_AES</option> и <option>CONFIG_CRYPTO_CBC</option> или 
+	<option>CONFIG_CRYPTO_AES_NI_INTEL</option>, если процессор поддерживает AES-NI). 
+	В случае неудачи его можно смело игнорировать.</para>
 
     <para>Установите пакет:</para>
 
@@ -77,7 +80,7 @@ make MANSUFFIX=ssl install</userinput></screen>
 
 <screen><userinput remap="install">mv -v /usr/share/doc/openssl /usr/share/doc/openssl-&openssl-version;</userinput></screen>
 
-    <para>По желанию установите дополнительную документацию:</para>
+    <para>По желанию, установите дополнительную документацию:</para>
 
 <screen><userinput remap="install">cp -vfr doc/* /usr/share/doc/openssl-&openssl-version;</userinput></screen>
 
@@ -93,9 +96,23 @@ make MANSUFFIX=ssl install</userinput></screen>
 		до версии с тем же ОСНОВНЫМ номером версии</emphasis>.
       </para>
 
+
+      <!-- https://bugzilla.mindrot.org/show_bug.cgi?id=3548 -->
       <para>
-        Однако все запущенные программы, связанные с этими библиотеками, необходимо
-		остановить и перезапустить.  Для получения более подробной информации
+        Если установлен <application>OpenSSH</application>, это будет исключением из 
+		общего правила, указанного выше. Он содержит чрезмерно ограничительную проверку 
+		версии OpenSSL, поэтому и SSH-клиент, и SSH-сервер откажутся запускаться, если 
+		OpenSSL обновлен с прежним номером MAJOR версии, но с другим номером MINOR 
+		версии. После такого обновления вам необходимо пересобрать <application>OpenSSH</application>. 
+		<emphasis role='bold'>Если <application>OpenSSH</application> используется для 
+		доступа к системе, вам необходимо пересобрать и переустановить его после обновления 
+		OpenSSL до новой MINOR версии перед выходом из системы, иначе вы не сможете больше 
+		войти в систему через SSH.</emphasis>
+      </para>
+
+      <para>
+        Все запущенные программы, связанные с этими библиотеками, после обновления 
+		необходимо остановить и перезапустить.  Для получения более подробной информации
 		ознакомьтесь с соответствующей записью в
         <xref linkend='pkgmgmt-upgrade-issues'/>.
       </para>

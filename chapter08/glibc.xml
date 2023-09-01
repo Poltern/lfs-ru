@@ -50,15 +50,10 @@
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
 
-    <!-- https://sourceware.org/bugzilla/show_bug.cgi?id=30068
-         Upstream fix also added a test case and renamed "prec" to
-         "prec_inc".  We'll test this with MPFR test suite so we don't
-         need the test here, and the renaming does not affect program
-         behavior.  -->
-    <para>Исправьте проблему безопасности, обнаруженную разработчиками:</para>
+    <para>Теперь исправьте регрессию, из-за которой функция posix_memalign() в некоторых 
+    условиях работала очень медленно:</para>
 
-<screen><userinput remap="pre">sed '/width -=/s/workend - string/number_length/' \
-    -i stdio-common/vfprintf-process-arg.c</userinput></screen>
+<screen><userinput remap="pre">patch -Np1 -i ../&glibc-memalign-patch;</userinput></screen>
 
     <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
 
@@ -74,7 +69,7 @@ cd       build</userinput></screen>
 
 <screen><userinput remap="configure">../configure --prefix=/usr                            \
              --disable-werror                         \
-             --enable-kernel=&min-kernel;                      \
+             --enable-kernel=&min-kernel;                     \
              --enable-stack-protector=strong          \
              --with-headers=/usr/include              \
              libc_cv_slibdir=/usr/lib</userinput></screen>
@@ -159,10 +154,13 @@ esac</userinput></screen>
         <para>Известно, что <emphasis>io/tst-lchmod</emphasis> не работает в среде chroot LFS.</para>
       </listitem>
 
+
+<!-- Did not fail with glibc-2.38
       <listitem>
         <para>Известно, что <emphasis>misc/tst-ttyname</emphasis> не работает в среде chroot LFS.</para>
 
       </listitem>
+-->
 
       <!-- https://sourceware.org/pipermail/libc-alpha/2022-August/141567.html -->
       <listitem>
@@ -171,24 +169,14 @@ esac</userinput></screen>
       </listitem>
 
       <listitem>
-        <para>Некоторые тесты, например, <emphasis>nss/tst-nss-files-hosts-multi</emphasis> не
-		работают на относительно медленных системах из-за внутреннего тайм-аута.</para>
-      </listitem>
-      <!--
-      <listitem>
-        <para>The <emphasis>rt/tst-cputimer{1,2,3}</emphasis> tests depend on
-        the host system kernel. Kernels 4.14.91&ndash;4.14.96,
-        4.19.13&ndash;4.19.18, and 4.20.0&ndash;4.20.5 are known to
-        cause these tests to fail.
-        </para>
+        <para>Некоторые тесты, например, <emphasis>nss/tst-nss-files-hosts-multi</emphasis> 
+		не работают на относительно медленных системах из-за внутреннего тайм-аута.</para>
       </listitem>
 
       <listitem>
-        <para>The math tests sometimes fail when running on
-        systems where the CPU is not a relatively new Intel or
-        AMD processor.</para>
+        <para>Кроме того, некоторые тесты могут завершиться неудачно при использовании 
+		относительно старой модели процессора или версии ядра хоста.</para>
       </listitem>
--->
     </itemizedlist>
 
     <para>На этапе установки Glibc будет жаловаться на отсутствие файла
@@ -197,9 +185,9 @@ esac</userinput></screen>
 
 <screen><userinput remap="install">touch /etc/ld.so.conf</userinput></screen>
 
-    <para>Исправьте Makefile, чтобы пропустить ненужную проверку работоспособности,
-	которая завершается неудачей в неполной среде LFS:
-    </para>
+    <!-- https://sourceware.org/bugzilla/show_bug.cgi?id=21911 -->
+    <para>Исправьте Makefile, чтобы пропустить устаревшую проверку работоспособности,
+	которая завершается неудачей в современной конфигурации Glibc:</para>
 
 <screen><userinput remap="install">sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile</userinput></screen>
 
@@ -479,7 +467,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
         <seg>ld-linux-x86-64.so.2, ld-linux.so.2,
         libBrokenLocale.{a,so}, libanl.{a,so},
         libc.{a,so}, libc_nonshared.a, libc_malloc_debug.so,
-        libcrypt.{a,so}, libdl.{a,so.2}, libg.a, libm.{a,so},
+        libdl.{a,so.2}, libg.a, libm.{a,so},
         libmcheck.a, libmemusage.so, libmvec.{a,so}, libnsl.so.1,
         libnss_compat.so, libnss_dns.so, libnss_files.so, libnss_hesiod.so,
         libpcprofile.so, libpthread.{a,so.0},
@@ -755,7 +743,9 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
       <varlistentry id="libanl">
         <term><filename class="libraryfile">libanl</filename></term>
         <listitem>
-          <para>Библиотека асинхронного поиска имен</para>
+          <para>Библиотека-заглушка, не содержащая функций. Ранее это была библиотека 
+		  асинхронного поиска имен, функции которой теперь находятся в 
+		  <filename class='libraryfile'>libc</filename></para>
           <indexterm zone="ch-system-glibc libanl">
             <primary sortas="c-libanl">libanl</primary>
           </indexterm>
@@ -778,16 +768,6 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
           <para>Включает проверку выделения памяти при предварительной загрузке</para>
           <indexterm zone="ch-system-glibc libc_malloc_debug">
             <primary sortas="c-libc_malloc_debug">libc_malloc_debug</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="libcrypt">
-        <term><filename class="libraryfile">libcrypt</filename></term>
-        <listitem>
-          <para>Криптографическая библиотека</para>
-          <indexterm zone="ch-system-glibc libcrypt">
-            <primary sortas="c-libcrypt">libcrypt</primary>
           </indexterm>
         </listitem>
       </varlistentry>
@@ -894,10 +874,11 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
       <varlistentry id="libpthread">
         <term><filename class="libraryfile">libpthread</filename></term>
         <listitem>
-          <para>Библиотека-заглушка, не содержащая функций. Ранее содержал функции,
-		  обеспечивающие большинство интерфейсов, указанных в 
-		  POSIX.1b Realtime Extension, теперь эти функции находятся в
-          <filename class="libraryfile">libc</filename></para>
+          <para>Библиотека-заглушка, не содержащая функций. Ранее содержала функции,
+		  обеспечивающие большинство интерфейсов, заданных POSIX.1c Threads Extensions 
+		  (расширения реализации потоков) и интерфейсы семафоров, указанных в POSIX.1b 
+		  Real-time Extension (расширения реального времени), теперь эти функции находятся 
+		  в <filename class="libraryfile">libc</filename></para>
           <indexterm zone="ch-system-glibc libpthread">
             <primary sortas="c-libpthread">libpthread</primary>
           </indexterm>
@@ -919,7 +900,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
         <term><filename class="libraryfile">librt</filename></term>
         <listitem>
           <para>Содержит функции, реализующие большую часть интерфейсов,
-		  определяемых в POSIX.1b Realtime Extension</para>
+		  определяемых в POSIX.1b Real-time Extension (расширения реального времени)</para>
           <indexterm zone="ch-system-glibc librt">
             <primary sortas="c-librt">librt</primary>
           </indexterm>

@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-jinja2" role="wrap" revision="systemd">
+<sect1 id="ch-system-jinja2" role="wrap">
   <?dbhtml filename="jinja2.html"?>
 
   <sect1info condition="script">

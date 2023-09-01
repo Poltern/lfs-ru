@@ -95,7 +95,7 @@ chmod -v 0755 /usr/lib/preloadable_libintl.so</userinput></screen>
         <seg>libasprintf.so, libgettextlib.so, libgettextpo.so,
         libgettextsrc.so, libtextstyle.so и preloadable_libintl.so</seg>
         <seg>/usr/lib/gettext, /usr/share/doc/gettext-&gettext-version;,
-        /usr/share/gettext и /usr/share/gettext-0.19.8</seg>
+        /usr/share/gettext и /usr/share/gettext-&gettext-version;</seg>
       </seglistitem>
     </segmentedlist>
 

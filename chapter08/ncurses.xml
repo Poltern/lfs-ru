@@ -155,8 +155,7 @@ ln -sfv libncurses.so      /usr/lib/libcurses.so</userinput></screen>
 
     <para>По желанию установите документацию Ncurses:</para>
 
-<screen><userinput remap="install">mkdir -pv      /usr/share/doc/ncurses-&ncurses-version;
-cp -v -R doc/* /usr/share/doc/ncurses-&ncurses-version;</userinput></screen>
+<screen><userinput remap="install">cp -v -R doc -T /usr/share/doc/ncurses-&ncurses-version;</userinput></screen>
 
     <note>
 
