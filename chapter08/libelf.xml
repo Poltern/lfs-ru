@@ -14,7 +14,7 @@
     <address>&elfutils-url;</address>
   </sect1info>
 
-  <title>Libelf from Elfutils-&elfutils-version;</title>
+  <title>Libelf из Elfutils-&elfutils-version;</title>
 
   <indexterm zone="ch-system-libelf">
     <primary sortas="a-Libelf">Libelf</primary>

@@ -39,11 +39,6 @@
   <sect2 role="installation">
     <title>Установка systemd</title>
 
-
-    <para>Во-первых, исправьте проблему безопасности в systemd-coredump:</para>
-
-<screen><userinput remap="pre">patch -Np1 -i ../&systemd-upstream-patch;</userinput></screen>
-
     <para>Удалите две ненужные группы 
     <systemitem class="groupname">render</systemitem> и
     <systemitem class="groupname">sgx</systemitem>, из правил udev по умолчанию:</para>
@@ -56,7 +51,8 @@
 <screen><userinput remap="configure">mkdir -p build
 cd       build
 
-meson --prefix=/usr                 \
+meson setup \
+      --prefix=/usr                 \
       --buildtype=release           \
       -Ddefault-dnssec=no           \
       -Dfirstboot=false             \
@@ -69,6 +65,7 @@ meson --prefix=/usr                 \
       -Dman=false                   \
       -Dmode=release                \
       -Dpamconfdir=no               \
+      -Ddev-kvm-mode=0660           \
       -Ddocdir=/usr/share/doc/systemd-&systemd-version; \
       ..</userinput></screen>
 
@@ -139,7 +136,7 @@ meson --prefix=/usr                 \
       <varlistentry>
         <term><parameter>-D{userdb,homed}=false</parameter></term>
         <listitem>
-          <para>Удаляет две службы, чьи зависимости не удовлетворяет LFS.</para>
+          <para>Удаляет две службы, чьи зависимости не удовлетворяют LFS.</para>
         </listitem>
       </varlistentry>
 
@@ -166,6 +163,15 @@ meson --prefix=/usr                 \
           <para>Предотвращает установку файла конфигурации PAM, который не работает в LFS.</para>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Ddev-kvm-mode=0660</parameter></term>
+        <listitem>
+          <para>По умолчанию правило udev разрешает всем пользователям доступ к 
+		  <filename class='devicefile'>/dev/kvm</filename>. Редакторы LFS считают 
+		  это опасным. Данная опция переопределяет разрешение по умолчанию.</para>
+        </listitem>
+      </varlistentry>
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>
@@ -180,9 +186,11 @@ meson --prefix=/usr                 \
 
     <!-- Please make sure systemd man pages tarball has a common leading
          component in the path.  -->
-<screen><userinput remap="install">tar -xf ../../systemd-man-pages-&systemd-man-version;.tar.xz --strip-components=1 -C /usr/share/man</userinput></screen>
+<screen><userinput remap="install">tar -xf ../../systemd-man-pages-&systemd-version;.tar.xz \
+    --no-same-owner --strip-components=1   \
+    -C /usr/share/man</userinput></screen>
 
-    <para>Создайте файл <filename>/etc/machine-id</filename> необходимый
+    <para>Создайте файл <filename>/etc/machine-id</filename> необходимый 
     <command>systemd-journald</command>:</para>
 
 <screen><userinput remap="adjust">systemd-machine-id-setup</userinput></screen>
@@ -220,12 +228,14 @@ meson --prefix=/usr                 \
       <seglistitem>
         <seg>busctl, coredumpctl, halt (символическая ссылка на systemctl),
         hostnamectl, init, journalctl, kernel-install, localectl, loginctl,
-        machinectl, networkctl, oomctl, portablectl, poweroff (символическая ссылка на
-        systemctl), reboot (символическая ссылка на systemctl), resolvconf (символическая ссылка на
+        machinectl, mount.ddi (символическая ссылка на systemd-dissect), networkctl,
+        oomctl, portablectl, poweroff (символическая ссылка на 
+        systemctl), reboot (символическая ссылка на systemctl), resolvconf (символическая ссылка на 
         resolvectl), resolvectl, runlevel (символическая ссылка на systemctl), shutdown
-        (символическая ссылка на systemctl), systemctl, systemd-analyze,
+        (символическая ссылка на systemctl), systemctl, systemd-ac-power, systemd-analyze,
         systemd-ask-password, systemd-cat, systemd-cgls, systemd-cgtop,
-        systemd-creds, systemd-delta, systemd-detect-virt,
+        systemd-confext (символическая ссылка на systemd-sysext), systemd-creds,
+        systemd-delta, systemd-detect-virt,
         systemd-dissect, systemd-escape, systemd-hwdb, systemd-id128,
         systemd-inhibit, systemd-machine-id-setup,
         systemd-mount, systemd-notify, systemd-nspawn, systemd-path,
@@ -463,6 +473,16 @@ meson --prefix=/usr                 \
           <para>Используется для самоанализа и контроля состояния системы и управления службами</para>
           <indexterm zone="ch-system-systemd systemctl">
             <primary sortas="b-systemctl">systemctl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="systemd-ac-power">
+        <term><command>systemd-ac-power</command></term>
+        <listitem>
+          <para>Сообщает, подключена ли система к внешнему источнику питания.</para>
+          <indexterm zone="ch-system-systemd systemd-ac-power">
+            <primary sortas="b-systemd-ac-power">systemd-ac-power</primary>
           </indexterm>
         </listitem>
       </varlistentry>

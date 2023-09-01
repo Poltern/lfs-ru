@@ -41,11 +41,16 @@
   <sect2 role="installation">
     <title>Установка пакета Util-linux</title>
 
+    <para>Сначала отключите проблемные тесты:</para>
+
+    <screen><userinput remap="pre">sed -i '/test_mkfds/s/^/#/' tests/helpers/Makemodule.am</userinput></screen>
+
     <para>Подготовьте Util-linux к компиляции:</para>
 
 <screen revision="sysv"><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime   \
             --bindir=/usr/bin    \
             --libdir=/usr/lib    \
+            --runstatedir=/run   \
             --sbindir=/usr/sbin  \
             --disable-chfn-chsh  \
             --disable-login      \
@@ -63,6 +68,7 @@
 <screen revision="systemd"><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime   \
             --bindir=/usr/bin    \
             --libdir=/usr/lib    \
+            --runstatedir=/run   \
             --sbindir=/usr/sbin  \
             --disable-chfn-chsh  \
             --disable-login      \
@@ -98,8 +104,11 @@
 su tester -c "make -k check"</userinput></screen>
 
     <para>Тесты с <emphasis>жесткими ссылками</emphasis> завершатся неудачей, если в ядре хоста 
-	не установлена опция CONFIG_CRYPTO_USER_API_HASH. Кроме того, известно, что два подтеста из 
-	misc: mbsencode и один подтест из script: replay не проходят.</para>
+	не включена опция <option>CONFIG_CRYPTO_USER_API_HASH</option> или не включено никаких опций, 
+	обеспечивающих реализацию SHA256 (например, <option>CONFIG_CRYPTO_SHA256</option> или 
+	<option>CONFIG_CRYPTO_SHA256_SSSE3</option>, если процессор поддерживает инструкции SSE3). 
+	Кроме того, известно, что два подтеста из misc: mbsencode и один подтест из script: replay 
+	не проходят.</para>
 
     <para>Установите пакет:</para>
 

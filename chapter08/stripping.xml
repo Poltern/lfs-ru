@@ -83,7 +83,7 @@ done
 
 online_usrbin="bash find strip"
 online_usrlib="libbfd-&binutils-version;.so
-               libsframe.so.0.0.0
+               libsframe.so.&libsframe-version;
                libhistory.so.&readline-soversion;
                libncursesw.so.&ncurses-version;
                libm.so.6
