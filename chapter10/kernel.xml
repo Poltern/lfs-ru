@@ -67,7 +67,7 @@
 
       <para>
         Если ничего не помогает, вы можете обратиться за помощью в список рассылки 
-		<link url="https://www.linuxfromscratch.org/mail.html">lfs-support</ulink>. Обратите 
+		<ulink url="https://www.linuxfromscratch.org/mail.html">lfs-support</ulink>. Обратите 
 		внимание, что подписка необходима для того, чтобы рассылка не содержала спама.
       </para>
     </important>

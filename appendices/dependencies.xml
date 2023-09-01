@@ -3,6 +3,9 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
   %general-entities;
+  <!-- Convenient entity for "Systemd" or "Udev" -->
+  <!ENTITY systemd-udev "<phrase revision='systemd'>Systemd</phrase>
+                         <phrase revision='sysv'>Udev</phrase>">
 ]>
 
 <appendix id="appendixc" xreflabel="Приложение C">
@@ -1512,7 +1515,7 @@
       <segmentedlist id="jinja2-before" revision='systemd'>
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>Systemd</seg>
+          <seg>&systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 

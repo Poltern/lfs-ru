@@ -83,7 +83,7 @@
       <listitem><para>Если пакет (прямо или косвенно) связан как со старым, так и 
 	  с новым именем общей библиотеки (например, пакет ссылается как на 
 	  <filename class='libraryfile'>libfoo.so.2</filename>, так и на 
-	  <filename). class='libraryfile'>libbar.so.1</filename>, в то время как последний 
+	  <filename class='libraryfile'>libbar.so.1</filename>, в то время как последний 
 	  ссылается на <filename class='libraryfile'>libfoo.so.3</filename>), пакет может 
 	  работать неправильно, поскольку разные версии общей библиотеки содержат несовместимые 
 	  определения для некоторых имен символов. Это может быть вызвано перекомпиляцией 
