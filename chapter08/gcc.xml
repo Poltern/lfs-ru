@@ -77,6 +77,7 @@ cd       build</userinput></screen>
              --enable-default-ssp     \
              --disable-multilib       \
              --disable-bootstrap      \
+             --disable-fixincludes    \
              --with-system-zlib</userinput></screen>
 
     <para>GCC поддерживает семь различных языков программирования, но предварительные условия 
@@ -93,6 +94,17 @@ cd       build</userinput></screen>
           <para>Этот параметр указывает скрипту configure использовать ld, установленный
 		  программой Binutils, собранной ранее в этой главе, а не кросс версию, которая
 		  использовалась бы в противном случае.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-fixincludes</parameter></term>
+        <listitem>
+          <para>По умолчанию во время установки GCC некоторые системные заголовки будут 
+		  <quote>исправлены</quote> для использования с GCC. Это не обязательно для 
+		  современной системы Linux и потенциально опасно, если пакет будет переустановлен 
+		  после установки GCC. Этот параметр не позволяет GCC <quote>исправлять</quote> 
+		  заголовки.</para>
         </listitem>
       </varlistentry>
 
@@ -123,6 +135,7 @@ cd       build</userinput></screen>
 		в программе или общих библиотеках или каким-то образом внедренному злоумышленником).
       </para>
     </note>
+
     <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">make</userinput></screen>
@@ -156,12 +169,28 @@ su tester -c "PATH=$PATH make -k check"</userinput></screen>
     url="&test-results;"/> и
     <ulink url="https://gcc.gnu.org/ml/gcc-testresults/"/>.</para>
 
-    <para>Известно, что одиннадцать тестов в наборе тестов i386 для компилятора gcc завершаются  
-	неудачно. Это связано с тем, что в тестовых файлах не учитывается параметр 
-	<parameter>--enable-default-pie</parameter>.</para>
+ <para><!--Two tests named <filename>pr104610.c</filename> and
+    <filename>pr69482-1.c</filename> are known to fail because the test
+    files does not account for the
+    <parameter>- -enable-default-ssp</parameter> option.-->
+    <!-- https://gcc.gnu.org/PR106375 and https://gcc.gnu.org/PR109353 -->
+    Известно, что два теста с именами <filename>copy.cc</filename> и 
+    <filename>pr56837.c</filename> завершаются ошибкой.
+    <!-- https://gcc.gnu.org/PR107855#c6 -->
+    Кроме того, известно, что несколько тестов в каталоге 
+	<filename class='directory'>vect</filename> завершаются неудачно, если 
+	оборудование не поддерживает AVX.</para>
 
-    <para>Четыре теста, относящиеся к PR100400, сообщают как XPASS, так и FAIL при проверке 
-	компилятора g++. Это происходит потому что тестовый файл написан не очень хорошо.</para>
+    <para>
+      Известно, что в Glibc-2.38, тесты анализатора с именами 
+      <filename>data-model-4.c</filename> и
+      <filename>conftest-1.c</filename> 
+        завершаются неудачно.
+      Известно, что в тестах asan, несколько тестов в <filename>asan_test.C</filename> 
+        завершаются неудачно.
+      Известно, что тест с именем <filename>interception-malloc-test-1.C</filename> 
+        завершился ошибкой.
+    </para>
 
     <para>Не всегда удается избежать неожиданных сбоев. Разработчики GCC обычно знают
 	об этих проблемах, но еще не решили их. Если результаты теста не сильно отличаются
@@ -193,12 +222,14 @@ su tester -c "PATH=$PATH make -k check"</userinput></screen>
     по "историческим" причинам.</para>
 
 <screen><userinput remap="install">ln -svr /usr/bin/cpp /usr/lib</userinput></screen>
-  <!-- already done earlier
-    <para>Many packages use the name <command>cc</command> to call the C
-    compiler. To satisfy those packages, create a symlink:</para>
 
-<screen><userinput remap="install">ln -sv gcc /usr/bin/cc</userinput></screen>
-  -->
+    <para>Многие пакеты используют имя <command>cc</command> для вызова компилятора 
+	языка Си. Мы уже создали <command>cc</command> как символическую ссылку в 
+    <xref linkend='ch-tools-gcc-pass2'/>, теперь создайте символическую ссылку на 
+	его справочную страницу:</para>
+
+<screen><userinput remap="install">ln -sv gcc.1 /usr/share/man/man1/cc.1</userinput></screen>
+
     <para>Добавьте символическую ссылку совместимости, чтобы включить сборку
 	программ с оптимизацией времени компоновки (LTO):</para>
 
@@ -323,10 +354,10 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</userinput></screen>
         и lto-dump</seg>
 
         <seg>libasan.{a,so}, libatomic.{a,so}, libcc1.so, libgcc.a, libgcc_eh.a,
-        libgcc_s.so, libgcov.a, libgomp.{a,so}, libitm.{a,so},
+        libgcc_s.so, libgcov.a, libgomp.{a,so}, libhwasan.{a,so}, libitm.{a,so},
         liblsan.{a,so}, liblto_plugin.so,
         libquadmath.{a,so}, libssp.{a,so}, libssp_nonshared.a,
-        libstdc++.{a,so}, libstdc++fs.a, libsupc++.a, libtsan.{a,so}
+        libstdc++.{a,so}, libstdc++exp.a, libstdc++fs.a, libsupc++.a, libtsan.{a,so} 
         и libubsan.{a,so}</seg>
 
         <seg>/usr/include/c++, /usr/lib/gcc, /usr/libexec/gcc и
@@ -528,6 +559,17 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</userinput></screen>
         </listitem>
       </varlistentry>
 
+      <varlistentry id="libhwasan">
+        <term><filename class="libraryfile">libhwasan</filename></term>
+        <listitem>
+          <para>Библиотека времени выполнения Hardware-Assisted Address Sanitizer 
+		  (аппаратной очистки адресов)</para>
+          <indexterm zone="ch-system-gcc libhwasan">
+            <primary sortas="c-libhwasan">libhwasan</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
       <varlistentry id="libitm">
         <term><filename class="libraryfile">libitm</filename></term>
         <listitem>
@@ -586,6 +628,16 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</userinput></screen>
           <para>Стандартная библиотека C++</para>
           <indexterm zone="ch-system-gcc libstdc">
             <primary sortas="c-libstdc++">libstdc++</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libstdcexp">
+        <term><filename class="libraryfile">libstdc++exp</filename></term>
+        <listitem>
+          <para>Экспериментальная библиотека контрактов C++</para>
+          <indexterm zone="ch-system-gcc libstdcexp">
+            <primary sortas="c-libstdc++exp">libstdc++exp</primary>
           </indexterm>
         </listitem>
       </varlistentry>

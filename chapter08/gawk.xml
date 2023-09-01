@@ -54,7 +54,8 @@
 
     <para>Чтобы протестировать пакет, выполните:</para>
 
-<screen><userinput remap="test">make check</userinput></screen>
+<screen><userinput remap="test">chown -Rv tester .
+su tester -c "PATH=$PATH make check"</userinput></screen>
 
     <para>Установите пакет:</para>
 
@@ -71,6 +72,12 @@
        </listitem>
       </varlistentry>
    </variablelist>
+
+    <para>В процессе установки уже создан <command>awk</command> в виде символической 
+	ссылки на <command>gawk</command>, создайте также символическую ссылку на справочную 
+	страницу:</para>
+
+<screen><userinput remap="install">ln -sv gawk.1 /usr/share/man/man1/awk.1</userinput></screen>
 
     <para>По желанию, установите документацию:</para>
 

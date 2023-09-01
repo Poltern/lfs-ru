@@ -81,9 +81,24 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
+    <important>
+      <para>Набор тестов для Expect считается критически важным. Не пропускайте его ни 
+	  при каких обстоятельствах.</para>
+    </important>
+
     <para>Чтобы протестировать пакет, выполните:</para>
 
 <screen><userinput remap="test">make test</userinput></screen>
+
+    <para>Если какой-либо тест завершается неудачей с сообщением 
+	<quote><computeroutput>The system has no more ptys.  Ask your system
+    administrator to create more</computeroutput></quote>, это означает, что вы неправильно 
+	смонтировали файловую систему <systemitem class="filesystem">devpts</systemitem>. Вам 
+	необходимо выйти из среды chroot, ещё раз прочитать <xref linkend='ch-tools-kernfs'/> и 
+	убедиться, что файловая система <systemitem class="filesystem">devpts</systemitem> (и 
+	другие файловые системы виртуального ядра) смонтированы правильно. Затем повторно войдите 
+	в среду chroot, следуя инструкции <xref linkend='ch-tools-chroot'/>. Эту проблему необходимо 
+	решить, прежде чем вы продолжите.</para>
 
     <para>Установите пакет:</para>
 

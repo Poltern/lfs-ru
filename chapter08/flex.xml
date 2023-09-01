@@ -72,10 +72,11 @@
     <para>Некоторые программы пока не знают о <command>flex</command> и
     пытаются запустить его предшественника - <command>lex</command>. Чтобы
     обеспечить их работоспособность, создайте символическую ссылку <command>lex</command>,
-    которая запускает <filename>flex</filename> в режиме
-    эмуляции <command>lex</command>:</para>
+    которая запускает <filename>flex</filename> в режиме эмуляции <command>lex</command>, 
+	а также создайте символическую ссылку на справочную страницу <command>lex</command>:</para>
 
-<screen><userinput remap="install">ln -sv flex /usr/bin/lex</userinput></screen>
+<screen><userinput remap="install">ln -sv flex   /usr/bin/lex
+ln -sv flex.1 /usr/share/man/man1/lex.1</userinput></screen>
 
   </sect2>
 
