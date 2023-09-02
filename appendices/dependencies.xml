@@ -2564,7 +2564,7 @@
           <seg>
             <phrase revision='systemd'>Нет</phrase>
             <phrase revision='sysv'>
-              <ulink url='&blfs-book;general/elogind.xml'>elogind</ulink>
+              <ulink url='&blfs-book;general/elogind.html'>elogind</ulink>
             </phrase>
           </seg>
         </seglistitem>
