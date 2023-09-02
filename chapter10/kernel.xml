@@ -114,6 +114,7 @@
     <!-- Support for compiling a keymap into the kernel is deliberately removed -->
 
     <note>
+      <?dbfo keep-together="auto"?>
       <para>Хорошей отправной точкой для настройки ядра, может стать запуск команды 
 	  <command>make defconfig</command>. В результате её выполнения будет создана базовая 
 	  конфигурация с учётом архитектуры системы.</para>

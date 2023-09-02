@@ -167,7 +167,7 @@
   <para>Чтобы узнать, есть ли в вашей хост-системе все необходимые пакеты и
   возможность компилировать программы, выполните следующий скрипт:</para>
 
-<screen role="nodump"><userinput>cat &gt; version-check.sh &lt;&lt; "EOF"
+<screen role="nodump"><?dbfo keep-together="auto"?><userinput>cat &gt; version-check.sh &lt;&lt; "EOF"
 <literal>#!/bin/bash
 # A script to list version numbers of critical development tools
 
