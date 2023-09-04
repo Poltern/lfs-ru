@@ -435,6 +435,9 @@
         <seglistitem>
           <seg>
             <ulink url='&github;/testing-cabal/subunit'>libsubunit</ulink>
+            и 
+            <ulink url='http://cyberelk.net/tim/software/patchutils/'>
+              patchutils</ulink>
           </seg>
         </seglistitem>
       </segmentedlist>
