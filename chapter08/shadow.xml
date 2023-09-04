@@ -103,6 +103,7 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
 ./configure --sysconfdir=/etc \
             --disable-static  \
             --with-{b,yes}crypt \
+            --without-libbsd    \
             --with-group-name-max-length=32</userinput></screen>
 
     <variablelist>
@@ -138,6 +139,13 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
         </listitem>
       </varlistentry>
 
+      <varlistentry>
+        <term><parameter>--without-libbsd</parameter></term>
+        <listitem>
+           <para>Не используйте функцию readpassphrase из иблиотеки libbsd, которой нет в 
+		   LFS. Вместо этого используйте внутреннюю копию.</para>
+        </listitem>
+      </varlistentry>
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>

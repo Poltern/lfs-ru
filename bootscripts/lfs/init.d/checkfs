@@ -101,7 +101,7 @@ case "${1}" in
 
       if [ "${error_value}" = 2 -o "${error_value}" = 3 ]; then
          msg="\nWARNING:\n\nFile system errors "
-         msg="${msg}were found and have been been "
+         msg="${msg}were found and have been "
          msg="${msg}corrected, but the nature of the "
          msg="${msg}errors require this system to be rebooted.\n\n"
          msg="${msg}After you press enter, "

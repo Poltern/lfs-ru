@@ -103,6 +103,7 @@
 <!ENTITY erratad         "&lfs-root;lfs/errata/&generic-versiond;/">
 -->
 <!ENTITY lfs-ticket-root "https://wiki.linuxfromscratch.org/lfs/ticket/">
+<!ENTITY blfs-ticket-root "https://wiki.linuxfromscratch.org/blfs/ticket/">
 
 <!ENTITY anduin-sources  "https://anduin.linuxfromscratch.org/LFS">
 

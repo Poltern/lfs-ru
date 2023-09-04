@@ -66,6 +66,7 @@ meson setup \
       -Dmode=release                \
       -Dpamconfdir=no               \
       -Ddev-kvm-mode=0660           \
+      -Dnobody-group=nogroup        \
       -Ddocdir=/usr/share/doc/systemd-&systemd-version; \
       ..</userinput></screen>
 
@@ -170,6 +171,14 @@ meson setup \
           <para>По умолчанию правило udev разрешает всем пользователям доступ к 
 		  <filename class='devicefile'>/dev/kvm</filename>. Редакторы LFS считают 
 		  это опасным. Данная опция переопределяет разрешение по умолчанию.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dnobody-group=nogroup</parameter></term>
+        <listitem>
+          <para>Сообщает пакету, что имя группы с GID 65534 - это
+          <systemitem class='groupname'>nogroup</systemitem>.</para>
         </listitem>
       </varlistentry>
     </variablelist>

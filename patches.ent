@@ -2,50 +2,14 @@
 
 <!-- Start of Common Patches -->
 
-<!--
-<!ENTITY autoconf-fixes-patch "autoconf-&autoconf-version;-consolidated_fixes-1.patch">
-<!ENTITY autoconf-fixes-patch-md5 "3c515415ecdd777990c91e8900279cb9">
-<!ENTITY autoconf-fixes-patch-size "3.8 KB">
--->
-<!--
-<!ENTITY bash-fixes-patch "bash-&bash-version;-upstream_fixes-1.patch">
-<!ENTITY bash-fixes-patch-md5 "5f20760139d6a97e55124988fcddae44">
-<!ENTITY bash-fixes-patch-size "2.0 KB">
--->
-<!--
-<!ENTITY binutils-lto-patch "binutils-&binutils-version;-lto_fix-1.patch">
-<!ENTITY binutils-lto-patch-md5 "3df11b6123d5bbdb0fc83862a003827a">
-<!ENTITY binutils-lto-patch-size "3.5 KB">
--->
-
 <!ENTITY bzip2-docs-patch "bzip2-&bzip2-version;-install_docs-1.patch">
 <!ENTITY bzip2-docs-patch-md5 "6a5ac7e89b791aae556de0f745916f7f">
 <!ENTITY bzip2-docs-patch-size "1.6 KB">
 
 <!ENTITY coreutils-i18n-patch "coreutils-&coreutils-version;-i18n-1.patch">
-<!ENTITY coreutils-i18n-patch-md5 "3c6340b3ddd62f4acdf8d3caa6fad6b0">
+<!ENTITY coreutils-i18n-patch-md5 "cca7dc8c73147444e77bc45d210229bb">
 <!ENTITY coreutils-i18n-patch-size "166 KB">
-<!--
-<!ENTITY coreutils-chmod-patch "coreutils-&coreutils-version;-chmod_fix-1.patch">
-<!ENTITY coreutils-chmod-patch-md5 "4709df88e68279e6ef357aa819ba5b1a">
-<!ENTITY coreutils-chmod-patch-size "3.8 KB">
--->
-<!--
-<!ENTITY flex-fixes-patch "flex-&flex-version;-upstream_fixes-3.patch">
-<!ENTITY flex-fixes-patch-md5 "b46f6b0380e502a3dfb8b503227cd680">
-<!ENTITY flex-fixes-patch-size "3.4 KB">
--->
 
-<!--
-<!ENTITY file-upstream-fixes-patch "file-&file-version;-upstream_fixes-1.patch">
-<!ENTITY file-upstream-fixes-md5 "d99090db596b9db2bed869662199a56a">
-<!ENTITY file-upstream-fixes-patch-size "4.0 KB">
--->
-<!--
-<!ENTITY gcc-upstream-fixes-patch "gcc-&gcc-version;-glibc_2.36-1.patch">
-<!ENTITY gcc-upstream-fixes-patch-md5 "8a5a4c3d14b9b2398b32f20b53a4de50">
-<!ENTITY gcc-upstream-fixes-patch-size "1.7 KB">
--->
 <!ENTITY glibc-fhs-patch "glibc-&glibc-version;-fhs-1.patch">
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
 <!ENTITY glibc-fhs-patch-size "2.8 KB">
@@ -62,49 +26,11 @@
 <!ENTITY kbd-backspace-patch-md5 "f75cca16a38da6caa7d52151f7136895">
 <!ENTITY kbd-backspace-patch-size "12 KB">
 
-<!--
-<!ENTITY libpipeline-checks-patch "libpipeline-&libpipeline-version;-check_fixes-3.patch">
-<!ENTITY libpipeline-checks-patch-md5 "0cd71f98eadaee07647d021d2e4c8621">
-<!ENTITY libpipeline-checks-patch-size "22 KB">
-
-<!ENTITY meson-fix-patch "meson-&meson-version;-upstream_fix-2.patch">
-<!ENTITY meson-fix-patch-md5 "dd0b2187d287abcb41c3dd7e497b7df3">
-<!ENTITY meson-fix-patch-size "5.5 KB">
-
-<!ENTITY ninja-limit-jobs-patch "ninja-&ninja-version;-add_NINJAJOBS_var-1.patch">
-<!ENTITY ninja-limit-jobs-patch-md5 "f537a633532492e805aa342fa869ca45">
-<!ENTITY ninja-limit-jobs-patch-size "2.5 KB">
--->
-<!--
-<!ENTITY perl-fix-patch "perl-&perl-version;-upstream_fixes-1.patch">
-<!ENTITY perl-fix-patch-md5 "fb42558b59ed95ee00eb9f1c1c9b8056">
-<!ENTITY perl-fix-patch-size "1.6 KB">
--->
 <!ENTITY readline-fixes-patch "readline-&readline-version;-upstream_fix-1.patch">
 <!ENTITY readline-fixes-patch-md5 "dd1764b84cfca6b677f44978218a75da">
 <!ENTITY readline-fixes-patch-size "1.3 KB">
 
-<!--
-<!ENTITY shadow-segfault-patch "shadow-&shadow-version;-useradd_segfault-1.patch">
-<!ENTITY shadow-segfault-patch-md5 "66b299c0c9ac66fdb7c91b40df5984c0">
-<!ENTITY shadow-segfault-patch-size "1.7 KB">
--->
 <!ENTITY sysvinit-consolidated-patch "sysvinit-&sysvinit-version;-consolidated-1.patch">
 <!ENTITY sysvinit-consolidated-patch-md5 "17ffccbb8e18c39e8cedc32046f3a475">
 <!ENTITY sysvinit-consolidated-patch-size "2.5 KB">
 
-<!--
-<!ENTITY systemd-upstream-patch "systemd-&systemd-version;-security_fix-1.patch">
-<!ENTITY systemd-upstream-patch-md5 "da817e69e897d35cdffd7c45ea06be39">
-<!ENTITY systemd-upstream-patch-size "76.0 KB">
--->
-<!--
-<!ENTITY xz-upstream-fix-patch "xz-&xz-version;-upstream_fix-1.patch">
-<!ENTITY xz-upstream-fix-patch-md5 "584c72ea3d8f7502b2770670f3090788">
-<!ENTITY xz-upstream-fix-patch-size "3.7 KB">
--->
-<!--
-<!ENTITY zstd-upstream-fixes-patch "zstd-&zstd-version;-upstream_fixes-1.patch">
-<!ENTITY zstd-upstream-fixes-patch-md5 "a7e576e3f87415fdf388392b257cdcf3">
-<!ENTITY zstd-upstream-fixes-patch-size "4 KB">
--->

@@ -154,7 +154,7 @@
 		  программного обеспечения; проверяет исходные файлы в дереве каталогов,
 		  ищет в них распространенные проблемы с переносимостью и создает файл
 		  <filename>configure.scan</filename>, который является предварительным
-		  для <filename>configure.in</filename>.</para>
+		  файлом <filename>configure.in</filename> для пакета.</para>
           <indexterm zone="ch-system-autoconf autoscan">
             <primary sortas="b-autoscan">autoscan</primary>
           </indexterm>
