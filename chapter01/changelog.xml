@@ -40,6 +40,17 @@
     -->
 
     <listitem>
+      <para>2023-09-04</para>
+      <itemizedlist>
+        <listitem>
+           <para>[bdubbs] - Move caution regarding building by mixing
+           different version of LFS to General Compilation Instructions. Fixes
+           <ulink url='&lfs-ticket-root;5338'>#5338</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-09-02</para>
       <itemizedlist>
         <listitem>
