@@ -9,7 +9,7 @@ LFS Book README
 форматы.
 
 Во всех примерах необходимо указание аргумента REV=systemd, если требуется 
-сборка книги редакции systemd.
+сборка редакции systemd.
 
 XML в XHTML:
 -------------
@@ -30,3 +30,8 @@ lynx -dump /path/to/nochunks > /path/to/output
 XML в PDF:
 -----------
 make BASEDIR=/path/to/output/location pdf
+
+
+Сделать сборку всех версий (TXT по умолчанию не создается):
+-----------
+make BASEDIR=/path/to/output/location all
