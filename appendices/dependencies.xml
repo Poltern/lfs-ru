@@ -284,14 +284,15 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Diffutils, File, Flex, Gawk, GCC,
-          Glibc, Grep, Make, Perl, Sed, Texinfo и Zlib</seg>
+          Glibc, Grep, Make, Perl, Pkgconf, Sed, Texinfo, Zlib и 
+          Zstd</seg>
         </seglistitem>
       </segmentedlist>
 
       <segmentedlist id="binutils-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>Glibc и Zlib</seg>
+          <seg>Glibc, Zlib и Zstd</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2515,7 +2516,8 @@
       <segmentedlist id="pkgconf-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg><phrase revision='systemd'>D-Bus, </phrase>E2fsprogs,
+          <seg>Binutils,
+          <phrase revision='systemd'>D-Bus, </phrase>E2fsprogs,
           IProute2, Kmod, Man-DB, Procps-ng, Python,
 		  &systemd-udev; и Util-linux</seg>
         </seglistitem>
@@ -3393,7 +3395,7 @@
       <segmentedlist id="zstd-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>GCC, Libelf и &systemd-udev;</seg>
+          <seg>Binutils, GCC, Libelf и &systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 

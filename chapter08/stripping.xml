@@ -89,6 +89,7 @@ online_usrlib="libbfd-&binutils-version;.so
                libm.so.6
                libreadline.so.&readline-soversion;
                libz.so.&zlib-version;
+               libzstd.so.&zstd-version;
                $(cd /usr/lib; find libnss*.so* -type f)"
 
 for BIN in $online_usrbin; do

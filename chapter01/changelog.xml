@@ -40,6 +40,29 @@
     -->
 
     <listitem>
+      <para>2023-09-05</para>
+      <itemizedlist>
+        <listitem>
+           <para>[xry111] - Move pkgconf before binutils for binutils
+           building system to detect zstd properly.  Fixes
+           <ulink url='&lfs-ticket-root;5340'>#5340</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to linux-6.5.1.  Fixes
+          <ulink url='&lfs-ticket-root;5332'>#5332</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to pkgconf-2.0.3.  Fixes
+          <ulink url='&lfs-ticket-root;5339'>#5339</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to dbus-1.14.10.  Fixes
+          <ulink url='&lfs-ticket-root;5337'>#5337</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-09-04</para>
       <itemizedlist>
         <listitem>

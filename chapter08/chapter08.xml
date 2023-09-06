@@ -29,6 +29,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tcl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="expect.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dejagnu.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pkgconf.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="binutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gmp.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mpfr.xml"/>
@@ -39,7 +40,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libxcrypt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="shadow.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gcc.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pkgconf.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ncurses.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sed.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="psmisc.xml"/>
