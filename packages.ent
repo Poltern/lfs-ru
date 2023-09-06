@@ -114,10 +114,10 @@
 <!ENTITY coreutils-fin-du "165 MB">
 <!ENTITY coreutils-fin-sbu "0.9 SBU">
 
-<!ENTITY dbus-version "1.14.8">
-<!ENTITY dbus-size "1,340 KB">
+<!ENTITY dbus-version "1.14.10">
+<!ENTITY dbus-size "1,344 KB">
 <!ENTITY dbus-url "https://dbus.freedesktop.org/releases/dbus/dbus-&dbus-version;.tar.xz">
-<!ENTITY dbus-md5 "da42f55aeec51b355587bc3062fc2d41">
+<!ENTITY dbus-md5 "46070a3487817ff690981f8cd2ba9376">
 <!ENTITY dbus-home "https://www.freedesktop.org/wiki/Software/dbus">
 <!ENTITY dbus-fin-du "20 MB">
 <!ENTITY dbus-fin-sbu "0.1 SBU">
@@ -432,13 +432,13 @@
 <!ENTITY libxcrypt-fin-sbu "0.1 SBU">
 
 <!ENTITY linux-major-version "6">
-<!ENTITY linux-minor-version "4">
-<!ENTITY linux-patch-version "12">
+<!ENTITY linux-minor-version "5">
+<!ENTITY linux-patch-version "1">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "134,616 KB">
+<!ENTITY linux-size "135,684 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "24570ba0ef9dd592bd640a1a41686fac">
+<!ENTITY linux-md5 "228479f37b3face05b53bd7f8906abe0">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
  allnoconfig rounded down to allow for ongoing cleanups,
@@ -567,10 +567,10 @@
 <!ENTITY perl-fin-du "239 MB">
 <!ENTITY perl-fin-sbu "7.1 SBU">
 
-<!ENTITY pkgconf-version "2.0.2">
+<!ENTITY pkgconf-version "2.0.3">
 <!ENTITY pkgconf-size "304 KB">
 <!ENTITY pkgconf-url "https://distfiles.ariadne.space/pkgconf/pkgconf-&pkgconf-version;.tar.xz">
-<!ENTITY pkgconf-md5 "9bc6eee9dc86e96f855ce70a39a12bd3">
+<!ENTITY pkgconf-md5 "b82ca48ed3097adfa007ee71489b6719">
 <!ENTITY pkgconf-home "http://pkgconf.org/">
 <!ENTITY pkgconf-fin-du "4.6 MB">
 <!ENTITY pkgconf-fin-sbu "менее 0.1 SBU">
