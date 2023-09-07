@@ -42,15 +42,12 @@
   <sect2 role="installation">
 
     <title>Установка пакета Pkgconf</title>
-<!--
-    <para>Pkgconf-2.0.0 explicitly errors when attempting to run
-    <option>- -modversion</option> with multiple arguments, even if these
-    arguments are constraints for the same package.  This breaks many
-    packages in BLFS. Run this sed to reinstate the old
-    output for pkgconf:</para>
 
-     <screen><userinput remap="pre">sed -i '1330,1336s|^|//|' cli/main.c</userinput></screen>
--->
+    <!-- https://github.com/pkgconf/pkgconf/issues/317 -->
+    <para>Исправлена регрессия в pkgconf-2.0.3, нарушающая работу пакетов BLFS:</para>
+
+    <screen><userinput remap="pre">sed -i 's/str\(cmp.*package\)/strn\1, strlen(pkg-&gt;why)/' cli/main.c</userinput></screen>
+
     <para>Подготовьте Pkgconf к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr              \

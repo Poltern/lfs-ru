@@ -40,6 +40,17 @@
     -->
 
     <listitem>
+      <para>2023-09-07</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Fix an issue in pkgconf-2.0.3 causing
+          BLFS packages fail to build.  Fixes
+          <ulink url='&lfs-ticket-root;5341'>#5341</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-09-05</para>
       <itemizedlist>
         <listitem>
