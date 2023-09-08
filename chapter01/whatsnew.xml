@@ -38,10 +38,10 @@
       <para>Automake-&automake-version;</para>
     </listitem>-->
     <!--<listitem>
-      <para>Bash &bash-version;</para>
+      <para>Bash-&bash-version;</para>
     </listitem>-->
     <!--<listitem>
-      <para>Bc &bc-version;</para>
+      <para>Bc-&bc-version;</para>
     </listitem>-->
     <!--<listitem>
       <para>Binutils-&binutils-version;</para>
@@ -69,9 +69,6 @@
     </listitem>-->
     <!--<listitem>
        <para>E2fsprogs-&e2fsprogs-version;</para>
-    </listitem>-->
-    <!--<listitem revision="sysv">
-       <para>Udev-&systemd-version; (from systemd)</para>
     </listitem>-->
     <!--<listitem>
        <para>Expat-&expat-version;</para>
@@ -250,6 +247,9 @@
     <!--<listitem>
       <para>Tzdata-&tzdata-version;</para>
     </listitem>-->
+    <!--<listitem revision="sysv">
+       <para>Udev-&systemd-version; (from systemd)</para>
+    </listitem>-->
     <listitem>
       <para>Util-Linux-&util-linux-version;</para>
     </listitem>
@@ -260,10 +260,10 @@
       <para>wheel-&wheel-version;</para>
     </listitem>
     <!--<listitem>
-      <para>XML-Parser-&xml-parser-version;</para>
+      <para>XML::Parser-&xml-parser-version;</para>
     </listitem>-->
     <!--<listitem>
-      <para>XZ-Utils-&xz-version;</para>
+      <para>Xz-&xz-version;</para>
     </listitem>-->
     <listitem>
       <para>Zlib-&zlib-version;</para>
