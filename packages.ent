@@ -371,7 +371,7 @@
 <!ENTITY kmod-size "555 KB">
 <!ENTITY kmod-url "&kernel;linux/utils/kernel/kmod/kmod-&kmod-version;.tar.xz">
 <!ENTITY kmod-md5 "85202f0740a75eb52f2163c776f9b564">
-<!ENTITY kmod-home " ">
+<!ENTITY kmod-home "https://github.com/kmod-project/kmod">
 <!ENTITY kmod-fin-du "12 MB">
 <!ENTITY kmod-fin-sbu "менее 0.1 SBU">
 
