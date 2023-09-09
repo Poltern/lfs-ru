@@ -43,17 +43,13 @@
   <sect2 role="installation">
     <title>Установка пакета Coreutils</title>
 
-<!--
-<screen><userinput remap="configure">export gl_cv_macro_MB_CUR_MAX_good=y</userinput></screen>
--->
     <para>Подготовьте Coreutils к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
-            --enable-no-install-program=kill,uptime \
-            gl_cv_macro_MB_CUR_MAX_good=y</userinput></screen>
+            --enable-no-install-program=kill,uptime</userinput></screen>
 
     <variablelist>
       <title>Значение параметров настройки:</title>

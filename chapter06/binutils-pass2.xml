@@ -43,11 +43,17 @@
   <sect2 role="installation">
     <title>Установка пакета Binutils</title>
 
-    <!-- Don't remove this until Binutils upstream updates the libtool
-         copy.  On some host distros the issue doesn't show up.  -->
-    <para>Binutils поставляет устаревшую версию libtool в архиве. В нем отсутствует
-	поддержка sysroot, поэтому созданные двоичные файлы будут ошибочно связаны с
-	библиотеками из основного дистрибутива. Решение этой проблемы:</para>
+    <!-- Don't remove this until Binutils upstream resolves this issue.
+         We can test by building Binutils on a complete system with
+         zlib (libz.so) installed, passing enable-shared and
+         without-system-zlib.  If the resulted libctf.so still links against
+         libz.so (check with readelf -d) despite we are saying
+         without-system-zlib, then the issue is still unresolved.  -->
+    <para>Binutils использует внутреннюю копию libtool для линковки с внутренними 
+	статическими библиотеками, но копии libiberty и zlib, поставляемые с пакетом, не 
+	используют libtool. Это несоответствие может привести к тому, что созданные двоичные 
+	файлы будут ошибочно связаны с библиотеками из основного дистрибутива. Решение этой 
+	проблемы:</para>
 
 <screen><userinput remap="pre">sed '6009s/$add_dir//' -i ltmain.sh</userinput></screen>
 
