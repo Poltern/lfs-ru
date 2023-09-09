@@ -76,15 +76,7 @@ export BUILD_BZIP2=0</userinput></screen>
              -Dusethreads</userinput></screen>
 
     <variablelist>
-      <title>Значение параметров configure:</title>
-
-      <varlistentry>
-        <term><parameter>-Dvendorprefix=/usr</parameter></term>
-        <listitem>
-          <para>Параметр гарантирует, что <command>perl</command> знает, как указать
-		  пакетам, где они должны устанавливать свои модули Perl.</para>
-        </listitem>
-      </varlistentry>
+      <title>Значение параметров Configure:</title>
 
       <varlistentry>
         <term><parameter>-Dpager="/usr/bin/less -isR"</parameter></term>
@@ -104,27 +96,9 @@ export BUILD_BZIP2=0</userinput></screen>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Duseshrplib</parameter></term>
-        <listitem>
-          <para>Собрать общую библиотеку libperl, необходимую некоторым модулям Perl.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
         <term><parameter>-Dusethreads</parameter></term>
         <listitem>
           <para>Собрать Perl с поддержкой потоков.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term><parameter>-Dprivlib,-Darchlib,-Dsitelib,...</parameter></term>
-        <listitem>
-          <para>Эти настройки определяют, где Perl ищет установленные модули.
-          Редакторы LFS решили поместить их в структуру каталогов, основанную на 
-		  MAJOR.MINOR версии Perl (&perl-version-min;), что позволяет обновлять Perl 
-		  до более новых версий (&perl-version;) без необходимости переустанавливать 
-		  все модули.</para>
         </listitem>
       </varlistentry>
 
