@@ -57,7 +57,7 @@ make html</userinput></screen>
 	  случае не пропускайте его.</para>
     </important>
 
-    <para>Выполните тестирование и убедитесь, что все 197 тестов пройдены:</para>
+    <para>Выполните тестирование и убедитесь, что все 198 тестов пройдены:</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 

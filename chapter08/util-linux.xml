@@ -41,7 +41,7 @@
   <sect2 role="installation">
     <title>Установка пакета Util-linux</title>
 
-    <para>Сначала отключите проблемные тесты:</para>
+    <para>Сначала отключите проблемный тест:</para>
 
     <screen><userinput remap="pre">sed -i '/test_mkfds/s/^/#/' tests/helpers/Makemodule.am</userinput></screen>
 
