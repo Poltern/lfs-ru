@@ -256,5 +256,24 @@ EOF
 
 bash version-check.sh</userinput></screen>
 
+    <para arch="ml_32,ml_x32,ml_all">
+      Для сборки multilib-системы требуется, чтобы в ядре хост-системы была включена 
+	  поддержка 32-разрядной эмуляции.
+    </para>
+<screen arch="ml_32,ml_x32,ml_all">Binary Emulations  ---&gt;
+    [*] IA32 Emulation
+    &lt;M&gt;   IA32 a.out support
+    [*] x32 ABI for 64-bit mode
+</screen>
+
+    <para arch="ml_32,ml_x32,ml_all">Опция 'IA32 a.out support' является необязательной. 
+	  Если в вашем ядре не включена опция 'x32 ABI for 64-bit mode', но включена  
+	  'IA32 Emulation', вы можете продолжить сборку своей системы, однако, вам придется исключить 
+	  любые разделы, содержащие инструкции по сборке объектов x32. Если ни 'IA32 Emulation', 
+	  ни 'x32 ABI for 64-bit mode' не включены, будут возникать ошибки при сборке 
+	  <application>glibc</application> в главе 6, поэтому необходимо обновление ядра вашей 
+	  хост-системы.
+    </para>
+  
  </sect2>
 </sect1>
