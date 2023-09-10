@@ -14,7 +14,7 @@
 
 <screen><userinput>rm -rf /tmp/*</userinput></screen>
 
-  <para>Также в каталогах /usr/lib и /usr/libexec также есть несколько файлов с
+  <para>Также в каталогах /usr/lib и /usr/libexec есть несколько файлов с
   расширением .la. Это файлы <quote>архива libtool</quote>. Как было сказано ранее,
   в современной системе Linux файлы .la libtool необходимы только для libltdl. 
   Предполагается, что libltdl не будет загружать библиотеки в LFS, кроме этого 
