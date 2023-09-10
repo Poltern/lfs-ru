@@ -58,7 +58,7 @@
 
     <itemizedlist>
       <listitem>
-        <para>Используемая версия книги (в данном случае &version;)</para>
+        <para>Используемая версия книги (в данном случае &version;<phrase arch="ml_32,ml_x32,ml_all">-multilib</phrase>)</para>
       </listitem>
       <listitem>
         <para>Информацию о дистрибутиве и его версия, используемые для сборки LFS</para>
