@@ -379,6 +379,15 @@
     </varlistentry>
 
     <varlistentry>
+      <term>ISL (&isl-version;) - <token>&isl-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&isl-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&isl-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&isl-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Jinja2 (&jinja2-version;) - <token>&jinja2-size;</token>:</term>
       <listitem>
         <para>Домашняя страница: <ulink url="&jinja2-home;"/></para>
