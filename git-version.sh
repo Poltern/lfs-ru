@@ -24,7 +24,7 @@ if ! git status > /dev/null; then
 	echo "<!ENTITY version           \"unknown-systemd\">" >> version.ent
 	echo "]]>"                                             >> version.ent
 	echo "<!ENTITY releasedate       \"unknown\">"         >> version.ent
-	echo "<!ENTITY copyrightdate     \"1999-2022\">"       >> version.ent
+	echo "<!ENTITY copyrightdate     \"1999-2023\">"       >> version.ent
 	exit 0
 fi
 
