@@ -39,7 +39,7 @@ EOF</userinput></screen>
   а вместо этого выполняет чтение из файла <filename>.bashrc</filename>.
   Создайте файл <filename>.bashrc</filename>:</para>
 
-<screen><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
+<screen arch="default"><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
 <literal>set +h
 umask 022
 LFS=/mnt/lfs
@@ -50,6 +50,20 @@ if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
 PATH=$LFS/tools/bin:$PATH
 CONFIG_SITE=$LFS/usr/share/config.site
 export LFS LC_ALL LFS_TGT PATH CONFIG_SITE</literal>
+EOF</userinput></screen>
+<screen arch="ml_32,ml_x32,ml_all"><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
+<literal>set +h
+umask 022
+LFS=/mnt/lfs
+LC_ALL=POSIX
+LFS_TGT=x86_64-lfs-linux-gnu
+LFS_TGT32=i686-lfs-linux-gnu
+LFS_TGTX32=x86_64-lfs-linux-gnux32
+PATH=/usr/bin
+if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
+PATH=$LFS/tools/bin:$PATH
+CONFIG_SITE=$LFS/usr/share/config.site
+export LFS LC_ALL LFS_TGT LFS_TGT32 LFS_TGTX32 PATH</literal>
 EOF</userinput></screen>
 
   <variablelist>

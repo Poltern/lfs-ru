@@ -86,6 +86,9 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</userinput></screen>
 case $(uname -m) in
   x86_64) chown -v lfs $LFS/lib64 ;;
 esac</userinput></screen>
+<screen arch="ml_32"  ><userinput>chown -v lfs $LFS/lib32</userinput></screen>
+<screen arch="ml_x32" ><userinput>chown -v lfs $LFS/libx32</userinput></screen>
+<screen arch="ml_all" ><userinput>chown -v lfs $LFS/{lib32,libx32}</userinput></screen>
 
   <note><para>В некоторых хост-системах следующая команда не выполняется должным
   образом и приостанавливает вход пользователя &lfs-user; в фоновом режиме. Если
