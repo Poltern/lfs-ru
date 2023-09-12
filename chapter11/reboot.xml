@@ -102,7 +102,7 @@
   <para>Затем размонтируйте виртуальные файловые системы:</para>
 
 <screen><userinput>umount -v $LFS/dev/pts
-mountpoint -q $LFS/dev/shm &amp;&amp; umount $LFS/dev/shm
+mountpoint -q $LFS/dev/shm &amp;&amp; umount -v $LFS/dev/shm
 umount -v $LFS/dev
 umount -v $LFS/run
 umount -v $LFS/proc
