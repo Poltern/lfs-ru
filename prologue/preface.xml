@@ -15,6 +15,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="audience.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="architecture.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="prerequisites.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="standards.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="why.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="typography.xml"/>

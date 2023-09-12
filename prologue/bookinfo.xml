@@ -7,7 +7,7 @@
 
 <bookinfo>
   <title>Линукс с нуля</title>
-  <subtitle>Версия &version;</subtitle>
+  <subtitle>Версия &version;<phrase arch="ml_32,ml_x32,ml_all">-multilib</phrase></subtitle>
   <subtitle>Дата публикации &releasedate;</subtitle>
 
   <authorgroup>
@@ -28,6 +28,12 @@
       <firstname>Редактор: DJ</firstname>
       <surname>Lucas</surname>
     </author>
+
+    <author arch="ml_32,ml_x32,ml_all">
+      <firstname>Editor: Thomas</firstname>
+      <surname>Trepl</surname>
+    </author>
+
     <author>
       <firstname>Автор перевода: Владимир</firstname>
       <surname>Перцев</surname>
