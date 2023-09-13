@@ -55,6 +55,17 @@
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-memalign-patch;</userinput></screen>
 
+    <!-- CVE-2023-4527
+         https://sourceware.org/bugzilla/show_bug.cgi?id=30842
+         https://sourceware.org/ml/libc-alpha/2023-September/151522.html -->
+    <para>Затем устраните уязвимость безопасности, которую можно использовать, когда в 
+    <filename>/etc/resolv.conf</filename> применяется параметр <option>no-aaaa</option>:</para>
+
+<screen><userinput remap="pre">sed \
+  -E "/__res_context_search/\
+      {N;N;s/(search \(([^,]*,){6}[^,]*)NULL/\1\&amp;alt_dns_packet_buffer/}" \
+  -i resolv/nss_dns/dns-host.c</userinput></screen>
+
     <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
 
 <screen><userinput remap="pre">mkdir -v build
