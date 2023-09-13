@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$1" = sysv ]; then
 	SYSV="INCLUDE"
@@ -13,6 +13,10 @@ fi
 
 echo "<!ENTITY % sysv    \"$SYSV\">"     >  conditional.ent
 echo "<!ENTITY % systemd \"$SYSTEMD\">"  >> conditional.ent
+
+if [ -e LFS-RELEASE ]; then
+	exit 0
+fi
 
 if ! git status > /dev/null; then
 	# Either it's not a git repository, or git is unavaliable.
@@ -65,3 +69,5 @@ echo "<!ENTITY version          \"$versiond\">"            >> version.ent
 echo "]]>"                                                 >> version.ent
 echo "<!ENTITY releasedate       \"$full_date\">"          >> version.ent
 echo "<!ENTITY copyrightdate     \"1999-$year\">"          >> version.ent
+
+[ -z "$DIST" ] || echo $version > "$DIST"
