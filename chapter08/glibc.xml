@@ -311,7 +311,7 @@ localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true</userinput></scr
     <para>Создайте новый фай <filename>/etc/nsswitch.conf</filename>, выполнив
 	следующие действия:</para>
 
-<screen><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
+<screen revision='sysv'><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
 <literal># Begin /etc/nsswitch.conf
 
 passwd: files
@@ -319,6 +319,24 @@ group: files
 shadow: files
 
 hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End /etc/nsswitch.conf</literal>
+EOF</userinput></screen>
+
+<screen revision='systemd'><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
+<literal># Begin /etc/nsswitch.conf
+
+passwd: files systemd
+group: files systemd
+shadow: files systemd
+
+hosts: mymachines resolve [!UNAVAIL=return] files myhostname dns
 networks: files
 
 protocols: files

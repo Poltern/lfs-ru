@@ -276,7 +276,8 @@ EOF</userinput></screen>
 
      <para>Если компьютер не должен быть виден в Интернете (т. е. нет зарегистрированного домена 
 	 и действительного блока назначенных IP-адресов&mdash;у большинства пользователей этого нет), 
-	 убедитесь, что IP-адрес находится в диапазоне внутренних сетевых IP-адресов. Допустимые диапазоны:</para>
+	 убедитесь, что IP-адрес находится в диапазоне внутренних сетевых IP-адресов. Допустимые 
+         диапазоны:</para>
 
 <screen><literal>Диапазон адресов локальной сети      Стандартный префикс
 10.0.0.1 - 10.255.255.254           8
@@ -285,53 +286,46 @@ EOF</userinput></screen>
 
      <para>x может быть любым числом в диапазоне 16-31. y может быть любым числом в диапазоне 0-255.</para>
 
-     <para>Правильный IP адрес может быть 192.168.1.1. Правильный FQDN для этого IP 
-	 адреса может быть lfs.example.org.</para>
+     <para>Правильным IP адресом в локальной сети может быть 192.168.1.1.</para>
 
-     <para>Даже если сетевая карта не используется, всё равно требуется указание полного доменного 
-	 имени. Это необходимо для правильной работы некоторых программ.</para>
+     <para>Если компьютер должен быть виден в Интернете, действительным полным доменным 
+	 именем может быть само имя домена или строка, полученная путем объединения префикса 
+	 (часто имени хоста) и домена с помощью символа <quote>.</quote>. Кроме того, вам 
+	 необходимо обратиться к администратору домена, чтобы связать полное доменное имя и 
+	 ваш общедоступный IP-адрес.</para>
 
-<!--
-     <para>Create the /etc/hosts file using the following command:</para>
-
-<screen role="nodump"><userinput>cat &gt; /etc/hosts &lt;&lt; "EOF"
-<literal># Begin /etc/hosts
-
-127.0.0.1 localhost.localdomain localhost
-127.0.1.1 <replaceable>&lt;FQDN&gt;</replaceable> <replaceable>&lt;HOSTNAME&gt;</replaceable>
-::1       localhost ip6-localhost ip6-loopback
-ff02::1   ip6-allnodes
-ff02::2   ip6-allrouters
-
-# End /etc/hosts</literal>
-EOF</userinput></screen>
--->
+     <para>Даже если компьютер не виден из Интернета, полное доменное имя все равно необходимо 
+	 для правильной работы некоторых программ, таких как MTA. Для этих целей можно использовать 
+	 специальное полное доменное имя <literal>localhost.localdomain</literal>.</para>
 
      <para>Создайте файл <filename>/etc/hosts</filename>, выполнив команду:</para>
 
 <screen><userinput>cat &gt; /etc/hosts &lt;&lt; "EOF"
 <literal># Begin /etc/hosts
 
-127.0.0.1 localhost.localdomain localhost
-127.0.1.1 <replaceable>&lt;FQDN&gt;</replaceable> <replaceable>&lt;HOSTNAME&gt;</replaceable>
-<replaceable>&lt;192.168.0.2&gt;</replaceable> <replaceable>&lt;FQDN&gt;</replaceable> <replaceable>&lt;HOSTNAME&gt;</replaceable> <replaceable>[alias1] [alias2] ...</replaceable>
-::1       localhost ip6-localhost ip6-loopback
+<replaceable>&lt;192.168.0.2&gt;</replaceable> <replaceable>&lt;FQDN&gt;</replaceable> <replaceable>[alias1] [alias2] ...</replaceable>
+::1       ip6-localhost ip6-loopback
 ff02::1   ip6-allnodes
 ff02::2   ip6-allrouters
 
 # End /etc/hosts</literal>
 EOF</userinput></screen>
 
-     <para>Значения <replaceable>&lt;192.168.0.2&gt;</replaceable>,
-     <replaceable>&lt;FQDN&gt;</replaceable>, и
-     <replaceable>&lt;HOSTNAME&gt;</replaceable> должны быть изменены на необходимые в 
+     <para>Значения <replaceable>&lt;192.168.0.2&gt;</replaceable> и 
+     <replaceable>&lt;FQDN&gt;</replaceable> должны быть изменены на необходимые в 
 	 соответствии требованиями сети (если имеется IP-адрес выданный сетевым/системным администратором 
 	 и машина подключена к существующей сети). Необязательные параметры могут быть опущены, а строку
      <replaceable>&lt;192.168.0.2&gt;</replaceable> можно опустить, если вы используете подключение, 
-	 настроенное с помощью DHCP или автоматической настройки IPv6.</para>
+	 настроенное с помощью DHCP или автоматической настройки IPv6, или используя 
+	 <literal>localhost.localdomain</literal> в качестве полного доменного имени.</para>
 
-     <para>Запись ::1 является IPv6-аналогом 127.0.0.1 и представляет loopback-интерфейс IPv6. 
-	 127.0.1.1 — это зарезервированная специально для FQDN запись.</para>
+     <para><filename>/etc/hostname</filename> не содержит записей для 
+	 <literal>localhost</literal>, <literal>localhost.localdomain</literal> или имени хоста 
+	 (без домена), поскольку они обрабатываются модулем NSS 
+	 <systemitem class='library'>myhostname</systemitem>, прочтите справочную страницу 
+	 <filename>nss-myhostname(8)</filename> для получения подробной информации.</para>
+
+     <para>Запись ::1 является IPv6-аналогом 127.0.0.1 и представляет loopback-интерфейс IPv6.</para>
 
    </sect2>
 
