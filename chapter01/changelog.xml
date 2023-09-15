@@ -40,6 +40,26 @@
     -->
 
     <listitem>
+      <para>2023-09-13</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Fix CVE-2023-4806 for Glibc-2.38.  Fixes
+          <ulink url='&lfs-ticket-root;5347'>#5347</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2023-09-12</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Fix CVE-2023-4527 for Glibc-2.38.  Fixes
+          <ulink url='&lfs-ticket-root;5346'>#5346</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-09-07</para>
       <itemizedlist>
         <listitem>

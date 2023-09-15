@@ -50,21 +50,10 @@
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
 
-    <para>Теперь исправьте регрессию, из-за которой функция posix_memalign() в некоторых 
-    условиях работала очень медленно:</para>
+    <para>Теперь исправьте две уязвимости безопасности и регрессию, из-за которой функция 
+	posix_memalign() в некоторых условиях работает очень медленно:</para>
 
-<screen><userinput remap="pre">patch -Np1 -i ../&glibc-memalign-patch;</userinput></screen>
-
-    <!-- CVE-2023-4527
-         https://sourceware.org/bugzilla/show_bug.cgi?id=30842
-         https://sourceware.org/ml/libc-alpha/2023-September/151522.html -->
-    <para>Затем устраните уязвимость безопасности, которую можно использовать, когда в 
-    <filename>/etc/resolv.conf</filename> применяется параметр <option>no-aaaa</option>:</para>
-
-<screen><userinput remap="pre">sed \
-  -E "/__res_context_search/\
-      {N;N;s/(search \(([^,]*,){6}[^,]*)NULL/\1\&amp;alt_dns_packet_buffer/}" \
-  -i resolv/nss_dns/dns-host.c</userinput></screen>
+<screen><userinput remap="pre">patch -Np1 -i ../&glibc-upstream-fixes-patch;</userinput></screen>
 
     <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
 
@@ -322,7 +311,7 @@ localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true</userinput></scr
     <para>Создайте новый фай <filename>/etc/nsswitch.conf</filename>, выполнив
 	следующие действия:</para>
 
-<screen><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
+<screen revision='sysv'><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
 <literal># Begin /etc/nsswitch.conf
 
 passwd: files
@@ -330,6 +319,24 @@ group: files
 shadow: files
 
 hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End /etc/nsswitch.conf</literal>
+EOF</userinput></screen>
+
+<screen revision='systemd'><userinput>cat &gt; /etc/nsswitch.conf &lt;&lt; "EOF"
+<literal># Begin /etc/nsswitch.conf
+
+passwd: files systemd
+group: files systemd
+shadow: files systemd
+
+hosts: mymachines resolve [!UNAVAIL=return] files myhostname dns
 networks: files
 
 protocols: files

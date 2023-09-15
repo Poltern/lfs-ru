@@ -286,35 +286,20 @@
     <title>Добавлены:</title>
     <!-- <listitem><para></para></listitem> satisfy build -->
 
-    <!--<listitem>
-      <para>&grub-upstream-fixes-patch;</para>
-    </listitem>-->
+    <listitem>
+      <para>&glibc-upstream-fixes-patch;</para>
+    </listitem>
 
-    <!--<listitem>
-      <para>&readline-fixes-patch;</para>
-    </listitem>-->
-
-    <!--<listitem revision="systemd">
-      <para>&systemd-upstream-patch;</para>
-    </listitem>-->
   </itemizedlist>
 
   <itemizedlist>
     <title>Удалены:</title>
     <!-- <listitem><para></para></listitem>  satisfy build -->
-<!--
-    <listitem revision='sysv'>
-      <para>eudev-3.2.12</para>
+ 
+   <listitem>
+      <para>glibc-2.38-memalign_fix-1.patch</para>
     </listitem>
 
-    <listitem>
-      <para>Pkg-config-0.29.2</para>
-    </listitem>
-
-    <listitem revision='systemd'>
-      <para>systemd-252-security_fix-1.patch</para>
-    </listitem>
--->
   </itemizedlist>
 
 </sect1>
