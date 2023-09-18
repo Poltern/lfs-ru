@@ -440,11 +440,14 @@
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
 <!ENTITY linux-md5 "c54b2cd13ba845e2f5a667ce712e92b9">
 <!ENTITY linux-home "https://www.kernel.org/">
-<!-- measured for 5.13.4 / gcc-11.1.0 on x86_64 : minimum is
- allnoconfig rounded down to allow for ongoing cleanups,
- max is allmodconfig  -->
-<!ENTITY linux-knl-du "1200 - 8800 MB (обычно около 1700 MB)">
-<!ENTITY linux-knl-sbu "1.5 - 130.0 SBU (обычно около 12 SBU)">
+<!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
+ allnoconfig + some configs we recommend for the users, rounded down to
+ allow ongoing cleanups; max is allmodconfig but IKHEADERS unset; typical
+ is the "daily use" config for the workstation measuring the min/max values.
+ The disk usage is the sum of the size of linux-6.5.3 directory and the
+ installed kernel image & modules.  -->
+<!ENTITY linux-knl-du "1800 - 10600 MB (обычно около 1950 MB)">
+<!ENTITY linux-knl-sbu "0.6 - 20.4 SBU (обычно около 1.4 SBU)">
 
 <!ENTITY linux-headers-tmp-du "1.5 GB">
 <!ENTITY linux-headers-tmp-sbu "менее 0.1 SBU">
