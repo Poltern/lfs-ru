@@ -40,6 +40,24 @@
     -->
 
     <listitem>
+      <para>2023-09-17</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Update to linux-6.5.3.  Fixes
+          <ulink url='&lfs-ticket-root;5343'>#5343</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to iana-etc-20230912.  Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to iproute2-6.5.0.  Fixes
+          <ulink url='&lfs-ticket-root;5342'>#5342</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-09-13</para>
       <itemizedlist>
         <listitem>
