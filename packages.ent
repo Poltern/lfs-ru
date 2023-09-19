@@ -446,7 +446,7 @@
  is the "daily use" config for the workstation measuring the min/max values.
  The disk usage is the sum of the size of linux-6.5.3 directory and the
  installed kernel image & modules.  -->
-<!ENTITY linux-knl-du "1800 - 10600 MB (обычно около 1950 MB)">
+<!ENTITY linux-knl-du "1.8 - 10.6 GB (обычно около 2 GB)">
 <!ENTITY linux-knl-sbu "0.6 - 20.4 SBU (обычно около 1.4 SBU)">
 
 <!ENTITY linux-headers-tmp-du "1.5 GB">
