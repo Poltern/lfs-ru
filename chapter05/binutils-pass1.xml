@@ -68,19 +68,12 @@ cd       build</userinput></screen>
 
     <para>Теперь подготовьте Binutils к компиляции:</para>
 
-    <screen arch="default"><userinput remap="configure">../configure --prefix=$LFS/tools \
+    <screen><userinput remap="configure">../configure --prefix=$LFS/tools \
              --with-sysroot=$LFS \
              --target=$LFS_TGT   \
              --disable-nls       \
              --enable-gprofng=no \
              --disable-werror</userinput></screen>
-<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure --prefix=$LFS/tools       \
-             --with-sysroot=$LFS \
-             --target=$LFS_TGT   \
-             --disable-nls       \
-             --enable-gprofng=no \
-             --disable-werror    \
-             --enable-multilib</userinput></screen>
 
     <variablelist>
       <title>Значение параметров настройки:</title>
@@ -133,13 +126,6 @@ cd       build</userinput></screen>
         <listitem>
           <para>Этот параметр предотвращает остановку сборки в случае появления
 		  предупреждений от компилятора хоста.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry arch="ml_32,ml_x32,ml_all">
-        <term><parameter>--enable-multilib</parameter></term>
-        <listitem>
-          <para>Включает поддержку multilib.</para>
         </listitem>
       </varlistentry>
 
