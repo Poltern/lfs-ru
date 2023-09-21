@@ -61,7 +61,7 @@ mv -v gmp-&gmp-version; gmp
 tar -xf ../mpc-&mpc-version;.tar.gz
 mv -v mpc-&mpc-version; mpc</userinput></screen>
 
-    <para>На хостах x86_64 установите имя каталога по умолчанию для 64-битных
+    <para>На хостах x86_64 измените имя каталога по умолчанию для 64-битных
 	библиотек на <quote>lib</quote>:</para>
 
 <screen><userinput remap="pre">case $(uname -m) in
@@ -156,8 +156,8 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>--disable-multilib</parameter></term>
         <listitem>
-          <para>Для платформы x86_64, LFS пока не поддерживает конфигурацию multilib.
-		  Этот аргумент ни как не повлияет, если установка выполняется на платформе x86.</para>
+          <para>На x86_64, LFS не поддерживает конфигурацию multilib.
+		  Этот аргумент никак не влияет на работу с архитектурой x86.</para>
         </listitem>
       </varlistentry>
 
