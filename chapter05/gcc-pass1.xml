@@ -61,15 +61,22 @@ mv -v gmp-&gmp-version; gmp
 tar -xf ../mpc-&mpc-version;.tar.gz
 mv -v mpc-&mpc-version; mpc</userinput></screen>
 
-    <para>На хостах x86_64 измените имя каталога по умолчанию для 64-битных
+    <para arch="default">На хостах x86_64 измените имя каталога по умолчанию для 64-битных
 	библиотек на <quote>lib</quote>:</para>
 
-<screen><userinput remap="pre">case $(uname -m) in
+<screen arch="default"><userinput remap="pre">case $(uname -m) in
   x86_64)
     sed -e '/m64=/s/lib64/lib/' \
         -i.orig gcc/config/i386/t-linux64
  ;;
 esac</userinput></screen>
+
+    <para arch="ml_32,ml_x32,ml_all">Измените имя каталога по умолчанию для библиотек:</para>
+
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="pre">sed -e '/m64=/s/lib64/lib/' \
+    -e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
+    -i.orig gcc/config/i386/t-linux64
+</userinput></screen>
 
     <para>В документации к GCC рекомендуется собирать GCC в отдельном каталоге:</para>
 
@@ -78,7 +85,7 @@ cd       build</userinput></screen>
 
     <para>Подготовьте GCC к компиляции:</para>
 
-<screen><userinput remap="configure">../configure                  \
+<screen arch="default"><userinput remap="configure">../configure                  \
     --target=$LFS_TGT         \
     --prefix=$LFS/tools       \
     --with-glibc-version=&glibc-version; \
@@ -98,6 +105,33 @@ cd       build</userinput></screen>
     --disable-libvtv          \
     --disable-libstdcxx       \
     --enable-languages=c,c++</userinput></screen>
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure" 
+    arch="ml_32">mlist=m64,m32</userinput><userinput remap="configure"
+    arch="ml_x32">mlist=m64,mx32</userinput><userinput remap="configure"
+    arch="ml_all">mlist=m64,m32,mx32</userinput>
+<userinput remap="configure">../configure                  \
+    --target=$LFS_TGT                              \
+    --prefix=$LFS/tools                            \
+    --with-glibc-version=&glibc-version;                      \
+    --with-sysroot=$LFS                            \
+    --with-newlib                                  \
+    --without-headers                              \
+    --enable-default-pie                           \
+    --enable-default-ssp                           \
+    --enable-initfini-array                        \
+    --disable-nls                                  \
+    --disable-shared                               \
+    --enable-multilib --with-multilib-list=$mlist  \
+    --disable-decimal-float                        \
+    --disable-threads                              \
+    --disable-libatomic                            \
+    --disable-libgomp                              \
+    --disable-libquadmath                          \
+    --disable-libssp                               \
+    --disable-libvtv                               \
+    --disable-libstdcxx                            \
+    --enable-languages=c,c++</userinput></screen>
+
     <variablelist>
       <title>Значение параметров настройки:</title>
 
@@ -153,11 +187,18 @@ cd       build</userinput></screen>
         </listitem>
       </varlistentry>
 
-      <varlistentry>
+      <varlistentry arch="default">
         <term><parameter>--disable-multilib</parameter></term>
         <listitem>
           <para>На x86_64, LFS не поддерживает конфигурацию multilib.
 		  Этот аргумент никак не влияет на работу с архитектурой x86.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry arch="ml_32,ml_x32,ml_all">
+        <term><parameter>--enable-multilib --with-multilib-list=...</parameter></term>
+        <listitem>
+          <para>LFS можно использовать с поддержкой multilib для архитектур которые указаны в списке 
++                with-multilib-list.</para>
         </listitem>
       </varlistentry>
 
