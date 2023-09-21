@@ -156,8 +156,8 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>--disable-multilib</parameter></term>
         <listitem>
-          <para>Для платформы x86_64, LFS пока не поддерживает конфигурацию multilib.
-		  Этот аргумент ни как не повлияет, если установка выполняется на платформе x86.</para>
+          <para>На x86_64, LFS не поддерживает конфигурацию multilib.
+		  Этот аргумент никак не влияет на работу с архитектурой x86.</para>
         </listitem>
       </varlistentry>
 
