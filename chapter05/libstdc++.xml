@@ -81,8 +81,8 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>--host=...</parameter></term>
         <listitem>
-          <para>Указывает, что кросс-компилятор, который мы только что создали,
-		  должен использоваться вместо того, который находится в
+          <para>Указывает, что должен использоваться кросс-компилятор, который мы только 
+		  что собрали, вместо того, который находится в
           <filename>/usr/bin</filename>.</para>
         </listitem>
       </varlistentry>
