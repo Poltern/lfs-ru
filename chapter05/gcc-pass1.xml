@@ -61,7 +61,7 @@ mv -v gmp-&gmp-version; gmp
 tar -xf ../mpc-&mpc-version;.tar.gz
 mv -v mpc-&mpc-version; mpc</userinput></screen>
 
-    <para>На хостах x86_64 установите имя каталога по умолчанию для 64-битных
+    <para>На хостах x86_64 измените имя каталога по умолчанию для 64-битных
 	библиотек на <quote>lib</quote>:</para>
 
 <screen><userinput remap="pre">case $(uname -m) in
