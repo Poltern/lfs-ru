@@ -99,7 +99,7 @@ gcc -mx32 dummy.c
           </para></note>
         </listitem>
         <listitem><para>у вас уже есть некоторый опыт работы с LFS</para></listitem>
-        <listitem><para>вам необходимо поддержка 32-битной версии</para></listitem>
+        <listitem><para>вам необходима поддержка 32-битной версии</para></listitem>
       </itemizedlist>
     </para>
 
