@@ -58,7 +58,15 @@ cd       build</userinput></screen>
 
     <para>Подготовьте libstdc++ к компиляции:</para>
 
-<screen><userinput remap="configure">../libstdc++-v3/configure           \
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../libstdc++-v3/configure           \
+    --host=$LFS_TGT                 \
+    --build=$(../config.guess)      \
+    --prefix=/usr                   \
+    --enable-multilib               \
+    --disable-nls                   \
+    --disable-libstdcxx-pch         \
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/&gcc-version;</userinput></screen>
+<screen arch="default"><userinput remap="configure">../libstdc++-v3/configure           \
     --host=$LFS_TGT                 \
     --build=$(../config.guess)      \
     --prefix=/usr                   \
@@ -76,6 +84,13 @@ cd       build</userinput></screen>
           <para>Указывает, что кросс-компилятор, который мы только что создали,
 		  должен использоваться вместо того, который находится в
           <filename>/usr/bin</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry arch="ml_32,ml_x32,ml_all">
+        <term><parameter>--enable-multilib</parameter></term>
+        <listitem>
+          <para>Включает сборку объектов multilib.</para>
         </listitem>
       </varlistentry>
 
