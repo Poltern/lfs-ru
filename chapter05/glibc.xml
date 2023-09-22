@@ -205,7 +205,7 @@ cd       build</userinput></screen>
 <screen><userinput>echo 'int main(){}' | $LFS_TGT-gcc -xc -
 readelf -l a.out | grep ld-linux</userinput></screen>
 
-      <para>Если все работает правильно, ошибок быть не должно, и вывод последней
+      <para>Если все работает правильно, ошибок быть не должно и вывод последней
 	  команды будет иметь вид:</para>
 
 <screen><computeroutput>[Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]</computeroutput></screen>
