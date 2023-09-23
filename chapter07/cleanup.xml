@@ -23,8 +23,10 @@
 	Известно, что некоторые файлы .la могут привести к сбою во время сборки 
 	пакетов BLFS. Удалите эти файлы сейчас:</para>
 
-<screen><userinput>find /usr/{lib,libexec} -name \*.la -delete</userinput></screen>
-
+<screen><userinput>find /usr/{lib,libexec} -name \*.la -delete</userinput><userinput arch="ml_32">
+find /usr/lib32 -name \*.la -delete</userinput><userinput arch="ml_x32">
+find /usr/libx32 -name \*.la -delete</userinput><userinput arch="ml_all">
+find /usr/lib{,x}32 -name \*.la -delete</userinput></screen>
     <para>
       Сейчас размер системы составляет около 3 ГБ, однако каталог /tools больше
 	  не понадобится. Удалите его, чтобы освободить около 1 ГБ дискового пространства:

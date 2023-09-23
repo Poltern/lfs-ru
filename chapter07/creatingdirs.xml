@@ -40,6 +40,9 @@ ln -sfv /run/lock /var/lock
 install -dv -m 0750 /root
 install -dv -m 1777 /tmp /var/tmp</userinput></screen>
 
+  <para arch="ml_32,ml_x32,ml_all">Необходимые каталоги для поддержки multilib были 
+  созданы на предыдущих этапах установки.</para>
+
   <para>По умолчанию каталоги создаются с правами 755, но это нежелательно делать 
   для всех каталогов. В приведенных выше командах вносятся два изменения &mdash; одно
   в домашний каталог пользователя <systemitem class="username">root</systemitem>, 

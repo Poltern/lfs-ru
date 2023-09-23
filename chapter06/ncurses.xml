@@ -231,7 +231,7 @@ rm -rf DESTDIR</userinput></screen>
   <!-- Multilib - x32bit -->
   <!-- - - - - - - - - - -->
   <sect2 arch="ml_x32,ml_all">
-    <title>Сборка Ncurses — x32bit</title>
+    <title>Сборка Ncurses — mx32</title>
 
     <para>Выполните очистку после предыдущей сборки:</para>
 
