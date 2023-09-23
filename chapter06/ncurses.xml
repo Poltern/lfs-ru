@@ -187,6 +187,86 @@ echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</userinput></screen>
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  <sect2 arch="ml_32,ml_all">
+    <title>Сборка Ncurses — 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Подготовьте Ncurses к компиляции:</para>
+
+<screen><userinput remap="configure">CC="$LFS_TGT-gcc -m32"              \
+CXX="$LFS_TGT-g++ -m32"             \
+./configure --prefix=/usr           \
+            --host=$LFS_TGT32       \
+            --build=$(./config.guess)    \
+            --libdir=/usr/lib32     \
+            --mandir=/usr/share/man \
+            --with-shared           \
+            --without-normal        \
+            --with-cxx-shared       \
+            --without-debug         \
+            --without-ada           \
+            --disable-stripping     \
+            --enable-widec</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR TIC_PATH=$(pwd)/build/progs/tic install
+ln -s libncursesw.so DESTDIR/usr/lib32/libcursesw.so
+cp -Rv DESTDIR/usr/lib32/* $LFS/usr/lib32
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  <sect2 arch="ml_x32,ml_all">
+    <title>Сборка Ncurses — x32bit</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Подготовьте Ncurses к компиляции:</para>
+
+<screen><userinput remap="configure">CC="$LFS_TGT-gcc -mx32"             \
+CXX="$LFS_TGT-g++ -mx32"            \
+./configure --prefix=/usr           \
+            --host=$LFS_TGTX32      \
+            --build=$(./config.guess)    \
+            --libdir=/usr/libx32    \
+            --mandir=/usr/share/man \
+            --with-shared           \
+            --without-normal        \
+            --with-cxx-shared       \
+            --without-debug         \
+            --without-ada           \
+            --disable-stripping     \
+            --enable-widec</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR TIC_PATH=$(pwd)/build/progs/tic install
+ln -s libncursesw.so DESTDIR/usr/libx32/libcursesw.so
+cp -Rv DESTDIR/usr/libx32/* $LFS/usr/libx32
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- mx32 -->
+
   <sect2 role="content">
     <title/>
 
