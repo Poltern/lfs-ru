@@ -64,7 +64,7 @@ cd       build</userinput></screen>
 
     <para>Подготовьте Binutils к компиляции:</para>
 
-<screen><userinput remap="configure">../configure                   \
+<screen arch="default"><userinput remap="configure">../configure                   \
     --prefix=/usr              \
     --build=$(../config.guess) \
     --host=$LFS_TGT            \
@@ -73,6 +73,16 @@ cd       build</userinput></screen>
     --enable-gprofng=no        \
     --disable-werror           \
     --enable-64-bit-bfd</userinput></screen>
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure                   \
+    --prefix=/usr              \
+    --build=$(../config.guess) \
+    --host=$LFS_TGT            \
+    --disable-nls              \
+    --enable-shared            \
+    --enable-gprofng=no        \
+    --disable-werror           \
+    --enable-64-bit-bfd        \
+    --enable-multilib</userinput></screen>
 
     <variablelist>
       <title>Значение новых параметров настройки:</title>
@@ -91,6 +101,13 @@ cd       build</userinput></screen>
         <listitem>
           <para>Включает 64-разрядную поддержку (на хостах с меньшим размером слова). 
 		  В 64-разрядных системах это может и не понадобиться, но вреда от этого не будет</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry arch="ml_32,ml_x32,ml_all">
+        <term><parameter>--enable-multilib</parameter></term>
+        <listitem>
+          <para>Включает поддержку multilib в bintutils.</para>
         </listitem>
       </varlistentry>
 
