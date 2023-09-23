@@ -29,7 +29,7 @@
 
   <para>Для решения проблемы измените владельца каталогов
   <filename class="directory">$LFS/*</filename> на пользователя
-  <systemitem class="username">root</systemitem> выполнив следующую команду:</para>
+  <systemitem class="username">root</systemitem>, выполнив следующую команду:</para>
 
 <screen><userinput>chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
 case $(uname -m) in
