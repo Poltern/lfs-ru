@@ -58,7 +58,7 @@ tar -xf ../mpc-&mpc-version;.tar.gz
 mv -v mpc-&mpc-version; mpc</userinput></screen>
 
     <para>При сборке на x86_64 измените имя каталога по умолчанию для 64-разрядных 
-	библиотек на <quote>lib</quote>.:</para>
+	библиотек на <quote>lib</quote>:</para>
 
 <screen><userinput remap="pre">case $(uname -m) in
   x86_64)
