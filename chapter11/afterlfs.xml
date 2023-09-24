@@ -175,13 +175,23 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
 
     <para>
        Этот метод также предоставляет полноценную графическую среду, но сначала требует 
-	   установки
-        <ulink url="&blfs-book;postlfs/openssh.html">sshd</ulink> и 
-        <ulink url="&blfs-book;basicnet/wget.html">wget</ulink>
+	   установки <ulink url="&blfs-book;postlfs/openssh.html">sshd</ulink> 
        в системе LFS, обычно в chroot. Кроме этого потребуется второй компьютер. 
 	   Преимущество этого метода в том, что он прост, поскольку не требует сложной среды 
 	   chroot. Он также использует собранное вами ядро LFS для всех дополнительных пакетов 
 	   и по-прежнему предоставляет полную систему для установки пакетов.
+    </para>
+
+    <para>
+      Вы можете использовать команду <command>scp</command> для загрузки исходных текстов 
+	  пакетов, которые будут собраны в системе LFS. Если вместо этого вы хотите загрузить 
+	  исходные тексты непосредственно в систему LFS, установите 
+      <ulink url="&blfs-book;general/libtasn1.html">libtasn1</ulink>,
+      <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
+      <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink> и 
+      <ulink url="&blfs-book;basicnet/wget.html">wget</ulink> 
+      в chroot (или загрузите их исходники с помощью <command>scp</command> после загрузки 
+	  системы LFS).
     </para>
 
   </sect3>
@@ -190,7 +200,7 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
   <title>Работа из командной строки LFS</title>
 
     <para>
-       Этот метот требует установки 
+       Этот метод требует установки 
         <ulink url="&blfs-book;general/libtasn1.html">libtasn1</ulink>,
         <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
         <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink>,
