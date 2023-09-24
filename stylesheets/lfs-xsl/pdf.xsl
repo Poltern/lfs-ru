@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='ISO-8859-1'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -9,7 +9,7 @@
 
   <!-- Upstream FO templates. Profiled version is not supported by
        xsltproc, thus pofiling must be done in two steps (see Makefile) -->
-  <xsl:import href="docbook-xsl-1.79.1/fo/docbook.xsl"/>
+  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl"/>
 
   <!-- Uncomment the following to make debugging the raw FO code easier.
        Note that FOP will complaints about a lot of paragraph overflows
