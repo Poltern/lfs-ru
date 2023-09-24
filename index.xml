@@ -3,7 +3,7 @@
   <!ENTITY % general-entities SYSTEM "general.ent">
   %general-entities;
 ]>
-<book>
+<book lang='ru'>
 <!-- Another test -->
 <!-- Another test -->
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="prologue/bookinfo.xml"/>
