@@ -71,7 +71,7 @@
       <!-- Pass 1 GCC FTBFS with GCC-5.1 because of
            https://gcc.gnu.org/PR65801. -->
       <para><emphasis role="strong">GCC-5.2</emphasis>, включая компилятор C++,
-	  <command>g++</command> (версии выше &gcc-version не рекомендуются, поскольку
+	  <command>g++</command> (версии выше &gcc-version; не рекомендуются, поскольку
 	  они не тестировались). Также должны присутствовать стандартные библиотеки
 	  C и C++ (с заголовочными файлами), чтобы компилятор C++ мог осуществлять
 	  сборку программ.</para>
