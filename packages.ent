@@ -351,6 +351,15 @@
 <!ENTITY iproute2-fin-du "17 MB">
 <!ENTITY iproute2-fin-sbu "0.1 SBU">
 
+<!ENTITY isl-version "0.24">
+<!ENTITY isl-size "2.1 MB">
+<!-- ENTITY isl-url "http://isl.gforge.inria.fr/isl-&isl-version;.tar.xz" -->
+<!ENTITY isl-url "https://gcc.gnu.org/pub/gcc/infrastructure/isl-&isl-version;.tar.bz2">
+<!ENTITY isl-md5 "dd2f7b78e118c25bd96134a52aae7f4d">
+<!ENTITY isl-home "http://isl.gforge.inria.fr/">
+<!ENTITY isl-fin-du "20 MB">
+<!ENTITY isl-fin-sbu "0.1 SBU">
+
 <!ENTITY jinja2-version "3.1.2">
 <!ENTITY jinja2-size "262 KB">
 <!ENTITY jinja2-url "&pypi-src;/J/Jinja2/Jinja2-&jinja2-version;.tar.gz">
