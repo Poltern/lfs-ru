@@ -14,9 +14,9 @@
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
 <!ENTITY glibc-fhs-patch-size "2.8 KB">
 
-<!ENTITY glibc-upstream-fixes-patch "glibc-&glibc-version;-upstream_fixes-1.patch">
-<!ENTITY glibc-upstream-fixes-patch-md5 "2e347e291804b62a18a43a8cdc79e01e">
-<!ENTITY glibc-upstream-fixes-patch-size "24 KB">
+<!ENTITY glibc-upstream-fixes-patch "glibc-&glibc-version;-upstream_fixes-2.patch">
+<!ENTITY glibc-upstream-fixes-patch-md5 "a5a06adb7f61dcc901f35d810ac8a1c0">
+<!ENTITY glibc-upstream-fixes-patch-size "28 KB">
 
 <!ENTITY grub-upstream-fixes-patch "grub-&grub-version;-upstream_fixes-1.patch">
 <!ENTITY grub-upstream-fixes-patch-md5 "da388905710bb4cbfbc7bd7346ff9174">

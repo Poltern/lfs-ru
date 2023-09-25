@@ -63,13 +63,6 @@
         </listitem>
       </varlistentry>
 
-      <varlistentry>
-        <term><envar>gl_cv_macro_MB_CUR_MAX_good=y</envar></term>
-        <listitem>
-          <para>Этот параметр необходим, чтобы обойти проблему с копией gnulib, 
-		  поставляемой пакетом, которая нарушит кросс-компиляцию.</para>
-        </listitem>
-      </varlistentry>
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>
