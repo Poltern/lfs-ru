@@ -40,6 +40,16 @@
     -->
 
     <listitem>
+      <para>2023-09-24</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Update Glibc upstream fixes patch to plug a
+          memory leak introduced by the security fix.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-09-17</para>
       <itemizedlist>
         <listitem>
