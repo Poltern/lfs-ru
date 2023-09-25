@@ -176,6 +176,38 @@
           дистрибутива</emphasis>.</para>
     </note>
 
+    <note arch="ml_32,ml_x32,ml_all">
+      <para>
+        Ядро в multilib-системе должно иметь возможность идентифицировать и запускать двоичные 
+		файлы, скомпилированные для архитектур, отличных от архитектуры, используемой по 
+		умолчанию.
+      </para>
+
+      <para arch="ml_32,ml_all">
+        Если была добавлена поддержка любого 32-битного ABI, убедитесь, что выбран параметр  
+		"IA32 Emulation". Параметр 'IA32 a.out support' не является обязательным и включен 
+		как модуль.
+      </para>
+
+      <para arch="ml_x32,ml_all">
+        Если добавлена поддержка x32bit ABI, убедитесь, что выбрана опция "x32 ABI for 64-bit 
+		mode".
+      </para>
+
+<screen arch="ml_32">Binary Emulations  ---&gt;
+    [*] IA32 Emulation [CONFIG_IA32_EMULATION]
+    &lt;M&gt;   IA32 a.out support [CONFIG_IA32_AOUT]
+</screen>
+<screen arch="ml_x32">Binary Emulations  ---&gt;
+    [*] x32 ABI for 64-bit mode [CONFIG_X86_X32]
+</screen>
+<screen arch="ml_all">Binary Emulations  ---&gt;
+    [*] IA32 Emulation [CONFIG_IA32_EMULATION]
+    &lt;M&gt;   IA32 a.out support [CONFIG_IA32_AOUT]
+    [*] x32 ABI for 64-bit mode [CONFIG_X86_X32]
+</screen>
+    </note>
+    
     <variablelist>
       <title>Пояснения для выбранных выше параметров ядра:</title>
 
