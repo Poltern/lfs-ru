@@ -432,25 +432,25 @@ div.materials dd {
   margin-top: .4em;
   clear: left;
 }
-
+/*default 14.5*/
 .segtitle {
   float: left;
   padding-left: 1em;
-  width: 14.5em;
+  width: 21em;
 }
 
 .content .segtitle {
   width: 12em;
 }
-
+/*default 14*/
 .package .segbody {
   display: block;
-  padding-left: 14em;
+  padding-left: 22em;
 }
-
+/*default 16*/
 .appendix .segbody{
   display: block;
-  padding-left: 16em;
+  padding-left: 22em;
 }
 
 .content .segbody {
