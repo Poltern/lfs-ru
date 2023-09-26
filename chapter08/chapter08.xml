@@ -34,6 +34,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gmp.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mpfr.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mpc.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="isl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="attr.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="acl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libcap.xml"/>

@@ -21,7 +21,9 @@
   известно, что некоторые файлы .la могут нарушить сборку пакетов BLFS. Удалите 
   эти файлы сейчас:</para>
 
-<screen><userinput>find /usr/lib /usr/libexec -name \*.la -delete</userinput></screen>
+<screen><userinput>find /usr/lib /usr/libexec -name \*.la -delete</userinput><userinput arch="ml_32,ml_all">
+find /usr/lib32 -name \*.la -delete</userinput><userinput arch="ml_x32,ml_all">
+find /usr/libx32 -name \*.la -delete</userinput></screen>
 
    <para>Дополнительные сведения об архивных файлах libtool см. в разделе BLFS  <ulink
    url="&blfs-book;introduction/la-files.html">"О файлах архива Libtool (.la)"</ulink>.</para>

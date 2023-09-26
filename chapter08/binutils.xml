@@ -49,7 +49,7 @@ cd       build</userinput></screen>
 
     <para>Подготовьте Binutils к компиляции:</para>
 
-<screen><userinput remap="configure">../configure --prefix=/usr       \
+<screen arch="default"><userinput remap="configure">../configure --prefix=/usr       \
              --sysconfdir=/etc   \
              --enable-gold       \
              --enable-ld=default \
@@ -58,6 +58,17 @@ cd       build</userinput></screen>
              --disable-werror    \
              --enable-64-bit-bfd \
              --with-system-zlib</userinput></screen>
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure --prefix=/usr       \
+             --sysconfdir=/etc   \
+             --enable-gold       \
+             --enable-ld=default \
+             --enable-plugins    \
+             --enable-shared     \
+             --disable-werror    \
+             --enable-64-bit-bfd \
+             --with-system-zlib  \
+             --enable-multilib</userinput></screen>
+
     <variablelist>
       <title>Значение параметров настройки:</title>
 
@@ -89,6 +100,13 @@ cd       build</userinput></screen>
         <listitem>
            <para>Включает 64-разрядную поддержку (на хостах с ограниченным размерам слов).
 		   Может не понадобится в 64-разрядных системах, но вреда от этого не будет.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry arch="ml_32,ml_x32,ml_all">
+        <term><parameter>--enable-multilib</parameter></term>
+        <listitem>
+          <para>Включает поддержку multilib в bintutils.</para>
         </listitem>
       </varlistentry>
 
