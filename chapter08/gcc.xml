@@ -56,12 +56,19 @@
     <para>При сборке на x86_64 измените имя каталога по умолчанию для 64-битных библиотек
 	на <quote>lib</quote>:</para>
 
-<screen><userinput remap="pre">case $(uname -m) in
+<screen arch="default"><userinput remap="pre">case $(uname -m) in
   x86_64)
     sed -e '/m64=/s/lib64/lib/' \
         -i.orig gcc/config/i386/t-linux64
   ;;
 esac</userinput></screen>
+
+    <para arch="ml_32,ml_x32,ml_all">Измените имя каталога по умолчанию для 64-битных 
+	библиотек на <quote>lib</quote>:</para>
+
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="pre">sed -e '/m64=/s/lib64/lib/' \
+    -e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
+    -i.orig gcc/config/i386/t-linux64</userinput></screen>
 
     <para>Документация GCC рекомендует собирать GCC в отдельном каталоге:</para>
 
@@ -70,7 +77,7 @@ cd       build</userinput></screen>
 
     <para>Подготовьте GCC к компиляции:</para>
 
-<screen><userinput remap="configure">../configure --prefix=/usr            \
+<screen arch="default"><userinput remap="configure">../configure --prefix=/usr            \
              LD=ld                    \
              --enable-languages=c,c++ \
              --enable-default-pie     \
@@ -78,6 +85,20 @@ cd       build</userinput></screen>
              --disable-multilib       \
              --disable-bootstrap      \
              --disable-fixincludes    \
+             --with-system-zlib</userinput></screen>
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure" 
+  arch="ml_32" >mlist=m64,m32</userinput><userinput remap="configure"
+  arch="ml_x32">mlist=m64,mx32</userinput><userinput remap="configure"
+  arch="ml_all">mlist=m64,m32,mx32</userinput>
+<userinput remap="configure">../configure --prefix=/usr               \
+             LD=ld                       \
+             --enable-languages=c,c++    \
+             --enable-default-pie        \
+             --enable-default-ssp        \
+             --enable-multilib           \
+             --with-multilib-list=$mlist \
+             --disable-bootstrap         \
+             --disable-fixincludes       \
              --with-system-zlib</userinput></screen>
 
     <para>GCC поддерживает семь различных языков программирования, но предварительные условия 
@@ -296,10 +317,11 @@ SEARCH_DIR("/usr/local/lib")
 SEARCH_DIR("/lib")
 SEARCH_DIR("/usr/lib");</computeroutput></screen>
 
-   <para>32-разрядная система может использовать несколько других каталогов. Например, вот
+   <para arch="default">32-разрядная система может использовать несколько других каталогов. Например, вот
    вывод с компьютера i686:</para>
 
-<screen><computeroutput>SEARCH_DIR("/usr/i686-pc-linux-gnu/lib32")
+<!-- not using entities here as the dir names has nothing to do with multilib -->
+<screen arch="default"><computeroutput>SEARCH_DIR("/usr/i686-pc-linux-gnu/lib32")
 SEARCH_DIR("/usr/local/lib32")
 SEARCH_DIR("/lib32")
 SEARCH_DIR("/usr/lib32")

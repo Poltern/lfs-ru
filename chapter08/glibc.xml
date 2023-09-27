@@ -67,11 +67,18 @@ cd       build</userinput></screen>
 
     <para>Подготовьте Glibc к компиляции:</para>
 
-<screen><userinput remap="configure">../configure --prefix=/usr                            \
+<screen arch="default"><userinput remap="configure">../configure --prefix=/usr                            \
              --disable-werror                         \
              --enable-kernel=&min-kernel;                     \
              --enable-stack-protector=strong          \
              --with-headers=/usr/include              \
+             libc_cv_slibdir=/usr/lib</userinput></screen>
+<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure --prefix=/usr                            \
+             --disable-werror                         \
+             --enable-kernel=&min-kernel;                      \
+             --enable-stack-protector=strong          \
+             --with-headers=/usr/include              \
+             --enable-multi-arch                      \
              libc_cv_slibdir=/usr/lib</userinput></screen>
 
     <variablelist>
@@ -466,6 +473,150 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
 
   </sect3>
   </sect2>
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  <sect2 arch="ml_32,ml_all">
+    <title>Сборка Glibc — 32-битная версия</title>
+
+    <para>Теперь перекомпилируйте Glibc для m32. Извлеченный исходный код можно 
+	использовать повторно, но его необходимо очистить перед установкой Glibc m32.</para>
+
+    <para>Очистите каталог сборки и удалите артефакты от предыдущей сборки:</para>
+      
+<screen><userinput remap="pre">rm -rf ./*
+find .. -name "*.a" -delete</userinput></screen>
+
+    <para>Сконфигурируйте Glibc для m32 с помощью следующих команд:</para>
+
+<screen><userinput remap="configure">CC="gcc -m32" CXX="g++ -m32" \
+../configure                             \
+      --prefix=/usr                      \
+      --host=i686-pc-linux-gnu           \
+      --build=$(../scripts/config.guess) \
+      --enable-kernel=&min-kernel;                \
+      --with-headers=/usr/include        \
+      --enable-multi-arch                \
+      --libdir=/usr/lib32                \
+      --libexecdir=/usr/lib32            \
+      libc_cv_slibdir=/usr/lib32</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -a DESTDIR/usr/lib32/* /usr/lib32/
+install -vm644 DESTDIR/usr/include/gnu/{lib-names,stubs}-32.h \
+               /usr/include/gnu/</userinput></screen>
+<!-- no longer required as they are created in chap5
+ln -svf ../lib32/ld-linux.so.2 /lib/ld-linux.so.2
+-->
+
+    <para>Добавьте имя библиотеки в файл конфигурации динамического загрузчика:</para>
+
+<screen role="install"><userinput>echo "/usr/lib32" &gt;&gt; /etc/ld.so.conf</userinput></screen>
+
+    <caution>
+      <para>На этом этапе необходимо остановиться и убедиться, что основные функции
+	  (компиляция и компоновка) нового набора инструментов работают должным образом.
+	  Чтобы выполнить проверку работоспособности, выполните следующие команды:</para>
+
+<screen><userinput>echo 'int main(){}' &gt; dummy.c
+gcc -m32 dummy.c
+readelf -l a.out | grep '/ld-linux'</userinput></screen>
+
+      <para>Если все работает правильно, ошибок быть не должно, а вывод последней
+	  команды будет иметь вид:</para>
+
+<screen><computeroutput>[Requesting program interpreter: /lib/ld-linux.so.2]</computeroutput></screen>
+
+      <para>Если выходные данные отображаются не так, как указано выше, или их вообще
+	  нет, значит, что-то сделано неправильно. Разберитесь с проблемой и повторите шаги выше,
+	  чтобы исправить ее. Эта проблема должна быть решена, прежде чем вы продолжите.</para>
+
+      <para>Как только все будет хорошо, удалите тестовые файлы:</para>
+
+<screen><userinput>rm -v dummy.c a.out</userinput></screen>
+
+    </caution>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_x32,ml_all">
+    <title>Сборка Glibc - mx32</title>
+
+    <para>Теперь перекомпилируйте Glibc для mx32. Извлеченный исходный код можно 
+	использовать повторно, но его необходимо очистить перед установкой mx32 версии Glibc.</para>
+
+    <para>Очистите каталог сборки и удалите артефакты от предыдущей сборки:</para>
+      
+<screen><userinput remap="pre">rm -rf ./*
+find .. -name "*.a" -delete</userinput></screen>
+
+    <para>Сконфигурируйте Glibc для mx32 с помощью следующих команд:</para>
+
+<screen><userinput remap="configure">CC="gcc -mx32" CXX="g++ -mx32" \
+../configure                             \
+      --prefix=/usr                      \
+      --host=x86_64-pc-linux-gnux32      \
+      --build=$(../scripts/config.guess) \
+      --enable-kernel=&min-kernel;                \
+      --with-headers=/usr/include        \
+      --enable-multi-arch                \
+      --libdir=/usr/libx32               \
+      --libexecdir=/usr/libx32           \
+      libc_cv_slibdir=/usr/libx32</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -a DESTDIR/usr/libx32/* /usr/libx32/
+install -vm644 DESTDIR/usr/include/gnu/{lib-names,stubs}-x32.h \
+               /usr/include/gnu/</userinput></screen>
+<!-- no longer required as they are created in chap5
+ln -svf ../libx32/ld-linux-x32.so.2 /lib/ld-linux-x32.so.2
+-->
+    <para>Добавьте имя библиотеки в файл конфигурации динамического загрузчика:</para>
+
+<screen role="install"><userinput>echo "/usr/libx32" &gt;&gt; /etc/ld.so.conf</userinput></screen>
+
+    <caution>
+      <para>На этом этапе необходимо остановиться и убедиться, что основные функции
+	  (компиляция и компоновка) нового набора инструментов работают должным образом.
+	  Чтобы выполнить проверку работоспособности, выполните следующие команды:</para>
+
+<screen><userinput>echo 'int main(){}' &gt; dummy.c
+gcc -mx32 dummy.c
+readelf -l a.out | grep '/ld-linux-x32'</userinput></screen>
+
+      <para>Если все работает правильно, ошибок быть не должно, а вывод последней
+	  команды будет иметь вид:</para>
+
+<screen><computeroutput>[Requesting program interpreter: /libx32/ld-linux-x32.so.2]</computeroutput></screen>
+
+      <para>Если выходные данные отображаются не так, как указано выше, или их вообще
+	  нет, значит, что-то сделано неправильно. Разберитесь с проблемой и повторите шаги выше,
+	  чтобы исправить ее. Эта проблема должна быть решена, прежде чем вы продолжите.</para>
+
+      <para>Как только все будет хорошо, удалите тестовые файлы:</para>
+
+<screen><userinput>rm -v dummy.c a.out</userinput></screen>
+
+    </caution>
+
+  </sect2><!-- mx32 -->
 
   <sect2 id="contents-glibc" role="content">
     <title>Содержимое пакета Glibc</title>
