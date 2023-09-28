@@ -110,8 +110,8 @@ make html</userinput></screen>
 
     <!-- Some tests PASS on a specific uarch but SKIP on other CPUs.
          For example on K8 the following command outputs 200.  -->
-    <para>Убедитесь, что все 199 тестов в наборе тестов пройдены. Проверьте
-	результат, выполнив следующую команду:</para>
+    <para>Убедитесь, что все 199 тестов в наборе пройдены. Проверьте результат, выполнив 
+	следующую команду:</para>
 
 <screen><userinput remap="test">awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log</userinput></screen>
 
