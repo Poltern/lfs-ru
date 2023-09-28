@@ -122,6 +122,135 @@ make install-html</userinput></screen>
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка GMP - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Универсальные библиотеки можно создать, выполнив следующие действия:</para>
+
+<screen role="nodump"><userinput remap="pre">cp -v configfsf.guess config.guess
+cp -v configfsf.sub   config.sub</userinput></screen>
+
+    <para>Подготовьте GMP к компиляции:</para>
+
+<screen><userinput remap="configure">ABI="32" \
+CFLAGS="-m32 -O2 -pedantic -fomit-frame-pointer -mtune=generic -march=i686" \
+CXXFLAGS="$CFLAGS" \
+PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+./configure                      \
+    --host=i686-pc-linux-gnu     \
+    --prefix=/usr                \
+    --disable-static             \
+    --enable-cxx                 \
+    --libdir=/usr/lib32          \
+    --includedir=/usr/include/m32/gmp</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров настройки:</title>
+
+      <varlistentry>
+        <term><parameter>--includedir=/usr/include/m32/gmp</parameter></term>
+        <listitem>
+          <para>Некоторые определения в gmp.h различаются в зависимости от архитектуры, 
+		  но имеют одно и то же имя. Поэтому заголовки должны быть отделены друг от друга.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">sed -i 's/$(exec_prefix)\/include/$\(includedir\)/' Makefile
+make</userinput></screen>
+
+    <important>
+      <para>Набор тестов для GMP, приведенный в этом разделе, считается критически важным. 
+	  Не пропускайте его ни при каких обстоятельствах.</para>
+    </important>
+
+    <para>Проверьте результаты:</para>
+
+<screen><userinput remap="test">make check 2>&amp;1 | tee gmp-check-log</userinput></screen>
+ 
+    <para>Убедитесь, что все 199 тестов в наборе пройдены. Проверьте результат, 
+	выполнив следующую команду:</para>
+
+<screen><userinput remap="test">awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/lib32/* /usr/lib32
+cp -Rv DESTDIR/usr/include/m32/* /usr/include/m32/
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка GMP - mx32</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Универсальные библиотеки можно создать, выполнив следующие действия:</para>
+
+<screen role="nodump"><userinput remap="pre">cp -v configfsf.guess config.guess
+cp -v configfsf.sub   config.sub</userinput></screen>
+
+    <para>Подготовьте GMP к компиляции:</para>
+
+<screen><userinput remap="configure">ABI="x32" \
+CFLAGS="-mx32 -O2 -pedantic -fomit-frame-pointer -mtune=generic -march=x86-64" \
+CXXFLAGS="$CFLAGS" \
+PKG_CONFIG_PATH="/usr/libx32/pkgconfig" \
+./configure                       \
+    --host=x86_64-pc-linux-gnux32 \
+    --prefix=/usr                 \
+    --disable-static              \
+    --enable-cxx                  \
+    --libdir=/usr/libx32          \
+    --includedir=/usr/include/mx32/gmp</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">sed -i 's/$(exec_prefix)\/include/$\(includedir\)/' Makefile
+make</userinput></screen>
+
+    <important>
+      <para>Набор тестов для GMP, приведенный в этом разделе, считается критически важным. 
+	  Не пропускайте его ни при каких обстоятельствах.</para>
+    </important>
+
+    <para>Проверьте результаты:</para>
+
+<screen><userinput remap="test">make check 2>&amp;1 | tee gmp-check-log</userinput></screen>
+ 
+    <para>Убедитесь, что все 199 тестов в наборе пройдены. Проверьте результат, 
+	выполнив следующую команду:</para>
+
+<screen><userinput remap="test">awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/libx32/* /usr/libx32
+cp -Rv DESTDIR/usr/include/mx32/* /usr/include/mx32/
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- mx32 -->
+
   <sect2 id="contents-gmp" role="content">
     <title>Содержимое пакета GMP</title>
 
