@@ -73,6 +73,56 @@
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка Libcap - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make CC="gcc -m32 -march=i686"</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make CC="gcc -m32 -march=i686" lib=lib32 prefix=$PWD/DESTDIR/usr -C libcap install
+cp -Rv DESTDIR/usr/lib32/* /usr/lib32
+sed -e "s|^libdir=.*|libdir=/usr/lib32|" -i /usr/lib32/pkgconfig/lib{cap,psx}.pc
+chmod -v 755 /usr/lib32/libcap.so.&libcap-version;
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка Libcap - mx32</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make CC="gcc -mx32 -march=x86-64"</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make CC="gcc -mx32 -march=x86-64" lib=libx32 prefix=$PWD/DESTDIR/usr -C libcap install
+cp -Rv DESTDIR/usr/libx32/* /usr/libx32
+sed -e "s|^libdir=.*|libdir=/usr/libx32|" -i /usr/libx32/pkgconfig/lib{cap,psx}.pc
+chmod -v 755 /usr/libx32/libcap.so.&libcap-version;
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- mx32 -->
+
   <sect2 id="contents-libcap" role="content">
     <title>Содержимое пакета Libcap</title>
 
