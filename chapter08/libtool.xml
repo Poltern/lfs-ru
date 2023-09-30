@@ -77,6 +77,65 @@
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка Libtool - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Подготовьте Libtool к компиляции:</para>
+
+<screen><userinput remap="configure">CC="gcc -m32" ./configure \
+    --host=i686-pc-linux-gnu \
+    --prefix=/usr            \
+    --libdir=/usr/lib32</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/lib32/* /usr/lib32
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка Libtool - mx32</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Подготовьте Libtool к компиляции:</para>
+
+<screen><userinput remap="configure">CC="gcc -mx32" ./configure \
+    --host=x86_64-pc-linux-gnux32 \
+    --prefix=/usr                 \
+    --libdir=/usr/libx32</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/libx32/* /usr/libx32
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- mx32 -->
 
   <sect2 id="contents-libtool" role="content">
     <title>Содержимое пакета Libtool</title>
