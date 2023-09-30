@@ -206,10 +206,25 @@ chmod -v 600  /var/log/btmp</userinput></screen>
   из системы. В файл <filename>/var/log/lastlog</filename> записывается время
   последнего входа каждого пользователя в систему. В файл <filename>/var/log/faillog</filename>
   записываются неудачные попытки входа в систему. В файл <filename>/var/log/btmp</filename>
-  записываются неудачные попытки входа в систему.</para>
+  также записываются неудачные попытки входа в систему.</para>
 
-  <note><para>В файле <filename>/run/utmp</filename> записываются пользователи,
+  <!-- systemd no longer creates this -->
+  <note revision='sysv'><para>В файл <filename>/run/utmp</filename> записываются пользователи,
   которые в данный момент вошли в систему. Он создаётся динамически, в процессе
   выполнения сценариев загрузки.</para></note>
+
+  <!-- AFAIK they are not vital for system function, users requiring such
+       info should rely on systemd-logind or elogind or some custom PAM
+       module.  Maybe we can stop to create them at all.  -->
+  <note>
+    <para>
+      Файлы <phrase review='sysv'><filename>utmp</filename>, </phrase>
+	  <filename>wtmp</filename>, <filename>btmp</filename> и 
+	  <filename>lastlog</filename> используют для временных меток 32-разрядные целые числа, 
+	  значения счетчика достигнет максимума (2 147 483 647) 19 января 2038 года ("проблема 
+	  2038 года"). Многие пакеты перестали их использовать, другие же, собираются прекратить 
+	  их использование. Ни в коем случае не полагайтесь на их содержимое.
+    </para>
+  </note>
 
 </sect1>
