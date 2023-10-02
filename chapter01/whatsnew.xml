@@ -40,9 +40,9 @@
     <!--<listitem>
       <para>Bash-&bash-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Bc-&bc-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Binutils-&binutils-version;</para>
     </listitem>-->
@@ -97,9 +97,9 @@
     <!--<listitem>
        <para>GDBM-&gdbm-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Gettext-&gettext-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Glibc-&glibc-version;</para>
     </listitem>-->
@@ -121,9 +121,9 @@
     <listitem>
       <para>Gzip-&gzip-version;</para>
     </listitem>
-    <!--<listitem>
-      <para>IANA-Etc-&iana-etc-version;</para>
-    </listitem>-->
+    <listitem>
+      <para>Iana-Etc-&iana-etc-version;</para>
+    </listitem>
     <!--<listitem>
       <para>Inetutils-&inetutils-version;</para>
     </listitem>-->
@@ -139,9 +139,9 @@
     <listitem>
       <para>Kbd-&kbd-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Kmod-&kmod-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Less-&less-version;</para>
     </listitem>-->
@@ -172,18 +172,18 @@
     <!--<listitem>
       <para>Make-&make-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Man-DB-&man-db-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Man-pages-&man-pages-version;</para>
     </listitem>-->
     <!--<listitem revision="systemd">
       <para>MarkupSafe-&markupsafe-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Meson-&meson-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>MPC-&mpc-version;</para>
     </listitem>-->
@@ -196,9 +196,9 @@
     <!--<listitem>
       <para>Ninja-&ninja-version;</para>
     </listitem>-->
-    <!--<listitem>
-      <para>Openssl-&openssl-version;</para>
-    </listitem>-->
+    <listitem>
+      <para>OpenSSL-&openssl-version;</para>
+    </listitem>
     <!--<listitem>
       <para>Patch-&patch-version;</para>
     </listitem>-->

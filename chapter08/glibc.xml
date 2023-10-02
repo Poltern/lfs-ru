@@ -72,6 +72,7 @@ cd       build</userinput></screen>
              --enable-kernel=&min-kernel;                     \
              --enable-stack-protector=strong          \
              --with-headers=/usr/include              \
+             --disable-nscd                           \
              libc_cv_slibdir=/usr/lib</userinput></screen>
 <screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure --prefix=/usr                            \
              --disable-werror                         \
@@ -114,6 +115,14 @@ cd       build</userinput></screen>
         <term><parameter>--with-headers=/usr/include</parameter></term>
         <listitem>
           <para>Сообщает системе сборки местоположение заголовочных файлов API ядра</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-nscd</parameter></term>
+        <listitem>
+          <para>Параметр отключает сборку демона кэша службы имен, который больше не 
+		  используется.</para>
         </listitem>
       </varlistentry>
 
@@ -206,7 +215,7 @@ esac</userinput></screen>
     <command>ldd</command>:</para>
 
 <screen><userinput remap="install">sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd</userinput></screen>
-
+<!--
     <para>Установите файл настроек и создайте рабочий каталог
     <command>nscd</command>:</para>
 
@@ -218,7 +227,7 @@ mkdir -pv /var/cache/nscd</userinput></screen>
 
     <screen revision="systemd"><userinput remap="install">install -v -Dm644 ../nscd/nscd.tmpfiles /usr/lib/tmpfiles.d/nscd.conf
 install -v -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service</userinput></screen>
-
+-->
     <para>Затем установите локали, которые дадут возможность системе отвечать на разных
     языках. Ни одна из локалей не требуется системе, но если некоторые из них отсутствуют, 
 	то наборы тестов ряда пакетов будут пропускать важные тестовые сценарии.</para>
@@ -630,7 +639,7 @@ readelf -l a.out | grep '/ld-linux-x32'</userinput></screen>
         <seg>gencat, getconf, getent, iconv, iconvconfig, ldconfig,
         ldd, lddlibc4,
         ld.so (symlink to ld-linux-x86-64.so.2 or ld-linux.so.2),
-        locale, localedef, makedb, mtrace, nscd,
+        locale, localedef, makedb, mtrace, 
         pcprofiledump, pldd, sln, sotruss, sprof, tzselect, xtrace,
         zdump и zic</seg>
         <seg>ld-linux-x86-64.so.2, ld-linux.so.2,
@@ -649,8 +658,8 @@ readelf -l a.out | grep '/ld-linux-x32'</userinput></screen>
         /usr/include/netrom, /usr/include/netrose, /usr/include/nfs,
         /usr/include/protocols, /usr/include/rpc,
         /usr/include/sys, /usr/lib/audit, /usr/lib/gconv, /usr/lib/locale,
-        /usr/libexec/getconf, /usr/share/i18n, /usr/share/zoneinfo,
-        /var/cache/nscd и /var/lib/nss_db</seg>
+        /usr/libexec/getconf, /usr/share/i18n, /usr/share/zoneinfo 
+        и /var/lib/nss_db</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -779,17 +788,6 @@ readelf -l a.out | grep '/ld-linux-x32'</userinput></screen>
 		  сводку в удобочитаемом формате</para>
           <indexterm zone="ch-system-glibc mtrace">
             <primary sortas="b-mtrace">mtrace</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="nscd">
-        <term><command>nscd</command></term>
-        <listitem>
-          <para>Демон, который обеспечивает кеширование наиболее распространенных
-		  запросов к службе имен</para>
-          <indexterm zone="ch-system-glibc nscd">
-            <primary sortas="b-nscd">nscd</primary>
           </indexterm>
         </listitem>
       </varlistentry>
