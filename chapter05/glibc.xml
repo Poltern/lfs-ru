@@ -88,6 +88,7 @@ cd       build</userinput></screen>
       --build=$(../scripts/config.guess) \
       --enable-kernel=&min-kernel;               \
       --with-headers=$LFS/usr/include    \
+      --disable-nscd                     \
       libc_cv_slibdir=/usr/lib</userinput></screen>
 
     <variablelist>
@@ -123,8 +124,16 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>libc_cv_slibdir=/usr/lib</parameter></term>
         <listitem>
-          <para> Этот аргумент гарантирует, что библиотека будет установлена
+          <para>Этот аргумент гарантирует, что библиотека будет установлена
 		  в /usr/lib вместо стандартного /lib64 на 64-битных машинах.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-nscd</parameter></term>
+        <listitem>
+          <para>Параметр отключает сборку демона кэша службы имен, который больше не 
+		  используется.</para>
         </listitem>
       </varlistentry>
 

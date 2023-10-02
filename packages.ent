@@ -57,10 +57,10 @@
 <!ENTITY bash-fin-du "52 MB">
 <!ENTITY bash-fin-sbu "1.1 SBU">
 
-<!ENTITY bc-version "6.6.0">
-<!ENTITY bc-size "455 KB">
+<!ENTITY bc-version "6.7.0">
+<!ENTITY bc-size "456 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "a148cbaaf8ff813b7289a00539e74a5f">
+<!ENTITY bc-md5 "8a451a7fbba3bb783bed1d1b7563261e">
 <!ENTITY bc-home "https://git.gavinhoward.com/gavin/bc">
 <!ENTITY bc-fin-du "7.7 MB">
 <!ENTITY bc-fin-sbu "менее 0.1 SBU">
@@ -246,10 +246,10 @@
 <!ENTITY gdbm-fin-du "13 MB">
 <!ENTITY gdbm-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY gettext-version "0.22">
-<!ENTITY gettext-size "9,775 KB">
+<!ENTITY gettext-version "0.22.2">
+<!ENTITY gettext-size "9,999 KB">
 <!ENTITY gettext-url "&gnu;gettext/gettext-&gettext-version;.tar.xz">
-<!ENTITY gettext-md5 "db2f3daf34fd5b85ab1a56f9033e42d1">
+<!ENTITY gettext-md5 "34531a35dd19370e86847bcf33148098">
 <!ENTITY gettext-home "&gnu-software;gettext/">
 <!ENTITY gettext-tmp-du "306 MB">
 <!ENTITY gettext-tmp-sbu "1.1 SBU">
@@ -318,10 +318,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20230912">
+<!ENTITY iana-etc-version "20230929">
 <!ENTITY iana-etc-size "588 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "29f49a14cdbbc9236e24b2271fbbd993">
+<!ENTITY iana-etc-md5 "d2cdc6ea8e62fb723589f809cb88434e">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -359,18 +359,18 @@
 <!ENTITY jinja2-fin-du "3.4 MB">
 <!ENTITY jinja2-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY kbd-version "2.6.2">
-<!ENTITY kbd-size "1,469 KB">
+<!ENTITY kbd-version "2.6.3">
+<!ENTITY kbd-size "1,468 KB">
 <!ENTITY kbd-url "https://www.kernel.org/pub/linux/utils/kbd/kbd-&kbd-version;.tar.xz">
-<!ENTITY kbd-md5 "35e261a31e673c8aec7dbc6553ea075c">
+<!ENTITY kbd-md5 "4764775cac0415f1d35a0cd311249941">
 <!ENTITY kbd-home "https://kbd-project.org/">
 <!ENTITY kbd-fin-du "35 MB">
 <!ENTITY kbd-fin-sbu "0.1 SBU">
 
-<!ENTITY kmod-version "30">
-<!ENTITY kmod-size "555 KB">
+<!ENTITY kmod-version "31">
+<!ENTITY kmod-size "558 KB">
 <!ENTITY kmod-url "&kernel;linux/utils/kernel/kmod/kmod-&kmod-version;.tar.xz">
-<!ENTITY kmod-md5 "85202f0740a75eb52f2163c776f9b564">
+<!ENTITY kmod-md5 "6165867e1836d51795a11ea4762ff66a">
 <!ENTITY kmod-home "https://github.com/kmod-project/kmod">
 <!ENTITY kmod-fin-du "12 MB">
 <!ENTITY kmod-fin-sbu "менее 0.1 SBU">
@@ -433,12 +433,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "5">
-<!ENTITY linux-patch-version "3">
+<!ENTITY linux-patch-version "5">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "135,696 KB">
+<!ENTITY linux-size "135,734 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "c54b2cd13ba845e2f5a667ce712e92b9">
+<!ENTITY linux-md5 "dc420e354d2b98e8a962969e6b85898f">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -472,10 +472,10 @@
 <!ENTITY make-fin-du "13 MB">
 <!ENTITY make-fin-sbu "0.5 SBU">
 
-<!ENTITY man-db-version "2.11.2">
-<!ENTITY man-db-size "1,908 KB">
+<!ENTITY man-db-version "2.12.0">
+<!ENTITY man-db-size "1,941 KB">
 <!ENTITY man-db-url "&savannah;/releases/man-db/man-db-&man-db-version;.tar.xz">
-<!ENTITY man-db-md5 "a7d59fb2df6158c44f8f7009dcc6d875">
+<!ENTITY man-db-md5 "67e0052fa200901b314fad7b68c9db27">
 <!ENTITY man-db-home "https://www.nongnu.org/man-db/">
 <!ENTITY man-db-fin-du "40 MB">
 <!ENTITY man-db-fin-sbu "0.2 SBU">
@@ -496,10 +496,10 @@
 <!ENTITY markupsafe-fin-du "548 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY meson-version "1.2.1">
-<!ENTITY meson-size "2,131 KB">
+<!ENTITY meson-version "1.2.2">
+<!ENTITY meson-size "2,140 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "e3cc846536189aacd7d01858a45ca9af">
+<!ENTITY meson-md5 "702bfd8b0648521322d3f145a8fc70ea">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "42 MB">
 <!ENTITY meson-fin-sbu "менее 0.1 SBU">
@@ -538,10 +538,10 @@
 <!ENTITY ninja-fin-du "75 MB">
 <!ENTITY ninja-fin-sbu "0.3 SBU">
 
-<!ENTITY openssl-version "3.1.2">
-<!ENTITY openssl-size "15,196 KB">
+<!ENTITY openssl-version "3.1.3">
+<!ENTITY openssl-size "15,198 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "1d7861f969505e67b8677e205afd9ff4">
+<!ENTITY openssl-md5 "ece430df6d3158913df0950cc70ea2b2">
 <!ENTITY openssl-home "https://www.openssl.org/">
 <!ENTITY openssl-fin-du "587 MB">
 <!ENTITY openssl-fin-sbu "3.0 SBU">
@@ -729,13 +729,13 @@
 <!ENTITY util-linux-fin-du "310 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.0.1837">
+<!ENTITY vim-version "9.0.1968">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "16,838 KB">
+<!ENTITY vim-size "16,909 KB">
 <!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
 <!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">
-<!ENTITY vim-md5 "de7cba78a556f96482ae8f09b082aa59">
+<!ENTITY vim-md5 "66147348ba84ea9c78b9d6595015f5a6">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "229 MB">
 <!ENTITY vim-fin-sbu "2.3 SBU">
