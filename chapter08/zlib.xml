@@ -62,6 +62,64 @@
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка Zlib - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Подготовьте Zlib к компиляции:</para>
+
+<screen><userinput remap="configure">CFLAGS+=" -m32" CXXFLAGS+=" -m32" \
+./configure --prefix=/usr \
+    --libdir=/usr/lib32</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/lib32/* /usr/lib32
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка Zlib - с поддержкой x32 ABI</title>
+	
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make distclean</userinput></screen>
+
+    <para>Подготовьте Zlib к компиляции:</para>
+
+<screen><userinput remap="configure">CFLAGS+=" -mx32" CXXFLAGS+=" -mx32" \
+./configure --prefix=/usr    \
+    --libdir=/usr/libx32</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/libx32/* /usr/libx32
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- mx32 -->
+
   <sect2 id="contents-zlib" role="content">
     <title>Содержимое пакета Zlib</title>
 

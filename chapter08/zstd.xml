@@ -65,6 +65,54 @@
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка Zstd - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make clean</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">CC="gcc -m32" make prefix=/usr</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make prefix=/usr DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/lib/* /usr/lib32/
+sed -e "/^libdir/s/lib$/lib32/" -i /usr/lib32/pkgconfig/libzstd.pc
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка Zstd - с поддержкой x32 ABI</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make clean</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">CC="gcc -mx32" make prefix=/usr</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make prefix=/usr DESTDIR=$PWD/DESTDIR install
+cp -Rv DESTDIR/usr/lib/* /usr/libx32/
+sed -e "/^libdir/s/lib$/libx32/" -i /usr/libx32/pkgconfig/libzstd.pc
+rm -rf DESTDIR</userinput></screen>
+
+  </sect2><!-- mx32 -->
+
   <sect2 id="contents-zstd" role="content">
     <title>Содержимое пакета Zstd</title>
 

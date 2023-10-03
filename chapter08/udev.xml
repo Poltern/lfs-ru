@@ -155,6 +155,86 @@ rm  /usr/share/man/man8/systemd-*.8</userinput></screen>
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка Udev - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки (находясь в каталоге сборки):</para>
+
+<screen><userinput remap="pre">rm -rf *</userinput></screen>
+
+    <para>Подготовьте Udev к компиляции:</para>
+
+<screen><userinput remap="configure">PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+CC="gcc -m32 -march=i686"              \
+CXX="g++ -m32 -march=i686"             \
+LANG=en_US.UTF-8                       \
+meson setup \
+      --prefix=/usr                 \
+      --buildtype=release           \
+      -Dmode=release                \
+      -Ddev-kvm-mode=0660           \
+      -Dlink-udev-shared=false      \
+      ..</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">ninja \
+      $(grep -o -E "^build (src/libudev|src/udev)[^:]*" \
+        build.ninja | awk '{ print $2 }')                              \
+      $(realpath libudev.so --relative-to .)</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">mkdir -pv /usr/lib32/pkgconfig &amp;&amp;
+cp -av libudev.so{,*[0-9]} /usr/lib32/ &amp;&amp;
+sed -e "s;/usr/lib;&amp;32;g" src/libudev/libudev.pc > /usr/lib32/pkgconfig/libudev.pc</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка Udev - с поддержкой x32 ABI</title>
+
+    <para>Выполните очистку после предыдущей сборки (находясь в каталоге сборки):</para>
+
+<screen><userinput remap="pre">rm -rf *</userinput></screen>
+
+    <para>Подготовьте Udev к компиляции:</para>
+
+<screen><userinput remap="configure">PKG_CONFIG_PATH="/usr/libx32/pkgconfig" \
+CC="gcc -mx32"                          \
+CXX="g++ -mx32"                         \
+CFLAGS+=" -Wno-error=shift-overflow"    \
+CXXFLAGS+=" -Wno-error=shift-overflow"  \
+LANG=en_US.UTF-8                        \
+meson setup \
+      --prefix=/usr                 \
+      --buildtype=release           \
+      -Dmode=release                \
+      -Ddev-kvm-mode=0660           \
+      -Dlink-udev-shared=false      \
+      ..</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">ninja \
+      $(grep -o -E "^build (src/libudev|src/udev)[^:]*" \
+        build.ninja | awk '{ print $2 }')                              \
+      $(realpath libudev.so --relative-to .)</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">mkdir -pv /usr/libx32/pkgconfig &amp;&amp;
+cp -av libudev.so{,*[0-9]} /usr/libx32/ &amp;&amp;
+sed -e "s;/usr/lib;&amp;x32;g" src/libudev/libudev.pc > /usr/libx32/pkgconfig/libudev.pc</userinput></screen>
+
+  </sect2><!-- mx32 -->
+
   <sect2 id="conf-udev" role="configuration">
     <title>Настройка Udev</title>
 

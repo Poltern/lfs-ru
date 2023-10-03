@@ -226,6 +226,129 @@ meson setup \
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка systemd - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки (находясь в каталоге сборки):</para>
+
+<screen><userinput remap="pre">rm -rf *</userinput></screen>
+
+    <para>Создайте символическую ссылку, чтобы обойти отсутствие xsltproc:</para>
+
+<!-- screen><userinput remap="pre">ln -sf /tools/bin/true /usr/bin/xsltproc</userinput></screen -->
+<screen><userinput remap="pre">ln -sf /bin/true /usr/bin/xsltproc</userinput></screen>
+
+<!-- with cross-LFS we have util-linux in place:
+    <para>Because we have not yet installed the final version of Util-Linux,
+    create links to the libraries in the approprite location:</para>
+
+<screen><userinput remap="pre">for file in /tools/lib32/lib{blkid,mount,uuid}*; do
+    ln -sf $file /usr/lib32/
+done</userinput></screen>
+-->
+
+    <para>Подготовьте systemd к компиляции:</para>
+
+    <screen><userinput remap="configure">PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+CC="gcc -m32 -march=i686"              \
+CXX="g++ -m32 -march=i686"             \
+LANG=en_US.UTF-8                       \
+meson --prefix=/usr                    \
+      --sysconfdir=/etc                \
+      --localstatedir=/var             \
+      --libdir=/usr/lib32              \
+      -Drootlibdir=/usr/lib32          \
+      -Dblkid=true                  \
+      -Ddefault-dnssec=no           \
+      -Dfirstboot=false             \
+      -Dinstall-tests=false         \
+      -Dldconfig=false              \
+      -Dsysusers=false              \
+      -Db_lto=false                 \
+      -Drpmmacrosdir=no             \
+      -Dhomed=false                 \
+      -Duserdb=false                \
+      -Dman=false                   \
+      -Dmode=release                \
+      ..</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">LANG=en_US.UTF-8 ninja</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">LANG=en_US.UTF-8 DESTDIR=$PWD/DESTDIR ninja install
+cp -Rv DESTDIR/usr/lib32/* /usr/lib32
+rm -rf DESTDIR
+rm -f /usr/bin/xsltproc</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка systemd - с поддержкой x32 ABI</title>
+
+    <para>Выполните очистку после предыдущей сборки (находясь в каталоге сборки):</para>
+
+<screen><userinput remap="pre">rm -rf *</userinput></screen>
+
+    <para>Создайте символическую ссылку, чтобы обойти отсутствие xsltproc:</para>
+
+<screen><userinput remap="pre">ln -sf /bin/true /usr/bin/xsltproc</userinput></screen>
+<!--
+    <para>Fix an issue on x32:</para>
+
+<screen><userinput remap="pre">sed '/log_debug/s@PRI_TIMEX@PRIi64@' -i src/timesync/timesyncd-manager.c
+sed '/long drift_freq;/s@long @int64_t @' -i src/timesync/timesyncd-manager.h</userinput></screen>
+-->
+    <para>Подготовьте systemd к компиляции:</para>
+
+<screen><userinput remap="configure">PKG_CONFIG_PATH="/usr/libx32/pkgconfig" \
+CC="gcc -mx32"                          \
+CXX="g++ -mx32"                         \
+CFLAGS+=" -Wno-error=shift-overflow"    \
+CXXFLAGS+=" -Wno-error=shift-overflow"  \
+LANG=en_US.UTF-8                        \
+meson --prefix=/usr                     \
+      --sysconfdir=/etc                 \
+      --localstatedir=/var              \
+      --libdir=/usr/libx32              \
+      -Drootlibdir=/usr/libx32          \
+      -Dblkid=true                  \
+      -Ddefault-dnssec=no           \
+      -Dfirstboot=false             \
+      -Dinstall-tests=false         \
+      -Dldconfig=false              \
+      -Dsysusers=false              \
+      -Db_lto=false                 \
+      -Drpmmacrosdir=no             \
+      -Dhomed=false                 \
+      -Duserdb=false                \
+      -Dman=false                   \
+      -Dmode=release                \
+      ..</userinput></screen>
+
+    <para>Скомпилируйте пакетe:</para>
+
+<screen><userinput remap="make">LANG=en_US.UTF-8 ninja</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">LANG=en_US.UTF-8 DESTDIR=$PWD/DESTDIR ninja install
+cp -Rv DESTDIR/usr/libx32/* /usr/libx32
+rm -rf DESTDIR
+rm -f /usr/bin/xsltproc</userinput></screen>
+
+  </sect2><!-- mx32 -->
+
   <sect2 id="contents-systemd" role="content">
     <title>Содержимое пакета systemd</title>
 

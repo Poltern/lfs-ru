@@ -151,7 +151,7 @@ ln -svf libxcrypt.pc /usr/lib32/pkgconfig/libcrypt.pc</userinput></screen>
   <!-- Multilib - x32bit  -->
   <!-- - - - - - - - - - -->
   <sect2 arch="ml_x32,ml_all" role="installation">
-    <title>Установка Libxcrypt - mx32</title>
+    <title>Установка Libxcrypt - с поддержкой x32 ABI</title>
 
     <para>Выполните очистку после предыдущей сборки:</para>
 

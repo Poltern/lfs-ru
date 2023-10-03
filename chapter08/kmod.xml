@@ -137,7 +137,7 @@ rm -rf DESTDIR</userinput></screen>
   <!-- - - - - - - - - - -->
   
   <sect2 arch="ml_x32,ml_all" role="installation">
-    <title>Установка Kmod - mx32</title>
+    <title>Установка Kmod - с поддержкой x32 ABI</title>
 
     <para>Выполните очистку после предыдущей сборки, но сохраните справочные страницы, 
 	поскольку их невозможно воссоздать, так как xsltproc еще не установлен:</para>

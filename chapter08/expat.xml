@@ -102,7 +102,7 @@ rm -rf DESTDIR</userinput></screen>
   <!-- - - - - - - - - - -->
   
   <sect2 arch="ml_x32,ml_all" role="installation">
-    <title>Установка Expat - mx32</title>
+    <title>Установка Expat - с поддержкой x32 ABI</title>
 
     <para>Выполните очистку после предыдущей сборки, но сохраните скомпилированную 
 	документацию, поскольку её невозможно пересобрать на этом этапе:</para>

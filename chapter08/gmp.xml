@@ -198,7 +198,7 @@ rm -rf DESTDIR</userinput></screen>
   <!-- - - - - - - - - - -->
 
   <sect2 arch="ml_x32,ml_all" role="installation">
-    <title>Установка GMP - mx32</title>
+    <title>Установка GMP - с поддержкой x32 ABI</title>
 
     <para>Выполните очистку после предыдущей сборки:</para>
 

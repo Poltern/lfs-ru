@@ -104,7 +104,7 @@ rm -rf DESTDIR</userinput></screen>
   <!-- - - - - - - - - - -->
   
   <sect2 arch="ml_x32,ml_all" role="installation">
-    <title>Установка Libelf - mx32</title>
+    <title>Установка Libelf - с поддержкой x32 ABI</title>
 
     <para>Выполните очистку после предыдущей сборки:</para>
 

@@ -133,7 +133,7 @@ install -Dm644 libbz2.a /usr/lib32/libbz2.a</userinput></screen>
   <!-- - - - - - - - - - -->
   
   <sect2 arch="ml_x32,ml_all" role="installation">
-    <title>Установка Bzip2 - mx32</title>
+    <title>Установка Bzip2 - с поддержкой x32 ABI</title>
 
     <para>Выполните очистку после предыдущей сборки:</para>
 
