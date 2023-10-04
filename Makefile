@@ -34,6 +34,19 @@ else
   DUMPDIR         ?= ~/lfs-sysd-commands
 endif
 
+ifndef ARCH
+  ARCH = default
+endif
+ifneq ($(ARCH), default)
+  ifneq ($(ARCH), ml_32)
+    ifneq ($(ARCH), ml_x32)
+      ifneq ($(ARCH), ml_all)
+        $(error ARCH must be either 'default' (default if unset), 'ml_32', 'ml_x32' or 'ml_all'.)
+      endif
+    endif
+  endif
+endif
+
 book: validate profile-html
 	@echo "Generating chunked XHTML files at $(BASEDIR)/ ..."
 	$(Q)xsltproc --nonet                          \
@@ -138,6 +151,7 @@ validate: tmpdir version
                 --xinclude                            \
                 --output $(RENDERTMP)/lfs-html2.xml   \
                 --stringparam profile.revision $(REV) \
+                --stringparam profile.arch $(ARCH)    \
                 stylesheets/lfs-xsl/profile.xsl       \
                 index.xml
 
@@ -191,6 +205,7 @@ $(BASEDIR)/md5sums: stylesheets/wget-list.xsl chapter03/chapter03.xml \
 
 	$(Q)xsltproc --nonet --xinclude                   \
                 --stringparam profile.revision $(REV) \
+                --stringparam profile.arch $(ARCH)    \
                 --output $(RENDERTMP)/md5sum.xml      \
                 stylesheets/lfs-xsl/profile.xsl       \
                 chapter03/chapter03.xml
