@@ -63,7 +63,7 @@ case "${1}" in
 
          log_info_msg "Press Enter to continue..."
          wait_for_user
-         /etc/rc.d/init.d/halt stop
+         /etc/rc.d/init.d/halt start
       else
          log_success_msg2
       fi
@@ -127,7 +127,7 @@ case "${1}" in
 
          log_info_msg "Press Enter to continue..."
          wait_for_user
-         /etc/rc.d/init.d/halt stop
+         /etc/rc.d/init.d/halt start
       fi
 
       if [ "${error_value}" -ge 16 ]; then

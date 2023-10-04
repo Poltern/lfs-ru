@@ -41,7 +41,7 @@ case "${1}" in
          log_info_msg "$msg"
          log_info_msg "Press Enter to continue..."
          wait_for_user
-         /etc/rc.d/init.d/halt stop
+         /etc/rc.d/init.d/halt start
       fi
 
       # Start the udev daemon to continually watch for, and act on,
