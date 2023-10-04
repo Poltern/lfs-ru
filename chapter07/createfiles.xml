@@ -218,7 +218,7 @@ chmod -v 600  /var/log/btmp</userinput></screen>
        module.  Maybe we can stop to create them at all.  -->
   <note>
     <para>
-      Файлы <phrase review='sysv'><filename>utmp</filename>, </phrase>
+      Файлы <phrase revision='sysv'><filename>utmp</filename>, </phrase>
 	  <filename>wtmp</filename>, <filename>btmp</filename> и 
 	  <filename>lastlog</filename> используют для временных меток 32-разрядные целые числа, 
 	  значения счетчика достигнет максимума (2 147 483 647) 19 января 2038 года ("проблема 
