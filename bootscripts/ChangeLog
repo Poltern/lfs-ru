@@ -1,3 +1,8 @@
+2023-10-04 Pierre Labastie <pierre.labastie@neuf.fr>
+   * After the changes done on 2022-03-24, several "halt stop" should
+     have been changed to "halt start". Done now. Fortunately, those
+     occur only when something wrong happens with disks or devices.
+
 2023-07-28 Xi Ruoyao <xry111@xry111.site>
    * In mountvirtfs, mount /sys/fs/cgroup for udev from systemd-254.
 
@@ -24,7 +29,7 @@
    * New semantics for K and S scripts:
      - S scripts only started if not already marked S in the previous runlevel
      - K scripts only started if not already marked K in the previous runlevel
-     - remove the convention of running S scripts ith "stop" in rl 0/6
+     - remove the convention of running S scripts with "stop" in rl 0/6
 2021-06-08 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * When shutting down the network, ignore invalid interfaces
      or interfaces that are not UP.
