@@ -40,6 +40,16 @@
     -->
 
     <listitem>
+      <para>2023-10-03</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Update Glibc upstream fixes patch to fix
+          CVE-2023-4911.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-10-01</para>
       <itemizedlist>
         <listitem>
