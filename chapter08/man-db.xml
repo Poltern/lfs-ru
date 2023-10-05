@@ -114,10 +114,6 @@
 
 <screen><userinput remap="test">make check</userinput></screen>
 
-    <!-- https://gitlab.com/man-db/man-db/-/issues/25 -->
-    <para>Известно, что один тест с именем <filename>man1/lexgrog.1</filename> завершился 
-	неудачно.</para>
-
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
