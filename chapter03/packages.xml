@@ -242,7 +242,6 @@
         <para>Домашняя страница: <ulink url="&gcc-home;"/></para>
         <para>Ссылка на загрузку: <ulink url="&gcc-url;"/></para>
         <para>Контрольная сумма MD5: <literal>&gcc-md5;</literal></para>
-        <para>Контрольная сумма SHA256: <literal>&gcc-sha256;</literal></para>
       </listitem>
     </varlistentry>
 
@@ -356,7 +355,6 @@
         <para>Домашняя страница: <ulink url="&inetutils-home;"/></para>
         <para>Ссылка на загрузку: <ulink url="&inetutils-url;"/></para>
         <para>Контрольная сумма MD5: <literal>&inetutils-md5;</literal></para>
-        <para>Контрольная сумма SHA256: <literal>&inetutils-sha256;</literal></para>
       </listitem>
     </varlistentry>
 

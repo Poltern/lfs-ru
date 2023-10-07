@@ -222,7 +222,6 @@
 <!ENTITY gcc-size "85,800 KB">
 <!ENTITY gcc-url "&gnu;gcc/gcc-&gcc-version;/gcc-&gcc-version;.tar.xz">
 <!ENTITY gcc-md5 "e0e48554cc6e4f261d55ddee9ab69075">
-<!ENTITY gcc-sha256 "">
 <!ENTITY gcc-home "https://gcc.gnu.org/">
 <!ENTITY gcc-tmpp1-du "4.2 GB">
 <!ENTITY gcc-tmpp1-sbu "3.5 SBU">
@@ -330,7 +329,6 @@
 <!ENTITY inetutils-size "1,522 KB">
 <!ENTITY inetutils-url "&gnu;inetutils/inetutils-&inetutils-version;.tar.xz">
 <!ENTITY inetutils-md5 "319d65bb5a6f1847c4810651f3b4ba74">
-<!ENTITY inetutils-sha256 "">
 <!ENTITY inetutils-home "&gnu-software;inetutils/">
 <!ENTITY inetutils-fin-du "31 MB">
 <!ENTITY inetutils-fin-sbu "0.2 SBU">
