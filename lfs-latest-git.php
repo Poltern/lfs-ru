@@ -85,8 +85,9 @@ function http_get_file( $url )
 
   exec( "curl --location --silent --max-time 30 $url", $dir );
 
-  $s   = implode( "\n", $dir );
-  $dir = strip_tags( $s );
+  $dir = implode( "\n", $dir );
+  if ( !preg_match( "/api.github.com/", $url) )
+    $dir = strip_tags( $dir );
   return explode( "\n", $dir );
 }
 
