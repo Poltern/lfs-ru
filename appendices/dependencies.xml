@@ -1493,37 +1493,37 @@
       </segmentedlist>
 
 <!-- Begin Jinja2 dependency info -->
-  <bridgehead revision='systemd' renderas="sect2" id="jinja2-dep">Jinja2</bridgehead>
+  <bridgehead renderas="sect2" id="jinja2-dep">Jinja2</bridgehead>
 
-      <segmentedlist id="jinja2-depends" revision='systemd'>
+      <segmentedlist id="jinja2-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>MarkupSafe и Python</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="jinja2-rundeps" revision='systemd'>
+      <segmentedlist id="jinja2-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
           <seg>MarkupSafe и Python</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="jinja2-testdeps" revision='systemd'>
+      <segmentedlist id="jinja2-testdeps">
         <segtitle>&testsuites;</segtitle>
         <seglistitem>
           <seg>Набор тестов недоступен</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="jinja2-before" revision='systemd'>
+      <segmentedlist id="jinja2-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
           <seg>&systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="jinja2-optdeps" revision='systemd'>
+      <segmentedlist id="jinja2-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>Нет</seg>
@@ -2133,37 +2133,37 @@
       </segmentedlist>
 
 <!-- Begin MarkupSafe dependency info -->
-  <bridgehead renderas="sect2" id="markupsafe-dep" revision='systemd'>MarkupSafe</bridgehead>
+  <bridgehead renderas="sect2" id="markupsafe-dep">MarkupSafe</bridgehead>
 
-      <segmentedlist id="markupsafe-depends" revision='systemd'>
+      <segmentedlist id="markupsafe-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Python</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="markupsafe-rundeps" revision='systemd'>
+      <segmentedlist id="markupsafe-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
           <seg>Python</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="markupsafe-testdeps" revision='systemd'>
+      <segmentedlist id="markupsafe-testdeps">
         <segtitle>&testsuites;</segtitle>
         <seglistitem>
           <seg>Набор тестов недоступен</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="markupsafe-before" revision='systemd'>
+      <segmentedlist id="markupsafe-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
           <seg>Jinja2</seg>
         </seglistitem>
       </segmentedlist>
 
-      <segmentedlist id="markupsafe-optdeps" revision='systemd'>
+      <segmentedlist id="markupsafe-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>Нет</seg>
