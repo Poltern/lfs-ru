@@ -80,6 +80,8 @@
 ]]>
 <!ENTITY lfs-root        "https://mirror.linuxfromscratch.ru/">
 <!ENTITY lfs-root-en     "https://www.linuxfromscratch.org/">
+<!ENTITY lfs-ml-sysv     "https://book.linuxfromscratch.ru/&version;-ml/systemv">
+<!ENTITY lfs-ml-sysd     "https://book.linuxfromscratch.ru/&version;-ml/systemd">
 <!ENTITY blfs-root       "&lfs-root;blfs/">
 <!ENTITY blfs-book       "&blfs-root;view/&short-version;/">
 <!ENTITY faq-root        "&lfs-root;faq/">
