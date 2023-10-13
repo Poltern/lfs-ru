@@ -24,10 +24,11 @@
 
     <itemizedlist>
       <listitem>
-        <para>Процедуры, выполняемые пользователем 
-		<systemitem class="username">root</systemitem> после Раздела 2.4,
-		должны иметь переменную среды LFS, установленную
-		<emphasis>ДЛЯ ПОЛЬЗОВАТЕЛЯ ROOT</emphasis>.</para>
+        <para>При выполнении операций, от имени пользователя
+		<systemitem class="username">root</systemitem> после Раздела 2.4, 
+		<emphasis>ДЛЯ ПОЛЬЗОВАТЕЛЯ</emphasis> 
+		<systemitem class="username">root</systemitem> должна быть установлена 
+		переменная окружения LFS.</para>
       </listitem>
     </itemizedlist>
   </sect2>
