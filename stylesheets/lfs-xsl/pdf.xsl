@@ -88,6 +88,10 @@
        Set to 0 to prevent duplicate e-mails in the Acknowledgments pages. -->
   <xsl:param name="ulink.show" select="0"/>
 
+  <!-- Continuous numbering -->
+  <xsl:template name="initial.page.number">auto</xsl:template>
+  <xsl:template name="page.number.format">1</xsl:template>
+
   <!-- Processing instruction for hard page breaks.
        FOP-0.93 supports @keep-*.*, @orphans, and @widows attributes,
        that solves several page break issues.
