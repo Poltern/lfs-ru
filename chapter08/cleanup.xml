@@ -23,8 +23,8 @@
 
 <screen><userinput>find /usr/lib /usr/libexec -name \*.la -delete</userinput></screen>
 
-   <para>Дополнительные сведения об архивных файлах libtool см. в разделе BLFS  <ulink
-   url="&blfs-book;introduction/la-files.html">"О файлах архива Libtool (.la)"</ulink>.</para>
+   <para>Дополнительные сведения об архивных файлах Libtool смотрите в книге BLFS  <ulink
+   url="&blfs-book;introduction/la-files.html">"О файлах Libtool Archive (.la)"</ulink>.</para>
 
    <para>Компилятор, собранный в <xref linkend="chapter-temporary-tools"/> и
    <xref linkend="chapter-chroot-temporary-tools"/> все еще установлен, но больше
