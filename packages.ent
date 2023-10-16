@@ -245,10 +245,10 @@
 <!ENTITY gdbm-fin-du "13 MB">
 <!ENTITY gdbm-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY gettext-version "0.22.2">
-<!ENTITY gettext-size "9,999 KB">
+<!ENTITY gettext-version "0.22.3">
+<!ENTITY gettext-size "9,997 KB">
 <!ENTITY gettext-url "&gnu;gettext/gettext-&gettext-version;.tar.xz">
-<!ENTITY gettext-md5 "34531a35dd19370e86847bcf33148098">
+<!ENTITY gettext-md5 "460b38ae5e520253dcd06165dd3e281f">
 <!ENTITY gettext-home "&gnu-software;gettext/">
 <!ENTITY gettext-tmp-du "306 MB">
 <!ENTITY gettext-tmp-sbu "1.1 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "5">
-<!ENTITY linux-patch-version "5">
+<!ENTITY linux-patch-version "7">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "135,734 KB">
+<!ENTITY linux-size "135,699 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "dc420e354d2b98e8a962969e6b85898f">
+<!ENTITY linux-md5 "0323da8de9d6aaa017b20d403cc3505a">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -628,10 +628,10 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY shadow-version "4.14.0">
-<!ENTITY shadow-size "1,746 KB">
+<!ENTITY shadow-version "4.14.1">
+<!ENTITY shadow-size "1,759 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "bb0166bebc24db9003bb77bfd1359042">
+<!ENTITY shadow-md5 "674950d5545fb29463af51c244ce2121">
 <!ENTITY shadow-home "https://shadow-maint.github.io/shadow/">
 <!ENTITY shadow-fin-du "46 MB">
 <!ENTITY shadow-fin-sbu "0.1 SBU">

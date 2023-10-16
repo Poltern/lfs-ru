@@ -38,6 +38,23 @@
     <listitem revision="sysv"> or <listitem revision="systemd"> as
     appropriate for the entry or if needed the entire day's listitem.
     -->
+    <listitem>
+      <para>2023-10-15</para>
+      <itemizedlist>
+        <listitem>
+           <para>[bdubbs] - Update to linux-6.5.7. Fixes
+           <ulink url='&lfs-ticket-root;5362'>#5362</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to shadow-4.14.1. Fixes
+           <ulink url='&lfs-ticket-root;5361'>#5361</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to gettext-0.22.3. Fixes
+           <ulink url='&lfs-ticket-root;5359'>#5359</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
 
     <listitem>
       <para>2023-10-03</para>
