@@ -48,7 +48,6 @@
 <screen><userinput remap="configure">./configure --prefix=/usr        \
             --enable-shared      \
             --with-system-expat  \
-            --with-system-ffi    \
             --enable-optimizations</userinput></screen>
 
     <variablelist>
@@ -61,14 +60,6 @@
         <application>Expat</application>.</para>
        </listitem>
      </varlistentry>
-
-    <varlistentry>
-      <term><parameter>--with-system-ffi</parameter></term>
-      <listitem>
-        <para>Этот параметр выполняет линковку с системной версией
-        <filename class='libraryfile'>libffi.so</filename>.</para>
-      </listitem>
-    </varlistentry>
 
     <varlistentry>
       <term><parameter>--enable-optimizations</parameter></term>
