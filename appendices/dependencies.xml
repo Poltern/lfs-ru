@@ -1498,7 +1498,7 @@
       <segmentedlist id="jinja2-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>MarkupSafe и Python</seg>
+          <seg>MarkupSafe, Python, Setuptools и Wheel</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2059,7 +2059,7 @@
         <seglistitem>
           <seg>Bash, Binutils, Bzip2, Coreutils, Flex, GCC, GDBM, Gettext,
           Glibc, Grep, Groff, Gzip, Less, Libpipeline, Make, Pkgconf, Sed,
-          <phrase revision='systemd'>Systemd, </phrase>и Xz</seg>
+          <phrase revision='systemd'>Systemd </phrase>и Xz</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2138,7 +2138,7 @@
       <segmentedlist id="markupsafe-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Python</seg>
+          <seg>Python, Setuptools и Wheel</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2176,7 +2176,7 @@
       <segmentedlist id="meson-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Ninja и Python</seg>
+          <seg>Ninja, Python, Setuptools и Wheel</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -2738,6 +2738,44 @@
         </seglistitem>
       </segmentedlist>
 
+<!-- Begin Setuptools dependency info -->
+  <bridgehead renderas="sect2" id="setuptools-dep">Setuptools</bridgehead>
+
+      <segmentedlist id="setuptools-depends">
+        <segtitle>&dependencies;</segtitle>
+        <seglistitem>
+          <seg>Python и Wheel</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="setuptools-rundeps">
+        <segtitle>&runtime;</segtitle>
+        <seglistitem>
+          <seg>Python</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="setuptools-testdeps">
+        <segtitle>&testsuites;</segtitle>
+        <seglistitem>
+          <seg>Набор тестов недоступен</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="setuptools-before">
+        <segtitle>&before;</segtitle>
+        <seglistitem>
+          <seg>Jinja2, MarkupSafe и Meson</seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <segmentedlist id="setuptools-optdeps">
+        <segtitle>&external;</segtitle>
+        <seglistitem>
+          <seg>Нет</seg>
+        </seglistitem>
+      </segmentedlist>
+
 <!-- Begin Shadow dependency info -->
   <bridgehead renderas="sect2" id="shadow-dep">Shadow</bridgehead>
 
@@ -3213,7 +3251,7 @@
       </segmentedlist>
 
 <!-- Begin Wheel dependency info -->
-  <bridgehead renderas="sect2" id="wheel-dep">wheel</bridgehead>
+  <bridgehead renderas="sect2" id="wheel-dep">Wheel</bridgehead>
 
       <segmentedlist id="wheel-depends">
         <segtitle>&dependencies;</segtitle>
@@ -3240,8 +3278,7 @@
         <segtitle>&before;</segtitle>
         <seglistitem>
           <seg>
-            <phrase revision='sysv'>Нет</phrase>
-            <phrase revision='systemd'>Jinja2</phrase>
+            Jinja2, MarkupSafe, Meson и Setuptools
           </seg>
         </seglistitem>
       </segmentedlist>

@@ -628,6 +628,14 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
+<!ENTITY setuptools-version "68.2.2">
+<!ENTITY setuptools-size "2,152 KB">
+<!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
+<!ENTITY setuptools-md5 "d967ca2ba7f46db887daee2d5c9bd6a2">
+<!ENTITY setuptools-home "&pypi-home;/setuptools/">
+<!ENTITY setuptools-fin-du "30 MB">
+<!ENTITY setuptools-fin-sbu "0.1 SBU">
+
 <!ENTITY shadow-version "4.14.2">
 <!ENTITY shadow-size "1,758 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">

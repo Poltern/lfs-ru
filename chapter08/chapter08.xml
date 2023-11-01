@@ -65,6 +65,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="python.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="flit-core.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="wheel.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="setuptools.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ninja.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="meson.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="coreutils.xml"/>

@@ -223,6 +223,9 @@
     <!--<listitem>
       <para>Sed-&sed-version;</para>
     </listitem>-->
+    <!--<listitem>  After version 12.1 release - see Added
+      <para>Setuptools-&setuptools-version;</para>
+    </listitem>-->
     <listitem>
       <para>Shadow-&shadow-version;</para>
     </listitem>
@@ -285,6 +288,9 @@
   <itemizedlist>
     <title>Добавлены:</title>
     <!-- <listitem><para></para></listitem> satisfy build -->
+    <listitem>
+      <para>setuptools-&setuptools-version;</para>
+    </listitem>
 
     <listitem>
       <para>&glibc-upstream-fixes-patch;</para>
