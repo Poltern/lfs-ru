@@ -39,6 +39,49 @@
     appropriate for the entry or if needed the entire day's listitem.
     -->
     <listitem>
+      <para>2023-11-01</para>
+      <itemizedlist>
+        <listitem>
+           <para>[bdubbs] - Update to iana-etc-20231019. Addresses
+           <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to wheel-0.41.3. Fixes
+           <ulink url='&lfs-ticket-root;5370'>#5370</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to shadow-4.14.2. Fixes
+           <ulink url='&lfs-ticket-root;5368'>#5368</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to openssl-3.1.4. Fixes
+           <ulink url='&lfs-ticket-root;5367'>#5367</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to texinfo-7.1. Fixes
+           <ulink url='&lfs-ticket-root;5364'>#5364</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to meson-1.2.3. Fixes
+           <ulink url='&lfs-ticket-root;5366'>#5366</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to bc-6.7.2. Fixes
+           <ulink url='&lfs-ticket-root;5363'>#5363</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to linux-6.5.9. Fixes
+           <ulink url='&lfs-ticket-root;5365'>#5365</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Update to Python-3.12.0. Fixes
+           <ulink url='&lfs-ticket-root;5357'>#5357</ulink>.</para>
+        </listitem>
+
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-10-15</para>
       <itemizedlist>
         <listitem>

@@ -241,9 +241,9 @@
     <!--<listitem>
       <para>Tcl-&tcl-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Texinfo-&texinfo-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Tzdata-&tzdata-version;</para>
     </listitem>-->
