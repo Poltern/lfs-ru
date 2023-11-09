@@ -181,19 +181,27 @@
       <title>Установка в отдельные каталоги</title>
 
       <para>Это упрощенный метод управления пакетами, для которого не требуется 
-	  специальная программа для управления. Каждый пакет устанавливается в отдельный
+	  специальная программа управления. Каждый пакет устанавливается в отдельный
 	  каталог. Например, пакет foo-1.1 устанавливается в
-	  <filename class='directory'>/usr/pkg/foo-1.1</filename>, а символическая ссылка
-	  создается из <filename>/usr/pkg/foo</filename> в
-	  <filename class='directory'>/usr/pkg/foo-1.1</filename>. Когда появляется новая 
-	  версия foo-1.2, она устанавливается в <filename class='directory'>/usr/pkg/foo-1.2</filename>
+	  <filename class='directory'>/opt/foo-1.1</filename>, а символическая ссылка
+	  создается из <filename>/opt/foo</filename> в
+	  <filename class='directory'>/opt/foo-1.1</filename>. Когда появляется новая 
+	  версия foo-1.2, она устанавливается в <filename class='directory'>/opt/foo-1.2</filename>
 	  и предыдущая символическая ссылка заменяется символической ссылкой на новую версию.</para>
 
-      <para>Переменные окружения, такие как <envar>PATH</envar>, 
-	  <envar>LD_LIBRARY_PATH</envar>, <envar>MANPATH</envar>, <envar>INFOPATH</envar>
-      и <envar>CPPFLAGS</envar> необходимо расширить, включив каталог
-      <filename>/usr/pkg/foo</filename>. Для большого количества пакетов, такая
-      схема становится неуправляемой.</para>
+      <para>Переменные окружения, такие как <envar>PATH</envar>, <envar>MANPATH</envar>, 
+	  <envar>INFOPATH</envar>, <envar>PKG_CONFIG_PATH</envar>, <envar>CPPFLAGS</envar>, 
+	  <envar>LDFLAGS</envar> и файл конфигурации <filename>/etc/ld.so.conf</filename>, 
+	  возможно, потребуется расширить, включив соответствующие подкаталоги в 
+	  <filename>/opt/foo-x.y</filename>.</para>
+
+      <para>
+        Этот подход используется в книге BLFS для установки некоторых очень больших пакетов, 
+		чтобы упростить их обновление. Если вы устанавливаете много таких пакетов, эта схема 
+		становится неуправляемой. Некоторые пакеты (например, заголовки Linux API и Glibc) 
+		могут плохо работать с такой структурой. <emphasis role='bold'>Никогда не 
+		используйте её в масштабах всей системы.</emphasis>
+      </para>
 
     </sect3>
 
