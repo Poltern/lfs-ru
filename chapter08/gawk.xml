@@ -59,16 +59,19 @@ su tester -c "PATH=$PATH make check"</userinput></screen>
 
     <para>Установите пакет:</para>
 
-<screen><userinput remap="install">make LN='ln -f' install</userinput></screen>
+<screen><userinput remap="install">rm -f /usr/bin/gawk-&gawk-version;
+make install</userinput></screen>
 
     <variablelist>
-      <title>Значение переопределенной переменной make:</title>
+      <title>Значение команды:</title>
 
       <varlistentry>
-        <term><envar>LN='ln -f'</envar></term>
+        <term><command>rm -f /usr/bin/gawk-&gawk-version;</command></term>
         <listitem>
-           <para>Эта переменная гарантирует, что предыдущая жесткая ссылка, установленная 
-            в <xref linkend='ch-tools-gawk'/>, будет обновлена здесь.</para>
+           <para>Система сборки не будет пересоздавать жесткую ссылку 
+		   <filename>gawk-&gawk-version;</filename>, если она существует. 
+		   Удалите её, чтобы гарантировать, что предыдущая жесткая ссылка, 
+		   созданная в <xref linkend='ch-tools-gawk'/>, будет обновлена.</para>
        </listitem>
       </varlistentry>
    </variablelist>
