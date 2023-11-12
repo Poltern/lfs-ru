@@ -112,9 +112,13 @@ meson setup \
         build.ninja | awk '{ print $2 }')                              \
       $(realpath libudev.so --relative-to .)</userinput></screen>
 
-	<para>Удалите один файл правил udev, требующий полной установки Systemd:</para>
+    <para>Удалите один файл правил udev, требующий полной установки Systemd 
+	и четыре правила udev для менеджера входа (если вам нужен менеджер входа, 
+	установите пакет BLFS elogind после сборки LFS; пакет elogind также установит 
+	эти правила udev):</para>
 
-<screen><userinput remap="make">rm rules.d/90-vconsole.rules</userinput></screen>
+<screen><userinput remap="make">rm rules.d/{70-uaccess,71-seat,73-seat-late,90-vconsole}.rules
+rm ../rules.d/70-power-switch.rules</userinput></screen>
 
     <para>Установите пакет:</para>
 
