@@ -47,10 +47,10 @@
 <!ENTITY automake-fin-du "114 MB">
 <!ENTITY automake-fin-sbu "менее 0.1 SBU (около 7.0 SBU с тестами)">
 
-<!ENTITY bash-version "5.2.15">
-<!ENTITY bash-size "10,695 KB">
+<!ENTITY bash-version "5.2.21">
+<!ENTITY bash-size "10,696 KB">
 <!ENTITY bash-url "&gnu;bash/bash-&bash-version;.tar.gz">
-<!ENTITY bash-md5 "4281bb43497f3905a308430a8d6a30a5">
+<!ENTITY bash-md5 "ad5b38410e3bf0e9bcc20e2765f5e3f9">
 <!ENTITY bash-home "&gnu-software;bash/">
 <!ENTITY bash-tmp-du "67 MB">
 <!ENTITY bash-tmp-sbu "0.2 SBU">
@@ -148,10 +148,10 @@
 <!ENTITY e2fsprogs-fin-du "95 MB">
 <!ENTITY e2fsprogs-fin-sbu "2.4 SBU на жестком диске, 0.6 SBU на SSD диске">
 
-<!ENTITY elfutils-version "0.189"> <!-- libelf -->
-<!ENTITY elfutils-size "8,936 KB">
+<!ENTITY elfutils-version "0.190"> <!-- libelf -->
+<!ENTITY elfutils-size "8,949 KB">
 <!ENTITY elfutils-url "https://sourceware.org/ftp/elfutils/&elfutils-version;/elfutils-&elfutils-version;.tar.bz2">
-<!ENTITY elfutils-md5 "5cfaa711a90cb670406cd495aeaa6030">
+<!ENTITY elfutils-md5 "79ad698e61a052bea79e77df6a08bc4b">
 <!ENTITY elfutils-home "https://sourceware.org/elfutils/">
 <!ENTITY elfutils-fin-du "122 MB">
 <!ENTITY elfutils-fin-sbu "0.3 SBU">
@@ -208,10 +208,10 @@
 <!ENTITY flit-core-fin-du "1.7 MB">
 <!ENTITY flit-core-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY gawk-version "5.2.2">
-<!ENTITY gawk-size "3,324 KB">
+<!ENTITY gawk-version "5.3.0">
+<!ENTITY gawk-size "3,356 KB">
 <!ENTITY gawk-url "&gnu;gawk/gawk-&gawk-version;.tar.xz">
-<!ENTITY gawk-md5 "d63b4de2c722cbd9b8cc8e6f14d78a1e">
+<!ENTITY gawk-md5 "97c5a7d83f91a7e1b2035ebbe6ac7abd">
 <!ENTITY gawk-home "&gnu-software;gawk/">
 <!ENTITY gawk-tmp-du "48 MB">
 <!ENTITY gawk-tmp-sbu "0.1 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20231026">
-<!ENTITY iana-etc-size "588 KB">
+<!ENTITY iana-etc-version "20231107">
+<!ENTITY iana-etc-size "589 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "87e127b8f5ce7f2daa7b4afa1c147465">
+<!ENTITY iana-etc-md5 "01331998d26d5beb592c12b06b2eeb24">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -341,10 +341,10 @@
 <!ENTITY intltool-fin-du "1.5 MB">
 <!ENTITY intltool-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY iproute2-version "6.5.0">
-<!ENTITY iproute2-size "908 KB">
+<!ENTITY iproute2-version "6.6.0">
+<!ENTITY iproute2-size "897 KB">
 <!ENTITY iproute2-url "&kernel;linux/utils/net/iproute2/iproute2-&iproute2-version;.tar.xz">
-<!ENTITY iproute2-md5 "ae811fc51b3a2c9c7701be308152c45a">
+<!ENTITY iproute2-md5 "6716fc3188dbea226997fa2478a190d7">
 <!ENTITY iproute2-home "&kernel;linux/utils/net/iproute2/">
 <!ENTITY iproute2-fin-du "17 MB">
 <!ENTITY iproute2-fin-sbu "0.1 SBU">
@@ -430,13 +430,13 @@
 <!ENTITY libxcrypt-fin-sbu "0.1 SBU">
 
 <!ENTITY linux-major-version "6">
-<!ENTITY linux-minor-version "5">
-<!ENTITY linux-patch-version "9">
+<!ENTITY linux-minor-version "6">
+<!ENTITY linux-patch-version "1">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "135,718 KB">
+<!ENTITY linux-size "136,730 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "9e187b3c0cd0e29d151a1bd72c66f78f">
+<!ENTITY linux-md5 "90291279ca684fb8cfa59b2ae75b6fe0">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -735,13 +735,13 @@
 <!ENTITY util-linux-fin-du "310 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.0.1968">
+<!ENTITY vim-version "9.0.2103">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "16,909 KB">
+<!ENTITY vim-size "11,193 KB">
 <!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">
-<!ENTITY vim-md5 "66147348ba84ea9c78b9d6595015f5a6">
+<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.xz">
+<!ENTITY vim-md5 "1af1d018026234d085a82348703461ce">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "229 MB">
 <!ENTITY vim-fin-sbu "2.3 SBU">
@@ -762,10 +762,10 @@
 <!ENTITY xml-parser-fin-du "2.3 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xz-version "5.4.4">
-<!ENTITY xz-size "1,623 KB">
+<!ENTITY xz-version "5.4.5">
+<!ENTITY xz-size "1,642 KB">
 <!ENTITY xz-url "https://tukaani.org/xz/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "d83d6f64a64f88759e312b8a38c3add6">
+<!ENTITY xz-md5 "1d33e0be05c53e7a5641acf5c8b35fdd">
 <!ENTITY xz-home "https://tukaani.org/xz">
 <!ENTITY xz-tmp-du "22 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">

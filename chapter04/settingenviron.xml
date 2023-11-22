@@ -174,7 +174,7 @@ EOF</userinput></screen>
 	 повлиять на сборку важных пакетов LFS. Чтобы убедиться, что пользовательская
 	 среда <systemitem class="username">lfs</systemitem> чиста, проверьте наличие
 	 файла <filename>/etc/bash.bashrc</filename> и, если он есть, переименуйте его.
-	 От пользователя <systemitem class="username">root</systemitem>, запустите:</para>
+	 От имени пользователя <systemitem class="username">root</systemitem>, запустите:</para>
 
      <screen role="nodump"><userinput>[ ! -e /etc/bash.bashrc ] || mv -v /etc/bash.bashrc /etc/bash.bashrc.NOUSE</userinput></screen>
 
@@ -187,6 +187,54 @@ EOF</userinput></screen>
 	 <filename>/etc/bash.bashrc</filename>, поэтому этот файл бесполезен в
 	 готовой системе LFS.</para>
   </important>
+
+   <para>
+     Для многих современных систем с несколькими процессорами (или ядрами) 
+	 время компиляции пакета можно сократить, выполнив <quote>параллельную сборку</quote>, 
+	 либо установив переменную среды, либо сообщив программе <command>make</command>, 
+	 сколько ядер задействовать для сборки. Например, процессор Intel Core i9-13900K 
+	 имеет 8 ядер P (производительность) и 16 ядер E (энергоэффективность), ядро P может 
+	 одновременно запускать два потока, поэтому каждое ядро P моделируется ядром Linux 
+	 как два логических ядра. В результате получается 32 логических ядра. Очевидный способ 
+	 задействовать все эти логические ядра - разрешить <command>make</command> создавать 
+	 до 32 заданий сборки. Это можно сделать, передав параметр <parameter>-j32</parameter> 
+	 команде <command>make:
+   </para>
+
+  <screen role='nodump'><userinput>make -j32</userinput></screen>
+
+  <para>
+    Или установите переменную окружения <envar>MAKEFLAGS</envar>, и ее содержимое будет 
+	автоматически использоваться <command>make</command> в качестве параметров командной 
+	строки:
+  </para>
+
+  <screen role='nodump'><userinput>export MAKEFLAGS=-j32</userinput></screen>
+
+  <important>
+    <para>
+      Никогда не передавайте параметр <parameter>-j</parameter> без номера в 
+	  <command>make</command> и не устанавливайте такой параметр в <envar>MAKEFLAGS</envar>. 
+	  Иначе <command>make</command> будет создавать бесконечные задания сборки, 
+	  что вызовет проблемы со стабильностью системы.
+    </para>
+  </important>
+
+  <para>
+    Чтобы использовать все логические ядра, доступные для сборки пакетов в 
+    <xref linkend='chapter-cross-tools'/> и 
+    <xref linkend='chapter-temporary-tools'/>, укажите параметр  <envar>MAKEFLAGS</envar>
+    в <filename>.bashrc сейчас</filename>:
+  </para>
+
+<screen><userinput>cat &gt;&gt; ~/.bashrc &lt;&lt; "EOF"
+<literal>export MAKEFLAGS=-j<replaceable>$(nproc)</replaceable></literal>
+EOF</userinput></screen>
+
+  <para>
+    Замените <replaceable>$(nproc)</replaceable> количеством логических ядер, которые 
+	вы хотите использовать, если вы планируете использовать не все логические ядра.
+  </para>
 
   <para>Наконец, чтобы убедиться, что среда полностью подготовлена для сборки временных 
   инструментов, перечитайте только что созданный профиль пользователя:</para>

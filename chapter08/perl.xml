@@ -110,7 +110,7 @@ export BUILD_BZIP2=0</userinput></screen>
 
     <para>Чтобы протестировать пакет (примерно 11 SBU), выполните:</para>
 
-<screen><userinput remap="test">make test</userinput></screen>
+<screen><userinput remap="test">TEST_JOBS=$(nproc) make test_harness</userinput></screen>
 
     <para>Установка пакета и очистка:</para>
 

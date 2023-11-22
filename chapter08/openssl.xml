@@ -62,7 +62,7 @@
 
     <para>Чтобы протестировать пакет, выполните:</para>
 
-<screen><userinput remap="test">make test</userinput></screen>
+<screen><userinput remap="test">HARNESS_JOBS=<replaceable>$(nproc)</replaceable> make test</userinput></screen>
 
     <para>Известно, что один тест, 30-test_afalg.t, завершится ошибкой, если в ядре 
 	хоста не включен параметр <option>CONFIG_CRYPTO_USER_API_SKCIPHER</option> или 
