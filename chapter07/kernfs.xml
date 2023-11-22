@@ -103,7 +103,7 @@ mount -vt tmpfs tmpfs $LFS/run</userinput></screen>
 	  tmpfs:</para>
 
 <screen><userinput>if [ -h $LFS/dev/shm ]; then
-  mkdir -pv $LFS/$(readlink $LFS/dev/shm)
+  (cd $LFS/dev; mkdir $(readlink shm))
 else
   mount -vt tmpfs -o nosuid,nodev tmpfs $LFS/dev/shm
 fi</userinput></screen>
