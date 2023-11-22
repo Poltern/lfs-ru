@@ -64,6 +64,8 @@ meson setup \
       -Dmode=release                \
       -Ddev-kvm-mode=0660           \
       -Dlink-udev-shared=false      \
+      -Dlogind=false                \
+      -Dvconsole=false              \
       ..</userinput></screen>
 
     <variablelist>
@@ -100,7 +102,15 @@ meson setup \
           <para>Эта опция запрещает udev связываться с внутренней общей библиотекой 
 		  systemd <systemitem class='library'>libsystemd-shared</systemitem>. Эта 
 		  библиотека предназначена для совместного использования многими компонентами 
-		  Systemd, и ее использование избыточно, когда установлен только udev</para>
+		  Systemd, и ее использование избыточно, когда установлен только udev.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dlogind=false -Dvconsole=false</parameter></term>
+        <listitem>
+          <para>Эти параметры предотвращают создание нескольких файлов правил udev, 
+		  принадлежащих другим компонентам Systemd, которые мы не будем устанавливать.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -108,17 +118,8 @@ meson setup \
     <para>Соберите только компоненты, необходимые для udev:</para>
 
     <screen><userinput remap="make">ninja udevadm systemd-hwdb \
-      $(grep -o -E "^build (src/libudev|src/udev|rules.d|hwdb.d)[^:]*" \
-        build.ninja | awk '{ print $2 }')                              \
+      $(ninja -n | grep -Eo '(src/(lib)?udev|rules.d|hwdb.d)/[^ ]*') \
       $(realpath libudev.so --relative-to .)</userinput></screen>
-
-    <para>Удалите один файл правил udev, требующий полной установки Systemd 
-	и четыре правила udev для менеджера входа (если вам нужен менеджер входа, 
-	установите пакет BLFS elogind после сборки LFS; пакет elogind также установит 
-	эти правила udev):</para>
-
-<screen><userinput remap="make">rm rules.d/{70-uaccess,71-seat,73-seat-late,90-vconsole}.rules
-rm ../rules.d/70-power-switch.rules</userinput></screen>
 
     <para>Установите пакет:</para>
 
@@ -132,11 +133,14 @@ install -vm644 ../src/libudev/libudev.h    /usr/include/
 install -vm644 src/libudev/*.pc            /usr/lib/pkgconfig/
 install -vm644 src/udev/*.pc               /usr/share/pkgconfig/
 install -vm644 ../src/udev/udev.conf       /etc/udev/
-install -vm644 rules.d/* ../rules.d/{*.rules,README} /usr/lib/udev/rules.d/
-install -vm644 hwdb.d/*  ../hwdb.d/{*.hwdb,README}   /usr/lib/udev/hwdb.d/
-install -vm755 $(find src/udev -type f | grep -F -v ".") /usr/lib/udev</userinput></screen>
+install -vm644 rules.d/* ../rules.d/README         /usr/lib/udev/rules.d/
+install -vm644 $(find ../rules.d/*.rules \
+                      -not -name '*power-switch*') /usr/lib/udev/rules.d/
+install -vm644 hwdb.d/*  ../hwdb.d/{*.hwdb,README} /usr/lib/udev/hwdb.d/
+install -vm755 $(find src/udev \
+                      -type f -not -name '*.*')    /usr/lib/udev</userinput></screen>
 
-    <para>Установите некоторые пользовательские правила и файлы поддержки, 
+    <para>Установите некоторые пользовательские правила и вспомогательные файлы, 
 	полезные в среде LFS:</para>
 
 <screen><userinput remap="install">tar -xvf ../../&udev-lfs-version;.tar.xz
