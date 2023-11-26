@@ -6,6 +6,7 @@
   <!-- Convenient entity for "Systemd" or "Udev" -->
   <!ENTITY systemd-udev "<phrase revision='systemd'>Systemd</phrase>
                          <phrase revision='sysv'>Udev</phrase>">
+  <!ENTITY bdb "<ulink url='https://www.oracle.com/database/technologies/related/berkeleydb.html'>Berkeley DB</ulink>">
 ]>
 
 <appendix id="appendixc" xreflabel="Приложение C">
@@ -1483,7 +1484,7 @@
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>
-            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>,
+            &bdb;,
             <ulink url="&blfs-book;postlfs/iptables.html">iptables</ulink>,
             <ulink url="&github;/libbpf/libbpf">libbpf</ulink>,
             <ulink url="&blfs-book;basicnet/libmnl.html">libmnl</ulink> и 
@@ -2483,7 +2484,7 @@
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>
-            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>
+            &bdb;
           </seg>
         </seglistitem>
       </segmentedlist>
@@ -2652,7 +2653,7 @@
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>
-            <ulink url="&blfs-book;server/db.html">Berkeley DB</ulink>,
+            &bdb;,
             <ulink url="&blfs-book;basicnet/libnsl.html">libnsl</ulink>,
             <ulink url="&blfs-book;server/sqlite.html">SQLite</ulink> и
             <ulink url="&blfs-book;general/tk.html">Tk</ulink>
