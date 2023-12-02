@@ -203,11 +203,11 @@
       <para>Patch-&patch-version;</para>
     </listitem>-->
     <listitem>
+      <para>Perl-&perl-version;</para>
+    </listitem>
+    <listitem>
       <para>Pkgconf-&pkgconf-version;</para>
     </listitem>
-    <!--<listitem>
-      <para>Perl-&perl-version;</para>
-    </listitem>-->
     <listitem>
       <para>Procps-ng-&procps-ng-version;</para>
     </listitem>
@@ -304,6 +304,10 @@
  
    <listitem>
       <para>glibc-2.38-memalign_fix-1.patch</para>
+    </listitem>
+
+    <listitem>
+      <para>readline-8.2-upstream_fix-1.patch</para>
     </listitem>
 
   </itemizedlist>

@@ -39,6 +39,60 @@
     appropriate for the entry or if needed the entire day's listitem.
     -->
     <listitem>
+      <para>2023-11-30</para>
+      <itemizedlist>
+        <listitem>
+           <para>[bdubbs] - Update to vim-9.0.2136. Addresses
+           <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20231117. Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to bc-6.7.3.  Fixes
+          <ulink url='&lfs-ticket-root;5385'>#5385</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to wheel-0.42.0 (Python Module).  Fixes
+          <ulink url='&lfs-ticket-root;5384'>#5384</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to perl-5.38.2.  Fixes
+          <ulink url='&lfs-ticket-root;5383'>#5383</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to pkgconf-2.1.0.  Fixes
+          <ulink url='&lfs-ticket-root;5382'>#5382</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to readline patches 002 through 007.  Fixes
+          <ulink url='&lfs-ticket-root;5381'>#5381</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to openssl-3.2.0.  Fixes
+          <ulink url='&lfs-ticket-root;5380'>#5380</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to setuptools-69.0.2.  Fixes
+          <ulink url='&lfs-ticket-root;5379'>#5379</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.6.3.  Fixes
+          <ulink url='&lfs-ticket-root;5378'>#5378</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to meson-1.3.0.  Fixes
+          <ulink url='&lfs-ticket-root;5377'>#5377</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to gettext-0.22.4.  Fixes
+          <ulink url='&lfs-ticket-root;5376'>#5376</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-11-13</para>
       <itemizedlist>
         <listitem>

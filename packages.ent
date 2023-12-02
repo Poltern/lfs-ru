@@ -57,10 +57,10 @@
 <!ENTITY bash-fin-du "52 MB">
 <!ENTITY bash-fin-sbu "1.1 SBU">
 
-<!ENTITY bc-version "6.7.2">
+<!ENTITY bc-version "6.7.3">
 <!ENTITY bc-size "456 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "27c217ea495f73758f548eb2c6e10244">
+<!ENTITY bc-md5 "a2e39a5be32330bc2166b0e501668178">
 <!ENTITY bc-home "https://git.gavinhoward.com/gavin/bc">
 <!ENTITY bc-fin-du "7.7 MB">
 <!ENTITY bc-fin-sbu "менее 0.1 SBU">
@@ -245,10 +245,10 @@
 <!ENTITY gdbm-fin-du "13 MB">
 <!ENTITY gdbm-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY gettext-version "0.22.3">
-<!ENTITY gettext-size "9,997 KB">
+<!ENTITY gettext-version "0.22.4">
+<!ENTITY gettext-size "10,016 KB">
 <!ENTITY gettext-url "&gnu;gettext/gettext-&gettext-version;.tar.xz">
-<!ENTITY gettext-md5 "460b38ae5e520253dcd06165dd3e281f">
+<!ENTITY gettext-md5 "2d8507d003ef3ddd1c172707ffa97ed8">
 <!ENTITY gettext-home "&gnu-software;gettext/">
 <!ENTITY gettext-tmp-du "306 MB">
 <!ENTITY gettext-tmp-sbu "1.1 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20231107">
-<!ENTITY iana-etc-size "589 KB">
+<!ENTITY iana-etc-version "20231117">
+<!ENTITY iana-etc-size "588 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "01331998d26d5beb592c12b06b2eeb24">
+<!ENTITY iana-etc-md5 "f26b37a03a211ddd4e9c7189191e2772">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "6">
-<!ENTITY linux-patch-version "1">
+<!ENTITY linux-patch-version "3">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "136,730 KB">
+<!ENTITY linux-size "136,763 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "90291279ca684fb8cfa59b2ae75b6fe0">
+<!ENTITY linux-md5 "3a760f5ac7d37b62dda9a4ca89f5fd96">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -494,10 +494,10 @@
 <!ENTITY markupsafe-fin-du "548 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY meson-version "1.2.3">
-<!ENTITY meson-size "2,134 KB">
+<!ENTITY meson-version "1.3.0">
+<!ENTITY meson-size "2,171 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "69da4c63ef06c9d3bcc00ce89abb306f">
+<!ENTITY meson-md5 "35dc15e4f94ca5fd30dbe2d88a672254">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "42 MB">
 <!ENTITY meson-fin-sbu "менее 0.1 SBU">
@@ -536,10 +536,10 @@
 <!ENTITY ninja-fin-du "75 MB">
 <!ENTITY ninja-fin-sbu "0.3 SBU">
 
-<!ENTITY openssl-version "3.1.4">
-<!ENTITY openssl-size "15,205 KB">
+<!ENTITY openssl-version "3.2.0">
+<!ENTITY openssl-size "17,284 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "653ad58812c751b887e8ec37e02bba70">
+<!ENTITY openssl-md5 "7903549a14abebc5c323ce4e85f2cbb2">
 <!ENTITY openssl-home "https://www.openssl.org/">
 <!ENTITY openssl-fin-du "587 MB">
 <!ENTITY openssl-fin-sbu "3.0 SBU">
@@ -556,22 +556,22 @@
 
 <!ENTITY perl-version-major "5">
 <!ENTITY perl-version-minor "38">
-<!ENTITY perl-version-patch "0">
+<!ENTITY perl-version-patch "2">
 <!ENTITY perl-version-min "&perl-version-major;.&perl-version-minor;">
 <!ENTITY perl-version "&perl-version-major;.&perl-version-minor;.&perl-version-patch;">
-<!ENTITY perl-size "13,248 KB">
+<!ENTITY perl-size "13,359 KB">
 <!ENTITY perl-url "https://www.cpan.org/src/5.0/perl-&perl-version;.tar.xz">
-<!ENTITY perl-md5 "e1c8aaec897dd386c741f97eef9f2e87">
+<!ENTITY perl-md5 "d3957d75042918a23ec0abac4a2b7e0a">
 <!ENTITY perl-home "https://www.perl.org/">
 <!ENTITY perl-tmp-du "280 MB">
 <!ENTITY perl-tmp-sbu "0.6 SBU">
 <!ENTITY perl-fin-du "239 MB">
 <!ENTITY perl-fin-sbu "7.1 SBU">
 
-<!ENTITY pkgconf-version "2.0.3">
-<!ENTITY pkgconf-size "304 KB">
+<!ENTITY pkgconf-version "2.1.0">
+<!ENTITY pkgconf-size "305 KB">
 <!ENTITY pkgconf-url "https://distfiles.ariadne.space/pkgconf/pkgconf-&pkgconf-version;.tar.xz">
-<!ENTITY pkgconf-md5 "b82ca48ed3097adfa007ee71489b6719">
+<!ENTITY pkgconf-md5 "0f2eadbb9dea5aed95147272ae1592cc">
 <!ENTITY pkgconf-home "http://pkgconf.org/">
 <!ENTITY pkgconf-fin-du "4.6 MB">
 <!ENTITY pkgconf-fin-sbu "менее 0.1 SBU">
@@ -628,10 +628,10 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "68.2.2">
-<!ENTITY setuptools-size "2,152 KB">
+<!ENTITY setuptools-version "69.0.2">
+<!ENTITY setuptools-size "2,168 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "d967ca2ba7f46db887daee2d5c9bd6a2">
+<!ENTITY setuptools-md5 "32bcc14eb830a13fbf33e053286f1081">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "30 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
@@ -735,21 +735,21 @@
 <!ENTITY util-linux-fin-du "310 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.0.2103">
+<!ENTITY vim-version "9.0.2136">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "11,193 KB">
-<!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.xz">
-<!ENTITY vim-md5 "1af1d018026234d085a82348703461ce">
+<!ENTITY vim-size "16,989 KB">
+<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
+<!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
+<!ENTITY vim-md5 "8dcf113cb690bcdd13d75a4e7c2e3a62">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "229 MB">
 <!ENTITY vim-fin-sbu "2.3 SBU">
 
-<!ENTITY wheel-version "0.41.3">
+<!ENTITY wheel-version "0.42.0">
 <!ENTITY wheel-size "97 KB">
 <!ENTITY wheel-url "&pypi-src;/w/wheel/wheel-&wheel-version;.tar.gz">
-<!ENTITY wheel-md5 "c66db2f3a50d5659994fa974138d4002">
+<!ENTITY wheel-md5 "802ad6e5f9336fcb1c76b7593f0cd22d">
 <!ENTITY wheel-home "&pypi-home;/wheel/">
 <!ENTITY wheel-fin-du "1.5 MB">
 <!ENTITY wheel-fin-sbu "менее 0.1 SBU">
