@@ -53,6 +53,11 @@
 
  <screen><userinput remap="pre">sed '/systemd-sysctl/s/^/#/' -i rules.d/99-systemd.rules.in</userinput></screen>
 
+    <para>Измените жестко заданные пути к файлам конфигурации сети для автономной 
+    установки udev:</para>
+
+ <screen><userinput remap="pre">sed '/NETWORK_DIRS/s/systemd/udev/' -i src/basic/path-lookup.h</userinput></screen>
+
     <para>Подготовьте Udev к компиляции:</para>
 
 <screen><userinput remap="configure">mkdir -p build
@@ -123,7 +128,7 @@ meson setup \
 
     <para>Установите пакет:</para>
 
-    <screen><userinput remap="install">install -vm755 -d {/usr/lib,/etc}/udev/{hwdb,rules}.d
+    <screen><userinput remap="install">install -vm755 -d {/usr/lib,/etc}/udev/{hwdb.d,rules.d,network}
 install -vm755 -d /usr/{lib,share}/pkgconfig
 install -vm755 udevadm                     /usr/bin/
 install -vm755 systemd-hwdb                /usr/bin/udev-hwdb
@@ -138,7 +143,8 @@ install -vm644 $(find ../rules.d/*.rules \
                       -not -name '*power-switch*') /usr/lib/udev/rules.d/
 install -vm644 hwdb.d/*  ../hwdb.d/{*.hwdb,README} /usr/lib/udev/hwdb.d/
 install -vm755 $(find src/udev \
-                      -type f -not -name '*.*')    /usr/lib/udev</userinput></screen>
+                      -type f -not -name '*.*')    /usr/lib/udev
+install -vm644 ../network/99-default.link          /usr/lib/udev/network</userinput></screen>
 
     <para>Установите некоторые пользовательские правила и вспомогательные файлы, 
 	полезные в среде LFS:</para>
@@ -153,13 +159,21 @@ make -f &udev-lfs-version;/Makefile.lfs install</userinput></screen>
 <screen><userinput remap="install">tar -xf ../../systemd-man-pages-&systemd-man-version;.tar.xz                            \
     --no-same-owner --strip-components=1                              \
     -C /usr/share/man --wildcards '*/udev*' '*/libudev*'              \
+                                  '*/systemd.link.5'                  \
                                   '*/systemd-'{hwdb,udevd.service}.8
+
+sed 's|systemd/network|udev/network|'                                 \
+    /usr/share/man/man5/systemd.link.5                                \
+  > /usr/share/man/man5/udev.link.5
+
 sed 's/systemd\(\\\?-\)/udev\1/' /usr/share/man/man8/systemd-hwdb.8   \
                                > /usr/share/man/man8/udev-hwdb.8
+
 sed 's|lib.*udevd|sbin/udevd|'                                        \
     /usr/share/man/man8/systemd-udevd.service.8                       \
   > /usr/share/man/man8/udevd.8
-rm  /usr/share/man/man8/systemd-*.8</userinput></screen>
+
+rm /usr/share/man/man*/systemd*</userinput></screen>
 
   </sect2>
 
