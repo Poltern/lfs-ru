@@ -29,10 +29,7 @@
   время его выполнения. В третьем списке перечислены пакеты, которые, в дополнение к пакетам 
   из первого списка, должны быть доступны для запуска наборов тестов. Четвертый список 
   зависимостей — это пакеты, которые требуют, чтобы некий пакет был собран и установлен по 
-  определенному пути, прежде чем они будут собраны и установлены. В большинстве случаев это 
-  связано с тем, что такие пакеты жестко кодируют пути к двоичным файлам в своих сценариях. 
-  Если сборка выполняется не в том порядке, это может привести к тому, что пути к /tools/bin/[binary]
-  будут размещены внутри скриптов, установленных в готовой системе, что крайне нежелательно.
+  определенному пути, прежде чем они будут собраны и установлены.
 </para>
 
   <para>Последний список зависимостей - это необязательные пакеты, которые не рассматриваются в LFS,
@@ -3192,6 +3189,7 @@
         <segtitle>&external;</segtitle>
         <seglistitem>
           <seg>
+            <ulink url="&blfs-book;general/asciidoctor.html">Asciidoctor</ulink>,
             <ulink
               url="https://people.redhat.com/sgrubb/libcap-ng/">Libcap-NG</ulink>,
             <ulink url="&github;/openSUSE/libeconf">libeconf</ulink>,
@@ -3200,7 +3198,8 @@
             <ulink
               url="&blfs-book;postlfs/linux-pam.html">Linux-PAM</ulink>,
             <ulink
-              url="&blfs-book;postlfs/smartmontools.html">smartmontools</ulink> и
+              url="&blfs-book;postlfs/smartmontools.html">smartmontools</ulink>,
+            <ulink url="https://po4a.org/index.php.en">po4a</ulink> и 
             <ulink url="&blfs-book;general/slang.html">slang</ulink>
           </seg>
         </seglistitem>
