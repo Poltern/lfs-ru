@@ -41,10 +41,14 @@
   <emphasis role='blue'>F</emphasis>irmware Drivers ---&gt;
     [*] <emphasis role='blue'>E</emphasis>xport DMI identification via sysfs to userspace                 [DMIID]
   <emphasis role='blue'>G</emphasis>raphics support ---&gt;
-    <emphasis role='blue'>F</emphasis>rame buffer Devices ---&gt;
-      &lt;*&gt; <emphasis role='blue'>S</emphasis>upport for frame buffer devices ---&gt;                             [FB]
+    &lt; /*/M&gt; <emphasis role='blue'>D</emphasis>irect Rendering Manager (XFree86 4.1.0 and higher DRI support) ---&gt;
+                                                                      ...  [DRM]
+    # If [DRM] is selected as * or M, this must be selected:
+    [ /*]   <emphasis role='blue'>E</emphasis>nable legacy fbdev support for your modesetting driver
+                                                      ...  [DRM_FBDEV_EMULATION]
     <emphasis role='blue'>C</emphasis>onsole display driver support ---&gt;
-      [*] <emphasis role='blue'>F</emphasis>ramebuffer Console support                      [FRAMEBUFFER_CONSOLE]
+      # If [DRM] is selected as * or M, this must be selected:
+      [ /*] <emphasis role='blue'>F</emphasis>ramebuffer Console support                    [FRAMEBUFFER_CONSOLE]
 
 <emphasis role='blue'>F</emphasis>ile systems ---&gt;
   [*] <emphasis role='blue'>I</emphasis>notify support for userspace                               [INOTIFY_USER]

@@ -13,9 +13,7 @@ STACKPROTECTOR_STRONG='*'
 UEVENT_HELPER=' '
 DEVTMPFS='*'
 DEVTMPFS_MOUNT='*'
-FB='*'
-FRAMEBUFFER_CONSOLE='*'
-
+DRM=' *M'
 AUDIT=' '
 NET='*'
 INET='*'
@@ -28,3 +26,11 @@ TMPFS='*'
 TMPFS_POSIX_ACL='*'
 
 revision='systemd'
+
+[DRM_FBDEV_EMULATION]
+value = ' *'
+comment = 'If [DRM] is selected as * or M, this must be selected'
+
+[FRAMEBUFFER_CONSOLE]
+value = ' *'
+comment = 'If [DRM] is selected as * or M, this must be selected'
