@@ -152,21 +152,20 @@ EOF
 
 <screen><userinput remap="install">install -v -dm755 /usr/share/doc/python-&python-version;/html
 
-tar --strip-components=1  \
-    --no-same-owner       \
-    --no-same-permissions \
-    -C /usr/share/doc/python-&python-version;/html \
-    -xvf ../python-&python-version;-docs-html.tar.bz2</userinput></screen>
+tar --no-same-owner \
+    -xvf ../python-&python-version;-docs-html.tar.bz2
+cp -R --no-preserve=mode python-&python-version;-docs-html/* \
+    /usr/share/doc/python-&python-version;/html</userinput></screen>
 
     <variablelist>
       <title>Значение команд установки документации:</title>
-
     <varlistentry>
-      <term><option>--no-same-owner</option> и <option>--no-same-permissions</option></term>
+      <term><option>--no-same-owner</option> (tar) и <option>--no-preserve=mode</option> (cp)</term>
       <listitem>
-        <para>Проверяет, что установленные файлы имеют корректные права и владельца
-		файлов. Использование <application>tar</application> без этих параметров
-		приведет к установке файлов с правами пользователя создавшего пакет.
+        <para>Параметры обеспечивают, что установленные файлы имеют корректные права и владельца 
+		файлов. Использование <application>tar</application> без этих параметров приведет к 
+		установке файлов с правами пользователя создавшего архив и файлы будут иметь ограниченные 
+		разрешения.
         </para>
       </listitem>
     </varlistentry>

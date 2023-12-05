@@ -38,6 +38,17 @@
     <listitem revision="sysv"> or <listitem revision="systemd"> as
     appropriate for the entry or if needed the entire day's listitem.
     -->
+
+    <listitem>
+      <para>2023-12-04</para>
+      <itemizedlist>
+        <listitem>
+          <para>[thomas] - Modify commands for install Python docs to avoid
+          too restrictive permissions on the files and dirs.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
     <listitem revision='sysv'>
       <para>2023-12-01</para>
       <itemizedlist>
