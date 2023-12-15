@@ -57,10 +57,10 @@
 <!ENTITY bash-fin-du "52 MB">
 <!ENTITY bash-fin-sbu "1.1 SBU">
 
-<!ENTITY bc-version "6.7.3">
+<!ENTITY bc-version "6.7.4">
 <!ENTITY bc-size "456 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "a2e39a5be32330bc2166b0e501668178">
+<!ENTITY bc-md5 "7826138b08c72f4618d6e48860101196">
 <!ENTITY bc-home "https://git.gavinhoward.com/gavin/bc">
 <!ENTITY bc-fin-du "7.7 MB">
 <!ENTITY bc-fin-sbu "менее 0.1 SBU">
@@ -357,10 +357,10 @@
 <!ENTITY jinja2-fin-du "3.4 MB">
 <!ENTITY jinja2-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY kbd-version "2.6.3">
-<!ENTITY kbd-size "1,468 KB">
+<!ENTITY kbd-version "2.6.4">
+<!ENTITY kbd-size "1,470 KB">
 <!ENTITY kbd-url "https://www.kernel.org/pub/linux/utils/kbd/kbd-&kbd-version;.tar.xz">
-<!ENTITY kbd-md5 "4764775cac0415f1d35a0cd311249941">
+<!ENTITY kbd-md5 "e2fd7adccf6b1e98eb1ae8d5a1ce5762">
 <!ENTITY kbd-home "https://kbd-project.org/">
 <!ENTITY kbd-fin-du "35 MB">
 <!ENTITY kbd-fin-sbu "0.1 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "6">
-<!ENTITY linux-patch-version "3">
+<!ENTITY linux-patch-version "7">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "136,763 KB">
+<!ENTITY linux-size "136,748 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "3a760f5ac7d37b62dda9a4ca89f5fd96">
+<!ENTITY linux-md5 "ab2e3e953d3394b461b775b325fbc621">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -595,19 +595,19 @@
 <!-- If python minor version changes, updates in python and
      meson pages will be needed: python3.6 and python3.6m -->
 
-<!ENTITY python-version "3.12.0">
+<!ENTITY python-version "3.12.1">
 <!ENTITY python-minor "3.12">
-<!ENTITY python-size "20,093 KB">
+<!ENTITY python-size "20,102 KB">
 <!ENTITY python-url "https://www.python.org/ftp/python/&python-version;/Python-&python-version;.tar.xz">
-<!ENTITY python-md5 "f6f4616584b23254d165f4db90c247d6">
+<!ENTITY python-md5 "50f827c800483776c8ef86e6a53831fa">
 <!ENTITY python-home "https://www.python.org/">
 <!ENTITY python-tmp-du "533 MB">
 <!ENTITY python-tmp-sbu "0.4 SBU">
 <!ENTITY python-fin-du "370 MB">
 <!ENTITY python-fin-sbu "1.9 SBU">
 <!ENTITY python-docs-url "https://www.python.org/ftp/python/doc/&python-version;/python-&python-version;-docs-html.tar.bz2">
-<!ENTITY python-docs-md5 "ae9d19bb613ae8ef2457496bd2893915">
-<!ENTITY python-docs-size "8,009 KB">
+<!ENTITY python-docs-md5 "d5c21b804c219b06256495eae30fd153">
+<!ENTITY python-docs-size "7,998 KB">
 
 <!ENTITY readline-version "8.2">
 <!ENTITY readline-soversion "8.2"><!-- used for stripping -->
@@ -725,10 +725,10 @@
 <!ENTITY udev-lfs-home    " ">
 
 <!ENTITY util-linux-minor "2.39">
-<!ENTITY util-linux-version "2.39.2"> <!-- 2.33.x -->
-<!ENTITY util-linux-size "8,167 KB">
+<!ENTITY util-linux-version "2.39.3"> <!-- 2.33.x -->
+<!ENTITY util-linux-size "8,327 KB">
 <!ENTITY util-linux-url "&kernel;linux/utils/util-linux/v&util-linux-minor;/util-linux-&util-linux-version;.tar.xz">
-<!ENTITY util-linux-md5 "2feb3e7c306f336a3d22a182dfffc942">
+<!ENTITY util-linux-md5 "f3591e6970c017bb4bcd24ae762a98f5">
 <!ENTITY util-linux-home "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/">
 <!ENTITY util-linux-tmp-du "169 MB">
 <!ENTITY util-linux-tmp-sbu "0.2 SBU">
