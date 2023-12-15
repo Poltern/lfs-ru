@@ -47,8 +47,7 @@
 
     <para>Подготовьте Util-linux к компиляции:</para>
 
-<screen revision="sysv"><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime   \
-            --bindir=/usr/bin    \
+<screen revision="sysv"><userinput remap="configure">./configure --bindir=/usr/bin    \
             --libdir=/usr/lib    \
             --runstatedir=/run   \
             --sbindir=/usr/sbin  \
@@ -62,11 +61,11 @@
             --disable-static     \
             --without-python     \
             --without-systemd    \
-            --without-systemdsystemunitdir \
+            --without-systemdsystemunitdir        \
+            ADJTIME_PATH=/var/lib/hwclock/adjtime \
             --docdir=/usr/share/doc/util-linux-&util-linux-version;</userinput></screen>
 
-<screen revision="systemd"><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime   \
-            --bindir=/usr/bin    \
+<screen revision="systemd"><userinput remap="configure">./configure --bindir=/usr/bin    \
             --libdir=/usr/lib    \
             --runstatedir=/run   \
             --sbindir=/usr/sbin  \
@@ -79,6 +78,7 @@
             --disable-pylibmount \
             --disable-static     \
             --without-python     \
+            ADJTIME_PATH=/var/lib/hwclock/adjtime \
             --docdir=/usr/share/doc/util-linux-&util-linux-version;</userinput></screen>
 
     <para>Параметры --disable и --without предотвращают появление предупреждений о сборке 
