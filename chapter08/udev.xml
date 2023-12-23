@@ -120,14 +120,19 @@ meson setup \
       </varlistentry>
     </variablelist>
 
+    <para>Получите список загруженных udev helpers и сохраните его в переменной:</para>
+
+    <screen><userinput remap="make">udev_helpers=$(grep "'name' :" ../src/udev/meson.build | \
+               awk '{print $3}' | tr -d ",'" | grep -v 'udevadm')</userinput></screen>
+
     <para>Соберите только компоненты, необходимые для udev:</para>
 
     <screen><userinput remap="make">ninja udevadm systemd-hwdb \
       $(ninja -n | grep -Eo '(src/(lib)?udev|rules.d|hwdb.d)/[^ ]*') \
-      $(realpath libudev.so --relative-to .)</userinput></screen>
+      $(realpath libudev.so --relative-to .)                         \
+      $udev_helpers udevadm</userinput></screen>
 
     <para>Установите пакет:</para>
-
     <screen><userinput remap="install">install -vm755 -d {/usr/lib,/etc}/udev/{hwdb.d,rules.d,network}
 install -vm755 -d /usr/{lib,share}/pkgconfig
 install -vm755 udevadm                     /usr/bin/
@@ -142,8 +147,7 @@ install -vm644 rules.d/* ../rules.d/README         /usr/lib/udev/rules.d/
 install -vm644 $(find ../rules.d/*.rules \
                       -not -name '*power-switch*') /usr/lib/udev/rules.d/
 install -vm644 hwdb.d/*  ../hwdb.d/{*.hwdb,README} /usr/lib/udev/hwdb.d/
-install -vm755 $(find src/udev \
-                      -type f -not -name '*.*')    /usr/lib/udev
+install -vm755 $udev_helpers                       /usr/lib/udev
 install -vm644 ../network/99-default.link          /usr/lib/udev/network</userinput></screen>
 
     <para>Установите некоторые пользовательские правила и вспомогательные файлы, 

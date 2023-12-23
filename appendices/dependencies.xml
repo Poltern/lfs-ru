@@ -2932,6 +2932,7 @@
             <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink>,
             <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
             <ulink url="&blfs-book;general/pcre2.html">PCRE2</ulink>,
+            <ulink url="&pypi-home;pefile">pefile</ulink>,
             <ulink url="&blfs-book;postlfs/polkit.html">Polkit</ulink>,
             <ulink url='&pypi-home;/pyelftools'>pyelftools</ulink>,
             <ulink url="&blfs-book;postlfs/qemu.html">qemu</ulink>,
