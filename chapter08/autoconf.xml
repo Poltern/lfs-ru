@@ -41,13 +41,6 @@
   <sect2 role="installation">
     <title>Установка пакета Autoconf</title>
 
-    <para>Во-первых, исправьте несколько проблем с тестами, обнаруженными в bash-5.2 
-	и более поздних версиях:</para>
-
-    <screen><userinput remap="pre">sed -e 's/SECONDS|/&amp;SHLVL|/'               \
-    -e '/BASH_ARGV=/a\        /^SHLVL=/ d' \
-    -i.orig tests/local.at</userinput></screen>
-
     <para>Подготовьте Autoconf к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>

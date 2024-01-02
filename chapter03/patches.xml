@@ -93,14 +93,6 @@
     </varlistentry>
 
     <varlistentry>
-      <term>GRUB Upstream Fixes Patch - <token>&grub-upstream-fixes-patch-size;</token>:</term>
-      <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&grub-upstream-fixes-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&grub-upstream-fixes-patch-md5;</literal></para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
       <term>Kbd Backspace/Delete Fix Patch - <token>&kbd-backspace-patch-size;</token>:</term>
       <listitem>
         <para>Ссылка на загрузку: <ulink url="&patches-root;&kbd-backspace-patch;"/></para>

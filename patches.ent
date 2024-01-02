@@ -18,10 +18,6 @@
 <!ENTITY glibc-upstream-fixes-patch-md5 "545977e0b5c341ba945cf4b5de92f1e2">
 <!ENTITY glibc-upstream-fixes-patch-size "28 KB">
 
-<!ENTITY grub-upstream-fixes-patch "grub-&grub-version;-upstream_fixes-1.patch">
-<!ENTITY grub-upstream-fixes-patch-md5 "da388905710bb4cbfbc7bd7346ff9174">
-<!ENTITY grub-upstream-fixes-patch-size "8 KB">
-
 <!ENTITY kbd-backspace-patch "kbd-&kbd-version;-backspace-1.patch">
 <!ENTITY kbd-backspace-patch-md5 "f75cca16a38da6caa7d52151f7136895">
 <!ENTITY kbd-backspace-patch-size "12 KB">

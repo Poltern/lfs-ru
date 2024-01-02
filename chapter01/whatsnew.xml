@@ -31,9 +31,9 @@
     <!--<listitem>
       <para>Attr-&attr-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Autoconf-&autoconf-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Automake-&automake-version;</para>
     </listitem>-->
@@ -115,18 +115,18 @@
     <!--<listitem>
       <para>Groff-&groff-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>GRUB-&grub-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Gzip-&gzip-version;</para>
     </listitem>
     <listitem>
       <para>Iana-Etc-&iana-etc-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Inetutils-&inetutils-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Intltool-&intltool-version;</para>
     </listitem>-->
@@ -247,9 +247,9 @@
     <listitem>
       <para>Texinfo-&texinfo-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Tzdata-&tzdata-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem revision="sysv">
       <para>Udev из Systemd-&systemd-version;</para>
     </listitem>-->
@@ -262,9 +262,9 @@
     <listitem>
       <para>wheel-&wheel-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>XML::Parser-&xml-parser-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Xz-&xz-version;</para>
     </listitem>
@@ -296,14 +296,21 @@
       <para>&glibc-upstream-fixes-patch;</para>
     </listitem>
 
-  </itemizedlist>
+    <listitem>
+      <para>&readline-fixes-patch;</para>
+    </listitem>
 
+  </itemizedlist>
   <itemizedlist>
     <title>Удалены:</title>
     <!-- <listitem><para></para></listitem>  satisfy build -->
  
    <listitem>
       <para>glibc-2.38-memalign_fix-1.patch</para>
+    </listitem>
+
+    <listitem>
+      <para>grub-2.06-upstream_fixes-1.patch</para>
     </listitem>
 
     <listitem>

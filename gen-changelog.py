@@ -76,6 +76,8 @@ for i in tsv:
             security.add(pkg)
         ticket[pkg] = tic
 
+hold_ticket = {'vim': '4500', 'iana-etc': '5006'}
+
 print("Plain Text:")
 for (s, act) in [(upd, "Update to "), (add, "Add ")]:
     for i in s:
@@ -83,6 +85,8 @@ for (s, act) in [(upd, "Update to "), (add, "Add ")]:
         out = act + pkgver
         if pkgver in ticket:
             out += ' (#' + ticket[pkgver] + ')'
+        elif i in hold_ticket:
+            out += ' (#' + hold_ticket[i] + ')'
         print("-", out)
 for i in rem:
     print("-", "Remove", i)
@@ -99,10 +103,18 @@ for (s, act) in [(upd, "Update to "), (add, "Add ")]:
         if pkgver in security:
             out += " (security fix)"
         out += "."
+
+        pkg_ticket = None
         if pkgver in ticket:
             out += "  Fixes\n          "
-            out += "<ulink url='&lfs-ticket-root;" + ticket[pkgver] + "'>#"
-            out += ticket[pkgver] + "</ulink>."
+            pkg_ticket = ticket[pkgver]
+        elif i in hold_ticket:
+            out += "  Addresses\n          "
+            pkg_ticket = hold_ticket[i]
+
+        if pkg_ticket:
+            out += "<ulink url='&lfs-ticket-root;" + pkg_ticket + "'>#"
+            out += pkg_ticket + "</ulink>."
         out += "</para>"
         print(out)
         print('        </listitem>')

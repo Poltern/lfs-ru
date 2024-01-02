@@ -40,6 +40,56 @@
     -->
 
     <listitem>
+      <para>2023-12-31</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Fix CVE-2023-7008 for systemd-255.  Fixes
+          <ulink url='&lfs-ticket-root;5405'>#5405</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to iana-etc-20231205.  Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to tzdata-2023d.  Fixes
+          <ulink url='&lfs-ticket-root;5399'>#5399</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to linux-6.6.8.  Fixes
+          <ulink url='&lfs-ticket-root;5397'>#5397</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to meson-1.3.1.  Fixes
+          <ulink url='&lfs-ticket-root;5402'>#5402</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to grub-2.12.  Fixes
+          <ulink url='&lfs-ticket-root;5396'>#5396</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to inetutils-2.5.  Fixes
+          <ulink url='&lfs-ticket-root;5404'>#5404</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to setuptools-69.0.3.  Fixes
+          <ulink url='&lfs-ticket-root;5400'>#5400</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to xml-parser-2.47.  Fixes
+          <ulink url='&lfs-ticket-root;5403'>#5403</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to vim-9.0.2189.  Addresses
+          <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to autoconf-2.72.  Fixes
+          <ulink url='&lfs-ticket-root;5398'>#5398</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-12-16</para>
       <itemizedlist>
         <listitem>

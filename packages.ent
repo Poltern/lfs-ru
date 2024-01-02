@@ -29,10 +29,10 @@
 <!ENTITY attr-fin-du "4.1 MB">
 <!ENTITY attr-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY autoconf-version "2.71">
-<!ENTITY autoconf-size "1,263 KB">
+<!ENTITY autoconf-version "2.72">
+<!ENTITY autoconf-size "1,360 KB">
 <!ENTITY autoconf-url "&gnu;autoconf/autoconf-&autoconf-version;.tar.xz">
-<!ENTITY autoconf-md5 "12cfa1687ffa2606337efe1a64416106">
+<!ENTITY autoconf-md5 "1be79f7106ab6767f18391c5e22be701">
 <!ENTITY autoconf-home "&gnu-software;autoconf/">
 <!ENTITY autoconf-fin-du "24 MB">
 <!ENTITY autoconf-fin-sbu-tests "6.0">
@@ -299,10 +299,10 @@
 <!ENTITY groff-fin-du "107 MB">
 <!ENTITY groff-fin-sbu "0.2 SBU">
 
-<!ENTITY grub-version "2.06">
-<!ENTITY grub-size "6,428 KB">
+<!ENTITY grub-version "2.12">
+<!ENTITY grub-size "6,524 KB">
 <!ENTITY grub-url "https://ftp.gnu.org/gnu/grub/grub-&grub-version;.tar.xz">
-<!ENTITY grub-md5 "cf0fd928b1e5479c8108ee52cb114363">
+<!ENTITY grub-md5 "60c564b1bdc39d8e43b3aab4bc0fb140">
 <!ENTITY grub-home "&gnu-software;grub/">
 <!ENTITY grub-fin-du "161 MB">
 <!ENTITY grub-fin-sbu "0.3 SBU">
@@ -317,18 +317,18 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20231117">
-<!ENTITY iana-etc-size "588 KB">
+<!ENTITY iana-etc-version "20231205">
+<!ENTITY iana-etc-size "592 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "f26b37a03a211ddd4e9c7189191e2772">
+<!ENTITY iana-etc-md5 "7904f5aefaccd74e24af738da0e8bdaf">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY inetutils-version "2.4">
-<!ENTITY inetutils-size "1,522 KB">
+<!ENTITY inetutils-version "2.5">
+<!ENTITY inetutils-size "1,632 KB">
 <!ENTITY inetutils-url "&gnu;inetutils/inetutils-&inetutils-version;.tar.xz">
-<!ENTITY inetutils-md5 "319d65bb5a6f1847c4810651f3b4ba74">
+<!ENTITY inetutils-md5 "9e5a6dfd2d794dc056a770e8ad4a9263">
 <!ENTITY inetutils-home "&gnu-software;inetutils/">
 <!ENTITY inetutils-fin-du "31 MB">
 <!ENTITY inetutils-fin-sbu "0.2 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "6">
-<!ENTITY linux-patch-version "7">
+<!ENTITY linux-patch-version "8">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "136,748 KB">
+<!ENTITY linux-size "136,800 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "ab2e3e953d3394b461b775b325fbc621">
+<!ENTITY linux-md5 "a3deb764c4f8a77ff49735d6b3057409">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -494,10 +494,10 @@
 <!ENTITY markupsafe-fin-du "548 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY meson-version "1.3.0">
-<!ENTITY meson-size "2,171 KB">
+<!ENTITY meson-version "1.3.1">
+<!ENTITY meson-size "2,172 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "35dc15e4f94ca5fd30dbe2d88a672254">
+<!ENTITY meson-md5 "dd404b8c0f8b79f80181b4a58bb81768">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "42 MB">
 <!ENTITY meson-fin-sbu "менее 0.1 SBU">
@@ -628,10 +628,10 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "69.0.2">
+<!ENTITY setuptools-version "69.0.3">
 <!ENTITY setuptools-size "2,168 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "32bcc14eb830a13fbf33e053286f1081">
+<!ENTITY setuptools-md5 "b82de45aaa6b9bb911226660212ebb83">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "30 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
@@ -709,10 +709,10 @@
 <!ENTITY texinfo-fin-du "128 MB">
 <!ENTITY texinfo-fin-sbu "0.3 SBU">
 
-<!ENTITY tzdata-version "2023c">
-<!ENTITY tzdata-size "436 KB">
+<!ENTITY tzdata-version "2023d">
+<!ENTITY tzdata-size "440 KB">
 <!ENTITY tzdata-url "https://www.iana.org/time-zones/repository/releases/tzdata&tzdata-version;.tar.gz">
-<!ENTITY tzdata-md5 "5aa672bf129b44dd915f8232de38e49a">
+<!ENTITY tzdata-md5 "08b9d559939670725ec298fdbb029649">
 <!ENTITY tzdata-home "https://www.iana.org/time-zones">
 
 <!ENTITY udev-fin-du "138 MB">
@@ -735,13 +735,13 @@
 <!ENTITY util-linux-fin-du "310 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.0.2136">
+<!ENTITY vim-version "9.0.2189">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "16,989 KB">
+<!ENTITY vim-size "17,196 KB">
 <!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
 <!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-md5 "8dcf113cb690bcdd13d75a4e7c2e3a62">
+<!ENTITY vim-md5 "0a750075a7da900b96691bf6fcc919c6">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "229 MB">
 <!ENTITY vim-fin-sbu "2.3 SBU">
@@ -754,10 +754,10 @@
 <!ENTITY wheel-fin-du "1.5 MB">
 <!ENTITY wheel-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xml-parser-version "2.46">
-<!ENTITY xml-parser-size "249 KB">
+<!ENTITY xml-parser-version "2.47">
+<!ENTITY xml-parser-size "276 KB">
 <!ENTITY xml-parser-url "https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-&xml-parser-version;.tar.gz">
-<!ENTITY xml-parser-md5 "80bb18a8e6240fcf7ec2f7b57601c170">
+<!ENTITY xml-parser-md5 "89a8e82cfd2ad948b349c0a69c494463">
 <!ENTITY xml-parser-home "&github;/chorny/XML-Parser">
 <!ENTITY xml-parser-fin-du "2.3 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
