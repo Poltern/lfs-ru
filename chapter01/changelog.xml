@@ -43,6 +43,11 @@
       <para>2023-12-31</para>
       <itemizedlist>
         <listitem>
+         <para>[xry111] - Add --enable-default-hash-style=gnu configuring
+          binutils.  Fixes
+          <ulink url='&lfs-ticket-root;5401'>#5401</ulink>.</para>
+        </listitem>
+        <listitem>
           <para>[xry111] - Fix CVE-2023-7008 for systemd-255.  Fixes
           <ulink url='&lfs-ticket-root;5405'>#5405</ulink>.</para>
         </listitem>

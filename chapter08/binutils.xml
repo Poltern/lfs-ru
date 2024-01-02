@@ -57,9 +57,11 @@ cd       build</userinput></screen>
              --enable-shared     \
              --disable-werror    \
              --enable-64-bit-bfd \
-             --with-system-zlib</userinput></screen>
+             --with-system-zlib  \
+             --enable-default-hash-style=gnu</userinput></screen>
+
     <variablelist>
-      <title>Значение параметров настройки:</title>
+      <title>Значение новых параметров настройки:</title>
 
       <varlistentry>
         <term><parameter>--enable-gold</parameter></term>
@@ -85,17 +87,10 @@ cd       build</userinput></screen>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>--enable-64-bit-bfd</parameter></term>
-        <listitem>
-           <para>Включает 64-разрядную поддержку (на хостах с ограниченным размерам слов).
-		   Может не понадобится в 64-разрядных системах, но вреда от этого не будет.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
         <term><parameter>--with-system-zlib</parameter></term>
         <listitem>
-          <para>Использовать установленную библиотеку zlib вместо сборки собственной.</para>
+          <para>Указывает, что необходимо использовать установленную библиотеку zlib вместо 
+		  сборки собственной.</para>
         </listitem>
       </varlistentry>
 
