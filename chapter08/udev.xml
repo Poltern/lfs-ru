@@ -120,9 +120,11 @@ meson setup \
       </varlistentry>
     </variablelist>
 
-    <para>Получите список загруженных udev helpers и сохраните его в переменной:</para>
+    <para>Получите список предоставляемых udev helpers и сохраните его в переменной 
+	(экспортировать его не обязательно, но это упрощает сборку от имени обычного пользователя 
+	или при использовании менеджера пакетов):</para>
 
-    <screen><userinput remap="make">udev_helpers=$(grep "'name' :" ../src/udev/meson.build | \
+    <screen><userinput remap="make">export udev_helpers=$(grep "'name' :" ../src/udev/meson.build | \
                awk '{print $3}' | tr -d ",'" | grep -v 'udevadm')</userinput></screen>
 
     <para>Соберите только компоненты, необходимые для udev:</para>
@@ -178,6 +180,12 @@ sed 's|lib.*udevd|sbin/udevd|'                                        \
   > /usr/share/man/man8/udevd.8
 
 rm /usr/share/man/man*/systemd*</userinput></screen>
+
+    <para>Наконец, сбросьте значение переменной <envar>udev_helpers</envar>:</para>
+
+    <!-- remap="make" seems confusing but we don't have sth. like
+         remap="clean".  -->
+    <screen><userinput remap="install">unset udev_helpers</userinput></screen>
 
   </sect2>
 

@@ -69,7 +69,7 @@ meson setup \
       -Drpmmacrosdir=no             \
       -Dhomed=disabled              \
       -Duserdb=false                \
-      -Dman=false                   \
+      -Dman=disabled                \
       -Dmode=release                \
       -Dpamconfdir=no               \
       -Ddev-kvm-mode=0660           \
