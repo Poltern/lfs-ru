@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
-<!-- Create a md5 list for packages and pathces used. -->
+<!-- Create a md5 list for packages and patches used. -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     version="1.0">
@@ -31,7 +31,8 @@
       </xsl:call-template>
 
       <!-- Add a newline -->
-      <xsl:text>&#x0a;</xsl:text>
+      <xsl:text>
+</xsl:text>
 
     </xsl:if>
   </xsl:template>
@@ -55,4 +56,3 @@
   </xsl:template>
 
 </xsl:stylesheet>
-

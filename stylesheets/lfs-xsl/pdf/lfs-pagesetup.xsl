@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -239,6 +239,24 @@
       <xsl:text> - </xsl:text>
       <xsl:value-of select="/book/bookinfo/subtitle"/>
     </fo:block>
+  </xsl:template>
+
+  <!-- page.number.format
+       We want roman numerals only in book's preface, not parts prefaces
+       (if any). The original template is in {docbook-xsl}/fo/pagesetup.xsl -->
+  <xsl:template name="page.number.format">
+    <xsl:param name="element" select="local-name(.)"/>
+    <xsl:param name="master-reference" select="''"/>
+
+    <xsl:choose>
+      <xsl:when test="$element = 'toc' and self::book">i</xsl:when>
+      <xsl:when test="$element = 'set'">i</xsl:when>
+      <xsl:when test="$element = 'book'">i</xsl:when>
+      <xsl:when test="$element = 'preface' and not(ancestor::part)">i</xsl:when>
+      <xsl:when test="$element = 'dedication'">i</xsl:when>
+      <xsl:when test="$element = 'acknowledgements'">i</xsl:when>
+      <xsl:otherwise>1</xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -51,8 +51,10 @@
 
   <!-- Allow URLs to be automatically hyphenated.
        We have expanded the support to several inline tags.
-       See pdf/lfs-mixed.xsl -->
-  <xsl:param name="ulink.hyphenate" select="'&#x200B;'"/>
+       See pdf/lfs-mixed.xsl.
+       Note: the argument in select= is a zero-width space
+       (unicode 200b, encoded in utf-8)-->
+  <xsl:param name="ulink.hyphenate" select="'?'"/>
 
   <!-- List of characters to allow ulink URLs, and supported inline tags,
        to be automatically hyphenated on.

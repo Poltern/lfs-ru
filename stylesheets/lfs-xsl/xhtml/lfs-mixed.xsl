@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns="http://www.w3.org/1999/xhtml"
@@ -294,7 +294,9 @@
           </td>
         </xsl:when>
         <xsl:when test="$numcols &gt; 3">
-          <td>&#160;</td>
+        <!-- The space between <td> and </td> is a non breakable
+             space (unicode A0) encoded in utf-8.-->
+          <td> </td>
         </xsl:when>
         <xsl:otherwise/>
       </xsl:choose>

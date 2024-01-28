@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE xsl:stylesheet [
  <!ENTITY % general-entities SYSTEM "../general.ent">
   %general-entities;
@@ -22,26 +22,30 @@ function copy
   cp $1 $2 >>copyerrs 2>&amp;1
 }
 
-umask 002 &#x0a;&#x0a;</xsl:text>
+umask 002
 
-      <!-- Create dest.dir if it don't exist -->
-    <xsl:text>install -d -m 775 -g lfswww </xsl:text>
+# Create dest.dir if it doesn't exist
+# Remove old patches
+# Copy the patches
+# Ensure correct ownership
+install -d -m 775 -g lfswww </xsl:text>
     <xsl:value-of select="$dest.dir"/>
-    <xsl:text> &amp;&amp;&#x0a;</xsl:text>
-    <xsl:text>cd </xsl:text>
+    <xsl:text> &amp;&amp;
+cd </xsl:text>
     <xsl:value-of select="$dest.dir"/>
-    <xsl:text> &amp;&amp;&#x0a;&#x0a;</xsl:text>
-      <!-- Remove old patches -->
-    <xsl:text>rm -f *.patch copyerrs &amp;&amp; &#x0a;&#x0a;</xsl:text>
+    <xsl:text> &amp;&amp;
+rm -f *.patch copyerrs &amp;&amp;
+
+</xsl:text>
     <xsl:apply-templates/>
-      <!-- Ensure correct owneship -->
-    <xsl:text>&#x0a;chgrp lfswww *.patch &amp;&amp;&#x0a;</xsl:text>
     <xsl:text>
+chgrp lfswww *.patch &amp;&amp;
 if [ `wc -l copyerrs | sed 's/ *//' | cut -f1 -d' '` -gt 0 ]; then
   mail -s "Missing LFS patches" lfs-book@lists.linuxfromscratch.org &lt; copyerrs
-fi&#x0a;&#x0a;</xsl:text>
+fi
 
-    <xsl:text>exit&#x0a;</xsl:text>
+exit
+</xsl:text>
   </xsl:template>
 
   <xsl:template match="//text()"/>
@@ -59,10 +63,11 @@ fi&#x0a;&#x0a;</xsl:text>
         <xsl:value-of select="$cut"/>
       </xsl:variable>
       <xsl:text>copy /srv/www/www.linuxfromscratch.org/patches/downloads/</xsl:text>
-          <xsl:value-of select="substring-before($patch.name2, '-0')"/>
+      <xsl:value-of select="substring-before($patch.name2, '-0')"/>
       <xsl:text>/</xsl:text>
       <xsl:value-of select="$patch.name"/>
-      <xsl:text> . &#x0a;</xsl:text>
+      <xsl:text> .
+</xsl:text>
     </xsl:if>
   </xsl:template>
 

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -49,7 +49,7 @@
         <fo:block id="{$id}" xsl:use-attribute-sets="list.item.spacing"
                   keep-together.within-column="always" font-weight="bold"
                   keep-with-next.within-column="always" text-align="left">
-          <xsl:text>&#x2022;   </xsl:text>
+          <xsl:text>•   </xsl:text>
           <xsl:apply-templates select="term"/>
         </fo:block>
         <fo:block text-align="left"

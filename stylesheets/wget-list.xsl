@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <!-- Create a list of upstream URLs for packages and patches to be used
      with wget. -->
@@ -28,7 +28,8 @@
           <xsl:value-of select="@url"/>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:text>&#x0a;</xsl:text>
+      <xsl:text>
+</xsl:text>
     </xsl:if>
   </xsl:template>
 

@@ -7,7 +7,8 @@
 <!-- XSLT stylesheet to extract commands from [B,H]LFS books. -->
 
   <xsl:variable name="newline">
-    <xsl:text>&#xA;</xsl:text>
+    <xsl:text>
+</xsl:text>
   </xsl:variable>
 
   <xsl:template match="/">
