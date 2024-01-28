@@ -238,7 +238,7 @@ install -v -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service</use
 	оптимального охвата тестов</para>
 
 <screen role="nodump"><userinput remap="locale-test">mkdir -pv /usr/lib/locale
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
 localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
@@ -288,7 +288,7 @@ localedef -i zh_TW -f UTF-8 zh_TW.UTF-8</userinput></screen>
 	понадобятся. Например, для некоторых тестов в этой главе потребуются
 	следующие две локали:</para>
 
-<screen role="nodump"><userinput remap="locale-full">localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+<screen role="nodump"><userinput remap="locale-full">localedef -i C -f UTF-8 C.UTF-8
 localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true</userinput></screen>
 
     <note><para>Glibc теперь использует libidn2 для разрешения интернационализированных 

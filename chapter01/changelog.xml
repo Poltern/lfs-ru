@@ -40,6 +40,16 @@
     -->
 
     <listitem>
+      <para>2024-01-09</para>
+      <itemizedlist>
+        <listitem>
+          <para>[renodr] - Fix the definition of the C.UTF-8 locale. Fixes
+          <ulink url="&lfs-ticket-root;5409">#5409</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2023-12-31</para>
       <itemizedlist>
         <listitem>

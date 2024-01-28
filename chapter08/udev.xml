@@ -132,7 +132,7 @@ meson setup \
     <screen><userinput remap="make">ninja udevadm systemd-hwdb \
       $(ninja -n | grep -Eo '(src/(lib)?udev|rules.d|hwdb.d)/[^ ]*') \
       $(realpath libudev.so --relative-to .)                         \
-      $udev_helpers udevadm</userinput></screen>
+      $udev_helpers</userinput></screen>
 
     <para>Установите пакет:</para>
     <screen><userinput remap="install">install -vm755 -d {/usr/lib,/etc}/udev/{hwdb.d,rules.d,network}
