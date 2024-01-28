@@ -125,7 +125,7 @@ meson setup \
 	или при использовании менеджера пакетов):</para>
 
     <screen><userinput remap="make">export udev_helpers=$(grep "'name' :" ../src/udev/meson.build | \
-               awk '{print $3}' | tr -d ",'" | grep -v 'udevadm')</userinput></screen>
+                      awk '{print $3}' | tr -d ",'" | grep -v 'udevadm')</userinput></screen>
 
     <para>Соберите только компоненты, необходимые для udev:</para>
 

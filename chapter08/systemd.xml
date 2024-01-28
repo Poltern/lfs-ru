@@ -152,7 +152,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dman=false</parameter></term>
+        <term><parameter>-Dman=disabled</parameter></term>
         <listitem>
           <para> Предотвращает генерацию справочных страниц, чтобы избежать дополнительных 
 		  зависимостей. Мы установим предварительно сгенерированные справочные страницы 
