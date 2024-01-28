@@ -56,7 +56,7 @@ EOF</userinput></screen>
   class="partition">sda2</filename>, <filename
   class="partition">sda5</filename>, и <systemitem
   class="filesystem">ext4</systemitem>. Для получения подробной информации о параметрах в этом 
-  файле, смотрите <command>man 5 fstab</command>.</para>
+  файле, смотрите <filename>fstab(5)</filename>.</para>
 
   <para>Файловым системам операционных систем MS DOS и Windows (таким как vfat, ntfs, smbfs,
   cifs, iso9660, udf) требуется специальная опция utf8, чтобы не-ASCII символы в именах файлов 

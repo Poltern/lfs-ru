@@ -159,7 +159,7 @@ make MANSUFFIX=ssl install</userinput></screen>
           <para>
             это инструмент командной строки для использования различных криптографических
 			функций библиотеки <application>OpenSSL</application> из оболочки. Его можно
-			использовать для различных функций, которые задокументированы в <command>man 1 openssl</command>
+			использовать для различных функций, которые задокументированы в <filename>openssl(1)</filename>
           </para>
           <indexterm zone="ch-system-openssl openssl-prog">
             <primary sortas="b-openssl">openssl</primary>
@@ -188,8 +188,8 @@ make MANSUFFIX=ssl install</userinput></screen>
         <listitem>
           <para>
             реализует протокол безопасности транспортного уровня (TLS v1). Он
-			предоставляет богатый API, документацию по которому можно найти,
-			выполнив команду: <command>man 7 ssl</command>
+			предоставляет богатый API, документацию по которому можно найти в руководстве 
+			<filename>ssl(7)</filename>
           </para>
           <indexterm zone="ch-system-openssl libssl">
             <primary sortas="c-libssl">libssl.so</primary>

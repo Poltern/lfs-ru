@@ -101,13 +101,15 @@ Name=ether0</literal>
 EOF</userinput></screen>
 
           <para>
-             Смотрите справочную страницу systemd.link(5) для получения дополнительной информации.
+             Смотрите справочную страницу <filename>systemd.link(5)</filename> для получения дополнительной 
+			 информации.
           </para>
         </listitem>
 
         <listitem>
           <para>
-            В /boot/grub/grub.cfg передайте опцию net.ifnames=0 в строке ядра.
+            В /boot/grub/grub.cfg передайте опцию <option>net.ifnames=0</option> в строке параметров загрузки 
+			ядра.
           </para>
         </listitem>
       </itemizedlist>
