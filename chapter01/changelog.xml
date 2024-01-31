@@ -40,6 +40,28 @@
     -->
 
     <listitem>
+      <para>2024-01-21</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Fix CVE-2024-0684 for coreutils-9.4.  Fixes
+          <ulink url="&lfs-ticket-root;5417">#5417</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2024-01-18</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Edit a ncurses header to always use the
+          wide-character ABI compatible with libncursesw.so because we
+          are faking the 8-bit libncurses.so with it.  Fixes
+          <ulink url="&lfs-ticket-root;5415">#5415</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-01-09</para>
       <itemizedlist>
         <listitem>
