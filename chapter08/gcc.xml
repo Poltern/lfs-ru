@@ -521,7 +521,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</userinput></screen>
       <varlistentry id="libcc1">
         <term><filename class="libraryfile">libcc1</filename></term>
         <listitem>
-          <para>Библиотека предварительной обработки C</para>
+          <para>Библиотека, которая позволяет GDB использовать GCC</para>
           <indexterm zone="ch-system-gcc libcc1">
             <primary sortas="b-libcc1">libcc1</primary>
           </indexterm>

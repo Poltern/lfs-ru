@@ -118,10 +118,10 @@
 -->
 <!--
     <varlistentry>
-      <term>Perl Upstream Fix Patch - <token>&perl-fix-patch-size;</token>:</term>
+      <term>Pkgconf Upstream Fix Patch - <token>&pkgconf-upstream-fix-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&perl-fix-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&perl-fix-patch-md5;</literal></para>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&pkgconf-upstream-fix-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&pkgconf-upstream-fix-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
 -->

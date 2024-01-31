@@ -22,6 +22,10 @@
 <!ENTITY kbd-backspace-patch-md5 "f75cca16a38da6caa7d52151f7136895">
 <!ENTITY kbd-backspace-patch-size "12 KB">
 
+<!ENTITY pkgconf-upstream-fix-patch "pkgconf-&pkgconf-version;-upstream_fix-1.patch">
+<!ENTITY pkgconf-upstream-fix-patch-md5 "77d5bb10840724a0e3dc08efee548363">
+<!ENTITY pkgconf-upstream-fix-patch-size "4 KB">
+
 <!ENTITY readline-fixes-patch "readline-&readline-version;-upstream_fixes-2.patch">
 <!ENTITY readline-fixes-patch-md5 "d2477ebe908cc99763d90dde7fd9549a">
 <!ENTITY readline-fixes-patch-size "5.7 KB">

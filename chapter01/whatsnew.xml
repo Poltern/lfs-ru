@@ -28,9 +28,9 @@
     <!--<listitem>
       <para>Acl-&acl-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Attr-&attr-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Autoconf-&autoconf-version;</para>
     </listitem>
@@ -133,9 +133,9 @@
     <listitem>
       <para>IPRoute2-&iproute2-version;</para>
     </listitem>
-    <!--<listitem revision="systemd">
+    <listitem>
       <para>Jinja2-&jinja2-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Kbd-&kbd-version;</para>
     </listitem>
@@ -178,9 +178,9 @@
     <!--<listitem>
       <para>Man-pages-&man-pages-version;</para>
     </listitem>-->
-    <!--<listitem revision="systemd">
+    <listitem>
       <para>MarkupSafe-&markupsafe-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Meson-&meson-version;</para>
     </listitem>
@@ -190,9 +190,9 @@
     <listitem>
       <para>MPFR-&mpfr-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Ncurses-&ncurses-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Ninja-&ninja-version;</para>
     </listitem>-->
@@ -294,6 +294,10 @@
 
     <listitem>
       <para>&glibc-upstream-fixes-patch;</para>
+    </listitem>
+
+    <listitem>
+      <para>&pkgconf-upstream-fix-patch;</para>
     </listitem>
 
     <listitem>

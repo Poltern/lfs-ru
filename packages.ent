@@ -21,10 +21,10 @@
 <!ENTITY acl-fin-du "6.1 MB">
 <!ENTITY acl-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY attr-version "2.5.1">
-<!ENTITY attr-size "456 KB">
+<!ENTITY attr-version "2.5.2">
+<!ENTITY attr-size "484 KB">
 <!ENTITY attr-url "&savannah;/releases/attr/attr-&attr-version;.tar.gz">
-<!ENTITY attr-md5 "ac1c5a7a084f0f83b8cace34211f64d8">
+<!ENTITY attr-md5 "227043ec2f6ca03c0948df5517f9c927">
 <!ENTITY attr-home "&savannah-nongnu;/projects/attr">
 <!ENTITY attr-fin-du "4.1 MB">
 <!ENTITY attr-fin-sbu "менее 0.1 SBU">
@@ -57,10 +57,10 @@
 <!ENTITY bash-fin-du "52 MB">
 <!ENTITY bash-fin-sbu "1.1 SBU">
 
-<!ENTITY bc-version "6.7.4">
-<!ENTITY bc-size "456 KB">
+<!ENTITY bc-version "6.7.5">
+<!ENTITY bc-size "460 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "7826138b08c72f4618d6e48860101196">
+<!ENTITY bc-md5 "e249b1f86f886d6fb71c15f72b65dd3d">
 <!ENTITY bc-home "https://git.gavinhoward.com/gavin/bc">
 <!ENTITY bc-fin-du "7.7 MB">
 <!ENTITY bc-fin-sbu "менее 0.1 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20231205">
-<!ENTITY iana-etc-size "592 KB">
+<!ENTITY iana-etc-version "20240117">
+<!ENTITY iana-etc-size "596 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "7904f5aefaccd74e24af738da0e8bdaf">
+<!ENTITY iana-etc-md5 "215feb4b55043a6c18e84a5ed58b705f">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -341,19 +341,19 @@
 <!ENTITY intltool-fin-du "1.5 MB">
 <!ENTITY intltool-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY iproute2-version "6.6.0">
-<!ENTITY iproute2-size "897 KB">
+<!ENTITY iproute2-version "6.7.0">
+<!ENTITY iproute2-size "900 KB">
 <!ENTITY iproute2-url "&kernel;linux/utils/net/iproute2/iproute2-&iproute2-version;.tar.xz">
-<!ENTITY iproute2-md5 "6716fc3188dbea226997fa2478a190d7">
+<!ENTITY iproute2-md5 "35d8277d1469596b7edc07a51470a033">
 <!ENTITY iproute2-home "&kernel;linux/utils/net/iproute2/">
 <!ENTITY iproute2-fin-du "17 MB">
 <!ENTITY iproute2-fin-sbu "0.1 SBU">
 
-<!ENTITY jinja2-version "3.1.2">
-<!ENTITY jinja2-size "262 KB">
+<!ENTITY jinja2-version "3.1.3">
+<!ENTITY jinja2-size "264 KB">
 <!ENTITY jinja2-url "&pypi-src;/J/Jinja2/Jinja2-&jinja2-version;.tar.gz">
-<!ENTITY jinja2-md5 "d31148abd89c1df1cdb077a55db27d02">
-<!ENTITY jinja2-home "https://jinja.palletsprojects.com/en/3.0.x/">
+<!ENTITY jinja2-md5 "caf5418c851eac59e70a78d9730d4cea">
+<!ENTITY jinja2-home "https://jinja.palletsprojects.com/en/3.1.x/">
 <!ENTITY jinja2-fin-du "3.4 MB">
 <!ENTITY jinja2-fin-sbu "менее 0.1 SBU">
 
@@ -430,13 +430,13 @@
 <!ENTITY libxcrypt-fin-sbu "0.1 SBU">
 
 <!ENTITY linux-major-version "6">
-<!ENTITY linux-minor-version "6">
-<!ENTITY linux-patch-version "8">
+<!ENTITY linux-minor-version "7">
+<!ENTITY linux-patch-version "1">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "136,800 KB">
+<!ENTITY linux-size "138,096 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "a3deb764c4f8a77ff49735d6b3057409">
+<!ENTITY linux-md5 "d8a7394e0e349dd373e9722e141c8b61">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -486,10 +486,10 @@
 <!ENTITY man-pages-fin-du "33 MB">
 <!ENTITY man-pages-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY markupsafe-version "2.1.3">
-<!ENTITY markupsafe-size "19 KB">
+<!ENTITY markupsafe-version "2.1.4">
+<!ENTITY markupsafe-size "20 KB">
 <!ENTITY markupsafe-url "&pypi-src;/M/MarkupSafe/MarkupSafe-&markupsafe-version;.tar.gz">
-<!ENTITY markupsafe-md5 "ca33f119bd0551ce15837f58bb180214">
+<!ENTITY markupsafe-md5 "8138329a11cf4bd0f9db780b2af26c66">
 <!ENTITY markupsafe-home "https://palletsprojects.com/p/markupsafe/">
 <!ENTITY markupsafe-fin-du "548 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
@@ -518,10 +518,13 @@
 <!ENTITY mpfr-fin-du "43 MB">
 <!ENTITY mpfr-fin-sbu "0.2 SBU">
 
-<!ENTITY ncurses-version "6.4">
-<!ENTITY ncurses-size "3,528 KB">
-<!ENTITY ncurses-url "https://invisible-mirror.net/archives/ncurses/ncurses-&ncurses-version;.tar.gz">
-<!ENTITY ncurses-md5 "5a62487b5d4ac6b132fe2bf9f8fad29b">
+<!ENTITY ncurses-release "6.4">
+<!ENTITY ncurses-version "&ncurses-release;-20230520">
+<!ENTITY ncurses-size "2,156 KB">
+<!-- switch back to invisible-mirror.net for 6.5 -->
+<!--ENTITY ncurses-url "https://invisible-mirror.net/archives/ncurses/ncurses-&ncurses-version;.tar.gz"-->
+<!ENTITY ncurses-url "&anduin-sources;/ncurses-&ncurses-version;.tar.xz">
+<!ENTITY ncurses-md5 "c5367e829b6d9f3f97b280bb3e6bfbc3">
 <!ENTITY ncurses-home "&gnu-software;ncurses/">
 <!ENTITY ncurses-tmp-du "51 MB">
 <!ENTITY ncurses-tmp-sbu "0.3 SBU">
@@ -636,10 +639,10 @@
 <!ENTITY setuptools-fin-du "30 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
 
-<!ENTITY shadow-version "4.14.2">
-<!ENTITY shadow-size "1,758 KB">
+<!ENTITY shadow-version "4.14.3">
+<!ENTITY shadow-size "1,760 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "effc1aa17590305647413125b966f1dd">
+<!ENTITY shadow-md5 "b9a7f56d0c63297c0d11d742be2f8ffd">
 <!ENTITY shadow-home "&github;/shadow-maint/shadow/">
 <!ENTITY shadow-fin-du "46 MB">
 <!ENTITY shadow-fin-sbu "0.1 SBU">
@@ -735,13 +738,13 @@
 <!ENTITY util-linux-fin-du "310 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.0.2189">
+<!ENTITY vim-version "9.1.0041">
 <!-- <!ENTITY vim-majmin "90"> -->
-<!ENTITY vim-docdir "vim/vim90">
-<!ENTITY vim-size "17,196 KB">
+<!ENTITY vim-docdir "vim/vim91">
+<!ENTITY vim-size "17,224 KB">
 <!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
 <!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-md5 "0a750075a7da900b96691bf6fcc919c6">
+<!ENTITY vim-md5 "79dfe62be5d347b1325cbd5ce2a1f9b3">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "229 MB">
 <!ENTITY vim-fin-sbu "2.3 SBU">
