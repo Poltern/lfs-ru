@@ -98,9 +98,9 @@
         <term><parameter>--enable-widec</parameter></term>
         <listitem>
           <para>Этот параметр указывает, что при сборке пакета вместо обычных библиотек
-		  (например, <filename class="libraryfile">libncurses.so.&ncurses-version;</filename>)
+		  (например, <filename class="libraryfile">libncurses.so.&ncurses-release;</filename>)
 		  будут использоваться библиотеки с расширенным набором символов (например, <filename
-          class="libraryfile">libncursesw.so.&ncurses-version;</filename>). Библиотеки с
+          class="libraryfile">libncursesw.so.&ncurses-release;</filename>). Библиотеки с
 		  расширенным набором символов могут использоваться как с многобайтовыми локалями,
 		  так и с традиционными 8-битовыми локалями, тогда как обычные библиотеки работают
 		  только с 8-битовыми локалями. Библиотеки с расширенным набором символов и обычные
@@ -116,7 +116,7 @@
 
     <para>У этого пакета есть набор тестов, но его можно запустить только после
 	того, как пакет будет установлен. Тесты находятся в каталоге
-	<filename class="directory">test/</filename>. Дополнительные сведения см.
+	<filename class="directory">test/</filename>. Дополнительные сведения смотрите 
 	в файле <filename>README</filename> в этом каталоге.
     </para>
 
@@ -126,32 +126,37 @@
          make will spawn new shell processes during "make install".  -->
 
     <para>Установка этого пакета приведет к перезаписи 
-	<filename class="libraryfile">libncursesw.so.&ncurses-version;</filename>. Это
+	<filename class="libraryfile">libncursesw.so.&ncurses-release;</filename>. Это
 	может привести к сбою процесса оболочки, который использует код и данные из
 	файла библиотеки. Установите пакет с помощью <literal>DESTDIR</literal> и правильно
-	замените файл библиотеки с помощью команды <command>install</command>.</para>
+	замените файл библиотеки с помощью команды <command>install</command>(также отредактирован 
+	заголовочный файл <filename>curses.h</filename>, чтобы обеспечить использование 
+	ABI расширенного набора символов, как это сделано в <xref linkend='ch-tools-ncurses'/>).</para>
 
 <screen><userinput remap="install">make DESTDIR=$PWD/dest install
-install -vm755 dest/usr/lib/libncursesw.so.&ncurses-version; /usr/lib
-rm -v  dest/usr/lib/libncursesw.so.&ncurses-version;
+install -vm755 dest/usr/lib/libncursesw.so.&ncurses-release; /usr/lib
+rm -v  dest/usr/lib/libncursesw.so.&ncurses-release;
+sed -e 's/^#if.*XOPEN.*$/#if 1/' \
+    -i dest/usr/include/curses.h
 cp -av dest/* /</userinput></screen>
 
-    <para>Многие приложения ожидают, что компоновщик сможет найти библиотеки Ncurses,
-	не поддерживающие расширенный набор символов. Свяжите такие приложения с библиотеками
-	расширенного набора символов с помощью символических ссылок и скриптов компоновщика:</para>
+    <para>Многие приложения ожидают, что компоновщик может найти библиотеки Ncurses,
+	не поддерживающие расширенный набор символов. Используя трюк ниже, свяжите такие приложения 
+	с библиотеками расширенного набора символов с помощью символических ссылок (обратите внимание, 
+	что ссылки <filename class='extension'>.so</filename> безопасны только в том случае, если 
+	<filename>curses.h</filename> отредактирован так, чтобы всегда использовать ABI расширенного 
+	набора символов):</para>
 
 <screen><userinput remap="install">for lib in ncurses form panel menu ; do
-    rm -vf                    /usr/lib/lib${lib}.so
-    echo "INPUT(-l${lib}w)" &gt; /usr/lib/lib${lib}.so
-    ln -sfv ${lib}w.pc        /usr/lib/pkgconfig/${lib}.pc
+    ln -sfv lib${lib}w.so /usr/lib/lib${lib}.so
+    ln -sfv ${lib}w.pc    /usr/lib/pkgconfig/${lib}.pc
 done</userinput></screen>
 
     <para>Убедитесь, что старые приложения, которым нужна
     <filename class="libraryfile">-lcurses</filename> для сборки, собираются правильно:</para>
 
-<screen><userinput remap="install">rm -vf                     /usr/lib/libcursesw.so
-echo "INPUT(-lncursesw)" &gt; /usr/lib/libcursesw.so
-ln -sfv libncurses.so      /usr/lib/libcurses.so</userinput></screen>
+
+<screen><userinput remap="install">ln -sfv libncursesw.so /usr/lib/libcurses.so</userinput></screen>
 
     <para>По желанию установите документацию Ncurses:</para>
 
@@ -200,19 +205,24 @@ cp -av lib/lib*.so.5* /usr/lib</userinput></screen>
            tabs,
            tic,
            toe,
-           tput, и
+           tput и
            tset
         </seg>
         <seg>
-           libcursesw.so (символическая ссылка и скрипт компоновщика на libncursesw.so),
+           libcurses.so (символическая ссылка),
+           libform.so (символическая ссылка),
            libformw.so,
+           libmenu.so (символическая ссылка),
            libmenuw.so,
+           libncurses.so (символическая ссылка),
            libncursesw.so,
            libncurses++w.so,
-           libpanelw.so, и их аналоги без "w" в именах библиотек.</seg>
+           libpanel.so (символическая ссылка) 
+           и libpanelw.so,
+        </seg>
         <seg>
            /usr/share/tabset,
-           /usr/share/terminfo, и
+           /usr/share/terminfo и
            /usr/share/doc/ncurses-&ncurses-version;
         </seg>
       </seglistitem>
@@ -335,16 +345,6 @@ cp -av lib/lib*.so.5* /usr/lib</userinput></screen>
           <para>Может использоваться для инициализации терминалов</para>
           <indexterm zone="ch-system-ncurses tset">
             <primary sortas="b-tset">tset</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="libcursesw">
-        <term><filename class="libraryfile">libcursesw</filename></term>
-        <listitem>
-          <para>Ссылка на <filename>libncursesw</filename></para>
-          <indexterm zone="ch-system-ncurses libcursesw">
-            <primary sortas="c-libcursesw">libcursesw</primary>
           </indexterm>
         </listitem>
       </varlistentry>
