@@ -11,10 +11,14 @@
   <xsl:param name="chunk.first.sections" select="1"/>
 
     <!-- preface:
-           Output non sect1 child elements before the TOC -->
+         Output non sect1 child elements before the TOC
+         Output title outside of the <div> because we want to be able to
+         use it at a fixed position -->
     <!-- The original template is in {docbook-xsl}/xhtml/components.xsl -->
   <xsl:template match="preface">
     <xsl:call-template name="id.warning"/>
+    <xsl:call-template name="preface.titlepage"/>
+    <xsl:call-template name="component.separator"/>
     <div>
       <xsl:apply-templates select="." mode="class.attribute"/>
       <xsl:call-template name="dir">
@@ -26,8 +30,6 @@
           <xsl:call-template name="object.id"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="component.separator"/>
-      <xsl:call-template name="preface.titlepage"/>
       <xsl:apply-templates/>
       <xsl:variable name="toc.params">
         <xsl:call-template name="find.path.params">
@@ -44,11 +46,42 @@
     </div>
   </xsl:template>
 
+    <!-- part:
+         Output non sect1 child elements before the TOC
+         Output title outside of the <div> because we want to be able to
+         use it at a fixed position -->
+    <!-- The original template is in {docbook-xsl}/xhtml/divisions.xsl -->
+  <xsl:template match="part">
+    <xsl:call-template name="id.warning"/>
+
+    <xsl:call-template name="part.titlepage"/>
+
+    <div>
+      <xsl:apply-templates select="." mode="common.html.attributes"/>
+      <xsl:call-template name="id.attribute">
+        <xsl:with-param name="conditional" select="0"/>
+      </xsl:call-template>
+
+      <xsl:apply-templates/>
+      <xsl:variable name="toc.params">
+        <xsl:call-template name="find.path.params">
+          <xsl:with-param name="table" select="normalize-space($generate.toc)"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:if test="not(partintro) and contains($toc.params, 'toc')">
+        <xsl:call-template name="division.toc"/>
+      </xsl:if>
+    </div>
+  </xsl:template>
+
     <!-- chapter:
-           Output non sect1 child elements before the TOC -->
+           Output non sect1 child elements before the TOC
+           Output title before div to be able to fix the title position -->
     <!-- The original template is in {docbook-xsl}/xhtml/components.xsl -->
   <xsl:template match="chapter">
     <xsl:call-template name="id.warning"/>
+    <xsl:call-template name="chapter.titlepage"/>
+    <xsl:call-template name="component.separator"/>
     <div>
       <xsl:apply-templates select="." mode="class.attribute"/>
       <xsl:call-template name="dir">
@@ -60,8 +93,6 @@
           <xsl:call-template name="object.id"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:call-template name="component.separator"/>
-      <xsl:call-template name="chapter.titlepage"/>
       <xsl:apply-templates/>
       <xsl:variable name="toc.params">
         <xsl:call-template name="find.path.params">
@@ -76,14 +107,52 @@
       </xsl:if>
       <xsl:call-template name="process.footnotes"/>
     </div>
+  </xsl:template>
+
+    <!-- appendix:
+           Output non sect1 child elements before the TOC
+           Output title before div to be able to fix the title position -->
+    <!-- The original template is in {docbook-xsl}/xhtml/components.xsl -->
+  <xsl:template match="appendix">
+
+    <xsl:call-template name="id.warning"/>
+
+    <xsl:call-template name="appendix.titlepage"/>
+
+    <xsl:element name="div" namespace="http://www.w3.org/1999/xhtml">
+      <xsl:call-template name="common.html.attributes">
+        <xsl:with-param name="inherit" select="1"/>
+      </xsl:call-template>
+      <xsl:call-template name="id.attribute">
+        <xsl:with-param name="conditional" select="0"/>
+      </xsl:call-template>
+
+      <xsl:apply-templates/>
+
+      <xsl:variable name="toc.params">
+        <xsl:call-template name="find.path.params">
+          <xsl:with-param name="table" select="normalize-space($generate.toc)"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:if test="contains($toc.params, 'toc')">
+        <xsl:call-template name="component.toc">
+          <xsl:with-param name="toc.title.p" select="contains($toc.params, 'title')"/>
+        </xsl:call-template>
+      </xsl:if>
+
+    </xsl:element>
   </xsl:template>
 
     <!-- sect1:
            When there is a role attibute, use it as the class value.
            Process the SVN keywords found in sect1info as a footnote.
+           Output title before the containing <div> so that the title
+           can be at a fixed position.
            Removed unused code. -->
     <!-- The original template is in {docbook-xsl}/xhtml/sections.xsl -->
   <xsl:template match="sect1">
+    <xsl:call-template name="sect1.titlepage"/>
     <div>
       <xsl:choose>
         <xsl:when test="@role">
@@ -96,7 +165,6 @@
         </xsl:otherwise>
       </xsl:choose>
       <xsl:call-template name="language.attribute"/>
-      <xsl:call-template name="sect1.titlepage"/>
       <xsl:apply-templates/>
       <xsl:apply-templates select="sect1info" mode="svn-keys"/>
     </div>

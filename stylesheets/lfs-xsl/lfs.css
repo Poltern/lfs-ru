@@ -1,13 +1,13 @@
 /* Global settings */
 body {
-  font-family: verdana, tahoma, helvetica, arial, sans-serif;
+  font-family: verdana, tahoma, arial, sans-serif;
   text-align: left;
   background: #fff;
   color: #222;
   margin: 1em;
   padding: 0;
   font-size: 1em;
-  line-height: 1.2em
+  line-height: 1.2em;
 }
 
 
@@ -38,10 +38,36 @@ div.dedication {
   padding-left: 1em;
 }
 
+/* Section titles */
+h1.sect1, h1.preface, h1.part, h1.chapter, h1.appendix, .glossary h1, .index h1
+ {
+  background: #f5f6f7;
+  border-bottom: .1em solid #dbddec;
+  margin-bottom:1em;
+  margin-top: 0;
+  padding: .4em;
+}
 
-/* Sections */
-div.sect1, div.appendix {
-  padding-left: .3em;
+/* Scrolling parts
+   The header is taller for sect1 and chapter pages than on the
+   other pages.  Since we want fixed boxes, their top has to be calculated
+   by trial and errors to fit below the static header box.*/
+
+div.sect1, div.chapter, div.appendix, div.wrap {
+  top: 11.55em;
+}
+div.preface, div.part, .index div.index {
+  top: 10.15em;
+}
+div.sect1, div.appendix, div.preface, div.part, div.chapter, div.wrap, .index div.index {
+/*  padding-left: .3em;*/
+  overflow:auto;
+  height: auto;
+  position: fixed;
+  left:1em;
+  right:1em;
+  bottom: 1em;
+  border-bottom: 1em solid #dbddec;
 }
 
 div.important ul {
@@ -63,8 +89,12 @@ div.important ul li p {
   background: #f5f6f7;
   border-bottom: 0.2em solid #dbddec;
   padding-top: .1em;
-  margin-top: 0;
+/*  margin-top: 0;*/
 }
+/*
+.lfs .package p:first-child {
+  margin-top: 0;
+}*/
 
 .lfs .configuration {
   background:   #fefefe;
@@ -74,10 +104,10 @@ div.important ul li p {
 .lfs .content {
   background: #f5f6f7;
   border-top: 0.2em solid #dbddec;
+  border-bottom: 0.2em solid #dbddec;
   padding-bottom: .1em;
-  margin-bottom: 0;
+  margin-bottom: .5em;
 }
-
 
 /* Headers */
 h1, h2, h3, h4, h5, h6, b, .strong {
@@ -94,18 +124,6 @@ h1 {
 .book h1 {
   margin: 0;
   padding: 0.4em;
-}
-
-.preface h1, .part h1, .chapter h1, .appendix h1, .index h1, .sect1 h1, .glossary h1 {
-  background: #f5f6f7;
-  border-bottom: .1em solid #dbddec;
-  margin-bottom: 1em;
-  margin-top: 0;
-  padding: .4em;
-}
-
-.sect1 h1, .appendix h1 {
-  margin-left: -.2em;
 }
 
 .wrap h1 {
@@ -157,13 +175,19 @@ div.navheader, div.navfooter {
 }
 
 div.navheader {
-  border-bottom: 1px solid #dbddec;
-   position: sticky;
-   top: 0;
+  border-bottom: .1em solid #dbddec;
 }
 
+/* no need for a footer now that the header is always visible */
 div.navfooter {
-  border-top: 1px solid #dbddec;
+  display:none;
+}
+
+/* Except for the first page (TOC), where the bottom is the only
+   place where navigation is displayed. */
+
+div.book + div.navfooter {
+  display:block
 }
 
 div.navheader h4 {
@@ -179,7 +203,7 @@ div.navheader h3 {
 }
 
 div.navheader ul, div.navfooter ul {
-  padding: .2em .5em .5em 0;
+  padding: .2em .5em .5em .5em; /*top right bottom left*/
   margin: .5em 0;
   position: relative;
   background: #dbddec;
@@ -196,29 +220,29 @@ div.navheader ul li.prev, div.navfooter ul li.prev {
   left: 0;
   text-align: left;
   padding: 0.2em 1em;
-  margin-left: 6px;
+  margin-left: .4em;
 }
 
 div.navheader ul li.next, div.navfooter ul li.next {
   position: absolute;
   display: block;
   text-align: right;
-  right: 5px;
-  padding: 0.2em 0.5em;
-  margin-right: 7px;
+  right: 0;
+  padding: 0.2em 1em;
+  margin-right: .4em;
 }
 
 div.navheader ul li.prev p, div.navfooter ul li.prev p,
 div.navheader ul li.next p, div.navfooter ul li.next p {
   padding: 0;
-  margin: 1px 0px;
+  margin: .1em 0;
 }
 
 div.navheader ul li.home, div.navheader ul li.up,
 div.navfooter ul li.home, div.navfooter ul li.up {
   text-align: center;
   padding: 0;
-  margin: 0px auto;
+  margin: 0 auto;
   display: block;
   color: #dbddec;
 }
