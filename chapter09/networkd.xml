@@ -45,9 +45,9 @@
     <filename class="extension">.netdev</filename> и
     <filename class="extension">.network</filename>. Для получения подробной информации с описанием
 	и примерами содержимого этих конфигурационных файлов ознакомьтесь с руководствами
-	<filename>systemd-link(5)</filename>,
-    <filename>systemd-netdev(5)</filename> и
-    <filename>systemd-network(5)</filename>.</para>
+	<ulink role='man' url='&man;systemd-link.5'>systemd-link(5)</ulink>,
+    <ulink role='man' url='&man;systemd-netdev.5'>systemd-netdev(5)</ulink> и
+    <ulink role='man' url='&man;systemd-network.5'>systemd-network(5)</ulink>.</para>
 
     <sect3 id="systemd-network-devices">
       <title>Именование сетевых устройств</title>
@@ -79,16 +79,18 @@
       <itemizedlist>
         <listitem>
           <para>
-            Замаскируйте файл .link для политики по умолчанию:
+            Замаскируйте файл <filename class='extension'>.link</filename> для политики по умолчанию:
 <screen role="nodump"><userinput>ln -s /dev/null /etc/systemd/network/99-default.link</userinput></screen>
           </para>
         </listitem>
 
         <listitem>
           <para>
-             Создайте собственную схему именования интерфейсов, например назвав интерфейсы "internet0", 
-			 "dmz0" или "lan0". Для этого создайте файл .link  в каталоге /etc/systemd/network/, в 
-			 котором явно укажите новое имя интерфейса или более подходящую схема именования. Например:
+             Создайте собственную схему именования интерфейсов, например назвав интерфейсы 
+			 <literal>internet0</literal>, <literal>dmz0</literal> или <literal>lan0</literal>. 
+			 Для этого создайте файл <filename class='extension'>.link</filename>  в каталоге 
+			 /etc/systemd/network/, в котором явно укажите новое имя интерфейса или более 
+			 подходящую схему именования. Например:
           </para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/systemd/network/10-ether0.link &lt;&lt; "EOF"
@@ -101,8 +103,8 @@ Name=ether0</literal>
 EOF</userinput></screen>
 
           <para>
-             Смотрите справочную страницу <filename>systemd.link(5)</filename> для получения дополнительной 
-			 информации.
+             Смотрите справочную страницу <ulink role='man' url='&man;systemd.link.5'>systemd.link(5)</ulink> 
+			 для получения дополнительной информации.
           </para>
         </listitem>
 
@@ -325,7 +327,8 @@ EOF</userinput></screen>
 	 <literal>localhost</literal>, <literal>localhost.localdomain</literal> или имени хоста 
 	 (без домена), поскольку они обрабатываются модулем NSS 
 	 <systemitem class='library'>myhostname</systemitem>, прочтите справочную страницу 
-	 <filename>nss-myhostname(8)</filename> для получения подробной информации.</para>
+	 <ulink role='man' url='&man;nss-myhostname.8'>nss-myhostname(8)</ulink> для получения подробной 
+	 информации.</para>
 
      <para>Запись ::1 является IPv6-аналогом 127.0.0.1 и представляет loopback-интерфейс IPv6.</para>
 

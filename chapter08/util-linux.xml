@@ -573,7 +573,7 @@ su tester -c "make -k check"</userinput></screen>
         <term><command>irqtop</command></term>
         <listitem>
           <para>Отображает информацию о счетчике прерываний ядра в стиле 
-          <filename>top(1)</filename></para>
+          <ulink role='man' url='&man;top.1'>top(1)</ulink></para>
           <indexterm zone="ch-system-util-linux irqtop">
             <primary sortas="b-irqtop">irqtop</primary>
           </indexterm>

@@ -100,7 +100,7 @@ esac</userinput></screen>
 
   <para>Аргумент <quote><parameter>-</parameter></quote> передает значение команде
   <command>su</command> для запуска оболочки входа в систему, а не обычной оболочки.
-  Разница между этими двумя типами оболочек подробно описана в <filename>bash(1)</filename>
-  и <command>info bash</command>.</para>
+  Разница между этими двумя типами оболочек подробно описана в 
+  <ulink role='man' url='&man;bash.1'>bash(1)</ulink> и <command>info bash</command>.</para>
 
 </sect1>

@@ -59,7 +59,7 @@ esac</userinput></screen>
       <para>
         Приведенная выше команда верна. Команда <command>ln</command> имеет несколько
 		вариантов синтаксиса, поэтому обязательно ознакомьтесь с <command>info coreutils ln</command>
-		и <filename>ln(1)</filename>, прежде чем сообщать об ошибке.
+		и <ulink role='man' url='&man;ln.1'>ln(1)</ulink>, прежде чем сообщать об ошибке.
       </para>
     </note>
 

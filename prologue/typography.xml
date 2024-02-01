@@ -71,21 +71,24 @@ EOF</userinput></screen>
 
   <para>Этот формат используется для текста, который является необязательным.</para>
 
-  <para><filename>passwd(5)</filename></para>
+  <para><ulink role='man' url='&man;passwd.5'>passwd(5)</ulink></para>
 
   <para>Этот формат используется для ссылки на определенную страницу руководства (man). 
   Число в скобках указывает на конкретный раздел внутри руководств. Например, у 
   <command>passwd</command> есть две справочные страницы. В соответствии с 
   инструкциями по установке LFS эти две справочные страницы будут расположены 
   в <filename>/usr/share/man/man1/passwd.1</filename> и <filename>/usr/share/man/man5/passwd.5</filename>. 
-  Когда в книге используется <filename>passwd(5)</filename>, имеется в виду 
-  конкретно <filename>/usr/share/man/man5/passwd.5</filename>. <command>man passwd</command> 
+  Когда в книге используется <ulink role='man' url='&man;/passwd.5'>passwd(5)</ulink>, имеется 
+  в виду конкретно <filename>/usr/share/man/man5/passwd.5</filename>. <command>man passwd</command> 
   напечатает первую найденную справочную страницу, совпадающую с <quote>passwd</quote>, 
   которая будет <filename>/usr/share/man/man1/passwd.1</filename>. В этом примере вам 
   нужно будет запустить <command>man 5 passwd</command>, чтобы прочитать указанную 
   страницу. Обратите внимание, что большинство справочных страниц не имеют 
   повторяющихся страниц в разных разделах. Поэтому обычно достаточно 
-  <command>man <replaceable>&lt;имя программы&gt;</replaceable></command>.</para>
+  <command>man <replaceable>&lt;имя программы&gt;</replaceable></command>. В книге LFS ссылки 
+  на справочные страницы также являются гиперссылками, поэтому нажатие на такую ссылку откроет 
+  справочную страницу, в формате HTML, со 
+  <ulink url='https://man.archlinux.org/'>страниц руководства Arch Linux</ulink>.</para>
 
 </sect1>
 

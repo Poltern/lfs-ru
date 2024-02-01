@@ -127,6 +127,7 @@
 <!ENTITY github          "https://github.com">
 <!ENTITY pypi-home       "https://pypi.org/project">
 <!ENTITY pypi-src        "https://pypi.org/packages/source">
+<!ENTITY man             "https://man.archlinux.org/man/">
 
 <!ENTITY root            "<systemitem class='username'>root</systemitem>">
 <!ENTITY lfs-user        "<systemitem class='username'>lfs</systemitem>">

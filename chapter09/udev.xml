@@ -207,8 +207,8 @@
       <para>Обратите внимание, что команда <quote>softdep</quote> разрешает добавлять
       <literal>pre:</literal> зависимости, или одновременно
       <literal>pre:</literal> и <literal>post:</literal> зависимости. Обратитесь к документации
-      <filename>modprobe.d(5)</filename> для изучения синтаксиса и возможностей
-      <quote>softdep</quote>.</para>
+      <ulink role='man' url='&man;modprobe.d.5'>modprobe.d(5)</ulink> для изучения синтаксиса и 
+	  возможностей <quote>softdep</quote>.</para>
 
       <para revision="sysv">Если рассматриваемый модуль не является обёрткой, и полезен сам по 
 	  себе, настройте загрузочный скрипт <command>modules</command>, чтобы он инициализировался 

@@ -305,7 +305,7 @@
 	каталоге <filename class="directory">/etc/modprobe.d</filename>. Информация о модулях и конфигурации 
 	ядра находится в <xref linkend="ch-config-udev"/> и в документации к ядру <filename
     class="directory">linux-&linux-version;/Documentation</filename>. Кроме этого, стоит ознакомиться с 
-	руководством <filename>modprobe.d(5)</filename>.</para>
+	руководством <ulink role='man' url='&man;modprobe.d.5'>modprobe.d(5)</ulink>.</para>
 
     <para>Если поддержка модулей не была отключена в параметрах ядра, установите модули с помощью:</para>
 

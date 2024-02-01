@@ -21,8 +21,8 @@
 	основными операциями systemd. Изначально все записи в этом файле закомментированы с 
 	указанием настроек по умолчанию. В этом файле может быть изменен уровень логирования, а также 
 	некоторые базовые настройки ведения файлов логов. Смотрите страницу руководства 
-	<filename>systemd-system.conf(5)</filename> для получения подробной информации по каждому 
-	параметру.</para>
+	<ulink role='man' url='&man;systemd-system.conf.5'>systemd-system.conf(5)</ulink> для 
+	получения подробной информации по каждому параметру.</para>
 
   </sect2>
 
@@ -83,7 +83,7 @@ EOF</userinput></screen>
     <filename class="directory">/etc/tmpfiles.d</filename>. Файлы в 
     <filename class="directory">/etc/tmpfiles.d</filename> переопределяют файлы с таким же именем в 
     <filename class="directory">/usr/lib/tmpfiles.d</filename>. Смотрите подробности по формату файла 
-	в руководстве <filename>tmpfiles.d(5)</filename>.</para>
+	в руководстве <ulink role='man' url='&man;tmpfiles.d.5'>tmpfiles.d(5)</ulink>.</para>
 
     <para>
       Обратите внимание, что синтаксис файлов в
@@ -124,8 +124,8 @@ RestartSec=30</literal>
 EOF</userinput></screen>
 
      <para>Дополнительную информацию смотрите на странице руководства 
-	 <filename>systemd.unit(5)</filename>. После создания файла конфигурации запустите 
-	 <userinput>systemctl daemon-reload</userinput> и <userinput>systemctl
+	 <ulink role='man' url='&man;systemd.unit.5'>systemd.unit(5)</ulink>. После создания файла 
+	 конфигурации запустите <userinput>systemctl daemon-reload</userinput> и <userinput>systemctl 
      restart foobar</userinput>, чтобы активировать изменения в службе.</para>
 
   </sect2>
@@ -233,9 +233,9 @@ MaxUse=5G</literal>
 EOF</userinput></screen>
 
     <para>Смотрите следующие страницы руководства для получения дополнительной информации 
-	информация <filename>systemd-coredump(8)</filename>,
-    <filename>coredumpctl(1)</filename>, и
-    <filename>coredump.conf.d(5)</filename>.</para>
+	информация <ulink role='man' url='&man;systemd-coredump.8'>systemd-coredump(8)</ulink>,
+    <ulink role='man' url='&man;coredumpctl.1'>coredumpctl(1)</ulink> и 
+    <ulink role='man' url='&man;coredump.conf.d.5'>coredump.conf.d(5)</ulink>.</para>
   </sect2>
 
   <sect2>
