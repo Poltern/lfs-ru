@@ -29,8 +29,8 @@
   <filename class="directory">/usr/share/consolefonts</filename>
   список допустимых экранных шрифтов.</para>
 
-  <para>Файл <filename>/etc/vconsole.conf</filename> должен содержать строки вида: ПЕРЕМЕННАЯ="значение". 
-  Распознаются следующие переменные:</para>
+  <para>Файл <filename>/etc/vconsole.conf</filename> должен содержать строки вида: 
+  <envar>ПЕРЕМЕННАЯ=значение</envar>. Распознаются следующие переменные:</para>
 
   <variablelist>
 

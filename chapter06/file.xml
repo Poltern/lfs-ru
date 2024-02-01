@@ -75,11 +75,6 @@ popd</userinput></screen>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)</userinput></screen>
 
-<!-- devs: if using - -build here, the build system wants to compile
-     the signature file with "file" on the build system, but stops if it is not
-     the same version. One possibility would be to build "file" on the build
-     system first, but it is simpler to have the system think it is not
-     cross-compiling, and use the just built "file". -->
     <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">make FILE_COMPILE=$(pwd)/build/src/file</userinput></screen>

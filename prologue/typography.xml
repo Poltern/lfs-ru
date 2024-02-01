@@ -80,8 +80,8 @@ EOF</userinput></screen>
   в <filename>/usr/share/man/man1/passwd.1</filename> и <filename>/usr/share/man/man5/passwd.5</filename>. 
   Когда в книге используется <ulink role='man' url='&man;/passwd.5'>passwd(5)</ulink>, имеется 
   в виду конкретно <filename>/usr/share/man/man5/passwd.5</filename>. <command>man passwd</command> 
-  напечатает первую найденную справочную страницу, совпадающую с <quote>passwd</quote>, 
-  которая будет <filename>/usr/share/man/man1/passwd.1</filename>. В этом примере вам 
+  напечатает первую найденную справочную страницу, совпадающую с <quote>passwd</quote> - 
+  это будет <filename>/usr/share/man/man1/passwd.1</filename>. В этом примере вам 
   нужно будет запустить <command>man 5 passwd</command>, чтобы прочитать указанную 
   страницу. Обратите внимание, что большинство справочных страниц не имеют 
   повторяющихся страниц в разных разделах. Поэтому обычно достаточно 
