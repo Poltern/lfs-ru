@@ -106,7 +106,7 @@ nochunks: validate profile-html
                 $(RENDERTMP)/lfs-html.xml
 
 	@echo "Running Tidy..."
-	$(Q)tidy -config tidy.conf $(BASEDIR)/$(NOCHUNKS_OUTPUT) || true
+	$(Q)tidy -config tidy.conf $(BASEDIR)/$(NOCHUNKS_OUTPUT) || test $$? -le 1
 
 	@echo "Running obfuscate.sh..."
 	$(Q)bash obfuscate.sh                                $(BASEDIR)/$(NOCHUNKS_OUTPUT)

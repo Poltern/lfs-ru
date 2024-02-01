@@ -53,8 +53,8 @@
        We have expanded the support to several inline tags.
        See pdf/lfs-mixed.xsl.
        Note: the argument in select= is a zero-width space
-       (unicode 200b, encoded in utf-8)-->
-  <xsl:param name="ulink.hyphenate" select="'?'"/>
+       (unicode 200b)-->
+  <xsl:param name="ulink.hyphenate" select="'&#x200B;'"/>
 
   <!-- List of characters to allow ulink URLs, and supported inline tags,
        to be automatically hyphenated on.

@@ -10,6 +10,14 @@
   <!-- Upstream XHTML presentation templates -->
   <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/docbook.xsl"/>
 
+  <xsl:param name="chunker.output.method" select="'xml'"/>
+  <xsl:param name="chunker.output.encoding" select="'UTF-8'"/>
+  <xsl:param name="chunker.output.media-type" select="'application/xhtml+xml'"/>
+  <xsl:param name="chunker.output.doctype-public" select="'-//W3C//DTD XHTML 1.0 Strict//EN'"/>
+  <xsl:param name="chunker.output.doctype-system" select="'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'"/>
+  <xsl:param name="chunker.output.omit-xml-declaration" select="'yes'"/>
+  <xsl:param name="chunker.output.indent" select="'no'"/>
+
   <!-- Including our customized elements templates -->
   <xsl:include href="common.xsl"/>
   <xsl:include href="xhtml/lfs-admon.xsl"/>
@@ -30,9 +38,6 @@
   <!-- Drop some unwanted style attributes -->
   <xsl:param name="ulink.target" select="''"/>
   <xsl:param name="css.decoration" select="0"/>
-
-  <!-- No XML declaration -->
-  <xsl:param name="chunker.output.omit-xml-declaration" select="'yes'"/>
 
   <!-- Control generation of ToCs and LoTs -->
   <xsl:param name="generate.toc">

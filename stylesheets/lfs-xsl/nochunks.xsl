@@ -10,6 +10,13 @@
   <!-- Upstream XHTML templates -->
   <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/docbook.xsl"/>
 
+  <xsl:output method="xml"
+              encoding="UTF-8"
+              media-type="application/xhtml+xml"
+              doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+              doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+              omit-xml-declaration="yes"
+              indent="no" />
   <!-- Include our customized templates -->
   <xsl:include href="common.xsl"/>
   <xsl:include href="xhtml/lfs-index.xsl"/>

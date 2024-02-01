@@ -18,6 +18,7 @@
 
   <!-- Generate DocBook instance with correct DOCTYPE -->
   <xsl:output method="xml"
+              encoding="UTF-8"
               doctype-public="-//OASIS//DTD DocBook XML V4.5//EN"
               doctype-system="http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"/>
 
