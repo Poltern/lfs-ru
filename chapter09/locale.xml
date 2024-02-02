@@ -5,18 +5,21 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-config-locale" revision="systemd">
+<sect1 id="ch-config-locale">
   <?dbhtml filename="locale.html"?>
 
   <title>Настройка системной локали</title>
 
   <indexterm zone="ch-config-locale">
-    <primary sortas="e-etc-locale-conf">/etc/locale.conf</primary>
+    <primary sortas="e-/etc/profile">/etc/profile</primary>
   </indexterm>
 
-  <para>В приведенном ниже файле <filename>/etc/locale.conf</filename> 
-  задаются некоторые переменные окружения, необходимые для поддержки вашего языка. 
-  Правильная их установка влияет на:</para>
+  <indexterm zone="ch-config-locale" revision='systemd'>
+    <primary sortas="e-/etc/profile">/etc/locale.conf</primary>
+  </indexterm>
+
+  <para>Некоторые переменные окружения, необходимые для поддержки вашего языка. Правильная их 
+  установка влияет на:</para>
 
   <itemizedlist>
     <listitem>
@@ -55,7 +58,7 @@
   в большинстве случаев безопаснее всего выбрать каноническое имя для конкретной 
   локали. Для определения канонического имени локали выполните команду ниже, 
   заменив <replaceable>&lt;locale name&gt;</replaceable> на вывод <command>locale -a</command> 
-  для желаемой локали (например <literal>en_GB.iso88591</literal>).</para>
+  для желаемой локали (например <literal>en_GB.iso88591</literal> в нашем примере).</para>
 
 <screen role="nodump"><userinput>LC_ALL=<replaceable>&lt;locale name&gt;</replaceable> locale charmap</userinput></screen>
 
@@ -88,28 +91,90 @@ LC_ALL=&lt;locale name&gt; locale int_prefix</userinput></screen>
   об ошибках), если название локали не соответствует их ожиданиям. В таких случаях изучите, какие ещё 
   дистрибутивы Linux поддерживают ваш язык, возможно, это даст некоторую полезную информацию</para>
 
-  <para>Как только будут определены правильные настройки локали, создайте файл
+  <para revision='systemd'>Как только будут определены правильные настройки локали, создайте файл
   <filename>/etc/locale.conf</filename>:</para>
 
-<screen><userinput>cat &gt; /etc/locale.conf &lt;&lt; "EOF"
+<screen revision='systemd'><userinput>cat &gt; /etc/locale.conf &lt;&lt; "EOF"
 <literal>LANG=<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable></literal>
 EOF</userinput></screen>
 
-  <para>Обратите внимание, что вы можете изменить <filename>/etc/locale.conf</filename> с помощью 
+  <para>Программа оболочки <command>/bin/bash</command> (далее именуемая как 
+  <quote>оболочка</quote>) использует начальный набор файлов, чтобы помочь 
+  создать среду для запуска. Каждый файл имеет определенное назначение и может по-разному 
+  влиять на вход в систему и интерактивное окружение. Файлы в каталоге <filename
+  class="directory">/etc</filename> содержат глобальные настройки. Если в домашнем 
+  каталоге существуют эквивалентные файлы, они могут переопределить глобальные настройки.</para>
+
+  <para>Интерактивная оболочка входа запускается после успешного входа с использованием
+  <command>/bin/login</command>, прочитав файл <filename>/etc/passwd</filename>. Интерактивная 
+  оболочка без входа в систему запускается из командной строки (например,
+  <prompt>[prompt]$</prompt><command>/bin/bash</command>). Неинтерактивная оболочка обычно 
+  присутствует когда выполняется скрипт оболочки. Он неинтерактивен, поскольку обрабатывает скрипт 
+  и не ожидает ввода пользователем между командами.</para>
+
+  <para><phrase revision='systemd'>На оболочки входа в систему часто не влияют настройки в 
+  <filename>/etc/locale.conf</filename>. </phrase>Создайте файл 
+  <filename>/etc/profile</filename>
+  <phrase revision='sysv'>после того, как будут определены правильные настройки локали, чтобы  
+  установить желаемый язык</phrase><phrase revision='systemd'>для чтения настроек локали из 
+  <filename>/etc/locale.conf</filename> и экспортируйте их</phrase>, но вместо этого установите 
+  локаль <literal>C.UTF-8</literal> при запуске консоли Linux (чтобы программы не 
+  выводили символы, которые консоль Linux не может отобразить):</para>
+
+<screen revision="systemd"><userinput>cat &gt; /etc/profile &lt;&lt; "EOF"
+<literal># Begin /etc/profile
+
+for i in $(locale); do
+  unset ${i%=*}
+done
+
+if [[ "$TERM" = linux ]]; then
+  export LANG=C.UTF-8
+else
+  source /etc/locale.conf
+
+  for i in $(locale); do
+    key=${i%=*}
+    if [[ -v $key ]]; then
+      export $key
+    fi
+  done
+fi
+
+# End /etc/profile</literal>
+EOF</userinput></screen>
+
+<screen revision="sysv"><userinput>cat &gt; /etc/profile &lt;&lt; "EOF"
+<literal># Begin /etc/profile
+
+for i in $(locale); do
+  unset ${i%=*}
+done
+
+if [[ "$TERM" = linux ]]; then
+  export LANG=C.UTF-8
+else
+  export LANG=<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable>
+fi
+
+# End /etc/profile</literal>
+EOF</userinput></screen>
+
+  <para revision='systemd'>Обратите внимание, что вы можете изменить <filename>/etc/locale.conf</filename> с помощью 
   утилиты из состава systemd - <command>localectl</command>. Чтобы использовать
   <command>localectl</command> для приведенного выше примера, выполните:</para>
 
-<screen role="nodump"><userinput>localectl set-locale LANG="<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable>"</userinput></screen>
+<screen revision='systemd' role="nodump"><userinput>localectl set-locale LANG="<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable>"</userinput></screen>
 
-  <para>Вы также можете указать другие переменные окружения для конкретного языка, такие как 
+  <para revision='systemd'>Вы также можете указать другие переменные окружения для конкретного языка, такие как 
   <envar>LANG</envar>, <envar>LC_CTYPE</envar>, <envar>LC_NUMERIC</envar> или
   любая другая переменная окружения из вывода команды <command>locale</command>. Просто 
   разделите их пробелами. Пример, где  <envar>LANG</envar> установлен как
   en_US.UTF-8, а <envar>LC_CTYPE</envar> установлен как en_US:</para>
 
-<screen role="nodump"><userinput>localectl set-locale LANG="en_US.UTF-8" LC_CTYPE="en_US"</userinput></screen>
+<screen revision='systemd' role="nodump"><userinput>localectl set-locale LANG="en_US.UTF-8" LC_CTYPE="en_US"</userinput></screen>
 
-  <note><para>Пожалуйста, обратите внимание, что команда <command>localectl</command> 
+  <note revision='systemd'><para>Пожалуйста, обратите внимание, что команда <command>localectl</command> 
   не работает в среде chroot. Его можно использовать только после загрузки системы LFS с помощью systemd.</para></note>
 
   <para>Локаль <literal>C</literal> (используемая по умолчанию) и <literal>en_US</literal> (одна из 
@@ -121,10 +186,6 @@ EOF</userinput></screen>
   указана как <computeroutput>unknown 8-bit</computeroutput>). Рекомендуется использовать локаль 
   <literal>C</literal>, если вы уверены, что вам никогда не понадобятся 8-битные символы.</para>
 
-<!--
-  <para>UTF-8 based locales are not supported well by many programs.
-  Work is in progress to document and, if possible, fix such problems, see
-  <ulink url="&blfs-book;introduction/locale-issues.html"/>.</para>
--->
+
 
 </sect1>

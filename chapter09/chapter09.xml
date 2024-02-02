@@ -26,14 +26,13 @@
   <!-- sysv -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="network.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="usage.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="profile.xml"/>
 
   <!-- systemd -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="clock.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="consoled.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="locale.xml"/>
 
   <!-- common -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="locale.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="inputrc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="etcshells.xml"/>
 
