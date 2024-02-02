@@ -396,6 +396,35 @@ EOF</userinput></screen>
   <para>Несколько примеров:</para>
 
   <itemizedlist>
+   <listitem>
+      <para>
+        Мы будем использовать <literal>C.UTF-8</literal> в качестве локали для интерактивных 
+		сеансов в консоли Linux в <xref role=',' linkend='ch-config-locale'/>, поэтому нам 
+		следует установить значение переменной <literal>UNICODE</literal> в <literal>1</literal>. 
+		Консольные шрифты, поставляемые пакетом <application>Kbd</application>, содержащие глифы 
+		для всех символов сообщений программы в <literal>C.UTF-8</literal> являются 
+		<filename>LatArCyrHeb*.psfu.gz</filename>, <filename>LatGrkCyr*.psfu.gz</filename>, 
+		<filename>Lat2-Terminus16.psfu.gz</filename> и 
+		<filename>pancyrillic.f16.psfu.gz</filename> из каталога 
+		<filename class='directory'>/usr/share/consolefonts</filename> (в других поставляемых 
+		консольных шрифтах отсутствуют глифы некоторых символов Unicode, таких как левые/правые 
+		кавычки и английское тире). Поэтому установите один из них, например 
+		<filename>Lat2-Terminus16.psfu.gz</filename>, в качестве шрифта консоли по умолчанию:
+      </para>
+
+      <!-- We are using 'nodump' for the generic setting, but not for an
+           example (see below).  This is deliberate to keep the
+           compatibility with jhalfs.  -->
+<screen role='nodump'><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
+<literal># Begin /etc/sysconfig/console
+
+UNICODE="1"
+FONT="Lat2-Terminus16"
+
+# End /etc/sysconfig/console</literal>
+EOF</userinput></screen>
+
+    </listitem>
 
     <listitem>
       <para>Для не-Unicode настройки необходимы только переменные KEYMAP и FONT. Например, 
@@ -486,7 +515,7 @@ EOF</userinput></screen>
 	  когда исходные символы имеют 8-битные коды. Эта особенность не влияет на раскладки 
 	  для европейских языков, поскольку в них "сливаются" два ASCII-символа или добавляются 
 	  подчеркивания к неподчеркнутым ASCII-символам. Однако, в режиме UTF-8 могут быть проблемы, 
-	  например, для греческого языка, когда необходимо подчеркнуть символ <quote>alpha</quote>. 
+	  например, для греческого языка, когда необходимо подчеркнуть символ α.
 	  Решением в этой ситуации будет отказ от использования UTF-8 или установка графической 
 	  системы X Window, не имеющих подобных ограничений.</para>
     </listitem>
