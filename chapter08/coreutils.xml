@@ -1252,7 +1252,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="yes">
         <term><command>yes</command></term>
         <listitem>
-          <para>Повторно выводит <quote>y</quote> или указанную строку, до тех пор, пока
+          <para>Повторно выводит <literal>y</literal> или указанную строку, до тех пор, пока
 		  команда не будет завершена с помощью kill</para>
           <indexterm zone="ch-system-coreutils yes">
             <primary sortas="b-yes">yes</primary>
