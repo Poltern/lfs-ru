@@ -71,7 +71,6 @@ cd       build</userinput></screen>
              --disable-werror                         \
              --enable-kernel=&min-kernel;                     \
              --enable-stack-protector=strong          \
-             --with-headers=/usr/include              \
              --disable-nscd                           \
              libc_cv_slibdir=/usr/lib</userinput></screen>
 
@@ -100,14 +99,11 @@ cd       build</userinput></screen>
         <term><parameter>--enable-stack-protector=strong</parameter></term>
         <listitem>
           <para>Этот параметр повышает безопасность системы за счет добавления
-		  дополнительного кода для проверки переполнения буфера.</para>
-        </listitem>
-      </varlistentry>
-<!-- do we need this one? -->
-      <varlistentry>
-        <term><parameter>--with-headers=/usr/include</parameter></term>
-        <listitem>
-          <para>Сообщает системе сборки местоположение заголовочных файлов API ядра</para>
+		  дополнительного кода для проверки переполнения буфера. Обратите внимание, что 
+		  Glibc всегда явно переопределяет параметры GCC по умолчанию, поэтому необходимо 
+		  всегда указывать эту опцию, несмотря на то, что мы уже указали 
+		  <option>--enable-default-ssp</option> для GCC.</para>
+
         </listitem>
       </varlistentry>
 

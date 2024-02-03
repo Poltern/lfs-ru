@@ -14,9 +14,9 @@
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
 <!ENTITY glibc-fhs-patch-size "2.8 KB">
 
-<!ENTITY glibc-upstream-fixes-patch "glibc-&glibc-version;-upstream_fixes-3.patch">
-<!ENTITY glibc-upstream-fixes-patch-md5 "545977e0b5c341ba945cf4b5de92f1e2">
-<!ENTITY glibc-upstream-fixes-patch-size "28 KB">
+<!ENTITY glibc-upstream-fixes-patch "glibc-&glibc-version;-upstream_fixes-4.patch">
+<!ENTITY glibc-upstream-fixes-patch-md5 "66e843b00688c641c9bdda684db45b43">
+<!ENTITY glibc-upstream-fixes-patch-size "36 KB">
 
 <!ENTITY kbd-backspace-patch "kbd-&kbd-version;-backspace-1.patch">
 <!ENTITY kbd-backspace-patch-md5 "f75cca16a38da6caa7d52151f7136895">
