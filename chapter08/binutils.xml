@@ -139,7 +139,7 @@ cd       build</userinput></screen>
     <option>--enable-default-pie</option> и
     <option>--enable-default-ssp</option>.</para>
 
-    <para>Также известно, что завершаются неудачно три теста в пакете gprofng.</para>
+ <!--    <para>Также известно, что завершаются неудачно три теста в пакете gprofng.</para>-->
 
     <para>Установите пакет:</para>
 

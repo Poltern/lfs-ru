@@ -25,9 +25,9 @@
     <!--<listitem>
     <para>None</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Acl-&acl-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Attr-&attr-version;</para>
     </listitem>
@@ -43,9 +43,9 @@
     <listitem>
       <para>Bc-&bc-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Binutils-&binutils-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Bison-&bison-version;</para>
     </listitem>-->
@@ -288,6 +288,11 @@
   <itemizedlist>
     <title>Добавлены:</title>
     <!-- <listitem><para></para></listitem> satisfy build -->
+
+    <listitem>
+      <para>&bash-upstream-fixes-patch;</para>
+    </listitem>
+
     <listitem>
       <para>setuptools-&setuptools-version;</para>
     </listitem>

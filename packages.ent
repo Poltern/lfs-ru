@@ -13,10 +13,10 @@
      *-knl-*     Package info for Kernel stuff
 -->
 
-<!ENTITY acl-version "2.3.1">
-<!ENTITY acl-size "348 KB">
+<!ENTITY acl-version "2.3.2">
+<!ENTITY acl-size "363 KB">
 <!ENTITY acl-url "&savannah;/releases/acl/acl-&acl-version;.tar.xz">
-<!ENTITY acl-md5 "95ce715fe09acca7c12d3306d0f076b2">
+<!ENTITY acl-md5 "590765dee95907dbc3c856f7255bd669">
 <!ENTITY acl-home "&savannah-nongnu;/projects/acl">
 <!ENTITY acl-fin-du "6.1 MB">
 <!ENTITY acl-fin-sbu "менее 0.1 SBU">
@@ -65,10 +65,10 @@
 <!ENTITY bc-fin-du "7.7 MB">
 <!ENTITY bc-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY binutils-version "2.41">
-<!ENTITY binutils-size "26,139 KB">
+<!ENTITY binutils-version "2.42">
+<!ENTITY binutils-size "26,922 KB">
 <!ENTITY binutils-url "https://sourceware.org/pub/binutils/releases/binutils-&binutils-version;.tar.xz">
-<!ENTITY binutils-md5 "256d7e0ad998e423030c84483a7c1e30">
+<!ENTITY binutils-md5 "a075178a9646551379bfb64040487715">
 <!ENTITY binutils-home "&gnu-software;binutils/">
 <!ENTITY binutils-tmpp1-du "647 MB">
 <!ENTITY binutils-tmpp1-sbu "1 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240117">
-<!ENTITY iana-etc-size "596 KB">
+<!ENTITY iana-etc-version "20240125">
+<!ENTITY iana-etc-size "589 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "215feb4b55043a6c18e84a5ed58b705f">
+<!ENTITY iana-etc-md5 "aed66d04de615d76c70890233081e584">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "7">
-<!ENTITY linux-patch-version "1">
+<!ENTITY linux-patch-version "2">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "138,096 KB">
+<!ENTITY linux-size "138,085 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "d8a7394e0e349dd373e9722e141c8b61">
+<!ENTITY linux-md5 "62b0a6c979a54569295d34ed57f47875">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -539,10 +539,10 @@
 <!ENTITY ninja-fin-du "75 MB">
 <!ENTITY ninja-fin-sbu "0.3 SBU">
 
-<!ENTITY openssl-version "3.2.0">
-<!ENTITY openssl-size "17,284 KB">
+<!ENTITY openssl-version "3.2.1">
+<!ENTITY openssl-size "17,318 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "7903549a14abebc5c323ce4e85f2cbb2">
+<!ENTITY openssl-md5 "c239213887804ba00654884918b37441">
 <!ENTITY openssl-home "https://www.openssl.org/">
 <!ENTITY openssl-fin-du "587 MB">
 <!ENTITY openssl-fin-sbu "3.0 SBU">
@@ -765,24 +765,24 @@
 <!ENTITY xml-parser-fin-du "2.3 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xz-version "5.4.5">
-<!ENTITY xz-size "1,642 KB">
-<!ENTITY xz-url "https://tukaani.org/xz/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "1d33e0be05c53e7a5641acf5c8b35fdd">
+<!ENTITY xz-version "5.4.6">
+<!ENTITY xz-size "1,645 KB">
+<!ENTITY xz-url "https://github.com/tukaani-project/xz/releases/download/v&xz-version;/xz-&xz-version;.tar.xz">
+<!ENTITY xz-md5 "7ade7bd1181a731328f875bec62a9377">
 <!ENTITY xz-home "https://tukaani.org/xz">
 <!ENTITY xz-tmp-du "22 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">
 <!ENTITY xz-fin-du "24 MB">
 <!ENTITY xz-fin-sbu "0.1 SBU">
 
-<!ENTITY zlib-version "1.3">
-<!ENTITY zlib-size "1,461 KB">
+<!ENTITY zlib-version "1.3.1">
+<!ENTITY zlib-size "1,478 KB">
 <!-- DO NOT remove "fossils"!
      The upstream removes https://zlib.net/zlib-&zlib-version;.tar.xz
      once a newer version is released EVEN IF there is no security fixes.
      Unfortunately there is no .xz files in fossils directory.  -->
 <!ENTITY zlib-url "https://zlib.net/fossils/zlib-&zlib-version;.tar.gz">
-<!ENTITY zlib-md5 "60373b133d630f74f4a1f94c1185a53f">
+<!ENTITY zlib-md5 "9855b6d802d7fe5b7bd5b196a2271655">
 <!ENTITY zlib-home "https://zlib.net/">
 <!ENTITY zlib-fin-du "6.2 MB">
 <!ENTITY zlib-fin-sbu "менее 0.1 SBU">
