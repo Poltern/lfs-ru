@@ -64,7 +64,7 @@
     <para>Чтобы подготовить тесты, убедитесь, что пользователь
 	<systemitem class="username">tester</systemitem> может писать в исходное дерево:</para>
 
-<screen><userinput remap="test">chown -Rv tester .</userinput></screen>
+<screen><userinput remap="test">chown -R tester .</userinput></screen>
 
     <para>Теперь запустите тесты от имени пользователя <systemitem
     class="username">tester</systemitem>:</para>

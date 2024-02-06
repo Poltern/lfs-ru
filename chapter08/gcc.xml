@@ -155,7 +155,7 @@ cd       build</userinput></screen>
     <para>Выполните тестирование под непривилегированным пользователем, но не останавливайтесь
 	на ошибках:</para>
 
-<screen><userinput remap="test">chown -Rv tester .
+<screen><userinput remap="test">chown -R tester .
 su tester -c "PATH=$PATH make -k check"</userinput></screen>
 
     <para>Чтобы получить сводку результатов набора тестов, выполните:</para>

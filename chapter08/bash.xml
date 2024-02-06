@@ -76,7 +76,7 @@
     <systemitem class="username">tester</systemitem> может писать в каталог с 
     исходниками:</para>
 
-<screen><userinput remap="test">chown -Rv tester .</userinput></screen>
+<screen><userinput remap="test">chown -R tester .</userinput></screen>
 
     <para>Набор тестов пакета предназначен для запуска пользователем без полномочий
 	root, которому принадлежит терминал, подключенный к стандартному вводу. Чтобы

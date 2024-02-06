@@ -116,7 +116,7 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
     <para>Исправьте некоторые разрешения, чтобы пользователь без полномочий &root; мог
 	компилировать и запускать тесты:</para>
 
-<screen><userinput remap="test">chown -Rv tester . </userinput></screen>
+<screen><userinput remap="test">chown -R tester . </userinput></screen>
 
     <para>Теперь запустите тесты:</para>
 

@@ -100,7 +100,7 @@
 <screen role="nodump"><userinput>bash tests/run.sh --srcdir=$PWD --builddir=$PWD</userinput></screen>
     </warning>
 
-<screen><userinput remap="test">chown -Rv tester .
+<screen><userinput remap="test">chown -R tester .
 su tester -c "make -k check"</userinput></screen>
 
     <para>Тесты с <emphasis>жесткими ссылками</emphasis> завершатся неудачей, если в ядре хоста 
