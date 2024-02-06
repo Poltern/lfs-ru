@@ -48,6 +48,23 @@
   <sect2 role="installation">
     <title>Установка пакета Expect</title>
 
+    <para>Expect для работы необходим псевдотерминал(PTY). Убедитесь, что PTY работают 
+	правильно в среде chroot, выполнив простой тест:</para>
+
+<screen><userinput remap="test">python3 -c 'from pty import spawn; spawn(["echo", "ok"])'</userinput></screen>
+
+    <para>Эта команда должна вывести <computeroutput>ok</computeroutput>. Если вместо 
+	этого вывод содержит <computeroutput>OSError: out of pty devices</computeroutput>, 
+	то среда не настроена для правильной работы PTY. Вам необходимо выйти из среды chroot, 
+	ещё раз прочитать <xref linkend='ch-tools-kernfs'/> и убедиться, что файловая система 
+    <systemitem class="filesystem">devpts</systemitem> (и другие файловые системы 
+	виртуального ядра) смонтирована правильно. Затем повторно войдите в среду chroot, 
+	следуя инструкции <xref linkend='ch-tools-chroot'/>.
+    Эту проблему необходимо решить, прежде чем вы продолжите, иначе наборы тестов, 
+	зависимые от Expect (например, наборы тестов Bash, Binutils, GCC, GDBM и, конечно, 
+	самого Expect), потерпят фатальный сбой, а также могут произойти другие незначительные 
+	сбои.</para>
+
     <para>Подготовьте Expect к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr           \
@@ -81,24 +98,9 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <important>
-      <para>Набор тестов для Expect считается критически важным. Не пропускайте его ни 
-	  при каких обстоятельствах.</para>
-    </important>
-
     <para>Чтобы протестировать пакет, выполните:</para>
 
 <screen><userinput remap="test">make test</userinput></screen>
-
-    <para>Если какой-либо тест завершается неудачей с сообщением 
-	<computeroutput>The system has no more ptys.  Ask your system
-    administrator to create more</computeroutput>, это означает, что вы неправильно 
-	смонтировали файловую систему <systemitem class="filesystem">devpts</systemitem>. Вам 
-	необходимо выйти из среды chroot, ещё раз прочитать <xref linkend='ch-tools-kernfs'/> и 
-	убедиться, что файловая система <systemitem class="filesystem">devpts</systemitem> (и 
-	другие файловые системы виртуального ядра) смонтированы правильно. Затем повторно войдите 
-	в среду chroot, следуя инструкции <xref linkend='ch-tools-chroot'/>. Эту проблему необходимо 
-	решить, прежде чем вы продолжите.</para>
 
     <para>Установите пакет:</para>
 
