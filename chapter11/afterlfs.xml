@@ -122,7 +122,7 @@ mounttype proc    proc   proc
 mounttype sys     sysfs  sysfs
 mounttype run     tmpfs  run
 if [ -h $LFS/dev/shm ]; then
-  mkdir -pv $LFS/$(readlink $LFS/dev/shm)
+  install -v -d -m 1777 $LFS$(realpath /dev/shm)
 else
   mounttype dev/shm tmpfs tmpfs -o nosuid,nodev
 fi 
