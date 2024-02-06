@@ -100,9 +100,9 @@
     <listitem>
       <para>Gettext-&gettext-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Glibc-&glibc-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>GMP-&gmp-version;</para>
     </listitem>-->
@@ -295,10 +295,6 @@
 
     <listitem>
       <para>setuptools-&setuptools-version;</para>
-    </listitem>
-
-    <listitem>
-      <para>&glibc-upstream-fixes-patch;</para>
     </listitem>
 
     <listitem>

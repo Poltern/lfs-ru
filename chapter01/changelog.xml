@@ -40,10 +40,28 @@
     -->
 
     <listitem>
+      <para>2024-02-02</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Update to tzdata-2024a.  Fixes
+          <ulink url='&lfs-ticket-root;5428'>#5428</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to glibc-2.39 (security fix).  Fixes
+          <ulink url='&lfs-ticket-root;5426'>#5426</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[xry111] - Update to linux-6.7.3.  Fixes
+          <ulink url='&lfs-ticket-root;5427'>#5427</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-02-01</para>
       <itemizedlist>
         <listitem>
-          <para>[bdubbs] - Update to openssl-3.2.1. Fixes
+          <para>[bdubbs] - Update to openssl-3.2.1 (security fix). Fixes
           <ulink url='&lfs-ticket-root;5425'>#5425</ulink>.</para>
         </listitem>
         <listitem>

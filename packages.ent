@@ -255,10 +255,10 @@
 <!ENTITY gettext-fin-du "250 MB">
 <!ENTITY gettext-fin-sbu "1.4 SBU">
 
-<!ENTITY glibc-version "2.38">
-<!ENTITY glibc-size "18,471 KB">
+<!ENTITY glibc-version "2.39">
+<!ENTITY glibc-size "18,092 KB">
 <!ENTITY glibc-url "&gnu;glibc/glibc-&glibc-version;.tar.xz">
-<!ENTITY glibc-md5 "778cce0ea6bf7f84ca8caacf4a01f45b">
+<!ENTITY glibc-md5 "be81e87f72b5ea2c0ffe2bedfeb680c6">
 <!ENTITY glibc-home "&gnu-software;libc/">
 <!ENTITY glibc-tmp-du "858 MB">
 <!ENTITY glibc-tmp-sbu "1.6 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "7">
-<!ENTITY linux-patch-version "2">
+<!ENTITY linux-patch-version "3">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "138,085 KB">
+<!ENTITY linux-size "138,128 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "62b0a6c979a54569295d34ed57f47875">
+<!ENTITY linux-md5 "a542a2aea4db4cf09e932fff02c8d1d1">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -712,10 +712,10 @@
 <!ENTITY texinfo-fin-du "128 MB">
 <!ENTITY texinfo-fin-sbu "0.3 SBU">
 
-<!ENTITY tzdata-version "2023d">
-<!ENTITY tzdata-size "440 KB">
+<!ENTITY tzdata-version "2024a">
+<!ENTITY tzdata-size "444 KB">
 <!ENTITY tzdata-url "https://www.iana.org/time-zones/repository/releases/tzdata&tzdata-version;.tar.gz">
-<!ENTITY tzdata-md5 "08b9d559939670725ec298fdbb029649">
+<!ENTITY tzdata-md5 "2349edd8335245525cc082f2755d5bf4">
 <!ENTITY tzdata-home "https://www.iana.org/time-zones">
 
 <!ENTITY udev-fin-du "138 MB">
