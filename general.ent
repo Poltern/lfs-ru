@@ -1,8 +1,8 @@
 <!-- Editing  up to the line of ==== should be enough
      to generate a book for development, release, or rc-->
-<!ENTITY % development "IGNORE"><!-- set to INCLUDE for development,
+<!ENTITY % development "INCLUDE"><!-- set to INCLUDE for development,
                                       set to IGNORE for release or rc -->
-<!ENTITY % release     "INCLUDE"> <!-- set to INCLUDE for release,
+<!ENTITY % release     "IGNORE"> <!-- set to INCLUDE for release,
                                       set to IGNORE for development or rc -->
 <!ENTITY % rc          "IGNORE"> <!-- set to INCLUDE for rc,
                                       set to IGNORE for development or
