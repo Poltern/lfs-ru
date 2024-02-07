@@ -49,7 +49,7 @@ case $day in
 	* ) suffix="th";;
 esac
 
-full_date="$month $day$suffix, $year"
+full_date="$day $month $year"
 
 sha="$(git describe --abbrev=1)"
 rev=$(echo "$sha" | sed 's/-g[^-]*$//')
