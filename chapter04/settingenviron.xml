@@ -198,7 +198,7 @@ EOF</userinput></screen>
 	 как два логических ядра. В результате получается 32 логических ядра. Очевидный способ 
 	 задействовать все эти логические ядра - разрешить <command>make</command> создавать 
 	 до 32 заданий сборки. Это можно сделать, передав параметр <parameter>-j32</parameter> 
-	 команде <command>make:
+	 команде <command>make</command>:
    </para>
 
   <screen role='nodump'><userinput>make -j32</userinput></screen>
