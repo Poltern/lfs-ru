@@ -48,10 +48,10 @@
 
     <!-- https://github.com/systemd/systemd/pull/30549 -->
     <para>Теперь исправьте уязвимость безопасности при проверке DNSSEC в 
-    <command>systemd-resolved</command>:</para>
+    <command>systemd-resolved</command> и ошибку запуска 
+	<command>systemd-analyze verify</command> у созданного экземпляра юнита systemd:</para>
 
-<screen><userinput remap='pre'>sed -e '/return FLAGS_SET.*AUTHENTICATED/s/(t/(dt/' \
-    -i src/resolve/resolved-dns-transaction.c</userinput></screen>
+<screen><userinput remap='pre'>patch -Np1 -i ../&systemd-upstream-patch;</userinput></screen>
 
     <para>Подготовьте systemd к компиляции:</para>
 

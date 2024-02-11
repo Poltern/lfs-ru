@@ -38,3 +38,6 @@
 <!ENTITY sysvinit-consolidated-patch-md5 "17ffccbb8e18c39e8cedc32046f3a475">
 <!ENTITY sysvinit-consolidated-patch-size "2.5 KB">
 
+<!ENTITY systemd-upstream-patch "systemd-&systemd-version;-upstream_fixes-1.patch">
+<!ENTITY systemd-upstream-patch-md5 "8d9c1014445c463cf7c24c162b1e0686">
+<!ENTITY systemd-upstream-patch-size "7.2 KB">

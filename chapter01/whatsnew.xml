@@ -294,10 +294,6 @@
     </listitem>
 
     <listitem>
-      <para>setuptools-&setuptools-version;</para>
-    </listitem>
-
-    <listitem>
       <para>&pkgconf-upstream-fix-patch;</para>
     </listitem>
 
@@ -305,7 +301,16 @@
       <para>&readline-fixes-patch;</para>
     </listitem>
 
+    <listitem>
+      <para>setuptools-&setuptools-version;</para>
+    </listitem>
+
+    <listitem>
+      <para>&systemd-upstream-patch;</para>
+    </listitem>
+
   </itemizedlist>
+
   <itemizedlist>
     <title>Удалены:</title>
     <!-- <listitem><para></para></listitem>  satisfy build -->
