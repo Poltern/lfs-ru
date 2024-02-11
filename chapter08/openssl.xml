@@ -62,7 +62,7 @@
 
     <para>Чтобы протестировать пакет, выполните:</para>
 
-<screen><userinput remap="test">make test</userinput></screen>
+<screen><userinput remap="test">HARNESS_JOBS=<replaceable>$(nproc)</replaceable> make test</userinput></screen>
 
     <para>Известно, что один тест, 30-test_afalg.t, завершится ошибкой, если в ядре 
 	хоста не включен параметр <option>CONFIG_CRYPTO_USER_API_SKCIPHER</option> или 
@@ -223,7 +223,8 @@ rm -rf DESTDIR</userinput></screen>
           <para>
             это инструмент командной строки для использования различных криптографических
 			функций библиотеки <application>OpenSSL</application> из оболочки. Его можно
-			использовать для различных функций, которые задокументированы в <command>man 1 openssl</command>
+			использовать для различных функций, которые задокументированы в 
+			<ulink role='man' url='&man;openssl.1'>openssl(1)</ulink>
           </para>
           <indexterm zone="ch-system-openssl openssl-prog">
             <primary sortas="b-openssl">openssl</primary>
@@ -252,8 +253,8 @@ rm -rf DESTDIR</userinput></screen>
         <listitem>
           <para>
             реализует протокол безопасности транспортного уровня (TLS v1). Он
-			предоставляет богатый API, документацию по которому можно найти,
-			выполнив команду: <command>man 7 ssl</command>
+			предоставляет богатый API, документацию по которому можно найти в руководстве 
+			<ulink role='man' url='&man;ssl.7'>ssl(7)</ulink>
           </para>
           <indexterm zone="ch-system-openssl libssl">
             <primary sortas="c-libssl">libssl.so</primary>

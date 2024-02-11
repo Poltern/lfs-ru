@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-setuptools" role="wrap">
+  <?dbhtml filename="setuptools.html"?>
+
+  <sect1info condition="script">
+    <productname>setuptools</productname>
+    <productnumber>&setuptools-version;</productnumber>
+    <address>&setuptools-url;</address>
+  </sect1info>
+
+  <title>Setuptools-&setuptools-version;</title>
+
+  <indexterm zone="ch-system-setuptools">
+    <primary sortas="a-setuptools">Setuptools</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Пакет Setuptools это инструмент, используемый для загрузки, сборки, установки, 
+	обновления и удаления пакетов Python.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+      <seglistitem>
+        <seg>&setuptools-fin-sbu;</seg>
+        <seg>&setuptools-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Setuptools</title>
+
+    <para>Соберите пакет:</para>
+
+<screen><userinput remap="install">pip3 wheel -w dist --no-cache-dir --no-build-isolation --no-deps $PWD</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">pip3 install --no-index --find-links dist setuptools</userinput></screen>
+  </sect2>
+
+  <sect2 id="contents-setuptools" role="content">
+    <title>Содержимое пакета Setuptools</title>
+
+    <segmentedlist>
+      <segtitle>Созданные каталоги</segtitle>
+
+      <seglistitem>
+         <seg>
+            /usr/lib/python&python-minor;/site-packages/_distutils_hack,
+            /usr/lib/python&python-minor;/site-packages/pkg_resources,
+            /usr/lib/python&python-minor;/site-packages/setuptools, and
+            /usr/lib/python&python-minor;/site-packages/setuptools-&setuptools-version;.dist-info
+         </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>
+

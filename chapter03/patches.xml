@@ -27,10 +27,10 @@
 -->
 <!--
     <varlistentry>
-      <term>Bash Upstream Fixes Patch - <token>&bash-fixes-patch-size;</token>:</term>
+      <term>Bash Upstream Fixes Patch - <token>&bash-upstream-fixes-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&bash-fixes-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&bash-fixes-patch-md5;</literal></para>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&bash-upstream-fixes-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&bash-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
 -->
@@ -75,7 +75,7 @@
         <para>Контрольная сумма MD5: <literal>&gcc-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
+
     <varlistentry>
       <term>Glibc Upstream Fixes Patch - <token>&glibc-upstream-fixes-patch-size;</token>:</term>
       <listitem>
@@ -83,20 +83,12 @@
         <para>Контрольная сумма MD5: <literal>&glibc-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
-
+-->
     <varlistentry>
       <term>Glibc FHS Patch - <token>&glibc-fhs-patch-size;</token>:</term>
       <listitem>
         <para>Ссылка на загрузку: <ulink url="&patches-root;&glibc-fhs-patch;"/></para>
         <para>Контрольная сумма MD5: <literal>&glibc-fhs-patch-md5;</literal></para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>GRUB Upstream Fixes Patch - <token>&grub-upstream-fixes-patch-size;</token>:</term>
-      <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&grub-upstream-fixes-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&grub-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
 
@@ -124,15 +116,14 @@
       </listitem>
     </varlistentry>
 -->
-<!--
+
     <varlistentry>
-      <term>Perl Upstream Fix Patch - <token>&perl-fix-patch-size;</token>:</term>
+      <term>Pkgconf Upstream Fix Patch - <token>&pkgconf-upstream-fix-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&perl-fix-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&perl-fix-patch-md5;</literal></para>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&pkgconf-upstream-fix-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&pkgconf-upstream-fix-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
 
     <varlistentry>
       <term>Readline Upstream Fix Patch - <token>&readline-fixes-patch-size;</token>:</term>
@@ -150,15 +141,13 @@
       </listitem>
     </varlistentry>
 
-<!--
     <varlistentry revision="systemd">
-      <term>Systemd Upstream Patch - <token>&systemd-upstream-patch-size;</token>:</term>
+      <term>Systemd Upstream Fixes Patch - <token>&systemd-upstream-patch-size;</token>:</term>
       <listitem>
         <para>Ссылка на загрузку: <ulink url="&patches-root;&systemd-upstream-patch;"/></para>
         <para>Контрольная сумма MD5: <literal>&systemd-upstream-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
 <!--
     <varlistentry>
       <term>Xz Upstream Fix Patch - <token>&xz-upstream-fix-patch-size;</token>:</term>

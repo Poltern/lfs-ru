@@ -29,8 +29,8 @@
   <filename class="directory">/usr/share/consolefonts</filename>
   список допустимых экранных шрифтов.</para>
 
-  <para>Файл <filename>/etc/vconsole.conf</filename> должен содержать строки вида: ПЕРЕМЕННАЯ="значение". 
-  Распознаются следующие переменные:</para>
+  <para>Файл <filename>/etc/vconsole.conf</filename> должен содержать строки вида: 
+  <envar>ПЕРЕМЕННАЯ=значение</envar>. Распознаются следующие переменные:</para>
 
   <variablelist>
 
@@ -72,6 +72,22 @@
     </varlistentry>
 
   </variablelist>
+
+  <para>Мы будем использовать <literal>C.UTF-8</literal> в качестве локали для интерактивных 
+  сеансов в консоли Linux в <xref role='.' linkend='ch-config-locale'/>. Консольные шрифты, 
+  поставляемые пакетом <application>Kbd</application>, содержащие глифы для всех символов 
+  сообщений программы в <literal>C.UTF-8</literal> являются 
+  <filename>LatArCyrHeb*.psfu.gz</filename>, <filename>LatGrkCyr*.psfu.gz</filename>,
+  <filename>Lat2-Terminus16.psfu.gz</filename> и
+  <filename>pancyrillic.f16.psfu.gz</filename> из каталога
+  <filename class='directory'>/usr/share/consolefonts</filename> (в других поставляемых 
+  консольных шрифтах отсутствуют глифы некоторых символов Unicode, таких как левые/правые 
+  кавычки и английское тире). Поэтому установите один из них, например 
+  <filename>Lat2-Terminus16.psfu.gz</filename>, в качестве шрифта консоли по умолчанию:</para>
+
+  <!-- We are using "nodump" for general settings, but not examples.  This
+       is ironic, but needed for the compatibility with jhalfs!  -->
+<screen role='nodump'><userinput>echo <literal>FONT=Lat2-Terminus16</literal> &gt; /etc/vconsole.conf</userinput></screen>
 
   <para>Ниже приведен пример немецкой раскладки клавиатуры и консоли:</para>
 <!-- This is what is used by jhalfs for creating the vconsole.conf file.

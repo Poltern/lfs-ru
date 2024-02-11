@@ -22,7 +22,19 @@
     TERM="$TERM"                \
     PS1='(lfs chroot) \u:\w\$ ' \
     PATH=/usr/bin:/usr/sbin     \
+    MAKEFLAGS="-j<replaceable>$(nproc)</replaceable>"      \
+    TESTSUITEFLAGS="-j<replaceable>$(nproc)</replaceable>" \
     /bin/bash --login</userinput></screen>
+
+  <para>
+    Если вы не хотите использовать все доступные логические ядра, замените параметр 
+	<replaceable>$(nproc)</replaceable> количеством логических ядер, которые вы хотите 
+	использовать для сборки пакетов в этой и последующих главах. На наборы тестов некоторых 
+	пакетов (в частности Autoconf, Libtool и Tar) в &ch-final; не влияет установка переменной 
+	<envar>MAKEFLAGS</envar>, вместо этого они используют переменную среды 
+	<envar>TESTSUITEFLAGS</envar>. Мы также установили её здесь для запуска тестов с поддержкой 
+	нескольких ядер.
+  </para>
 
   <para>Параметр <parameter>-i</parameter> команды <command>env</command>, очистит 
   все переменные в среде chroot. После этого переменные
@@ -44,9 +56,9 @@
   указан в переменной окружения <envar>PATH</envar>. Это означает, что кросс-тулчейн
   больше не будет использоваться.</para>
 
-  <para>Обратите внимание, что в командной строке <command>bash</command> будет указано
-  <computeroutput>I have no name!</computeroutput>. Это нормально, поскольку файл 
-  <filename>/etc/passwd</filename> еще не создан.</para>
+  <para>Также обратите внимание, что в командной строке <command>bash</command> будет 
+  указано <computeroutput>I have no name!</computeroutput>. Это нормально, поскольку 
+  файл <filename>/etc/passwd</filename> еще не создан.</para>
 
   <note>
     <para>Важно, чтобы все команды в оставшейся части этой главы и следующих главах

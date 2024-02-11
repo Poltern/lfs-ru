@@ -51,13 +51,12 @@
 	  Coreutils, сначала проверьте, воспроизводятся ли эти ошибки без этого исправления.</para>
     </note>
 
-   <!-- https://bugs.gnu.org/62403 -->
-<!--
-    <para>Fix a bug in checksum utilities causing failed checks not
-    reported correctly:</para>
+    <!-- https://seclists.org/oss-sec/2024/q1/30 -->
+    <para>Исправьте уязвимость в утилите <command>split</command>:</para>
 
-<screen><userinput remap="pre">sed '/if ( ! match/s/ed_checksums//' -i src/digest.c</userinput></screen>
--->
+<screen><userinput remap="pre">sed -e '/n_out += n_hold/,+4 s|.*bufsize.*|//&amp;|' \
+    -i src/split.c</userinput></screen>
+
     <para>Теперь подготовьте Coreutils к компиляции:</para>
 
 <screen><userinput remap="configure">autoreconf -fiv
@@ -117,7 +116,7 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
     <para>Исправьте некоторые разрешения, чтобы пользователь без полномочий &root; мог
 	компилировать и запускать тесты:</para>
 
-<screen><userinput remap="test">chown -Rv tester . </userinput></screen>
+<screen><userinput remap="test">chown -R tester . </userinput></screen>
 
     <para>Теперь запустите тесты:</para>
 
@@ -1253,7 +1252,7 @@ sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8</userinput></screen>
       <varlistentry id="yes">
         <term><command>yes</command></term>
         <listitem>
-          <para>Повторно выводит <quote>y</quote> или указанную строку, до тех пор, пока
+          <para>Повторно выводит <literal>y</literal> или указанную строку, до тех пор, пока
 		  команда не будет завершена с помощью kill</para>
           <indexterm zone="ch-system-coreutils yes">
             <primary sortas="b-yes">yes</primary>

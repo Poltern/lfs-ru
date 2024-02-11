@@ -290,15 +290,20 @@
         </listitem>
       </varlistentry>
 
+
       <varlistentry>
-        <term><parameter>Framebuffer Console support</parameter></term>
+        <term>
+          <parameter>
+            Enable legacy fbdev support for your modesetting driver
+          </parameter> и 
+          <parameter>Framebuffer Console support</parameter>
+        </term>
         <listitem>
-          <para>Это параметр необходим для отображения консоли Linux на устройстве с фреймбуфером. 
-		  Чтобы ядро могло печатать отладочные сообщения на ранней стадии загрузки, его не следует 
-		  собирать как модуль (если только не будет использоваться initramfs). И, если 
-		  <option>CONFIG_DRM</option> (Direct Rendering Manager - Диспетчер прямого рендеринга) 
-		  включен, скорее всего, также должен быть включен <option>CONFIG_DRM_FBDEV_EMULATION</option> 
-		  (включить устаревшую поддержку fbdev для вашего modesetting драйвера).</para>
+          <para>Они необходимы для отображения консоли Linux на графическом процессоре, управляемом 
+		  драйвером DRI (Direct Rendering Infrastructure - инфраструктура прямого рендеринга). Если 
+		  <option>CONFIG_DRM</option> (Direct Rendering Manager - диспетчер прямого рендеринга) включен, 
+		  вам также следует включить эти две опции, иначе вы увидите пустой экран после загрузки драйвера 
+		  DRI.</para>
         </listitem>
       </varlistentry>
 
@@ -332,7 +337,7 @@
 	каталоге <filename class="directory">/etc/modprobe.d</filename>. Информация о модулях и конфигурации 
 	ядра находится в <xref linkend="ch-config-udev"/> и в документации к ядру <filename
     class="directory">linux-&linux-version;/Documentation</filename>. Кроме этого, стоит ознакомиться с 
-	руководством <filename>modprobe.d(5)</filename>.</para>
+	руководством <ulink role='man' url='&man;modprobe.d.5'>modprobe.d(5)</ulink>.</para>
 
     <para>Если поддержка модулей не была отключена в параметрах ядра, установите модули с помощью:</para>
 

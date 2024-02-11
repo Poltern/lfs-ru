@@ -60,13 +60,10 @@
     </warning>
 
     <para>
-      Устранена проблема, приводившая к сбою <command>grub-install</command>, когда раздел 
-	  <filename class='directory'>/boot</filename> (или корневой раздел, если 
-	  <filename class='directory'>/boot</filename> не является отдельным разделом) создается 
-	  e2fsprogs-1.47.0 или более поздней версии:
+      Добавьте файл, отсутствующий в архиве релиза:
     </para>
 
-<screen><userinput remap='pre'>patch -Np1 -i ../grub-&grub-version;-upstream_fixes-1.patch</userinput></screen>
+<screen><userinput remap='pre'>echo <literal>depends bli part_gpt</literal> &gt; grub-core/extra_deps.lst</userinput></screen>
 
     <para>Подготовьте GRUB к компиляции:</para>
 

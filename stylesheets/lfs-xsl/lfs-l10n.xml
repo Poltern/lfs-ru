@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE l:i18n SYSTEM "http://cdn.docbook.org/release/xsl-nons/current/common/l10n.dtd">
 
 <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
 
@@ -71,11 +72,11 @@
   <l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
           language="es" english-language-name="Spanish">
 
-    <l:gentext key="description" text="descripci&#243;n"/>
+    <l:gentext key="description" text="descripción"/>
     <l:gentext key="Bootscripts" text="Guiones de arranque"/>
-    <l:gentext key="Configuration Files" text="Ficheros de configuraci&#243;n"/>
-    <l:gentext key="Kernel Configuration" text="Configuraci&#243;n del n&#250;cleo"/>
-    <l:gentext key="Libraries" text="Librer&#237;as"/>
+    <l:gentext key="Configuration Files" text="Ficheros de configuración"/>
+    <l:gentext key="Kernel Configuration" text="Configuración del núcleo"/>
+    <l:gentext key="Libraries" text="Librerías"/>
     <l:gentext key="Others" text="Otros"/>
     <l:gentext key="Packages" text="Paquetes"/>
     <l:gentext key="Programs" text="Programas"/>

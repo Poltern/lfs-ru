@@ -115,11 +115,11 @@
       <command>modinfo</command>, обычно они связаны со специфичными для шины идентификаторами 
 	  устройств, которые поддерживается модулем. Например, драйвер <emphasis>snd-fm801</emphasis>
       подерживает PCI устройства с идентификатором поставщика 0x1319 и идентификатором
-      устройства 0x0801, и имеет псевдоним <quote>pci:v00001319d00000801sv*sd*bc04sc01i*</quote>.
+      устройства 0x0801, и имеет псевдоним <literal>pci:v00001319d00000801sv*sd*bc04sc01i*</literal>.
       Для большинства устройств, драйвер шины экспортирует псевдонимы драйвера, которые
       будет обрабатывать устройство через <systemitem class="filesystem">sysfs</systemitem>. Например, 
 	  файл <filename>/sys/bus/pci/devices/0000:00:0d.0/modalias</filename> может 
-	  содержать строку <quote>pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</quote>.
+	  содержать строку <literal>pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</literal>.
       Правила по умолчанию, которые предоставлены Udev, заставят <command>udevd</command>
       вызвать <command>/sbin/modprobe</command> с содержимым, которое находится в значении
       переменной окружения <envar>MODALIAS</envar> uevent (которое должно совпадать с
@@ -207,8 +207,8 @@
       <para>Обратите внимание, что команда <quote>softdep</quote> разрешает добавлять
       <literal>pre:</literal> зависимости, или одновременно
       <literal>pre:</literal> и <literal>post:</literal> зависимости. Обратитесь к документации
-      <filename>modprobe.d(5)</filename> для изучения синтаксиса и возможностей
-      <quote>softdep</quote>.</para>
+      <ulink role='man' url='&man;modprobe.d.5'>modprobe.d(5)</ulink> для изучения синтаксиса и 
+	  возможностей <quote>softdep</quote>.</para>
 
       <para revision="sysv">Если рассматриваемый модуль не является обёрткой, и полезен сам по 
 	  себе, настройте загрузочный скрипт <command>modules</command>, чтобы он инициализировался 

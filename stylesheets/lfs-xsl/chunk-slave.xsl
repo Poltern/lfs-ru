@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns="http://www.w3.org/1999/xhtml"
@@ -10,8 +10,13 @@
   <!-- Upstream XHTML presentation templates -->
   <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/docbook.xsl"/>
 
-  <!-- Use ISO-8859-1 for output instead of default UTF-8 -->
+  <xsl:param name="chunker.output.method" select="'xml'"/>
   <xsl:param name="chunker.output.encoding" select="'UTF-8'"/>
+  <xsl:param name="chunker.output.media-type" select="'application/xhtml+xml'"/>
+  <xsl:param name="chunker.output.doctype-public" select="'-//W3C//DTD XHTML 1.0 Strict//EN'"/>
+  <xsl:param name="chunker.output.doctype-system" select="'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'"/>
+  <xsl:param name="chunker.output.omit-xml-declaration" select="'yes'"/>
+  <xsl:param name="chunker.output.indent" select="'no'"/>
 
   <!-- Including our customized elements templates -->
   <xsl:include href="common.xsl"/>
@@ -33,9 +38,6 @@
   <!-- Drop some unwanted style attributes -->
   <xsl:param name="ulink.target" select="''"/>
   <xsl:param name="css.decoration" select="0"/>
-
-  <!-- No XML declaration -->
-  <xsl:param name="chunker.output.omit-xml-declaration" select="'yes'"/>
 
   <!-- Control generation of ToCs and LoTs -->
   <xsl:param name="generate.toc">

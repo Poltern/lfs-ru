@@ -1,9 +1,7 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns="http://www.w3.org/1999/xhtml"
-                exclude-result-prefixes="xlink"
                 version="1.0">
 
   <!-- This stylesheet fixes English punctuation in xref links
@@ -15,22 +13,13 @@
        this file in lfs-chunked2.xsl -->
 
     <!-- xref:
-           Added role variable and use it when calling mode xref-to.-->
+           Added role variable and use it when calling mode xref-to.
+           Also remove code for xlink:href attributes in xref elements
+           since we don't use it.-->
     <!-- The original template is in {docbook-xsl}/xhtml/xref.xsl -->
   <xsl:template match="xref" name="xref">
-    <xsl:param name="xhref" select="@xlink:href"/>
-    <!-- is the @xlink:href a local idref link? -->
-    <xsl:param name="xlink.idref">
-      <xsl:if test="starts-with($xhref,'#') and (not(contains($xhref,'('))
-                    or starts-with($xhref, '#xpointer(id('))">
-        <xsl:call-template name="xpointer.idref">
-          <xsl:with-param name="xpointer" select="$xhref"/>
-        </xsl:call-template>
-      </xsl:if>
-    </xsl:param>
-    <xsl:param name="xlink.targets" select="key('id',$xlink.idref)"/>
     <xsl:param name="linkend.targets" select="key('id',@linkend)"/>
-    <xsl:param name="target" select="($xlink.targets | $linkend.targets)[1]"/>
+    <xsl:param name="target" select="$linkend.targets[1]"/>
       <!-- Added role variable -->
     <xsl:variable name="role" select="@role"/>
     <xsl:variable name="xrefstyle">
@@ -85,7 +74,7 @@
         <xsl:otherwise>
           <xsl:message>
             <xsl:text>ERROR: xref linking to </xsl:text>
-            <xsl:value-of select="@linkend|@xlink:href"/>
+            <xsl:value-of select="@linkend"/>
             <xsl:text> has no generated link text.</xsl:text>
           </xsl:message>
           <xsl:text>???</xsl:text>

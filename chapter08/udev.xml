@@ -53,6 +53,11 @@
 
  <screen><userinput remap="pre">sed '/systemd-sysctl/s/^/#/' -i rules.d/99-systemd.rules.in</userinput></screen>
 
+    <para>Измените жестко заданные пути к файлам конфигурации сети для автономной 
+    установки udev:</para>
+
+ <screen><userinput remap="pre">sed '/NETWORK_DIRS/s/systemd/udev/' -i src/basic/path-lookup.h</userinput></screen>
+
     <para>Подготовьте Udev к компиляции:</para>
 
 <screen><userinput remap="configure">mkdir -p build
@@ -64,6 +69,8 @@ meson setup \
       -Dmode=release                \
       -Ddev-kvm-mode=0660           \
       -Dlink-udev-shared=false      \
+      -Dlogind=false                \
+      -Dvconsole=false              \
       ..</userinput></screen>
 
     <variablelist>
@@ -100,25 +107,35 @@ meson setup \
           <para>Эта опция запрещает udev связываться с внутренней общей библиотекой 
 		  systemd <systemitem class='library'>libsystemd-shared</systemitem>. Эта 
 		  библиотека предназначена для совместного использования многими компонентами 
-		  Systemd, и ее использование избыточно, когда установлен только udev</para>
+		  Systemd, и ее использование избыточно, когда установлен только udev.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dlogind=false -Dvconsole=false</parameter></term>
+        <listitem>
+          <para>Эти параметры предотвращают создание нескольких файлов правил udev, 
+		  принадлежащих другим компонентам Systemd, которые мы не будем устанавливать.</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
+    <para>Получите список предоставляемых udev helpers и сохраните его в переменной 
+	(экспортировать его не обязательно, но это упрощает сборку от имени обычного пользователя 
+	или при использовании менеджера пакетов):</para>
+
+    <screen><userinput remap="make">export udev_helpers=$(grep "'name' :" ../src/udev/meson.build | \
+                      awk '{print $3}' | tr -d ",'" | grep -v 'udevadm')</userinput></screen>
+
     <para>Соберите только компоненты, необходимые для udev:</para>
 
     <screen><userinput remap="make">ninja udevadm systemd-hwdb \
-      $(grep -o -E "^build (src/libudev|src/udev|rules.d|hwdb.d)[^:]*" \
-        build.ninja | awk '{ print $2 }')                              \
-      $(realpath libudev.so --relative-to .)</userinput></screen>
-
-	<para>Удалите один файл правил udev, требующий полной установки Systemd:</para>
-
-<screen><userinput remap="make">rm rules.d/90-vconsole.rules</userinput></screen>
+      $(ninja -n | grep -Eo '(src/(lib)?udev|rules.d|hwdb.d)/[^ ]*') \
+      $(realpath libudev.so --relative-to .)                         \
+      $udev_helpers</userinput></screen>
 
     <para>Установите пакет:</para>
-
-    <screen><userinput remap="install">install -vm755 -d {/usr/lib,/etc}/udev/{hwdb,rules}.d
+    <screen><userinput remap="install">install -vm755 -d {/usr/lib,/etc}/udev/{hwdb.d,rules.d,network}
 install -vm755 -d /usr/{lib,share}/pkgconfig
 install -vm755 udevadm                     /usr/bin/
 install -vm755 systemd-hwdb                /usr/bin/udev-hwdb
@@ -128,11 +145,14 @@ install -vm644 ../src/libudev/libudev.h    /usr/include/
 install -vm644 src/libudev/*.pc            /usr/lib/pkgconfig/
 install -vm644 src/udev/*.pc               /usr/share/pkgconfig/
 install -vm644 ../src/udev/udev.conf       /etc/udev/
-install -vm644 rules.d/* ../rules.d/{*.rules,README} /usr/lib/udev/rules.d/
-install -vm644 hwdb.d/*  ../hwdb.d/{*.hwdb,README}   /usr/lib/udev/hwdb.d/
-install -vm755 $(find src/udev -type f | grep -F -v ".") /usr/lib/udev</userinput></screen>
+install -vm644 rules.d/* ../rules.d/README         /usr/lib/udev/rules.d/
+install -vm644 $(find ../rules.d/*.rules \
+                      -not -name '*power-switch*') /usr/lib/udev/rules.d/
+install -vm644 hwdb.d/*  ../hwdb.d/{*.hwdb,README} /usr/lib/udev/hwdb.d/
+install -vm755 $udev_helpers                       /usr/lib/udev
+install -vm644 ../network/99-default.link          /usr/lib/udev/network</userinput></screen>
 
-    <para>Установите некоторые пользовательские правила и файлы поддержки, 
+    <para>Установите некоторые пользовательские правила и вспомогательные файлы, 
 	полезные в среде LFS:</para>
 
 <screen><userinput remap="install">tar -xvf ../../&udev-lfs-version;.tar.xz
@@ -145,13 +165,27 @@ make -f &udev-lfs-version;/Makefile.lfs install</userinput></screen>
 <screen><userinput remap="install">tar -xf ../../systemd-man-pages-&systemd-man-version;.tar.xz                            \
     --no-same-owner --strip-components=1                              \
     -C /usr/share/man --wildcards '*/udev*' '*/libudev*'              \
+                                  '*/systemd.link.5'                  \
                                   '*/systemd-'{hwdb,udevd.service}.8
+
+sed 's|systemd/network|udev/network|'                                 \
+    /usr/share/man/man5/systemd.link.5                                \
+  > /usr/share/man/man5/udev.link.5
+
 sed 's/systemd\(\\\?-\)/udev\1/' /usr/share/man/man8/systemd-hwdb.8   \
                                > /usr/share/man/man8/udev-hwdb.8
+
 sed 's|lib.*udevd|sbin/udevd|'                                        \
     /usr/share/man/man8/systemd-udevd.service.8                       \
   > /usr/share/man/man8/udevd.8
-rm  /usr/share/man/man8/systemd-*.8</userinput></screen>
+
+rm /usr/share/man/man*/systemd*</userinput></screen>
+
+    <para>Наконец, сбросьте значение переменной <envar>udev_helpers</envar>:</para>
+
+    <!-- remap="make" seems confusing but we don't have sth. like
+         remap="clean".  -->
+    <screen><userinput remap="install">unset udev_helpers</userinput></screen>
 
   </sect2>
 

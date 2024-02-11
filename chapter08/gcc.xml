@@ -176,7 +176,7 @@ cd       build</userinput></screen>
     <para>Выполните тестирование под непривилегированным пользователем, но не останавливайтесь
 	на ошибках:</para>
 
-<screen><userinput remap="test">chown -Rv tester .
+<screen><userinput remap="test">chown -R tester .
 su tester -c "PATH=$PATH make -k check"</userinput></screen>
 
     <para>Чтобы получить сводку результатов набора тестов, выполните:</para>
@@ -543,7 +543,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</userinput></screen>
       <varlistentry id="libcc1">
         <term><filename class="libraryfile">libcc1</filename></term>
         <listitem>
-          <para>Библиотека предварительной обработки C</para>
+          <para>Библиотека, которая позволяет GDB использовать GCC</para>
           <indexterm zone="ch-system-gcc libcc1">
             <primary sortas="b-libcc1">libcc1</primary>
           </indexterm>

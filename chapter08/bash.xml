@@ -40,6 +40,10 @@
   <sect2 role="installation">
     <title>Установка пакета Bash</title>
 
+    <para>Во-первых, исправьте некоторые проблемы, выявленные разработчиками:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&bash-upstream-fixes-patch;</userinput></screen>
+
     <para>Подготовьте Bash к компиляции:</para>
 
     <screen><userinput remap="configure">./configure --prefix=/usr             \
@@ -72,7 +76,7 @@
     <systemitem class="username">tester</systemitem> может писать в каталог с 
     исходниками:</para>
 
-<screen><userinput remap="test">chown -Rv tester .</userinput></screen>
+<screen><userinput remap="test">chown -R tester .</userinput></screen>
 
     <para>Набор тестов пакета предназначен для запуска пользователем без полномочий
 	root, которому принадлежит терминал, подключенный к стандартному вводу. Чтобы
@@ -80,7 +84,7 @@
 	<application>Expect</application> и запустите тесты от имени пользователя <systemitem
     class="username">tester</systemitem>:</para>
 
-<screen><userinput remap="test">su -s /usr/bin/expect tester &lt;&lt; EOF
+<screen><userinput remap="test">su -s /usr/bin/expect tester &lt;&lt; "EOF"
 set timeout -1
 spawn make tests
 expect eof

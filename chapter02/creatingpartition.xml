@@ -41,9 +41,10 @@
   <filename class="devicefile">/dev/sda</filename> для основного диска.
   Создайте раздел Linux и
   <systemitem class="filesystem">раздел подкачки</systemitem>, если это
-  необходимо. Пожалуйста, обратитесь к справке по <filename>cfdisk(8)</filename>
-  или <filename>fdisk(8)</filename>, если вы еще не знаете, как пользоваться
-  этими программами.</para>
+  необходимо. Пожалуйста, обратитесь к справке  
+  <ulink role='man' url='&man;cfdisk.8'>cfdisk(8)</ulink> или 
+  <ulink role='man' url='&man;fdisk.8'>fdisk(8)</ulink>, если вы еще не знаете, 
+  как пользоваться этими программами.</para>
 
   <note><para>Для опытных пользователей возможны и другие схемы разбиения.
   Система LFS может располагаться на программном <ulink

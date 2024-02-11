@@ -47,8 +47,7 @@
 
     <para>Подготовьте Util-linux к компиляции:</para>
 
-<screen revision="sysv"><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime   \
-            --bindir=/usr/bin    \
+<screen revision="sysv"><userinput remap="configure">./configure --bindir=/usr/bin    \
             --libdir=/usr/lib    \
             --runstatedir=/run   \
             --sbindir=/usr/sbin  \
@@ -62,11 +61,11 @@
             --disable-static     \
             --without-python     \
             --without-systemd    \
-            --without-systemdsystemunitdir \
+            --without-systemdsystemunitdir        \
+            ADJTIME_PATH=/var/lib/hwclock/adjtime \
             --docdir=/usr/share/doc/util-linux-&util-linux-version;</userinput></screen>
 
-<screen revision="systemd"><userinput remap="configure">./configure ADJTIME_PATH=/var/lib/hwclock/adjtime   \
-            --bindir=/usr/bin    \
+<screen revision="systemd"><userinput remap="configure">./configure --bindir=/usr/bin    \
             --libdir=/usr/lib    \
             --runstatedir=/run   \
             --sbindir=/usr/sbin  \
@@ -79,6 +78,7 @@
             --disable-pylibmount \
             --disable-static     \
             --without-python     \
+            ADJTIME_PATH=/var/lib/hwclock/adjtime \
             --docdir=/usr/share/doc/util-linux-&util-linux-version;</userinput></screen>
 
     <para>Параметры --disable и --without предотвращают появление предупреждений о сборке 
@@ -100,7 +100,7 @@
 <screen role="nodump"><userinput>bash tests/run.sh --srcdir=$PWD --builddir=$PWD</userinput></screen>
     </warning>
 
-<screen><userinput remap="test">chown -Rv tester .
+<screen><userinput remap="test">chown -R tester .
 su tester -c "make -k check"</userinput></screen>
 
     <para>Тесты с <emphasis>жесткими ссылками</emphasis> завершатся неудачей, если в ядре хоста 
@@ -705,7 +705,7 @@ rm -rf DESTDIR</userinput></screen>
         <term><command>irqtop</command></term>
         <listitem>
           <para>Отображает информацию о счетчике прерываний ядра в стиле 
-          <filename>top(1)</filename></para>
+          <ulink role='man' url='&man;top.1'>top(1)</ulink></para>
           <indexterm zone="ch-system-util-linux irqtop">
             <primary sortas="b-irqtop">irqtop</primary>
           </indexterm>

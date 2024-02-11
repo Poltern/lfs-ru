@@ -155,7 +155,9 @@ popd</userinput></screen>
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
-echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</userinput></screen>
+ln -sv libncursesw.so $LFS/usr/lib/libncurses.so
+sed -e 's/^#if.*XOPEN.*$/#if 1/' \
+    -i $LFS/usr/include/curses.h</userinput></screen>
 <!--
     <para>Удалите ненужную статическую библиотеку, не обрабатываемую скриптом
     <command>configure</command>:</para>
@@ -175,11 +177,25 @@ echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</userinput></screen>
       </varlistentry>
 
       <varlistentry>
-        <term><command>echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so</command></term>
+        <term><command>ln -sv libncursesw.so $LFS/usr/lib/libncurses.so</command></term>
         <listitem>
-          <para>Библиотека <filename>libncurses.so</filename> необходима для нескольких
-		  пакетов, которые мы скоро соберем. Мы создадим небольшой скрипт компоновщика, как это делается поясняется в <xref
-          linkend="chapter-building-system"/>.</para>
+          <para>Библиотека <filename>libncurses.so</filename> необходима для нескольких 
+		  пакетов, которые мы скоро соберем. Мы создаем эту символическую ссылку, чтобы 
+		  использовать <filename>libncursesw.so</filename> в качестве замены.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><command>sed -e 's/^#if.*XOPEN.*$/#if 1/' ...</command></term>
+        <listitem>
+          <para>Заголовочный файл <filename>curses.h</filename> содержит определения различных 
+		  структур данных Ncurses. С разными определениями макросов препроцессора могут использоваться 
+		  два разных набора определений структуры данных: 8-битное определение совместимо с 
+		  <filename>libncurses.so</filename>, а определение расширенного набора символов совместимо с 
+		  <filename>libncursesw.so </filename>. Поскольку мы используем 
+		  <filename>libncursesw.so</filename> вместо <filename>libncurses.so</filename>, отредактируйте 
+		  заголовочный файл, чтобы он всегда использовал определение структуры данных расширенного набора 
+		  символов, совместимое с <filename>. libncursesw.so</filename>.</para>
         </listitem>
       </varlistentry>
 

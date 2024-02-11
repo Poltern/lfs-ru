@@ -105,8 +105,9 @@ make html</userinput></screen>
     <caution><para>Код в GMP сильно оптимизирован для процессора, на котором он
 	собран. Иногда код, определяющий процессор, неверно определяет возможности
 	системы, и в тестах или других приложениях, использующих библиотеки gmp, возникают
-	ошибки с сообщением "Illegal instruction". В этом случае gmp следует переконфигурировать
-	с параметром <option>--host=none-linux-gnu</option> и пересобрать.</para></caution>
+	ошибки с сообщением <computeroutput>Illegal instruction</computeroutput>. В этом случае 
+	gmp следует переконфигурировать с параметром <option>--host=none-linux-gnu</option> и 
+	пересобрать.</para></caution>
 
     <!-- Some tests PASS on a specific uarch but SKIP on other CPUs.
          For example on K8 the following command outputs 200.  -->

@@ -5,18 +5,21 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-config-locale" revision="systemd">
+<sect1 id="ch-config-locale">
   <?dbhtml filename="locale.html"?>
 
   <title>Настройка системной локали</title>
 
   <indexterm zone="ch-config-locale">
-    <primary sortas="e-etc-locale-conf">/etc/locale.conf</primary>
+    <primary sortas="e-/etc/profile">/etc/profile</primary>
   </indexterm>
 
-  <para>В приведенном ниже файле <filename>/etc/locale.conf</filename> 
-  задаются некоторые переменные окружения, необходимые для поддержки вашего языка. 
-  Правильная их установка влияет на:</para>
+  <indexterm zone="ch-config-locale" revision='systemd'>
+    <primary sortas="e-/etc/profile">/etc/locale.conf</primary>
+  </indexterm>
+
+  <para>Некоторые переменные окружения, необходимые для поддержки вашего языка. Правильная их 
+  установка влияет на:</para>
 
   <itemizedlist>
     <listitem>
@@ -39,32 +42,32 @@
   </itemizedlist>
 
   <para>Ниже замените <replaceable>&lt;ll&gt;</replaceable> двухбуквенным кодом нужного вам языка 
-  (например <quote>en</quote>), а 
-  <replaceable>&lt;CC&gt;</replaceable> двухбуквенным кодом соответствующей страны (например <quote>GB</quote>).
+  (например <literal>en</literal>), а 
+  <replaceable>&lt;CC&gt;</replaceable> двухбуквенным кодом соответствующей страны (например <literal>GB</literal>).
   <replaceable>&lt;charmap&gt;</replaceable> нужно заменить на каноническую кодировку для выбраной вами
-  локали. Также могут присутствовать необязательные модификаторы, такие как <quote>@euro</quote>.</para>
+  локали. Также могут присутствовать необязательные модификаторы, такие как <literal>@euro</literal>.</para>
 
   <para>Список всех локалей, поддерживаемых Glibc, можно получить, выполнив следующую команду:</para>
 
 <screen role="nodump"><userinput>locale -a</userinput></screen>
 
-  <para>Таблицы символов могут иметь несколько синонимов. Например <quote>ISO-8859-1</quote>
-  так же называют <quote>iso8859-1</quote> и <quote>iso88591</quote>.
-  Некоторые приложения не могут корректно обрабатывать различные синонимы (например <quote>UTF-8</quote>
-  должно быть указано как <quote>UTF-8</quote>, а не <quote>utf8</quote>), поэтому 
+  <para>Таблицы символов могут иметь несколько синонимов. Например <literal>ISO-8859-1</literal>
+  так же называют <literal>iso8859-1</literal> и <literal>iso88591</literal>.
+  Некоторые приложения не могут корректно обрабатывать различные синонимы (например <literal>UTF-8</literal> 
+  должно быть указано как <literal>UTF-8</literal>, а не <literal>utf8</literal>), поэтому 
   в большинстве случаев безопаснее всего выбрать каноническое имя для конкретной 
   локали. Для определения канонического имени локали выполните команду ниже, 
   заменив <replaceable>&lt;locale name&gt;</replaceable> на вывод <command>locale -a</command> 
-  для желаемой локали (например <quote>en_GB.iso88591</quote>).</para>
+  для желаемой локали (например <literal>en_GB.iso88591</literal> в нашем примере).</para>
 
 <screen role="nodump"><userinput>LC_ALL=<replaceable>&lt;locale name&gt;</replaceable> locale charmap</userinput></screen>
 
-  <para>Для локали <quote>en_GB.iso88591</quote> приведенная выше команда
+  <para>Для локали <literal>en_GB.iso88591</literal> приведенная выше команда
    напечатает:</para>
 
 <screen><computeroutput>ISO-8859-1</computeroutput></screen>
 
-  <para>Окончательная настройка локали будет выглядеть так: <quote>en_GB.ISO-8859-1</quote>. 
+  <para>Окончательная настройка локали будет выглядеть так: <literal>en_GB.ISO-8859-1</literal>. 
   Важно, чтобы локаль, найденная с помощью приведенной выше методики, была проверена перед 
   её добавлением в файлы запуска Bash:</para>
 
@@ -84,60 +87,105 @@ LC_ALL=&lt;locale name&gt; locale int_prefix</userinput></screen>
   <command>localedef</command>, либо рассмотреть возможность выбора другой локали. Дальнейшие 
   инструкции не предполагают таких сообщений об ошибках от Glibc.</para>
 
-  <!-- FIXME: the xlib example will become obsolete in the future.-->
-  <para>В некоторых пакетах, выходящих за рамки LFS, также может отсутствовать поддержка выбранного вами 
-  языка. Одним из таких примеров может служить библиотека X (часть системы X Window), которая выводит 
-  следующее сообщение об ошибке, если локаль не соответствует таблице символов во внутренних файлах:</para>
-
-<screen><computeroutput>Warning: locale not supported by Xlib, locale set to C</computeroutput></screen>
-
-  <para>В некоторых случаях Xlib ожидает, что таблица символов будет указана в верхнем регистре с 
-  каноническими тире. Например, "ISO-8859-1", а не "iso88591". Также можно найти подходящий вам вариант, 
-  удалив часть charmap из спецификации локали. Это можно проверить, выполнив команду 
-  <command>locale charmap</command> в обеих локалях. Например, нужно было бы изменить 
-  "de_DE.ISO-8859-15@euro " на "de_DE@euro", чтобы Xlib распознал эту локаль.</para>
-
   <para>Другие пакеты также могут работать некорректно (но не всегда будут отображать какие-либо сообщения 
   об ошибках), если название локали не соответствует их ожиданиям. В таких случаях изучите, какие ещё 
   дистрибутивы Linux поддерживают ваш язык, возможно, это даст некоторую полезную информацию</para>
 
-  <para>Как только будут определены правильные настройки локали, создайте файл
+  <para revision='systemd'>Как только будут определены правильные настройки локали, создайте файл
   <filename>/etc/locale.conf</filename>:</para>
 
-<screen><userinput>cat &gt; /etc/locale.conf &lt;&lt; "EOF"
+<screen revision='systemd'><userinput>cat &gt; /etc/locale.conf &lt;&lt; "EOF"
 <literal>LANG=<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable></literal>
 EOF</userinput></screen>
 
-  <para>Обратите внимание, что вы можете изменить <filename>/etc/locale.conf</filename> с помощью 
+  <para>Программа оболочки <command>/bin/bash</command> (далее именуемая как 
+  <quote>оболочка</quote>) использует начальный набор файлов, чтобы помочь 
+  создать среду для запуска. Каждый файл имеет определенное назначение и может по-разному 
+  влиять на вход в систему и интерактивное окружение. Файлы в каталоге <filename
+  class="directory">/etc</filename> содержат глобальные настройки. Если в домашнем 
+  каталоге существуют эквивалентные файлы, они могут переопределить глобальные настройки.</para>
+
+  <para>Интерактивная оболочка входа запускается после успешного входа с использованием
+  <command>/bin/login</command>, прочитав файл <filename>/etc/passwd</filename>. Интерактивная 
+  оболочка без входа в систему запускается из командной строки (например,
+  <prompt>[prompt]$</prompt><command>/bin/bash</command>). Неинтерактивная оболочка обычно 
+  присутствует когда выполняется скрипт оболочки. Он неинтерактивен, поскольку обрабатывает скрипт 
+  и не ожидает ввода пользователем между командами.</para>
+
+  <para><phrase revision='systemd'>На оболочки входа в систему часто не влияют настройки в 
+  <filename>/etc/locale.conf</filename>. </phrase>Создайте файл 
+  <filename>/etc/profile</filename>
+  <phrase revision='sysv'>после того, как будут определены правильные настройки локали, чтобы  
+  установить желаемый язык</phrase><phrase revision='systemd'>для чтения настроек локали из 
+  <filename>/etc/locale.conf</filename> и экспортируйте их</phrase>, но вместо этого установите 
+  локаль <literal>C.UTF-8</literal> при запуске консоли Linux (чтобы программы не 
+  выводили символы, которые консоль Linux не может отобразить):</para>
+
+<screen revision="systemd"><userinput>cat &gt; /etc/profile &lt;&lt; "EOF"
+<literal># Begin /etc/profile
+
+for i in $(locale); do
+  unset ${i%=*}
+done
+
+if [[ "$TERM" = linux ]]; then
+  export LANG=C.UTF-8
+else
+  source /etc/locale.conf
+
+  for i in $(locale); do
+    key=${i%=*}
+    if [[ -v $key ]]; then
+      export $key
+    fi
+  done
+fi
+
+# End /etc/profile</literal>
+EOF</userinput></screen>
+
+<screen revision="sysv"><userinput>cat &gt; /etc/profile &lt;&lt; "EOF"
+<literal># Begin /etc/profile
+
+for i in $(locale); do
+  unset ${i%=*}
+done
+
+if [[ "$TERM" = linux ]]; then
+  export LANG=C.UTF-8
+else
+  export LANG=<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable>
+fi
+
+# End /etc/profile</literal>
+EOF</userinput></screen>
+
+  <para revision='systemd'>Обратите внимание, что вы можете изменить <filename>/etc/locale.conf</filename> с помощью 
   утилиты из состава systemd - <command>localectl</command>. Чтобы использовать
   <command>localectl</command> для приведенного выше примера, выполните:</para>
 
-<screen role="nodump"><userinput>localectl set-locale LANG="<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable>"</userinput></screen>
+<screen revision='systemd' role="nodump"><userinput>localectl set-locale LANG="<replaceable>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</replaceable>"</userinput></screen>
 
-  <para>Вы также можете указать другие переменные окружения для конкретного языка, такие как 
+  <para revision='systemd'>Вы также можете указать другие переменные окружения для конкретного языка, такие как 
   <envar>LANG</envar>, <envar>LC_CTYPE</envar>, <envar>LC_NUMERIC</envar> или
   любая другая переменная окружения из вывода команды <command>locale</command>. Просто 
   разделите их пробелами. Пример, где  <envar>LANG</envar> установлен как
   en_US.UTF-8, а <envar>LC_CTYPE</envar> установлен как en_US:</para>
 
-<screen role="nodump"><userinput>localectl set-locale LANG="en_US.UTF-8" LC_CTYPE="en_US"</userinput></screen>
+<screen revision='systemd' role="nodump"><userinput>localectl set-locale LANG="en_US.UTF-8" LC_CTYPE="en_US"</userinput></screen>
 
-  <note><para>Пожалуйста, обратите внимание, что команда <command>localectl</command> 
+  <note revision='systemd'><para>Пожалуйста, обратите внимание, что команда <command>localectl</command> 
   не работает в среде chroot. Его можно использовать только после загрузки системы LFS с помощью systemd.</para></note>
 
-  <para>Локаль <quote>C</quote> (используемая по умолчанию) и <quote>en_US</quote> (одна из рекомендуемых для 
-  англоязычных пользователей в Соединенных Штатах) это разные локали. <quote>C</quote>
-  использует 7-битный набор символов US-ASCII и обрабатывает байты с установленным старшим битом как 
-  недопустимые символы. Вот почему, например, команда <command>ls</command> заменяет их вопросительными 
-  знаками в этой локали. Кроме того, попытка отправить почту с такими символами из Mutt или Pine приводит 
-  к тому что, отправляемые сообщения не соответствуют RFC (кодировка в исходящей почте указана как <quote>unknown
-  8-bit</quote>). Рекомендуется использовать локаль <quote>C</quote>, если вы уверены, что вам никогда не 
-  понадобятся 8-битные символы.</para>
+  <para>Локаль <literal>C</literal> (используемая по умолчанию) и <literal>en_US</literal> (одна из 
+  рекомендуемых для   англоязычных пользователей в Соединенных Штатах) это разные локали. 
+  <literal>C</literal> использует 7-битный набор символов US-ASCII и обрабатывает байты с установленным 
+  старшим битом как недопустимые символы. Вот почему, например, команда <command>ls</command> заменяет их 
+  вопросительными знаками в этой локали. Кроме того, попытка отправить почту с такими символами из Mutt 
+  или Pine приводит к тому что, отправляемые сообщения не соответствуют RFC (кодировка в исходящей почте 
+  указана как <computeroutput>unknown 8-bit</computeroutput>). Рекомендуется использовать локаль 
+  <literal>C</literal>, если вы уверены, что вам никогда не понадобятся 8-битные символы.</para>
 
-<!--
-  <para>UTF-8 based locales are not supported well by many programs.
-  Work is in progress to document and, if possible, fix such problems, see
-  <ulink url="&blfs-book;introduction/locale-issues.html"/>.</para>
--->
+
 
 </sect1>

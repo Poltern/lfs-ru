@@ -41,13 +41,6 @@
   <sect2 role="installation">
     <title>Установка пакета Autoconf</title>
 
-    <para>Во-первых, исправьте несколько проблем с тестами, обнаруженными в bash-5.2 
-	и более поздних версиях:</para>
-
-    <screen><userinput remap="pre">sed -e 's/SECONDS|/&amp;SHLVL|/'               \
-    -e '/BASH_ARGV=/a\        /^SHLVL=/ d' \
-    -i.orig tests/local.at</userinput></screen>
-
     <para>Подготовьте Autoconf к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
@@ -62,16 +55,6 @@
     To run the tests anyway, issue:</para>
  -->
 <screen><userinput remap="test">make check</userinput></screen>
-<!--
-    <para>This takes a long time, about &autoconf-fin-sbu-tests; SBUs. In addition,
-    several tests are skipped that use Automake. For full test coverage,
-    Autoconf can be re-tested after Automake has been installed.  In addition,
-    two tests fail due to changes in libtool-2.4.3 and later.</para>
--->
-    <note><para>Время тестирования autoconf можно значительно сократить на многоядерных
-    системах. Для этого добавьте <command>TESTSUITEFLAGS=-j&lt;N&gt;</command> к строке выше.
-    Использование аргумента -j4 может сократить время тестирования более чем на 60
-    процентов.</para></note>
 
     <para>Установите пакет:</para>
 

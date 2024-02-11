@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -51,7 +51,9 @@
 
   <!-- Allow URLs to be automatically hyphenated.
        We have expanded the support to several inline tags.
-       See pdf/lfs-mixed.xsl -->
+       See pdf/lfs-mixed.xsl.
+       Note: the argument in select= is a zero-width space
+       (unicode 200b)-->
   <xsl:param name="ulink.hyphenate" select="'&#x200B;'"/>
 
   <!-- List of characters to allow ulink URLs, and supported inline tags,
@@ -88,7 +90,7 @@
        Set to 0 to prevent duplicate e-mails in the Acknowledgments pages. -->
   <xsl:param name="ulink.show" select="0"/>
 
-  <!-- Continuous numbering -->
+  <!-- Continuous numbering FOR RUSSIAN-->
   <xsl:template name="initial.page.number">auto</xsl:template>
   <xsl:template name="page.number.format">1</xsl:template>
 

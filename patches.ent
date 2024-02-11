@@ -2,6 +2,10 @@
 
 <!-- Start of Common Patches -->
 
+<!ENTITY bash-upstream-fixes-patch "bash-&bash-version;-upstream_fixes-1.patch">
+<!ENTITY bash-upstream-fixes-patch-md5 "2d1691a629c558e894dbb78ee6bf34ef">
+<!ENTITY bash-upstream-fixes-patch-size "5.9 KB">
+
 <!ENTITY bzip2-docs-patch "bzip2-&bzip2-version;-install_docs-1.patch">
 <!ENTITY bzip2-docs-patch-md5 "6a5ac7e89b791aae556de0f745916f7f">
 <!ENTITY bzip2-docs-patch-size "1.6 KB">
@@ -13,24 +17,27 @@
 <!ENTITY glibc-fhs-patch "glibc-&glibc-version;-fhs-1.patch">
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
 <!ENTITY glibc-fhs-patch-size "2.8 KB">
-
-<!ENTITY glibc-upstream-fixes-patch "glibc-&glibc-version;-upstream_fixes-3.patch">
-<!ENTITY glibc-upstream-fixes-patch-md5 "545977e0b5c341ba945cf4b5de92f1e2">
-<!ENTITY glibc-upstream-fixes-patch-size "28 KB">
-
-<!ENTITY grub-upstream-fixes-patch "grub-&grub-version;-upstream_fixes-1.patch">
-<!ENTITY grub-upstream-fixes-patch-md5 "da388905710bb4cbfbc7bd7346ff9174">
-<!ENTITY grub-upstream-fixes-patch-size "8 KB">
-
+<!--
+<!ENTITY glibc-upstream-fixes-patch "glibc-&glibc-version;-upstream_fixes-4.patch">
+<!ENTITY glibc-upstream-fixes-patch-md5 "66e843b00688c641c9bdda684db45b43">
+<!ENTITY glibc-upstream-fixes-patch-size "36 KB">
+-->
 <!ENTITY kbd-backspace-patch "kbd-&kbd-version;-backspace-1.patch">
 <!ENTITY kbd-backspace-patch-md5 "f75cca16a38da6caa7d52151f7136895">
 <!ENTITY kbd-backspace-patch-size "12 KB">
 
-<!ENTITY readline-fixes-patch "readline-&readline-version;-upstream_fix-1.patch">
-<!ENTITY readline-fixes-patch-md5 "dd1764b84cfca6b677f44978218a75da">
-<!ENTITY readline-fixes-patch-size "1.3 KB">
+<!ENTITY pkgconf-upstream-fix-patch "pkgconf-&pkgconf-version;-upstream_fix-1.patch">
+<!ENTITY pkgconf-upstream-fix-patch-md5 "77d5bb10840724a0e3dc08efee548363">
+<!ENTITY pkgconf-upstream-fix-patch-size "4 KB">
+
+<!ENTITY readline-fixes-patch "readline-&readline-version;-upstream_fixes-3.patch">
+<!ENTITY readline-fixes-patch-md5 "9ed497b6cb8adcb8dbda9dee9ebce791">
+<!ENTITY readline-fixes-patch-size "13 KB">
 
 <!ENTITY sysvinit-consolidated-patch "sysvinit-&sysvinit-version;-consolidated-1.patch">
 <!ENTITY sysvinit-consolidated-patch-md5 "17ffccbb8e18c39e8cedc32046f3a475">
 <!ENTITY sysvinit-consolidated-patch-size "2.5 KB">
 
+<!ENTITY systemd-upstream-patch "systemd-&systemd-version;-upstream_fixes-1.patch">
+<!ENTITY systemd-upstream-patch-md5 "8d9c1014445c463cf7c24c162b1e0686">
+<!ENTITY systemd-upstream-patch-size "7.2 KB">

@@ -51,7 +51,7 @@ make html</userinput></screen>
 
     <para>Чтобы протестировать пакет, выполните:</para>
 
-<screen><userinput remap="test">chown -Rv tester .
+<screen><userinput remap="test">chown -R tester .
 su tester -c "PATH=$PATH make check"</userinput></screen>
 
     <para>Установите пакет и документацию к нему:</para>

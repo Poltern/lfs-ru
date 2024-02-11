@@ -49,12 +49,12 @@
 	данные в каталогах, совместимых с FHS:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
-
+<!--
     <para>Теперь исправьте две уязвимости безопасности и регрессию, из-за которой функция 
 	posix_memalign() в некоторых условиях работает очень медленно:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-upstream-fixes-patch;</userinput></screen>
-
+-->
     <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
 
 <screen><userinput remap="pre">mkdir -v build
@@ -71,7 +71,6 @@ cd       build</userinput></screen>
              --disable-werror                         \
              --enable-kernel=&min-kernel;                     \
              --enable-stack-protector=strong          \
-             --with-headers=/usr/include              \
              --disable-nscd                           \
              libc_cv_slibdir=/usr/lib</userinput></screen>
 <screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure --prefix=/usr                            \
@@ -107,14 +106,11 @@ cd       build</userinput></screen>
         <term><parameter>--enable-stack-protector=strong</parameter></term>
         <listitem>
           <para>Этот параметр повышает безопасность системы за счет добавления
-		  дополнительного кода для проверки переполнения буфера.</para>
-        </listitem>
-      </varlistentry>
-<!-- do we need this one? -->
-      <varlistentry>
-        <term><parameter>--with-headers=/usr/include</parameter></term>
-        <listitem>
-          <para>Сообщает системе сборки местоположение заголовочных файлов API ядра</para>
+		  дополнительного кода для проверки переполнения буфера. Обратите внимание, что 
+		  Glibc всегда явно переопределяет параметры GCC по умолчанию, поэтому необходимо 
+		  всегда указывать эту опцию, несмотря на то, что мы уже указали 
+		  <option>--enable-default-ssp</option> для GCC.</para>
+
         </listitem>
       </varlistentry>
 
@@ -207,6 +203,110 @@ esac</userinput></screen>
 
 <screen><userinput remap="install">sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile</userinput></screen>
 
+    <important>
+      <para>
+        При обновлении Glibc до новой минорной версии (например, с Glibc-2.36 до 
+		Glibc-&glibc-version;) в работающей системе LFS вам необходимо принять некоторые 
+		дополнительные меры предосторожности, чтобы избежать поломки системы:
+      </para>
+
+      <itemizedlist>
+        <listitem>
+          <!-- There are two reasons we don't support this:
+               1. Upgrading on a system with separate /lib and /usr/lib is
+                  tricky.
+               2. With Glibc prior to 2.34 libc.so.6 etc. are symlinks to
+                  libc-2.33.so etc., again causing the upgradation tricky.
+                  The Glibc NEWS file explicit states they no longer use
+                  symlinks for the ABI names to avoid upgradation
+                  issues.  -->
+          <para>
+            Обновление Glibc в системе LFS до версии 11.0 не поддерживается. Пересоберите LFS, 
+			если вы используете такую старую систему, но вам нужна более новая Glibc.
+          </para>
+        </listitem>
+
+        <!-- https://sourceware.org/pipermail/libc-alpha/2024-January/154095.html -->
+        <listitem>
+          <para>
+		    При обновлении системы LFS до версии 12.0 установите 
+			<application>Libxcrypt</application> следуя инструкции 
+			<xref role='.' linkend='ch-system-libxcrypt'/>. В дополнение к обычной установке 
+			<application>Libxcrypt</application>, <emphasis role='bold'>вы ДОЛЖНЫ следовать 
+			примечанию со страницы Libxcrypt, чтобы установить 
+			<filename class='libraryfile '>libcrypt.so.1*</filename> (перезаписав 
+			<filename class='libraryfile'>libcrypt.so.1</filename> из предыдущей установки 
+			Glibc)</emphasis>.
+          </para>
+        </listitem>
+
+        <!-- Otherwise on lfs-systemd nscd will fail to start on boot,
+             and on both lfs-sysv and lfs-systemd useradd etc. will try
+             to start nscd, then nscd will fail to start as well and
+             produce some spurious error message.  -->
+        <listitem>
+          <para>
+            При обновлении системы LFS до версии 12.1 удалите программу <command>nscd</command>:
+          </para>
+
+          <screen role='nodump'><userinput>rm -f /usr/sbin/nscd</userinput></screen>
+
+          <para>
+            Если система (до LFS 12.1) основана на Systemd, необходимо также отключить и 
+			остановить службу <command>nscd</command> прямо сейчас:
+          </para>
+
+          <screen revision='systemd' role='nodump'><userinput>systemctl disable --now nscd</userinput></screen>
+        </listitem>
+
+        <listitem>
+          <para>
+            Обновите ядро и перезагрузитесь, если оно старше &min-kernel; (проверьте текущую 
+			версию с помощью <command>uname -r</command>) или, если вы хотите обновить имеющееся 
+			ядро, выполните действия из <xref linkend='ch-bootable-kernel' role='.'/>
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Обновите заголовочные файлы API ядра, если они старше &min-kernel; (проверьте 
+			текущую версию с помощью <command>cat /usr/include/linux/version.h</command>) 
+			или, если вы просто хотите обновить их, следуйте <xref linkend='ch-tools-linux-headers'/> 
+			(но удалив <envar>$LFS</envar> из команды <command>cp</command>).
+          </para>
+        </listitem>
+
+        <!-- This is to ensure we don't start a process at the time point
+             where some Glibc shared libraries are updated but the others
+             are not.  Such mismatches can cause programs crash on startup,
+             esp. a mismatch between ld-linux-x86-64.so.2 and
+             libc.so.6.  Note that a crash in the installation process
+             will leave the system in a state with the mismatch forever,
+             unrecoverable without the help of another distro.  -->
+        <listitem>
+          <para>
+            Выполните установку <envar>DESTDIR</envar> и обновите общие библиотеки 
+			Glibc в системе с помощью одной команды <command>install</command>:
+          </para>
+
+          <screen role='nodump'><userinput>make DESTDIR=$PWD/dest install
+install -vm755 dest/usr/lib/*.so.* /usr/lib</userinput></screen>
+        </listitem>
+      </itemizedlist>
+
+      <para>
+        Крайне важно строго следовать описанным выше шагам, если вы не совсем понимаете, 
+		что делаете. <emphasis role='bold'>Любое неожиданное отклонение может сделать систему 
+		полностью непригодной для использования. ВЫ ПРЕДУПРЕЖДЕНЫ.</emphasis>
+      </para>
+
+      <para>
+        Затем продолжайте выполнять команды <command>make install</command>, <command>sed</command> 
+		для <filename>/usr/bin/ldd</filename> и команды для установки локалей. Как только 
+		они будут выполнены, перезагрузите систему.
+      </para>
+    </important>
+
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
@@ -245,7 +345,7 @@ install -v -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service</use
 	оптимального охвата тестов</para>
 
 <screen role="nodump"><userinput remap="locale-test">mkdir -pv /usr/lib/locale
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
 localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
@@ -295,7 +395,7 @@ localedef -i zh_TW -f UTF-8 zh_TW.UTF-8</userinput></screen>
 	понадобятся. Например, для некоторых тестов в этой главе потребуются
 	следующие две локали:</para>
 
-<screen role="nodump"><userinput remap="locale-full">localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+<screen role="nodump"><userinput remap="locale-full">localedef -i C -f UTF-8 C.UTF-8
 localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true</userinput></screen>
 
     <note><para>Glibc теперь использует libidn2 для разрешения интернационализированных 

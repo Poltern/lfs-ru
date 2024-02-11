@@ -54,15 +54,15 @@ cd       build</userinput></screen>
 makeinfo --html --no-split -o doc/dejagnu.html ../doc/dejagnu.texi
 makeinfo --plaintext       -o doc/dejagnu.txt  ../doc/dejagnu.texi</userinput></screen>
 
-    <para>Соберите и установите пакет:</para>
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+    <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make install
 install -v -dm755  /usr/share/doc/dejagnu-&dejagnu-version;
 install -v -m644   doc/dejagnu.{html,txt} /usr/share/doc/dejagnu-&dejagnu-version;</userinput></screen>
-
-    <para>Чтобы протестировать пакет, выполните:</para>
-
-<screen><userinput remap="test">make check</userinput></screen>
 
   </sect2>
 
@@ -97,7 +97,7 @@ install -v -m644   doc/dejagnu.{html,txt} /usr/share/doc/dejagnu-&dejagnu-versio
         <term><command>runtest</command></term>
         <listitem>
           <para>Скрипт-обертка, который находит соответствующую оболочку 
-		  <command>expect</command>, и запускает DejaGnu</para>
+		  <command>expect</command> и запускает DejaGnu</para>
           <indexterm zone="ch-system-dejagnu runtest">
             <primary sortas="b-runtest">runtest</primary>
           </indexterm>

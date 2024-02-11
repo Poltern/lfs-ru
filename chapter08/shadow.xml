@@ -194,8 +194,8 @@ make -C man install-man</userinput></screen>
 	группы в системе. Если такое поведение нежелательно, вам нужно передать один из параметров
 	<parameter>-g</parameter> или <parameter>-N</parameter> в <command>useradd</command> или
 	изменить настройку <parameter>USERGROUPS_ENAB</parameter> в файле <filename>/etc/login.defs</filename>.
-	Смотрите справочную страницу <filename>useradd(8)</filename> для получения дополнительной 
-	информации.</para>
+	Смотрите справочную страницу <ulink role='man' url='&man;useradd.8'>useradd(8)</ulink> для 
+	получения дополнительной информации.</para>
 
     <para>Во-вторых, чтобы изменить параметры по умолчанию, необходимо создать файл
 	<filename>/etc/default/useradd</filename> и настроить его в соответствии с вашими

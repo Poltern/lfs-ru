@@ -128,6 +128,7 @@ if ( $package == "expect"     ) $dirpath = "https://sourceforge.net/projects/exp
 if ( $package == "file"       ) $dirpath = "https://github.com/file/file/tags";
 if ( $package == "flex"       ) $dirpath = github("westes/flex");
 if ( $package == "flit_core"  ) $dirpath = "https://pypi.org/project/flit-core/";
+if ( $package == "setuptools" ) $dirpath = "https://pypi.org/project/setuptools/";
 if ( $package == "gcc"        ) $dirpath = max_parent( $dirpath, "gcc-" );
 if ( $package == "iana-etc"   ) $dirpath = github("Mic92/iana-etc");
 if ( $package == "intltool"   ) $dirpath = "https://launchpad.net/intltool/trunk";
@@ -151,6 +152,7 @@ if ( $package == "tcl"        ) $dirpath = "https://www.tcl.tk/software/tcltk/do
 if ( $package == "util-linux" ) $dirpath = max_parent( $dirpath, "v." );
 if ( $package == "vim"        ) $dirpath = "https://github.com/vim/vim/tags";
 if ( $package == "wheel"      ) $dirpath = "https://pypi.org/project/wheel/#files";
+if ( $package == "xz"         ) $dirpath = github("tukaani-project/xz");
 if ( $package == "zlib"       ) $dirpath = "https://www.zlib.net";
 if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
 
@@ -293,6 +295,9 @@ if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
 
   if ( $package == "flit_core" )
      return find_max( $lines, "/flit-core /", "/^.*flit-core ([\d\.]+)$/" );
+
+  if ( $package == "setuptools" )
+     return find_max( $lines, "/setuptools /", "/^.*setuptools ([\d\.]+)$/" );
 
   if ( $package == "procps-ng" )
      return find_max( $lines, "/v\d/", "/^.*v([\d\.]+)$/" );

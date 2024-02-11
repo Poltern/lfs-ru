@@ -106,17 +106,7 @@ xorriso -as cdrecord -v dev=/dev/cdrw blank=as_needed grub-img.iso</userinput></
 	  <option>--target i386-pc</option> к приведенной выше команде.</para>
     </note>
 
-<!-- This does not seem to be true any more
-    <note><para><application>grub-install</application> is a script and calls another
-    program, grub-probe, that may fail with a message "cannot stat `/dev/root'".
-    If so, create a temporary symbolic link from your root partition to /dev/root:</para>
 
-<screen role="nodump"><userinput>ln -sv /dev/sda2 /dev/root</userinput></screen>
-
-    <para>The symbolic link will only be present until the system is rebooted.
-    The link is only needed for the installation procedure.
-    </para></note>
--->
   </sect2>
 
   <sect2 id="grub-cfg">

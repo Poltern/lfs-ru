@@ -56,7 +56,7 @@
             --disable-static                     \
             --disable-doxygen-docs               \
             --disable-xml-docs                   \
-            --docdir=/usr/share/doc/dbus-&dbus-version;  \
+            --docdir=/usr/share/doc/dbus-&dbus-version; \
             --with-system-socket=/run/dbus/system_bus_socket</userinput></screen>
 
     <variablelist>

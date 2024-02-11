@@ -26,9 +26,9 @@
 	указанными минимальными версиями. Это не должно быть проблемой для 
 	большинства современных дистрибутивов Linux. Также обратите внимание на то, 
 	что многие дистрибутивы помещают заголовочные файлы в отдельные пакеты, 
-	как правило в формате <quote>&lt;package-name&gt;-devel</quote> или 
-	<quote>&lt;package-name&gt;-dev</quote>. Обязательно установите эти пакеты, 
-	если ваш дистрибутив их предоставляет.</para>
+	как правило в формате <literal><replaceable>&lt;package-name&gt;</replaceable>-devel</literal> 
+	или <literal><replaceable>&lt;package-name&gt;</replaceable>-dev</literal>. 
+	Обязательно установите эти пакеты, если ваш дистрибутив их предоставляет.</para>
 
    <para>Более ранние версии перечисленных ниже пакетов могут работать, но
    это не проверялось.</para>
@@ -50,8 +50,9 @@
       должен быть ссылкой на bison или небольшой скрипт, запускающий bison)</para>
     </listitem>
 
+    <!-- In Coreutils-8.1 the nproc program is added.  -->
     <listitem>
-      <para><emphasis role="strong">Coreutils-7.0</emphasis></para>
+      <para><emphasis role="strong">Coreutils-8.1</emphasis></para>
     </listitem>
 
     <listitem>
@@ -92,8 +93,11 @@
 	  мы указываем эту версию при сборке <application>glibc</application> в 
 	  <xref linkend="chapter-cross-tools"/> и <xref linkend="chapter-building-system"/>. Так как  
 	  более старые ядра не поддерживаются, скомпилированный пакет <application>glibc</application> 
-	  немного меньше и быстрее. По состоянию на июнь 2023 г. &min-kernel; является самой старой 
-	  версией ядра, поддерживаемой разработчиками ядра.</para>
+	  немного меньше и быстрее. По состоянию на февраль 2024 г. &min-kernel; является самой старой 
+	  версией ядра, поддерживаемой разработчиками ядра. Некоторые версии ядра, более старые, чем 
+	  &min-kernel;, могут по-прежнему поддерживаться сторонними командами, но они не считаются 
+	  официальными выпусками ядра; подробности читайте на странице 
+	  <ulink url='https://kernel.org/category/releases.html'/></para>
 
       <para>Если версия ядра хоста более ранняя, чем &min-kernel;, вам необходимо обновить
 	  ядро на более современную версию. Есть два способа сделать это. Во-первых,
@@ -212,8 +216,8 @@ ver_kernel()
    fi
 }
 
-# Coreutils first because-sort needs Coreutils >= 7.0
-ver_check Coreutils      sort     7.0 || bail "--version-sort unsupported"
+# Coreutils first because --version-sort needs Coreutils >= 7.0
+ver_check Coreutils      sort     8.1 || bail "Coreutils too old, stop"
 ver_check Bash           bash     3.2
 ver_check Binutils       ld       2.13.1
 ver_check Bison          bison    2.7
@@ -253,7 +257,13 @@ echo "Compiler check:"
 if printf "int main(){}" | g++ -x c++ -
 then echo "OK:    g++ works";
 else echo "ERROR: g++ does NOT work"; fi
-rm -f a.out</literal>
+rm -f a.out
+
+if [ "$(nproc)" = "" ]; then
+   echo "ERROR: nproc is not available or it produces empty output"
+else
+   echo "OK: nproc reports $(nproc) logical cores are available"
+fi</literal>
 EOF
 
 bash version-check.sh</userinput></screen>

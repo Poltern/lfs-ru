@@ -1,8 +1,8 @@
 <!-- Editing  up to the line of ==== should be enough
      to generate a book for development, release, or rc-->
-<!ENTITY % development "IGNORE"><!-- set to INCLUDE for development,
+<!ENTITY % development "INCLUDE"><!-- set to INCLUDE for development,
                                       set to IGNORE for release or rc -->
-<!ENTITY % release     "INCLUDE"> <!-- set to INCLUDE for release,
+<!ENTITY % release     "IGNORE"> <!-- set to INCLUDE for release,
                                       set to IGNORE for development or rc -->
 <!ENTITY % rc          "IGNORE"> <!-- set to INCLUDE for rc,
                                       set to IGNORE for development or
@@ -94,9 +94,9 @@
 <!ENTITY test-results    "&lfs-root;lfs/build-logs/&generic-version;/">
 <!ENTITY secadv          "&lfs-root;lfs/advisories/">
 
-<!-- 4.14 EOL is Jan 2024
-     so for LFS 11.5 we may consider moving to 4.19 -->
-<!ENTITY min-kernel      "4.14">
+<!-- 4.19 EOL is Dec 2024
+     so for LFS 12.3 we may consider moving to 5.4 -->
+<!ENTITY min-kernel      "4.19">
 
 <!--
 <!ENTITY patches-rootd   "&lfs-root;patches/lfs/&generic-versiond;/">
@@ -127,6 +127,7 @@
 <!ENTITY github          "https://github.com">
 <!ENTITY pypi-home       "https://pypi.org/project">
 <!ENTITY pypi-src        "https://pypi.org/packages/source">
+<!ENTITY man             "https://man.archlinux.org/man/">
 
 <!ENTITY root            "<systemitem class='username'>root</systemitem>">
 <!ENTITY lfs-user        "<systemitem class='username'>lfs</systemitem>">

@@ -155,7 +155,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</userin
     <screen role='nodump'><userinput>sed 's/metadata_csum_seed,//' -i /etc/mke2fs.conf</userinput></screen>
 
     <para>
-      Подробности читайте в справочной странице <filename>mke2fs.conf(5)</filename>.
+      Подробности читайте на странице руководства <ulink role='man' url='&man;mke2fs.conf.5'>mke2fs.conf(5)</ulink>.
     </para>
   </sect2>
   <sect2 id="contents-e2fsprogs" role="content">

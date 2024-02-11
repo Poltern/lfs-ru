@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='UTF-8'?>
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
@@ -18,6 +18,7 @@
 
   <!-- Generate DocBook instance with correct DOCTYPE -->
   <xsl:output method="xml"
+              encoding="UTF-8"
               doctype-public="-//OASIS//DTD DocBook XML V4.5//EN"
               doctype-system="http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"/>
 

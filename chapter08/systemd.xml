@@ -46,6 +46,13 @@
  <screen><userinput remap="pre">sed -i -e 's/GROUP="render"/GROUP="video"/' \
        -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in</userinput></screen>
 
+    <!-- https://github.com/systemd/systemd/pull/30549 -->
+    <para>Теперь исправьте уязвимость безопасности при проверке DNSSEC в 
+    <command>systemd-resolved</command> и ошибку запуска 
+	<command>systemd-analyze verify</command> у созданного экземпляра юнита systemd:</para>
+
+<screen><userinput remap='pre'>patch -Np1 -i ../&systemd-upstream-patch;</userinput></screen>
+
     <para>Подготовьте systemd к компиляции:</para>
 
 <screen><userinput remap="configure">mkdir -p build
@@ -60,13 +67,15 @@ meson setup \
       -Dldconfig=false              \
       -Dsysusers=false              \
       -Drpmmacrosdir=no             \
-      -Dhomed=false                 \
+      -Dhomed=disabled              \
       -Duserdb=false                \
-      -Dman=false                   \
+      -Dman=disabled                \
       -Dmode=release                \
       -Dpamconfdir=no               \
       -Ddev-kvm-mode=0660           \
       -Dnobody-group=nogroup        \
+      -Dsysupdate=disabled          \
+      -Dukify=disabled              \
       -Ddocdir=/usr/share/doc/systemd-&systemd-version; \
       ..</userinput></screen>
 
@@ -135,14 +144,15 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-D{userdb,homed}=false</parameter></term>
+        <term><parameter>-Dhomed=disabled</parameter> and
+        <parameter>-Duserdb=false</parameter></term>
         <listitem>
           <para>Удаляет две службы, чьи зависимости не удовлетворяют LFS.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dman=false</parameter></term>
+        <term><parameter>-Dman=disabled</parameter></term>
         <listitem>
           <para> Предотвращает генерацию справочных страниц, чтобы избежать дополнительных 
 		  зависимостей. Мы установим предварительно сгенерированные справочные страницы 
@@ -181,6 +191,27 @@ meson setup \
           <systemitem class='groupname'>nogroup</systemitem>.</para>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dsysupdate=disabled</parameter></term>
+        <listitem>
+          <para>Предотвращает установку инструмента <command>systemd-sysupdate</command>. 
+		  Он предназначен для автоматического обновления бинарных дистрибутивов, поэтому 
+		  бесполезен в базовой системы Linux, собранной из исходного кода. Кроме этого, 
+		  при загрузке будут выдаваться сообщения об ошибках, если он включен, но не 
+		  настроен должным образом.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>-Dukify=disabled</parameter></term>
+        <listitem>
+          <para>Предотвращает установку скрипта <command>systemd-ukify</command>. Во время 
+		  выполнения этого сценария требуется модуль Python <application>pefile</application>, 
+		  который не предоставляется ни LFS, ни BLFS.</para>
+        </listitem>
+      </varlistentry>
+
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>
@@ -207,13 +238,6 @@ meson setup \
     <para>Настройте базовую целевую структуру:</para>
 
 <screen><userinput remap="adjust">systemctl preset-all</userinput></screen>
-
-    <para>Отключите две службы используемые в бинарных дистрибутивах. Они бесполезны 
-	для базовой системы Linux, собранной из исходного кода, и обе сообщают об ошибке, 
-	если они включены, но не настроены:</para>
-
-
-<screen><userinput remap="adjust">systemctl disable systemd-sysupdate{,-reboot}</userinput></screen>
 
 <!-- dev: 50-pid-max.conf is not removed in BLFS, so I commented the following out.
           If it causes any trouble, we can add this back and also copy it into BLFS -->

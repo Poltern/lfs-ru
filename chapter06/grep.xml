@@ -47,7 +47,8 @@
 </para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr   \
-            --host=$LFS_TGT</userinput></screen>
+            --host=$LFS_TGT \
+            --build=$(./build-aux/config.guess)</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
 

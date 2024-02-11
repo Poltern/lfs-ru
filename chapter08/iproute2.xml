@@ -44,9 +44,8 @@
     <para>Программа <command>arpd</command>, входящая в этот пакет, не будет собрана,
 	поскольку зависит от Berkeley DB, которая не установлена в LFS. Однако каталог и 
 	справочная страница для <command>arpd</command> все равно будут установлены. 
-	Предотвратить это можно, выполнив приведенные ниже команды. (Если вам нужна 
-	<command>arpd</command>, инструкции по компиляции Berkeley DB можно найти в книге 
-	BLFS по адресу <ulink url="&blfs-book;server/db.html"/>.)</para>
+	Предотвратить это можно, выполнив приведенные ниже команды.
+    </para>
 
 <screen><userinput remap="pre">sed -i /ARPD/d Makefile
 rm -fv man/man8/arpd.8</userinput></screen>

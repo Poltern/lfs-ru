@@ -53,7 +53,7 @@
          https://savannah.gnu.org/bugs/?63852 -->
     <para>Чтобы протестировать пакет, выполните:</para>
 
-<screen><userinput remap="test">chown -Rv tester .
+<screen><userinput remap="test">chown -R tester .
 su tester -c "PATH=$PATH make check"</userinput></screen>
 
     <para>Установите пакет:</para>
