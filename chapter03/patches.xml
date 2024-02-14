@@ -25,7 +25,7 @@
       </listitem>
     </varlistentry>
 -->
-<!--
+
     <varlistentry>
       <term>Bash Upstream Fixes Patch - <token>&bash-upstream-fixes-patch-size;</token>:</term>
       <listitem>
@@ -33,7 +33,7 @@
         <para>Контрольная сумма MD5: <literal>&bash-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
+
 <!--
     <varlistentry>
       <term>Binutils LTO Fix Patch - <token>&binutils-lto-patch-size;</token>:</term>
@@ -116,7 +116,7 @@
       </listitem>
     </varlistentry>
 -->
-
+<!--
     <varlistentry>
       <term>Pkgconf Upstream Fix Patch - <token>&pkgconf-upstream-fix-patch-size;</token>:</term>
       <listitem>
@@ -124,7 +124,7 @@
         <para>Контрольная сумма MD5: <literal>&pkgconf-upstream-fix-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
-
+-->
     <varlistentry>
       <term>Readline Upstream Fix Patch - <token>&readline-fixes-patch-size;</token>:</term>
       <listitem>

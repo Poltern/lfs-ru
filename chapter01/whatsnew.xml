@@ -70,9 +70,9 @@
     <!--<listitem>
        <para>E2fsprogs-&e2fsprogs-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
        <para>Expat-&expat-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
        <para>Expect-&expect-version;</para>
     </listitem>-->
@@ -175,9 +175,9 @@
     <listitem>
       <para>Man-DB-&man-db-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Man-pages-&man-pages-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>MarkupSafe-&markupsafe-version;</para>
     </listitem>
@@ -223,9 +223,9 @@
     <!--<listitem>
       <para>Sed-&sed-version;</para>
     </listitem>-->
-    <!--<listitem>  After version 12.1 release - see Added
+    <listitem>  <!-- After version 12.1 release - see Added -->
       <para>Setuptools-&setuptools-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Shadow-&shadow-version;</para>
     </listitem>
@@ -291,10 +291,6 @@
 
     <listitem>
       <para>&bash-upstream-fixes-patch;</para>
-    </listitem>
-
-    <listitem>
-      <para>&pkgconf-upstream-fix-patch;</para>
     </listitem>
 
     <listitem>
