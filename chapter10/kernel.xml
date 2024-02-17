@@ -400,7 +400,7 @@
 	  исходного кода ядра после установки только что собранного ядра.</para>
 
       <para>Если вы планируете оставить каталог с исходным кодом ядра, выполните команду
-      <command>chown -R 0:0</command> в каталоге <filename
+      <command>chown -R 0:0 *</command> находясь в каталоге <filename
       class="directory">linux-&linux-version;</filename>, чтобы все файлы принадлежали 
 	  пользователю <emphasis>root</emphasis>.</para>
     </note>
