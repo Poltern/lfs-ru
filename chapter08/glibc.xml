@@ -159,6 +159,9 @@ esac</userinput></screen>
         <para>Известно, что <emphasis>io/tst-lchmod</emphasis> не работает в среде chroot LFS.</para>
       </listitem>
 
+      <listitem>
+        <para>Три теста <emphasis>nptl/tst-thread-affinity*</emphasis> завершились неудачно.</para>
+      </listitem>
 
 <!-- Did not fail with glibc-2.38
       <listitem>

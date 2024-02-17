@@ -18,7 +18,7 @@
 <!ENTITY acl-url "&savannah;/releases/acl/acl-&acl-version;.tar.xz">
 <!ENTITY acl-md5 "590765dee95907dbc3c856f7255bd669">
 <!ENTITY acl-home "&savannah-nongnu;/projects/acl">
-<!ENTITY acl-fin-du "6.1 MB">
+<!ENTITY acl-fin-du "6.3 MB">
 <!ENTITY acl-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY attr-version "2.5.2">
@@ -475,7 +475,7 @@
 <!ENTITY man-db-url "&savannah;/releases/man-db/man-db-&man-db-version;.tar.xz">
 <!ENTITY man-db-md5 "67e0052fa200901b314fad7b68c9db27">
 <!ENTITY man-db-home "https://www.nongnu.org/man-db/">
-<!ENTITY man-db-fin-du "40 MB">
+<!ENTITY man-db-fin-du "41 MB">
 <!ENTITY man-db-fin-sbu "0.2 SBU">
 
 <!ENTITY man-pages-version "6.06">
@@ -669,7 +669,7 @@
 <!--<!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-version;-&systemd-stable;.tar.xz">-->
 <!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-man-version;.tar.xz">
 <!ENTITY systemd-man-md5  "1ebe54d7a80f9abf8f2d14ddfeb2432d">
-<!ENTITY systemd-fin-du   "238 MB">
+<!ENTITY systemd-fin-du   "247 MB">
 <!ENTITY systemd-fin-sbu  "0.7 SBU">
 
 <!ENTITY sysvinit-version "3.08">
