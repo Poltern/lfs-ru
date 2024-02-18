@@ -160,30 +160,31 @@ esac</userinput></screen>
       </listitem>
 
       <listitem>
-        <para>Три теста <emphasis>nptl/tst-thread-affinity*</emphasis> завершились неудачно.</para>
-      </listitem>
+        <para>Известно, что некоторые тесты, например 
+        <emphasis>nss/tst-nss-files-hosts-multi</emphasis> и 
+        <emphasis>nptl/tst-thread-affinity*</emphasis> 
+		завершаются неудачей из-за тайм-аута (особенно когда система работает относительно 
+		медленно и/или набор тестов запущен в несколько потоков). 
+		Эти тесты могут быть идентифицированы с помощью следующей команды:</para>
 
-<!-- Did not fail with glibc-2.38
-      <listitem>
-        <para>Известно, что <emphasis>misc/tst-ttyname</emphasis> не работает в среде chroot LFS.</para>
+        <!-- TODO: Using nodump for freeze.  Change it to role="test" after
+             12.1 release so jhalfs can list these in the log.  -->
+        <screen role="nodump"><userinput>grep "Timed out" -l $(find -name \*.out)</userinput></screen>
 
-      </listitem>
--->
-
-      <!-- https://sourceware.org/pipermail/libc-alpha/2022-August/141567.html -->
-      <listitem>
-        <para>Известно что тест <emphasis>stdlib/tst-arc4random-thread</emphasis>
-        завершается неудачей, если ядро хоста относительно старое.</para>
-      </listitem>
-
-      <listitem>
-        <para>Некоторые тесты, например, <emphasis>nss/tst-nss-files-hosts-multi</emphasis> 
-		не работают на относительно медленных системах из-за внутреннего тайм-аута.</para>
+        <para>Можно повторно запустить отдельный тест, увеличив таймаут с помощью команды 
+        <command>TIMEOUTFACTOR=<replaceable>&lt;factor&gt;</replaceable>
+        make test t=<replaceable>&lt;test name&gt;</replaceable></command>.
+        Например, <command>TIMEOUTFACTOR=10 make test
+        t=nss/tst-nss-files-hosts-multi</command> перезапустит 
+        <emphasis>nss/tst-nss-files-hosts-multi</emphasis>, увеличив начальный таймаут 
+		в 10 раз.</para>
       </listitem>
 
       <listitem>
         <para>Кроме того, некоторые тесты могут завершиться неудачно при использовании 
-		относительно старой модели процессора или версии ядра хоста.</para>
+		относительно старой модели процессора (например, 
+		<emphasis>elf/tst-cpu-features-cpuinfo</emphasis>) или версии ядра хоста (например, 
+		<emphasis>stdlib/tst-arc4random-thread</emphasis>).</para>
       </listitem>
     </itemizedlist>
 
