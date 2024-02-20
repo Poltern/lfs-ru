@@ -190,46 +190,25 @@ su tester -c "PATH=$PATH make -k check"</userinput></screen>
     url="&test-results;"/> и
     <ulink url="https://gcc.gnu.org/ml/gcc-testresults/"/>.</para>
 
- <para><!--Two tests named <filename>pr104610.c</filename> and
-    <filename>pr69482-1.c</filename> are known to fail because the test
-    files does not account for the
-    <parameter>- -enable-default-ssp</parameter> option.-->
-    <!-- https://gcc.gnu.org/PR106375 and https://gcc.gnu.org/PR109353 -->
-    Известно, что восемь тестов gcc (из более чем 185 000), data-model-4.c, pr56837.c 
-	и шесть тестов "анализатора" завершились неудачно.
+    <para>
+	Известно, что восемь тестов gcc (из более чем 185 000):
+    <!-- https://gcc.gnu.org/PR106375 --><filename>pr56837.c</filename>
+	и семь тестов из каталога <filename class='directory'>analyzer</filename> 
+	завершились неудачно.
 
-    Также провалился один тест libstdc++ (из более чем 15 000) — это copy.cc.
+    <!-- https://gcc.gnu.org/PR109353 -->
+    Также провалился один тест libstdc++ (из более чем 15 000) — это <filename>copy.cc</filename>.
 
-    Известно, что для g++ 21 тест (из примерно 250 000), 14 тестов "AddressSanitizer*" и 
-	7 тестов interception-malloc-test-1.C завершились неудачно.
+    Известно, что для g++ 21 тест (из примерно 250 000), 14 тестов <quote>AddressSanitizer*</quote> и 
+	7 тестов <filename>interception-malloc-test-1.C</filename> завершились неудачно.
 
-    Кроме того, известно, что несколько тестов в каталоге 
+    Кроме того, несколько тестов из каталога  
 	<filename class='directory'>vect</filename> завершаются неудачно, если 
 	оборудование не поддерживает AVX.</para>
- <!--
-    <para>
-      Известно, что в Glibc-2.39, тесты анализатора с именами 
-      <filename>data-model-4.c</filename> и
-      <filename>conftest-1.c</filename> 
-        завершаются неудачно.
-      Известно, что в тестах asan, несколько тестов в <filename>asan_test.C</filename> 
-        завершаются неудачно.
-      Известно, что тест с именем <filename>interception-malloc-test-1.C</filename> 
-        завершился ошибкой.
-    </para>
--->
+
     <para>Не всегда удается избежать неожиданных сбоев. Разработчики GCC обычно знают
 	об этих проблемах, но еще не решили их. Если результаты теста не сильно отличаются
 	от результатов по указанному выше URL-адресу, можно продолжать.</para>
-
-    <!--note><para>
-      On some combinations of kernel configuration and AMD processors
-      there may be more than 1100 failures in the gcc.target/i386/mpx
-      tests (which are designed to test the MPX option on recent
-      Intel processors). These can safely be ignored on AMD
-      processors. These tests will also fail on Intel processors if MPX support
-      is not enabled in the kernel even though it is present on the CPU.
-    </para></note-->
 
     <para>Установите пакет:</para>
 
