@@ -99,6 +99,7 @@ cd       build</userinput></screen>
       --build=$(../scripts/config.guess) \
       --enable-kernel=&min-kernel;                \
       --with-headers=$LFS/usr/include    \
+      --disable-nscd                     \
       --enable-multi-arch                \
       libc_cv_slibdir=/usr/lib</userinput></screen>
 

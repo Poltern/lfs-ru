@@ -1,6 +1,4 @@
-#BASEDIR = ~/lfs-book
-#SYSDDIR = ~/lfs-systemd
-#DUMPDIR = ~/lfs-commands
+# vim:ts=3
 RENDERTMP = $(HOME)/tmp
 CHUNK_QUIET = 1
 ROOT_ID =
@@ -23,15 +21,15 @@ ifneq ($(REV), sysv)
 endif
 
 ifeq ($(REV), sysv)
-  BASEDIR         ?= ~/lfs-book
+  BASEDIR         ?= $(HOME)/public_html/lfs-book
   PDF_OUTPUT      ?= LFS-BOOK.pdf
   NOCHUNKS_OUTPUT ?= LFS-BOOK.html
-  DUMPDIR         ?= ~/lfs-commands
+  DUMPDIR         ?= $(HOME)/lfs-commands
 else
-  BASEDIR         ?= ~/lfs-systemd
+  BASEDIR         ?= $(HOME)/public_html/lfs-systemd
   PDF_OUTPUT      ?= LFS-SYSD-BOOK.pdf
   NOCHUNKS_OUTPUT ?= LFS-SYSD-BOOK.html
-  DUMPDIR         ?= ~/lfs-sysd-commands
+  DUMPDIR         ?= $(HOME)/lfs-sysd-commands
 endif
 
 ifndef ARCH
@@ -59,7 +57,8 @@ book: validate profile-html
 	@echo "Copying CSS code and images..."
 	$(Q)mkdir -p $(BASEDIR)/stylesheets
 	$(Q)cp stylesheets/lfs-xsl/*.css $(BASEDIR)/stylesheets
-	$(Q)sed -i 's|../stylesheet|stylesheet|' $(BASEDIR)/index.html
+	$(Q)sed -e 's|../stylesheet|stylesheet|' \
+           -i $(BASEDIR)/index.html
 
 	$(Q)mkdir -p $(BASEDIR)/images
 	$(Q)cp images/*.png $(BASEDIR)/images
@@ -67,12 +66,10 @@ book: validate profile-html
 	@echo "Running Tidy and obfuscate.sh..."
 	$(Q)for filename in `find $(BASEDIR) -name "*.html"`; do \
          tidy -config tidy.conf $$filename;           \
-         true;                                        \
          /bin/bash obfuscate.sh $$filename;           \
-         sed -e "s@text/html@application/xhtml+xml@g" \
-             -e "s/\#xa9/\&copy;/ "                    \
+         sed -e "s|text/html|application/xhtml+xml|g" \
              -i $$filename;                           \
-   done;
+       done
 
 	$(Q)$(MAKE) --no-print-directory wget-list md5sums
 
@@ -120,17 +117,16 @@ nochunks: validate profile-html
                 --output $(BASEDIR)/$(NOCHUNKS_OUTPUT) \
                 stylesheets/lfs-nochunks.xsl           \
                 $(RENDERTMP)/lfs-html.xml
-#                $(RENDERTMP)/lfs-html2.xml
 
 	@echo "Running Tidy..."
-	$(Q)tidy -config tidy.conf $(BASEDIR)/$(NOCHUNKS_OUTPUT) || true
+	$(Q)tidy -config tidy.conf $(BASEDIR)/$(NOCHUNKS_OUTPUT) || test $$? -le 1
 
 	@echo "Running obfuscate.sh..."
-	$(Q)bash obfuscate.sh                                $(BASEDIR)/$(NOCHUNKS_OUTPUT)
-	$(Q)sed -i -e "s@text/html@application/xhtml+xml@g"  $(BASEDIR)/$(NOCHUNKS_OUTPUT)
-	$(Q)sed -i -e "s@../wget-list@wget-list@"            $(BASEDIR)/$(NOCHUNKS_OUTPUT)
-	$(Q)sed -i -e "s@../md5sums@md5sums@"                $(BASEDIR)/$(NOCHUNKS_OUTPUT)
-	$(Q)sed -i -e "s@\#xa9@\&copy;@"                      $(BASEDIR)/$(NOCHUNKS_OUTPUT)
+	$(Q)bash obfuscate.sh      $(BASEDIR)/$(NOCHUNKS_OUTPUT)
+	$(Q)sed -e "s|text/html|application/xhtml+xml|g" \
+           -e "s|../wget-list|wget-list|"           \
+           -e "s|../md5sums|md5sums|"               \
+           -i $(BASEDIR)/$(NOCHUNKS_OUTPUT)
 
 	@echo "Output at $(BASEDIR)/$(NOCHUNKS_OUTPUT)"
 
@@ -149,17 +145,17 @@ validate: tmpdir version
 	@echo "Adjusting for revision $(REV)..."
 	$(Q)xsltproc --nonet                               \
                 --xinclude                            \
-                --output $(RENDERTMP)/lfs-html2.xml   \
                 --stringparam profile.revision $(REV) \
                 --stringparam profile.arch $(ARCH)    \
+                --output $(RENDERTMP)/lfs-html2.xml   \
                 stylesheets/lfs-xsl/profile.xsl       \
                 index.xml
 
 	@echo "Validating the book..."
-	$(Q)xmllint --nonet                      \
-               --noent                      \
-               --postvalid                  \
-	            -o $(RENDERTMP)/lfs-full.xml \
+	$(Q)xmllint --nonet                            \
+               --encode UTF-8                     \
+               --postvalid                        \
+               --output $(RENDERTMP)/lfs-full.xml \
                $(RENDERTMP)/lfs-html2.xml
 
 	$(Q)rm -f appendices/*.script
@@ -170,47 +166,50 @@ profile-html:
 	@echo "Generating profiled XML for XHTML..."
 	$(Q)xsltproc --nonet                              \
                 --stringparam profile.condition html \
-	             --output $(RENDERTMP)/lfs-html.xml   \
+                --output $(RENDERTMP)/lfs-html.xml   \
                 stylesheets/lfs-xsl/profile.xsl      \
-	             $(RENDERTMP)/lfs-full.xml
+                $(RENDERTMP)/lfs-full.xml
+
+DOWNLOADS_DEP = chapter03/packages.xml chapter03/patches.xml \
+                packages.ent patches.ent general.ent
 
 wget-list: $(BASEDIR)/wget-list $(BASEDIR)/wget-list-$(REV)
-$(BASEDIR)/wget-list: stylesheets/wget-list.xsl chapter03/chapter03.xml \
-                      packages.ent patches.ent general.ent
+$(BASEDIR)/wget-list: stylesheets/wget-list.xsl $(DOWNLOADS_DEP)
 	@echo "Generating consolidated wget list at $(BASEDIR)/wget-list ..."
 	$(Q)mkdir -p $(BASEDIR)
-	$(Q)xsltproc --xinclude --nonet            \
+	$(Q)xsltproc --nonet                       \
+                --xinclude                    \
                 --output $(BASEDIR)/wget-list \
-	             stylesheets/wget-list.xsl     \
+                stylesheets/wget-list.xsl     \
                 chapter03/chapter03.xml
 
-$(BASEDIR)/wget-list-$(REV): stylesheets/wget-list.xsl \
-                             chapter03/chapter03.xml \
-                             packages.ent patches.ent general.ent
-	$(Q)xsltproc --nonet --xinclude                   \
+$(BASEDIR)/wget-list-$(REV): stylesheets/wget-list.xsl $(DOWNLOADS_DEP)
+	$(Q)xsltproc --nonet                               \
+                --xinclude                            \
                 --stringparam profile.revision $(REV) \
                 --output $(RENDERTMP)/wget-list.xml   \
                 stylesheets/lfs-xsl/profile.xsl       \
                 chapter03/chapter03.xml
-	$(Q)xsltproc --xinclude --nonet                  \
+
+	$(Q)xsltproc --nonet                              \
                 --output $(BASEDIR)/wget-list-$(REV) \
                 stylesheets/wget-list.xsl            \
                 $(RENDERTMP)/wget-list.xml
 
 md5sums: $(BASEDIR)/md5sums
-$(BASEDIR)/md5sums: stylesheets/wget-list.xsl chapter03/chapter03.xml \
-                    packages.ent patches.ent
+$(BASEDIR)/md5sums: stylesheets/wget-list.xsl $(DOWNLOADS_DEP)
 	@echo "Generating consolidated md5sum file at $(BASEDIR)/md5sums ..."
 	$(Q)mkdir -p $(BASEDIR)
 
-	$(Q)xsltproc --nonet --xinclude                   \
+	$(Q)xsltproc --nonet                               \
+                --xinclude                            \
                 --stringparam profile.revision $(REV) \
                 --stringparam profile.arch $(ARCH)    \
                 --output $(RENDERTMP)/md5sum.xml      \
                 stylesheets/lfs-xsl/profile.xsl       \
                 chapter03/chapter03.xml
 
-	$(Q)xsltproc --xinclude --nonet         \
+	$(Q)xsltproc --nonet                     \
                 --output $(BASEDIR)/md5sums \
                 stylesheets/md5sum.xsl      \
                 $(RENDERTMP)/md5sum.xml

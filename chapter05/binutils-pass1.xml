@@ -73,13 +73,15 @@ cd       build</userinput></screen>
              --target=$LFS_TGT   \
              --disable-nls       \
              --enable-gprofng=no \
-             --disable-werror</userinput></screen>
+             --disable-werror    \
+             --enable-default-hash-style=gnu</userinput></screen>
 <screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure --prefix=$LFS/tools       \
              --with-sysroot=$LFS \
              --target=$LFS_TGT   \
              --disable-nls       \
              --enable-gprofng=no \
              --disable-werror    \
+             --enable-default-hash-style=gnu \
              --enable-multilib</userinput></screen>
 
     <variablelist>
@@ -133,6 +135,21 @@ cd       build</userinput></screen>
         <listitem>
           <para>Этот параметр предотвращает остановку сборки в случае появления
 		  предупреждений от компилятора хоста.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-default-hash-style=gnu</parameter></term>
+        <listitem>
+          <para>По умолчанию компоновщик генерирует как хеш-таблицу в стиле GNU, так 
+		  и классическую хеш-таблицу ELF для общих библиотек и динамически связанных 
+		  исполняемых файлов. Хеш-таблицы необходимы только для динамического компоновщика, 
+		  выполняющего поиск символов. В LFS динамический компоновщик (предоставляемый пакетом 
+		  Glibc) всегда будет использовать хеш-таблицу в стиле GNU, к которой запросы выполняются 
+		  быстрее. Так что классическая хеш-таблица ELF совершенно бесполезна. Этот параметр 
+		  указывает компоновщику по умолчанию генерировать только хеш-таблицу в стиле GNU, поэтому 
+		  мы можем избежать траты времени на создание классической хеш-таблицы ELF при сборке 
+		  пакетов или не тратить дисковое пространство для ее хранения.</para>
         </listitem>
       </varlistentry>
 

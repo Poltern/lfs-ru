@@ -10,7 +10,7 @@
 
   <title>Журнал изменений</title>
 
-  <para>Это версия &version; книги Linux From Scratch от &releasedate;. Если
+  <para>Это версия &version;<phrase arch="ml_32,ml_x32,ml_all">-multilib</phrase> книги Linux From Scratch от &releasedate;. Если
   этой книге больше шести месяцев, возможно, уже доступна более новая, улучшенная
   версия. Чтобы узнать это, проверьте одно из зеркал <ulink url="&lfs-root;mirrors.html"/>.</para>
 

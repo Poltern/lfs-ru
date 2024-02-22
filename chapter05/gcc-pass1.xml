@@ -194,11 +194,12 @@ cd       build</userinput></screen>
 		  Этот аргумент никак не влияет на работу с архитектурой x86.</para>
         </listitem>
       </varlistentry>
+
       <varlistentry arch="ml_32,ml_x32,ml_all">
         <term><parameter>--enable-multilib --with-multilib-list=...</parameter></term>
         <listitem>
           <para>LFS можно использовать с поддержкой multilib для архитектур которые указаны в списке 
-+                with-multilib-list.</para>
+		  with-multilib-list.</para>
         </listitem>
       </varlistentry>
 
