@@ -72,7 +72,8 @@ cd       build</userinput></screen>
     --enable-shared            \
     --enable-gprofng=no        \
     --disable-werror           \
-    --enable-64-bit-bfd</userinput></screen>
+    --enable-64-bit-bfd        \
+    --enable-default-hash-style=gnu</userinput></screen>
 <screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure                   \
     --prefix=/usr              \
     --build=$(../config.guess) \
@@ -82,6 +83,7 @@ cd       build</userinput></screen>
     --enable-gprofng=no        \
     --disable-werror           \
     --enable-64-bit-bfd        \
+    --enable-default-hash-style=gnu \
     --enable-multilib</userinput></screen>
 
     <variablelist>
