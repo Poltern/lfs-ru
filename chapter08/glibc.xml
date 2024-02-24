@@ -231,7 +231,7 @@ esac</userinput></screen>
 			<xref role='.' linkend='ch-system-libxcrypt'/>. В дополнение к обычной установке 
 			<application>Libxcrypt</application>, <emphasis role='bold'>вы ДОЛЖНЫ следовать 
 			примечанию со страницы Libxcrypt, чтобы установить 
-			<filename class='libraryfile '>libcrypt.so.1*</filename> (перезаписав 
+			<filename class='libraryfile '>libcrypt.so.1*</filename> (заменив 
 			<filename class='libraryfile'>libcrypt.so.1</filename> из предыдущей установки 
 			Glibc)</emphasis>.
           </para>
@@ -248,7 +248,7 @@ esac</userinput></screen>
 
           <screen role='nodump'><userinput>rm -f /usr/sbin/nscd</userinput></screen>
 
-          <para>
+          <para revision='systemd'>
             Если система (до LFS 12.1) основана на Systemd, необходимо также отключить и 
 			остановить службу <command>nscd</command> прямо сейчас:
           </para>
