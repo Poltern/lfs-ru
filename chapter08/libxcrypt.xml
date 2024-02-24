@@ -109,7 +109,7 @@
             --disable-static             \
             --disable-failure-tokens
 make
-cp -av .libs/libcrypt.so.1* /usr/lib</userinput></screen>
+cp -av --remove-destination .libs/libcrypt.so.1* /usr/lib</userinput></screen>
     </note>
 
   </sect2>
