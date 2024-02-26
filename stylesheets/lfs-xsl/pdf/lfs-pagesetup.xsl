@@ -259,4 +259,11 @@
     </xsl:choose>
   </xsl:template> -->
 
+  <!-- arrow for chapter11/afterlfs.xml -->  
+  <xsl:template match="keycap[@role = 'symbolfont']">
+    <fo:inline font-family="Symbol">
+      <xsl:call-template name="inline.charseq"/>
+    </fo:inline>
+  </xsl:template>
+
 </xsl:stylesheet>

@@ -27,56 +27,29 @@
                <font-triplet name="serif" style="italic" weight="bold"/>
            </font>
 
-
-           <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_regular.ttf"
+          <font kerning="yes"
+                 embed-url="file:///fonts/Liberation/LiberationSans-Regular.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="normal" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold.ttf"
+                 embed-url="file:///fonts/Liberation/LiberationSans-Bold.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="normal" weight="bold"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_italic.ttf"
+                 embed-url="file:///fonts/Liberation/LiberationSans-Italic.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="italic" weight="normal"/>
            </font>
 
            <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold-italic.ttf"
+                 embed-url="file:///fonts/Liberation/LiberationSans-BoldItalic.ttf"
                  encoding-mode="auto">
                <font-triplet name="Symbol" style="italic" weight="bold"/>
            </font>
-
-
-           <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_regular.ttf"
-                 encoding-mode="auto">
-               <font-triplet name="ZapfDingbats" style="normal" weight="normal"/>
-           </font>
-
-           <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold.ttf"
-                 encoding-mode="auto">
-               <font-triplet name="ZapfDingbats" style="normal" weight="bold"/>
-           </font>
-
-           <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_italic.ttf"
-                 encoding-mode="auto">
-               <font-triplet name="ZapfDingbats" style="italic" weight="normal"/>
-           </font>
-
-           <font kerning="yes"
-                 embed-url="file:///fonts/PT-Astra-Sans/pt-astra-sans_bold-italic.ttf"
-                 encoding-mode="auto">
-               <font-triplet name="ZapfDingbats" style="italic" weight="bold"/>
-           </font>
-
 
            <font kerning="yes"
                  embed-url="file:///fonts/Roboto_Mono/RobotoMono-Regular.ttf"
