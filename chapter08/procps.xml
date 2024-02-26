@@ -74,7 +74,10 @@
 
 <screen><userinput remap="test">make check</userinput></screen>
 
-    <para>Известно, что один тест из набора "ps" завершился неудачно.</para>
+    <para>Известно, что один тест, называемый 
+	<literal>ps with output flag bsdtime,cputime,etime,etimes</literal> завершается неудачно, 
+	если ядро хоста собрано с выключенным параметром 
+	<literal>CONFIG_BSD_PROCESS_ACCT</literal>.</para>
 
     <para>Установите пакет:</para>
 
