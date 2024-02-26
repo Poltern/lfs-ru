@@ -220,12 +220,12 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
 	   Комбинации 
        <keycombo>
          <keycap>Alt</keycap>
-         <keycap function='left'/>
+         <keycap role="symbolfont">&#8594;</keycap>
        </keycombo>
        и
        <keycombo>
          <keycap>Alt</keycap>
-         <keycap function='right'/>
+         <keycap role="symbolfont">&#8592;</keycap>
        </keycombo>
        также переключают консоль.
      </para>

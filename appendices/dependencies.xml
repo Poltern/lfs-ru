@@ -1044,7 +1044,15 @@
       <segmentedlist id="gettext-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
-          <seg><ulink url='&blfs-book;general/libxml2.html'>libxml2</ulink></seg>
+          <seg>
+            <ulink url='&blfs-book;general/libunistring.html'>
+              libunistring
+            </ulink>
+            и 
+            <ulink url='&blfs-book;general/libxml2.html'>
+              libxml2
+            </ulink>
+          </seg>
         </seglistitem>
       </segmentedlist>
 

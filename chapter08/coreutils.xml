@@ -124,8 +124,14 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 
 <!-- Sometimes skipped, but if not it may fail.
      Please DO NOT remove or comment out this unless we can fully
-     understand it!  -->
+     understand it!
     <para>Тест test-getlogin может завершиться ошибкой в среде chroot LFS.</para>
+    20240226: Commented out as it seems the upstream has root-caused and
+    fixed the issue.  I've checked the fix is in Coreutils 9.4 release
+    tarball:
+
+    https://lists.gnu.org/archive/html/bug-gnulib/2022-06/msg00079.html
+-->
 
     <para>Удалить временную группу:</para>
 
