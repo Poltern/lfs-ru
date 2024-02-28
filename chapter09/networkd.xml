@@ -45,9 +45,9 @@
     <filename class="extension">.netdev</filename> и
     <filename class="extension">.network</filename>. Для получения подробной информации с описанием
 	и примерами содержимого этих конфигурационных файлов ознакомьтесь с руководствами
-	<ulink role='man' url='&man;systemd-link.5'>systemd-link(5)</ulink>,
-    <ulink role='man' url='&man;systemd-netdev.5'>systemd-netdev(5)</ulink> и
-    <ulink role='man' url='&man;systemd-network.5'>systemd-network(5)</ulink>.</para>
+	<ulink role='man' url='&man;systemd.link.5'>systemd.link(5)</ulink>,
+    <ulink role='man' url='&man;systemd.netdev.5'>systemd.netdev(5)</ulink> и
+    <ulink role='man' url='&man;systemd.network.5'>systemd.network(5)</ulink>.</para>
 
     <sect3 id="systemd-network-devices">
       <title>Именование сетевых устройств</title>

@@ -592,7 +592,7 @@
 <!ENTITY procps-ng-size "1,369 KB">
 <!ENTITY procps-ng-url "https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-&procps-ng-version;.tar.xz">
 <!ENTITY procps-ng-md5 "2f747fc7df8ccf402d03e375c565cf96">
-<!ENTITY procps-ng-home "https://sourceforge.net/projects/procps-ng">
+<!ENTITY procps-ng-home "https://gitlab.com/procps-ng/procps/">
 <!ENTITY procps-ng-fin-du "27 MB">
 <!ENTITY procps-ng-fin-sbu "0.1 SBU">
 
