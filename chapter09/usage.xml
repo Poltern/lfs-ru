@@ -425,6 +425,35 @@ FONT="Lat2-Terminus16"
 EOF</userinput></screen>
 
     </listitem>
+	
+    <listitem>
+      <para>Для русскоязычных пользователей может подойти такой вариант:</para>
+<screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
+<literal># Begin /etc/sysconfig/console
+
+UNICODE="1"
+KEYMAP="ruwin_alt_sh-UTF-8"
+FONT="cyr-sun16"
+
+# End /etc/sysconfig/console</literal>
+EOF</userinput></screen>
+
+  <note>
+    <para>Для поиска нужной раскладки, выполните команду: 
+    <command>find /usr/share/keymaps -type f</command></para>
+
+    <para><literal>ruwin_alt-UTF-8</literal> - переключение раскладки по Alt.</para>
+    <para><literal>ruwin_alt_sh-UTF-8</literal> - переключение раскладки по Alt+Shift.</para>
+    <para><literal>ruwin_cplk-UTF-8</literal> - переключение раскладки по Caps Lock.</para>
+    <para><literal>ruwin_ct_sh-UTF-8</literal> - переключение раскладки по Ctrl+Shift.</para>
+    <para><literal>ruwin_ctrl-UTF-8</literal> - переключение раскладки по Ctrl.</para>
+
+    <para>Посмотреть список доступных шрифтов можно с помощью следующей команды: 
+	<command>ls /usr/share/consolefonts</command></para>
+	
+  </note>
+
+    </listitem>
 
     <listitem>
       <para>Для не-Unicode настройки необходимы только переменные KEYMAP и FONT. Например, 
