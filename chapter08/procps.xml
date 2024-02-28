@@ -72,12 +72,19 @@
 
     <para>Чтобы запустить набор тестов, выполните:</para>
 
-<screen><userinput remap="test">make check</userinput></screen>
+<screen><userinput remap="test">make -k check</userinput></screen>
 
-    <para>Известно, что один тест, называемый 
+    <para>Известно, что тест 
 	<literal>ps with output flag bsdtime,cputime,etime,etimes</literal> завершается неудачно, 
 	если ядро хоста собрано с выключенным параметром 
-	<literal>CONFIG_BSD_PROCESS_ACCT</literal>.</para>
+    <literal>CONFIG_BSD_PROCESS_ACCT</literal>.
+    <!-- These two tests just do not work as root but they seem to pass
+         in most time due to some internal hazards of Tcl/Expect/DejaGNU
+         framework.  However the failures have been really observed.
+         TODO: run the test suite as tester after the freeze ends.  -->
+    Также известно, что два теста:  
+    <literal>pmap X with unreachable process</literal> и 
+    <literal>pmap XX with unreachable process</literal> иногда завершаются неудачно.</para>
 
     <para>Установите пакет:</para>
 

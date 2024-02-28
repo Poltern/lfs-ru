@@ -513,8 +513,9 @@ unset ZONEINFO</userinput></screen>
       <varlistentry>
         <term><parameter>zic ... -p ...</parameter></term>
         <listitem>
-          <para>Создаёт файл <filename>posixrules</filename>. Используется New York,
-          потому что POSIX требует соответствия правил летнего времени с правилами США.</para>
+          <para>Создаёт файл <filename>posixrules</filename>. Используется New York, 
+          потому что POSIX требует, чтобы правила перехода на летнее время соответствовали 
+		  правилам США.</para>
         </listitem>
       </varlistentry>
     </variablelist>
