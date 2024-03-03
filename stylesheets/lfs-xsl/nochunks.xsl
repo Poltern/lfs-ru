@@ -123,11 +123,13 @@ a:active { color: #6b77b1 ! important;}
   padding: 0 1em;
 }
 
+/*
 .book h1, .book .authorgroup, .book .copyright, .book .legalnotice .revhistory {
   background: #f5f6f7;
   margin: 0px auto;
   padding: .1em 1em;
 }
+*/
 
 .book hr {
   background: #dbddec;
@@ -185,10 +187,12 @@ h1 {
   text-align: center;
 }
 
+/*
 .book h1 {
   margin: 0;
   padding: 0.4em;
 }
+*/
 
 h1.title sup {
   font-size: small;
@@ -585,6 +589,16 @@ p.usernotes {
 
 .underlined {
   text-decoration: underline;
+}
+
+h2.title, .book h1 {
+  background: #f5f6f7;
+  border-top: .2em solid #dbddec;
+  border-bottom: .2em solid #dbddec;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding: .4em;
+  text-align: center;
 }
 
 
