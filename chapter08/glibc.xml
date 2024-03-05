@@ -167,9 +167,7 @@ esac</userinput></screen>
 		медленно и/или набор тестов запущен в несколько потоков). 
 		Эти тесты могут быть идентифицированы с помощью следующей команды:</para>
 
-        <!-- TODO: Using nodump for freeze.  Change it to role="test" after
-             12.1 release so jhalfs can list these in the log.  -->
-        <screen role="nodump"><userinput>grep "Timed out" -l $(find -name \*.out)</userinput></screen>
+        <screen><userinput remap="test">grep "Timed out" $(find -name \*.out)</userinput></screen>
 
         <para>Можно повторно запустить отдельный тест, увеличив таймаут с помощью команды 
         <command>TIMEOUTFACTOR=<replaceable>&lt;factor&gt;</replaceable>
