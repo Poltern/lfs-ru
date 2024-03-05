@@ -156,10 +156,10 @@
 <!ENTITY elfutils-fin-du "124 MB">
 <!ENTITY elfutils-fin-sbu "0.3 SBU">
 
-<!ENTITY expat-version "2.6.0">
+<!ENTITY expat-version "2.6.1">
 <!ENTITY expat-size "473 KB">
 <!ENTITY expat-url "&sourceforge;expat/expat-&expat-version;.tar.xz">
-<!ENTITY expat-md5 "bd169cb11f4b9bdfddadf9e88a5c4d4b">
+<!ENTITY expat-md5 "84d0ee1c554212dc8f068e538de5b823">
 <!ENTITY expat-home "https://libexpat.github.io/">
 <!ENTITY expat-fin-du "13 MB">
 <!ENTITY expat-fin-sbu "0.1 SBU">
@@ -243,12 +243,12 @@
 <!ENTITY gdbm-md5 "8551961e36bf8c70b7500d255d3658ec">
 <!ENTITY gdbm-home "&gnu-software;gdbm/">
 <!ENTITY gdbm-fin-du "13 MB">
-<!ENTITY gdbm-fin-sbu "менее 0.1 SBU">
+<!ENTITY gdbm-fin-sbu "0.1 SBU">
 
-<!ENTITY gettext-version "0.22.4">
-<!ENTITY gettext-size "10,016 KB">
+<!ENTITY gettext-version "0.22.5">
+<!ENTITY gettext-size "10,031 KB">
 <!ENTITY gettext-url "&gnu;gettext/gettext-&gettext-version;.tar.xz">
-<!ENTITY gettext-md5 "2d8507d003ef3ddd1c172707ffa97ed8">
+<!ENTITY gettext-md5 "3ae5580599d84be93e6213930facb2db">
 <!ENTITY gettext-home "&gnu-software;gettext/">
 <!ENTITY gettext-tmp-du "306 MB">
 <!ENTITY gettext-tmp-sbu "1.1 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240125">
+<!ENTITY iana-etc-version "20240222">
 <!ENTITY iana-etc-size "589 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "aed66d04de615d76c70890233081e584">
+<!ENTITY iana-etc-md5 "dadc93615a3cdbc95380f4a4a91ab2b8">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -397,10 +397,10 @@
 <!ENTITY libcap-fin-du "2.9 MB">
 <!ENTITY libcap-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY libffi-version "3.4.4">
-<!ENTITY libffi-size "1,331 KB">
+<!ENTITY libffi-version "3.4.6">
+<!ENTITY libffi-size "1,360 KB">
 <!ENTITY libffi-url "https://github.com/libffi/libffi/releases/download/v&libffi-version;/libffi-&libffi-version;.tar.gz">
-<!ENTITY libffi-md5 "0da1a5ed7786ac12dcbaf0d499d8a049">
+<!ENTITY libffi-md5 "b9cac6c5997dca2b3787a59ede34e0eb">
 <!ENTITY libffi-home "https://sourceware.org/libffi/">
 <!ENTITY libffi-fin-du "11 MB">
 <!ENTITY libffi-fin-sbu "1.8 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "7">
-<!ENTITY linux-patch-version "4">
+<!ENTITY linux-patch-version "7">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "138,130 KB">
+<!ENTITY linux-size "138,148 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "370e1b6155ae63133380e421146619e0">
+<!ENTITY linux-md5 "daad88f53f3bddd03fd703c3a885fd4f">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -631,18 +631,18 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "69.1.0">
+<!ENTITY setuptools-version "69.1.1">
 <!ENTITY setuptools-size "2,168 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "6f6eb780ce12c90d81ce243747ed7ab0">
+<!ENTITY setuptools-md5 "bfad5bc64d49984f98fca0de77687f99">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "20 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
 
-<!ENTITY shadow-version "4.14.5">
-<!ENTITY shadow-size "1,765 KB">
+<!ENTITY shadow-version "4.14.6">
+<!ENTITY shadow-size "1,764 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "452b0e59f08bf618482228ba3732d0ae">
+<!ENTITY shadow-md5 "293e93f78f2d3217b253d289271a40fa">
 <!ENTITY shadow-home "&github;/shadow-maint/shadow/">
 <!ENTITY shadow-fin-du "49 MB">
 <!ENTITY shadow-fin-sbu "0.1 SBU">
@@ -690,15 +690,15 @@
 <!ENTITY tar-fin-du "43 MB">
 <!ENTITY tar-fin-sbu "0.5 SBU">
 
-<!ENTITY tcl-version "8.6.13">
+<!ENTITY tcl-version "8.6.14">
 <!ENTITY tcl-major-version "8.6">
-<!ENTITY tcl-size "10,581 KB">
+<!ENTITY tcl-size "11,355 KB">
 <!ENTITY tcl-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-src.tar.gz">
-<!ENTITY tcl-md5 "0e4358aade2f5db8a8b6f2f6d9481ec2">
+<!ENTITY tcl-md5 "c30b57c6051be28fa928d09aca82841e">
 <!ENTITY tcl-home "http://tcl.sourceforge.net/">
 <!ENTITY tcl-docs-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-html.tar.gz">
-<!ENTITY tcl-docs-md5 "4452f2f6d557f5598cca17b786d6eb68">
-<!ENTITY tcl-docs-size "1,165 KB">
+<!ENTITY tcl-docs-md5 "5467198f8d57c54835bf80b98ffb0170">
+<!ENTITY tcl-docs-size "1,167 KB">
 <!ENTITY tcl-tmp-du "89 MB">
 <!ENTITY tcl-tmp-sbu "2.7 SBU">
 
@@ -738,13 +738,13 @@
 <!ENTITY util-linux-fin-du "313 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.1.0041">
+<!ENTITY vim-version "9.1.0145">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim91">
-<!ENTITY vim-size "17,224 KB">
+<!ENTITY vim-size "17,285 KB">
 <!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
 <!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-md5 "79dfe62be5d347b1325cbd5ce2a1f9b3">
+<!ENTITY vim-md5 "9db2b795d5671c05dfc843905d6a3f5f">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "236 MB">
 <!ENTITY vim-fin-sbu "2.5 SBU">
@@ -765,10 +765,10 @@
 <!ENTITY xml-parser-fin-du "2.4 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xz-version "5.4.6">
-<!ENTITY xz-size "1,645 KB">
+<!ENTITY xz-version "5.6.0">
+<!ENTITY xz-size "1,732 KB">
 <!ENTITY xz-url "https://github.com/tukaani-project/xz/releases/download/v&xz-version;/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "7ade7bd1181a731328f875bec62a9377">
+<!ENTITY xz-md5 "cfb1afdfcfeca02f7677b1b401bc536e">
 <!ENTITY xz-home "https://tukaani.org/xz">
 <!ENTITY xz-tmp-du "22 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">
