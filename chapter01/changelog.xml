@@ -40,6 +40,56 @@
     -->
 
     <listitem>
+      <para>2024-03-15</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to wheel-0.43.0. Fixes
+          <ulink url='&lfs-ticket-root;5459'>#5459</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to setuptools-69.2.0 (Python module). Fixes
+          <ulink url='&lfs-ticket-root;5462'>#5462</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to meson-1.4.0. Fixes
+          <ulink url='&lfs-ticket-root;5460'>#5460</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to expat-2.6.2 (Security fix). Fixes
+          <ulink url='&lfs-ticket-root;5461'>#5461</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20240305. Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to vim-9.1.0161. Addresses
+          <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to xz-5.6.1. Fixes
+          <ulink url='&lfs-ticket-root;5457'>#5457</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to shadow-4.15.0. Fixes
+          <ulink url='&lfs-ticket-root;5456'>#5456</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to psmisc-23.7. Fixes
+          <ulink url='&lfs-ticket-root;5454'>#5454</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kmod-32. Fixes
+          <ulink url='&lfs-ticket-root;5455'>#5455</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to elfutils-0.191. Fixes
+          <ulink url='&lfs-ticket-root;5451'>#5451</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-03-02</para>
       <itemizedlist>
         <listitem>

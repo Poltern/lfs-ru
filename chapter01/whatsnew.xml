@@ -139,9 +139,9 @@
     <!--<listitem>
       <para>Kbd-&kbd-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Kmod-&kmod-version;</para>
-   </listitem>-->
+   </listitem>
     <!--<listitem>
       <para>Less-&less-version;</para>
     </listitem>-->
@@ -151,9 +151,9 @@
     <!--<listitem>
       <para>Libcap-&libcap-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Libelf из Elfutils-&elfutils-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Libffi-&libffi-version;</para>
     </listitem>
@@ -181,9 +181,9 @@
     <!--<listitem>
       <para>MarkupSafe-&markupsafe-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Meson-&meson-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>MPC-&mpc-version;</para>
     </listitem>-->
@@ -211,9 +211,9 @@
     <!--<listitem>
       <para>Procps-ng-&procps-ng-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Psmisc-&psmisc-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Python-&python-version;</para>
     </listitem>-->
@@ -259,9 +259,9 @@
     <listitem>
       <para>Vim-&vim-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Wheel-&wheel-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>XML::Parser-&xml-parser-version;</para>
     </listitem>-->
