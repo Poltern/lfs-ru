@@ -350,7 +350,7 @@
 <!ENTITY iproute2-fin-sbu "0.1 SBU">
 
 <!ENTITY isl-version "0.26">
-<!ENTITY isl-size "1.9 MB">
+<!ENTITY isl-size "1,988 KB">
 <!-- ENTITY isl-url "http://isl.gforge.inria.fr/isl-&isl-version;.tar.xz" -->
 <!-- ENTITY isl-url "https://gcc.gnu.org/pub/gcc/infrastructure/isl-&isl-version;.tar.bz2" -->
 <!ENTITY isl-url "https://libisl.sourceforge.io/isl-&isl-version;.tar.xz">
