@@ -79,18 +79,20 @@
 <screen><userinput remap="make">make</userinput></screen>
 
     <para>Набору тестов этого пакета необходимы необработанные заголовочные файлы ядра
-	(а не <quote>очищенные</quote>, установленных ранее), это выходит за рамки LFS.</para>
+	(а не <quote>очищенные</quote>, установленные ранее), но это выходит за рамки LFS.</para>
 
-    <para>Установите пакет и создайте символические ссылки для совместимости с
-	Module-Init-Tools (пакетом, который ранее обрабатывал модули ядра Linux):</para>
+    <para>Установите пакет и восстановите некоторые символические ссылки для совместимости 
+	с Module-Init-Tools (пакетом, который ранее обрабатывал модули ядра Linux). Система сборки 
+	создаст все эти символические ссылки в <filename class='directory'>/usr/bin</filename>, но 
+	здесь нам нужна только команда <command>lsmod</command>, а все остальные символические ссылки 
+	должны вести в <filename class='directory. '>/usr/sbin</filename>:</para>
 
 <screen><userinput remap="install">make install
 
 for target in depmod insmod modinfo modprobe rmmod; do
   ln -sfv ../bin/kmod /usr/sbin/$target
-done
-
-ln -sfv kmod /usr/bin/lsmod</userinput></screen>
+  rm -fv /usr/bin/$target
+done</userinput></screen>
 
   </sect2>
 
