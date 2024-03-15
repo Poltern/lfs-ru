@@ -5,7 +5,6 @@
      DO NOT EDIT! -->
 <screen role="nodump" revision="systemd"><emphasis role='blue'>G</emphasis>eneral setup ---&gt;
   [ ] <emphasis role='blue'>C</emphasis>ompile the kernel with warnings as errors                        [WERROR]
-  [ ] <emphasis role='blue'>A</emphasis>uditing support                                                   [AUDIT]
   <emphasis role='blue'>C</emphasis>PU/Task time and stats accounting ---&gt;
     [*] <emphasis role='blue'>P</emphasis>ressure stall information tracking                                [PSI]
     [ ]   <emphasis role='blue'>R</emphasis>equire boot parameter to enable pressure stall information tracking

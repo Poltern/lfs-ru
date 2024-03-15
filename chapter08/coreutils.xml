@@ -118,20 +118,17 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 
 <screen><userinput remap="test">chown -R tester . </userinput></screen>
 
-    <para>Теперь запустите тесты:</para>
+    <!-- To editors: in jhalfs the standard input is always piped to "make"
+         so the test failures are not reproducible in jhalfs even if
+         running the build in a PTY.  Don't use jhalfs to test if we can
+         remove < /dev/null.  -->
+    <para>Теперь запустите тесты (используя <filename>/dev/null</filename> для 
+	стандартного ввода, иначе два теста могут быть не пройдены при сборке LFS в 
+	графическом терминале, или сеансе SSH, или GNU Screen и прочее, поскольку 
+	стандартный ввод подключен к PTY из хост-дистрибутива, и узел устройства для 
+	такого PTY недоступен из среды chroot LFS):</para>
 
-<screen><userinput remap="test">su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"</userinput></screen>
-
-<!-- Sometimes skipped, but if not it may fail.
-     Please DO NOT remove or comment out this unless we can fully
-     understand it!
-    <para>Тест test-getlogin может завершиться ошибкой в среде chroot LFS.</para>
-    20240226: Commented out as it seems the upstream has root-caused and
-    fixed the issue.  I've checked the fix is in Coreutils 9.4 release
-    tarball:
-
-    https://lists.gnu.org/archive/html/bug-gnulib/2022-06/msg00079.html
--->
+<screen><userinput remap="test">su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check" &lt; /dev/null</userinput></screen>
 
     <para>Удалить временную группу:</para>
 

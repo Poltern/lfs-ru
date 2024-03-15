@@ -40,702 +40,106 @@
     -->
 
     <listitem>
-      <para>2024-02-14</para>
+      <para>2024-03-15</para>
       <itemizedlist>
         <listitem>
-          <para>[bdubbs] - Update to meson-1.3.2.  Fixes
-          <ulink url='&lfs-ticket-root;5442'>#5442</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2024-02-12</para>
-      <itemizedlist>
-        <listitem>
-          <para>[bdubbs] - Update to shadow-4.14.5.  Fixes
-          <ulink url='&lfs-ticket-root;5437'>#5437</ulink>.</para>
+          <para>[bdubbs] - Update to wheel-0.43.0. Fixes
+          <ulink url='&lfs-ticket-root;5459'>#5459</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[bdubbs] - Update to setuptools-69.1.0 (Python module).  Fixes
-          <ulink url='&lfs-ticket-root;5439'>#5439</ulink>.</para>
+          <para>[bdubbs] - Update to setuptools-69.2.0 (Python module). Fixes
+          <ulink url='&lfs-ticket-root;5462'>#5462</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[bdubbs] - Update to python-3.12.2.  Fixes
-          <ulink url='&lfs-ticket-root;5434'>#5434</ulink>.</para>
+          <para>[bdubbs] - Update to meson-1.4.0. Fixes
+          <ulink url='&lfs-ticket-root;5460'>#5460</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[bdubbs] - Update to pkgconf-2.1.1.  Fixes
-          <ulink url='&lfs-ticket-root;5432'>#5432</ulink>.</para>
+          <para>[bdubbs] - Update to expat-2.6.2 (Security fix). Fixes
+          <ulink url='&lfs-ticket-root;5461'>#5461</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[bdubbs] - Update to MarkupSafe-2.1.5 (Python module).  Fixes
-          <ulink url='&lfs-ticket-root;5431'>#5431</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to man-pages-6.06.  Fixes
-          <ulink url='&lfs-ticket-root;5438'>#5438</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to expat-2.6.0.  Fixes
-          <ulink url='&lfs-ticket-root;5435'>#5435</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to linux-6.7.4.  Fixes
-          <ulink url='&lfs-ticket-root;5433'>#5433</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem revision='systemd'>
-      <para>2024-02-10</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Fix a bug in systemd breaking running
-          systemd-analyze on an instantiated systemd unit.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2024-02-02</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Update to tzdata-2024a.  Fixes
-          <ulink url='&lfs-ticket-root;5428'>#5428</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to glibc-2.39 (security fix).  Fixes
-          <ulink url='&lfs-ticket-root;5426'>#5426</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to linux-6.7.3.  Fixes
-          <ulink url='&lfs-ticket-root;5427'>#5427</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2024-02-01</para>
-      <itemizedlist>
-        <listitem>
-          <para>[bdubbs] - Update to openssl-3.2.1 (security fix). Fixes
-          <ulink url='&lfs-ticket-root;5425'>#5425</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to zlib-1.3.1. Fixes
-          <ulink url='&lfs-ticket-root;5419'>#5419</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to xz-5.4.6. Fixes
-          <ulink url='&lfs-ticket-root;5423'>#5423</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to linux-6.7.2. Fixes
-          <ulink url='&lfs-ticket-root;5422'>#5422</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to iana-etc-20240125. Addresses
+          <para>[bdubbs] - Update to iana-etc-20240305. Addresses
           <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[bdubbs] - Update to binutils-2.42. Fixes
-          <ulink url='&lfs-ticket-root;5424'>#5424</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to acl-2.3.2. Fixes
-          <ulink url='&lfs-ticket-root;5421'>#5421</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update upstream fixes for readline-8.2. Fixes
-          <ulink url='&lfs-ticket-root;5420'>#5420</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Apply upstream fix for bash-5.2.21. Fixes
-          <ulink url='&lfs-ticket-root;5420'>#5420</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2024-01-21</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Apply upstream fix for pkgconf-2.1.0 regression.
-          Fixes <ulink url='&lfs-ticket-root;5414'>#5414</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to jinja2-3.1.3 (security fix).  Fixes
-          <ulink url='&lfs-ticket-root;5411'>#5411</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to bc-6.7.5.  Fixes
-          <ulink url='&lfs-ticket-root;5408'>#5408</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to attr-2.5.2.  Fixes
-          <ulink url='&lfs-ticket-root;5412'>#5412</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to ncurses-6.4-20230520 (security fix).
-          Fixes <ulink url='&lfs-ticket-root;5416'>#5416</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to markupsafe-2.1.4.  Fixes
-          <ulink url='&lfs-ticket-root;5418'>#5418</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to linux-6.7.1.  Fixes
-          <ulink url='&lfs-ticket-root;5406'>#5406</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to iproute2-6.7.0.  Fixes
-          <ulink url='&lfs-ticket-root;5410'>#5410</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to vim-9.1.0041.  Addresses
+          <para>[bdubbs] - Update to vim-9.1.0161. Addresses
           <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[xry111] - Update to iana-etc-20240117.  Addresses
+          <para>[bdubbs] - Update to xz-5.6.1. Fixes
+          <ulink url='&lfs-ticket-root;5457'>#5457</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to shadow-4.15.0. Fixes
+          <ulink url='&lfs-ticket-root;5456'>#5456</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to psmisc-23.7. Fixes
+          <ulink url='&lfs-ticket-root;5454'>#5454</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kmod-32. Fixes
+          <ulink url='&lfs-ticket-root;5455'>#5455</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to elfutils-0.191. Fixes
+          <ulink url='&lfs-ticket-root;5451'>#5451</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2024-03-02</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20240222. Addresses
           <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[xry111] - Update to shadow-4.14.3.  Fixes
-          <ulink url='&lfs-ticket-root;5413'>#5413</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Fix CVE-2024-0684 for coreutils-9.4.  Fixes
-          <ulink url="&lfs-ticket-root;5417">#5417</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2024-01-18</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Edit a ncurses header to always use the
-          wide-character ABI compatible with libncursesw.so because we
-          are faking the 8-bit libncurses.so with it.  Fixes
-          <ulink url="&lfs-ticket-root;5415">#5415</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2024-01-09</para>
-      <itemizedlist>
-        <listitem>
-          <para>[renodr] - Fix the definition of the C.UTF-8 locale. Fixes
-          <ulink url="&lfs-ticket-root;5409">#5409</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-12-31</para>
-      <itemizedlist>
-        <listitem>
-         <para>[xry111] - Add --enable-default-hash-style=gnu configuring
-          binutils.  Fixes
-          <ulink url='&lfs-ticket-root;5401'>#5401</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Fix CVE-2023-7008 for systemd-255.  Fixes
-          <ulink url='&lfs-ticket-root;5405'>#5405</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to iana-etc-20231205.  Addresses
-          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to tzdata-2023d.  Fixes
-          <ulink url='&lfs-ticket-root;5399'>#5399</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to linux-6.6.8.  Fixes
-          <ulink url='&lfs-ticket-root;5397'>#5397</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to meson-1.3.1.  Fixes
-          <ulink url='&lfs-ticket-root;5402'>#5402</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to grub-2.12.  Fixes
-          <ulink url='&lfs-ticket-root;5396'>#5396</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to inetutils-2.5.  Fixes
-          <ulink url='&lfs-ticket-root;5404'>#5404</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to setuptools-69.0.3.  Fixes
-          <ulink url='&lfs-ticket-root;5400'>#5400</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to xml-parser-2.47.  Fixes
-          <ulink url='&lfs-ticket-root;5403'>#5403</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to vim-9.0.2189.  Addresses
+          <para>[bdubbs] - Update to vim-9.1.0145. Addresses
           <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
         </listitem>
         <listitem>
-          <para>[xry111] - Update to autoconf-2.72.  Fixes
-          <ulink url='&lfs-ticket-root;5398'>#5398</ulink>.</para>
+          <para>[bdubbs] - Update to xz-5.6.0. Fixes
+          <ulink url='&lfs-ticket-root;5447'>#5447</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to tcl-8.6.14. Fixes
+          <ulink url='&lfs-ticket-root;5448'>#5448</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to shadow-4.14.6. Fixes
+          <ulink url='&lfs-ticket-root;5450'>#5450</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to setuptools-69.1.1. Fixes
+          <ulink url='&lfs-ticket-root;5446'>#5446</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.7.7. Fixes
+          <ulink url='&lfs-ticket-root;5444'>#5444</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libffi-3.4.6. Fixes
+          <ulink url='&lfs-ticket-root;5443'>#5443</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to gettext-0.22.5. Fixes
+          <ulink url='&lfs-ticket-root;5445'>#5445</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to expat-2.6.1. Fixes
+          <ulink url='&lfs-ticket-root;5449'>#5449</ulink>.</para>
         </listitem>
       </itemizedlist>
     </listitem>
 
     <listitem>
-      <para>2023-12-16</para>
+      <para>2024-03-01</para>
       <itemizedlist>
         <listitem>
-          <para>[xry111] - Update to <phrase revision='sysv'>udev
-          from </phrase>systemd-255.  Fixes
-          <ulink url='&lfs-ticket-root;5390'>#5390</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-12-14</para>
-      <itemizedlist>
-        <listitem>
-           <para>[bdubbs] - Update to util-linux v2.39.3. Fixes
-           <ulink url='&lfs-ticket-root;5388'>#5388</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to python3-3.12.1. Fixes
-           <ulink url='&lfs-ticket-root;5392'>#5392</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to linux-6.6.7. Fixes
-           <ulink url='&lfs-ticket-root;5387'>#5387</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to kbd-2.6.4. Fixes
-           <ulink url='&lfs-ticket-root;5393'>#5393</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to bc-6.7.4. Fixes
-           <ulink url='&lfs-ticket-root;5389'>#5389</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Reformat util-linux configure parameters.  Fixes
-          <ulink url='&lfs-ticket-root;5395'>#5395</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-12-04</para>
-      <itemizedlist>
-        <listitem>
-          <para>[thomas] - Modify commands for install Python docs to avoid
-          too restrictive permissions on the files and dirs.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem revision='sysv'>
-      <para>2023-12-01</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Restore NIC naming based on physical system
-          characteristics.  Fixes
-          <ulink url='&lfs-ticket-root;5386'>#5386</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-11-30</para>
-      <itemizedlist>
-        <listitem>
-           <para>[bdubbs] - Update to vim-9.0.2136. Addresses
-           <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to iana-etc-20231117. Addresses
-          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to bc-6.7.3.  Fixes
-          <ulink url='&lfs-ticket-root;5385'>#5385</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to wheel-0.42.0 (Python Module).  Fixes
-          <ulink url='&lfs-ticket-root;5384'>#5384</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to perl-5.38.2.  Fixes
-          <ulink url='&lfs-ticket-root;5383'>#5383</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to pkgconf-2.1.0.  Fixes
-          <ulink url='&lfs-ticket-root;5382'>#5382</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to readline patches 002 through 007.  Fixes
-          <ulink url='&lfs-ticket-root;5381'>#5381</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to openssl-3.2.0.  Fixes
-          <ulink url='&lfs-ticket-root;5380'>#5380</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to setuptools-69.0.2.  Fixes
-          <ulink url='&lfs-ticket-root;5379'>#5379</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to linux-6.6.3.  Fixes
-          <ulink url='&lfs-ticket-root;5378'>#5378</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to meson-1.3.0.  Fixes
-          <ulink url='&lfs-ticket-root;5377'>#5377</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[bdubbs] - Update to gettext-0.22.4.  Fixes
-          <ulink url='&lfs-ticket-root;5376'>#5376</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-11-13</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Update to elfutils-0.190.  Fixes
-          <ulink url='&lfs-ticket-root;5373'>#5373</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to vim-9.0.2103.  Addresses
-           <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to linux-6.6.1.  Fixes
-          <ulink url='&lfs-ticket-root;5369'>#5369</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to xz-5.4.5.  Fixes
-          <ulink url='&lfs-ticket-root;5371'>#5371</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to iana-etc-20231107.  Addresses
-          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to gawk-5.3.0.  Fixes
-          <ulink url='&lfs-ticket-root;5372'>#5372</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to bash-5.2.21.  Fixes
-          <ulink url='&lfs-ticket-root;5375'>#5375</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to iproute2-6.6.0.  Fixes
-          <ulink url='&lfs-ticket-root;5374'>#5374</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-11-01</para>
-      <itemizedlist>
-        <listitem>
-           <para>[bdubbs] - Update to iana-etc-20231019. Addresses
-           <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to wheel-0.41.3. Fixes
-           <ulink url='&lfs-ticket-root;5370'>#5370</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to shadow-4.14.2. Fixes
-           <ulink url='&lfs-ticket-root;5368'>#5368</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to openssl-3.1.4. Fixes
-           <ulink url='&lfs-ticket-root;5367'>#5367</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to texinfo-7.1. Fixes
-           <ulink url='&lfs-ticket-root;5364'>#5364</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to meson-1.2.3. Fixes
-           <ulink url='&lfs-ticket-root;5366'>#5366</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to bc-6.7.2. Fixes
-           <ulink url='&lfs-ticket-root;5363'>#5363</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to linux-6.5.9. Fixes
-           <ulink url='&lfs-ticket-root;5365'>#5365</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to Python-3.12.0. Fixes
-           <ulink url='&lfs-ticket-root;5357'>#5357</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Add setuptools-68.2.2. Fixes
-           <ulink url='&lfs-ticket-root;5358'>#5358</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-10-15</para>
-      <itemizedlist>
-        <listitem>
-           <para>[bdubbs] - Update to linux-6.5.7. Fixes
-           <ulink url='&lfs-ticket-root;5362'>#5362</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to shadow-4.14.1. Fixes
-           <ulink url='&lfs-ticket-root;5361'>#5361</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to gettext-0.22.3. Fixes
-           <ulink url='&lfs-ticket-root;5359'>#5359</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-10-03</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Update Glibc upstream fixes patch to fix
-          CVE-2023-4911.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-10-01</para>
-      <itemizedlist>
-        <listitem>
-           <para>[bdubbs] - Disable building nscd in glibc. Fixes
-           <ulink url='&lfs-ticket-root;5349'>#5349</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to iana-etc-20230929. Addresses
-           <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to vim-9.0.1968. Addresses
-           <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to openssl-3.1.3. Fixes
-           <ulink url='&lfs-ticket-root;5350'>#5350</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to meson-1.2.2. Fixes
-           <ulink url='&lfs-ticket-root;5356'>#5356</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to man-db-2.12.0. Fixes
-           <ulink url='&lfs-ticket-root;5354'>#5354</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to linux-6.5.5. Fixes
-           <ulink url='&lfs-ticket-root;5352'>#5352</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to kmod-31. Fixes
-           <ulink url='&lfs-ticket-root;5355'>#5355</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to kbd-2.6.3. Fixes
-           <ulink url='&lfs-ticket-root;5351'>#5361</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to gettext-0.22.2. Fixes
-           <ulink url='&lfs-ticket-root;5348'>#5348</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to bc-6.7.0. Fixes
-           <ulink url='&lfs-ticket-root;5353'>#5353</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-24</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Update Glibc upstream fixes patch to plug a
-          memory leak introduced by the security fix.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-17</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Update to linux-6.5.3.  Fixes
-          <ulink url='&lfs-ticket-root;5343'>#5343</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to iana-etc-20230912.  Addresses
-          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to iproute2-6.5.0.  Fixes
-          <ulink url='&lfs-ticket-root;5342'>#5342</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-13</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Fix CVE-2023-4806 for Glibc-2.38.  Fixes
-          <ulink url='&lfs-ticket-root;5347'>#5347</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-12</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Fix CVE-2023-4527 for Glibc-2.38.  Fixes
-          <ulink url='&lfs-ticket-root;5346'>#5346</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-07</para>
-      <itemizedlist>
-        <listitem>
-          <para>[xry111] - Fix an issue in pkgconf-2.0.3 causing
-          BLFS packages fail to build.  Fixes
-          <ulink url='&lfs-ticket-root;5341'>#5341</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-05</para>
-      <itemizedlist>
-        <listitem>
-           <para>[xry111] - Move pkgconf before binutils for binutils
-           building system to detect zstd properly.  Fixes
-           <ulink url='&lfs-ticket-root;5340'>#5340</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to linux-6.5.1.  Fixes
-          <ulink url='&lfs-ticket-root;5332'>#5332</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to pkgconf-2.0.3.  Fixes
-          <ulink url='&lfs-ticket-root;5339'>#5339</ulink>.</para>
-        </listitem>
-        <listitem>
-          <para>[xry111] - Update to dbus-1.14.10.  Fixes
-          <ulink url='&lfs-ticket-root;5337'>#5337</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-04</para>
-      <itemizedlist>
-        <listitem>
-           <para>[bdubbs] - Move caution regarding building by mixing
-           different version of LFS to General Compilation Instructions. Fixes
-           <ulink url='&lfs-ticket-root;5338'>#5338</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-02</para>
-      <itemizedlist>
-        <listitem>
-           <para>[xry111] - Add --no-cache-dir option for pip3 wheel
-           commands.  Addresses
-           <ulink url='&blfs-ticket-root;18466'>BLFS #18466</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to vim-9.0.1837. Addresses
-           <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to zlib-1.3. Fixes
-           <ulink url='&lfs-ticket-root;5324'>#5324</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to wheel-0.41.2 (Python Module). Fixes
-           <ulink url='&lfs-ticket-root;5328'>#5328</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to util-linux-2.39.2. Fixes
-           <ulink url='&lfs-ticket-root;5322'>#5322</ulink>.</para>
-        </listitem>
-        <listitem revision='sysv'>
-           <para>[bdubbs] - Update to sysvinit-3.08. Fixes
-           <ulink url='&lfs-ticket-root;5321'>#5321</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to shadow-4.14.0. Fixes
-           <ulink url='&lfs-ticket-root;5319'>#5319</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to Python-3.11.5. Fixes
-           <ulink url='&lfs-ticket-root;5330'>#5330</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to procps-ng-4.0.4 (security fix
-           for 32-bit systems). Fixes
-           <ulink url='&lfs-ticket-root;5335'>#5335</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to pkgconf-2.0.2. Fixes
-           <ulink url='&lfs-ticket-root;5323'>#5323</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to mpfr-4.2.1. Fixes
-           <ulink url='&lfs-ticket-root;5326'>#5326</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to kbd-2.6.2. Fixes
-           <ulink url='&lfs-ticket-root;5318'>#5318</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to gzip-1.13. Fixes
-           <ulink url='&lfs-ticket-root;5325'>#5325</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Update to coreutils-9.4. Fixes
-           <ulink url='&lfs-ticket-root;5334'>#5334</ulink>.</para>
-        </listitem>
-        <listitem revision='systemd'>
-           <para>[bdubbs] - Specify the 'nobody-group' for systemd. Fixes
-           <ulink url='&lfs-ticket-root;5333'>#5333</ulink>.</para>
-        </listitem>
-        <listitem>
-           <para>[bdubbs] - Remove unused usb group. Fixes
-           <ulink url='&lfs-ticket-root;5331'>#5331</ulink>.</para>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-
-    <listitem>
-      <para>2023-09-01</para>
-      <itemizedlist>
-        <listitem>
-          <para>[bdubbs] - LFS-12.0 released.</para>
+          <para>[bdubbs] - LFS-12.1 released.</para>
         </listitem>
       </itemizedlist>
     </listitem>

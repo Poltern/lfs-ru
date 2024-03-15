@@ -148,18 +148,18 @@
 <!ENTITY e2fsprogs-fin-du "95 MB">
 <!ENTITY e2fsprogs-fin-sbu "2.4 SBU на жестком диске, 0.4 SBU на SSD диске">
 
-<!ENTITY elfutils-version "0.190"> <!-- libelf -->
-<!ENTITY elfutils-size "8,949 KB">
+<!ENTITY elfutils-version "0.191"> <!-- libelf -->
+<!ENTITY elfutils-size "9,092 KB">
 <!ENTITY elfutils-url "https://sourceware.org/ftp/elfutils/&elfutils-version;/elfutils-&elfutils-version;.tar.bz2">
-<!ENTITY elfutils-md5 "79ad698e61a052bea79e77df6a08bc4b">
+<!ENTITY elfutils-md5 "636547248fb3fae58ec48030298d3ef7">
 <!ENTITY elfutils-home "https://sourceware.org/elfutils/">
 <!ENTITY elfutils-fin-du "124 MB">
 <!ENTITY elfutils-fin-sbu "0.3 SBU">
 
-<!ENTITY expat-version "2.6.0">
-<!ENTITY expat-size "473 KB">
+<!ENTITY expat-version "2.6.2">
+<!ENTITY expat-size "474 KB">
 <!ENTITY expat-url "&sourceforge;expat/expat-&expat-version;.tar.xz">
-<!ENTITY expat-md5 "bd169cb11f4b9bdfddadf9e88a5c4d4b">
+<!ENTITY expat-md5 "0cb75c8feb842c0794ba89666b762a2d">
 <!ENTITY expat-home "https://libexpat.github.io/">
 <!ENTITY expat-fin-du "13 MB">
 <!ENTITY expat-fin-sbu "0.1 SBU">
@@ -243,12 +243,12 @@
 <!ENTITY gdbm-md5 "8551961e36bf8c70b7500d255d3658ec">
 <!ENTITY gdbm-home "&gnu-software;gdbm/">
 <!ENTITY gdbm-fin-du "13 MB">
-<!ENTITY gdbm-fin-sbu "менее 0.1 SBU">
+<!ENTITY gdbm-fin-sbu "0.1 SBU">
 
-<!ENTITY gettext-version "0.22.4">
-<!ENTITY gettext-size "10,016 KB">
+<!ENTITY gettext-version "0.22.5">
+<!ENTITY gettext-size "10,031 KB">
 <!ENTITY gettext-url "&gnu;gettext/gettext-&gettext-version;.tar.xz">
-<!ENTITY gettext-md5 "2d8507d003ef3ddd1c172707ffa97ed8">
+<!ENTITY gettext-md5 "3ae5580599d84be93e6213930facb2db">
 <!ENTITY gettext-home "&gnu-software;gettext/">
 <!ENTITY gettext-tmp-du "306 MB">
 <!ENTITY gettext-tmp-sbu "1.1 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240125">
+<!ENTITY iana-etc-version "20240305">
 <!ENTITY iana-etc-size "589 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "aed66d04de615d76c70890233081e584">
+<!ENTITY iana-etc-md5 "178862836db1a49375539c0a95257a40">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -374,10 +374,10 @@
 <!ENTITY kbd-fin-du "34 MB">
 <!ENTITY kbd-fin-sbu "0.1 SBU">
 
-<!ENTITY kmod-version "31">
-<!ENTITY kmod-size "558 KB">
+<!ENTITY kmod-version "32">
+<!ENTITY kmod-size "500 KB">
 <!ENTITY kmod-url "&kernel;linux/utils/kernel/kmod/kmod-&kmod-version;.tar.xz">
-<!ENTITY kmod-md5 "6165867e1836d51795a11ea4762ff66a">
+<!ENTITY kmod-md5 "1046fda48766fae905f83150d12eec78">
 <!ENTITY kmod-home "https://github.com/kmod-project/kmod">
 <!ENTITY kmod-fin-du "12 MB">
 <!ENTITY kmod-fin-sbu "менее 0.1 SBU">
@@ -406,10 +406,10 @@
 <!ENTITY libcap-fin-du "2.9 MB">
 <!ENTITY libcap-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY libffi-version "3.4.4">
-<!ENTITY libffi-size "1,331 KB">
+<!ENTITY libffi-version "3.4.6">
+<!ENTITY libffi-size "1,360 KB">
 <!ENTITY libffi-url "https://github.com/libffi/libffi/releases/download/v&libffi-version;/libffi-&libffi-version;.tar.gz">
-<!ENTITY libffi-md5 "0da1a5ed7786ac12dcbaf0d499d8a049">
+<!ENTITY libffi-md5 "b9cac6c5997dca2b3787a59ede34e0eb">
 <!ENTITY libffi-home "https://sourceware.org/libffi/">
 <!ENTITY libffi-fin-du "11 MB">
 <!ENTITY libffi-fin-sbu "1.8 SBU">
@@ -440,12 +440,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "7">
-<!ENTITY linux-patch-version "4">
+<!ENTITY linux-patch-version "7">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "138,130 KB">
+<!ENTITY linux-size "138,148 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "370e1b6155ae63133380e421146619e0">
+<!ENTITY linux-md5 "daad88f53f3bddd03fd703c3a885fd4f">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -503,10 +503,10 @@
 <!ENTITY markupsafe-fin-du "508 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY meson-version "1.3.2">
-<!ENTITY meson-size "2,172 KB">
+<!ENTITY meson-version "1.4.0">
+<!ENTITY meson-size "2,173 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "2d0ebd3a24249617b1c4d30026380cf8">
+<!ENTITY meson-md5 "a5cddd4299ead830106242c53ea7f10f">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "42 MB">
 <!ENTITY meson-fin-sbu "менее 0.1 SBU">
@@ -596,10 +596,10 @@
 <!ENTITY procps-ng-fin-du "27 MB">
 <!ENTITY procps-ng-fin-sbu "0.1 SBU">
 
-<!ENTITY psmisc-version "23.6">
-<!ENTITY psmisc-size "415 KB">
+<!ENTITY psmisc-version "23.7">
+<!ENTITY psmisc-size "423 KB">
 <!ENTITY psmisc-url "https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-&psmisc-version;.tar.xz">
-<!ENTITY psmisc-md5 "ed3206da1184ce9e82d607dc56c52633">
+<!ENTITY psmisc-md5 "53eae841735189a896d614cba440eb10">
 <!ENTITY psmisc-home "https://gitlab.com/psmisc/psmisc">
 <!ENTITY psmisc-fin-du "6.6 MB">
 <!ENTITY psmisc-fin-sbu "менее 0.1 SBU">
@@ -640,18 +640,18 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "69.1.0">
-<!ENTITY setuptools-size "2,168 KB">
+<!ENTITY setuptools-version "69.2.0">
+<!ENTITY setuptools-size "2,171 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "6f6eb780ce12c90d81ce243747ed7ab0">
+<!ENTITY setuptools-md5 "940ffdb3a2ce4f6a5ee80032aa115fc7">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "20 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
 
-<!ENTITY shadow-version "4.14.5">
-<!ENTITY shadow-size "1,765 KB">
+<!ENTITY shadow-version "4.15.0">
+<!ENTITY shadow-size "1,743 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "452b0e59f08bf618482228ba3732d0ae">
+<!ENTITY shadow-md5 "d957ddf8f56bf695aeb03aa1ca702091">
 <!ENTITY shadow-home "&github;/shadow-maint/shadow/">
 <!ENTITY shadow-fin-du "49 MB">
 <!ENTITY shadow-fin-sbu "0.1 SBU">
@@ -699,15 +699,15 @@
 <!ENTITY tar-fin-du "43 MB">
 <!ENTITY tar-fin-sbu "0.5 SBU">
 
-<!ENTITY tcl-version "8.6.13">
+<!ENTITY tcl-version "8.6.14">
 <!ENTITY tcl-major-version "8.6">
-<!ENTITY tcl-size "10,581 KB">
+<!ENTITY tcl-size "11,355 KB">
 <!ENTITY tcl-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-src.tar.gz">
-<!ENTITY tcl-md5 "0e4358aade2f5db8a8b6f2f6d9481ec2">
+<!ENTITY tcl-md5 "c30b57c6051be28fa928d09aca82841e">
 <!ENTITY tcl-home "http://tcl.sourceforge.net/">
 <!ENTITY tcl-docs-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-html.tar.gz">
-<!ENTITY tcl-docs-md5 "4452f2f6d557f5598cca17b786d6eb68">
-<!ENTITY tcl-docs-size "1,165 KB">
+<!ENTITY tcl-docs-md5 "5467198f8d57c54835bf80b98ffb0170">
+<!ENTITY tcl-docs-size "1,167 KB">
 <!ENTITY tcl-tmp-du "89 MB">
 <!ENTITY tcl-tmp-sbu "2.7 SBU">
 
@@ -747,21 +747,21 @@
 <!ENTITY util-linux-fin-du "313 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.1.0041">
+<!ENTITY vim-version "9.1.0161">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim91">
-<!ENTITY vim-size "17,224 KB">
+<!ENTITY vim-size "17,320 KB">
 <!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
 <!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-md5 "79dfe62be5d347b1325cbd5ce2a1f9b3">
+<!ENTITY vim-md5 "a5dc0dc859a084ac7b6afe90d1b02c9d">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "236 MB">
 <!ENTITY vim-fin-sbu "2.5 SBU">
 
-<!ENTITY wheel-version "0.42.0">
+<!ENTITY wheel-version "0.43.0">
 <!ENTITY wheel-size "97 KB">
 <!ENTITY wheel-url "&pypi-src;/w/wheel/wheel-&wheel-version;.tar.gz">
-<!ENTITY wheel-md5 "802ad6e5f9336fcb1c76b7593f0cd22d">
+<!ENTITY wheel-md5 "387af15d51367a19d834d6db413547d0">
 <!ENTITY wheel-home "&pypi-home;/wheel/">
 <!ENTITY wheel-fin-du "1.5 MB">
 <!ENTITY wheel-fin-sbu "менее 0.1 SBU">
@@ -774,10 +774,10 @@
 <!ENTITY xml-parser-fin-du "2.4 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xz-version "5.4.6">
-<!ENTITY xz-size "1,645 KB">
+<!ENTITY xz-version "5.6.1">
+<!ENTITY xz-size "1,738 KB">
 <!ENTITY xz-url "https://github.com/tukaani-project/xz/releases/download/v&xz-version;/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "7ade7bd1181a731328f875bec62a9377">
+<!ENTITY xz-md5 "3ffbb426381c011dc9c986376d944ab7">
 <!ENTITY xz-home "https://tukaani.org/xz">
 <!ENTITY xz-tmp-du "22 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">

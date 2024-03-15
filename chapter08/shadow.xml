@@ -40,6 +40,14 @@
   <sect2 role="installation">
     <title>Установка пакета Shadow</title>
 
+    <important>
+      <para>
+        Если вы установили Linux-PAM, вам следует перейти 
+		<ulink url='&blfs-book;postlfs/shadow.xml'>на страницу BLFS shadow</ulink> вместо 
+		этой страницы, чтобы собрать (пересобрать, или обновить) shadow.
+      </para>
+    </important>
+
     <note>
       <para>Если вы хотите принудительно использовать надежные пароли, обратитесь
 	  к инструкции <ulink url="&blfs-book;postlfs/cracklib.html"/> для установки
