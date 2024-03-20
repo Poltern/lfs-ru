@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-lz4" role="wrap">
+  <?dbhtml filename="lz4.html"?>
+
+  <sect1info condition="script">
+    <productname>Lz4</productname>
+    <productnumber>&lz4-version;</productnumber>
+    <address>&lz4-url;</address>
+  </sect1info>
+
+  <title>Lz4-&lz4-version;</title>
+
+  <indexterm zone="ch-system-lz4">
+    <primary sortas="a-lz4">Lz4</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>Lz4 - это алгоритм сжатия без потерь, обеспечивающий скорость сжатия более 500 МБ/с 
+	на ядро. Он оснащен чрезвычайно быстрым декодером со скоростью несколько ГБ/с. Lz4 может 
+	работать с Zstandard, позволяя обоим алгоритмам быстрее сжимать данные.</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&lz4-fin-sbu;</seg>
+        <seg>&lz4-fin-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Lz4</title>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">make BUILD_STATIC=no</userinput></screen>
+
+    <para>Чтобы протестировать пакет, выполните:</para>
+
+    <!-- This needs to be done at -j1 because otherwise test files do not
+         get generated correctly. -->
+
+<screen><userinput remap="test">make -j1 check</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make BUILD_STATIC=no PREFIX=/usr install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-lz4" role="content">
+    <title>Содержимое пакета Lz4</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+
+      <seglistitem>
+        <seg>lz4,
+             lz4c (ссылка на lz4),
+             lz4cat (ссылка на lz4) и 
+             unlz4 (ссылка на lz4)
+        </seg>
+
+        <seg>liblz4.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="lz4">
+        <term><command>lz4</command></term>
+        <listitem>
+          <para>Сжимает или распаковывает файлы, используя алгоритм LZ4</para>
+          <indexterm zone="ch-system-lz4 lz4">
+            <primary sortas="b-lz4">lz4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lz4c">
+        <term><command>lz4c</command></term>
+        <listitem>
+          <para>Сжимает файлы, используя LZ4</para>
+          <indexterm zone="ch-system-lz4 lz4c">
+            <primary sortas="b-lz4c">lz4c</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lz4cat">
+        <term><command>lz4cat</command></term>
+        <listitem>
+          <para>Выводит содержимое файла, сжатого с использованием LZ4</para>
+          <indexterm zone="ch-system-lz4 lz4cat">
+            <primary sortas="b-lz4cat">lz4cat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unlz4">
+        <term><command>unlz4</command></term>
+        <listitem>
+          <para>Распаковывает файлы, используя LZ4</para>
+          <indexterm zone="ch-system-lz4 unlz4">
+             <primary sortas="b-unlz4">unlz4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="liblz4">
+        <term><filename class="libraryfile">liblz4</filename></term>
+        <listitem>
+          <para>Библиотека, реализующая сжатие данных без потерь с использованием 
+		  алгоритма LZ4</para>
+          <indexterm zone="ch-system-lz4 liblz4">
+            <primary sortas="c-liblz4">liblz4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

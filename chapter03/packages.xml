@@ -490,6 +490,15 @@
     </varlistentry>
 
     <varlistentry>
+      <term>Lz4 (&lz4-version;) - <token>&lz4-size;</token>:</term>
+      <listitem>
+        <para>Домашняя страница: <ulink url="&lz4-home;"/></para>
+        <para>Ссылка на загрузку: <ulink url="&lz4-url;"/></para>
+        <para>Контрольная сумма MD5: <literal>&lz4-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>M4 (&m4-version;) - <token>&m4-size;</token>:</term>
       <listitem>
         <para>Домашняя страница: <ulink url="&m4-home;"/></para>

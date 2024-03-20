@@ -19,6 +19,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zlib.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bzip2.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xz.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lz4.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zstd.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="file.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="readline.xml"/>
