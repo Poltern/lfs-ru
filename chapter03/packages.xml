@@ -821,9 +821,8 @@
         <para>Контрольная сумма MD5: <literal>&vim-md5;</literal></para>
         <note>
           <para>
-            Версия vim меняется ежедневно. Чтобы получить последнюю версию, перейдите на
-            <ulink url="https://github.com/vim/vim/tags">
-            https://github.com/vim/vim/tags</ulink>.
+            Версия vim меняется ежедневно. Чтобы получить последнюю версию, перейдите на 
+            <ulink url="https://github.com/vim/vim/tags"/>.
           </para>
         </note>
       </listitem>

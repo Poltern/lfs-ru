@@ -44,19 +44,19 @@
       <itemizedlist>
         <listitem>
           <para>[renodr] - Update to iproute2-6.8.0. Fixes
-          <ulink url="&blfs-ticket-root;5458">#5458</ulink>.</para>
+          <ulink url="&lfs-ticket-root;5458">#5458</ulink>.</para>
         </listitem>
         <listitem>
           <para>[renodr] - Update to man-pages-6.7. Fixes
-          <ulink url="&blfs-ticket-root;5464">#5464</ulink>.</para>
+          <ulink url="&lfs-ticket-root;5464">#5464</ulink>.</para>
         </listitem>
         <listitem>
           <para>[renodr] - Update to Linux-6.8.1. Fixes
-          <ulink url="&blfs-ticket-root;5453">#5453</ulink>.</para>
+          <ulink url="&lfs-ticket-root;5453">#5453</ulink>.</para>
         </listitem>
         <listitem>
           <para>[renodr] - Added LZ4 to the book. Fixes
-          <ulink url="&blfs-ticket-root;5463">#5463</ulink>.</para>
+          <ulink url="&lfs-ticket-root;5463">#5463</ulink>.</para>
         </listitem>
       </itemizedlist>
     </listitem>
