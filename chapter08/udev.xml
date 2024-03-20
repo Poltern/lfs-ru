@@ -211,6 +211,8 @@ meson setup \
       -Dmode=release                \
       -Ddev-kvm-mode=0660           \
       -Dlink-udev-shared=false      \
+      -Dlogind=false                \
+      -Dvconsole=false              \
       ..</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
@@ -252,8 +254,9 @@ meson setup \
       -Dmode=release                \
       -Ddev-kvm-mode=0660           \
       -Dlink-udev-shared=false      \
+      -Dlogind=false                \
+      -Dvconsole=false              \
       ..</userinput></screen>
-
     <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">ninja \
