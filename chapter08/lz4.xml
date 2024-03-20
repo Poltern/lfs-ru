@@ -59,6 +59,49 @@
 
   </sect2>
 
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - 32bit  -->
+  <!-- - - - - - - - - - -->
+  <sect2 arch="ml_32,ml_all" role="installation">
+    <title>Установка Lz4 - 32-битная версия</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make clean</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">CC="gcc -m32" make BUILD_STATIC=no</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make BUILD_STATIC=no PREFIX=/usr LIBDIR=/usr/lib32 DESTDIR=$(pwd)/m32 install &amp;&amp;
+cp -a m32/usr/lib32/* /usr/lib32/
+</userinput></screen>
+
+  </sect2><!-- m32 -->
+
+  <!-- - - - - - - - - - -->
+  <!-- Multilib - x32bit -->
+  <!-- - - - - - - - - - -->
+  <sect2 arch="ml_x32,ml_all" role="installation">
+    <title>Установка Lz4 - с поддержкой x32 ABI</title>
+
+    <para>Выполните очистку после предыдущей сборки:</para>
+
+<screen><userinput remap="pre">make clean</userinput></screen>
+
+    <para>Скомпилируйте пакет:</para>
+
+<screen><userinput remap="make">CC="gcc -mx32" make BUILD_STATIC=no</userinput></screen>
+
+    <para>Установите пакет:</para>
+
+<screen><userinput remap="install">make BUILD_STATIC=no PREFIX=/usr LIBDIR=/usr/libx32 DESTDIR=$(pwd)/mx32 install &amp;&amp;
+cp -a mx32/usr/libx32/* /usr/libx32/
+</userinput></screen>
+
+  </sect2><!-- mx32 -->
   <sect2 id="contents-lz4" role="content">
     <title>Содержимое пакета Lz4</title>
 
