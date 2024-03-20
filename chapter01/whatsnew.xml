@@ -130,9 +130,9 @@
     <!--<listitem>
       <para>Intltool-&intltool-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>IPRoute2-&iproute2-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Jinja2-&jinja2-version;</para>
     </listitem>-->
@@ -167,6 +167,9 @@
       <para>Linux-&linux-version;</para>
     </listitem>
     <!--<listitem>
+      <para>Lz4-&lz4-version;</para>
+    </listitem>-->
+    <!--<listitem>
       <para>M4-&m4-version;</para>
     </listitem>-->
     <!--<listitem>
@@ -175,9 +178,9 @@
     <!--<listitem>
       <para>Man-DB-&man-db-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Man-pages-&man-pages-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>MarkupSafe-&markupsafe-version;</para>
     </listitem>-->
@@ -288,6 +291,9 @@
   <itemizedlist>
     <title>Добавлены:</title>
     <!-- <listitem><para></para></listitem> satisfy build -->
+    <listitem>
+      <para>Lz4-&lz4-version;</para>
+    </listitem>
 
   </itemizedlist>
 

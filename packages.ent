@@ -341,10 +341,10 @@
 <!ENTITY intltool-fin-du "1.5 MB">
 <!ENTITY intltool-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY iproute2-version "6.7.0">
-<!ENTITY iproute2-size "900 KB">
+<!ENTITY iproute2-version "6.8.0">
+<!ENTITY iproute2-size "896 KB">
 <!ENTITY iproute2-url "&kernel;linux/utils/net/iproute2/iproute2-&iproute2-version;.tar.xz">
-<!ENTITY iproute2-md5 "35d8277d1469596b7edc07a51470a033">
+<!ENTITY iproute2-md5 "9d6ea453986900d98e3b6bcb868815cd">
 <!ENTITY iproute2-home "&kernel;linux/utils/net/iproute2/">
 <!ENTITY iproute2-fin-du "17 MB">
 <!ENTITY iproute2-fin-sbu "0.1 SBU">
@@ -440,13 +440,13 @@
 <!ENTITY libxcrypt-fin-sbu "0.1 SBU">
 
 <!ENTITY linux-major-version "6">
-<!ENTITY linux-minor-version "7">
-<!ENTITY linux-patch-version "7">
+<!ENTITY linux-minor-version "8">
+<!ENTITY linux-patch-version "1">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "138,148 KB">
+<!ENTITY linux-size "139,188 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "daad88f53f3bddd03fd703c3a885fd4f">
+<!ENTITY linux-md5 "c4423a42f1e32d9decf17897eaca15ee">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -459,6 +459,14 @@
 
 <!ENTITY linux-headers-tmp-du "1.5 GB">
 <!ENTITY linux-headers-tmp-sbu "менее 0.1 SBU">
+
+<!ENTITY lz4-version "1.9.4">
+<!ENTITY lz4-size "348 KB">
+<!ENTITY lz4-url "&github;/lz4/lz4/releases/download/v&lz4-version;/lz4-&lz4-version;.tar.gz">
+<!ENTITY lz4-md5 "e9286adb64040071c5e23498bf753261">
+<!ENTITY lz4-home "https://lz4.org/">
+<!ENTITY lz4-fin-du "83 MB">
+<!ENTITY lz4-fin-sbu "0.1 SBU">
 
 <!ENTITY m4-version "1.4.19">
 <!ENTITY m4-size "1,617 KB">
@@ -488,10 +496,10 @@
 <!ENTITY man-db-fin-du "41 MB">
 <!ENTITY man-db-fin-sbu "0.2 SBU">
 
-<!ENTITY man-pages-version "6.06">
-<!ENTITY man-pages-size "2,116 KB">
+<!ENTITY man-pages-version "6.7">
+<!ENTITY man-pages-size "2,132 KB">
 <!ENTITY man-pages-url "&kernel;linux/docs/man-pages/man-pages-&man-pages-version;.tar.xz">
-<!ENTITY man-pages-md5 "26b39e38248144156d437e1e10cb20bf">
+<!ENTITY man-pages-md5 "1bd39d60e741f37b550d27f9d4fb1656">
 <!ENTITY man-pages-home "https://www.kernel.org/doc/man-pages/">
 <!ENTITY man-pages-fin-du "33 MB">
 <!ENTITY man-pages-fin-sbu "менее 0.1 SBU">
