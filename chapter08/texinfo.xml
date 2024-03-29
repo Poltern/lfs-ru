@@ -74,7 +74,7 @@
 
 <screen><userinput remap="install">make install</userinput></screen>
 
-    <para>По желанию установите компоненты, входящие в пакет TeX::</para>
+    <para>По желанию установите компоненты, входящие в пакет TeX:</para>
     <!-- FIXME: doesn't the TeX installation in BLFS overwrite files there? -->
 
 <screen><userinput remap="install">make TEXMF=/usr/share/texmf install-tex</userinput></screen>

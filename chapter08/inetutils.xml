@@ -100,7 +100,7 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>Чтобы протестировать пакет, выполните::</para>
+    <para>Чтобы протестировать пакет, выполните:</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 <!--
