@@ -680,12 +680,12 @@
 <!ENTITY systemd-fin-du   "247 MB">
 <!ENTITY systemd-fin-sbu  "0.7 SBU">
 
-<!ENTITY sysvinit-version "3.08">
-<!ENTITY sysvinit-size "263 KB">
+<!ENTITY sysvinit-version "3.09">
+<!ENTITY sysvinit-size "234 KB">
 <!ENTITY sysvinit-url "&github;/slicer69/sysvinit/releases/download/&sysvinit-version;/sysvinit-&sysvinit-version;.tar.xz">
-<!ENTITY sysvinit-md5 "81a05f28d7b67533cfc778fcadea168c">
+<!ENTITY sysvinit-md5 "688074f8642c955469a0b1ecae5c488b">
 <!ENTITY sysvinit-home "&savannah-nongnu;/projects/sysvinit">
-<!ENTITY sysvinit-fin-du "3.5 MB">
+<!ENTITY sysvinit-fin-du "2.5 MB">
 <!ENTITY sysvinit-fin-sbu "менее 0.1 SBU">
 
 <!ENTITY tar-version "1.35">
@@ -773,10 +773,10 @@
 <!ENTITY xml-parser-fin-du "2.4 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xz-version "5.6.1">
-<!ENTITY xz-size "1,738 KB">
-<!ENTITY xz-url "https://github.com/tukaani-project/xz/releases/download/v&xz-version;/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "3ffbb426381c011dc9c986376d944ab7">
+<!ENTITY xz-version "5.4.6">
+<!ENTITY xz-size "1,648 KB">
+<!ENTITY xz-url "&anduin-sources;/xz-&xz-version;.tar.xz">
+<!ENTITY xz-md5 "7ade7bd1181a731328f875bec62a9377">
 <!ENTITY xz-home "https://tukaani.org/xz">
 <!ENTITY xz-tmp-du "22 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">
