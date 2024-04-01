@@ -104,10 +104,10 @@
 <!ENTITY check-fin-du "12 MB">
 <!ENTITY check-fin-sbu "0.1 SBU (около 1.6 SBU с тестами)">
 
-<!ENTITY coreutils-version "9.4">
-<!ENTITY coreutils-size "5,840 KB">
+<!ENTITY coreutils-version "9.5">
+<!ENTITY coreutils-size "5,867 KB">
 <!ENTITY coreutils-url "&gnu;coreutils/coreutils-&coreutils-version;.tar.xz">
-<!ENTITY coreutils-md5 "459e9546074db2834eefe5421f250025">
+<!ENTITY coreutils-md5 "e99adfa059a63db3503cc71f3d151e31">
 <!ENTITY coreutils-home "&gnu-software;coreutils/">
 <!ENTITY coreutils-tmp-du "173 MB">
 <!ENTITY coreutils-tmp-sbu "0.3 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240305">
+<!ENTITY iana-etc-version "20240318">
 <!ENTITY iana-etc-size "589 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "178862836db1a49375539c0a95257a40">
+<!ENTITY iana-etc-md5 "8cd6cf31cfd5fd4c4efca61722eb9f74">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "8">
-<!ENTITY linux-patch-version "1">
+<!ENTITY linux-patch-version "2">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "139,188 KB">
+<!ENTITY linux-size "139,173 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "c4423a42f1e32d9decf17897eaca15ee">
+<!ENTITY linux-md5 "728e7da5137577232593b2210ae1bdc4">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -579,10 +579,10 @@
 <!ENTITY perl-fin-du "239 MB">
 <!ENTITY perl-fin-sbu "1.5 SBU">
 
-<!ENTITY pkgconf-version "2.1.1">
+<!ENTITY pkgconf-version "2.2.0">
 <!ENTITY pkgconf-size "305 KB">
 <!ENTITY pkgconf-url "https://distfiles.ariadne.space/pkgconf/pkgconf-&pkgconf-version;.tar.xz">
-<!ENTITY pkgconf-md5 "bc29d74c2483197deb9f1f3b414b7918">
+<!ENTITY pkgconf-md5 "00e309a3bf0909030a4fc701389db2b9">
 <!ENTITY pkgconf-home "http://pkgconf.org/">
 <!ENTITY pkgconf-fin-du "4.6 MB">
 <!ENTITY pkgconf-fin-sbu "менее 0.1 SBU">
@@ -647,10 +647,10 @@
 <!ENTITY setuptools-fin-du "20 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
 
-<!ENTITY shadow-version "4.15.0">
-<!ENTITY shadow-size "1,743 KB">
+<!ENTITY shadow-version "4.15.1">
+<!ENTITY shadow-size "1,742 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "d957ddf8f56bf695aeb03aa1ca702091">
+<!ENTITY shadow-md5 "006b0856abd49b5e7b45b7cb78ca272a">
 <!ENTITY shadow-home "&github;/shadow-maint/shadow/">
 <!ENTITY shadow-fin-du "49 MB">
 <!ENTITY shadow-fin-sbu "0.1 SBU">
@@ -735,11 +735,11 @@
 <!ENTITY udev-lfs-md5     "acd4360d8a5c3ef320b9db88d275dae6">
 <!ENTITY udev-lfs-home    " ">
 
-<!ENTITY util-linux-minor "2.39">
-<!ENTITY util-linux-version "2.39.3"> <!-- 2.33.x -->
-<!ENTITY util-linux-size "8,327 KB">
+<!ENTITY util-linux-minor "2.40">
+<!ENTITY util-linux-version "2.40"> <!-- 2.33.x -->
+<!ENTITY util-linux-size "8,558 KB">
 <!ENTITY util-linux-url "&kernel;linux/utils/util-linux/v&util-linux-minor;/util-linux-&util-linux-version;.tar.xz">
-<!ENTITY util-linux-md5 "f3591e6970c017bb4bcd24ae762a98f5">
+<!ENTITY util-linux-md5 "46d1423122d310dfd022c799e1e4e259">
 <!ENTITY util-linux-home "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/">
 <!ENTITY util-linux-tmp-du "172 MB">
 <!ENTITY util-linux-tmp-sbu "0.2 SBU">
@@ -795,10 +795,10 @@
 <!ENTITY zlib-fin-du "6.4 MB">
 <!ENTITY zlib-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY zstd-version "1.5.5">
-<!ENTITY zstd-size "2,314 KB">
+<!ENTITY zstd-version "1.5.6">
+<!ENTITY zstd-size "2,351 KB">
 <!ENTITY zstd-url "https://github.com/facebook/zstd/releases/download/v&zstd-version;/zstd-&zstd-version;.tar.gz">
-<!ENTITY zstd-md5 "63251602329a106220e0a5ad26ba656f">
+<!ENTITY zstd-md5 "5a473726b3445d0e5d6296afd1ab6854">
 <!ENTITY zstd-home "https://facebook.github.io/zstd/">
 <!ENTITY zstd-fin-du "77 MB">
 <!ENTITY zstd-fin-sbu "0.5 SBU">

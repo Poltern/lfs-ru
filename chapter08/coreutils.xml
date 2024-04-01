@@ -51,12 +51,6 @@
 	  Coreutils, сначала проверьте, воспроизводятся ли эти ошибки без этого исправления.</para>
     </note>
 
-    <!-- https://seclists.org/oss-sec/2024/q1/30 -->
-    <para>Исправьте уязвимость в утилите <command>split</command>:</para>
-
-<screen><userinput remap="pre">sed -e '/n_out += n_hold/,+4 s|.*bufsize.*|//&amp;|' \
-    -i src/split.c</userinput></screen>
-
     <para>Теперь подготовьте Coreutils к компиляции:</para>
 
 <screen><userinput remap="configure">autoreconf -fiv
@@ -133,6 +127,11 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
     <para>Удалить временную группу:</para>
 
 <screen><userinput remap="test">groupdel dummy</userinput></screen>
+
+    <para>
+       Известно, что два теста,tests/cp/preserve-mode.sh и tests/mv/acl.sh, завершаются неудачно в среде chroot, 
+	   но проходят успешно в собранной системе.
+    </para>
 
     <para>Установите пакет:</para>
 
