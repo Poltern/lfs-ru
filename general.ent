@@ -79,6 +79,7 @@
 <!ENTITY wget-list       "wget-list-systemd">
 ]]>
 <!ENTITY lfs-root        "https://mirror.linuxfromscratch.ru/">
+<!ENTITY lfs-root-ru     "https://linuxfromscratch.ru/">
 <!ENTITY lfs-root-en     "https://www.linuxfromscratch.org/">
 <!ENTITY lfs-ml-sysv     "https://book.linuxfromscratch.ru/%relnum;-ml/systemv">
 <!ENTITY lfs-ml-sysd     "https://book.linuxfromscratch.ru/%relnum;-ml/systemd">

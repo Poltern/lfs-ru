@@ -96,7 +96,7 @@ unset SRCDIR</userinput></screen>
 
 <screen><userinput remap="install">chmod -v u+w /usr/lib/libtcl&tcl-major-version;.so</userinput></screen>
 
-    <para>>Установите заголовочные файлы Tcl. Они потребуются для следующего пакета - Expect.</para>
+    <para>Установите заголовочные файлы Tcl. Они потребуются для следующего пакета - Expect.</para>
 
 <screen><userinput remap="install">make install-private-headers</userinput></screen>
 

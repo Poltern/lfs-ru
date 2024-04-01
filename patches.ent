@@ -11,8 +11,8 @@
 <!ENTITY bzip2-docs-patch-size "1.6 KB">
 
 <!ENTITY coreutils-i18n-patch "coreutils-&coreutils-version;-i18n-1.patch">
-<!ENTITY coreutils-i18n-patch-md5 "cca7dc8c73147444e77bc45d210229bb">
-<!ENTITY coreutils-i18n-patch-size "166 KB">
+<!ENTITY coreutils-i18n-patch-md5 "ce7529b74564aac887c3f48582a5e6cf">
+<!ENTITY coreutils-i18n-patch-size "159 KB">
 
 <!ENTITY glibc-fhs-patch "glibc-&glibc-version;-fhs-1.patch">
 <!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">

@@ -92,7 +92,7 @@ sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in</userinput></screen>
       таких языков должны отдельно загрузить рабочую раскладку.</para>
     </note>
 
-    <para>По желанию, установите документацию::</para>
+    <para>По желанию, установите документацию:</para>
 
 <screen><userinput remap="install">cp -R -v docs/doc -T /usr/share/doc/kbd-&kbd-version;</userinput></screen>
 

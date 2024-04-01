@@ -55,9 +55,9 @@
     <!--<listitem>
       <para>Check-&check-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Coreutils-&coreutils-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>DejaGNU-&dejagnu-version;</para>
     </listitem>-->
@@ -208,9 +208,9 @@
     <!--<listitem>
       <para>Perl-&perl-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Pkgconf-&pkgconf-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Procps-ng-&procps-ng-version;</para>
     </listitem>-->
@@ -256,9 +256,9 @@
     <!--<listitem revision="sysv">
       <para>Udev из Systemd-&systemd-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Util-linux-&util-linux-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Vim-&vim-version;</para>
     </listitem>
@@ -274,9 +274,9 @@
     <!--<listitem>
       <para>Zlib-&zlib-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Zstd-&zstd-version;</para>
-    </listitem>-->
+    </listitem>
   </itemizedlist>
 
   <!--<itemizedlist>

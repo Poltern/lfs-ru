@@ -64,7 +64,7 @@
       <varlistentry>
         <term>
           <parameter>--with-xz</parameter>,
-          <parameter>--with-zlib</parameter>, и
+          <parameter>--with-zlib</parameter> и
           <parameter>--with-zstd</parameter>
         </term>
         <listitem>
