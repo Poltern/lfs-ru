@@ -83,8 +83,8 @@
       </itemizedlist>
     </listitem>
 
-    <listitem>
-      <para>2024-04-25</para>
+    <listitem revision='sysv'>
+      <para>2024-03-25</para>
       <itemizedlist>
         <listitem>
           <para>[timtas] - Update to sysvinit-3.09. Fixes
