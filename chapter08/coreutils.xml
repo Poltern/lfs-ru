@@ -129,7 +129,8 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 <screen><userinput remap="test">groupdel dummy</userinput></screen>
 
     <para>
-       Известно, что два теста,tests/cp/preserve-mode.sh и tests/mv/acl.sh, завершаются неудачно в среде chroot, 
+       Известно, что два теста, <filename>tests/cp/preserve-mode.sh</filename> и 
+	   <filename>tests/mv/acl.sh</filename>, завершаются неудачно в среде chroot, 
 	   но проходят успешно в собранной системе.
     </para>
 
