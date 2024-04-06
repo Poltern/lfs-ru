@@ -590,7 +590,7 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
   <!-- Multilib - 32bit  -->
   <!-- - - - - - - - - - -->
   <sect2 arch="ml_32,ml_all">
-    <title>Сборка Glibc — 32-битная версия</title>
+    <title>Установка Glibc — 32-битная версия</title>
 
     <para>Теперь перекомпилируйте Glibc для m32. Извлеченный исходный код можно 
 	использовать повторно, но его необходимо очистить перед установкой Glibc m32.</para>
@@ -663,7 +663,7 @@ readelf -l a.out | grep '/ld-linux'</userinput></screen>
   <!-- - - - - - - - - - -->
   
   <sect2 arch="ml_x32,ml_all">
-    <title>Сборка Glibc - с поддержкой x32 ABI</title>
+    <title>Установка Glibc - с поддержкой x32 ABI</title>
 
     <para>Теперь перекомпилируйте Glibc для mx32. Извлеченный исходный код можно 
 	использовать повторно, но его необходимо очистить перед установкой mx32 версии Glibc.</para>
