@@ -136,7 +136,7 @@ umount -v $LFS/usr</userinput></screen>
   <para>
     Если перезагрузка завершилась <emphasis role="bold">неудачей</emphasis>, самое 
 	время устранить эти неполадки. Советы по решению проблем с начальной загрузкой, смотрите 
-	на странице <ulink url="https://www.linuxfromscratch.org/lfs/troubleshooting.html"/>.
+	на странице <ulink url="&lfs-root;lfs/troubleshooting.html"/>.
   </para>
 
 </sect1>
