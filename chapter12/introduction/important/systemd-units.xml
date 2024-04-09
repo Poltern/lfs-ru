@@ -9,47 +9,52 @@
   <?dbhtml filename="systemd-units.html"?>
 
 
-  <title>BLFS Systemd Units</title>
+  <title>Юниты Systemd в LFS(ext)</title>
 
   <indexterm zone="systemd-units">
-    <primary sortas="a-BLFS-Sytemd-Units">BLFS Systemd Units</primary>
+    <primary sortas="a-BLFS-Sytemd-Units">Юниты Systemd в LFS(ext)<</primary>
   </indexterm>
 
   <indexterm zone="systemd-units">
-    <primary sortas="f-AA-General-Information">General Information</primary>
+    <primary sortas="f-AA-General-Information">Общая информация</primary>
   </indexterm>
 
   <para>
-    The BLFS Systemd Units package contains the systemd unit files
-    that are used throughout the book.
+    Пакет BLFS Systemd Units содержит файлы модулей systemd, которые используются на 
+	протяжении всей книги.
   </para>
 
   <itemizedlist spacing="compact">
-    <title>Package Information</title>
+    <title>Информация о пакете</title>
     <listitem>
       <para>
-        Download: <ulink url="&downloads-root;/blfs-systemd-units-&systemd-units-version;.tar.xz"/>
+        Ссылка на загрузку: <ulink url="&downloads-root;/blfs-systemd-units-&systemd-units-version;.tar.xz"/>
       </para>
     </listitem>
   </itemizedlist>
 
   <para>
-    The BLFS Systemd Units package will be used throughout the BLFS book
-    for systemd unit files. Each systemd unit has a separate install target.
-    It is recommended that you keep the package source directory around until
-    completion of your BLFS system. When a systemd unit is requested from BLFS
-    Systemd Units, simply change to the directory, and as the
-    <systemitem class="username">root</systemitem> user, execute the given
-    <command>make install-<replaceable>&lt;systemd-unit&gt;</replaceable></command>
-    command. This command installs the systemd unit to its proper location
-    (along with any auxiliary configuration scripts) and also enables it by
-    default.
+    Пакет BLFS Systemd Units будет использоваться по всей книге LFS(ext) для файлов модулей 
+	systemd. Каждый системный модуль имеет отдельный target установки. Рекомендуется 
+	сохранить каталог исходного кода пакета до завершения настройки вашей системы LFS(ext)/BLFS. 
+	Когда модуль systemd запрашивается из BLFS Systemd Units, просто перейдите в каталог, 
+	и от имени пользователя <systemitem class="username">root</systemitem> выполните 
+	команду <command>make install-<replaceable>&lt;systemd -unit&gt;</replaceable></command>. 
+	Эта команда установит модуль systemd в нужное место (вместе со всеми вспомогательными 
+	сценариями настройки), а также, по умолчанию, включит его.
   </para>
 
   <note>
     <para>
-      It is advisable to peruse each systemd unit before installation to
-      determine whether the installed files meet your needs.
+      Перед установкой рекомендуется просмотреть каждый модуль systemd, чтобы определить, 
+	  соответствуют ли установленные файлы вашим потребностям.
+    </para>
+  </note>
+  <note>
+    <para>
+      Это тот же пакет, который применяется в книге BLFS, в нём нет никаких изменений относительно 
+	  оригинальной версии, поэтому при переходе к книге BLFS нет необходимости скачивать пакет еще 
+	  раз.
     </para>
   </note>
 

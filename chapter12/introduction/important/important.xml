@@ -8,12 +8,10 @@
 <sect1 id="important">
   <?dbhtml filename="important.html"?>
 
-  <title>Important Information</title>
+  <title>Важная информация</title>
 
-  <para>This chapter is used to explain some of the policies used throughout
-  the book, to introduce important concepts and to explain some issues you may
-  see with some of the included packages.</para>
-
-
+  <para>Этот раздел используется для объяснения подходов, используемых для улучшения и расширения 
+  возможностей базовой системы LFS, определения важных понятий и разъяснения некоторых проблем, 
+  которые могут возникнуть при работе с пакетами, включенными в расширенную редакцию книги.</para>
 
 </sect1>

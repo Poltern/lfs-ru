@@ -13,6 +13,7 @@
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="afterlfs.xml"/>
 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="introduction/important/important.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="introduction/important/systemd-units.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="introduction/important/locale-issues.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/config/config.xml"/> 
