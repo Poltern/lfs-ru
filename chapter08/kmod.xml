@@ -85,7 +85,7 @@
 	с Module-Init-Tools (пакетом, который ранее обрабатывал модули ядра Linux). Система сборки 
 	создаст все эти символические ссылки в <filename class='directory'>/usr/bin</filename>, но 
 	здесь нам нужна только команда <command>lsmod</command>, а все остальные символические ссылки 
-	должны вести в <filename class='directory. '>/usr/sbin</filename>:</para>
+	должны вести в <filename class='directory'>/usr/sbin</filename>:</para>
 
 <screen><userinput remap="install">make install
 
