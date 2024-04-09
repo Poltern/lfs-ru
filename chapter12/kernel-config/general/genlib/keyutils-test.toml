@@ -1,0 +1,24 @@
+BIG_KEYS='*'
+KEYS='*'
+KEY_DH_OPERATIONS='*'
+CRYPTO = { value = '*', forced = '*' }
+SYSTEM_TRUSTED_KEYRING='*'
+SECONDARY_TRUSTED_KEYRING='*'
+SYSTEM_BLACKLIST_KEYRING='*'
+ASYMMETRIC_KEY_TYPE='*'
+ASYMMETRIC_PUBLIC_KEY_SUBTYPE='*'
+CRYPTO_RSA='*M'
+
+[X509_CERTIFICATE_PARSER]
+value = '*'
+comment = [
+  "If not built into the kernel, [SYSTEM_TRUSTED_KEYRING] won't show up;",
+  "building as a module won't work"
+]
+
+[CRYPTO_LIB_CHACHA20POLY1305]
+value = '*'
+comment = [
+  "If not built into the kernel, [BIG_KEYS] won't show up;",
+  "building as a module won't work"
+]

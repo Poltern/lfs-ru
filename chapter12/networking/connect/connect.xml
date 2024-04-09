@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="basicnet-connect">
+  <?dbhtml filename="connect.html"?>
+
+  <title>Connecting to a Network</title>
+
+  <para>
+    The LFS book covers setting up networking by connecting to a LAN
+  with a static IP address. There are other methods used to obtain an IP
+  address and connect to a LAN and other networks (such as the Internet).
+  The most popular methods (DHCP and PPP) are covered in this chapter.</para>
+
+  <para>
+    DHCP stands for Dynamic Host Configuration Protocol. It is a protocol used
+    by many sites to automatically provide information such as IP addresses,
+    subnet masks and routing information to computers.  If your network uses
+    DHCP, you will need a DHCP client in order to connect to it.
+  </para>
+<!-- we do not include ppp
+  <para>
+    PPP stands for Point-to-Point Protocol. It is a data link protocol
+    commonly used for establishing authenticated IP connections over
+    a phone line with a modem, or over radio waves with a cellular phone. There
+    is also a variant (PPPoE) that works over Ethernet and is used by cable
+    providers to authenticate the Internet connections.
+  </para>
+-->
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ppp.xml"/> -->
+  <!-- systemd only -->
+
+ <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dhcpcd.xml"/>-->
+  <!--<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dhcp.xml"/>-->
+  <!--<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kea.xml"/>-->
+
+</sect1>

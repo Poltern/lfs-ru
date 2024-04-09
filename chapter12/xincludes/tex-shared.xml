@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+<para>
+  <parameter>--enable-shared</parameter>: Use shared versions of
+  <filename class="libraryfile">libkpathsea</filename>,
+  <filename class="libraryfile">libptexenc</filename>,
+  <filename class="libraryfile">libsynctex</filename>,
+  <filename class="libraryfile">libtexlua52</filename> and
+  <filename class="libraryfile">libtexluajit</filename>.
+</para>

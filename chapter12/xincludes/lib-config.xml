@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+<para>As with most libraries, there is no configuration to do, save that the
+library directory, i.e., <filename class="directory">/opt/lib</filename> or
+<filename class="directory">/usr/local/lib</filename> should appear in
+<filename>/etc/ld.so.conf</filename> so that <command>ldd</command> can find
+the shared libraries.  After checking that this is the case,
+<command>/sbin/ldconfig</command> should be run while logged in as
+<systemitem class="username">root</systemitem>.</para>

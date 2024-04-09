@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY p11-kit-download-http "https://github.com/p11-glue/p11-kit/releases/download/&p11-kit-version;/p11-kit-&p11-kit-version;.tar.xz">
+  <!ENTITY p11-kit-download-ftp  " ">
+  <!ENTITY p11-kit-md5sum        "2610cef2951d83d7037577eaae1acb54">
+  <!ENTITY p11-kit-size          "972 KB">
+  <!ENTITY p11-kit-buildsize     "95 MB (with tests)">
+  <!ENTITY p11-kit-time          "0.8 SBU (with tests)">
+]>
+
+<sect1 id="p11-kit" xreflabel="p11-kit-&p11-kit-version;">
+  <?dbhtml filename="p11-kit.html"?>
+
+
+  <title>p11-kit-&p11-kit-version;</title>
+
+  <indexterm zone="p11-kit">
+    <primary sortas="a-p11-kit">p11-kit</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to p11-kit</title>
+
+    <para>
+      The <application>p11-kit</application> package provides a way to load and
+      enumerate PKCS #11 (a Cryptographic Token Interface Standard) modules.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&p11-kit-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&p11-kit-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &p11-kit-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &p11-kit-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &p11-kit-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &p11-kit-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">p11-kit Dependencies</bridgehead>
+
+    <!-- There is a check for libsystemd. It seems to install a systemd service
+    in /usr/lib/systemd/user.-->
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="libtasn1"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended (runtime)</bridgehead>
+    <para role="recommended">
+      <xref role="runtime" linkend="make-ca"/>
+    </para>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk-doc"/>,
+      <xref linkend="libxslt"/>, and
+      <xref role="runtime" linkend="nss"/> (runtime)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of p11-kit</title>
+
+    <!-- https://github.com/p11-glue/p11-kit/pull/535
+         The issue causes test failures in glib-networking and libsoup 
+         Fixed in version 0.25.1
+
+    <para>
+      Fix an issue causing some PKCS 11 modules fail to load:
+    </para>
+
+<screen><userinput>sed 's/if (gi/&amp; \&amp;\&amp; gi != C_GetInterface/' \
+    -i p11-kit/modules.c</userinput></screen>-->
+
+    <para>
+      Prepare the distribution specific anchor hook:
+    </para>
+
+<screen><userinput>sed '20,$ d' -i trust/trust-extract-compat &amp;&amp;
+
+cat &gt;&gt; trust/trust-extract-compat &lt;&lt; "EOF"
+<literal># Copy existing anchor modifications to /etc/ssl/local
+/usr/libexec/make-ca/copy-trust-modifications
+
+# Update trust stores
+/usr/sbin/make-ca -r</literal>
+EOF</userinput></screen>
+
+    <para>
+      Install <application>p11-kit</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir p11-build &amp;&amp;
+cd    p11-build &amp;&amp;
+
+meson setup ..            \
+      --prefix=/usr       \
+      --buildtype=release \
+      -Dtrust_paths=/etc/pki/anchors &amp;&amp;
+ninja</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>LC_ALL=C ninja test</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>ninja install &amp;&amp;
+ln -sfv /usr/libexec/p11-kit/trust-extract-compat \
+        /usr/bin/update-ca-certificates</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/meson-buildtype-release.xml"/>
+
+    <para>
+      <parameter>-Dtrust_paths=/etc/pki/anchors</parameter>: this switch
+      sets the location of trusted certificates used by libp11-kit.so.
+    </para>
+
+    <para>
+      <option>-Dhash_impl=freebl</option>: Use this switch if you want to
+      use the Freebl library from <application>NSS</application> for SHA1 and
+      MD5 hashing.
+    </para>
+
+<!--    <para>
+      <option>-Dgtk_doc=true</option>: Use this switch if you have installed
+      <xref linkend="gtk-doc"/> and <xref linkend="libxslt"/> and wish to
+      rebuild the documentation and generate manual pages.
+    </para> -->
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring p11-kit</title>
+
+    <para>
+      The <application>p11-kit</application> trust module
+      (<filename>/usr/lib/pkcs11/p11-kit-trust.so</filename>) can be used as a
+      drop-in replacement for <filename>/usr/lib/libnssckbi.so</filename> to
+      transparently make the system CAs available to
+      <application>NSS</application> aware applications, rather than the static
+      list provided by <filename>/usr/lib/libnssckbi.so</filename>. As the
+      <systemitem class="username">root</systemitem> user, execute the
+      following commands:
+    </para>
+
+<screen role="root"><userinput>ln -sfv ./pkcs11/p11-kit-trust.so /usr/lib/libnssckbi.so</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          p11-kit, trust, and update-ca-certificates
+        </seg>
+        <seg>
+          libp11-kit.so and p11-kit-proxy.so
+        </seg>
+        <seg>
+          /etc/pkcs11,
+          /usr/include/p11-kit-1,
+          /usr/lib/pkcs11,
+          /usr/libexec/p11-kit,
+          /usr/share/gtk-doc/html/p11-kit, and
+          /usr/share/p11-kit
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="p11-kit-prog">
+        <term><command>p11-kit</command></term>
+        <listitem>
+          <para>
+            is a command line tool that can be used to perform operations
+            on PKCS#11 modules configured on the system
+          </para>
+          <indexterm zone="p11-kit p11-kit-prog">
+            <primary sortas="b-p11-kit">p11-kit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="trust">
+        <term><command>trust</command></term>
+        <listitem>
+          <para>
+            is a command line tool to examine and modify the shared trust
+            policy store
+          </para>
+          <indexterm zone="p11-kit trust">
+            <primary sortas="b-trust">trust</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="update-ca-certificates">
+        <term><command>update-ca-certificates</command></term>
+        <listitem>
+          <para>
+            is a command line tool to both extract local certificates from an
+            updated anchor store, and regenerate all anchors and certificate
+            stores on the system. This is done unconditionally on BLFS using
+            the <parameter>--force</parameter> and <parameter>--get</parameter>
+            flags to <command>make-ca</command> and should likely not be used
+            for automated updates
+          </para>
+          <indexterm zone="p11-kit update-ca-certificates">
+            <primary sortas="b-update-ca-certificates">update-ca-certificates</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libp11-kit">
+        <term><filename class="libraryfile">libp11-kit.so</filename></term>
+        <listitem>
+          <para>
+            contains functions used to coordinate initialization and
+            finalization of any PKCS#11 module
+          </para>
+          <indexterm zone="p11-kit libp11-kit">
+            <primary sortas="c-libp11-kit">libp11-kit.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="p11-kit-proxy">
+        <term><filename class="libraryfile">p11-kit-proxy.so</filename></term>
+        <listitem>
+          <para>
+            is the PKCS#11 proxy module
+          </para>
+          <indexterm zone="p11-kit p11-kit-proxy">
+            <primary sortas="c-p11-kit-proxy">p11-kit-proxy.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

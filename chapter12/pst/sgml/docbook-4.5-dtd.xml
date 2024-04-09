@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY sgml-dtd-download-http "https://www.docbook.org/sgml/&docbook-4.5-dtd-version;/docbook-&docbook-4.5-dtd-version;.zip">
+  <!ENTITY sgml-dtd-download-ftp  " ">
+  <!ENTITY sgml-dtd-md5sum        "07c581f4bbcba6d3aac85360a19f95f7">
+  <!ENTITY sgml-dtd-size          "70 KB">
+  <!ENTITY sgml-dtd-buildsize     "784 KB">
+  <!ENTITY sgml-dtd-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="sgml-dtd" xreflabel="docbook-&docbook-4.5-dtd-version;-dtd">
+  <?dbhtml filename="docbook-4.5-dtd.html"?>
+
+
+  <title>docbook-&docbook-4.5-dtd-version;-dtd</title>
+
+  <indexterm zone="sgml-dtd">
+    <primary sortas="a-DocBook-SGML-DTD-&docbook-4.5-dtd-version;">DocBook SGML
+    DTD-&docbook-4.5-dtd-version;</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to DocBook-4.5 SGML DTD</title>
+
+    <para>
+      The <application>DocBook-4.5 SGML DTD</application> package contains
+      document type definitions for verification of SGML data files against the
+      DocBook rule set. These are useful for structuring books and software
+      documentation to a standard allowing you to utilize transformations
+      already written for that standard.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&sgml-dtd-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&sgml-dtd-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &sgml-dtd-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &sgml-dtd-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &sgml-dtd-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &sgml-dtd-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">DocBook-4.5 SGML DTD Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="sgml-common"/> and
+      <xref linkend="unzip"/> (or <xref role='nodep' linkend='libarchive'/>)
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of DocBook-4.5 SGML DTD</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../xincludes/use-unzip.xml"/>
+
+    <para>
+      Install <application>DocBook-4.5 SGML DTD</application> by running
+      the following commands:
+    </para>
+
+<screen><userinput>sed -i -e '/ISO 8879/d' \
+       -e '/gml/d' docbook.cat</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -d /usr/share/sgml/docbook/sgml-dtd-&docbook-4.5-dtd-version; &amp;&amp;
+chown -R root:root . &amp;&amp;
+
+install -v docbook.cat /usr/share/sgml/docbook/sgml-dtd-&docbook-4.5-dtd-version;/catalog &amp;&amp;
+cp -v -af *.dtd *.mod *.dcl /usr/share/sgml/docbook/sgml-dtd-&docbook-4.5-dtd-version; &amp;&amp;
+
+install-catalog --add /etc/sgml/sgml-docbook-dtd-&docbook-4.5-dtd-version;.cat \
+    /usr/share/sgml/docbook/sgml-dtd-&docbook-4.5-dtd-version;/catalog &amp;&amp;
+
+install-catalog --add /etc/sgml/sgml-docbook-dtd-&docbook-4.5-dtd-version;.cat \
+    /etc/sgml/sgml-docbook.cat</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -i -e '/ISO 8879/d' -e '/gml/d' docbook.cat</command>:
+      This command removes the ENT definitions from the catalog file.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring DocBook-4.5 SGML DTD</title>
+
+    <sect3 id="sgml-dtd-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/sgml/catalog</filename>
+      </para>
+
+      <indexterm zone="sgml-dtd sgml-dtd-config">
+        <primary sortas="e-etc-sgml-catalog">/etc/sgml/catalog</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        The above installation script updates the catalog.
+      </para>
+
+      <para>
+        Using only the most current 4.x version of <application>DocBook
+        SGML DTD</application> requires the following (perform as the
+        <systemitem class="username">root</systemitem> user):
+      </para>
+
+<screen role="root"><userinput>cat &gt;&gt; /usr/share/sgml/docbook/sgml-dtd-&docbook-4.5-dtd-version;/catalog &lt;&lt; "EOF"
+<literal>  -- Begin Single Major Version catalog changes --
+
+PUBLIC "-//OASIS//DTD DocBook V4.4//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.3//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.2//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.1//EN" "docbook.dtd"
+PUBLIC "-//OASIS//DTD DocBook V4.0//EN" "docbook.dtd"
+
+  -- End Single Major Version catalog changes --</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Files</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>None</seg>
+        <seg>SGML DTD and MOD files</seg>
+        <seg>/usr/share/sgml/docbook/sgml-dtd-&docbook-4.5-dtd-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="SGML-DTD-files-4">
+        <term><filename>SGML DTD files</filename></term>
+        <listitem>
+          <para>
+            contains a document type definition which defines the element
+            types and the attribute lists that can be used in the corresponding
+            SGML files
+          </para>
+          <indexterm zone="sgml-dtd SGML-DTD-files-4">
+            <primary sortas="g-SGML-DTD-files">SGML DTD files</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="SGML-MOD-files-4">
+        <term><filename>SGML MOD files</filename></term>
+        <listitem>
+          <para>
+            contains components of the document type definition that are
+            sourced into the <filename>DTD</filename> files
+          </para>
+          <indexterm zone="sgml-dtd SGML-MOD-files-4">
+            <primary sortas="g-SGML-MOD-files">SGML MOD files</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

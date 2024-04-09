@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <para><option>--enable-gtk-doc</option>: This parameter is normally
+    used if <application>GTK-Doc</application> is installed and you wish
+    to rebuild and install the API documentation. It is broken for
+    this package due to the use of a long deprecated gtk-doc program
+    that is no longer available.</para>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="afterlfs">
+  <?dbhtml filename="afterlfs.html"?>
+
+  <title>Начало работы после сборки LFS</title>
+
+  <sect2>
+  <title>Что делать дальше?</title>
+
+     <para>
+       Теперь, когда LFS собрана и у вас есть загружаемая система, необходимо решить, что же 
+	   делать дальше? Следующий шаг - определиться, как использовать систему. Как правило, следует 
+	   учитывать две широкие категории: рабочая станция или сервер. Действительно, эти категории 
+	   не являются взаимоисключающими. Приложения, необходимые для каждой категории, можно объединить 
+	   в одну систему, но пока давайте рассмотрим их по отдельности.
+     </para>
+
+     <para>
+        Сервер — более простая категория. Как правило, это веб-сервер, такой как 
+		<ulink url="&blfs-book;server/apache.html">Apache</ulink>, и сервер баз данных, например, 
+		<ulink url="&blfs-book;server/mariadb.html">MariaDB</ulink>. Однако возможны и другие 
+		варианты. К этой же категории относятся операционные системы для встраиваемых устройств.
+     </para>
+
+     <para>
+        Рабочая станция же, гораздо сложнее. Обычно для нее требуется среда рабочего стола, 
+        например,
+        <ulink url="&blfs-book;lxde/lxde.html">LXDE</ulink>,
+        <ulink url="&blfs-book;xfce/xfce.html">XFCE</ulink>,
+        <ulink url="&blfs-book;kde/kde.html">KDE</ulink>, или
+        <ulink url="&blfs-book;gnome/gnome.html">Gnome</ulink>
+        основанные на базовом
+        <ulink url="&blfs-book;x/installing.html">графическом окружении</ulink>
+        и наборе графических приложений, таких как 
+        <ulink url="&blfs-book;xsoft/firefox.html">веб-браузер Firefox</ulink>,
+        <ulink url="&blfs-book;xsoft/thunderbird.html">почтовый клиент Thunderbird</ulink>,
+        или 
+        <ulink url="&blfs-book;xsoft/libreoffice.html">пакет офисных приложений LibreOffice</ulink>.
+        Для этих приложений требуется множество (может быть несколько сотен, в зависимости от ваших 
+		потребностей) пакетов вспомогательных приложений и библиотек.
+     </para>
+
+     <para>
+        В дополнение к вышесказанному, существует набор приложений для управления системой. Все эти 
+		приложения есть в справочнике BLFS, но не все пакеты необходимы в каждом конкретном окружении. 
+		Например <ulink url="&blfs-book;basicnet/dhcpcd.html ">клиент dhcpcd</ulink>, обычно 
+		не требуется на серверах или <ulink url="&blfs-book;basicnet/wireless_tools.html "> управление 
+		параметрами беспроводных сетей</ulink> - полезно только для ноутбуков и других портативных 
+		систем. 
+     </para>
+
+  </sect2>
+
+  <sect2>
+  <title>Работа в базовой среде LFS</title>
+
+    <para>
+      Когда вы впервые загружаетесь в LFS, у вас есть все необходимые инструменты для сборки 
+	  дополнительных пакетов. К сожалению, набор программ пользовательского окружения довольно 
+	  скудный. Есть несколько способов исправить это:
+    </para>
+
+  <sect3>
+  <title>Работа с хоста LFS в chroot</title>
+
+    <para>
+      Этот метод обеспечивает полноценную графическую среду, в которой доступен полнофункциональный 
+	  браузер и возможности копирования/вставки. Также он позволяет использовать приложения хоста, 
+	  такие как wget, для загрузки исходных текстов пакетов в каталог, доступный при работе в среде 
+	  chroot.
+    </para>
+
+    <para>
+       Чтобы правильно собрать пакеты в chroot, вам необходимо не забыть смонтировать виртуальные 
+	   файловые системы, если они еще не смонтированы. Один из способов сделать это — создать 
+	   скрипт в <emphasis role="bold">ХОСТОВОЙ</emphasis> системе:
+    </para>
+
+<screen><command>cat &gt; ~/mount-virt.sh &lt;&lt; "EOF"
+#!/bin/bash
+
+function mountbind
+{
+   if ! mountpoint $LFS/$1 >/dev/null; then
+     $SUDO mount --bind /$1 $LFS/$1
+     echo $LFS/$1 mounted
+   else
+     echo $LFS/$1 already mounted
+   fi
+}
+
+function mounttype
+{
+   if ! mountpoint $LFS/$1 >/dev/null; then
+     $SUDO mount -t $2 $3 $4 $5 $LFS/$1
+     echo $LFS/$1 mounted
+   else
+     echo $LFS/$1 already mounted
+   fi
+}
+
+if [ $EUID -ne 0 ]; then
+  SUDO=sudo
+else
+  SUDO=""
+fi
+
+if [ x$LFS == x ]; then
+  echo "LFS not set"
+  exit 1
+fi
+
+mountbind dev
+mounttype dev/pts devpts devpts -o gid=5,mode=620
+mounttype proc    proc   proc
+mounttype sys     sysfs  sysfs
+mounttype run     tmpfs  run
+if [ -h $LFS/dev/shm ]; then
+  install -v -d -m 1777 $LFS$(realpath /dev/shm)
+else
+  mounttype dev/shm tmpfs tmpfs -o nosuid,nodev
+fi 
+
+#mountbind usr/src
+#mountbind boot
+#mountbind home
+EOF</command></screen>
+
+    <para>
+       Обратите внимание, что последние три команды в скрипте закомментированы. Они пригодятся, 
+	   если эти каталоги монтируются как отдельные разделы в хост-системе и будут монтироваться 
+	   при загрузке завершенной системы LFS/BLFS.
+    </para>
+
+    <para>
+        Скрипт можно запустить с помощью <command>bash ~/mount-virt.sh </command> либо от имени 
+		обычного пользователя (рекомендуется), либо от имени &root;. При запуске от имени 
+		обычного пользователя в хост-системе требуется sudo.
+    </para>
+
+    <para>
+        Еще одна проблема, на которую указывает скрипт, заключается в том, где хранить 
+		загруженные файлы пакетов. Это местоположение является произвольным. Оно может 
+		находиться в домашнем каталоге обычного пользователя, таком как ~/sources, или 
+		в глобальном каталоге /usr/src. Наша рекомендация - не смешивать источники BLFS 
+		и источники LFS в (из среды chroot) /sources. В любом случае, пакеты должны быть 
+		доступны внутри среды chroot.
+    </para>
+
+    <para>
+        Последняя удобная функция, представленная здесь, предназначена для упрощения 
+		процесса входа в среду chroot. Это можно сделать с помощью псевдонима, помещенного 
+		в пользовательский файл ~/.bashrc в хост-системе:
+    </para>
+
+<screen><command>alias lfs='sudo /usr/sbin/chroot /mnt/lfs /usr/bin/env -i HOME=/root TERM="$TERM" PS1="\u:\w\\\\$ "
+PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'</command></screen>
+
+     <para>
+       Этот псевдоним немного сложен для восприятия из-за кавычек и слэшей. Всё это должно 
+	   быть в одной строке. Вышеуказанная команда была разделена на две части для презентационных 
+	   целей.
+    </para>
+
+  </sect3>
+
+  <sect3>
+  <title>Работа удаленно по ssh</title>
+
+    <para>
+       Этот метод также предоставляет полноценную графическую среду, но сначала требует 
+	   установки <ulink url="&blfs-book;postlfs/openssh.html">sshd</ulink> 
+       в системе LFS, обычно в chroot. Кроме этого потребуется второй компьютер. 
+	   Преимущество этого метода в том, что он прост, поскольку не требует сложной среды 
+	   chroot. Он также использует собранное вами ядро LFS для всех дополнительных пакетов 
+	   и по-прежнему предоставляет полную систему для установки пакетов.
+    </para>
+
+    <para>
+      Вы можете использовать команду <command>scp</command> для загрузки исходных текстов 
+	  пакетов, которые будут собраны в системе LFS. Если вместо этого вы хотите загрузить 
+	  исходные тексты непосредственно в систему LFS, установите 
+      <ulink url="&blfs-book;general/libtasn1.html">libtasn1</ulink>,
+      <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
+      <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink> и 
+      <ulink url="&blfs-book;basicnet/wget.html">wget</ulink> 
+      в chroot (или загрузите их исходники с помощью <command>scp</command> после загрузки 
+	  системы LFS).
+    </para>
+
+  </sect3>
+
+  <sect3>
+  <title>Работа из командной строки LFS</title>
+
+    <para>
+       Этот метод требует установки 
+        <ulink url="&blfs-book;general/libtasn1.html">libtasn1</ulink>,
+        <ulink url="&blfs-book;postlfs/p11-kit.html">p11-kit</ulink>,
+        <ulink url="&blfs-book;postlfs/make-ca.html">make-ca</ulink>,
+        <ulink url="&blfs-book;basicnet/wget.html">wget</ulink>,
+        <ulink url="&blfs-book;general/gpm.html">gpm</ulink> и
+        <ulink url="&blfs-book;basicnet/links.html">links</ulink>
+        (или <ulink url="&blfs-book;basicnet/lynx.html">lynx</ulink>)
+       в chroot, а затем перезагрузки в новую систему LFS. На данный момент система 
+	   по умолчанию имеет шесть виртуальных консолей. Переключать консоли так же просто, 
+	   как использовать комбинации клавиш 
+       <keycombo>
+         <keycap>Alt</keycap>
+         <keycap>Fx</keycap>
+       </keycombo>
+       , где <keycap>Fx</keycap> это 
+       клавиши от <keycap>F1</keycap> до <keycap>F6</keycap>.
+	   Комбинации 
+       <keycombo>
+         <keycap>Alt</keycap>
+         <keycap role="symbolfont">&#8594;</keycap>
+       </keycombo>
+       и
+       <keycombo>
+         <keycap>Alt</keycap>
+         <keycap role="symbolfont">&#8592;</keycap>
+       </keycombo>
+       также переключают консоль.
+     </para>
+
+     <para>
+       На этом этапе вы можете войти в две разные виртуальные консоли и запустить браузер 
+	   links или lynx в одной консоли и bash в другой. GPM позволяет копировать команды 
+	   из браузера с помощью левой кнопки мыши, переключать консоли и вставлять их в другую 
+	   консоль.
+      </para>
+
+      <note>
+        <para>
+          Вместо примечания: переключение виртуальных консолей также может быть 
+		  выполнено из экземпляра X Window с помощью комбинации клавиш
+          <keycombo>
+            <keycap>Ctrl</keycap>
+            <keycap>Alt</keycap>
+            <keycap>Fx</keycap>
+          </keycombo>
+          ,но операция копирования мышью не работает между графическим 
+		  интерфейсом и виртуальной консолью. Вы можете вернуться к дисплею X Window с 
+		  помощью комбинации
+          <keycombo>
+            <keycap>Ctrl</keycap>
+            <keycap>Alt</keycap>
+            <keycap>Fx</keycap>
+          </keycombo>
+          ,где <keycap>Fx</keycap> обычно 
+          <keycap>F1</keycap>, но может быть <keycap>F7</keycap>.
+        </para>
+      </note>
+
+  </sect3>
+
+  </sect2>
+
+
+</sect1>

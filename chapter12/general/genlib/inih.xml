@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY inih-download-http
+    "https://github.com/benhoyt/inih/archive/r&inih-version;/inih-r&inih-version;.tar.gz">
+  <!ENTITY inih-download-ftp  " ">
+  <!ENTITY inih-md5sum        "5c9725320ad2c79e0b1f76568bd0ff24">
+  <!ENTITY inih-size          "20 KB">
+  <!ENTITY inih-buildsize     "724 KB">
+  <!ENTITY inih-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="inih" xreflabel="inih-&inih-version;">
+  <?dbhtml filename="inih.html"?>
+
+
+  <title>inih-&inih-version;</title>
+
+  <indexterm zone="inih">
+    <primary sortas="a-inih">inih</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to inih</title>
+
+    <para>
+      This package is a simple .INI file parser written in C.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&inih-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&inih-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &inih-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &inih-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &inih-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &inih-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of inih</title>
+
+    <para>
+      Install <application>inih</application> by running
+      the following commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+meson setup --prefix=/usr --buildtype=release .. &amp;&amp;
+ninja</userinput></screen>
+
+<!-- Note.  There is a tests directoy.  If we do:
+  cd ../tests
+  sh unittest.sh
+The tests seem to be run, but there is no output or log.
+-->
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>ninja install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libinih.so, libINIReader.so
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libinih">
+        <term><filename class="libraryfile">libinih.so</filename></term>
+        <listitem>
+          <para>
+            is the inih main library
+          </para>
+          <indexterm zone="inih libinih">
+            <primary sortas="c-libinih">libinih.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libINIReader">
+        <term><filename class="libraryfile">libINIReader.so</filename></term>
+        <listitem>
+          <para>
+            is the inih parser library
+          </para>
+          <indexterm zone="inih libINIReader">
+            <primary sortas="c-libINIReader">libINIReader.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cpio-download-http "&gnu-http;/cpio/cpio-&cpio-version;.tar.bz2">
+  <!ENTITY cpio-download-ftp  " ">
+  <!ENTITY cpio-md5sum        "3394d444ca1905ea56c94b628b706a0b">
+  <!ENTITY cpio-size          "1.6 MB">
+  <!ENTITY cpio-buildsize     "21 MB (with tests and docs)">
+  <!ENTITY cpio-time          "0.3 SBU (with tests and docs)">
+]>
+
+<sect1 id="cpio" xreflabel="cpio-&cpio-version;">
+  <?dbhtml filename="cpio.html"?>
+
+
+  <title>cpio-&cpio-version;</title>
+
+  <indexterm zone="cpio">
+    <primary sortas="a-Cpio">Cpio</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to cpio</title>
+
+    <para>
+      The <application>cpio</application> package contains
+      tools for archiving.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cpio-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cpio-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cpio-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cpio-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cpio-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cpio-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">CPIO Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <para role="optional">
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of cpio</title>
+
+    <para>
+      Install <application>cpio</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --enable-mt   \
+            --with-rmt=/usr/libexec/rmt &amp;&amp;
+make &amp;&amp;
+makeinfo --html            -o doc/html      doc/cpio.texi &amp;&amp;
+makeinfo --html --no-split -o doc/cpio.html doc/cpio.texi &amp;&amp;
+makeinfo --plaintext       -o doc/cpio.txt  doc/cpio.texi</userinput></screen>
+
+    <para>
+      If you have TeXlive installed and wish to create PDF
+      or Postscript documentation, issue one or both of the following commands:
+    </para>
+
+<screen remap="doc"><userinput>make -C doc pdf &amp;&amp;
+make -C doc ps</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d /usr/share/doc/cpio-&cpio-version;/html &amp;&amp;
+install -v -m644    doc/html/* \
+                    /usr/share/doc/cpio-&cpio-version;/html &amp;&amp;
+install -v -m644    doc/cpio.{html,txt} \
+                    /usr/share/doc/cpio-&cpio-version;</userinput></screen>
+
+    <para>
+      If you built PDF or Postscript documentation, install it
+      by issuing the following commands as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>install -v -m644 doc/cpio.{pdf,ps,dvi} \
+                 /usr/share/doc/cpio-&cpio-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <!-- FIXME: Removed due to merged-/usr transition
+    <para>
+      <parameter>- -bindir=/bin</parameter>: This parameter installs
+      <command>cpio</command> to <filename class="directory">/bin</filename>
+      instead of <filename class="directory">/usr/bin</filename> as recommended
+      by the FHS guidelines.
+    </para>
+    -->
+
+    <para>
+      <parameter>--enable-mt</parameter>: This parameter forces the
+      building and installation of the <command>mt</command> program.
+    </para>
+
+    <para>
+      <parameter>--with-rmt=/usr/libexec/rmt</parameter>: This parameter
+      inhibits building the <command>rmt</command> program as it is already
+      installed by the <application>Tar</application> package in LFS.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>cpio and mt</seg>
+        <seg>None</seg>
+        <seg>/usr/share/doc/cpio-&cpio-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cpio-prog">
+        <term><command>cpio</command></term>
+        <listitem>
+          <para>
+            copies files to and from archives
+          </para>
+          <indexterm zone="cpio cpio-prog">
+            <primary sortas="b-cpio">cpio</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mt">
+        <term><command>mt</command></term>
+        <listitem>
+          <para>
+            controls magnetic tape drive operations
+          </para>
+          <indexterm zone="cpio mt">
+            <primary sortas="b-mt">mt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

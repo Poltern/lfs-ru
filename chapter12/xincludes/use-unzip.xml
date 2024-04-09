@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+<note>
+  <para>The package source is distributed in <filename>zip</filename>
+  format and requires <command>unzip</command> (or
+  <command>bsdunzip</command> from <application>libarchive</application>).
+  You should create a directory and change to that directory before
+  unzipping the file to ease the removal of the source files after the
+  package has been installed.</para>
+</note>

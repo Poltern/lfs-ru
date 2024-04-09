@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY paps-download-http "https://github.com/dov/paps/releases/download/v&paps-version;/paps-&paps-version;.tar.gz">
+  <!ENTITY paps-download-ftp  " ">
+  <!ENTITY paps-md5sum        "6bd661b8fd224adc3343a91e6521a4f2">
+  <!ENTITY paps-size          "220 KB">
+  <!ENTITY paps-buildsize     "4.0 MB">
+  <!ENTITY paps-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="paps" xreflabel="paps-&paps-version;">
+  <?dbhtml filename="paps.html"?>
+
+
+  <title>paps-&paps-version;</title>
+
+  <indexterm zone="paps">
+    <primary sortas="a-paps">paps</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to paps</title>
+
+    <para>
+      <application>paps</application> is a text to PostScript converter that
+      works through <application>Pango</application>. Its input is a UTF-8
+      encoded text file and it outputs vectorized PostScript. It may be used
+      for printing any complex script supported by
+      <application>Pango</application>.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&paps-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&paps-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &paps-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &paps-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &paps-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &paps-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">paps Dependencies</bridgehead>
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="fmt"/> and
+      <xref linkend="pango"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="doxygen"/>
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of paps</title>
+
+    <para>
+      Install <application>paps</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr    \
+            --disable-Werror \
+            --mandir=/usr/share/man &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>paps</seg>
+        <seg>None</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="paps-prog">
+        <term><command>paps</command></term>
+        <listitem>
+          <para>
+            is a text to PostScript converter that supports UTF-8
+            character encoding
+          </para>
+          <indexterm zone="paps paps-prog">
+            <primary sortas="b-paps">paps</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

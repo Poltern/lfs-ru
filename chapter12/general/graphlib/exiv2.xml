@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY exiv2-download-http "https://github.com/Exiv2/exiv2/archive/v&exiv2-version;/exiv2-&exiv2-version;.tar.gz">
+  <!ENTITY exiv2-download-ftp  " ">
+  <!ENTITY exiv2-md5sum        "75a8766216a15ad104f09ab4a0eab7ca">
+  <!ENTITY exiv2-size          "43 MB">
+  <!ENTITY exiv2-buildsize     "127 MB (with tests)">
+  <!ENTITY exiv2-time          "0.3 SBU (Using parallelism=4, with tests)">
+]>
+
+<sect1 id="exiv2" xreflabel="Exiv2-&exiv2-version;">
+  <?dbhtml filename="exiv2.html"?>
+
+
+  <title>Exiv2-&exiv2-version;</title>
+
+  <indexterm zone="exiv2">
+    <primary sortas="a-Exiv2">Exiv2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Exiv2</title>
+
+    <para>
+      <application>Exiv2</application> is a C++ library and a command
+      line utility for managing image and video metadata.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&exiv2-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&exiv2-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &exiv2-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &exiv2-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &exiv2-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &exiv2-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+<!--
+   <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/exiv2-&exiv2-version;-security_fixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+
+    <bridgehead renderas="sect3">Exiv2 dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="cmake"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="brotli"/>,
+      <xref linkend="curl"/>, and
+      <xref linkend="inih"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <ulink url="https://www.libssh.org/">libssh</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional for documentation</bridgehead>
+    <para role="optional">
+      <xref linkend="doxygen"/>,
+      <xref linkend="graphviz"/>, and
+      <xref linkend="libxslt"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Exiv2</title>
+<!--
+    <para>
+      First, disable building a sample program that fails:
+    </para>
+
+<screen><userinput>sed -i '/conntest/s/^/#/' samples/CMakeLists.txt</userinput></screen>
+-->
+    <para>
+      Install <application>Exiv2</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr  \
+      -DCMAKE_BUILD_TYPE=Release   \
+      -DEXIV2_ENABLE_VIDEO=yes     \
+      -DEXIV2_ENABLE_WEBREADY=yes  \
+      -DEXIV2_ENABLE_CURL=yes      \
+      -DEXIV2_BUILD_SAMPLES=no     \
+      -G "Unix Makefiles" .. &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make test</command>
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>-DEXIV2_ENABLE_VIDEO=yes</parameter>:
+      This switch enables managing video metadata.
+    </para>
+
+    <para>
+      <parameter>-DEXIV2_ENABLE_WEBREADY=yes</parameter>:
+      This switch enables managing web image metadata.
+    </para>
+
+    <para>
+      <parameter>-DEXIV2_BUILD_SAMPLES=no</parameter>:
+      This switch is necessary to suppress building and installing
+      sample programs.  If the sample programs are built, 34 additional
+      programs are installed in /usr/bin.
+    </para>
+
+    <para>
+      <parameter>-DEXIV2_ENABLE_CURL=yes</parameter>:
+      This switch is necessary to enable network/http capabilities.
+    </para>
+
+    <para>
+      <option>-DEXIV2_ENABLE_INIH=no</option>:
+      Use this switch if you have not installed <xref linkend="inih"/>.
+    </para>
+
+    <para>
+      <option>-DEXIV2_ENABLE_BROTLI=no</option>:
+      Use this switch if you have not installed <xref linkend="brotli"/>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          exiv2
+        </seg>
+        <seg>
+          libexiv2.so <!-- and
+          libexiv2-xmp.a -->
+        </seg>
+        <seg>
+          /usr/include/exiv2 and
+          /usr/lib/cmake/exiv2
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="exiv2-prog">
+        <term><command>exiv2</command></term>
+        <listitem>
+          <para>
+            is a utility used to dump Exif data
+          </para>
+          <indexterm zone="exiv2 exiv2-prog">
+            <primary sortas="b-exiv2">exiv2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

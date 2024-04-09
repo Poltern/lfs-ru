@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gdb-download-http "&gnu-http;/gdb/gdb-&gdb-version;.tar.xz">
+  <!ENTITY gdb-download-ftp  " ">
+  <!ENTITY gdb-md5sum        "4452f575d09f94276cb0a1e95ecff856">
+  <!ENTITY gdb-size          "23 MB">
+  <!ENTITY gdb-buildsize     "964 MB (add 805 MB for docs; add 654 MB for tests)">
+  <!ENTITY gdb-time          "1.8 SBU (add 0.4 SBU for docs; add 15 SBU for tests; all using parallelism=4)">
+]>
+
+<sect1 id="gdb" xreflabel="GDB-&gdb-version;">
+  <?dbhtml filename="gdb.html"?>
+
+
+  <title>GDB-&gdb-version;</title>
+
+  <indexterm zone="gdb">
+    <primary sortas="a-GDB">GDB</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GDB</title>
+
+    <para>
+      <application>GDB</application>, the GNU Project debugger, allows you
+      to see what is going on <quote>inside</quote> another program while it
+      executes -- or what another program was doing at the moment it crashed.
+      Note that <application>GDB</application> is most effective when tracing
+      programs and libraries that were built with debugging symbols and not
+      stripped.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gdb-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gdb-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gdb-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gdb-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gdb-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gdb-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+    <!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/gdb-&gdb-version;-upstream_fixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+    -->
+    <bridgehead renderas="sect3">GDB Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended Runtime Dependency</bridgehead>
+    <para role="recommended">
+      <xref linkend="six"/> (Python 3 module, required at run-time to
+      use GDB scripts from various LFS/BLFS packages with Python 3
+      installed in LFS)
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="doxygen"/>,
+      <xref linkend="gcc"/> (ada, gfortran, and go are used for tests),
+      <xref linkend="guile"/>,
+      <xref linkend="rust"/> (used for some tests),
+      <xref linkend="valgrind"/>, and
+      <ulink url="https://sourceware.org/systemtap/">SystemTap</ulink>
+      (run-time, used for tests)
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GDB</title>
+    <!--
+    <para>
+      First, apply a patch that fixes problems when debugging programs compiled
+      with <xref linkend="rust" role="nodep"/>:
+    </para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../gdb-&gdb-version;-upstream_fixes-1.patch</userinput></screen>
+-->
+    <para>
+      Install <application>GDB</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+../configure --prefix=/usr          \
+             --with-system-readline \
+             --with-python=/usr/bin/python3 &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      Optionally, to build the API documentation using
+      <xref linkend="doxygen"/>, run:
+    </para>
+
+<screen remap="doc"><userinput>make -C gdb/doc doxy</userinput></screen>
+
+    <para>
+      To test the results, issue:
+    </para>
+
+<screen remap="test"><userinput>pushd gdb/testsuite &amp;&amp;
+make  site.exp      &amp;&amp;
+echo  "set gdb_test_timeout 120" &gt;&gt; site.exp &amp;&amp;
+runtest
+popd</userinput></screen>
+
+    <para>
+      See <emphasis>gdb/testsuite/README</emphasis> and <ulink
+      url="https://sourceware.org/gdb/wiki/TestingGDB">TestingGDB</ulink>.
+      There are many problems with the test suite:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Clean directories are needed if re-running the tests.  For that
+          reason, make a copy of the compiled source code
+          directory before the tests in case you need to run the tests again.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Results depend on installed compilers.
+        </para>
+      </listitem>
+<!-- I did not see this
+      <listitem>
+        <para>
+          There are a large number of timeouts (there is a variable
+          that can be set to increase time for timeout, but
+          changing it will result in a different number of tests being
+          run).
+        </para>
+      </listitem>
+or this
+      <listitem>
+        <para>
+          There are failures associated with system readline 6.x.
+        </para>
+      </listitem>
+-->
+<!--
+      <listitem>
+        <para>
+          A few tests assume that the header file
+          <filename>&lt;sys/sdt.h&gt;</filename>, part of <ulink
+          url="https://sourceware.org/systemtap/">SystemTap</ulink>, is
+          present.
+        </para>
+      </listitem>
+-->
+<!-- I don't know if this is true or not.  I tested on a Haswell.
+      <listitem>
+        <para>
+          If the test suite is run on a Skylake-based Intel CPU or newer,
+          many tests will fail due to the removal of the deprecated/problematic
+          libmpx library in GCC.
+        </para>
+      </listitem>
+-->
+      <listitem>
+        <para>
+<!-- for gdb-11.1, gcc-11.2 - pierre
+          A test run of the test suite had about 1700 unexpected failures
+          (out of over 80000 tests). Over 1370 of the failures were related
+          to FORTRAN tests. -->
+<!-- for gdb-12.1, gcc-11.3.0 - bdubbs
+          A test run of the test suite had a little over 200 unexpected failures
+          out of over 94000 tests.-->
+<!-- for gdb-13.0, gcc-12.2.0 - bdubbs
+          A test run of the test suite had 33 unexpected failures
+          out of over 106000 tests. -->
+<!-- for gdb-13.2, gcc-13.1.0 - pierre
+          A test run of the test suite had 183 unexpected failures
+          out of over 105000 tests. -->
+<!-- for gdb-14.1, gcc 13.2.0 - rahul -->
+          A test run of the test suite had 51 unexpected failures
+          out of the over 106000 tests.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          On some systems, the gdb.tui test suite will fail if running over
+          SSH.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          On some AMD-based systems, over 200 additional tests
+          may fail due to a difference in the threading implementation
+          on those CPUs.
+        </para>
+      </listitem>
+
+    </itemizedlist>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make -C gdb install &amp;&amp;
+make -C gdbserver install</userinput></screen>
+
+    <para>
+      If you have built the API documentation, it is now in gdb/doc/doxy.
+      You can install it (as the <systemitem class="username">root</systemitem>
+      user):
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>install -d /usr/share/doc/gdb-&gdb-version; &amp;&amp;
+rm -rf gdb/doc/doxy/xml &amp;&amp;
+cp -Rv gdb/doc/doxy /usr/share/doc/gdb-&gdb-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--with-system-readline</parameter>: This switch forces
+      <application>GDB</application> to use the copy of
+      <application>Readline</application> installed in LFS.
+    </para>
+
+    <para>
+      <parameter>--with-python=/usr/bin/python3</parameter>: This switch
+      forces <application>GDB</application> to use Python 3.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          gcore, gdb, gdbserver, and gdb-add-index
+        </seg>
+        <seg>
+          libinproctrace.so
+        </seg>
+        <seg>
+          /usr/{include,share}/gdb and /usr/share/doc/gdb-&gdb-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gcore">
+        <term><command>gcore</command></term>
+        <listitem>
+          <para>
+            generates a core dump of a running program
+          </para>
+          <indexterm zone="gdb gcore">
+            <primary sortas="b-gcore">gcore</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gdb-prog">
+        <term><command>gdb</command></term>
+        <listitem>
+          <para>
+            is the GNU Debugger
+          </para>
+          <indexterm zone="gdb gdb-prog">
+            <primary sortas="b-gdb-prog">gdb-prog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gdbserver">
+        <term><command>gdbserver</command></term>
+        <listitem>
+          <para>
+            is a remote server for the GNU debugger (it allows programs
+            to be debugged from a different machine)
+          </para>
+          <indexterm zone="gdb gdbserver">
+            <primary sortas="b-gdbserver">gdbserver</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gdb-add-index">
+        <term><command>gdb-add-index</command></term>
+        <listitem>
+          <para>
+            Allows adding index files to ELF binaries. This speeds up
+            <command>gdb</command> start on large programs.
+          </para>
+          <indexterm zone="gdb gdb-add-index">
+            <primary sortas="b-gdb-add-index">gdb-add-index</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libinproctrace">
+        <term><filename class="libraryfile">libinproctrace.so</filename></term>
+        <listitem>
+          <para>
+            contains functions for the in-process tracing agent. The agent
+            allows for installing fast tracepoints, listing static tracepoint
+            markers, probing static tracepoints markers, and starting trace
+            monitoring.
+          </para>
+          <indexterm zone="gdb libinproctrace">
+            <primary sortas="c-libinproctrace">libinproctrace.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

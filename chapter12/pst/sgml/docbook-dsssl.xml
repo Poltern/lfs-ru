@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY docbook-dsssl-download-http "&sourceforge-dl;/docbook/docbook-dsssl-&docbook-dsssl-version;.tar.bz2">
+  <!ENTITY docbook-dsssl-download-ftp  "">
+  <!ENTITY docbook-dsssl-md5sum        "bc192d23266b9a664ca0aba4a7794c7c">
+  <!ENTITY docbook-dsssl-size          "277 KB">
+  <!ENTITY docbook-dsssl-buildsize     "14 MB">
+  <!ENTITY docbook-dsssl-time          "less than 0.1 SBU">
+
+  <!ENTITY docbook-dsssl-doc-download-http "&sourceforge-dl;/docbook/docbook-dsssl-doc-&docbook-dsssl-version;.tar.bz2">
+  <!ENTITY docbook-dsssl-doc-md5sum        "9a7b809a21ab7d2749bb328334c380f2">
+  <!ENTITY docbook-dsssl-doc-size          "142 KB">
+]>
+
+<sect1 id="docbook-dsssl"
+xreflabel="docbook-dsssl-&docbook-dsssl-version;">
+  <?dbhtml filename="docbook-dsssl.html"?>
+
+
+  <title>docbook-dsssl-&docbook-dsssl-version;</title>
+
+  <indexterm zone="docbook-dsssl">
+    <primary sortas="a-DocBook-DSSSL-Stylesheets">DocBook DSSSL
+    Stylesheets</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to DocBook DSSSL Stylesheets</title>
+
+    <para>
+      The <application>DocBook DSSSL Stylesheets</application> package
+      contains DSSSL stylesheets. These are used by
+      <application>OpenJade</application> or other tools to transform SGML
+      and XML DocBook files.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&docbook-dsssl-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&docbook-dsssl-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &docbook-dsssl-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &docbook-dsssl-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &docbook-dsssl-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &docbook-dsssl-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <title>Documentation and test data</title>
+
+      <listitem>
+        <para>
+          Download (HTTP):
+          <ulink url="&docbook-dsssl-doc-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &docbook-dsssl-doc-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &docbook-dsssl-doc-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">DocBook DSSSL Stylesheets
+    Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="sgml-common"/>
+    </para>
+
+    <bridgehead renderas="sect4">Required (to Test the DocBook SGML
+      Toolchain)</bridgehead>
+    <para role="required">
+      <xref linkend="sgml-dtd-3"/>,
+      <xref linkend="sgml-dtd"/>,
+      <xref linkend="opensp"/>, and
+      <xref linkend="openjade"/>
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of DocBook DSSSL Stylesheets</title>
+
+    <para>
+      If you downloaded the documentation, run:
+    </para>
+
+<screen><userinput>tar -xf ../docbook-dsssl-doc-1.79.tar.bz2 --strip-components=1</userinput></screen>
+
+    <para>
+      Install <application>DocBook DSSSL Stylesheets</application> by running
+      the following commands as the <systemitem
+      class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -m755 bin/collateindex.pl /usr/bin                      &amp;&amp;
+install -v -m644 bin/collateindex.pl.1 /usr/share/man/man1         &amp;&amp;
+install -v -d -m755 /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version; &amp;&amp;
+cp -v -R * /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;          &amp;&amp;
+
+install-catalog --add /etc/sgml/dsssl-docbook-stylesheets.cat \
+    /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/catalog         &amp;&amp;
+
+install-catalog --add /etc/sgml/dsssl-docbook-stylesheets.cat \
+    /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/common/catalog  &amp;&amp;
+
+install-catalog --add /etc/sgml/sgml-docbook.cat              \
+    /etc/sgml/dsssl-docbook-stylesheets.cat</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      The above commands create an installation script for this package.
+    </para>
+
+  </sect2>
+
+  <sect2 role="testing">
+    <title>Testing the DocBook SGML Toolchain (Optional)</title>
+
+    <para>
+      The following commands will perform the necessary tests to confirm
+      that your installed DocBook SGML toolchain will produce desired results.
+      You must have the <xref linkend="sgml-dtd-3"/>,
+      <xref linkend="sgml-dtd"/>, <xref linkend="opensp"/>,
+      and <xref linkend="openjade"/> packages installed,
+      and perform the tests as the
+      <systemitem class="username">root</systemitem> user.
+    </para>
+
+    <para>
+      All tests will be performed from the <filename class='directory'>
+      /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/doc/testdata
+      </filename>
+      directory as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>cd /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/doc/testdata</userinput></screen>
+
+    <para>
+      The first test should produce no output to stdout (your screen) and
+      create a file named <filename>jtest.rtf</filename> in the current
+      directory:
+    </para>
+
+<screen role="root"><userinput>openjade -t rtf -d jtest.dsl jtest.sgm</userinput></screen>
+
+    <para>
+      The next test should return only the following line to stdout:
+      <computeroutput>onsgmls:I: "OpenSP" version "&opensp-version;"</computeroutput>
+    </para>
+
+<screen role="root"><userinput>onsgmls -sv test.sgm</userinput></screen>
+
+    <para>
+      The next test should produce no output to stdout and create a file
+      named <filename>test.rtf</filename> in the current directory:
+    </para>
+
+<screen role="root"><userinput>openjade -t rtf \
+    -d /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/print/docbook.dsl \
+    test.sgm</userinput></screen>
+
+    <para>
+      The last test should produce no output to stdout and create a file
+      named <filename>c1.htm</filename> in the current directory:
+    </para>
+
+<screen role="root"><userinput>openjade -t sgml \
+    -d /usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/html/docbook.dsl \
+    test.sgm</userinput></screen>
+
+    <para>
+      Finally, clean up:
+    </para>
+
+<screen role="root"><userinput>rm jtest.rtf test.rtf c1.htm</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Files</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>collateindex.pl</seg>
+        <seg>None</seg>
+        <seg>DSSSL stylesheets</seg>
+        <seg>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="collateindex.pl">
+        <term><command>collateindex.pl</command></term>
+        <listitem>
+          <para>
+            is a <application>Perl</application> script that creates a
+            DocBook index from raw index data
+          </para>
+          <indexterm zone="docbook-dsssl collateindex.pl">
+            <primary sortas="b-collateindex.pl">collateindex.pl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

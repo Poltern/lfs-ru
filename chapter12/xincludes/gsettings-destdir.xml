@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+    <note>
+      <para>
+        If you installed the package to your system using a
+        <quote>DESTDIR</quote> method,
+        <filename>/usr/share/glib-2.0/schemas/gschemas.compiled</filename>
+        was not updated/created. Create (or update) the file using the following
+        command as the <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>glib-compile-schemas /usr/share/glib-2.0/schemas</userinput></screen>
+    </note>

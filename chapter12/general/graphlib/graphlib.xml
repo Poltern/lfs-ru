@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+]>
+
+<sect1 id="general-graphlib">
+  <?dbhtml filename="graphlib.html"?>
+
+  <title>Graphics and Font Libraries</title>
+
+  <para>
+    Depending on what your system will be used for, you may or
+    may not require the graphics and font libraries. Most desktop machines will
+    want them for use with graphical applications.  Most servers on the
+    other hand, will not require them.
+  </para>
+
+
+
+</sect1>

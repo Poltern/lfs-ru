@@ -1,0 +1,42 @@
+TIMERFD='*'
+EVENTFD='*'
+
+NET='*'
+BT='*M'
+BT_RFCOMM='*M'
+BT_RFCOMM_TTY='*'
+BT_BNEP='*M'
+BT_BNEP_MC_FILTER='*'
+BT_BNEP_PROTO_FILTER='*'
+BT_HIDP='*M'
+RFKILL='*M'
+
+# Forced by EXT4_FS && BLOCK
+CRYPTO = { value = '*', forced = '*' }
+CRYPTO_USER='*M'
+CRYPTO_AES='*M'
+CRYPTO_CCM='*M'
+CRYPTO_CMAC='*M'
+CRYPTO_USER_API_HASH='*M'
+CRYPTO_USER_API_SKCIPHER='*M'
+CRYPTO_USER_API_AEAD='*M'
+
+BT_BREDR='*'
+BT_HCIBTSDIO='*M '
+BT_HCIUART='*M '
+
+
+[BT_HCIBTUSB]
+value = '*M '
+comment = [
+	"Select the appropriate drivers for your bluetooth hardware.",
+	"There are more vendor-specific drivers not listed here",
+]
+
+[EXPERT]
+value = '* '
+comment = [
+	'If it is disabled, [TIMERFD] and [EVENTFD] will be hidden and',
+	'enabled implicitly.  We DO NOT recommend to enable [EXPERT]',
+	'unless you are really an expert user'
+]

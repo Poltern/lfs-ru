@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-config">
+  <?dbhtml filename="config.html"?>
+
+  <title>After LFS Configuration Issues</title>
+
+  <para>
+    The intention of LFS is to provide a basic system which you can
+    build upon.  There are several things about tidying up the system which
+    many people wonder about once they have done the base install.
+    We hope to cover these issues in this chapter.
+  </para>
+
+  <para>
+    Most people coming from non-Unix like backgrounds to Linux find the
+    concept of text-only configuration files slightly strange.  In Linux, just
+    about all configuration is done via the manipulation of text files. The
+    majority of these files can be found in the <filename
+    class='directory'>/etc</filename> hierarchy. There are often graphical
+    configuration programs available for different subsystems but most
+    are simply pretty front ends to the process of editing a text file. The
+    advantage of text-only configuration is that you can edit parameters using
+    your favorite text editor, whether that be <command>vim</command>,
+    <command>emacs</command>, or any other editor.
+  </para>
+
+ <!-- <para>
+    The first task is making a recovery boot device in <xref
+    linkend="postlfs-config-bootdisk"/> because it's the most critical need.
+    Hardware issues relevant to firmware and other devices is addressed next.
+    The system is then configured to ease addition of new users, because this
+    can affect the choices you make in the two subsequent
+    topics&mdash;<xref linkend="postlfs-config-profile"/> and
+    <xref linkend="postlfs-config-vimrc"/>.
+  </para>-->
+
+ <!-- <para revision="sysv">
+    The remaining topics, <xref linkend="postlfs-config-logon"/> and
+    <xref linkend="postlfs-config-random"/> are then addressed, in that order.
+    They don't have much interaction with the other topics in this chapter.
+  </para>-->
+
+  <para revision="systemd">
+    There is one remaining topic: <xref linkend="postlfs-config-logon" />.
+    It doesn't have much interaction with the other topics in this chapter.
+  </para>
+<!-- autofs has been moved to sysutils -->
+
+  <!--<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="bootdisk.xml"/>-->
+ <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="console-fonts.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="firmware.xml"/>-->
+ <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="devices.xml"/>-->
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="skel.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="users.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="profile.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vimrc.xml"/>-->
+ <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="logon.xml"/>-->
+
+  <!-- sysv only -->
+ <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="random.xml"/>-->
+</sect1>

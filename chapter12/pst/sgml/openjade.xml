@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY openjade-download-http "&sourceforge-dl;/openjade/openjade-&openjade-version;.tar.gz">
+  <!ENTITY openjade-download-ftp  " ">
+  <!ENTITY openjade-md5sum        "7df692e3186109cc00db6825b777201e">
+  <!ENTITY openjade-size          "880 KB">
+  <!ENTITY openjade-buildsize     "19.2 MB">
+  <!ENTITY openjade-time          "0.7 SBU">
+]>
+
+<sect1 id="openjade" xreflabel="OpenJade-&openjade-version;">
+  <?dbhtml filename="openjade.html"?>
+
+
+  <title>OpenJade-&openjade-version;</title>
+
+  <indexterm zone="openjade">
+    <primary sortas="a-OpenJade">OpenJade</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to OpenJade</title>
+
+    <para>
+      The <application>OpenJade</application> package contains a
+      DSSSL engine. This is useful for SGML and XML transformations into
+      RTF, TeX, SGML and XML.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&openjade-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&openjade-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &openjade-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &openjade-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &openjade-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &openjade-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Download</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>
+          Required patch: <ulink
+            url="&patch-root;/openjade-&openjade-version;-upstream-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">OpenJade Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="opensp"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of OpenJade</title>
+
+    <para>
+      First fix problems when building with newer compilers:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../openjade-&openjade-version;-upstream-1.patch</userinput></screen>
+
+    <para>
+      Now fix a compilation problem with perl-5.16 and later:
+    </para>
+
+<screen><userinput>sed -i -e '/getopts/{N;s#&amp;G#g#;s#do .getopts.pl.;##;}' \
+       -e '/use POSIX/ause Getopt::Std;' msggen.pl</userinput></screen>
+
+    <para>
+      Install <application>OpenJade</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>export CXXFLAGS="${CXXFLAGS:--O2 -g} -fno-lifetime-dse"            &amp;&amp;
+./configure --prefix=/usr                                \
+            --mandir=/usr/share/man                      \
+            --enable-http                                \
+            --disable-static                             \
+            --enable-default-catalog=/etc/sgml/catalog   \
+            --enable-default-search-path=/usr/share/sgml \
+            --datadir=/usr/share/sgml/openjade-&openjade-version;   &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<!-- Be careful of spacing here -->
+<screen role="root"><userinput>make install                                                   &amp;&amp;
+make install-man                                               &amp;&amp;
+ln -v -sf openjade /usr/bin/jade                               &amp;&amp;
+ln -v -sf libogrove.so /usr/lib/libgrove.so                    &amp;&amp;
+ln -v -sf libospgrove.so /usr/lib/libspgrove.so                &amp;&amp;
+ln -v -sf libostyle.so /usr/lib/libstyle.so                    &amp;&amp;
+
+install -v -m644 dsssl/catalog /usr/share/sgml/openjade-&openjade-version;/ &amp;&amp;
+
+install -v -m644 dsssl/*.{dtd,dsl,sgm}              \
+    /usr/share/sgml/openjade-&openjade-version;                             &amp;&amp;
+
+install-catalog --add /etc/sgml/openjade-&openjade-version;.cat  \
+    /usr/share/sgml/openjade-&openjade-version;/catalog                     &amp;&amp;
+
+install-catalog --add /etc/sgml/sgml-docbook.cat    \
+    /etc/sgml/openjade-&openjade-version;.cat</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>export CXXFLAGS=...</command>: This command prevents
+      segmentation faults when the package is compiled with
+      <application>gcc-6.1</application>.
+    </para>
+
+    <para>
+      <command>make install-man</command>: This command installs the
+      <command>openjade</command> man page.
+    </para>
+
+    <para>
+      <parameter>--disable-static</parameter>: This switch prevents
+      the building of the static library.
+    </para>
+
+    <para>
+      <parameter>--enable-http</parameter>: This switch adds support
+      for HTTP.
+    </para>
+
+    <para>
+      <parameter>--enable-default-catalog=/etc/sgml/catalog</parameter>: This
+      switch sets the path to the centralized catalog.
+    </para>
+
+    <para>
+      <parameter>--enable-default-search-path</parameter>: This switch
+      sets the default value of <envar>SGML_SEARCH_PATH</envar>.
+    </para>
+
+    <para>
+      <parameter>
+        --datadir=/usr/share/sgml/openjade-&openjade-version;</parameter>:
+      This switch puts data files in
+      <filename>/usr/share/sgml/openjade-&openjade-version;</filename> instead
+      of <filename class="directory">/usr/share</filename>.
+    </para>
+
+    <para>
+      <command>ln -v -sf ...</command>: These commands create the
+      <application>Jade</application> equivalents of
+      <application>OpenJade</application> executables and libraries.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring OpenJade</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        As the <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>echo "SYSTEM \"http://www.oasis-open.org/docbook/xml/&docbook-4.5-dtd-version;/docbookx.dtd\" \
+    \"/usr/share/xml/docbook/xml-dtd-&docbook-4.5-dtd-version;/docbookx.dtd\"" &gt;&gt; \
+    /usr/share/sgml/openjade-&openjade-version;/catalog</userinput></screen>
+
+      <para>
+        This configuration is only necessary if you intend to use
+        <application>OpenJade</application> to process the BLFS XML files
+        through DSSSL Stylesheets.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>openjade and the <application>Jade</application> equivalent symlink,
+        jade</seg>
+        <seg>libogrove.so, libospgrove.so, libostyle.so, and the
+        <application>Jade</application> equivalent symlinks: libgrove.so,
+        libspgrove.so, and libstyle.so</seg>
+        <seg>/usr/share/sgml/openjade-&openjade-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="openjade-prog">
+        <term><command>openjade</command></term>
+        <listitem>
+          <para>
+            is a DSSSL engine used for transformations
+          </para>
+          <indexterm zone="openjade openjade-prog">
+            <primary sortas="b-openjade">openjade</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jade">
+        <term><command>jade</command></term>
+        <listitem>
+          <para>
+            is a symlink to <command>openjade</command>
+          </para>
+          <indexterm zone="openjade jade">
+            <primary sortas="b-jade">jade</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

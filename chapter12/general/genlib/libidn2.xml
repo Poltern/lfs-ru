@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libidn2-download-http "&gnu-http;/libidn/libidn2-&libidn2-version;.tar.gz">
+  <!ENTITY libidn2-download-ftp  " ">
+  <!ENTITY libidn2-md5sum        "de2818c7dea718a4f264f463f595596b">
+  <!ENTITY libidn2-size          "2.1 MB">
+  <!ENTITY libidn2-buildsize     "21 MB (add 3 MB for tests)">
+  <!ENTITY libidn2-time          "0.1 SBU (add 0.6 SBU for tests)">
+]>
+
+<!-- Try to keep the indentation used in this file-->
+<sect1 id="libidn2" xreflabel="libidn2-&libidn2-version;">
+  <?dbhtml filename="libidn2.html"?>
+
+
+  <title>libidn2-&libidn2-version;</title>
+
+  <indexterm zone="libidn2">
+    <primary sortas="a-libidn2">libidn2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libidn2</title>
+
+    <para>
+      <application>libidn2</application> is a package designed for
+      internationalized string handling based on standards from the
+      Internet Engineering Task Force (IETF)'s IDN working group, designed for
+      internationalized domain names.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libidn2-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libidn2-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libidn2-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libidn2-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libidn2-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libidn2-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libidn2 Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="libunistring"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      git and
+      gtk-doc
+    </para>
+
+  </sect2>
+
+  <!--Required section-->
+  <sect2 role="installation">
+    <title>Installation of libidn2</title>
+
+    <para>
+      Install <application>libidn2</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          idn2
+        </seg>
+        <seg>
+          libidn2.so
+        </seg>
+        <seg>
+          /usr/share/gtk-doc/html/libidn2
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <!-- If the program or library name conflicts (is the same) as the
+      package name, add -prog or -lib to the varlistentry entity id
+      and the 2nd entry of the indexterm zone entity -->
+
+      <varlistentry id="idn2">
+        <term><command>idn2</command></term>
+        <listitem>
+          <para>
+            is a command line interface to the internationalized domain
+            library
+          </para>
+          <indexterm zone="libidn2 idn2">
+            <primary sortas="b-idn2">idn2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libidn2-lib">
+        <term><filename class="libraryfile">libidn2.so</filename></term>
+        <listitem>
+          <para>
+            contains a generic Stringprep implementation used for
+            internationalized string handling
+          </para>
+          <indexterm zone="libidn2 libidn2-lib">
+            <primary sortas="c-libidn2">libidn2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <para>
+      <parameter>--wrap-mode=nodownload</parameter>: This switch prevents
+      <command>meson</command> from downloading any optional dependency
+      which is not installed on the system.
+    </para>

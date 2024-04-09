@@ -1,0 +1,4 @@
+# Things like XHCI_HCD or OHCI_HCD do not belong here
+# These should be in libusb page
+USB_SUPPORT='*'
+USB_PRINTER='*M'

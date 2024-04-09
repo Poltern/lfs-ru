@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY hdparm-download-http "&sourceforge-dl;/hdparm/hdparm-&hdparm-version;.tar.gz">
+  <!ENTITY hdparm-download-ftp  " ">
+  <!ENTITY hdparm-md5sum        "6d6d039d61ec995b1ec72ddce0b1853b">
+  <!ENTITY hdparm-size          "140 KB">
+  <!ENTITY hdparm-buildsize     "1.0 MB">
+  <!ENTITY hdparm-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="hdparm" xreflabel="Hdparm-&hdparm-version;">
+  <?dbhtml filename="hdparm.html"?>
+
+
+  <title>Hdparm-&hdparm-version;</title>
+
+  <indexterm zone="hdparm">
+    <primary sortas="a-Hdparm">Hdparm</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Hdparm</title>
+
+    <para>
+      The <application>Hdparm</application> package contains a utility that
+      is useful for obtaining information about, and controlling ATA/IDE
+      controllers and hard drives. It allows to
+      increase performance and sometimes to increase stability.
+    </para>
+
+    &lfs121_checked;
+
+    <warning>
+      <para>
+        As well as being useful, incorrect usage of
+        <application>Hdparm</application> can destroy your information and in
+        rare cases, drives. Use with caution and make sure you know what you
+        are doing. If in doubt, it is recommended that you leave the default
+        kernel parameters alone.
+      </para>
+    </warning>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&hdparm-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&hdparm-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &hdparm-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &hdparm-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &hdparm-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &hdparm-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Hdparm</title>
+
+    <para>
+      Build <application>Hdparm</application> by running the following
+      command:
+    </para>
+
+<screen><userinput>make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make binprefix=/usr install</userinput></screen>
+
+<!-- no longer relevant with merged-/usr
+    <note><para>
+      Note that by default, <command>hdparm</command> is installed in
+      <filename class="directory">/sbin</filename> as some systems may require it
+      during the boot process before <filename class="directory">/usr</filename>
+      is mounted.  If you wish to install <command>hdparm</command> under the
+      <filename class="directory">/usr</filename> hierarchy, then replace the above
+      command with the following:
+    </para>
+
+<screen role="nodump"><userinput>make binprefix=/usr install</userinput></screen></note>
+-->
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          hdparm
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="hdparm-prog">
+        <term><command>hdparm</command></term>
+        <listitem>
+          <para>
+            provides a command-line interface to various hard disk ioctls
+            supported by the stock Linux ATA/IDE device driver subsystem
+          </para>
+          <indexterm zone="hdparm hdparm-prog">
+            <primary sortas="b-hdparm">hdparm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

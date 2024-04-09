@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY iw-download-http "https://www.kernel.org/pub/software/network/iw/iw-&iw-version;.tar.xz">
+  <!ENTITY iw-download-ftp  " ">
+  <!ENTITY iw-md5sum        "a63e81b0dcae9caf9ed3a20f2c445a07">
+  <!ENTITY iw-size          "156 KB">
+  <!ENTITY iw-buildsize     "5 MB">
+  <!ENTITY iw-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="iw" xreflabel="iw-&iw-version;">
+  <?dbhtml filename="iw.html"?>
+
+
+  <title>iw-&iw-version;</title>
+
+  <indexterm zone="iw">
+    <primary sortas="a-iw">iw</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to iw</title>
+
+    <para>
+      <application>iw</application> is a new nl80211 based CLI configuration
+      utility for wireless devices. It supports all new drivers that have been
+      added to the kernel recently. The old tool
+      <application>iwconfig</application>, which uses Wireless Extensions
+      interface, is deprecated and it's strongly recommended to switch to
+      <application>iw</application> and nl80211.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&iw-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&iw-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &iw-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &iw-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &iw-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &iw-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">iw Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libnl"/>
+    </para>
+
+    <bridgehead renderas="sect4">Required (Runtime)</bridgehead>
+    <para role="nodump">
+      <!-- nodump because the section is completely for human -->
+      <xref linkend="wireless-kernel"/>
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="kernel" id='iw-kernel'>
+    <title>Kernel Configuration</title>
+
+    <indexterm zone="iw iw-kernel">
+      <primary sortas="d-iw-devices">iw</primary>
+    </indexterm>
+
+    <para>
+      To use <application>iw</application>, the kernel must have the
+      appropriate drivers and other support available.  Read
+      <xref linkend='wireless-kernel'/> for details.
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of iw</title>
+
+    <para>
+      To install <application>iw</application>,
+      use the following commands:
+    </para>
+
+<screen><userinput>sed -i "/INSTALL.*gz/s/.gz//" Makefile &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed ...</command>: Install uncompressed manual pages
+      in accordance with other man pages.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>iw</seg>
+        <seg>None</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="iw-prog">
+        <term><command>iw</command></term>
+        <listitem>
+          <para>
+            shows / manipulates wireless devices and their configuration
+          </para>
+          <indexterm zone="iw iw-prog">
+            <primary sortas="b-iw">iw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

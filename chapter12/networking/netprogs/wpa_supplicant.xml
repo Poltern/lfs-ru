@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY wpa_supplicant-download-http
+           "https://w1.fi/releases/wpa_supplicant-&wpa_supplicant-version;.tar.gz">
+  <!ENTITY wpa_supplicant-download-ftp  " ">
+  <!ENTITY wpa_supplicant-md5sum        "d26797fcb002898d4ee989179346e1cc">
+  <!ENTITY wpa_supplicant-size          "3.4 MB">
+  <!ENTITY wpa_supplicant-buildsize     "37 MB">
+  <!ENTITY wpa_supplicant-time          "0.5 SBU (with optional gui)">
+]>
+
+<sect1 id="wpa_supplicant" xreflabel="wpa_supplicant-&wpa_supplicant-version;">
+  <?dbhtml filename="wpa_supplicant.html"?>
+
+
+  <title>wpa_supplicant-&wpa_supplicant-version;</title>
+
+  <indexterm zone="wpa_supplicant">
+    <primary sortas="a-wpa_supplicant">wpa_supplicant</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to WPA Supplicant</title>
+
+    <para>
+      <application>WPA Supplicant</application> is a Wi-Fi Protected Access
+      (WPA) client and IEEE 802.1X supplicant. It implements WPA key negotiation
+      with a WPA Authenticator and Extensible Authentication Protocol (EAP)
+      authentication with an Authentication Server. In addition, it controls the
+      roaming and IEEE 802.11 authentication/association of the wireless LAN
+      driver. This is useful for connecting to a password protected wireless
+      access point.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&wpa_supplicant-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&wpa_supplicant-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &wpa_supplicant-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &wpa_supplicant-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &wpa_supplicant-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &wpa_supplicant-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/wpa_supplicant-&wpa_supplicant-version;-security_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">WPA Supplicant Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required (Runtime)</bridgehead>
+    <para role="nodump">
+      <xref linkend="wireless-kernel"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="desktop-file-utils"/> (for running
+        <command>update-desktop-database</command>) and
+      <xref linkend="libnl"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <phrase revision="sysv">dbus,</phrase>
+      <xref linkend="libxml2"/>, and
+      <!--&qt5-deps;-->
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="kernel" id="wpa_supplicant-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      To use <application>wpa_supplicant</application>, the kernel must have
+      the appropriate drivers and other support available.  Read
+      <xref linkend='wireless-kernel'/> for details.
+    </para>
+
+    <indexterm zone="wpa_supplicant wpa_supplicant-kernel">
+      <primary sortas="d-wpa_supplicant">wpa_supplicant</primary>
+    </indexterm>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of WPA Supplicant</title>
+
+    <para>
+      First you will need to create an initial configuration file for the
+      build process. You can read <filename>wpa_supplicant/README</filename>
+      and <filename>wpa_supplicant/defconfig</filename> for the explanation
+      of the following options as well as other options that can be used.
+      Create a build configuration file that should work for standard WiFi
+      setups by running the following command:
+    </para>
+
+<screen><userinput>cat &gt; wpa_supplicant/.config &lt;&lt; "EOF"
+<literal>CONFIG_BACKEND=file
+CONFIG_CTRL_IFACE=y
+CONFIG_DEBUG_FILE=y
+CONFIG_DEBUG_SYSLOG=y
+CONFIG_DEBUG_SYSLOG_FACILITY=LOG_DAEMON
+CONFIG_DRIVER_NL80211=y
+CONFIG_DRIVER_WEXT=y
+CONFIG_DRIVER_WIRED=y
+CONFIG_EAP_GTC=y
+CONFIG_EAP_LEAP=y
+CONFIG_EAP_MD5=y
+CONFIG_EAP_MSCHAPV2=y
+CONFIG_EAP_OTP=y
+CONFIG_EAP_PEAP=y
+CONFIG_EAP_TLS=y
+CONFIG_EAP_TTLS=y
+CONFIG_IEEE8021X_EAPOL=y
+CONFIG_IPV6=y
+CONFIG_LIBNL32=y
+CONFIG_PEERKEY=y
+CONFIG_PKCS12=y
+CONFIG_READLINE=y
+CONFIG_SMARTCARD=y
+CONFIG_WPS=y
+CFLAGS += -I/usr/include/libnl3</literal>
+EOF</userinput></screen>
+
+    <para>
+      If you wish to use <application>WPA Supplicant</application> with
+      NetworkManager, make sure that you have installed
+      dbus and <xref linkend="libxml2"/>, then add the
+      following options to the <application>WPA Supplicant</application>
+      build configuration file by running the following command:
+    </para>
+
+<screen><userinput>cat &gt;&gt; wpa_supplicant/.config &lt;&lt; "EOF"
+<literal>CONFIG_CTRL_IFACE_DBUS=y
+CONFIG_CTRL_IFACE_DBUS_NEW=y
+CONFIG_CTRL_IFACE_DBUS_INTRO=y</literal>
+EOF</userinput></screen>
+
+    <para>
+      Next, patch a security vulnerability that occurs when connecting to some
+      networks:
+      <!-- CVE-2023-52160, see Ticket #19304. -->
+    </para>
+
+<screen><userinput>patch -Np1 -i ../wpa_supplicant-&wpa_supplicant-version;-security_fix-1.patch</userinput></screen>
+
+    <para>
+      Install <application>WPA Supplicant</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>cd wpa_supplicant &amp;&amp;
+make BINDIR=/usr/sbin LIBDIR=/usr/lib</userinput></screen>
+
+    <para>
+      If you have installed <!--&qt5-deps;--> and wish to build
+      the <application>WPA Supplicant</application> GUI program, run
+      the following commands:
+    </para>
+
+    <note>
+      <para>
+        The following directory name is labelled qt4, but
+        is compatible with <!--&qt5-deps;-->.
+      </para>
+    </note>
+
+<screen><userinput>pushd wpa_gui-qt4 &amp;&amp;
+qmake wpa_gui.pro &amp;&amp;
+make &amp;&amp;
+popd</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -m755 wpa_{cli,passphrase,supplicant} /usr/sbin/ &amp;&amp;
+install -v -m644 doc/docbook/wpa_supplicant.conf.5 /usr/share/man/man5/ &amp;&amp;
+install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 /usr/share/man/man8/</userinput></screen>
+
+    <para revision="systemd">
+      Install the <application>systemd</application> support files by
+      running the following command as the <systemitem
+      class="username">root</systemitem> user:
+    </para>
+
+<screen role="root" revision="systemd"><userinput>install -v -m644 systemd/*.service /usr/lib/systemd/system/</userinput></screen>
+
+    <para>
+      If you have built <application>WPA Supplicant</application> with
+      <application>D-Bus</application> support, you will need to install
+      <application>D-Bus</application> configuration files. Install them
+      by running the following commands as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -m644 dbus/fi.w1.wpa_supplicant1.service \
+                 /usr/share/dbus-1/system-services/ &amp;&amp;
+install -v -d -m755 /etc/dbus-1/system.d &amp;&amp;
+install -v -m644 dbus/dbus-wpa_supplicant.conf \
+                 /etc/dbus-1/system.d/wpa_supplicant.conf</userinput></screen>
+
+    <para>
+      If you have built the <application>WPA Supplicant</application> GUI
+      program, install it by running the following commands as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -m755 wpa_gui-qt4/wpa_gui /usr/bin/ &amp;&amp;
+install -v -m644 doc/docbook/wpa_gui.8 /usr/share/man/man8/ &amp;&amp;
+install -v -m644 wpa_gui-qt4/wpa_gui.desktop /usr/share/applications/ &amp;&amp;
+install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg /usr/share/pixmaps/</userinput></screen>
+
+    <note>
+      <para>
+        You will need to restart the system <application>D-Bus</application> daemon
+        before you can use the <application>WPA Supplicant</application>
+        <application>D-Bus</application> interface.
+      </para>
+    </note>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/update-desktop-database.xml"/>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring wpa_supplicant</title>
+
+    <important>
+      <para>
+        If you are using WPA Supplicant with
+        NetworkManager (or anything communicating with
+        WPA Supplicant via D-Bus), this section should be skipped.  Running
+        a D-Bus connected WPA Supplicant instance and another WPA supplicant
+        instance configured following this section simultaneously can cause
+        subtle issues.
+      </para>
+    </important>
+
+    <sect3 id="wpa_supplicant-config">
+      <title>Config File</title>
+
+      <para revision="sysv">
+        <filename>/etc/sysconfig/wpa_supplicant-*.conf</filename>
+      </para>
+
+      <para revision="systemd">
+        <filename>/etc/wpa_supplicant/wpa_supplicant-*.conf</filename>
+      </para>
+
+      <indexterm zone="wpa_supplicant wpa_supplicant-config" revision="sysv">
+        <primary
+        sortas="e-etc-sysconfig-wpa_supplicant-star.conf">/etc/sysconfig/wpa_supplicant-*.conf</primary>
+      </indexterm>
+
+      <indexterm zone="wpa_supplicant wpa_supplicant-config" revision="systemd">
+        <primary
+        sortas="e-etc-wpa_supplicant-wpa_supplicant-star.conf">/etc/wpa_supplicant/wpa_supplicant-*.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        To connect to an access point that uses a password, you need to put
+        the pre-shared key in
+        <phrase revision="sysv">
+          <filename>
+ /etc/sysconfig/wpa_supplicant-<replaceable>wifi0</replaceable>.conf</filename>.
+        </phrase>
+        <phrase revision="systemd">
+          <filename>
+ /etc/wpa_supplicant/wpa_supplicant-<replaceable>wifi0</replaceable>.conf</filename>.
+        </phrase>
+        SSID is the string that the access point/router transmits to
+        identify itself. Run the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="nodump" revision="sysv"><userinput>wpa_passphrase <replaceable>SSID</replaceable> <replaceable>SECRET_PASSWORD</replaceable> &gt; /etc/sysconfig/wpa_supplicant-<replaceable>wifi0</replaceable>.conf</userinput></screen>
+
+<screen role="nodump" revision="systemd"><userinput>install -v -dm755 /etc/wpa_supplicant &amp;&amp;
+wpa_passphrase <replaceable>SSID</replaceable> <replaceable>SECRET_PASSWORD</replaceable> &gt; /etc/wpa_supplicant/wpa_supplicant-<replaceable>wifi0</replaceable>.conf</userinput></screen>
+
+      <para>
+        <phrase revision="sysv">
+          <filename>
+            /etc/sysconfig/wpa_supplicant-<replaceable>wifi0</replaceable>.conf
+          </filename>
+        </phrase>
+        <phrase revision="systemd">
+          <filename>
+            /etc/wpa_supplicant/wpa_supplicant-<replaceable>wifi0</replaceable>.conf
+          </filename>
+        </phrase>
+        can hold the details of several access points. When
+        <command>wpa_supplicant</command> is started, it will scan for the
+        SSIDs it can see and choose the appropriate password to connect.
+      </para>
+
+      <para>
+        If you want to connect to an access point that isn't password
+        protected, put an entry like this in
+        <phrase revision="sysv">
+          <filename>
+/etc/sysconfig/wpa_supplicant-<replaceable>wifi0</replaceable>.conf</filename>.
+        </phrase>
+        <phrase revision="systemd">
+          <filename>
+/etc/wpa_supplicant/wpa_supplicant-<replaceable>wifi0</replaceable>.conf</filename>.
+        </phrase>
+        Replace "Some-SSID" with the SSID of the access point/router.
+      </para>
+
+<screen>network={
+  ssid="<replaceable>Some-SSID</replaceable>"
+  key_mgmt=NONE
+}</screen>
+
+      <para>
+        Connecting to a new access point that is not in the configuration
+        file can be accomplished manually via the command line or GUI, but it
+        must be done via a privileged user. To do that, add the following to
+        the configuration file:
+      </para>
+
+<screen>ctrl_interface=DIR=/run/wpa_supplicant GROUP=&lt;privileged group&gt;
+update_config=1</screen>
+
+      <para>
+        Replace the &lt;privileged group&gt; above with a system group where
+        members have the ability to connect to a wireless access point.
+      </para>
+
+      <para>
+        There are many options that you could use to tweak how you connect
+        to each access point. They are described in some detail in the
+        <filename>wpa_supplicant/wpa_supplicant.conf</filename> file in the
+        source tree.
+      </para>
+
+    </sect3>
+
+    <sect3>
+      <title>Connecting to an Access Point</title>
+
+      <para id="wpa-service" revision="sysv">
+        If you want to configure network interfaces at boot using
+        <command>wpa_supplicant</command>, you need to install the
+        <filename>/lib/services/wpa</filename> script
+        included in <xref linkend="bootscripts"/> package:
+      </para>
+
+<screen role="root" revision="sysv"><userinput>make install-service-wpa</userinput></screen>
+
+      <indexterm zone="wpa_supplicant wpa-service" revision="sysv">
+        <primary sortas="f-wpa">wpa</primary>
+      </indexterm>
+
+      <para revision="sysv">
+        If your router/access point uses DHCP to allocate IP addresses, you
+        can install <xref linkend="dhcpcd" role="nodep"/> and use it to
+        automatically obtain network addresses. Create the
+        <filename>/etc/sysconfig/ifconfig-<replaceable>wifi0</replaceable>
+        </filename> by running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root" revision="sysv"><userinput>cat &gt; /etc/sysconfig/ifconfig.<replaceable>wifi0</replaceable> &lt;&lt; "EOF"
+<literal>ONBOOT="yes"
+IFACE="<replaceable>wlan0</replaceable>"
+SERVICE="wpa"
+
+# Additional arguments to wpa_supplicant
+WPA_ARGS=""
+
+WPA_SERVICE="dhcpcd"
+DHCP_START="-b -q <replaceable>&lt;insert appropriate start options here&gt;</replaceable>"
+DHCP_STOP="-k <replaceable>&lt;insert additional stop options here&gt;</replaceable>"</literal>
+EOF</userinput></screen>
+
+      <para revision="sysv">
+        Alternatively, if you use static addresses on your local network,
+        then create the
+        <filename>/etc/sysconfig/ifconfig-<replaceable>wifi0</replaceable>
+        </filename> by running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root" revision="sysv"><userinput>cat &gt; /etc/sysconfig/ifconfig.<replaceable>wifi0</replaceable> &lt;&lt; "EOF"
+<literal>ONBOOT="yes"
+IFACE="<replaceable>wlan0</replaceable>"
+SERVICE="wpa"
+
+# Additional arguments to wpa_supplicant
+WPA_ARGS=""
+
+WPA_SERVICE="ipv4-static"
+IP="192.168.1.1"
+GATEWAY="192.168.1.2"
+PREFIX="24"
+BROADCAST="192.168.1.255"</literal>
+EOF</userinput></screen>
+
+      <para revision="systemd">
+        There are 3 types of <application>systemd</application> units
+        that were installed:
+      </para>
+
+      <itemizedlist spacing="compact" revision="systemd">
+        <listitem>
+          <para>
+            wpa_supplicant@.service
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            wpa_supplicant-nl80211@.service
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            wpa_supplicant-wired@.service
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <para revision="systemd">
+        The only difference between 3 of them is what driver
+        is used for connecting (-D option). The first one uses
+        the default driver, the second one uses the nl80211
+        driver and the third one uses the wired driver.
+      </para>
+
+      <para>
+        You can connect to the wireless access point by
+        running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root" revision="sysv"><userinput>ifup <replaceable>wifi0</replaceable></userinput></screen>
+
+      <para revision="sysv">
+        Replace <replaceable>wlan0</replaceable> with the correct
+        wireless interface and <replaceable>wifi0</replaceable>
+        with desired name for the configuration file. Please note
+        that <filename>wpa_supplicant-*.conf</filename> and
+        <filename>ifconfig.*</filename> configuration files need
+        to have identical names, ie both contain
+        <replaceable>wifi0</replaceable> in their name.
+      </para>
+
+<screen role="root" revision="systemd"><userinput>systemctl start wpa_supplicant@<replaceable>wlan0</replaceable></userinput></screen>
+
+      <para revision="systemd">
+        To connect to the wireless access point at
+        boot, simply enable the appropriate
+        <command>wpa_supplicant</command> service
+        by running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root" revision="systemd"><userinput>systemctl enable wpa_supplicant@<replaceable>wlan0</replaceable></userinput></screen>
+
+      <para revision="systemd">
+        Depending on your setup, you can replace the
+        <filename>wpa_supplicant@.service</filename>
+        with any other listed above.
+      </para>
+
+      <para revision="systemd">
+        To assign a network address to your wireless interface, consult the
+        <ulink url="&lfs-root;/chapter09/network.html">General Network Configuration</ulink>
+        page in LFS.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          wpa_gui, wpa_supplicant, wpa_passphrase and wpa_cli
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="wpa_gui">
+        <term><command>wpa_gui</command></term>
+        <listitem>
+          <para>
+            is a graphical frontend program for interacting with
+            <application>wpa_supplicant</application>
+          </para>
+          <indexterm zone="wpa_supplicant wpa_gui">
+            <primary sortas="b-wpa_gui">wpa_gui</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wpa_supplicant-prog">
+        <term><command>wpa_supplicant</command></term>
+        <listitem>
+          <para>
+            is a daemon that can connect to a password protected wireless
+            access point
+          </para>
+          <indexterm zone="wpa_supplicant wpa_supplicant-prog">
+            <primary sortas="b-wpa_supplicant">wpa_supplicant</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wpa_passphrase">
+        <term><command>wpa_passphrase</command></term>
+        <listitem>
+          <para>
+            takes an SSID and a password and generates a simple
+            configuration that <command>wpa_supplicant</command> can
+            understand
+          </para>
+          <indexterm zone="wpa_supplicant wpa_passphrase">
+            <primary sortas="b-wpa_passphrase">wpa_passphrase</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wpa_cli">
+        <term><command>wpa_cli</command></term>
+        <listitem>
+          <para>
+            is a command line interface used to control a running
+            <command>wpa_supplicant</command> daemon
+          </para>
+          <indexterm zone="wpa_supplicant wpa_cli">
+            <primary sortas="b-wpa_cli">wpa_cli</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

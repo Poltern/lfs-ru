@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY curl-download-http "https://curl.se/download/curl-&curl-version;.tar.xz">
+  <!ENTITY curl-download-ftp  " ">
+  <!ENTITY curl-md5sum        "f4f37253c5f1ad9ee85fa6215fdfeb42">
+  <!ENTITY curl-size          "2.6 MB">
+  <!ENTITY curl-buildsize     "42 MB (add 18 MB for tests)">
+  <!ENTITY curl-time          "0.2 SBU (with parallelism=4; add 4.1 SBU for tests (without valgrind, add 36 SBU with valgrind))">
+]>
+
+<sect1 id="curl" xreflabel="cURL-&curl-version;">
+  <?dbhtml filename="curl.html"?>
+
+
+  <title>cURL-&curl-version;</title>
+
+  <indexterm zone="curl">
+    <primary sortas="a-cURL">cURL</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to cURL</title>
+
+    <para>
+      The <application>cURL</application> package contains an utility
+      and a library used for transferring files with URL syntax to any of
+      the following protocols: DICT, FILE, FTP, FTPS, GOPHER, GOPHERS, HTTP,
+      HTTPS, IMAP, IMAPS, LDAP, LDAPS, MQTT, POP3, POP3S, RTSP, SMB, SMBS,
+      SMTP, SMPTS, TELNET, and TFTP. Its ability to both download
+      and upload files can be incorporated into other programs to support
+      functions like streaming media.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&curl-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&curl-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &curl-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &curl-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &curl-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &curl-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/curl-&curl-version;-function_naming-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+
+    <bridgehead renderas="sect3">cURL Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="libpsl"/>
+    </para>
+
+    <note>
+      <para>
+        While there is an option to build the package without libpsl, both
+        the upstream developers and the BLFS editors alike highly recommend
+        not disabling support for libpsl due to severe security implications.
+      </para>
+    </note>
+
+    <bridgehead renderas="sect4">Recommended at runtime</bridgehead>
+    <para role="recommended">
+      <xref role="runtime" linkend="make-ca"/>
+    </para>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="brotli"/>,
+      <xref linkend="c-ares"/>,
+      <xref linkend="gnutls"/>,
+      <xref linkend="libidn2"/>,
+      <xref linkend="libssh2"/>,
+      <xref linkend="mitkrb"/>,
+      <xref linkend="nghttp2"/>,
+      <xref linkend="openldap"/>,
+
+      <xref role='runtime' linkend="samba"/>
+      (runtime, for NTLM authentication),
+      <ulink url="https://www.gnu.org/software/gsasl/">gsasl</ulink>,
+      <ulink url="https://www.secureauth.com/labs/open-source-tools/impacket/">impacket</ulink>,
+      <ulink url="https://launchpad.net/libmetalink/">libmetalink</ulink>,
+      <ulink url="https://rtmpdump.mplayerhq.hu/">librtmp</ulink>,
+      <ulink url="https://github.com/ngtcp2/ngtcp2/">ngtcp2</ulink>,
+
+      <ulink url="https://github.com/cloudflare/quiche">quiche</ulink>, and
+      <ulink url="https://spnego.sourceforge.net/">SPNEGO</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional if Running the Test Suite</bridgehead>
+    <para role="optional">
+
+      <xref linkend="apache"/> and
+      <xref linkend="stunnel"/> (for the HTTPS and FTPS tests),
+      <xref linkend="openssh"/>, and
+      <xref linkend="valgrind"/> (this will slow the tests down and may cause failures.)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of cURL</title>
+
+    <para>
+      Install <application>cURL</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr                           \
+            --disable-static                        \
+            --with-openssl                          \
+            --enable-threaded-resolver              \
+            --with-ca-path=/etc/ssl/certs &amp;&amp;
+make</userinput></screen>
+
+<!--
+   For version 7.54.1 I got:
+   TESTDONE: 869 tests out of 869 reported OK: 100%
+   TESTDONE: 1092 tests were considered during 1080 seconds
+
+    <para>
+      Running the test suite is optional. About 2% of the tests fail. Increase
+      in test time by each failed test is about 10%. Tests SBU above was
+      obtained disabling failing tests, with:
+    </para>
+
+    2017-10-29 - bdubbs
+    For version 7.56.1 I had a lot of test failures which included long
+    timeouts.  Could not determine the cause of the timeouts or failures,
+    but I was missing c-ares, MIT Kerberos, ldap, samba, and the six
+    external packages.
+
+    2017-12-01 - bdubbs
+    Still a lot of test failures.  I did have c-ares, Kerberos, and ldap
+    installed this time.  Best guess is that servers are not available.
+
+    2018-08-01 - renodr
+    No test failures, but I didn't have any of the optional dependencies except
+    for c-ares and libidn2. I might re-run this test suite before release with
+    all of the optional deps, but right now, it isn't a priority - rather
+    the security fix is.
+-->
+
+    <para>
+       To run the test suite, issue: <command>make test</command>.
+       <!--One test, <filename>1477</filename>, is known to fail due to 
+       a missing file in the curl tarball.--> Some tests are flaky, 
+       so if some tests have failed it's possible to
+       run a test again with: <command>(cd tests; ./runtests.pl
+       <replaceable>&lt;test ID&gt;</replaceable>)</command> (the ID of
+       failed tests are shown in the <quote><computeroutput>These test cases
+       failed:</computeroutput></quote> message). If you run the tests after
+       the package has been installed, some tests may fail because the man
+       pages were deleted by the 'find' command in the installation instructions
+       below.
+    </para>
+<!-- Two (of 857) tests
+fail for unknown reasons, and all tests fail is valgrind is installed. Moving
+valgrind out of $PATH is recommended if you wish to run the test suite while
+it is installed.
+
+Added by Pierre for curl-7.59.0:
+no stunnel, no valgrind, no options
+Warning: smb server unexpectedly alive
+Warning: dict server unexpectedly alive
+TESTDONE: 950 tests out of 951 reported OK: 99%
+TESTFAIL: These test cases failed: 1148
+TESTDONE: 1189 tests were considered during 362 seconds.
+__________
+
+         if stunnel and valgrind are not installed, and also most options
+         (I had rtmpdump), the tests complete without problems.
+Warning: smb server unexpectedly alive
+Warning: dict server unexpectedly alive
+TESTDONE: 938 tests out of 938 reported OK: 100%
+TESTDONE: 1175 tests were considered during 355 seconds.
+         and no. I don't have smb - so commenting the rest of this:
+      To run the test suite, issue: <command>make test</command>. Many tests
+      may fail that depend on optional dependencies that may not be installed
+      or upstream servers that may not be available, especially for tests
+      numbered 700 and above.
+      Test time may be significantly increase due to hanging tests that fail.
+__________
+Added by Bruce for curl-7.60.0:
+TESTDONE: 957 tests out of 959 reported OK: 99%
+TESTFAIL: These test cases failed: 1139 1140
+TESTDONE: 1196 tests were considered during 1184 seconds.
+From the logs, both appear to be ipv6 releated.
+
+==========
+Added by Douglas for curl-7.61.0:
+TESTDONE: 961 tests out of 961 reported OK: 100%
+TESTDONE: 1202 tests were considered during 338 seconds.
+I only have c-ares and libidn2 installed, I will likely try before release
+with all optional dependencies in the book installed.
+
+=========
+7.61.1 NOTE: The test suite is extremely noisy, complaining about verification errors.
+It's possible this is due to openssl-1.1.1, BUT 79/79 tests report as 100% OK. I had
+c-ares, libpsl, and libidn1/2 installed. - Doug
+
+========
+7.62.0: All tests passed. libpsl, c-ares, libssh2, libidn2 installed.
+All 1098 tests report OK.
+
+=======
+Added by Douglas for curl-7.64.0:
+TESTDONE: 1022 tests out of 1023 reported OK: 99%
+TESTFAIL: These tests cases failed: 323
+TESTDONE: 1235 tests were considered during 1279 seconds.
+For dependencies, I had c-ares, gnutls, libidn2, libpsl, krb5, libssh2, nghttp2,
+OpenLDAP, Samba, stunnel, and Valgrind installed.
+=======
+Added by bdubbs for curl-7.64.1:
+TESTDONE: 1022 tests out of 1025 reported OK: 99%
+TESTFAIL: These test cases failed: 323 1139 1140
+TESTDONE: 1242 tests were considered during 1483 seconds
+
+=======
+Added by renodr for curl-7.65.1:
+TESTDONE: 996 tests out of 997 reported OK: 99%
+TESTFAIL: These test cases failed: 1560
+TESTDONE: 1249 tests were considered during 1091 seconds.
+All dependencies except for externals installed.
+=======
+Added by bdubbs for curl-7.65.2:
+TESTDONE: 1034 tests out of 1036 reported OK: 99%
+TESTFAIL: These test cases failed: 323 1560
+TESTDONE: 1254 tests were considered during 1362 seconds.
+Time above does not include test build time.
+All dependencies except for externals installed.
+=======
+Added by bdubbs for curl-7.65.3:
+TESTDONE: 1031 tests out of 1036 reported OK: 99%
+TESTFAIL: These test cases failed: 323 1139 1140 1173 1560
+TESTDONE: 1254 tests were considered during 1364 seconds.
+
+The tests that fail seem to be somewhat random.  What happened between
+yesterday and today that that tests 1139 1140 1173 now fail?
+
+=======
+Added by bdubbs for curl-7.68.0:
+TESTDONE: 1066 tests out of 1071 reported OK: 99%
+TESTFAIL: These test cases failed: 323 1139 1140 1173 1560
+TESTDONE: 1290 tests were considered during 1515 seconds.
+
+=======
+Added by bdubbs for curl-7.69.0:
+TESTDONE: 074 tests out of 1079 reported OK: 99%
+TESTFAIL: These test cases failed: 323 1139 1140 1173 1560
+TESTDONE: 1320 tests were considered during 1514 seconds.
+
+For curl-7.69.1, 1082 tests out of 1086 reported OK.  1560 now passes.
+1330 tests were considered during 1528 seconds.
+
+======
+Added by renodr for curl-7.70.0:
+TESTDONE: 1062 tests out of 1062 reported OK: 100%
+TESTDONE: 1352 tests were considered during 1218 seconds.
+Tests were ran with all dependencies present except for stunnel.
+impacket only seems to add one extra test to the mix as well.
+
+======
+Added by renodr for curl-7.71.0:
+TESTDONE: 1072 tests out of 1072 reported OK: 100%
+TESTDONE: 1364 tests were considered during 1202 seconds.
+Tests were run similarly to 7.70.0 - all deps except for stunnel.
+
+======
+Added by renodr for curl-7.71.1:
+TESTDONE: 1076 tests out of 1076 reported OK: 100%
+TESTDONE: 1368 tests were considered during 1207 seconds.
+Tests were run similarly to 7.71.0, including impacket, but no stunnel.
+
+======
+Added by renodr for curl-7.72.0:
+TESTDONE: 1094 tests out of 1097 reported OK: 99%
+TESTFAIL: These test cases failed: 1700 1701 1702
+TESTDONE: 1374 tests were considered during 1285 seconds.
+Tests have all BLFS dependencies with the exception of stunnel;
+and the optional impacket python module was installed.
+Tests seem to be failing due to a missing 'nghttpx' executable
+used to start a test server.
+
+======
+Added by renodr for curl-7.73.0:
+TESTDONE: 1121 tests out of 1121 reported OK: 100%
+TESTDONE: 1387 tests were considered during 1303 seconds.
+Tests have all BLFS dependencies installed with the exception of stunnel,
+as well as the optional impacket installed.
+
+======
+Added by renodr for curl-7.74.0:
+TESTDONE: 1119 tests out of 1119 reported OK: 100%
+TESTDONE: 1388 tests were considered during 1370 seconds.
+Tests have all BLFS dependencies installed, as well as impacket.
+stunnel not installed.
+
+======
+Added by bdubbs for curl-7.79.0:
+TESTDONE: 1432 tests were considered during 1543 seconds.
+TESTDONE: 1208 tests out of 1212 reported OK: 99%
+
+Tests have all BLFS dependencies installed but without impacket.
+
+======
+Added by plabs for curl-7.79.1:
+TESTDONE: 1434 tests were considered during 1652 seconds.
+TESTDONE: 1171 tests out of 1171 reported OK: 100%
+Tests have all BLFS dependencies installed except stunnel but without impacket.
+====
+bdubbs curl-7.83.0  2022-04-28
+TESTDONE: 1497 tests were considered during 1666 seconds.
+TESTDONE: 1252 tests out of 1256 reported OK: 99%
+TESTFAIL: These test cases failed: 1139 1140 1173 1177
+====
+Added by xry111 for curl-7.85.0 on 2022-09-01:
+With:
+  all BLFS dependencies but stunnel installed
+  libssh2-2.10.0 patched with libssh2-1.10.0-upstream_fix-1.patch
+  with-{gssapi,libssh2} enable-threaded-resolver
+TESTDONE: 1520 tests were considered during 508 seconds.
+TESTDONE: 1327 tests out of 1328 reported OK: 99%
+TESTFAIL: These test cases failed: 1459
+  It is a SCP test for bad .known_hosts file and fails because of a mismatch
+  of error codes, I don't think it indicated a serious issue.
+[renodr] - Test results for 7.85.0 (2022-09-03), no libssh2 enabled or gssapi
+TESTDONE: 1528 tests were considered during 2041 seconds.
+TESTDONE: 1326 tests out of 1326 reported OK: 100%
+
+[renodr] - Test results for 7.87.0 (2022-12-30)
+TESTDONE: 1559 tests were considered during 2112 seconds.
+TESTDONE: 1342 tests out of 1342 reported OK: 100%
+libssh2 installed and enabled
+
+[renodr] - Test results for 8.0.1 (2023-03-27)
+TESTDONE: 1593 tests were considered during 4761 seconds.
+TESTDONE: 1356 tests out of 1356 reported OK: 100%
+All BLFS dependencies installed.
+Note that if I move /usr/bin/valgrind to a place where it can't be found, I get
+TESTDONE: 1593 tests were considered during 595 seconds.
+TESTDONE: 1356 tests out of 1356 reported OK: 100%
+It appears that every test is now run under valgrind.
+
+[renodr] - Test results for 8.2.1 (2023-07-26)
+TESTDONE: 1611 tests were considered during 2129 seconds.
+TESTDONE: 1369 tests out of 1369 reported OK: 100%
+All BLFS dependencies installed, and run under valgrind.
+
+[renodr] - Test results for 8.3.0 (2023-09-14)
+TESTDONE: 1635 tests were considered during 4068 seconds.
+TESTDONE: 1386 tests out of 1387 reported OK: 99%
+TESTFAIL: These test cases failed: 1474
+All BLFS dependencies installed, and run under valgrind. Test 1474 is flaky.
+
+[renodr] - Test results for 8.4.0 (2023-10-11)
+TESTDONE: 1646 tests were considered during 2290 seconds.
+TESTDONE: 1449 tests out of 1452 reported OK: 99%
+TESTFAIL: These test cases failed: 1474 3021 3022
+All BLFS dependencies are installed, and the tests were run with Valgrind
+installed as well. Test 3021 and 3022 fails due to incompatibilities with
+our version of SSH. See https://github.com/curl/curl/issues/12096
+Test 1474 is still flaky.
+
+[bdubbs] - Test results for 8.6.0 (2024-02-01)
+TESTDONE: 1673 tests were considered during 395 seconds.
+TESTDONE: 1355 tests out of 1360 reported OK: 99%
+TESTFAIL: These test cases failed: 1139 1140 1173 1177 1477
+Run without valgrind.
+Tests seem to looking for man pages that are missing.
+- renodr: this is because tests were run after the man pages were deleted by
+  the find command after 'make install'
+-->
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+
+rm -rf docs/examples/.deps &amp;&amp;
+
+find docs \( -name Makefile\* -o  \
+             -name \*.1       -o  \
+             -name \*.3       -o  \
+             -name CMakeLists.txt \) -delete &amp;&amp;
+
+cp -v -R docs -T /usr/share/doc/curl-&curl-version;</userinput></screen>
+
+    <para>
+      To run some simple verification tests on the newly installed
+      <command>curl</command>, issue the following commands:
+      <command>curl --trace-ascii debugdump.txt https://www.example.com/</command>
+      and
+      <command>curl --trace-ascii d.txt --trace-time https://example.com/</command>.
+      Inspect the locally created trace files <filename>debugdump.txt</filename>
+      and <filename>d.txt</filename>, which contains version information,
+      downloaded files information, etc. One file has the time for each action logged.
+    </para>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <parameter>--enable-threaded-resolver</parameter>: This switch enables
+      <application>cURL</application>'s builtin threaded DNS resolver.
+    </para>
+
+    <para>
+      <parameter>--with-ca-path=/etc/ssl/certs</parameter>: This
+      switch sets the location of the BLFS Certificate Authority store.
+    </para>
+
+    <para>
+      <parameter>--with-openssl</parameter>: This parameter chooses
+      <application>OpenSSL</application> as SSL/TLS implementation.
+      This seems mandatory now.
+    </para>
+
+    <para>
+      <option>--with-gssapi</option>: This parameter adds
+      <application>Kerberos 5</application> support to
+      <filename class="libraryfile">libcurl</filename>.
+    </para>
+
+    <para>
+      <option>--without-ssl --with-gnutls</option>: Use this switch to
+      build with <application>GnuTLS</application> support
+      instead of <application>OpenSSL</application> for SSL/TLS.
+    </para>
+
+    <para>
+      <option>--with-ca-bundle=/etc/pki/tls/certs/ca-bundle.crt</option>: Use
+      this switch instead of <parameter>--with-ca-path</parameter> if
+      building with <application>GnuTLS</application> support
+      instead of <application>OpenSSL</application> for SSL/TLS.
+    </para>
+
+    <para>
+      <option>--with-libssh2</option>: This parameter adds
+      <application>SSH</application> support to cURL. This is disabled
+      by default.
+    </para>
+
+    <para>
+      <option>--enable-ares</option>: This parameter adds
+      support for DNS resolution through the c-ares library. It overrides
+      <parameter>--enable-threaded-resolver</parameter> and is not widely
+      tested by the editors.
+    </para>
+
+    <para>
+      <command>find docs ... -exec rm {} \;</command>: This command removes
+      <filename>Makefiles</filename> and man files from the documentation
+      directory that would otherwise be installed by the commands that follow.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+           curl and curl-config
+        </seg>
+        <seg>
+           libcurl.so
+        </seg>
+        <seg>
+          /usr/include/curl and
+          /usr/share/doc/curl-&curl-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="curl-prog">
+        <term><command>curl</command></term>
+        <listitem>
+         <para>
+           is a command line tool for transferring files with URL syntax
+         </para>
+          <indexterm zone="curl curl-prog">
+            <primary sortas="b-curl">curl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="curl-config">
+        <term><command>curl-config</command></term>
+        <listitem>
+          <para>
+            prints information about the last compile, like libraries
+            linked to and prefix setting
+          </para>
+          <indexterm zone="curl curl-config">
+            <primary sortas="b-curl-config">curl-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcurl">
+        <term><filename class="libraryfile">libcurl.so</filename></term>
+        <listitem>
+          <para>
+            provides the API functions required by
+            <command>curl</command> and other programs
+          </para>
+          <indexterm zone="curl libcurl">
+            <primary sortas="c-libcurl">libcurl.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libxslt-download-http "https://download.gnome.org/sources/libxslt/1.1/libxslt-&libxslt-version;.tar.xz">
+  <!ENTITY libxslt-download-ftp  " ">
+  <!ENTITY libxslt-md5sum        "22e9eb7c23825124e786611b3760a3c7">
+  <!ENTITY libxslt-size          "1.5 MB">
+  <!ENTITY libxslt-buildsize     "34 MB (with tests)">
+  <!ENTITY libxslt-time          "0.1 SBU (with tests)">
+]>
+
+<sect1 id="libxslt" xreflabel="libxslt-&libxslt-version;">
+  <?dbhtml filename="libxslt.html"?>
+
+
+  <title>libxslt-&libxslt-version;</title>
+
+  <indexterm zone="libxslt">
+    <primary sortas="a-libxslt">libxslt</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libxslt</title>
+
+    <para>
+      The <application>libxslt</application> package contains
+      XSLT libraries used for extending <filename
+      class="libraryfile">libxml2</filename> libraries to
+      support XSLT files.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libxslt-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libxslt-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libxslt-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libxslt-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libxslt-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libxslt-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/libxslt-&libxslt-version;-security_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">libxslt Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libxml2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended (at runtime)</bridgehead>
+    <para role="recommended">
+      <xref role="runtime" linkend="DocBook"/> and
+      <xref role="runtime" linkend="docbook-xsl"/>
+    </para>
+
+    <note>
+      <para>
+        Although it is not a direct dependency, many applications
+        using <application>libxslt</application> will expect
+        <xref linkend="DocBook"/> and <xref linkend="docbook-xsl"/>
+        to be present.
+      </para>
+    </note>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libgcrypt"/>
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libxslt</title>
+
+    <para>
+      Install <application>libxslt</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr                          \
+            --disable-static                       \
+            --docdir=/usr/share/doc/libxslt-&libxslt-version; \
+            PYTHON=/usr/bin/python3 &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          xslt-config and xsltproc
+        </seg>
+        <seg>
+          libexslt.so, libxslt.so and optionally, libxsltmod.so
+          <application>Python</application> module
+        </seg>
+        <seg>
+          /usr/include/libexslt,
+          /usr/include/libxslt,
+          /usr/lib/cmake/libxslt,
+          /usr/lib/libxslt-plugins,
+          /usr/share/gtk-doc/lib{xslt,exslt},
+          /usr/share/doc/libxslt-&libxslt-version;, and
+          /usr/share/doc/libxslt-python-&libxslt-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="xslt-config">
+        <term><command>xslt-config</command></term>
+        <listitem>
+          <para>
+            is used to find out the pre-processor, linking and
+            compiling flags necessary to use the <application>libxslt</application>
+            libraries in 3rd-party programs
+          </para>
+          <indexterm zone="libxslt xslt-config">
+            <primary sortas="b-xslt-config">xslt-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xsltproc">
+        <term><command>xsltproc</command></term>
+        <listitem>
+          <para>
+            is used to apply XSLT stylesheets to XML documents
+          </para>
+          <indexterm zone="libxslt xsltproc">
+            <primary sortas="b-xsltproc">xsltproc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libexslt">
+        <term><filename class="libraryfile">libexslt.so</filename></term>
+        <listitem>
+          <para>
+            is used to provide extensions to XSLT functions
+          </para>
+          <indexterm zone="libxslt libexslt">
+            <primary sortas="c-libexslt">libexslt.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libxslt-lib">
+        <term><filename class="libraryfile">libxslt.so</filename></term>
+        <listitem>
+          <para>
+            provides extensions to the
+            <filename class="libraryfile">libxml2</filename>
+            libraries to parse files that use the XSLT format
+          </para>
+          <indexterm zone="libxslt libxslt-lib">
+            <primary sortas="c-libxslt">libxslt.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

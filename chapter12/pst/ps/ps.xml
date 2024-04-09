@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<chapter id="pst-ps">
+  <?dbhtml filename="ps.html"?>
+
+  <title>PostScript</title>
+
+  <para>
+    This chapter includes applications that create, manipulate or view
+    PostScript files and create or view Portable Document Format
+    PDF files.
+  </para>
+
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="a2ps.xml"/> -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="enscript.xml"/>
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="psutils.xml"/> -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="epdfview.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fop.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mupdf.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="paps.xml"/>
+
+</chapter>

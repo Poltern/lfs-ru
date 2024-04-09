@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libusb-download-http "https://github.com/libusb/libusb/releases/download/v&libusb-version;/libusb-&libusb-version;.tar.bz2">
+  <!ENTITY libusb-download-ftp  " ">
+  <!ENTITY libusb-md5sum        "1fb61afe370e94f902a67e03eb39c51f">
+  <!ENTITY libusb-size          "632 KB">
+  <!ENTITY libusb-buildsize     "5.7 MB">
+  <!ENTITY libusb-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="libusb" xreflabel="libusb-&libusb-version;">
+  <?dbhtml filename="libusb.html"?>
+
+
+  <title>libusb-&libusb-version;</title>
+
+  <indexterm zone="libusb">
+    <primary sortas="a-libusb">libusb</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libusb</title>
+
+    <para>
+      The <application>libusb</application> package contains a library
+      used by some applications for USB device access.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libusb-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libusb-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libusb-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libusb-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libusb-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libusb-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libusb Dependencies</bridgehead>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="doxygen"/>
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="kernel">
+    <title>Configuring Libusb</title>
+
+    <para id="libusb-kernel">
+      To access raw USB devices (those not treated as a disk by the mass-storage
+      driver), appropriate support must be available in the kernel.  Check your
+      kernel configuration:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="libusb-kernel.xml"/>
+
+    <indexterm zone="libusb libusb-kernel">
+      <primary sortas="d-USB-device-filesystem">Support for Host-side USB</primary>
+    </indexterm>
+
+    <para>
+      For more details on setting up USB devices, see <xref
+      linkend="usb-device-issues"/>.
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libusb</title>
+
+    <para>
+      Install <application>libusb</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      If <application>Doxygen</application> is installed and you wish to
+      build the API documentation, issue the following commands:
+    </para>
+
+<screen remap="doc"><userinput>pushd doc                &amp;&amp;
+  doxygen -u doxygen.cfg &amp;&amp;
+  make docs              &amp;&amp;
+popd</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you built the API documentation, install it using the following
+      commands as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>install -v -d -m755 /usr/share/doc/libusb-&libusb-version;/apidocs &amp;&amp;
+install -v -m644    doc/api-1.0/* \
+                    /usr/share/doc/libusb-&libusb-version;/apidocs</userinput></screen>
+
+  </sect2>
+<!--
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -i ...</command>: This sed prevents some warnings when
+      building the documentation.
+    </para>
+  </sect2>
+-->
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libusb-1.0.so
+        </seg>
+        <seg>
+          /usr/include/libusb-1.0 and
+          /usr/share/doc/libusb-&libusb-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libusb-lib">
+        <term><filename class="libraryfile">libusb-1.0.so</filename></term>
+        <listitem>
+          <para>
+            contains API functions used for accessing USB hardware
+          </para>
+          <indexterm zone="libusb libusb-lib">
+            <primary sortas="c-libusb">libusb-1.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

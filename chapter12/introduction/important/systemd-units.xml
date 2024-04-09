@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="systemd-units" xreflabel="blfs-systemd-units-&systemd-units-version;" revision="systemd">
+  <?dbhtml filename="systemd-units.html"?>
+
+
+  <title>BLFS Systemd Units</title>
+
+  <indexterm zone="systemd-units">
+    <primary sortas="a-BLFS-Sytemd-Units">BLFS Systemd Units</primary>
+  </indexterm>
+
+  <indexterm zone="systemd-units">
+    <primary sortas="f-AA-General-Information">General Information</primary>
+  </indexterm>
+
+  <para>
+    The BLFS Systemd Units package contains the systemd unit files
+    that are used throughout the book.
+  </para>
+
+  <itemizedlist spacing="compact">
+    <title>Package Information</title>
+    <listitem>
+      <para>
+        Download: <ulink url="&downloads-root;/blfs-systemd-units-&systemd-units-version;.tar.xz"/>
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <para>
+    The BLFS Systemd Units package will be used throughout the BLFS book
+    for systemd unit files. Each systemd unit has a separate install target.
+    It is recommended that you keep the package source directory around until
+    completion of your BLFS system. When a systemd unit is requested from BLFS
+    Systemd Units, simply change to the directory, and as the
+    <systemitem class="username">root</systemitem> user, execute the given
+    <command>make install-<replaceable>&lt;systemd-unit&gt;</replaceable></command>
+    command. This command installs the systemd unit to its proper location
+    (along with any auxiliary configuration scripts) and also enables it by
+    default.
+  </para>
+
+  <note>
+    <para>
+      It is advisable to peruse each systemd unit before installation to
+      determine whether the installed files meet your needs.
+    </para>
+  </note>
+
+</sect1>

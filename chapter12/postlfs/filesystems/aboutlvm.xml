@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="aboutlvm">
+  <?dbhtml filename="aboutlvm.html"?>
+
+
+  <title>About Logical Volume Management (LVM)</title>
+
+  <para>
+    LVM manages disk drives.  It allows multiple drives and partitions
+    to be combined into larger <emphasis>volume groups</emphasis>, assists in
+    making backups through a <emphasis>snapshot</emphasis>, and allows for
+    dynamic volume resizing. It can also provide mirroring similar to
+    a RAID 1 array.
+  </para>
+
+  <para>
+    A complete discussion of LVM is beyond the scope of this introduction,
+    but basic concepts are presented below.
+  </para>
+
+  <para>
+    To run any of the commands presented here, the <xref linkend='lvm2'/>
+    package must be installed.  All commands must be run as the <systemitem
+    class="username">root</systemitem> user.
+  </para>
+
+  <para>
+    Management of disks with lvm is accomplished using the following concepts:
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>physical volumes</term>
+      <listitem>
+        <para>
+          These are physical disks or partitions such as
+          /dev/sda3 or /dev/sdb.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>volume groups</term>
+      <listitem>
+        <para>
+          These are named groups of physical volumes that
+          can be manipulated by the administrator.  The number of physical
+          volumes that make up a volume group is arbitrary.  Physical volumes
+          can be dynamically added or removed from a volume group.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>logical volumes</term>
+      <listitem>
+        <para>
+          Volume groups may be subdivided into logical volumes. Each logical
+          volume can then be individually formatted as if it were a regular
+          Linux partition. Logical volumes may be dynamically resized by
+          the administrator according to need.
+        </para>
+      </listitem>
+
+    </varlistentry>
+  </variablelist>
+
+  <para>
+    To give a concrete example, suppose that you have two 2 TB disks. Also
+    suppose a really large amount of space is required for a very large
+    database, mounted on <filename class='directory'>/srv/mysql</filename>.
+    This is what the initial set of partitions would look like:
+  </para>
+
+  <screen><literal>Partition  Use    Size      Partition Type
+/dev/sda1  /boot  100MB     83 (Linux)
+/dev/sda2  /       10GB     83 (Linux)
+/dev/sda3  swap     2GB     82 (Swap)
+/dev/sda4  LVM    remainder 8e (LVM)
+/dev/sdb1  swap     2GB     82 (Swap)
+/dev/sdb2  LVM    remainder 8e (LVM)</literal></screen>
+
+  <para>
+    First initialize the physical volumes:
+  </para>
+
+  <screen><userinput>pvcreate /dev/sda4 /dev/sdb2</userinput></screen>
+
+  <note>
+    <para>
+      A full disk can be used as part of a physical volume, but
+      beware that the <command>pvcreate</command> command will destroy any
+      partition information on that disk.
+    </para>
+  </note>
+
+  <para>
+    Next create a volume group named lfs-lvm:
+  </para>
+
+  <screen><userinput>vgcreate lfs-lvm /dev/sda4  /dev/sdb2</userinput></screen>
+
+  <para>
+    The status of the volume group can be checked by running the command
+    <command>vgscan</command>. Now create the logical volumes.  Since there
+    is about 3900 GB available, leave about 900 GB free for expansion. Note
+    that the logical volume named <emphasis>mysql</emphasis> is larger than
+    any physical disk.
+  </para>
+
+  <screen><userinput>lvcreate --name mysql --size 2500G lfs-lvm
+lvcreate --name home  --size  500G lfs-lvm</userinput></screen>
+
+  <para>
+    Finally the logical volumes can be formatted and mounted.  In this
+    example, the jfs file system (<xref linkend='jfsutils'/>) is used for
+    demonstration purposes.
+  </para>
+
+  <screen><userinput>mkfs -t ext4 /dev/lfs-lvm/home
+mkfs -t jfs  /dev/lfs-lvm/mysql
+mount /dev/lfs-lvm/home /home
+mkdir -p /srv/mysql
+mount /dev/lfs-lvm/mysql /srv/mysql</userinput></screen>
+
+  <para>
+    It may be needed to activate those logical volumes, for them to
+    appear in <filename class="directory">/dev</filename>. They can all
+    be activated at the same time by issuing, as the
+    <systemitem class="username">root</systemitem> user:
+  </para>
+
+<screen role="root"><userinput>vgchange -a y</userinput></screen>
+
+  <para revision="sysv">
+    The LFS boot scripts automatically make these logical volumes available to
+    the system in the <command>udev</command> script. Edit the
+    <filename>/etc/fstab</filename> file as required to automatically mount
+    them.
+  </para>
+
+  <para>
+    A LVM logical volume can host a root filesystem, but requires the use
+    of an initramfs (initial RAM file system). The initramfs proposed in
+    <xref linkend="initramfs"/> allows to pass the lvm volume in
+    the <parameter>root=</parameter> switch of the kernel command line.
+  </para>
+
+  <para revision="systemd">
+    If not using an initramfs, there is a race condition in <application>
+    systemd</application> preventing mounting logical volumes through
+    <filename>/etc/fstab</filename>. You must create a <quote>mount</quote>
+    unit (see <ulink role='man'
+    url='&man;systemd.mount.5'>systemd.mount(5)</ulink>) as in the following
+    example, which mounts the <filename class="directory">/home</filename>
+    directory automatically at boot:
+  </para>
+
+<screen role="root" revision="systemd"><userinput>cat &gt; /etc/systemd/system/home.mount &lt;&lt; EOF
+<literal>[Unit]
+Description=Mount the lvm volume /dev/lfs-lvm/home to /home
+
+[Mount]
+What=/dev/lfs-lvm/home
+Where=/home
+Type=ext4
+Options=default
+
+[Install]
+WantedBy=multi-user.target</literal>
+EOF</userinput></screen>
+
+  <note revision="systemd">
+    <para>
+    The name of the unit must be the name of the mount point with the
+    `/' character replaced by `-', omitting the leading one.
+    </para>
+  </note>
+
+  <para revision="systemd">
+    Next the unit must be enabled with:
+  </para>
+
+<screen role="root" revision="systemd"><userinput>systemctl enable home.mount</userinput></screen>
+
+  <para>
+    For more information about LVM, see the <ulink
+    url="https://tldp.org/HOWTO/LVM-HOWTO/">LVM HOWTO</ulink> and
+    the lvm man pages. A good in-depth
+    <ulink url="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/logical_volume_manager_administration/index">
+    guide</ulink> is available from RedHat<superscript>&reg;</superscript>,
+    although it makes sometimes reference to proprietary tools.
+  </para>
+
+</sect1>

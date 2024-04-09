@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libssh2-download-http "https://www.libssh2.org/download/libssh2-&libssh2-version;.tar.gz">
+  <!ENTITY libssh2-download-ftp  " ">
+  <!ENTITY libssh2-md5sum        "a01d543fd891ca48fe47726540d50b17">
+  <!ENTITY libssh2-size          "1.1 MB">
+  <!ENTITY libssh2-buildsize     "13 MB (with tests)">
+  <!ENTITY libssh2-time          "0.2 SBU (with tests)">
+]>
+
+<sect1 id="libssh2" xreflabel="libssh2-&libssh2-version;">
+  <?dbhtml filename="libssh2.html"?>
+
+
+  <title>libssh2-&libssh2-version;</title>
+
+  <indexterm zone="libssh2">
+    <primary sortas="a-libssh2">libssh2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libssh2</title>
+
+    <para>
+      <application>Libssh2</application> package is a client-side C library
+      implementing the SSH2 protocol.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libssh2-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libssh2-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libssh2-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libssh2-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libssh2-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libssh2-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/libssh2-&libssh2-version;-security_fixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libssh2 Dependencies</bridgehead>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="cmake"/> (can be used instead of the
+      <command>configure</command> script),
+      <xref linkend="libgcrypt"/> (can be used instead of OpenSSL),
+      <xref linkend="openssh"/> (for some tests), and
+      <ulink url='https://www.docker.com'>Docker</ulink> (for some tests)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libssh2</title>
+
+    <para>
+      <!-- the Terrapin attack -->
+      First, fix a critical security vulnerability in libssh2:
+    </para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../libssh2-&libssh2-version;-security_fixes-1.patch</userinput></screen>
+
+    <para>
+      If you want to test the package, exclude the tests requiring a static
+      library:
+    </para>
+
+<screen><userinput>sed -E '/^DOCKER_TEST/,/^SSHD_TEST/s/test_(auth_keyboard_info.* |hostkey |simple)/$(NOTHING)/' \
+    -i tests/Makefile.inc &amp;&amp;
+autoreconf -fi</userinput></screen>
+
+    <para>
+      Install <application>libssh2</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr          \
+            --disable-docker-tests \
+            --disable-static       &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--disable-docker-tests</parameter>: Disable the tests
+      requiring Docker, which is beyond the scope of BLFS.  Remove this
+      switch if you've installed Docker and you wish to run the test suite.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libssh2.so
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libssh2-lib">
+        <term><filename class="libraryfile">libssh2.so</filename></term>
+        <listitem>
+          <para>
+            contains functions to use the SSH2 protocol
+          </para>
+          <indexterm zone="libssh2 libssh2-lib">
+            <primary sortas="c-libssh2">libssh2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>

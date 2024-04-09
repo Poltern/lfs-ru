@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <para>
+      This module is built using <filename>Build.PL</filename>:
+
+<screen><userinput>perl Build.PL &amp;&amp;
+./Build       &amp;&amp;
+./Build test</userinput></screen>
+
+      Now, as the <systemitem class="username">root</systemitem> user:
+
+<screen role="root"><userinput>./Build install</userinput></screen>
+
+    </para>

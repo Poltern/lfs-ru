@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="tex-path" xreflabel="Setting the PATH for TeX Live">
+  <?dbhtml filename="tex-path.html"?>
+
+
+  <title>Setting the PATH for TeX Live</title>
+
+  <para>
+    Upstream prefers to install in <filename
+    class="directory">/usr/local</filename> but the BLFS editors regard that as
+    inconvenient, and think using <filename
+    class="directory">/opt/texlive</filename> is more appropriate. Originally
+    BLFS used a full binary install to bootstrap the source install, so the
+    same prefix is used for both.
+  </para>
+
+  <para>
+    Before starting to build TeX Live, set up your PATH so
+    that the system can properly find the files.  If you set up your login
+    scripts as recommended in <xref linkend='postlfs-config-profile'/>, update
+    the needed paths by creating the
+    <filename>texlive.sh</filename> script. The programs are always
+    installed in an &lt;ARCH&gt;-linux subdirectory and on 32-bit x86 this is
+    always i386-linux. For x86_64 and i?86 we can generate this as $TEXARCH:
+  </para>
+
+  <note>
+    <para>
+      If upgrading from a previous year's version, you should manually
+      edit <filename>texlive.sh</filename> to ensure that the version for
+      the year you wish to use is the only TeX present (some people need to
+      keep multiple years available to ensure there are no regressions in
+      their documents).
+    </para>
+  </note>
+
+<!-- EOF should NOT be in double quotes, we want it to evaluate $TEXARCH -->
+<!-- this is also in texlive.xml -->
+   <para>Now, create the texlive.sh script as the &root; user:</para>
+
+<screen role="root"><userinput>TEXARCH=$(uname -m | sed -e 's/i.86/i386/' -e 's/$/-linux/')
+
+cat &gt; /etc/profile.d/texlive.sh &lt;&lt; EOF
+<literal># Begin texlive setup
+TEXLIVE_PREFIX=/opt/texlive/&texlive-year;
+export TEXLIVE_PREFIX
+
+pathappend \$TEXLIVE_PREFIX/texmf-dist/doc/man  MANPATH
+pathappend \$TEXLIVE_PREFIX/texmf-dist/doc/info INFOPATH
+pathappend \$TEXLIVE_PREFIX/bin/$TEXARCH
+
+TEXMFCNF=\$TEXLIVE_PREFIX/texmf-dist/web2c
+export TEXMFCNF
+
+# End texlive setup</literal>
+EOF
+
+unset TEXARCH</userinput></screen>
+
+  <note>
+    <para>
+      The standard MANPATH and INFOPATH path are specified above to
+      ensure they are included.  If they are already set in the boot script
+      procedure, the pathappend function will ensure duplicates are
+      removed, so including them here will do no harm.
+    </para>
+  </note>
+
+  <note>
+    <para>
+      The backslashes before the dollar signs in the script above are to
+      facilitate a copy/paste operation. The backslashes should not
+      appear in the actual script.
+    </para>
+  </note>
+
+  <para>
+    The new paths can be immediately activated by running:
+  </para>
+
+<screen><userinput>source /etc/profile</userinput></screen>
+
+  <para>
+    You should now proceed either to <xref linkend="tl-installer"/> for
+    a binary installation of texlive, or to <xref linkend="texlive"/> to begin
+    installing from source.
+  </para>
+
+</sect1>

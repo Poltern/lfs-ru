@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!-- Note minor version in URL -->
+  <!ENTITY nano-download-http "https://www.nano-editor.org/dist/v7/nano-&nano-version;.tar.xz">
+  <!ENTITY nano-download-ftp  " ">
+  <!ENTITY nano-md5sum        "13742c686c6ddb0b7b294634f0c13cec">
+  <!ENTITY nano-size          "1.5 MB">
+  <!ENTITY nano-buildsize     "20 MB">
+  <!ENTITY nano-time          "0.2 SBU">
+]>
+
+<sect1 id="nano" xreflabel="nano-&nano-version;">
+  <?dbhtml filename="nano.html"?>
+
+
+  <title>Nano-&nano-version;</title>
+
+  <indexterm zone="nano">
+    <primary sortas="a-Nano">Nano</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Nano</title>
+
+    <para>
+      The <application>Nano</application> package contains a small,
+      simple text editor which aims to replace <application>Pico</application>,
+      the default editor in the <application>Pine</application> package.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&nano-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&nano-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &nano-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &nano-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &nano-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &nano-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Nano</title>
+
+    <para>
+      Install <application>Nano</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --enable-utf8     \
+            --docdir=/usr/share/doc/nano-&nano-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m644 doc/{nano.html,sample.nanorc} /usr/share/doc/nano-&nano-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--enable-utf8</parameter>: This switch enables unicode support
+      in <application>Nano</application>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring nano</title>
+
+    <sect3 id="nano-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/nanorc</filename> and
+        <filename>~/.nanorc</filename>
+      </para>
+
+      <indexterm zone="nano nano-config">
+        <primary sortas="e-etc-nanorc">/etc/nanorc</primary>
+      </indexterm>
+
+      <indexterm zone="nano nano-config">
+        <primary sortas="e-AA.nanorc">~/.nanorc</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        Example configuration (create as a system-wide
+        <filename>/etc/nanorc</filename> or a personal
+        <filename>~/.nanorc</filename> file)
+      </para>
+
+<screen><literal>set autoindent
+set constantshow
+set fill 72
+set historylog
+set multibuffer
+set nohelp
+set positionlog
+set quickblank
+set regexp</literal></screen>
+
+      <para>
+        Check the <filename>sample.nanorc</filename> file in the installed
+        documentation directory. It includes color configurations and has
+        some documentation included in the comments.
+      </para>
+
+      <para>
+        Syntax highlighting is provided for several file types, in
+        <filename class="directory">/usr/share/nano/</filename> directory.
+        E.g., for shell scripts, you can insert
+        <option>include /usr/share/nano/sh.nanorc</option> in the personal or
+        global configuration file. If you wish highlighting for all supported
+        files, use <option>include /usr/share/nano/*.nanorc</option>. This
+        include does not descend into the <filename class="directory">extra</filename>
+        directory. Move required files one level up.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          nano and rnano (symlink)
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/nano and
+          /usr/share/doc/nano-&nano-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="nano-prog">
+        <term><command>nano</command></term>
+        <listitem>
+          <para>
+            is a small, simple text editor which aims to replace
+            <application>Pico</application>, the default editor in the
+            <application>Pine</application> package
+          </para>
+          <indexterm zone="nano nano-prog">
+            <primary sortas="b-nano">nano</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rnano-prog">
+        <term><command>rnano</command></term>
+        <listitem>
+          <para>
+            is a restricted mode for <command>nano</command>
+          </para>
+          <indexterm zone="nano rnano-prog">
+            <primary sortas="b-rnano">rnano</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

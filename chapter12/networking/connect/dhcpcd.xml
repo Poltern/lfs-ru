@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY dhcpcd-download-http "https://github.com/NetworkConfiguration/dhcpcd/releases/download/v&dhcpcd-version;/dhcpcd-&dhcpcd-version;.tar.xz">
+  <!ENTITY dhcpcd-download-ftp  " ">
+  <!ENTITY dhcpcd-md5sum        "ef8356d711b17701928ead7206d15234">
+  <!ENTITY dhcpcd-size          "264 KB">
+  <!ENTITY dhcpcd-buildsize     "3.0 MB (with tests)">
+  <!ENTITY dhcpcd-time          "less than 0.1 SBU (with tests)">
+]>
+
+<sect1 id="dhcpcd" xreflabel="dhcpcd-&dhcpcd-version;">
+  <?dbhtml filename="dhcpcd.html"?>
+
+
+  <title>dhcpcd-&dhcpcd-version;</title>
+
+  <indexterm zone="dhcpcd">
+    <primary sortas="a-dhcpcd">dhcpcd</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to dhcpcd</title>
+
+    <para>
+      <application>dhcpcd</application> is an implementation of the
+      DHCP client specified in RFC2131. A DHCP client is useful for connecting
+      your computer to a network which uses DHCP to assign network
+      addresses. dhcpcd strives to be a fully featured, yet very lightweight
+      DHCP client.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&dhcpcd-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&dhcpcd-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &dhcpcd-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &dhcpcd-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &dhcpcd-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &dhcpcd-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/dhcpcd-&dhcpcd-version;-upstream_fixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+
+    <bridgehead renderas="sect3">dhcpcd Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      llvm (with Clang),
+      ntp,
+      <ulink url="https://chrony.tuxfamily.org/">chronyd</ulink>, and
+      <ulink url="https://github.com/thkukuk/ypbind-mt/">ypbind</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 id='dhcpcd-privsep'>
+    <title>Privilege separation</title>
+
+    <para>
+      Recent releases of <application>dhcpcd</application> optionally support
+      privilege separation. As the practical security benefits of this are
+      unclear for a program like <application>dhcpcd</application> and the
+      setup is more complicated, the book currently defaults to disable it.
+    </para>
+    <para>
+      If you however would like to use privilege separation, additional
+      installation steps are necessary to set up the proper environment. Issue
+      the following commands as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install  -v -m700 -d /var/lib/dhcpcd &amp;&amp;
+
+groupadd -g 52 dhcpcd        &amp;&amp;
+useradd  -c 'dhcpcd PrivSep' \
+         -d /var/lib/dhcpcd  \
+         -g dhcpcd           \
+         -s /bin/false       \
+         -u 52 dhcpcd &amp;&amp;
+chown    -v dhcpcd:dhcpcd /var/lib/dhcpcd </userinput></screen>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of dhcpcd</title>
+
+<!--
+    <para>
+      First, fix an issue that occurs when running dhcpcd with the '-b' switch:
+    </para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../dhcpcd-&dhcpcd-version;-upstream_fixes-1.patch</userinput></screen>
+
+-->
+    <para>
+      Build <application>dhcpcd</application> without privilege separation
+      by running the following command:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr                \
+            --sysconfdir=/etc            \
+            --libexecdir=/usr/lib/dhcpcd \
+            --dbdir=/var/lib/dhcpcd      \
+            --runstatedir=/run           \
+            --disable-privsep         &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      Alternatively, build <application>dhcpcd</application> with privilege
+      separation by running the following commands:
+    </para>
+
+<screen role="nodump"><userinput>./configure --prefix=/usr                \
+            --sysconfdir=/etc            \
+            --libexecdir=/usr/lib/dhcpcd \
+            --dbdir=/var/lib/dhcpcd      \
+            --runstatedir=/run           \
+            --privsepuser=dhcpcd         &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make test</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role='root'><userinput>make install</userinput></screen>
+
+<!--
+    <para>
+      By default, a plain text lease info file isn't created but the
+      <application>dhcpcd</application> provides a hook which can be used for
+      creating such a file. Install the hook by running the following commands
+      as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role='root'><userinput>sed -i "s;/var/lib;/run;g" dhcpcd-hooks/50-dhcpcd-compat &amp;&amp;
+install -v -m 644 dhcpcd-hooks/50-dhcpcd-compat /lib/dhcpcd/dhcpcd-hooks/</userinput></screen>
+-->
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--libexecdir=/usr/lib/dhcpcd</parameter>: This switch sets a
+      better location for the dhcpcd internal libraries.
+    </para>
+
+    <para>
+      <parameter>--dbdir=/var/lib/dhcpcd</parameter>: This switch adjusts the
+      database directory because the default directory,
+      <filename class="directory">/var/db</filename>, is not FHS-compliant.
+    </para>
+
+    <para>
+      <parameter>--runstatedir=/run</parameter>: This switch sets the runtime
+      state directory because the default
+      <filename class="directory">/var/run</filename> is a symbolic
+      link to <filename class="directory">/run</filename>, and using
+      <filename class="directory">/var/run</filename> is deprecated.
+    </para>
+
+    <para>
+      <parameter>--disable-privsep</parameter>: This switch disables privilege
+      separation, which is the default in dhcpcd. This switch is not used in
+      the build configuration where privilege separation is used.
+    </para>
+
+    <para>
+      <parameter>--privsepuser=dhcpcd</parameter>: This switch sets the
+      privilege separation user in the build configuration where privilege
+      escalation is used.
+    </para>
+
+    <para>
+      <option>--with-hook=...</option>: You can optionally install more hooks,
+      for example to install some configuration files such as
+      <filename>ntp.conf</filename>. A set of hooks can be found in the
+      <filename class="directory">dhcpcd-hooks</filename> directory in the
+      build tree.
+    </para>
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring dhcpcd</title>
+
+    <sect3 id="dhcpcd-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/dhcpcd.conf</filename>
+      </para>
+
+      <indexterm zone="dhcpcd dhcpcd-config">
+        <primary sortas="e-etc-dhcpcd-dhcpcd-conf">/etc/dhcpcd/dhcpcd.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3 id="dhcpcd-init" revision="sysv">
+      <title>General Configuration Information</title>
+
+      <para>
+        To configure <command>dhcpcd</command>, you need to first install
+        the network service script,
+        <filename>/usr/lib/services/dhcpcd</filename>
+        included in the <xref linkend="bootscripts"/> package
+        (as user <systemitem class="username">root</systemitem>):
+      </para>
+
+      <indexterm zone="dhcpcd dhcpcd-init">
+        <primary sortas="f-dhcpcd">dhcpcd (service script)</primary>
+      </indexterm>
+
+<screen role='root'><userinput>make install-service-dhcpcd</userinput></screen>
+
+      <note>
+        <para id="dhcpcd-config3">
+          The default for <command>dhcpcd</command> is to set the hostname
+          and mtu. It also overwrites <filename>/etc/resolv.conf </filename>
+          and <filename>/etc/ntp.conf</filename>. These
+          modifications to system files are done by hooks which are stored in
+          <filename class="directory">/usr/lib/dhcpcd/dhcpcd-hooks</filename>.
+          You can change this behavior by removing or adding hooks from/to
+          that directory. The execution of hooks can be disabled by using
+          the <option>--nohook</option> (<option>-C</option>) command line
+          option or by the <option>nohook</option> option in the
+          <filename>/etc/dhcpcd.conf</filename> file.
+        </para>
+      </note>
+
+      <para id="dhcpcd-config2">
+        Finally, as the <systemitem class="username">root</systemitem> user
+        create the <filename>/etc/sysconfig/ifconfig.eth0</filename>
+        configuration file using the following commands. Adjust appropriately
+        for additional interfaces:
+      </para>
+
+      <indexterm zone="dhcpcd dhcpcd-config2">
+        <primary sortas="e-etc-sysconfig-dhcpcd">/etc/sysconfig/ifconfig.eth0 (dhcpcd)</primary>
+      </indexterm>
+
+<screen role='root'><userinput>cat &gt; /etc/sysconfig/ifconfig.eth0 &lt;&lt; "EOF"
+<literal>ONBOOT="yes"
+IFACE="eth0"
+SERVICE="dhcpcd"
+DHCP_START="-b -q -h $HOSTNAME <replaceable>&lt;insert appropriate start options here&gt;</replaceable>"
+DHCP_STOP="-k <replaceable>&lt;insert additional stop options here&gt;</replaceable>"</literal>
+EOF</userinput></screen>
+
+      <para>
+        For more information on the appropriate <envar>DHCP_START</envar> and
+        <envar>DHCP_STOP</envar> values, examine the man page for
+        <command>dhcpcd</command>.
+      </para>
+
+      <indexterm zone="dhcpcd dhcpcd-config3">
+        <primary sortas="e-etc-resolv.conf">/etc/resolv.conf</primary>
+      </indexterm>
+    </sect3>
+
+    <sect3 id="dhcpcd-init2" revision="sysv">
+      <title>Configuration Information: fixed ip</title>
+
+      <para id="dhcpcd-config4">
+        Although not usual, it is possible that you need
+        to configure <application>dhcpcd</application> to use a fixed ip. Here,
+        we give an example. As the
+        <systemitem class="username">root</systemitem> user create the
+        <filename>/etc/sysconfig/ifconfig.eth0</filename> configuration file
+        using the following commands.  Adjust appropriately for additional
+        interfaces and for the actual ip and router you need:
+      </para>
+
+      <indexterm zone="dhcpcd dhcpcd-config4">
+        <primary sortas="e-etc-sysconfig-dhcpcd">/etc/sysconfig/ifconfig.eth0 (dhcpcd)</primary>
+      </indexterm>
+
+<screen role='nodump'><userinput>cat &gt; /etc/sysconfig/ifconfig.eth0 &lt;&lt; "EOF"
+<literal>ONBOOT="yes"
+IFACE="eth0"
+SERVICE="dhcpcd"
+DHCP_START="-b -q -S ip_address=192.168.0.10/24 -S routers=192.168.0.1"
+DHCP_STOP="-k"</literal>
+EOF</userinput></screen>
+
+      <para>
+        You can either use DNS servers in
+        <filename>/etc/resolv.conf</filename> from another system, your
+        preferred servers, or just the example
+        <filename>/etc/resolv.conf.head</filename> file below as is:
+      </para>
+
+<screen role='nodump'><userinput>cat &gt; /etc/resolv.conf.head &lt;&lt; "EOF"
+<literal># OpenDNS servers
+nameserver 208.67.222.222
+nameserver 208.67.220.220</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+   <sect3 id="dhcpcd-init3" revision="systemd">
+      <title>General Configuration Information</title>
+
+      <para>
+        If you want to configure network interfaces at boot using
+        <command>dhcpcd</command>, you need to install the
+        systemd unit included in <xref linkend="systemd-units"/>
+        package by running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>make install-dhcpcd</userinput></screen>
+
+      <indexterm zone="dhcpcd dhcpcd-init3">
+        <primary sortas="f-dhcpcd">dhcpcd</primary>
+      </indexterm>
+
+      <note>
+        <para id="dhcpcd-config5">
+          The default behavior of <command>dhcpcd</command> is to set the
+          hostname and the mtu. It also overwrites <filename>/etc/resolv.conf
+          </filename> and <filename>/etc/ntp.conf</filename>. These
+          modifications to system configuration files are done by hooks which
+          are stored in <filename class="directory">
+          /usr/lib/dhcpcd/dhcpcd-hooks</filename>. You can change this behavior
+          by removing or adding hooks from/to that directory. The execution
+          of hooks can be disabled by using the <option>--nohook</option>
+          (<option>-C</option>) command line option or by the
+          <option>nohook</option> option in the <filename>/etc/dhcpcd.conf
+          </filename> file.
+        </para>
+      </note>
+
+      <indexterm zone="dhcpcd dhcpcd-config5">
+        <primary sortas="e-etc-resolv.conf">/etc/resolv.conf</primary>
+      </indexterm>
+
+      <note>
+        <para>
+          Make sure that you disable the <command>systemd-networkd</command>
+          service or configure it not to manage the interfaces you want to
+          manage with <application>dhcpcd</application>.
+        </para>
+      </note>
+
+      <para>
+        At this point you can test if <command>dhcpcd</command> is
+        behaving as expected by running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>systemctl start dhcpcd@<replaceable>eth0</replaceable></userinput></screen>
+
+      <para>
+        To start <command>dhcpcd</command> on a specific interface
+        at boot, enable the previously installed systemd unit by
+        running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>systemctl enable dhcpcd@<replaceable>eth0</replaceable></userinput></screen>
+
+      <para>
+        Replace <replaceable>eth0</replaceable> with the actual interface name.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>dhcpcd</seg>
+        <seg>/usr/lib/dhcpcd/dev/udev.so</seg>
+        <seg>/{usr,var}/lib/dhcpcd and /usr/share/dhcpcd</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="dhcpcd-prog">
+        <term><command>dhcpcd</command></term>
+        <listitem>
+          <para>
+            is an implementation of the DHCP client specified in RFC2131
+          </para>
+          <indexterm zone="dhcpcd dhcpcd-prog">
+            <primary sortas="b-dhcpcd">dhcpcd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dhcpcd-udev">
+        <term><filename class="libraryfile">udev.so</filename></term>
+        <listitem>
+          <para>
+            adds udev support for interface arrival and departure; this is
+            because udev likes to rename the interface, which it can't do if
+            dhcpcd grabs it first
+          </para>
+          <indexterm zone="dhcpcd dhcpcd-udev">
+            <primary sortas="c-dhcpcd-udev">udev.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY xfsprogs-download-http "&kernel-dl;/linux/utils/fs/xfs/xfsprogs/xfsprogs-&xfsprogs-version;.tar.xz">
+  <!ENTITY xfsprogs-download-ftp  " ">
+  <!ENTITY xfsprogs-md5sum        "c008a752fae65aaf761096eb4698df86">
+  <!ENTITY xfsprogs-size          "1.3 MB">
+  <!ENTITY xfsprogs-buildsize     "56 MB">
+  <!ENTITY xfsprogs-time          "0.3 SBU (Using parallelism=4)">
+]>
+
+<sect1 id="xfsprogs" xreflabel="xfsprogs-&xfsprogs-version;">
+  <?dbhtml filename="xfsprogs.html"?>
+
+
+  <title>xfsprogs-&xfsprogs-version;</title>
+
+  <indexterm zone="xfsprogs">
+    <primary sortas="a-xfsprogs">xfsprogs</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to xfsprogs</title>
+
+    <para>
+      The <application>xfsprogs</application> package contains
+      administration and debugging tools for the XFS file system.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&xfsprogs-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&xfsprogs-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &xfsprogs-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &xfsprogs-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &xfsprogs-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &xfsprogs-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">xfsprogs Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="inih"/> and
+      <xref linkend="liburcu"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="icu"/> (for unicode name scanning in xfs_scrub)
+    </para>
+
+  </sect2>
+
+  <sect2 role="kernel" id="xfsprogs-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      Enable the following options in the kernel configuration
+      and recompile the kernel:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="xfsprogs-kernel.xml"/>
+
+    <indexterm zone="xfsprogs xfsprogs-kernel">
+      <primary sortas="d-xfs">XFS Programs</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of xfsprogs</title>
+
+      <!-- Now appears to be fixed -->
+<!--
+    <para>
+      First, fix an incompatibility with gettext-0.22:
+    </para>
+
+<screen><userinput remap="pre">sed -i 's/0.lf/0.1f/' po/de.po</userinput></screen>
+-->
+    <para>
+      Install <application>xfsprogs</application> by running the following
+      commands:
+    </para>
+
+ <screen><userinput>make DEBUG=-DNDEBUG     \
+     INSTALL_USER=root  \
+     INSTALL_GROUP=root</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make PKG_DOC_DIR=/usr/share/doc/xfsprogs-&xfsprogs-version; install     &amp;&amp;
+make PKG_DOC_DIR=/usr/share/doc/xfsprogs-&xfsprogs-version; install-dev &amp;&amp;
+
+rm -rfv /usr/lib/libhandle.{a,la}</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>DEBUG=-DNDEBUG</parameter>: Turns off debugging
+      symbols.
+    </para>
+
+    <para>
+      <parameter>INSTALL_USER=root</parameter>
+      <parameter>INSTALL_GROUP=root</parameter>: This
+      sets the owner and group of the installed files.
+    </para>
+
+    <para>
+      <option>OPTIMIZER="..."</option>: Adding this parameter to
+      the end of the <command>make</command> command overrides the
+      default optimization settings.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>fsck.xfs, mkfs.xfs, xfs_admin, xfs_bmap, xfs_copy, xfs_db,
+        xfs_estimate, xfs_freeze, xfs_fsr, xfs_growfs, xfs_info, xfs_io,
+        xfs_logprint, xfs_mdrestore, xfs_metadump, xfs_mkfile, xfs_ncheck,
+        xfs_quota, xfs_repair, xfs_rtcp, xfs_scrub, xfs_scrub_all,
+        and xfs_spaceman</seg>
+        <seg>libhandle.so</seg>
+        <seg>/usr/include/xfs,
+        /usr/lib/xfsprogs,
+        /usr/share/xfsprogs, and
+        /usr/share/doc/xfsprogs-&xfsprogs-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fsck.xfs">
+        <term><command>fsck.xfs</command></term>
+        <listitem>
+          <para>
+            simply exits with a zero status, since XFS
+            partitions are checked at mount time
+          </para>
+          <indexterm zone="xfsprogs fsck.xfs">
+            <primary sortas="b-fsck.xfs">fsck.xfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkfs.xfs">
+        <term><command>mkfs.xfs</command></term>
+        <listitem>
+          <para>
+            constructs an XFS file system
+          </para>
+          <indexterm zone="xfsprogs mkfs.xfs">
+            <primary sortas="b-mkfs.xfs">mkfs.xfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_admin">
+        <term><command>xfs_admin</command></term>
+        <listitem>
+          <para>
+            changes the parameters of an XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_admin">
+            <primary sortas="b-xfs_admin">xfs_admin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_bmap">
+        <term><command>xfs_bmap</command></term>
+        <listitem>
+          <para>
+            prints block mapping for an XFS file
+          </para>
+          <indexterm zone="xfsprogs xfs_bmap">
+            <primary sortas="b-xfs_bmap">xfs_bmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_copy">
+        <term><command>xfs_copy</command></term>
+        <listitem>
+          <para>
+            copies the contents of an XFS file system
+            to one or more targets in parallel
+          </para>
+          <indexterm zone="xfsprogs xfs_copy">
+            <primary sortas="b-xfs_copy">xfs_copy</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_estimate">
+        <term><command>xfs_estimate</command></term>
+        <listitem>
+          <para>
+            for each directory argument, estimates the space that directory
+            would take if it were copied to an XFS filesystem
+            (does not cross mount points)
+          </para>
+          <indexterm zone="xfsprogs xfs_estimate">
+            <primary sortas="b-xfs_estimate">xfs_estimate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_db">
+        <term><command>xfs_db</command></term>
+        <listitem>
+          <para>
+            is used to debug an XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_db">
+            <primary sortas="b-xfs_db">xfs_db</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_freeze">
+        <term><command>xfs_freeze</command></term>
+        <listitem>
+          <para>
+            suspends access to an XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_freeze">
+            <primary sortas="b-xfs_freeze">xfs_freeze</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_fsr">
+        <term><command>xfs_fsr</command></term>
+        <listitem>
+          <para>
+            applicable only to XFS filesystems, improves the organization of
+            mounted filesystems, the reorganization algorithm operates on one
+            file at a time, compacting or otherwise  improving the layout of the
+            file extents (contiguous blocks of file data)
+          </para>
+          <indexterm zone="xfsprogs xfs_fsr">
+            <primary sortas="b-xfs_fsr">xfs_fsr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_growfs">
+        <term><command>xfs_growfs</command></term>
+        <listitem>
+          <para>
+            expands an XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_growfs">
+            <primary sortas="b-xfs_growfs">xfs_growfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_info">
+        <term><command>xfs_info</command></term>
+        <listitem>
+          <para>
+            is equivalent to invoking <command>xfs_growfs</command>, but
+            specifying that no change to the file system is to be made
+          </para>
+          <indexterm zone="xfsprogs xfs_info">
+            <primary sortas="b-xfs_info">xfs_info</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_io">
+        <term><command>xfs_io</command></term>
+        <listitem>
+          <para>
+            is a debugging tool like <command>xfs_db</command>, but is
+            aimed at examining the regular file I/O path rather than the raw
+            XFS volume itself
+          </para>
+          <indexterm zone="xfsprogs xfs_io">
+            <primary sortas="b-xfs_io">xfs_io</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_logprint">
+        <term><command>xfs_logprint</command></term>
+        <listitem>
+          <para>
+            prints the log of an XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_logprint">
+            <primary sortas="b-xfs_logprint">xfs_logprint</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_mdrestore">
+        <term><command>xfs_mdrestore</command></term>
+        <listitem>
+          <para>
+            restores an XFS metadump image to a filesystem image
+          </para>
+          <indexterm zone="xfsprogs xfs_mdrestore">
+            <primary sortas="b-xfs_mdrestore">xfs_mdrestore</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+       <varlistentry id="xfs_metadump">
+        <term><command>xfs_metadump</command></term>
+        <listitem>
+          <para>
+            copies XFS filesystem metadata to a file
+          </para>
+          <indexterm zone="xfsprogs xfs_metadump">
+            <primary sortas="b-xfs_metadump">xfs_metadump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="xfs_mkfile">
+        <term><command>xfs_mkfile</command></term>
+        <listitem>
+          <para>
+            creates an XFS file, padded with zeroes by default
+          </para>
+          <indexterm zone="xfsprogs xfs_mkfile">
+            <primary sortas="b-xfs_mkfile">xfs_mkfile</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_ncheck">
+        <term><command>xfs_ncheck</command></term>
+        <listitem>
+          <para>
+            generates pathnames from inode numbers for an
+            XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_ncheck">
+            <primary sortas="b-xfs_ncheck">xfs_ncheck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_quota">
+        <term><command>xfs_quota</command></term>
+        <listitem>
+          <para>
+            is a utility for reporting and editing various
+            aspects of filesystem quotas
+          </para>
+          <indexterm zone="xfsprogs xfs_quota">
+            <primary sortas="b-xfs_quota">xfs_quota</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_repair">
+        <term><command>xfs_repair</command></term>
+        <listitem>
+          <para>
+            repairs corrupt or damaged XFS file systems
+          </para>
+          <indexterm zone="xfsprogs xfs_repair">
+            <primary sortas="b-xfs_repair">xfs_repair</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_rtcp">
+        <term><command>xfs_rtcp</command></term>
+        <listitem>
+          <para>
+            copies a file to the real-time partition on an
+            XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_rtcp">
+            <primary sortas="b-xfs_rtcp">xfs_rtcp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_scrub">
+        <term><command>xfs_scrub</command></term>
+        <listitem>
+          <para>
+            checks and repairs the contents of a mounted
+            XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_scrub">
+            <primary sortas="b-xfs_scrub">xfs_scrub</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_scrub_all">
+        <term><command>xfs_scrub_all</command></term>
+        <listitem>
+          <para>
+            scrubs all mounted XFS file systems
+          </para>
+          <indexterm zone="xfsprogs xfs_scrub_all">
+            <primary sortas="b-xfs_scrub_all">xfs_scrub_all</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfs_spaceman">
+        <term><command>xfs_spaceman</command></term>
+        <listitem>
+          <para>
+            reports and controls free space usage in an
+            XFS file system
+          </para>
+          <indexterm zone="xfsprogs xfs_spaceman">
+            <primary sortas="b-xfs_spaceman">xfs_spaceman</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libhandle">
+        <term><filename class="libraryfile">libhandle.so</filename></term>
+        <listitem>
+          <para>
+            contains XFS-specific functions that provide a way to perform
+            certain filesystem  operations without using a file descriptor to
+            access filesystem objects
+          </para>
+          <indexterm zone="xfsprogs libhandle">
+            <primary sortas="c-libhandle">libhandle.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY rsync-download-http "https://www.samba.org/ftp/rsync/src/rsync-&rsync-version;.tar.gz">
+  <!ENTITY rsync-download-ftp  " ">
+  <!ENTITY rsync-md5sum        "f216f350ef56b9ba61bc313cb6ec2ed6">
+  <!ENTITY rsync-size          "1.1 MB">
+  <!ENTITY rsync-buildsize     "9.6 MB (with tests; add 24 MB for HTML API documentation)">
+  <!ENTITY rsync-time          "0.7 SBU (with tests)">
+]>
+
+<sect1 id="rsync" xreflabel="rsync-&rsync-version;">
+  <?dbhtml filename="rsync.html"?>
+
+
+  <title>rsync-&rsync-version;</title>
+
+  <indexterm zone="rsync">
+    <primary sortas="a-rsync">rsync</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to rsync</title>
+
+    <para>
+      The <application>rsync</application> package contains the
+      <command>rsync</command> utility. This is useful for synchronizing large
+      file archives over a network.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&rsync-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&rsync-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &rsync-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &rsync-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &rsync-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &rsync-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">rsync Dependencies</bridgehead>
+
+    <!-- This now uses LZ4, OpenSSL, and zstd from LFS. -->
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="popt"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      doxygen and
+      <ulink url="https://cyan4973.github.io/xxHash/">xxhash</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of rsync</title>
+
+    <para>
+      For security reasons, running the <application>rsync</application>
+      server as an unprivileged user and group is encouraged. If you intend to
+      run <command>rsync</command> as a daemon, create the
+      <systemitem class="username">rsyncd</systemitem> user and group
+      with the following commands issued by the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>groupadd -g 48 rsyncd &amp;&amp;
+useradd -c "rsyncd Daemon" -m -d /home/rsync -g rsyncd \
+    -s /bin/false -u 48 rsyncd</userinput></screen>
+
+    <para>
+      Install <application>rsync</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr    \
+            --disable-xxhash \
+            --without-included-zlib &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      If you have doxygen installed and wish to
+      build HTML API documentation, issue:
+    </para>
+
+<screen remap="doc"><userinput>doxygen</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role='root'><userinput>make install</userinput></screen>
+
+    <para>
+      If you built the documentation, install it using the following
+      commands as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role='root'
+        remap="doc"><userinput>install -v -m755 -d          /usr/share/doc/rsync-&rsync-version;/api &amp;&amp;
+install -v -m644 dox/html/*  /usr/share/doc/rsync-&rsync-version;/api</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--disable-xxhash</parameter>: This switch disables advanced
+      xxhash checksum support. Remove this switch if you have installed
+      <ulink url="https://cyan4973.github.io/xxHash/">xxhash</ulink>.
+    </para>
+
+    <para>
+      <parameter>--without-included-zlib</parameter>: This switch enables
+      compilation with the system-installed zlib library.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring rsync</title>
+
+    <sect3 id="rsync-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/rsyncd.conf</filename>
+      </para>
+
+      <indexterm zone="rsync rsync-config">
+        <primary sortas="e-etc-rsyncd.conf">/etc/rsyncd.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        For client access to remote files, you may need to install the
+        <xref linkend="openssh"/> package to connect to the remote server.
+      </para>
+
+      <para>
+        This is a simple download-only configuration to set up running
+        <command>rsync</command> as a server. See the <ulink role='man'
+        url='&man;rsyncd.conf.5'>rsyncd.conf(5)</ulink>
+        man-page for additional options (i.e., user authentication).
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/rsyncd.conf &lt;&lt; "EOF"
+<literal># This is a basic rsync configuration file
+# It exports a single module without user authentication.
+
+motd file = /home/rsync/welcome.msg
+use chroot = yes
+
+[localhost]
+    path = /home/rsync
+    comment = Default rsync module
+    read only = yes
+    list = yes
+    uid = rsyncd
+    gid = rsyncd
+</literal>
+EOF</userinput></screen>
+
+      <para>
+        You can find additional configuration information and general
+        documentation about <command>rsync</command> at
+        <ulink url="https://rsync.samba.org/documentation.html"/>.
+      </para>
+
+    </sect3>
+
+    <sect3 id="rsync-init">
+      <title><phrase revision="sysv">Boot Script</phrase>
+             <phrase revision="systemd">Systemd Unit</phrase></title>
+
+      <para>
+        Note that you only need to start the
+        <application>rsync</application> server if you want to provide an
+        <application>rsync</application> archive on your local machine.
+        You don't need this <phrase revision="sysv">script</phrase>
+        <phrase revision="systemd">unit</phrase> to run the
+        <application>rsync</application> client.
+      </para>
+
+      <para>
+        Install the
+        <phrase revision="sysv"><filename>/etc/rc.d/init.d/rsyncd</filename>
+        init script</phrase>
+        <phrase revision="systemd"><filename>rsyncd.service</filename>
+        unit</phrase> included in the
+        <xref linkend="bootscripts" revision="sysv"/>
+        <xref linkend="systemd-units" revision="systemd"/> package.
+      </para>
+
+<screen role="root"><userinput>make install-rsyncd</userinput></screen>
+
+      <note revision="systemd">
+        <para>
+          This package comes with two types of units: A service file and a
+          socket file. The service file will start rsync daemon once at boot
+          and it will keep running until the system shuts down. The socket file
+          will make systemd listen on rsync port (Default 873, needs to be
+          edited for anything else) and will start rsync daemon when something
+          tries to connect to that port and stop the daemon when the connection
+          is terminated. This is called socket activation and is analogous to
+          using <application>{,x}inetd</application> on a SysVinit based
+          system.
+        </para>
+
+        <para>
+          By default, the first method is used - rsync daemon is started
+          at boot and stopped at shutdown. If the socket method is desired, you
+          need to run as the
+          <systemitem class="username">root</systemitem> user:
+        </para>
+
+<screen role="nodump"><userinput>systemctl stop rsyncd &amp;&amp;
+systemctl disable rsyncd &amp;&amp;
+systemctl enable rsyncd.socket &amp;&amp;
+systemctl start rsyncd.socket</userinput></screen>
+
+        <para>
+          Note that socket method is only useful for remote backups. For
+          local backups you'll need the service method.
+        </para>
+      </note>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>rsync and rsync-ssl</seg>
+        <seg>None</seg>
+        <seg>Optionally, /usr/share/doc/rsync-&rsync-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="rsync-prog">
+        <term><command>rsync</command></term>
+        <listitem>
+          <para>
+            is a replacement for <command>rcp</command> (and
+            <command>scp</command>) that has many more features. It uses the
+            <quote>rsync algorithm</quote> which provides a very fast method of
+            syncing remote files. It does this by sending just the differences
+            in the files across the link, without requiring that both sets of
+            files are present at one end of the link beforehand
+          </para>
+          <indexterm zone="rsync rsync-prog">
+            <primary sortas="b-rsync">rsync</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rsync-ssl">
+        <term><command>rsync-ssl</command></term>
+        <listitem>
+          <para>
+            is a helper script used when connecting to an rsync daemon that
+            has SSL support built in
+          </para>
+          <indexterm zone="rsync rsync-ssl">
+            <primary sortas="b-rsync-ssl">rsync-ssl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

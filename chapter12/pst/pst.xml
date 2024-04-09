@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE part PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<part id="pst" xreflabel="Printing, Scanning and Typesetting">
+  <?dbhtml filename="pst.html" dir="pst"?>
+
+  <title>Printing, Scanning and Typesetting</title>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sgml/sgml.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xml/xml.xml"/>
+
+
+</part>

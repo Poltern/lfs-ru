@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY unrar-download-http "https://www.rarlab.com/rar/unrarsrc-&unrar-version;.tar.gz">
+  <!ENTITY unrar-download-ftp  " ">
+  <!ENTITY unrar-md5sum        "596c964288608be4b4b6502e910518d2">
+  <!ENTITY unrar-size          "256 KB">
+  <!ENTITY unrar-buildsize     "2.7 MB">
+  <!ENTITY unrar-time          "0.3 SBU">
+]>
+
+<sect1 id="unrar" xreflabel="UnRar-&unrar-version;">
+  <?dbhtml filename="unrar.html"?>
+
+
+  <title>UnRar-&unrar-version;</title>
+
+  <indexterm zone="unrar">
+    <primary sortas="a-UnRar">UnRar</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to UnRar</title>
+
+    <para>
+      The <application>UnRar</application> package contains a
+      <filename>RAR</filename> extraction utility used for
+      extracting files from <filename>RAR</filename> archives.
+      <filename>RAR</filename> archives are usually created
+      with <application>WinRAR</application>, primarily in a
+      Windows environment.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&unrar-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&unrar-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &unrar-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &unrar-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &unrar-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &unrar-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of UnRar</title>
+
+    <note>
+      <para>
+        This package extracts the tarball to the unversioned
+        directory <filename>unrar</filename> and not the expected directory
+        <filename>unrar-&unrar-version;</filename>.
+      </para>
+    </note>
+
+
+    <para>
+      Install <application>UnRar</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>make -f makefile</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -m755 unrar /usr/bin</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          unrar
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="unrar-prog">
+        <term><command>unrar</command></term>
+        <listitem>
+          <para>
+            uncompresses a <filename>RAR</filename> archive
+          </para>
+          <indexterm zone="unrar unrar-prog">
+            <primary sortas="b-unrar">unrar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

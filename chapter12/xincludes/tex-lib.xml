@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+<para>
+  <parameter>--includedir=</parameter>
+  <parameter>--libdir=</parameter> : these switches ensure
+  that the libraries and include files will be within the directories for this
+  year's texlive.
+</para>

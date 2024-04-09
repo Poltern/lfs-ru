@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY wget-download-http
+           "&gnu-http;/wget/wget-&wget-version;.tar.gz">
+  <!ENTITY wget-download-ftp  " ">
+  <!ENTITY wget-md5sum        "271bf949384d0858c2c3d419f6311365">
+  <!ENTITY wget-size          "4.9 MB">
+  <!ENTITY wget-buildsize     "36 MB (add 27 MB for tests)">
+  <!ENTITY wget-time          "0.3 SBU (add 0.3 SBU for tests)">
+]>
+
+<sect1 id="wget" xreflabel="Wget-&wget-version;">
+  <?dbhtml filename="wget.html"?>
+
+
+  <title>Wget-&wget-version;</title>
+
+  <indexterm zone="wget">
+    <primary sortas="a-Wget">Wget</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Wget</title>
+
+    <para>
+      The <application>Wget</application> package contains a utility useful for
+      non-interactive downloading of files from the Web.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&wget-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&wget-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &wget-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &wget-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &wget-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &wget-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Wget Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="libpsl"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended at runtime</bridgehead>
+    <para role="recommended">
+      <xref role="runtime" linkend="make-ca"/>
+    </para>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gnutls"/>,
+      <xref linkend="perl-http-daemon"/> (for the test suite),
+      <xref linkend="perl-io-socket-ssl"/> (for the test suite),
+      <xref linkend="libidn2"/>,
+      <xref linkend="pcre2"/>, and
+      <xref linkend="valgrind"/> (for the test suite)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Wget</title>
+
+    <para>
+      Install <application>Wget</application> by running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr      \
+            --sysconfdir=/etc  \
+            --with-ssl=openssl &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <!-- libwww-perl/HTTP-Daemon/#21
+         Removing, since IO::Socket//INET6 has been deprecated
+         and replaced with IO::Socket::IP, which fixes the
+         problem
+    <para>
+      HTTPS tests are known to fail if Perl module IO::Socket::INET6
+      is installed.
+    </para>
+-->
+    <para>
+      Some tests may fail when Valgrind tests are enabled.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--sysconfdir=/etc</parameter>: This relocates the configuration
+      file from <filename class="directory">/usr/etc</filename> to
+      <filename class="directory">/etc</filename>.
+    </para>
+
+    <para>
+      <parameter>--with-ssl=openssl</parameter>: This allows the program to use
+      openssl instead of gnutls.
+    </para>
+
+    <para>
+      <option>--enable-valgrind-tests</option>: This allows the tests to be
+      run under valgrind.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Wget</title>
+
+    <sect3 id="wget-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/wgetrc</filename> and
+        <filename>~/.wgetrc</filename>
+      </para>
+
+      <indexterm zone="wget wget-config">
+        <primary sortas="e-AA.wgetrc">~/.wgetrc</primary>
+      </indexterm>
+
+      <indexterm zone="wget wget-config">
+        <primary sortas="e-etc-wgetrc">/etc/wgetrc</primary>
+      </indexterm>
+
+<!--
+      <para>
+        If you have installed <xref linkend="make-ca"/> and you want
+        <application>Wget</application> to use them, as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>echo ca-directory=/etc/ssl/certs >> /etc/wgetrc</userinput></screen>
+-->
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          wget
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="wget-prog">
+        <term><command>wget</command></term>
+        <listitem>
+          <para>
+            retrieves files from the Web using the HTTP, HTTPS and FTP
+            protocols.  It is designed to be non-interactive, for background or
+            unattended operations
+          </para>
+          <indexterm zone="wget wget-prog">
+            <primary sortas="b-wget">wget</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

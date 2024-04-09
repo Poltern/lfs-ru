@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY slang-download-http "https://www.jedsoft.org/releases/slang/slang-&slang-version;.tar.bz2">
+  <!ENTITY slang-download-ftp  " ">
+  <!ENTITY slang-md5sum        "69015c8300088373eb65ffcc6ed4db8c">
+  <!ENTITY slang-size          "1.6 MB">
+  <!ENTITY slang-buildsize     "22 MB (add 15 MB for tests)">
+  <!ENTITY slang-time          "0.4 SBU (add 0.5 SBU for tests)">
+]>
+
+<sect1 id="slang" xreflabel="slang-&slang-version;">
+  <?dbhtml filename="slang.html"?>
+
+
+  <title>slang-&slang-version;</title>
+
+  <indexterm zone="slang">
+    <primary sortas="a-slang">slang</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to slang</title>
+
+    <para>
+      <application>S-Lang</application> (slang) is an interpreted language
+      that may be embedded into an application to make the application
+      extensible.  It provides facilities required by interactive applications
+      such as display/screen management, keyboard input and keymaps.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&slang-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&slang-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &slang-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &slang-size;</para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &slang-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &slang-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Slang Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libpng"/> and
+      <ulink url="https://github.com/kkos/oniguruma">Oniguruma</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Slang</title>
+
+    <note>
+      <para>
+        This package does not support parallel build.
+      </para>
+    </note>
+
+    <para>
+      Install <application>slang</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --with-readline=gnu &amp;&amp;
+make -j1</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role='root'><userinput>make install_doc_dir=/usr/share/doc/slang-&slang-version;   \
+     SLSH_DOC_DIR=/usr/share/doc/slang-&slang-version;/slsh \
+     install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--with-readline=gnu</parameter>: This parameter sets GNU
+      <application>Readline</application> to be used by the parser interface
+      instead of the <application>slang</application> internal version.
+    </para>
+
+    <para>
+      <command>make install_doc_dir=/usr/share/doc/slang-&slang-version;
+      SLSH_DOC_DIR=/usr/share/doc/slang-&slang-version;/slsh install</command>:
+      This command installs this package with a versioned documentation
+      installation directory.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring slang</title>
+
+    <sect3 id="slang-config">
+      <title>Config Files</title>
+      <para>
+        <filename>~/.slshrc</filename> and
+        <filename>/etc/slsh.rc</filename>
+      </para>
+
+      <indexterm zone="slang slang-config">
+        <primary sortas="e-AA.slshrc">~/.slshrc</primary>
+      </indexterm>
+
+      <indexterm zone="slang slang-config">
+        <primary sortas="e-etc-slsh">/etc/slsh.rc</primary>
+      </indexterm>
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>slsh</seg>
+        <seg>libslang.so and numerous support modules</seg>
+        <seg>/usr/lib/slang, /usr/share/doc/slang-&slang-version;
+        and /usr/share/slsh</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="slsh">
+        <term><command>slsh</command></term>
+        <listitem>
+          <para>
+            is a simple program for interpreting
+            <application>slang</application> scripts. It supports dynamic
+            loading of <application>slang</application> modules and includes a
+            <application>Readline</application> interface for interactive use
+          </para>
+          <indexterm zone="slang slsh">
+            <primary sortas="b-slsh">slsh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

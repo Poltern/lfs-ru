@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libtasn1-download-http "&gnu-http;/libtasn1/libtasn1-&libtasn1-version;.tar.gz">
+  <!ENTITY libtasn1-download-ftp  " ">
+  <!ENTITY libtasn1-md5sum        "f701ab57eb8e7d9c105b2cd5d809b29a">
+  <!ENTITY libtasn1-size          "1.7 MB">
+  <!ENTITY libtasn1-buildsize     "17 MB (with tests)">
+  <!ENTITY libtasn1-time          "0.8 SBU (with tests)">
+]>
+
+<sect1 id="libtasn1" xreflabel="libtasn1-&libtasn1-version;">
+  <?dbhtml filename="libtasn1.html"?>
+
+
+  <title>libtasn1-&libtasn1-version;</title>
+
+  <indexterm zone="libtasn1">
+    <primary sortas="a-libtasn1">libtasn1</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libtasn1</title>
+
+    <para>
+      <application>libtasn1</application> is a highly portable C library
+      that encodes and decodes DER/BER data following an ASN.1 schema.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libtasn1-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libtasn1-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libtasn1-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libtasn1-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libtasn1-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libtasn1-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libtasn1 Dependencies</bridgehead>
+
+<!-- does not seem to be needed anymore:
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="six"/>
+    </para>
+-->
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk-doc"/> and
+      <xref linkend="valgrind"/>
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libtasn1</title>
+
+    <para>
+      Install <application>libtasn1</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you did not pass the <option>--enable-gtk-doc</option> parameter
+      to the <command>configure</command> script, you can install the API
+      documentation using the following command as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make -C doc/reference install-data-local</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-doc-rebuild-problem.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          asn1Coding, asn1Decoding and asn1Parser
+        </seg>
+        <seg>
+          libtasn1.so
+        </seg>
+        <seg>
+          /usr/share/gtk-doc/html/libtasn1
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="asn1Coding">
+        <term><command>asn1Coding</command></term>
+        <listitem>
+          <para>
+            is an ASN.1 DER encoder
+          </para>
+          <indexterm zone="libtasn1 asn1Coding">
+            <primary sortas="b-asn1Coding">asn1Coding</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="asn1Decoding">
+        <term><command>asn1Decoding</command></term>
+        <listitem>
+          <para>
+            is an ASN.1 DER decoder
+          </para>
+          <indexterm zone="libtasn1 asn1Decoding">
+            <primary sortas="b-asn1Decoding">asn1Decoding</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="asn1Parser">
+        <term><command>asn1Parser</command></term>
+        <listitem>
+          <para>
+            is an ASN.1 syntax tree generator for
+            <application>libtasn1</application>
+          </para>
+          <indexterm zone="libtasn1 asn1Parser">
+            <primary sortas="b-asn1Parser">asn1Parser</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtasn1-lib">
+        <term><filename class="libraryfile">libtasn1.so</filename></term>
+        <listitem>
+          <para>
+            is a library for Abstract Syntax Notation One (ASN.1) and
+            Distinguish Encoding Rules (DER) manipulation
+          </para>
+          <indexterm zone="libtasn1 libtasn1-lib">
+            <primary sortas="c-libtasn1">libtasn1.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

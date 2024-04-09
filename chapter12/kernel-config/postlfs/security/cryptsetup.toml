@@ -1,0 +1,12 @@
+MD='*'
+BLK_DEV_DM='*M'
+DM_CRYPT='*M'
+# Forced by EXT4_FS && BLOCK
+CRYPTO = { value = '*', forced = '*' }
+CRYPTO_XTS='*M'
+# Not really forced
+CRYPTO_SHA256="*M"
+# Not really forced too
+CRYPTO_AES="*M"
+CRYPTO_USER_API_SKCIPHER="*M"
+CRYPTO_TWOFISH = { value = "*M", comment = "For tests" }

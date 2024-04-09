@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs">
+  <?dbhtml filename="postlfs.html" dir="postlfs"?>
+
+  <title>Post LFS Configuration and Extra Software</title>
+
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="config/config.xml"/>-->
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="security/security.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filesystems/filesystems.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="editors/editors.xml"/>-->
+
+</sect1>

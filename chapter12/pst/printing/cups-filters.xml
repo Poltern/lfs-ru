@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cups-filters-download-http
+  "https://github.com/OpenPrinting/cups-filters/releases/download/&cups-filters-version;/cups-filters-&cups-filters-version;.tar.xz">
+  <!ENTITY cups-filters-download-ftp  " ">
+  <!ENTITY cups-filters-md5sum        "1d9ac8b601ea5e25a42767856a48c4d7">
+  <!ENTITY cups-filters-size          "437 KB">
+  <!ENTITY cups-filters-buildsize     "9.1 MB">
+  <!ENTITY cups-filters-time          "less than 0.1 SBU (Using parallelism=4)">
+]>
+
+<sect1 id="cups-filters" xreflabel="cups-filters-&cups-filters-version;">
+  <?dbhtml filename="cups-filters.html"?>
+
+
+  <title>cups-filters-&cups-filters-version;</title>
+
+  <indexterm zone="cups-filters">
+    <primary sortas="a-cups-filters">cups-filters</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to CUPS Filters</title>
+
+    <para>
+      The <application>CUPS Filters</application> package is only needed
+      to adapt <xref linkend="libcupsfilters"/> and <xref linkend="libppd"/>
+      filter functions for cups-2.x. It should not be needed for cups-3.x.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cups-filters-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cups-filters-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cups-filters-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cups-filters-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cups-filters-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cups-filters-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">CUPS Filters Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libcupsfilters"/> and
+      <xref linkend="libppd"/>
+    </para>
+<!--
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="avahi"/>
+    </para>
+-->
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of CUPS Filters</title>
+
+    <para>
+      Install <application>CUPS Filters</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr                   \
+            --disable-static                \
+            --disable-avahi                 \
+            --docdir=/usr/share/doc/cups-filters-&cups-filters-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a functional test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <parameter>--disable-avahi</parameter>: This switch should be
+      given even <application>Avahi</application> is installed. This is needed
+      due to a flaw in the configure script of
+      <application>CUPS Filters</application>, where it will bail out if
+      <application>Avahi</application> is not installed. Note though that Avahi
+      is not used by this package.
+    </para>
+
+    <!--
+    <para>
+      <option>- -enable-ijs</option>: This switch will allow the pdftoijs
+      filter, for sending PDFs to an HP InkJet Server, to be built.
+    </para>
+    -->
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          driverless, driverless-fax, and foomatic-rip
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/lib/cups/{backend,driver,filter},
+          /usr/share/doc/cups-filters-&cups-filters-version;, and
+          /usr/share/ppd/cupsfilters
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="driverless">
+        <term><command>driverless</command></term>
+        <listitem>
+          <para>
+            is a PPD generator utility for driverless printing
+          </para>
+          <indexterm zone="cups-filters driverless">
+            <primary sortas="b-driverless">driverless</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="driverless-fax">
+        <term><command>driverless-fax</command></term>
+        <listitem>
+          <para>
+            is a wrapper to <command>driverless</command> for FAX type devices
+          </para>
+          <indexterm zone="cups-filters driverless-fax">
+            <primary sortas="b-driverless-fax">driverless-fax</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="foomatic-rip">
+        <term><command>foomatic-rip</command></term>
+        <listitem>
+          <para>
+            is a universal print filter/RIP wrapper which can be used as CUPS
+            filter or stand-alone for spooler-less, direct printing
+          </para>
+          <indexterm zone="cups-filters foomatic-rip">
+            <primary sortas="b-foomatic-rip">foomatic-rip</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+      <!--
+      <varlistentry id="libcupsfilters">
+        <term><filename class="libraryfile">libcupsfilters.so</filename></term>
+        <listitem>
+          <para>
+            contains <application>CUPS Filters</application> API functions
+          </para>
+          <indexterm zone="cups-filters libcupsfilters">
+            <primary sortas="c-libcupsfilters">libcupsfilters.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+      -->
+    </variablelist>
+
+  </sect2>
+
+</sect1>

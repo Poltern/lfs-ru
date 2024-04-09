@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY mdadm-download-http "&kernel-dl;/linux/utils/raid/mdadm/mdadm-&mdadm-version;.tar.xz">
+  <!ENTITY mdadm-download-ftp " ">
+  <!ENTITY mdadm-md5sum        "a42def84e31734a529111394f2289e0e">
+  <!ENTITY mdadm-size          "456 KB">
+  <!ENTITY mdadm-buildsize     "5.5 MB">
+  <!ENTITY mdadm-time          "0.1 SBU">
+<!--  <!ENTITY mdadm-time          "0.1 SBU (tests take about an hour, only partially processor dependent)">-->
+]>
+
+<sect1 id="mdadm" xreflabel="mdadm-&mdadm-version;">
+  <?dbhtml filename="mdadm.html"?>
+
+
+  <title>mdadm-&mdadm-version;</title>
+
+  <indexterm zone="mdadm">
+    <primary sortas="a-mdadm">mdadm</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to mdadm</title>
+
+    <para>
+      The <application>mdadm</application> package contains administration
+      tools for software RAID.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&mdadm-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&mdadm-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &mdadm-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &mdadm-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &mdadm-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &mdadm-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">mdadm Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      A <xref linkend="server-mail"/>
+    </para>
+    <!-- Contains -DSendmail=/usr/sbin/sendmail in the build procedure -->
+
+<!-- I don't think we need this any more... We are now at kernel 6.7.8. - bdubbs
+    <caution>
+      <para>
+        Kernel versions in series 4.1 through 4.4.1 have a broken RAID
+        implementation. Use a kernel with version at or above 4.4.2.
+      </para>
+    </caution>
+-->
+
+  </sect2>
+
+  <sect2 role="kernel" id='mdadm-kernel'>
+    <title>Kernel Configuration</title>
+
+    <para>
+      Enable the following options in the kernel configuration
+      and recompile the kernel, if necessary.  Only the RAID types desired
+      are required.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="mdadm-kernel.xml"/>
+
+    <indexterm zone="mdadm mdadm-kernel">
+      <primary sortas="d-mdadm">mdadm</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of mdadm</title>
+<!--
+    <para>
+      Fix a build error introduced by gcc-7.1:
+    </para>
+
+<screen><userinput>sed 's@-Werror@@' -i Makefile</userinput></screen>
+-->
+    <para>
+      Build <application>mdadm</application> by running the following
+      command:
+    </para>
+
+<screen><userinput>make</userinput></screen>
+
+    <para>
+      This package does not come with a working test suite.
+    </para>
+
+<!--
+    Still lots of errors with mdadm-4.3.  There are a lot of messages
+    like  (KNOWN BROKEN TEST: usually fails).  Finally stopped after
+    15 minutes with /build/mdadm-test/mdadm-4.3/tests/10ddf-geometry... 
+        ERROR: dmesg prints errors when testing 10ddf-geometry! 
+    kern.log shows segfaults.
+      - bdubbs 3 March 24
+
+    The test suite errors out after about half the tests are run.
+    Of those tests, about half fail.
+    There are tests that indicate failure when the test is clearly wrong
+    for the current code.
+    I asked about it at linux-raid@vger.kernel.org, but did not get
+    a responsive answer.
+      - bdubbs 6 January 22
+
+    <para>
+      If you wish to run the tests, ensure that your kernel supports RAID
+      and that a version of mdadm is not already running.  As many as 9 out
+      of 124 tests may fail.
+    </para>
+
+    <caution>
+      <para>
+        The tests edit values in /proc and run tests on software raid devices.
+        They shouldn't be run on systems with active software RAID devices.
+      </para>
+    </caution>
+
+    <para>
+      Run the tests as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="test"><userinput>./test - -keep-going - -logdir=test-logs - -save-logs</userinput></screen>
+-->
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make BINDIR=/usr/sbin install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>make everything</command>: This optional target creates extra
+      programs, particularly a statically-linked version of
+      <command>mdadm</command>. <!-- and also versions of
+      <command>mdassemble</command>. These all need to be manually installed.-->
+      This needs to be manually installed.
+    </para>
+<!-- Tests are not run anymore
+    <para>
+      <parameter>- -keep-going</parameter>: Run the tests to the end, even if one
+      or more tests fail.
+    </para>
+
+    <para>
+      <parameter>- -logdir=test-logs</parameter>: Defines the directory
+      where test logs are saved.
+    </para>
+
+    <para>
+      <parameter>- -save-logs</parameter>:
+      Instructs the test suite to save the logs.
+    </para>
+
+    <para>
+      <option>- -tests=<replaceable>&lt;test1,test2,...&gt;</replaceable></option>:
+      Optional comma separated list of tests to be executed
+      (all tests, if this option is not passed).
+    </para>
+-->
+  </sect2>
+
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>mdadm and mdmon <!--and optionally mdassemble--></seg>
+        <seg>None</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="mdadm-prog">
+        <term><command>mdadm</command></term>
+        <listitem>
+          <para>
+            manages MD devices aka Linux Software RAID
+          </para>
+          <indexterm zone="mdadm mdadm-prog">
+            <primary sortas="b-mdadm-prog">mdadm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mdmon">
+        <term><command>mdmon</command></term>
+        <listitem>
+          <para>
+            monitors MD external metadata arrays
+          </para>
+          <indexterm zone="mdadm mdmon">
+            <primary sortas="b-mdmon">mdmon</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <!-- Seems to be removed without a trace in 4.1
+      <varlistentry id="mdassemble">
+        <term><command>mdassemble</command></term>
+        <listitem>
+          <para>
+            is a tiny program that can be used to assemble MD devices
+            inside an initial ramdisk (initrd) or initramfs
+          </para>
+          <indexterm zone="mdadm mdassemble">
+            <primary sortas="b-mdassemble">mdassemble</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+      -->
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

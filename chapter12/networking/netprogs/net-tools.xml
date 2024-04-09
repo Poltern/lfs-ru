@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY net-tools-download-http "https://downloads.sourceforge.net/project/net-tools/net-tools-&net-tools-version;.tar.xz">
+  <!ENTITY net-tools-download-ftp  " ">
+  <!ENTITY net-tools-md5sum        "78aae762c95e2d731faf88d482e4cde5">
+  <!ENTITY net-tools-size          "228 KB">
+  <!ENTITY net-tools-buildsize     "7.5 MB">
+  <!ENTITY net-tools-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="net-tools" xreflabel="Net-tools-&net-tools-version;">
+  <?dbhtml filename="net-tools.html"?>
+
+
+  <title>Net-tools-&net-tools-version;</title>
+
+  <indexterm zone="net-tools">
+    <primary sortas="a-Net-tools">Net-tools</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Net-tools</title>
+
+    <para>
+      The <application>Net-tools</application> package is a collection
+      of programs for controlling the network subsystem of the Linux kernel.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&net-tools-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&net-tools-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &net-tools-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &net-tools-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &net-tools-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &net-tools-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/net-tools-&net-tools-version;-remove_dups-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Net-tools</title>
+
+    <para id="net-tools-automate-example" xreflabel="Net-tools">
+      The instructions below automate the configuration process by piping
+      <command>yes</command> to the <command>make</command> command.
+      If you wish to run the interactive configuration process (by changing
+      the instruction to just <command>make</command>), but you are
+      not sure how to answer all the questions, then just accept the defaults.
+      This will be just fine in the majority of cases. What you're asked here
+      is a bunch of questions about which network protocols you've enabled
+      in your kernel. The default answers will enable the tools from this
+      package to work with the most common protocols: TCP, PPP, and several
+      others. You still need to actually enable these protocols in the
+      kernel&mdash;what you do here is merely tell the package to include
+      support for those protocols in its programs, but it's up to the kernel
+      to make the protocols available.
+    </para>
+
+    <note>
+      <para>
+        This package has several unneeded protocols and hardware device
+        specific functions that are obsolete. To only build the minimum needed
+        for your system, skip the <command>yes</command> command and answer
+        each question interactively.  The minimum needed options are 'UNIX
+        protocol family' and 'INET (TCP/IP) protocol family'.
+      </para>
+    </note>
+
+    <para>
+      For this package, we use the DESTDIR method of installation in order
+      to easily remove files from the build that overwrite those that we want
+      to keep or are not appropriate for our system.
+    </para>
+
+    <!-- When building with MAKEFLAGS set to a -j value higher than 1, a race
+         condition will occur. -renodr -->
+
+    <para>
+      Install <application>Net-tools</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>export BINDIR='/usr/bin' SBINDIR='/usr/bin' &amp;&amp;
+yes "" | make -j1                           &amp;&amp;
+make DESTDIR=$PWD/install -j1 install       &amp;&amp;
+rm    install/usr/bin/{nis,yp}domainname    &amp;&amp;
+rm    install/usr/bin/{hostname,dnsdomainname,domainname,ifconfig} &amp;&amp;
+rm -r install/usr/share/man/man1            &amp;&amp;
+rm    install/usr/share/man/man8/ifconfig.8 &amp;&amp;
+unset BINDIR SBINDIR</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role='root'><userinput>chown -R root:root install &amp;&amp;
+cp -a install/* /</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>export BINDIR='/usr/bin' SBINDIR='/usr/bin'</command>:
+      Ensure the executables are installed in the correct location.
+    </para>
+
+    <para>
+      <command>yes "" | make </command>: Piping <command>yes</command>
+      to <command>make config</command> skips the interactive configuration and
+      accepts the defaults.
+    </para>
+
+    <para>
+      <command>rm ...</command>: Remove unneeded programs and man pages.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>arp,
+        ipmaddr,
+        iptunnel,
+        mii-tool,
+        nameif,
+        netstat,
+        plipconfig,
+        rarp,
+        route, and
+        slattach
+        </seg>
+        <seg>None</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="arp">
+        <term><command>arp</command></term>
+        <listitem>
+          <para>
+            is used to manipulate the kernel's ARP cache, usually
+            to add or delete an entry, or to dump the entire cache
+          </para>
+          <indexterm zone="net-tools arp">
+            <primary sortas="b-arp">arp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ipmaddr">
+        <term><command>ipmaddr</command></term>
+        <listitem>
+          <para>
+            adds, deletes and shows an interface's multicast addresses
+          </para>
+          <indexterm zone="net-tools ipmaddr">
+            <primary sortas="b-ipmaddr">ipmaddr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="iptunnel">
+        <term><command>iptunnel</command></term>
+        <listitem>
+          <para>
+            adds, changes, deletes and shows an interface's tunnels
+          </para>
+          <indexterm zone="net-tools iptunnel">
+            <primary sortas="b-iptunnel">iptunnel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mii-tool">
+        <term><command>mii-tool</command></term>
+        <listitem>
+          <para>
+            checks or sets the status of a network interface's Media
+            Independent Interface (MII) unit
+          </para>
+          <indexterm zone="net-tools mii-tool">
+            <primary sortas="b-mii-tool">mii-tool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="nameif">
+        <term><command>nameif</command></term>
+        <listitem>
+          <para>
+            names network interfaces based on MAC addresses
+          </para>
+          <indexterm zone="net-tools nameif">
+            <primary sortas="b-nameif">nameif</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="netstat">
+        <term><command>netstat</command></term>
+        <listitem>
+          <para>
+            is used to report network connections, routing tables, and
+            interface statistics
+          </para>
+          <indexterm zone="net-tools netstat">
+            <primary sortas="b-netstat">netstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="plipconfig">
+        <term><command>plipconfig</command></term>
+        <listitem>
+          <para>
+            is used to fine tune the PLIP device parameters, to
+            improve its performance
+          </para>
+          <indexterm zone="net-tools plipconfig">
+            <primary sortas="b-plipconfig">plipconfig</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rarp">
+        <term><command>rarp</command></term>
+        <listitem>
+          <para>
+            is used to manipulate the kernel's RARP table
+          </para>
+          <indexterm zone="net-tools rarp">
+            <primary sortas="b-rarp">rarp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="route">
+        <term><command>route</command></term>
+        <listitem>
+          <para>
+            is used to manipulate the IP routing table
+          </para>
+          <indexterm zone="net-tools route">
+            <primary sortas="b-route">route</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="slattach">
+        <term><command>slattach</command></term>
+        <listitem>
+          <para>
+            attaches a network interface to a serial line. This allows you to
+            use normal terminal lines for point-to-point links to others
+            computers
+          </para>
+          <indexterm zone="net-tools slattach">
+            <primary sortas="b-slattach">slattach</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect2>
+
+</sect1>

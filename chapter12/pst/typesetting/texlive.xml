@@ -1,0 +1,589 @@
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!-- utah -->
+  <!ENTITY texlive-download-http "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/&texlive-year;/texlive-&texlive-version;-source.tar.xz">
+  <!ENTITY texlive-download-ftp  " ">
+  <!ENTITY texlive-md5sum        "1da2f08e3ba4a3708870dd088c1d6823">
+  <!ENTITY texlive-size          "67 MB">
+
+  <!ENTITY texlive-buildsize      "9.1 GB including the additional download and the tests, 8.3 GB installed">
+  <!ENTITY texlive-time           "4.6 SBU including the additional download and the tests, building with parallelism=4">
+
+  <!-- utah -->
+  <!ENTITY texlive-texmf-download-http "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/&texlive-year;/texlive-&texlive-version;-texmf.tar.xz">
+  <!ENTITY texlive-texmf-download-ftp  " ">
+  <!ENTITY texlive-texmf-md5sum        "e67ce334dd0fddda5f4a87b4fcaaf48f">
+  <!ENTITY texlive-texmf-size          "4.0 GB">
+
+  <!ENTITY texlive-extra-download-http "https://ftp.tu-chemnitz.de/pub/tug/historic/systems/texlive/&texlive-year;/texlive-&texlive-version;-extra.tar.xz">
+  <!ENTITY texlive-extra-download-ftp  " ">
+  <!ENTITY texlive-extra-md5sum        "1bd045bd1673ce61bde590c10b86c6cc">
+  <!ENTITY texlive-extra-size          "1.9 MB">
+
+<!-- The following commit will change future installs so that the scripts in
+texmf-dist linked from bin/ are copied instead of symlinks.
+
+commit 0c9707142465610f0e22745a22bf8c71850cef49
+Author: Karl Berry <karl@freefriends.org>
+Date:   Tue Mar 19 22:03:22 2024 +0000
+
+    (%opts): create the generically-named output files as copies by default.
+    (@cmdline_options): allow -no-copy.
+    (help): document.
+    
+    
+    git-svn-id: svn://tug.org/texlive/trunk@70707 c570f23f-e606-0410-a88d-b1316a301751
+
+That was done to simplify the process (windows has always used copy) and will likely
+make the installed sizes somewhat bigger.
+
+There is an option \-\-no-copy for updmap.pl, unclear if that can be used here,
+and it might have been removed by next year. -->
+]>
+
+
+<sect1 id="texlive" xreflabel="texlive-&texlive-version;">
+  <?dbhtml filename="texlive.html"?>
+
+
+  <title>texlive-&texlive-version;-source</title>
+
+  <indexterm zone="texlive">
+    <primary sortas="a-texlive">texlive</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to TeX Live from source</title>
+
+    <note>
+      <para>
+        According to <ulink url="https://www.tug.org/historic/"/> the master
+        site in France only supports ftp and rsync. Now that ftp is generally
+        deprecated, that page has links to mirrors, some of which support https,
+        e.g. in Utah and Chemnitz as well as in China. If you prefer to use a
+        different mirror from the example links here, you will need to navigate
+        to systems/historic/texlive/&texlive-year; or systems/texlive/&texlive-year;
+        as the case may be.
+        <!-- the chinese mirros do not use a 'historic' subdirectory. -->
+      </para>
+    </note>
+
+    <para>
+      Most of TeX Live can be built from source without a pre-existing
+      installation, but <application>xindy</application> (for indexing) needs
+      working versions of <command>latex</command> and
+      <command>pdflatex</command> when configure is run, and the test suite
+      and install for <command>asy</command> (for vector graphics) will fail
+      if TeX has not already been installed. Additionally,
+      <application>biber</application> is not provided within the
+      <application>texlive</application> source and the version of
+      <application>dvisvgm</application> in the
+      <application>texlive</application> tree cannot be built
+      if shared system libraries are used.
+    </para>
+
+      <para>
+      </para>
+    <para>
+      All of those packages are dealt with on their own pages and can be
+      built after installing this package. If you have not already done so, you
+      should start at <xref linkend="tex-path"/> so that the final commands to
+      initialize the new installation will be found.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&texlive-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&texlive-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &texlive-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &texlive-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &texlive-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &texlive-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Required Additional Downloads</bridgehead>
+
+      <para>
+        Much of the texlive environment (including scripts, documentation,
+        fonts, and various other files) is not part of the source tarball.
+        You must download it separately. This will give you all of the
+        additional files which are provided by a full install of the binary
+        version, there is no realistic way to restrict which parts get
+        installed.
+      </para>
+
+      <para>
+        Because of the size of this package, it is unlikely to be mirrored by
+        BLFS mirrors.  In case of difficulty, go to http://www.ctan.org/mirrors/
+        to find a more-accessible mirror.
+      </para>
+
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&texlive-texmf-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&texlive-texmf-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &texlive-texmf-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &texlive-texmf-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+      <para>
+        The tlpdb database is shipped as a separate tarball. The
+        <command>texdoc</command> program needs a cache file derived
+        from this (and will create the cache on its first run).
+      </para>
+
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&texlive-extra-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&texlive-extra-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &texlive-extra-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &texlive-extra-size;
+        </para>
+      </listitem>
+
+<!--  <listitem>
+        <para>
+          Required patch: <ulink url=
+          "&patch-root;/texlive-&texlive-version;-source-security_fix-1.patch"/>
+        </para>
+      </listitem>-->
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">TeX Live from source Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="x-window-system"/>
+    </para>
+
+    <!-- text for recommended libraries -->
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="../../xincludes/texrecommendlibs.xml"/>
+
+<!-- the following ensures jhalfs will set paths before running texlive -->
+
+    <para role="recommended">
+      Furthermore, the instructions below assume you are using the layout
+      described in <xref linkend="tex-path"/>.
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <!-- text for optional deps -->
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="../../xincludes/texoptional.xml"/>
+
+    <bridgehead renderas="sect4">Runtime dependencies</bridgehead>
+    <!-- text for runtime deps, shared with tl-installer -->
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="../../xincludes/texruntime.xml"/>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of TeX Live</title>
+
+    <para>
+      Install TeX Live by running the following commands:
+    </para>
+
+    <caution>
+      <para>
+        If you wish to upgrade to current <application>texlive</application>
+        on an older system where extra packages (<application>asymptote</application>,
+        <!-- Ken: comment biber - usually a new texyear has brought a new version
+        but not so far for 2024. Looking at what it installs it is only perl
+        modules and their man pages so those ought to still exist after the
+        previous year's texlive has been removed.
+        <application>biber</application>, -->
+                                          <application>dvisvgm</application>, or
+        <application>xindy</application>) have been installed, you will need to
+        reinstall those as well as fixing up your <literal>PATH</literal> for
+        <literal>$TEXLIVE_PREFIX</literal>.
+      </para>
+    </caution>
+
+    <note>
+      <para>
+        A successful install requires some texlive
+        commands to be run as the root user, so we will export the TEXARCH
+        variable to let <systemitem class="username">root</systemitem> use it.
+      </para>
+    </note>
+
+    <para>
+      Now, as a normal user:
+    </para>
+
+<!-- if a patch for the source is needed, this should go between the export
+	ande configure. But keeping it there as a commented line adds too much vertical space.
+    patch -Np1 -i ../texlive-&texlive-version;-source-security_fix-1.patch &amp;&amp;-->
+<screen><userinput>export TEXARCH=$(uname -m | sed -e 's/i.86/i386/' -e 's/$/-linux/') &amp;&amp;
+
+mkdir texlive-build &amp;&amp;
+cd    texlive-build &amp;&amp;
+
+../configure -C                                   \
+    --prefix=$TEXLIVE_PREFIX                      \
+    --bindir=$TEXLIVE_PREFIX/bin/$TEXARCH         \
+    --datarootdir=$TEXLIVE_PREFIX                 \
+    --includedir=$TEXLIVE_PREFIX/include          \
+    --infodir=$TEXLIVE_PREFIX/texmf-dist/doc/info \
+    --libdir=$TEXLIVE_PREFIX/lib                  \
+    --mandir=$TEXLIVE_PREFIX/texmf-dist/doc/man   \
+    --disable-native-texlive-build                \
+    --disable-static --enable-shared              \
+    --disable-dvisvgm                             \
+    --with-system-cairo                           \
+    --with-system-fontconfig                      \
+    --with-system-freetype2                       \
+    --with-system-gmp                             \
+    --with-system-graphite2                       \
+    --with-system-harfbuzz                        \
+    --with-system-icu                             \
+    --with-system-libgs                           \
+    --with-system-libpaper                        \
+    --with-system-libpng                          \
+    --with-system-mpfr                            \
+    --with-system-pixman                          \
+    --with-system-zlib                            \
+    --with-banner-add=" - BLFS" &amp;&amp;
+
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make -k check</command>.
+      <!-- https://github.com/rrthomas/libpaper/issues/43 -->
+      One test <filename>psutils.test</filename> is known to fail if
+      using system libpaper because TeX Live includes old versions of both
+      <application>psutils</application> and <application>libpaper</application>
+      which result in a difference in the final decimal places of the psresize
+      test. The <application>libpaper</application> developer does not think
+      this is significant.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<!-- Editors, you can run 'make texlinks' in a DESTDIR by passing
+DESTDIR=some/where -->
+<screen role="root"><userinput>make install-strip &amp;&amp;
+make texlinks      &amp;&amp;
+mkdir -pv                                $TEXLIVE_PREFIX/tlpkg/TeXLive/ &amp;&amp;
+install -v -m644 ../texk/tests/TeXLive/* $TEXLIVE_PREFIX/tlpkg/TeXLive/ &amp;&amp;
+tar -xf ../../texlive-&texlive-version;-extra.tar.xz -C $TEXLIVE_PREFIX/tlpkg --strip-components=2</userinput></screen>
+
+    <note>
+      <para>
+        Only run <command>make texlinks</command> once. If it is rerun,
+        it can change all the program symlinks so that they point to
+        themselves and are useless.
+      </para>
+    </note>
+
+    <para>
+      Now install the additional files as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<!-- if texmf does not need to be patched, remove &amp;&amp; from first line,
+ close userinput, screen, comment pushd, patch, popd -->
+<screen role="root"><userinput>tar -xf ../../texlive-&texmf-version;-texmf.tar.xz -C $TEXLIVE_PREFIX --strip-components=1</userinput></screen>
+
+    <para>
+      Still as the <systemitem class="username">root</systemitem> user,
+      initialize the new system (the command <command>fmtutil-sys
+      --all</command> will produce
+      a <emphasis>lot</emphasis> of output):
+    </para>
+
+<!-- Editors, fmtutil-sys can apparently only be run on
+a real install, as root.  But mktexlsr can be run in a DESTDIR with
+cd /YOUR/TEXMF/ROOT ; ls -LAR ./ >ls-R -->
+
+<screen role="root"><userinput>mktexlsr &amp;&amp;
+fmtutil-sys --all</userinput></screen>
+
+    <para>
+      To allow <xref linkend="evince"/> or <xref linkend="dvisvgm"/> to
+      link to <filename class="libraryfile">libkpathsea.so</filename>,
+      as the &root; user (re)create a symlink from
+      <filename class="directory">/usr/lib</filename>:
+    </para>
+
+<screen role="root"><userinput>ln -svf $TEXLIVE_PREFIX/lib/libkpathsea.so{,.6} /usr/lib</userinput></screen>
+
+    <note>
+      <para>
+        TeX Live does not include the source for ConTeXt, only the items that
+        are at CTAN. Trying to build ConTeXt purely from source on a  BLFS
+        TeX Live system is a niche usage and looks as if it will be more trouble
+        than it is worth.
+      </para>
+
+      <para>
+        If you wish to use ConTeXt with <command>luametatex</command> (most of
+        the old MKII and MKIV code was removed from TeX Live 2023 by the ConTeXt
+        developer), starting with the binary (only installing ConTeXt, 753 MB in
+        March 2024) would probably be the easiest way to bootstrap it. The source
+        for <command>luametatex</command> can be pulled with git from <ulink
+        url="https://github.com/contextgarden/luametatex/tags">github
+        luametatex</ulink>, compiled with meson and ninja, and installed by
+        copying to the correct program directory. This should avoid having to
+        fix all the symlinks etc and also avoid including the many unrelated
+        <!-- trying to use a filename tag here is rejected within para ?? -->
+        parts of texmf-dist.
+        See comments 1 to 5 of
+        <ulink url="&blfs-ticket-root;17823">#17823</ulink>.
+      </para>
+    </note>
+
+    <para>
+      You can now proceed to <xref linkend="asymptote"/>,
+      <xref linkend="biber"/>, <xref linkend="dvisvgm"/> and / or <xref
+      linkend="xindy"/> if you wish to install them.
+    </para>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>-C</command>: create config.cache, this saves significant
+      time in a parallel build.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="../../xincludes/tex-prefix.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="../../xincludes/tex-lib.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/tex-shared.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/tex-system.xml"/>
+<!--
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/tex-xpdf.xml"/>-->
+
+    <para>
+      <parameter>--disable-dvisvgm</parameter>: As noted above, the shipped version
+      of dvisvgm, which has modified configuration files, cannot be built with
+      shared system libraries.
+    </para>
+
+    <para>
+      <command>make texlinks</command> : this runs the texlinks.sh script
+      to create symbolic links from formats to engines.  In
+      practice, several of the targets such as <command>xetex</command> are now
+      separate binaries and for these it will report "file already exists".
+    </para>
+
+    <para>
+      <command>tar -xf texlive-&texmf-version;-texmf.tar.xz -C $TEXLIVE_PREFIX --strip-components=1</command>:
+      the tarball contains the files for the texmf-dist directory, and because
+      of its size we do not want to waste time and space untarring it and then
+      copying the files.
+    </para>
+
+    <para>
+      <command>install -v -m644 ../texk/tests/TeXLive/*
+      $TEXLIVE_PREFIX/tlpkg/TeXLive/</command>: This puts the perl
+      modules <filename>TLConfig.pm</filename> and <filename>TLUtils.pm</filename>
+      into the directory where the binary installer puts them - it is at the
+      start of the perl @INC@ PATH within texlive when installed using the above
+      configure switches. Without these modules, texlive is unusable.
+    </para>
+
+    <para>
+      <command>mktexlsr</command>: Create an <filename>ls-R</filename> file
+      which lists what was installed - this is used by kpathsea to find files.
+    </para>
+
+    <para>
+      <command>fmtutil-sys --all</command>: This initializes the TeX formats,
+      Metafont bases and Metapost mems.
+    </para>
+
+    <para>
+      <option>--without-x</option>: use this if you do not have Xorg installed.
+    </para>
+
+    <para>
+      There are many other '--disable' or '--without' options. Some of them such
+      as <option>--without-texinfo</option> are accepted but no longer do anything,
+      others will prevent a program being built - but the far greater amount of
+      space used for the related items in texmf means there is no obvious benefit
+      from disabling a few of the programs.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>Over 300 binaries and symlinks to scripts</seg>
+        <seg>libkpathsea.so,
+             libptexenc.so,
+             libsynctex.so,
+             libtexlua52.so,
+             libtexluajit.so
+        </seg>
+        <seg>$TEXLIVE_PREFIX/bin,
+             $TEXLIVE_PREFIX/include,
+             $TEXLIVE_PREFIX/lib,
+             $TEXLIVE_PREFIX/texmf-dist
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="texlive-programs">
+        <term><command>TeX&nbsp;programs</command></term>
+        <listitem>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../xincludes/texprogs.xml"/>
+          <indexterm zone="texlive texlive-programs">
+            <primary sortas="b-texlive-programs">TeX Live programs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libkpathsea">
+        <term><filename class="libraryfile">libkpathsea.so</filename></term>
+        <listitem>
+          <para>
+            (kpathsearch) exists to look up a file in a list of directories
+            and is used by <command>kpsewhich</command>
+          </para>
+          <indexterm zone="texlive libkpathsea">
+            <primary sortas="c-libkpathsea">libkpathsea.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libptexenc">
+        <term><filename class="libraryfile">libptexenc.so</filename></term>
+        <listitem>
+          <para>
+            is a library for Japanese pTeX (publishing TeX)
+          </para>
+          <indexterm zone="texlive libptexenc">
+            <primary sortas="c-libptexenc">libptexenc.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libsynctex">
+        <term><filename class="libraryfile">libsynctex.so</filename></term>
+        <listitem>
+          <para>
+            is the SyncTeX (Synchronize TeXnology) parser library
+          </para>
+          <indexterm zone="texlive libsynctex">
+            <primary sortas="c-libsynctex">libsynctex.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtexlua52">
+        <term><filename class="libraryfile">libtexlua52.so</filename></term>
+        <listitem>
+          <para>
+            provides Lua 5.2, modified for use with LuaTeX
+          </para>
+          <indexterm zone="texlive libtexlua52">
+            <primary sortas="c-libtexlua52">libtexlua52.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtexluajit">
+        <term><filename class="libraryfile">libtexluajit.so</filename></term>
+        <listitem>
+          <para>
+            provides LuaJIT, modified for use with LuaJITTeX
+          </para>
+          <indexterm zone="texlive libtexluajit">
+            <primary sortas="c-libtexluajit">libtexluajit.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect2>
+
+</sect1>

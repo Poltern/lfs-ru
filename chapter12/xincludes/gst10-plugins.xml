@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <!-- Since this is referenced in every GStreamer Plugins page, simplify
+    the pages by adding an XInclude. -->
+
+    <note><para>If you need a plugin for a given dependency, that dependency
+    needs to be installed before this package.</para></note>

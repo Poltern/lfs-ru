@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <!-- As part of their move to Meson, the GStreamer developers included a
+         check for an ObjC compiler, since their primary user other than Linux
+         is macOS. -->
+    <note><para>If you do not have an Objective-C compiler installed, the
+    build system for this package will emit a warning about a failed sanity
+    check. This is harmless, and it is safe to continue.</para></note>

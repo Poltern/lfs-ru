@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-config-profile" xreflabel="The Bash Shell Startup Files">
+  <?dbhtml filename="profile.html"?>
+
+
+  <title>The Bash Shell Startup Files</title>
+
+  <para>
+    The shell program <filename>/bin/bash</filename> (hereafter referred to
+    as just "the shell") uses a collection of startup files to help create
+    an environment.  Each file has a specific use and may affect login and
+    interactive environments differently.  The files in the <filename
+    class="directory">/etc</filename> directory generally provide global
+    settings. If an equivalent file exists in your home directory it may
+    override the global settings.
+  </para>
+
+  <para>
+    An interactive login shell is started after a successful login, using
+    <filename>/bin/login</filename>, by reading the
+    <filename>/etc/passwd</filename> file. This shell invocation normally reads
+    <filename>/etc/profile</filename> and its private equivalent
+    <filename>~/.bash_profile</filename> (or <filename>~/.profile</filename>
+    if called as <command>/bin/sh</command>) upon startup.
+  </para>
+
+  <para>
+    An interactive non-login shell is normally started at the command-line
+    using a shell program (e.g.,
+    <prompt>[prompt]$</prompt><command>/bin/bash</command>) or by the
+    <command>/bin/su</command> command.  An interactive non-login shell is also
+    started with a terminal program such as <command>xterm</command> or
+    <command>konsole</command> from within a graphical environment. This type
+    of shell invocation normally copies the parent environment and then reads
+    the user's <filename>~/.bashrc</filename> file for additional startup
+    configuration instructions.
+  </para>
+
+  <para>
+    A non-interactive shell is usually present when a shell script is
+    running.  It is non-interactive because it is processing a script and not
+    waiting for user input between commands. For these shell invocations, only
+    the environment inherited from the parent shell is used.
+  </para>
+
+  <para>
+    The file <filename>~/.bash_logout</filename> is not used for an
+    invocation of the shell.  It is read and executed when a user exits from an
+    interactive login shell.
+  </para>
+
+  <para>
+    Many distributions use <filename>/etc/bashrc</filename> for system wide
+    initialization of non-login shells. This file is usually called from the
+    user's <filename>~/.bashrc</filename> file and is not built directly into
+    <command>bash</command> itself.  This convention is followed in this
+    section.
+  </para>
+
+  <para>
+    For more information see <command>info bash</command> --
+    <emphasis role="strong">Nodes: Bash Startup Files and Interactive
+    Shells</emphasis>.
+  </para>
+
+  <note>
+    <para>
+      Most of the instructions below are used to create files located in the
+      <filename class='directory'>/etc</filename> directory structure which
+      requires you to execute the commands as the <systemitem
+      class='username'>root</systemitem> user. If you elect to create the
+      files in user's home directories instead, you should run the commands
+      as an unprivileged user.
+    </para>
+  </note>
+
+  <para condition="html" role="usernotes">Editor Notes:
+  <ulink url="&blfs-wiki;/bash-shell-startup-files"/></para>
+
+  <sect2 id="etc-profile-profile">
+    <title>/etc/profile</title>
+
+    <indexterm zone="postlfs-config-profile etc-profile-profile">
+      <primary sortas="e-etc-profile">/etc/profile</primary>
+    </indexterm>
+
+    <para>
+      Here is a base <filename>/etc/profile</filename>. This file starts by
+      setting up some helper functions and some basic parameters. It specifies
+      some <command>bash</command> history parameters and, for security
+      purposes, disables keeping a permanent history file for the <systemitem
+      class="username">root</systemitem> user.  It also sets a default user
+      prompt.  It then calls small, single purpose scripts in the <filename
+      class='directory'>/etc/profile.d</filename> directory to provide most
+      of the initialization.
+    </para>
+
+    <para>
+      For more information on the escape sequences you can use for your prompt
+      (i.e., the <envar>PS1</envar> environment variable) see <command>info
+      bash</command> -- <emphasis role="strong">Node: Printing a
+      Prompt</emphasis>.
+    </para>
+
+<screen role="root"><?dbfo keep-together="auto"?><userinput>cat &gt; /etc/profile &lt;&lt; "EOF"
+<literal># Begin /etc/profile
+# Written for Beyond Linux From Scratch
+# by James Robertson &lt;jameswrobertson@earthlink.net&gt;
+# modifications by Dagmar d'Surreal &lt;rivyqntzne@pbzpnfg.arg&gt;
+
+# System wide environment variables and startup programs.
+
+# System wide aliases and functions should go in /etc/bashrc.  Personal
+# environment variables and startup programs should go into
+# ~/.bash_profile.  Personal aliases and functions should go into
+# ~/.bashrc.
+
+# Functions to help us manage paths.  Second argument is the name of the
+# path variable to be modified (default: PATH)
+pathremove () {
+        local IFS=':'
+        local NEWPATH
+        local DIR
+        local PATHVARIABLE=${2:-PATH}
+        for DIR in ${!PATHVARIABLE} ; do
+                if [ "$DIR" != "$1" ] ; then
+                  NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+                fi
+        done
+        export $PATHVARIABLE="$NEWPATH"
+}
+
+pathprepend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+
+pathappend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+
+export -f pathremove pathprepend pathappend
+
+# Set the initial path
+export PATH=/usr/bin
+
+# Attempt to provide backward compatibility with LFS earlier than 11
+if [ ! -L /bin ]; then
+        pathappend /bin
+fi
+
+if [ $EUID -eq 0 ] ; then
+        pathappend /usr/sbin
+        if [ ! -L /sbin ]; then
+                pathappend /sbin
+        fi
+        unset HISTFILE
+fi
+
+# Set up some environment variables.
+export HISTSIZE=1000
+export HISTIGNORE="&amp;:[bf]g:exit"
+
+# Set some defaults for graphical systems
+export XDG_DATA_DIRS=${XDG_DATA_DIRS:-/usr/share}
+export XDG_CONFIG_DIRS=${XDG_CONFIG_DIRS:-/etc/xdg}
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/tmp/xdg-$USER}
+
+# Set up a red prompt for root and a green one for users.
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+if [[ $EUID == 0 ]] ; then
+  PS1="$RED\u [ $NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+
+for script in /etc/profile.d/*.sh ; do
+        if [ -r $script ] ; then
+                . $script
+        fi
+done
+
+unset script RED GREEN NORMAL
+
+# End /etc/profile</literal>
+EOF</userinput></screen>
+
+    <sect3 id="etc-profile.d">
+      <title>The /etc/profile.d Directory</title>
+
+      <indexterm zone="postlfs-config-profile etc-profile.d">
+        <primary sortas="e-etc-profile.d">/etc/profile.d</primary>
+      </indexterm>
+
+      <para>
+        Now create the <filename class='directory'>/etc/profile.d</filename>
+        directory, where the individual initialization scripts are placed:
+      </para>
+
+<screen role="root"><userinput>install --directory --mode=0755 --owner=root --group=root /etc/profile.d</userinput></screen>
+
+    </sect3>
+
+    <sect3 id="etc-profile.d-bash-completion.sh">
+      <title>/etc/profile.d/bash_completion.sh</title>
+
+      <indexterm zone="postlfs-config-profile etc-profile.d-bash-completion.sh">
+        <primary sortas="e-etc-profile.d-bash-completion.sh">/etc/profile.d/bash_completion.sh</primary>
+      </indexterm>
+
+      <note>
+        <para>
+          Using the bash completion script below is controversial. Not all
+          users like it.  It adds many (usually over 1000) lines to the bash
+          environment and makes it difficult to use the 'set' command to
+          examine simple environment variables.  Omitting this script does
+          not interfere with the ability of bash to use the tab key for file
+          name completion.
+        </para>
+      </note>
+
+      <para>
+        This script imports bash completion scripts, installed by many
+        other BLFS packages, to allow TAB command line completion.
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/bash_completion.sh &lt;&lt; "EOF"
+<literal># Begin /etc/profile.d/bash_completion.sh
+# Import bash completion scripts
+
+# If the bash-completion package is installed, use its configuration instead
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+
+  # Check for interactive bash and that we haven't already been sourced.
+  if [ -n "${BASH_VERSION-}" -a -n "${PS1-}" -a -z "${BASH_COMPLETION_VERSINFO-}" ]; then
+
+    # Check for recent enough version of bash.
+    if [ ${BASH_VERSINFO[0]} -gt 4 ] || \
+       [ ${BASH_VERSINFO[0]} -eq 4 -a ${BASH_VERSINFO[1]} -ge 1 ]; then
+       [ -r "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion" ] &amp;&amp; \
+            . "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
+       if shopt -q progcomp &amp;&amp; [ -r /usr/share/bash-completion/bash_completion ]; then
+          # Source completion code.
+          . /usr/share/bash-completion/bash_completion
+       fi
+    fi
+  fi
+
+else
+
+  # bash-completions are not installed, use only bash completion directory
+  if shopt -q progcomp; then
+    for script in /etc/bash_completion.d/* ; do
+      if [ -r $script ] ; then
+        . $script
+      fi
+    done
+  fi
+fi
+
+# End /etc/profile.d/bash_completion.sh</literal>
+EOF</userinput></screen>
+      <para>
+        Make sure that the directory exists:
+      </para>
+
+<screen role="root"><userinput>install --directory --mode=0755 --owner=root --group=root /etc/bash_completion.d</userinput></screen>
+
+      <para>
+        For a more complete installation, see
+        <ulink url="&blfs-wiki;/bash-shell-startup-files#bash-completions"/>.
+      </para>
+
+    </sect3>
+
+    <sect3 id="etc-profile.d-dircolors.sh">
+      <title>/etc/profile.d/dircolors.sh</title>
+
+      <indexterm zone="postlfs-config-profile etc-profile.d-dircolors.sh">
+        <primary sortas="e-etc-profile.d-dircolors.sh">/etc/profile.d/dircolors.sh</primary>
+      </indexterm>
+
+      <para>
+        This script uses the <filename>~/.dircolors</filename> and
+        <filename>/etc/dircolors</filename> files to control the colors of
+        file names in a directory listing. They control colorized output of
+        things like <command>ls --color</command>.  The explanation of how to
+        initialize these files is at the end of this section.
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/dircolors.sh &lt;&lt; "EOF"
+<literal># Setup for /bin/ls and /bin/grep to support color, the alias is in /etc/bashrc.
+if [ -f "/etc/dircolors" ] ; then
+        eval $(dircolors -b /etc/dircolors)
+fi
+
+if [ -f "$HOME/.dircolors" ] ; then
+        eval $(dircolors -b $HOME/.dircolors)
+fi
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+    <sect3 id="extrapaths.sh">
+      <title>/etc/profile.d/extrapaths.sh</title>
+
+      <indexterm zone="postlfs-config-profile extrapaths.sh">
+        <primary sortas="e-etc-profile.d-extrapaths.sh">/etc/profile.d/extrapaths.sh</primary>
+      </indexterm>
+
+      <para>
+        This script adds some useful paths to the <envar>PATH</envar> and
+        can be used to customize other PATH related environment variables
+        (e.g. LD_LIBRARY_PATH, etc) that may be needed for all users.
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/extrapaths.sh &lt;&lt; "EOF"
+<literal>if [ -d /usr/local/lib/pkgconfig ] ; then
+        pathappend /usr/local/lib/pkgconfig PKG_CONFIG_PATH
+fi
+if [ -d /usr/local/bin ]; then
+        pathprepend /usr/local/bin
+fi
+if [ -d /usr/local/sbin -a $EUID -eq 0 ]; then
+        pathprepend /usr/local/sbin
+fi
+
+if [ -d /usr/local/share ]; then
+        pathprepend /usr/local/share XDG_DATA_DIRS
+fi
+
+# Set some defaults before other applications add to these paths.
+pathappend /usr/share/man  MANPATH
+pathappend /usr/share/info INFOPATH</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+    <sect3 id="readline.sh">
+      <title>/etc/profile.d/readline.sh</title>
+
+      <indexterm zone="postlfs-config-profile readline.sh">
+        <primary sortas="e-etc-profile.d-readline.sh">/etc/profile.d/readline.sh</primary>
+      </indexterm>
+
+      <para>
+        This script sets up the default <filename>inputrc</filename>
+        configuration file. If the user does not have individual settings, it
+        uses the global file.
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/readline.sh &lt;&lt; "EOF"
+<literal># Set up the INPUTRC environment variable.
+if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ] ; then
+        INPUTRC=/etc/inputrc
+fi
+export INPUTRC</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+    <sect3 id="umask.sh">
+      <title>/etc/profile.d/umask.sh</title>
+
+      <indexterm zone="postlfs-config-profile umask.sh">
+        <primary sortas="e-etc-profile.d-umask.sh">/etc/profile.d/umask.sh</primary>
+      </indexterm>
+
+      <para>
+        Setting the <command>umask</command> value is important for security.
+        Here the default group write permissions are turned off for system
+        users and when the user name and group name are not the same.
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/umask.sh &lt;&lt; "EOF"
+<literal># By default, the umask should be set.
+if [ "$(id -gn)" = "$(id -un)" -a $EUID -gt 99 ] ; then
+  umask 002
+else
+  umask 022
+fi</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+<!-- This is handled in the Xorg section of the book
+    <sect3 id="X.sh">
+      <title>/etc/profile.d/X.sh</title>
+
+      <indexterm zone="postlfs-config-profile X.sh">
+        <primary sortas="e-etc-profile.d-X.sh">/etc/profile.d/X.sh</primary>
+      </indexterm>
+
+      <para>
+        If <application>X</application> is installed, the <envar>PATH</envar>
+        and <envar>PKG_CONFIG_PATH</envar> variables are also updated.
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/X.sh &lt;&lt; "EOF"
+<literal>if [ -x /usr/X11R6/bin/X ]; then
+        pathappend /usr/X11R6/bin
+fi
+if [ -d /usr/X11R6/lib/pkgconfig ] ; then
+        pathappend /usr/X11R6/lib/pkgconfig PKG_CONFIG_PATH
+fi</literal>
+EOF</userinput></screen>
+
+    </sect3>
+-->
+    <sect3 id="i18n.sh">
+    <!-- This is handled system wide on systemd but LANG is not exported to
+         the environment, hence it's return...need to add additional text for
+         systemd only -->
+      <title>/etc/profile.d/i18n.sh</title>
+
+    <indexterm zone="postlfs-config-profile i18n.sh">
+      <primary sortas="e-etc-profile.d-i18n.sh">/etc/profile.d/i18n.sh</primary>
+    </indexterm>
+
+      <para>
+        This script sets an environment variable necessary for
+        native language support. A full discussion on determining this
+        variable can be found on the <ulink
+        url="&lfs-root;/chapter09/locale.html">Configuring the System
+        Locale</ulink> page.
+      </para>
+
+<screen role="root" revision="sysv"><userinput>cat &gt; /etc/profile.d/i18n.sh &lt;&lt; "EOF"
+<literal># Set up i18n variables
+for i in $(locale); do
+  unset ${i%=*}
+done
+
+if [[ "$TERM" = linux ]]; then
+  export LANG=C.UTF-8
+else
+  export LANG=<replaceable>&lt;ll&gt;</replaceable>_<replaceable>&lt;CC&gt;</replaceable>.<replaceable>&lt;charmap&gt;</replaceable><replaceable>&lt;@modifiers&gt;</replaceable>
+fi</literal>
+EOF</userinput></screen>
+
+<screen role="root" revision="systemd"><userinput>cat &gt; /etc/profile.d/i18n.sh &lt;&lt; "EOF"
+<literal># Set up i18n variables
+for i in $(locale); do
+  unset ${i%=*}
+done
+
+if [[ "$TERM" = linux ]]; then
+  export LANG=C.UTF-8
+else
+  source /etc/locale.conf
+
+  for i in $(locale); do
+    key=${i%=*}
+    if [[ -v $key ]]; then
+      export $key
+    fi
+  done
+fi</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+    <sect3>
+      <title>Other Initialization Values</title>
+
+      <para>
+        Other initialization can easily be added to the
+        <filename>profile</filename> by adding additional scripts to the
+        <filename class='directory'>/etc/profile.d</filename> directory.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 id="etc-bashrc-profile">
+    <title>/etc/bashrc</title>
+
+    <indexterm zone="postlfs-config-profile etc-bashrc-profile">
+      <primary sortas="e-etc-bashrc">/etc/bashrc</primary>
+    </indexterm>
+
+    <para>
+      Here is a base <filename>/etc/bashrc</filename>.  Comments in the
+      file should explain everything you need.
+    </para>
+
+<screen role="root"><userinput>cat &gt; /etc/bashrc &lt;&lt; "EOF"
+<literal># Begin /etc/bashrc
+# Written for Beyond Linux From Scratch
+# by James Robertson &lt;jameswrobertson@earthlink.net&gt;
+# updated by Bruce Dubbs &lt;bdubbs@&lfs-domainname;&gt;
+
+# System wide aliases and functions.
+
+# System wide environment variables and startup programs should go into
+# /etc/profile.  Personal environment variables and startup programs
+# should go into ~/.bash_profile.  Personal aliases and functions should
+# go into ~/.bashrc
+
+# Provides colored /bin/ls and /bin/grep commands.  Used in conjunction
+# with code in /etc/profile.
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Provides prompt for non-login shells, specifically shells started
+# in the X environment. [Review the LFS archive thread titled
+# PS1 Environment Variable for a great case study behind this script
+# addendum.]
+
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+if [[ $EUID == 0 ]] ; then
+  PS1="$RED\u [ $NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+
+unset RED GREEN NORMAL
+
+# End /etc/bashrc</literal>
+EOF</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="bash_profile-profile">
+    <title>~/.bash_profile</title>
+
+    <indexterm zone="postlfs-config-profile bash_profile-profile">
+      <primary sortas="e-AA.bash_profile">~/.bash_profile</primary>
+    </indexterm>
+
+    <para>
+      Here is a base <filename>~/.bash_profile</filename>.  If you want each
+        new user to have this file automatically, just change the output of
+      the command to <filename>/etc/skel/.bash_profile</filename> and check the
+      permissions after the command is run. You can then copy <filename>
+      /etc/skel/.bash_profile</filename> to the home directories of already
+      existing users, including <systemitem class="username">root</systemitem>,
+      and set the owner and group appropriately.
+    </para>
+
+<screen><userinput>cat &gt; ~/.bash_profile &lt;&lt; "EOF"
+<literal># Begin ~/.bash_profile
+# Written for Beyond Linux From Scratch
+# by James Robertson &lt;jameswrobertson@earthlink.net&gt;
+# updated by Bruce Dubbs &lt;bdubbs@&lfs-domainname;&gt;
+
+# Personal environment variables and startup programs.
+
+# Personal aliases and functions should go in ~/.bashrc.  System wide
+# environment variables and startup programs are in /etc/profile.
+# System wide aliases and functions are in /etc/bashrc.
+
+if [ -f "$HOME/.bashrc" ] ; then
+  source $HOME/.bashrc
+fi
+
+if [ -d "$HOME/bin" ] ; then
+  pathprepend $HOME/bin
+fi
+
+# Having . in the PATH is dangerous
+#if [ $EUID -gt 99 ]; then
+#  pathappend .
+#fi
+
+# End ~/.bash_profile</literal>
+EOF</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="dot_profile-profile">
+    <title>~/.profile</title>
+
+    <indexterm zone="postlfs-config-profile dot_profile-profile">
+      <primary sortas="e-AA.dot_profile">~/.profile</primary>
+    </indexterm>
+
+    <para>
+      Here is a base <filename>~/.profile</filename>. The comments and
+      instructions for using <filename class="directory">/etc/skel</filename>
+      for <filename>.bash_profile</filename> above also apply here. Only the
+      target file names are different.
+    </para>
+
+<screen><userinput>cat &gt; ~/.profile &lt;&lt; "EOF"
+<literal># Begin ~/.profile
+# Personal environment variables and startup programs.
+
+if [ -d "$HOME/bin" ] ; then
+  pathprepend $HOME/bin
+fi
+
+# Set up user specific i18n variables
+#export LANG=<replaceable>&lt;ll&gt;</replaceable>_<replaceable>&lt;CC&gt;</replaceable>.<replaceable>&lt;charmap&gt;</replaceable><replaceable>&lt;@modifiers&gt;</replaceable>
+
+# End ~/.profile</literal>
+EOF</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="bashrc-profile">
+    <title>~/.bashrc</title>
+
+    <indexterm zone="postlfs-config-profile bashrc-profile">
+      <primary sortas="e-AA.bashrc">~/.bashrc</primary>
+    </indexterm>
+
+    <para>
+      Here is a base <filename>~/.bashrc</filename>.
+    </para>
+
+<screen><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
+<literal># Begin ~/.bashrc
+# Written for Beyond Linux From Scratch
+# by James Robertson &lt;jameswrobertson@earthlink.net&gt;
+
+# Personal aliases and functions.
+
+# Personal environment variables and startup programs should go in
+# ~/.bash_profile.  System wide environment variables and startup
+# programs are in /etc/profile.  System wide aliases and functions are
+# in /etc/bashrc.
+
+if [ -f "/etc/bashrc" ] ; then
+  source /etc/bashrc
+fi
+
+# Set up user specific i18n variables
+#export LANG=<replaceable>&lt;ll&gt;</replaceable>_<replaceable>&lt;CC&gt;</replaceable>.<replaceable>&lt;charmap&gt;</replaceable><replaceable>&lt;@modifiers&gt;</replaceable>
+
+# End ~/.bashrc</literal>
+EOF</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="bash_logout-profile">
+    <title>~/.bash_logout</title>
+
+    <indexterm zone="postlfs-config-profile bash_logout-profile">
+      <primary sortas="e-AA.bash_logout">~/.bash_logout</primary>
+    </indexterm>
+
+    <para>
+      This is an empty <filename>~/.bash_logout</filename> that can be used as
+      a template.  You will notice that the base <filename>~/.bash_logout
+      </filename> does not include a <userinput>clear</userinput> command.
+      This is because the clear is handled in the
+      <filename>/etc/issue</filename> file.
+    </para>
+
+<screen><userinput>cat &gt; ~/.bash_logout &lt;&lt; "EOF"
+<literal># Begin ~/.bash_logout
+# Written for Beyond Linux From Scratch
+# by James Robertson &lt;jameswrobertson@earthlink.net&gt;
+
+# Personal items to perform on logout.
+
+# End ~/.bash_logout</literal>
+EOF</userinput></screen>
+
+  </sect2>
+
+
+  <sect2 id="etc-dircolors-profile">
+    <title>/etc/dircolors</title>
+
+    <indexterm zone="postlfs-config-profile etc-dircolors-profile">
+      <primary sortas="e-etc-dircolors">/etc/dircolors</primary>
+    </indexterm>
+
+    <indexterm zone="postlfs-config-profile etc-dircolors-profile">
+      <primary sortas="e-AA.dircolors">~/.dircolors</primary>
+    </indexterm>
+
+    <para>
+       If you want to use the <filename>dircolors</filename> capability, then
+       run the following command. The <filename class="directory">/etc/skel
+       </filename> setup steps shown above also can be used here to provide
+       a <filename>~/.dircolors</filename> file when a new user is set up.
+       As before, just change the output file name on the following command
+       and assure the permissions, owner, and group are correct on the files
+       created and/or copied.
+    </para>
+
+<screen role="root"><userinput>dircolors -p > /etc/dircolors</userinput></screen>
+
+    <para>
+      If you wish to customize the colors used for different file types, you
+      can edit the <filename>/etc/dircolors</filename> file. The instructions
+      for setting the colors are embedded in the file.
+    </para>
+
+
+    <para>
+      Finally, Ian Macdonald has written an excellent collection of tips and
+      tricks to enhance your shell environment.  You can read it online at
+      <ulink url="https://www.caliban.org/bash/index.shtml"/>.
+    </para>
+
+  </sect2>
+
+</sect1>

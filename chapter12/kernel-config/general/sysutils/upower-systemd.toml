@@ -1,0 +1,5 @@
+revision = 'systemd'
+
+# Forced by !EXPERT
+NAMESPACES = { value = '*', forced = true }
+USER_NS='*'

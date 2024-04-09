@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-filesystems">
+  <?dbhtml filename="filesystems.html"?>
+
+  <title>File Systems and Disk Management</title>
+
+  <para>
+    Journaling file systems reduce the time needed to recover a file system
+    that was not unmounted properly.  While this can be extremely important in
+    reducing downtime for servers, it has also become popular for desktop
+    environments.  This chapter contains other journaling file systems you can
+    use instead of the default LFS extended file system (ext2/3/4). It also
+    provides introductory material on managing disk arrays.
+  </para>
+
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="btrfs-progs.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dosfstools.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lvm2.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="aboutlvm.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="aboutraid.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mdadm.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gptfdisk.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="parted.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xfsprogs.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="uefi-bootloaders/dummy.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="uefi-bootloaders/efivar.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="uefi-bootloaders/efibootmgr.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="uefi-bootloaders/grub-efi.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="uefi-bootloaders/grub-setup.xml"/>
+
+</sect1>

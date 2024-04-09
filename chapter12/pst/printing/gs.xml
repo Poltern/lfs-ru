@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!--  When updating, ensure gs-packver is updated in packages.ent -->
+
+  <!ENTITY gs-download-http
+  "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs&gs-packver;/ghostscript-&gs-dl-version;.tar.xz">
+  <!ENTITY gs-download-ftp  " ">
+  <!ENTITY gs-md5sum        "44e8ae7e2ce5bb0e5e2ba1134b51d043">
+  <!ENTITY gs-size          "65 MB">
+  <!ENTITY gs-buildsize     "383 MB (with fonts and libgs.so)">
+  <!ENTITY gs-time          "1.4 SBU (Using parallelism=4; with libgs.so)">
+
+  <!ENTITY gs-standard-fonts-download
+  "&sourceforge-dl;/gs-fonts/ghostscript-fonts-std-8.11.tar.gz">
+  <!ENTITY gs-standard-fonts-md5sum   "6865682b095f8c4500c54b285ff05ef6">
+  <!ENTITY gs-standard-fonts-size     "3.7 MB">
+
+  <!ENTITY gs-other-fonts-download
+  "&sourceforge-dl;/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz">
+  <!ENTITY gs-other-fonts-md5sum      "33457d3f37de7ef03d2eea05a9e6aa4f">
+  <!ENTITY gs-other-fonts-size        "796 KB">
+]>
+
+<sect1 id="gs" xreflabel="ghostscript-&gs-version;">
+  <?dbhtml filename="gs.html"?>
+
+
+  <title>ghostscript-&gs-version;</title>
+
+  <indexterm zone="gs">
+    <primary sortas="a-Ghostscript">Ghostscript</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Ghostscript</title>
+
+    <para>
+      <application>Ghostscript</application> is a versatile processor
+      for PostScript data with the ability to render PostScript to different
+      targets. It is a mandatory part of the cups printing stack.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gs-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gs-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gs-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gs-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gs-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gs-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <!-- devs: do not comment out the bridgehead, unless you comment
+         out all the additional downloads (including font files)
+         Commenting this out since it's no longer needed, but keeping it for the
+         inevitable next time that we need a patch for this package.-->
+<!--
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/ghostscript-&gs-version;-upstream_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <para>
+      If you wish, you can download additional fonts.
+    </para>
+
+    <itemizedlist spacing="compact">
+      <title>Standard Fonts</title>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gs-standard-fonts-download;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gs-standard-fonts-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gs-standard-fonts-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <itemizedlist spacing="compact">
+      <title>Other Fonts</title>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gs-other-fonts-download;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gs-other-fonts-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gs-other-fonts-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Ghostscript Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="cups"/> (required for building the <quote>cups</quote>
+      device backend, which is needed by
+      <application>cups-filters</application>),
+      <xref linkend="fontconfig"/> (required, if you are installing any
+      suggested font),
+      <xref linkend="freetype2"/>,
+      <xref linkend="lcms2"/>,
+      <xref linkend="libjpeg"/>,
+      <xref linkend="libpng"/>,
+      <xref linkend="libtiff"/>, and
+      <xref linkend="openjpeg2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="cairo"/>,
+      <xref linkend="gtk3"/>,
+      <xref linkend="libidn"/>,
+      <xref linkend="libpaper"/>,
+      <xref linkend="libwebp"/>, and
+      <xref linkend="x-window-system"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Ghostscript</title>
+
+    <note>
+      <para>
+        The <application>Ghostscript</application> build system is not
+        user-friendly. In order to use system copies of various graphics
+        libraries, you must do it using unconventional methods.
+      </para>
+    </note>
+
+    <para>
+      <application>Ghostscript</application> includes (old) copies of
+      several libraries. Some of these seem to have been patched to fix known
+      vulnerabilities, but others of these copies are less-well maintained.
+      To ensure that any future fixes are applied throughout the whole system,
+      it is recommended that you first install the released versions of these
+      libraries and then configure <application>Ghostscript</application>
+      to link to them.
+    </para>
+
+    <para>
+      If you have installed the recommended dependencies on your system,
+      remove the copies of
+      <application>freetype</application>, <application>lcms2</application>,
+      <application>libjpeg</application>, <application>libpng</application>,
+      and <application>openjpeg</application>:
+    </para>
+
+<screen><userinput>rm -rf freetype lcms2mt jpeg libpng openjpeg</userinput></screen>
+
+<!--
+    <para>
+      Apply an upstream fix to prevent a build problem.
+    </para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../ghostscript-&gs-version;-upstream_fix-1.patch</userinput></screen>
+-->
+    <para>
+      Compile <application>Ghostscript</application>:
+    </para>
+
+<screen><userinput>rm -rf zlib &amp;&amp;
+
+./configure --prefix=/usr           \
+            --disable-compile-inits \
+            --with-system-libtiff   &amp;&amp;
+make</userinput></screen>
+
+    <note>
+      <para>
+        The shared library depends on <xref linkend="gtk3"/>. It is only used by
+        external programs like <xref linkend="asymptote"/>, <xref
+        linkend="dvisvgm"/>, and <xref linkend="imagemagick"/>.
+      </para>
+    </note>
+
+    <para>
+      To compile the shared library
+      <filename class="libraryfile">libgs.so</filename>, run the following
+      additional command as an unprivileged user:
+    </para>
+
+<screen><userinput>make so</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.  A set of example files
+      may be used for testing, but it is only possible after installation
+      of the package.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you want the shared library too:
+    </para>
+
+<screen role="root"><userinput>make soinstall &amp;&amp;
+install -v -m644 base/*.h /usr/include/ghostscript &amp;&amp;
+ln -sfvn ghostscript /usr/include/ps</userinput></screen>
+
+    <para>
+      Now make the documentation accessible from a standard place:
+    </para>
+<!-- Starting with 9.23, the install does not seem to copy the examples any more -->
+
+<screen role="root"><userinput>mv -v /usr/share/doc/ghostscript/&gs-version; /usr/share/doc/ghostscript-&gs-version;  &amp;&amp;
+cp -r examples/ -T /usr/share/ghostscript/&gs-version;/</userinput></screen>
+
+    <para>
+      If you have downloaded the fonts, unpack them to
+      <filename class="directory">/usr/share/ghostscript</filename> and ensure
+      the ownership of the files are
+      <systemitem class="username">root</systemitem>:
+      <systemitem class="groupname">root</systemitem>.
+    </para>
+
+<screen role="root"><userinput>tar -xvf ../ghostscript-fonts-std-8.11.tar.gz -C /usr/share/ghostscript --no-same-owner &amp;&amp;
+tar -xvf ../gnu-gs-fonts-other-6.0.tar.gz     -C /usr/share/ghostscript --no-same-owner &amp;&amp;
+fc-cache -v /usr/share/ghostscript/fonts/</userinput></screen>
+
+    <para>
+      You can now test the rendering of various postscript and pdf files from the
+      <filename class="directory">/usr/share/ghostscript/&gs-version;/examples
+      </filename>. To do this, run the following command (in a X Windows display):
+    </para>
+
+<screen remap="test"><userinput>gs -q -dBATCH /usr/share/ghostscript/&gs-version;/examples/tiger.eps</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>rm -rf zlib </command>: <application>zlib</application>
+      was installed as part of LFS.
+    </para>
+
+    <para>
+      <parameter>--disable-compile-inits</parameter>: This option makes
+      <command>gs</command> and <filename>libgs.so</filename> slightly smaller.
+    </para>
+
+    <para>
+      <parameter>--with-system-libtiff</parameter>: Remove this option if
+      you've not installed <xref linkend="libtiff"/>.
+    </para>
+
+    <para>
+      <command>install -v -m644 base/*.h... </command>: Some packages
+      (<application>ImageMagick</application> is one) need the
+      <application>Ghostscript</application> interface headers in place to link
+      to the shared library. These commands install the headers.
+    </para>
+
+    <para>
+      <command>ln -sfvn ghostscript /usr/include/ps</command>: Some packages
+      expect to find the interface headers in an alternate location.
+    </para>
+
+    <para>
+        <command>mv -v /usr/share/doc/ghostscript/&gs-version;
+        /usr/share/doc/ghostscript-&gs-version;</command>: This moves the
+        documentation where it is expected to be found.
+    </para>
+
+    <para>
+      <option>--disable-cups</option>: this option will save a tiny amount of
+      space by not linking <command>gs</command> and <filename>libgs.so</filename>
+      to the <xref linkend="cups"/> libraries if you have installed those.
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          dvipdf, eps2eps, gs, gsbj, gsc (from soinstall), gsdj,
+          gsdj500, gslj, gslp, gsnd, gsx (from soinstall), lprsetup.sh,
+          pdf2dsc, pdf2ps, pf2afm, pfbtopfa, pphs, printafm, ps2ascii,
+          ps2epsi, ps2pdf, ps2pdf12, ps2pdf13, ps2pdf14, ps2pdfwr,
+          ps2ps, ps2ps2, and unix-lpr.sh
+          <!-- I don't see bdftops,fixmswrd.pl or pv.sh on my builds [ I don't
+          have any bdf tools from xorg ] but they are still referenced in
+          base/unixinst.mak -->
+        </seg>
+        <seg>libgs.so</seg>
+        <seg>
+          /usr/include/ghostscript,
+          /usr/share/ghostscript, and
+          /usr/share/doc/ghostscript-&gs-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gplgs-prog">
+        <term><command>gs</command></term>
+        <listitem>
+          <para>
+            is an interpreter for Adobe Systems' PostScript(tm) and Portable
+            Document Format (PDF)
+          </para>
+          <indexterm zone="gs gplgs-prog">
+            <primary sortas="b-gs">gs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgs.so">
+        <term><filename class="libraryfile">libgs.so</filename></term>
+        <listitem>
+          <para>
+            provides <application>Ghostscript</application> functionality to
+            other programs, such as <application>GSView</application>,
+            <application>ImageMagick</application>, and
+            <application>libspectre</application>
+          </para>
+          <indexterm zone="gs libgs.so">
+            <primary sortas="c-libgs.so">libgs.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+   </variablelist>
+
+   <para>
+     <application>Ghostscript</application> provides many different
+     scripts used to convert PostScript, PDF, and other formats. Please refer to
+     the HTML documentation or the man pages for information about the
+     capabilities provided.
+    </para>
+  </sect2>
+
+</sect1>

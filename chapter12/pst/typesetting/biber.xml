@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+<!--
+  When a proper url is not evident, github will download with
+  https://github.com/ <path> /archive/<version>/<name>-<version>.tar.<compression>
+
+  <!ENTITY biber-download-http "https://github.com/plk/biber/archive/v&biber-version;.tar.gz">
+-->
+  <!ENTITY biber-download-http "https://github.com/plk/biber/archive/v&biber-version;/biber-&biber-version;.tar.gz">
+  <!ENTITY biber-download-ftp  " ">
+  <!ENTITY biber-md5sum        "a7f400cdac3a3d9d9ab13ca053eb6791">
+  <!ENTITY biber-size          "1.6 MB">
+  <!-- Buildsize includes the installed biblatex, except that what matters is
+    the difference from the files shipped by texlive, so usually the addition is
+    minimal. Copy full texmf to somewhere for working, measure with du -shm,
+    then install biblatex over the top of it and remeasure.
+    For 3.16, texmf grew by 3MB -->
+  <!ENTITY biber-buildsize     "15 MB (installs 1.6MB of perl modules)"> <!-- only include biblatex size if texmf grows -->
+  <!ENTITY biber-time          "0.4 SBU including tests">
+
+  <!-- FIXME - ok to comment biblatex when version for a new year matches
+   what is in texmf-dist. For new version, reinstate to avoid runtime error.
+   The texmf version is at 'revision=' in texmf/doc/latex/biblatex/biblatex.tex -->
+  <!-- Check path.  Directory might not be &biblatex-version; if a suffixed update -->
+ 
+  <!ENTITY biblatex-download-http   "https://sourceforge.net/projects/biblatex/files/biblatex-&biblatex-version;/biblatex-&biblatex-version;.tds.tgz">
+  <!ENTITY biblatex-download-ftp    "">
+  <!ENTITY biblatex-md5sum          "6c4117fd06e12854495a3777523d5372">
+  <!ENTITY biblatex-size            "19 MB">
+  <!-- this usually overwrites files in texmf-dist¸use du -sm to measure
+      before and after - 'buildsize' might easily be unchanged, or add to biber above -->
+  <!-- Unchanged for 3.20, it overwrote everything from 3.19 and rounded to same size -->
+]>
+
+<sect1 id="biber" xreflabel="biber-&biber-version;">
+  <?dbhtml filename="biber.html"?>
+
+
+  <title>biber-&biber-version;</title>
+
+  <indexterm zone="biber">
+    <primary sortas="a-biber">Biber</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to biber</title>
+
+    <para>
+      Biber is a BibTeX replacement for users of biblatex, written in
+      <application>Perl</application>, with full Unicode support.
+    </para>
+
+    &lfs121_checked;
+
+    <!-- note for editors: FIXME please test this by using the latest
+         version of the latex-test tarball from
+         https://www.linuxfromscratch.org/~ken/tex-testfiles/
+         using ./configure (to create the Makefile) and then making the
+         following targets:
+         biblatex-unibiber and biblatex-biber (these just use pdflatex
+         and biber, biblatex-unibiber is more important, it uses UTF-8)
+         bibxelatex (uses xelatex and biber, needs TTF or OTF fonts and
+         in particular coverage of simplified Chinese and Japanese, and
+         optionally Korean - installed fonts for CJK can be specified to
+         configure if they are not found)
+         remote1 and remote2 (pdflatex and biber, for use with manually
+         installed perl modules, i.e. without Mozilla::CA, to prove that
+         remote references work).
+         In all cases the output PDF should include references at the
+         end, the Makefile does not check that for the remote tests.
+         The biblatex-biber test only uses latex, trad markup, and
+         biber, biblatex.
+ -->
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&biber-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&biber-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &biber-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &biber-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &biber-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &biber-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <note>
+
+      <para>
+        The <application>biber</application> source tarball shown above
+        downloads with the correct name, biber-&biber-version;.tar.gz,
+        if using a browser such as Firefox. If you prefer to use a command line
+        program such as wget, you normally would obtain
+        v&biber-version;.tar.gz. To obtain this package with the proper
+        filename, run:
+
+<screen><userinput>wget -c &biber-download-http; \
+     -O biber-&biber-version;.tar.gz</userinput></screen>.
+      </para>
+
+      <para>
+        If you have updated to a new release of texlive-source, biber and its
+        perl dependencies are still present in <filename
+        class="directory">/usr</filename> and do not need to be rebuilt.
+        However, biblatex installs in <filename
+        class="directory">/opt/texlive/&texlive-year;</filename> and does
+        need to be reinstalled.
+      </para>
+
+      <para>
+        If you installed the above dependencies using the BLFS instructions
+        for each of them, <command>perl ./Build.PL</command> will complain
+        that Mozilla::CA is not installed, but that is not needed unless
+        CPAN was used to install the modules. BLFS patches LWP::Protocol::https
+        to use the system certificates, Mozilla::CA uses old certificates.
+      </para>
+
+<!--  <para> ##commented as a reminder that sooner or later it will need a
+        newer version than our current or last but one release ##
+        This version of biber requires <application>perl-5.30</application>
+        or later.  If you are still using the 8.4 version of BLFS you may
+        wish to build the 2.13 version: see the 8.4 book noting that
+        biblatex-3.13 has been replaced by biblatex-3.13a upstream.
+      </para>-->
+    </note>
+
+    <!-- TexLive 2024 shipped biblatex-3.19.  Uncomment if a newer
+         biber requires a newer biblatex.  -->
+
+  <!-- FIXME - ok to comment biblatex when version for a new year matches
+   what is in texmf-dist. For new version, reinstate to avoid runtime error.-->
+    <bridgehead renderas="sect3">Required Additional Download</bridgehead>
+
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&biblatex-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &biblatex-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &biblatex-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Biber Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <!-- KFM: the order listed in Build.PL is not alphabetical -->
+      <xref linkend="perl-autovivification"/>
+      <xref linkend="perl-business-isbn"/>
+      <xref linkend="perl-business-ismn"/>
+      <xref linkend="perl-business-issn"/>
+      <xref linkend="perl-class-accessor"/>
+      <xref linkend="perl-data-compare"/>
+      <xref linkend="perl-data-dump"/>
+      <xref linkend="perl-data-uniqid"/>
+      <xref linkend="perl-datetime-calendar-julian"/>
+      <xref linkend="perl-datetime-format-builder"/>
+      <xref linkend="perl-encode-eucjpascii"/>
+      <xref linkend="perl-encode-hanextra"/>
+      <xref linkend="perl-encode-jis2k"/>
+      <xref linkend="perl-file-slurper"/>
+      <xref linkend="perl-io-string"/>
+      <!-- IPC::Cmd is a part of core perl -->
+      <xref linkend="perl-ipc-run3"/>
+      <xref linkend="perl-lingua-translit"/>
+      <xref linkend="perl-list-allutils"/>
+      <xref linkend="perl-list-moreutils"/>
+      <!-- perl-list-moreutils-xs is a dep of perl-list-moreutils -->
+      <xref linkend="perl-log-log4perl"/>
+      <xref linkend="perl-lwp-protocol-https"/>
+      <!-- LWP::Simple dep for this protocol is part of perl-libwww-perl,
+      that is pulled in by perl-lwp-protocol-https and that pulls in
+      perl-uri. Biber lists LWP::UserAgent as a dep, again it is part
+      of perl-libwww-perl. -->
+      <xref linkend="perl-module-build"/>
+      <xref linkend="perl-parse-recdescent"/>
+      <xref linkend="perl-perlio-utf8_strict"/>
+      <!-- Mozilla::CA should not be needed when using system certificates -->
+      <xref linkend="perl-regexp-common"/>
+      <xref linkend="perl-sort-key"/>
+      <xref linkend="perl-text-bibtex"/>
+      <xref linkend="perl-text-csv"/>
+      <!-- perl-text-csv_xs is a recommended dependency for perl-text-csv -->
+      <xref linkend="perl-text-roman"/>
+      <!-- Unicode-Collate usually needs to be latest when biber is released,
+        core perl is usually older. To read the core version, look at
+        /usr/lib/perl5/5.xx.y/x86_64-linux-thread-multi/Unicode/Collate.pm -->
+      <xref linkend="perl-unicode-collate"/>
+      <!-- Unicode::GCstring is part of Unicode::LineBreak -->
+      <xref linkend="perl-unicode-linebreak"/>
+      <!-- Unicode::Normalize is part of core perl, found in
+        /usr/lib/perl5/5.xx.y/x86_64-linux-thread-multi/Unicode/Normalize.pm -->
+      <!-- perl-xml-libxml is a dependency of perl-xml-libxml-simple -->
+      <xref linkend="perl-xml-libxml-simple"/>
+      <xref linkend="perl-xml-libxslt"/>
+      <xref linkend="perl-xml-writer"/>
+      <!-- untarring biblatex requires that the texmf directories already exist -->
+      <!--
+      <xref linkend="texlive"/>
+      (or <xref linkend="tl-installer"/>, but for that you can use
+       <command>tlmgr update</command>)
+      -->
+    </para>
+
+    <bridgehead renderas="sect4">Recommended (required for the test suite)</bridgehead>
+    <para role="recommended">
+      <xref linkend="perl-file-which"/> and
+      <xref linkend="perl-test-differences"/>
+    </para>
+
+    <note>
+      <para>
+        It is possible to install all missing dependencies automatically. You
+        must first install <xref linkend="perl-module-build"/> using <xref
+        linkend="perl-auto-install"/>. Then run <command>perl
+        ./Build.PL</command> and when it prompts you, become the &root; user
+        and run <command>./Build installdeps</command> - this will use CPAN
+        and as noted above it will use Mozilla::CA instead of using system
+        certificates.
+      </para>
+    </note>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Biber</title>
+
+    <!-- https://github.com/plk/biber/commit/d9e9617 -->
+    <!--
+    <para>
+      Fix an issue building this package with Perl 5.36 or later:
+    </para>
+
+<screen><userinput remap="pre">sed 's/undef$/&amp;;/' -i lib/Biber/Section.pm</userinput></screen>
+-->
+    <para>
+      Install <application>Biber</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>perl ./Build.PL &amp;&amp;
+./Build</userinput></screen>
+
+    <para>
+      To test the results, enter: <command>./Build test</command>
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+<!--
+<screen role="root"><userinput>tar -xf ../biblatex-&biblatex-version;.tds.tgz -C /opt/texlive/&texlive-year;/texmf-dist &amp;&amp;
+texhash &amp;&amp;
+-->
+<screen role="root"><userinput>./Build install</userinput></screen>
+<!-- Editor note: As for any ./Build type perl module, use destdir=
+     after the command for DESTDIR. -->
+
+<!--<para>
+      The corresponding version of <application>biblatex</application> is
+      a separate project.  The tarball is pre-packaged for untarring
+      into the <filename class="directory">texmf-dist</filename>
+      directory. Install it as the &root; user:
+    </para>
+
+<screen role="root"><userinput>tar -C $TEXLIVE_PREFIX/texmf-dist -xf ../biblatex-&biblatex-version;.tds.tgz</userinput></screen>-->
+
+  </sect2>
+<!--
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>tar -xf biblatex-&biblatex-version;.tds.tar.gz -C
+      /opt/texlive/&texlive-year;/texmf-dist</command>:
+      this installs the new <application>biblatex</application> files over those
+      installed by <application>texlive</application>.
+    </para>
+
+    <para>
+      <command>texhash</command> : this updates the file hash tables (otherwise
+      known as the file name database).
+    </para>
+
+  </sect2>
+-->
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>biber</seg>
+        <seg>None</seg>
+        <seg>/usr/lib/perl5/site_perl/5.*{,/&lt;arch&gt;-linux/auto}/Biber</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="biber-prog">
+        <term><command>biber</command></term>
+        <listitem>
+          <para>
+            is used for producing bibliographies in LaTeX documents
+          </para>
+          <indexterm zone="biber biber-prog">
+            <primary sortas="b-biber">biber</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

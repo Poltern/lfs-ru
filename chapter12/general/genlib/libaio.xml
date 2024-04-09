@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libaio-download-http "https://pagure.io/libaio/archive/libaio-&libaio-version;/libaio-&libaio-version;.tar.gz">
+  <!ENTITY libaio-download-ftp  " ">
+  <!ENTITY libaio-md5sum        "605237f35de238dfacc83bcae406d95d">
+  <!ENTITY libaio-size          "48 KB">
+  <!ENTITY libaio-buildsize     "1.0 MB">
+  <!ENTITY libaio-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="libaio" xreflabel="libaio-&libaio-version;">
+  <?dbhtml filename="libaio.html"?>
+
+
+  <title>libaio-&libaio-version;</title>
+
+  <indexterm zone="libaio">
+    <primary sortas="a-libaio">libaio</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libaio</title>
+
+    <para>
+      The <application>libaio</application> package is an asynchronous I/O
+      facility ("async I/O", or "aio") that has a richer API and capability set
+      than the simple POSIX async I/O facility.  This library, libaio, provides
+      the Linux-native API for async I/O.  The POSIX async I/O facility
+      requires this library in order to provide kernel-accelerated async I/O
+      capabilities, as do applications which require the Linux-native async I/O
+      API.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libaio-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libaio-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libaio-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libaio-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libaio-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libaio-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libaio</title>
+
+    <para>
+      First, disable the installation of the static library:
+    </para>
+
+<screen><userinput>sed -i '/install.*libaio.a/s/^/#/' src/Makefile</userinput></screen>
+
+    <para>
+      Build <application>libaio</application> by running the following
+      command:
+    </para>
+
+<screen><userinput>make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make partcheck</command>.
+    </para>
+
+    <para>
+      Now, install the package as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+<!--
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+-->
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libaio.so
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libaio-lib">
+        <term><filename class="libraryfile">libaio.so</filename></term>
+        <listitem>
+          <para>
+            is the libaio library
+          </para>
+          <indexterm zone="libaio libaio-lib">
+            <primary sortas="c-libaio">libaio.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

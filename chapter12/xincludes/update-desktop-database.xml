@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <note>
+      <para>
+        This package installs desktop files into the
+        <filename class="directory">/usr/share/applications</filename>
+        hierarchy and you can improve system performance and memory usage by
+        updating <filename>/usr/share/applications/mimeinfo.cache</filename>.
+        To perform the update you must have
+        <xref linkend="desktop-file-utils"/> installed and issue the following
+        command as the <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>update-desktop-database -q</userinput></screen>
+    </note>

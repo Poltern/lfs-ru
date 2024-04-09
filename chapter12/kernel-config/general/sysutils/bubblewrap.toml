@@ -1,0 +1,3 @@
+# With !EXPERT we cannot unset NAMESPACES
+NAMESPACES = { value = '*', forced = true }
+USER_NS='*'

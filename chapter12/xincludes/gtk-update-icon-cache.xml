@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+    <note>
+      <para>
+        This package installs icon files into the <filename
+        class="directory">/usr/share/icons/hicolor</filename> hierarchy and you
+        can improve system performance and memory usage by updating
+        <filename>/usr/share/icons/hicolor/index.theme</filename>. To perform
+        the update you must have <xref linkend="gtk3"/> installed and issue the
+        following command as the <systemitem class="username">root</systemitem>
+        user:
+      </para>
+
+<screen role="nodump"><userinput>gtk-update-icon-cache -qtf /usr/share/icons/hicolor</userinput></screen>
+    </note>

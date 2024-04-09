@@ -1,0 +1,13 @@
+HWMON='*M'
+SENSORS_K8TEMP='*M '
+SENSORS_K10TEMP='*M '
+SENSORS_FAM15H_POWER='*M '
+SENSORS_CORETEMP='*M '
+BLK_DEV_NVME='* '
+ACPI='*'
+ACPI_BATTERY='*M '
+ACPI_THERMAL='*M '
+
+[NVME_HWMON]
+value = '* '
+comment = 'Set [HWMON] to <*> (not <M>!) or it will not show up'

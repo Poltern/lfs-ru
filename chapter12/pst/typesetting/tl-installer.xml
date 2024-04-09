@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY tl-installer-download-http   "https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">
+
+  <!ENTITY tl-installer-download-ftp    " ">
+  <!ENTITY tl-installer-md5sum          "cec36f23d7d4e1a4a2a90f77bad8e667">
+  <!ENTITY tl-installer-date             "20230313"> <!-- in the directory name -->
+  <!ENTITY tl-installer-size            "5.5 MB">
+  <!ENTITY tl-installer-buildsize        "85 MB MB for plain TeX, typically 2 to 4 MB for latex and later engines, 8.6 GB if everything is included">
+  <!ENTITY tl-installer-time            "varies, depending on network speed and traffic">
+<!-- The following commit will change future installs so that the scripts in
+texmf-dist linked from bin/ are copied instead of symlinks.
+
+commit 0c9707142465610f0e22745a22bf8c71850cef49
+Author: Karl Berry <karl@freefriends.org>
+Date:   Tue Mar 19 22:03:22 2024 +0000
+
+    (%opts): create the generically-named output files as copies by default.
+    (@cmdline_options): allow -no-copy.
+    (help): document.
+    
+    
+    git-svn-id: svn://tug.org/texlive/trunk@70707 c570f23f-e606-0410-a88d-b1316a301751
+
+That was done to simplify the process (windows has always used copy) and will likely
+make the installed sizes somewhat bigger.
+
+There is an option \-\-no-copy for updmap.pl, unclear if that can be used here,
+and it might have been removed by next year. -->
+]>
+
+<sect1 id="tl-installer" xreflabel="install-tl-unx">
+  <?dbhtml filename="tl-installer.html"?>
+
+
+  <title>install-tl-unx</title>
+
+  <indexterm zone="tl-installer">
+    <primary sortas="a-install-tl-unx">install-tl-unx</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to TeX Live and its installer</title>
+
+    <para>
+      The <application>TeX Live</application> package is a comprehensive
+      TeX document production system.  It includes TeX, LaTeX2e, LuaLaTeX,
+      Metafont, MetaPost, BibTeX and many other programs; an extensive
+      collection of macros, fonts and documentation; and support for
+      typesetting in many different scripts from around the world.
+    </para>
+
+    <para>
+      This page is for people who wish to use the binary installer to
+      provide the programs, the scripts, and a lot of supporting files and
+      documentation.  The installer is updated frequently, so any published
+      md5sum will soon be out of date.  Newer versions of the
+      installer are expected to work with these instructions, for so long as
+      they install to a
+      <filename class="directory">&texlive-year;/</filename> directory.
+    </para>
+
+    <para>
+      There are two reasons why you may wish to install the binaries in BLFS:
+      either you need a smaller install (e.g. at a minimum plain TeX without
+      LaTeX, ConTeXt, etc), or you wish to use <command>tlmgr</command> to
+      get updates whilst this version is supported (typically, until March of
+      the year after it was released). For the latter, you might prefer to
+      install in your <filename class="directory">/home</filename> directory
+      as an unprivileged user, and to then make corresponding changes to the
+      PATH in your <filename>~/.bashrc</filename> or equivalent.
+    </para>
+
+    <note>
+      <para>
+        If you wish to use ConTeXt with <command>luametatex</command> (most of
+        the old MKII and MKIV code was removed from TeX Live 2023 by the ConTeXt
+        developer), using the binary is probably the easiest option. The source
+        no-longer ships with TeX Live and is poorly adapted to building with
+        systems except those running Mac and Windows. See comments 1 to 5 of
+        <ulink url="&blfs-ticket-root;17823">#17823</ulink>.
+      </para>
+    </note>
+
+    <!-- editors: latex-test-20240320.tar.xz at ~/ken/tex-testfiles and the
+    ABOUT.pdf now deal with specifying which collections are needed when using
+    binary texlive. Please do not sign off this package without at least
+    testing asy to ensure that the symlinks are as needed. Please also be aware
+    that removing a collection might leave huge backups in tlpkg/backups -->
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&tl-installer-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&tl-installer-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <!--Download MD5 sum: &tl-installer-md5sum; (for &tl-installer-date;)-->
+          Download MD5 sum: Varies frequently
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &tl-installer-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &tl-installer-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &tl-installer-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="gnupg2"/> (to validate both the initial downloads, and also
+      any updates you might later make using <command>tlmgr</command>.)
+      <xref linkend="perl-libwww-perl"/> (to use a single connection to the server,
+      which will reduce its load and speed things up.)
+    </para>
+
+    <bridgehead renderas="sect4">Recommended (at runtime)</bridgehead>
+    <para role="recommended">
+      The binaries are mostly linked to included static libraries or
+      general (LFS) system libraries, but a few of the programs
+      and several scripts will fail if the following packages are not present:
+    </para>
+    <para role="recommended">
+      <xref role="runtime" linkend="gs"/> is dynamically loaded by
+      the external application <ulink url="https://dvisvgm.de/">dvisvgm</ulink>,
+      which is used by <application>asy</application> when that creates SVG
+      files.
+    </para>
+    <para role="recommended">
+      <xref role="runtime" linkend="xorg7-lib"/> and
+      <xref role="runtime" linkend="libxcb"/> are needed for inimf, mf,
+      pdfclose, pdfopen and xdvi-xaw. But if you are using asy, or using a
+      <application>TeX</application> engine to create a PDF file, you will
+      need <xref role="runtime" linkend="x-window-system"/> (for PDF files,
+      this is to support a PDF viewer of your choice, for example
+       <xref role="nodep" linkend="epdfview"/>).
+    </para>
+<!-- seems to not be needed in 2021
+    <para role="recommended">
+      the optional non-wide-character ncurses library (for "some binary-only
+      application") from the bottom of the <application>Ncurses</application>
+      page in LFS is needed
+      for xindy.run which is used by <application>xindy</application>
+    </para> -->
+    <para role="recommended">
+      The binary version of <application>asy</application> needs
+      <xref linkend="freeglut"/>.
+    </para>
+    <para> <!-- needed, but cannot recommend :-) -->
+      The binary version of asy is linked to libGLX.so.0 from
+      <ulink url="https://gitlab.freedesktop.org/glvnd/libglvnd/">libglvnd</ulink>,
+      but installing that will break future updates of BLFS packages such as
+      <xref linkend="mesa"/>. Work around that by creating a symlink as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+    <screen role="nodump"><userinput>ln -sv libGL.so.1 /usr/lib/libGLX.so.0</userinput></screen>
+    <para role="recommended">
+    The binary versions of <application>biber</application> and
+    <application>xindy</application> are linked to <filename
+    class='libraryfile'>libcrypt.so.1</filename> from old versions
+    of <application>glibc</application>. To use these two applications, follow the
+    Note about binary-only applications in <application>libxcrypt</application> in
+    LFS to install the ABI version 1 crypt library.
+    </para>
+    <note>
+      <para>
+        As always with contributed binary software, it is possible that the
+        required dependencies may change when the installer is updated. In
+        particular, these dependencies have only been checked on x86_64.
+      </para>
+    </note>
+    <!-- text for runtime deps, shared with texlive -->
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="../../xincludes/texruntime.xml"/>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Binary Installation of TeX Live</title>
+
+    <para>
+      The <application>TeX Live</application> set of programs with its
+      supporting documents, fonts, and utilities is very large.  The upstream
+      maintainers recommend placing all files in a single directory structure.
+      BLFS recommends <filename class='directory'>/opt/texlive</filename>.
+    </para>
+
+    <note>
+     <para>
+       If you have chosen to install the binary as a normal user, the directory
+       for the prefix needs to be writable by that user.  The
+       <systemitem class="username">root</systemitem> user can chown
+       <filename class="directory">/opt/texlive/2024</filename> to that
+       user before the user starts the install.<!-- Problem was reported on
+       texlive list, at least ls-R was involved and maybe other files,
+       suggestion was to remove, chown prefix, reinstall. --> If any later
+       change in that directory is made by the <systemitem
+       class="username">root</systemitem> user <emphasis>that will change the
+       ownership</emphasis> which breaks usage by normal users.
+     </para>
+    </note>
+
+    <para>
+      As with any other package, unpack the installer and change into its
+      directory, <filename class='directory'>
+        install-tl-&lt;CCYYMMDD&gt;</filename>.
+      This directory name changes when the installer is updated, so replace
+      &lt;CCYYMMDD&gt; by the correct directory name.
+    </para>
+
+    <note>
+      <para>
+        The distribution binaries installed below may use static linking
+        for general linux system libraries.  Additional libraries or
+        interpreters as specified in the dependencies section do not need to
+        be present during the install, but the programs that need them will
+        not run until their specific dependencies have been installed.
+      </para>
+
+    <!-- please keep something like this in the future -->
+      <para>
+        With all contributed binary software, there may be a mismatch between
+        the builder's toolchain and your hardware.  In most of TeX this will
+        probably not matter, but in uncommon corner cases you might hit
+        problems. For example, if your x86_64 processor does not support 3dnowext or
+        3dnow, the 2014-06-28 binary failed in conTeXt when running LuaTeX,
+        although lualatex worked, as did the i686 binaries on the same
+        machine. In such cases, the easiest solution is to install texlive
+        from source. Similarly, the x86_64 binary version of
+        <command>asy</command> runs very slowly when creating 3-D diagrams.
+      </para>
+    </note>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>TEXLIVE_INSTALL_PREFIX=/opt/texlive ./install-tl</userinput></screen>
+
+    <para>
+      This command is interactive and allows selection or modification of
+      platform, packages, directories, and other options. The full installation
+      scheme will require about 4.9 gigabytes of disk space. The time to
+      complete the download will depend on your internet connection speed
+      and the number of packages selected.
+    </para>
+
+    <para>
+      It has been established by Debian that the <command>python</command>
+      scripts in <filename class="directory">latex-make</filename> will work
+      with <command>python3</command>, so update them to invoke that by running
+      the following command as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>for F in /opt/texlive/&texlive-year;/texmf-dist/scripts/latex-make/*.py ; do
+  test -f $F &amp;&amp; sed -i 's%/usr/bin/env python%/usr/bin/python3%' $F || true
+done
+</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>test -f $F &amp;&amp; sed ...</command>: in a small install these
+      files might not be present, so test if they exist and if not return 'true'
+      to avoid any error if this command has been copied into one of your own install scripts.
+    </para>
+
+    <para>
+      <option>./install-tl --location
+      http://mirror.aut.ac.nz/CTAN/systems/texlive/tlnet/</option>: use a
+      variation of this if you wish to use a different mirror, for example, because
+      you are in New Zealand but the installer chooses to use an Australian
+      mirror. The list of mirrors is at
+      <ulink url='https://ctan.org/mirrors/'/>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>Over 300 binaries and symlinks to scripts</seg>
+        <seg>None</seg>
+        <seg>/opt/texlive</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="tl-installer-programs">
+        <term><command>TeX&nbsp;programs</command></term>
+        <listitem>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../xincludes/texprogs.xml"/>
+          <indexterm zone="tl-installer tl-installer-programs">
+            <primary sortas="b-tl-installer-programs">TeX Live programs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect2>
+
+</sect1>

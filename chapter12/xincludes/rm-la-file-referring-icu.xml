@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+  [<!ENTITY % general-entities SYSTEM "../general.ent">
+   %general-entities;]>
+    <para>
+      The libtool archive file from this package is referring to the
+      libraries from <xref linkend='icu'/>.  Such a reference may cause
+      packages depending on this package to be unnecessary linked against
+      the ICU libraries and increase the burden to rebuild packages if
+      ICU is updated to a new major version.  As we've explained in
+      <xref linkend='la-files'/>, these libtool archive files are unneeded
+      anyway.  So as the &root; user, remove the libtool archive file now:
+    </para>

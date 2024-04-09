@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY icu-download-http
+           "https://github.com/unicode-org/icu/releases/download/release-&icu-major;-&icu-minor;/icu4c-&icu-major;_&icu-minor;-src.tgz">
+  <!ENTITY icu-download-ftp  " ">
+  <!ENTITY icu-md5sum        "94c0b370f43123ea92b146ebea9c709d">
+  <!ENTITY icu-size          "25 MB">
+  <!ENTITY icu-buildsize     "339 MB (add 42 MB for tests)">
+  <!ENTITY icu-time          "0.7 SBU (Using parallelism=4; add 1.5 SBU for tests)">
+]>
+
+<sect1 id="icu" xreflabel="ICU-&icu-version;">
+  <?dbhtml filename="icu.html"?>
+
+
+  <title>ICU-&icu-version;</title>
+
+  <indexterm zone="icu">
+    <primary sortas="a-ICU">ICU</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to ICU</title>
+
+    <para>
+      The <application>International Components for Unicode</application> (ICU)
+      package is a mature, widely used set of C/C++ libraries providing Unicode
+      and Globalization support for software applications.
+      <application>ICU</application> is widely portable and gives applications
+      the same results on all platforms.
+    </para>
+
+    <warning>
+      <para>
+        Upgrading this package to a new major version (for example, from
+        72.1 to &icu-version;) will require rebuilding of many other
+        packages. If some packages that use the libraries built by
+        icu4c-&icu-major; are rebuilt, they will use the new libraries while
+        current packages will use the previous libraries.  If the Linux
+        application loader
+        (<filename class='libraryfile'>/usr/lib/ld-linux-x86-64.so.2</filename>)
+        determines that both the old and new libraries are needed, and a
+        symbol (name of data or function) exists in both versions of the
+        library, all references to the symbol will be resolved to the
+        version appearing earlier in the breadth-first sequence of the
+        dependency graph.  This may result in the application failing if
+        the definition of the data or the behavior of the function referred
+        by the symbol differs in two versions.  To avoid the issue, users
+        will need to rebuild every package linked to an ICU library as soon
+        as possible once ICU is updated to a new major version.
+      </para>
+
+      <para>
+        To determine what external libraries are needed (directly or indirectly)
+        by an application or a library, run:
+      </para>
+
+<screen><userinput>ldd &lt;application or library&gt; </userinput></screen>
+
+      <para>
+        or to see only the directly needed libraries:
+      </para>
+
+<screen><userinput>readelf -d  &lt;application or library&gt; | grep NEEDED</userinput></screen>
+
+    </warning>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&icu-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&icu-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &icu-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &icu-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &icu-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &icu-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/icu4c-&icu-version;-fix_enumeration-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">ICU Dependencies</bridgehead>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="llvm"/> (with Clang), and
+      <xref linkend="doxygen"/> (for documentation)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of ICU</title>
+
+    <note>
+      <para>
+        This package expands to the directory
+        <filename class='directory'>icu</filename>.
+      </para>
+    </note>
+
+    <note>
+      <para>
+        If <command>clang++</command> is available, it will be used in the
+        mistaken belief that <command>g++</command> might not support C++11,
+        even though <command>configure</command> has tested for that.  If
+        using <command>g++</command> there will be an unnecessary warning at
+        the end of <command>configure</command>.  Building with
+        <command>g++</command> also takes longer than the estimated SBU shown.
+      </para>
+    </note>
+<!--
+    <para>
+      First, fix a regression in version 58.1:
+    </para>
+
+<screen><userinput>patch -p1 -i ../icu4c-&icu-version;-fix_enumeration-1.patch</userinput></screen>
+-->
+    <para>
+      Install <application>ICU</application> by running the following commands:
+    </para>
+
+<!-- Review comments at:
+https://chromium.googlesource.com/chromium/src/+/e58fa0ba66272c5f28828b15d06c7e42a9882b3b
+To see if the following prebuild command is appropriate for BLFS:
+sed '/fdef U_CHARSET_I/i#define U_CHARSET_IS_UTF8 1' -i common/unicode/platform.h
+-->
+<screen><userinput>cd source                                    &amp;&amp;
+
+./configure --prefix=/usr                    &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          derb, escapesrc, genbrk, genccode, gencfu, gencmn, gencnval,
+          gendict, gennorm2,
+          genrb, gensprep, icu-config, icuexportdata, icuinfo, icupkg,
+          makeconv, pkgdata, and uconv
+        </seg>
+        <seg>
+          libicudata.so, libicui18n.so, libicuio.so,
+          libicutest.so, libicutu.so, and libicuuc.so
+        </seg>
+        <seg>
+          /usr/include/unicode,
+          /usr/lib/icu, and
+          /usr/share/icu
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="derb">
+        <term><command>derb</command></term>
+        <listitem>
+          <para>
+            disassembles a resource bundle
+          </para>
+          <indexterm zone="icu derb">
+            <primary sortas="b-derb">derb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="escapesrc">
+        <term><command>escapesrc</command></term>
+        <listitem>
+          <para>
+            converts <quote>\u</quote> escaped characters into unicode
+            characters
+          </para>
+          <indexterm zone="icu escapesrc">
+            <primary sortas="b-escapesrc">escapesrc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="genbrk">
+        <term><command>genbrk</command></term>
+        <listitem>
+          <para>
+            compiles ICU break iteration rules source files into binary data
+            files
+          </para>
+          <indexterm zone="icu genbrk">
+            <primary sortas="b-genbrk">genbrk</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="genccode">
+        <term><command>genccode</command></term>
+        <listitem>
+          <para>
+            generates C or platform specific assembly code from an ICU data
+            file
+          </para>
+          <indexterm zone="icu genccode">
+            <primary sortas="b-genccode">genccode</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gencfu">
+        <term><command>gencfu</command></term>
+        <listitem>
+          <para>
+            reads in Unicode confusable character definitions and writes out the
+            binary data
+          </para>
+          <indexterm zone="icu gencfu">
+            <primary sortas="b-gencfu">gencfu</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gencmn">
+        <term><command>gencmn</command></term>
+        <listitem>
+          <para>
+            generates an ICU memory-mappable data file
+          </para>
+          <indexterm zone="icu gencmn">
+            <primary sortas="b-gencmn">gencmn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gencnval">
+        <term><command>gencnval</command></term>
+        <listitem>
+          <para>
+            compiles the converter's aliases file
+          </para>
+          <indexterm zone="icu gencnval">
+            <primary sortas="b-gencnval">gencnval</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gendict">
+        <term><command>gendict</command></term>
+        <listitem>
+          <para>
+            compiles word lists into ICU string trie dictionaries
+          </para>
+          <indexterm zone="icu gendict">
+            <primary sortas="b-gendict">gendict</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gennorm2">
+        <term><command>gennorm2</command></term>
+        <listitem>
+          <para>
+            builds binary data files with Unicode normalization data
+          </para>
+          <indexterm zone="icu gennorm2">
+            <primary sortas="b-gennorm2">gennorm2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="genrb">
+        <term><command>genrb</command></term>
+        <listitem>
+          <para>
+            compiles a resource bundle
+          </para>
+          <indexterm zone="icu genrb">
+            <primary sortas="b-genrb">genrb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gensprep">
+        <term><command>gensprep</command></term>
+        <listitem>
+          <para>
+            compiles StringPrep data from filtered RFC 3454 files
+          </para>
+          <indexterm zone="icu gensprep">
+            <primary sortas="b-gensprep">gensprep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="icu-config">
+        <term><command>icu-config</command></term>
+        <listitem>
+          <para>
+            outputs ICU build options
+          </para>
+          <indexterm zone="icu icu-config">
+            <primary sortas="b-icu-config">icu-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="icuinfo">
+        <term><command>icuinfo</command></term>
+        <listitem>
+          <para>
+            outputs configuration information about the current ICU
+          </para>
+          <indexterm zone="icu icuinfo">
+            <primary sortas="b-icuinfo">icuinfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="icupkg">
+        <term><command>icupkg</command></term>
+        <listitem>
+          <para>
+            extracts or modifies an ICU .dat archive
+          </para>
+          <indexterm zone="icu icupkg">
+            <primary sortas="b-icupkg">icupkg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="makeconv">
+        <term><command>makeconv</command></term>
+        <listitem>
+          <para>
+            compiles a converter table
+          </para>
+          <indexterm zone="icu makeconv">
+            <primary sortas="b-makeconv">makeconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pkgdata">
+        <term><command>pkgdata</command></term>
+        <listitem>
+          <para>
+            packages data for use by ICU
+          </para>
+          <indexterm zone="icu pkgdata">
+            <primary sortas="b-pkgdata">pkgdata</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="uconv">
+        <term><command>uconv</command></term>
+        <listitem>
+          <para>
+            converts data from one encoding to another
+          </para>
+          <indexterm zone="icu uconv">
+            <primary sortas="b-uconv">uconv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libicudata">
+        <term><filename class="libraryfile">libicudata.so</filename></term>
+        <listitem>
+          <para>
+            is the data library
+          </para>
+          <indexterm zone="icu libicudata">
+            <primary sortas="c-libicudata">libicudata.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libicui18n">
+        <term><filename class="libraryfile">libicui18n.so</filename></term>
+        <listitem>
+          <para>
+            is the internationalization (i18n) library
+          </para>
+          <indexterm zone="icu libicui18n">
+            <primary sortas="c-libicui18n">libicui18n.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libicuio">
+        <term><filename class="libraryfile">libicuio.so</filename></term>
+        <listitem>
+          <para>
+            is the ICU I/O (unicode stdio) library
+          </para>
+          <indexterm zone="icu libicuio">
+            <primary sortas="c-libicuio">libicuio.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+<!--  <varlistentry id="libicule">
+        <term><filename class="libraryfile">libicule.so</filename></term>
+        <listitem>
+          <para>
+            is the layout engine.
+          </para>
+          <indexterm zone="icu libicule">
+            <primary sortas="c-libicule">libicule.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libiculx">
+        <term><filename class="libraryfile">libiculx.so</filename></term>
+        <listitem>
+          <para>
+            is the layout extensions engine.
+          </para>
+          <indexterm zone="icu libiculx">
+            <primary sortas="c-libiculx">libiculx.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>-->
+
+      <varlistentry id="libicutest">
+        <term><filename class="libraryfile">libicutest.so</filename></term>
+        <listitem>
+          <para>
+            is the test library
+          </para>
+          <indexterm zone="icu libicutest">
+            <primary sortas="c-libicutest">libicutest.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libicutu">
+        <term><filename class="libraryfile">libicutu.so</filename></term>
+        <listitem>
+          <para>
+            is the tool utility library
+          </para>
+          <indexterm zone="icu libicutu">
+            <primary sortas="c-libicutu">libicutu.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libicuuc">
+        <term><filename class="libraryfile">libicuuc.so</filename></term>
+        <listitem>
+          <para>
+            is the common library
+          </para>
+          <indexterm zone="icu libicuuc">
+            <primary sortas="c-libicuuc">libicuuc.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

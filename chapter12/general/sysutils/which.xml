@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+<!--  <!ENTITY which-download-http "http://www.xs4all.nl/~carlo17/which/which-&which-version;.tar.gz">-->
+
+  <!ENTITY which-download-http "&gnu-http;/which/which-&which-version;.tar.gz">
+  <!ENTITY which-download-ftp  " ">
+  <!ENTITY which-md5sum        "097ff1a324ae02e0a3b0369f07a7544a">
+  <!ENTITY which-size          "148 KB">
+  <!ENTITY which-buildsize     "1 MB">
+  <!ENTITY which-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="which" xreflabel="Which-&which-version;">
+  <?dbhtml filename="which.html"?>
+
+
+  <title>Which-&which-version; and Alternatives</title>
+
+  <para>
+    The presence or absence of the <command>which</command> program in the
+    main LFS book is probably one of the most contentious issues on the
+    mailing lists. It has resulted in at least one flame war in the past. To
+    hopefully put an end to this once and for all, presented here are two
+    options for equipping your system with <command>which</command>. The
+    question of which <quote><command>which</command></quote> is for you to
+    decide.
+  </para>
+
+  <indexterm zone="which">
+    <primary sortas="a-Which">Which</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNU Which</title>
+
+    <para>
+      The first option is to install the actual GNU
+      <application>which</application> package.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&which-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&which-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &which-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &which-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &which-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &which-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Which</title>
+
+    <para>
+      Install <application>which</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>which</seg>
+        <seg>None</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="which-prog">
+        <term><command>which</command></term>
+        <listitem>
+          <para>
+            shows the full path of (shell) commands installed in your
+            <envar>PATH</envar>
+          </para>
+          <indexterm zone="which which-prog">
+            <primary sortas="b-which">which</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>The 'which' Script</title>
+
+    <para>
+      The second option (for those who don't want to install the package)
+      is to create a simple script (execute as the
+      <systemitem class="username">root</systemitem> user):
+    </para>
+
+<screen role="root"><userinput>cat &gt; /usr/bin/which &lt;&lt; "EOF"
+<literal>#!/bin/bash
+type -pa "$@" | head -n 1 ; exit ${PIPESTATUS[0]}</literal>
+EOF
+chmod -v 755 /usr/bin/which
+chown -v root:root /usr/bin/which</userinput></screen>
+
+    <para>
+      This should work OK and is probably the easiest solution
+      for most cases, but is not the most comprehensive implementation.
+    </para>
+
+  </sect2>
+
+</sect1>

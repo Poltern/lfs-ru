@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY fontconfig-download-http
+           "https://www.freedesktop.org/software/fontconfig/release/fontconfig-&fontconfig-version;.tar.xz">
+  <!ENTITY fontconfig-download-ftp  " ">
+  <!ENTITY fontconfig-md5sum        "5bb3a2829aecb22ae553c39099bd0d6a">
+  <!ENTITY fontconfig-size          "1.4 MB">
+  <!ENTITY fontconfig-buildsize     "17 MB (with tests)">
+  <!ENTITY fontconfig-time          "0.4 SBU (with tests)">
+]>
+
+<sect1 id="fontconfig" xreflabel="Fontconfig-&fontconfig-version;">
+  <?dbhtml filename="fontconfig.html"?>
+
+
+  <title>Fontconfig-&fontconfig-version;</title>
+
+  <indexterm zone="fontconfig">
+    <primary sortas="a-Fontconfig">Fontconfig</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Fontconfig</title>
+
+    <para>
+      The <application>Fontconfig</application> package contains
+      a library and support programs used for configuring and
+      customizing font access.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&fontconfig-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&fontconfig-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &fontconfig-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &fontconfig-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &fontconfig-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &fontconfig-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/fontconfig-&fontconfig-version;-gperf-3.1-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">Fontconfig Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="freetype2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="bubblewrap"/> (used by some tests),
+      <xref linkend="curl"/> and <xref linkend="unzip"/>
+      (both used by some tests for downloading and extracting test files),
+      <xref linkend="json-c"/>,
+      <xref linkend="docbook-utils"/> and
+      <xref linkend="libxml2"/>,
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
+    </para>
+
+    &test-use-internet;
+
+    <note>
+      <para>
+        If you have <application>DocBook Utils</application> installed and
+        you remove the <parameter>--disable-docs</parameter> parameter from
+        the <command>configure</command> command below, you must have
+        <xref linkend="perl-sgmlspm"/> and <xref linkend="texlive"/> installed
+        also, or the <application>Fontconfig</application> build will fail.
+      </para>
+    </note>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Fontconfig</title>
+
+    <para>
+      Install <application>Fontconfig</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr        \
+            --sysconfdir=/etc    \
+            --localstatedir=/var \
+            --disable-docs       \
+            --docdir=/usr/share/doc/fontconfig-&fontconfig-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.  One test
+      is known to fail if the kernel does not support user namespaces.  Some
+      tests will download some font files via Internet.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you did not remove the <parameter>--disable-docs</parameter>
+      parameter from the <command>configure</command> command, you can install
+      the pre-generated documentation by using the following commands as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -dm755 \
+        /usr/share/{man/man{1,3,5},doc/fontconfig-&fontconfig-version;/fontconfig-devel} &amp;&amp;
+install -v -m644 fc-*/*.1         /usr/share/man/man1 &amp;&amp;
+install -v -m644 doc/*.3          /usr/share/man/man3 &amp;&amp;
+install -v -m644 doc/fonts-conf.5 /usr/share/man/man5 &amp;&amp;
+install -v -m644 doc/fontconfig-devel/* \
+                                  /usr/share/doc/fontconfig-&fontconfig-version;/fontconfig-devel &amp;&amp;
+install -v -m644 doc/*.{pdf,sgml,txt,html} \
+                                  /usr/share/doc/fontconfig-&fontconfig-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--disable-docs</parameter>: This switch avoids building the
+      documentation (the release tarball includes pre-generated
+      documentation).
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Fontconfig</title>
+
+    <sect3 id="fontconfig-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>
+          /etc/fonts/*,
+          /etc/fonts/conf.d/* and
+          /usr/share/fontconfig/conf.avail/*
+        </filename>
+      </para>
+
+      <indexterm zone="fontconfig fontconfig-config">
+        <primary sortas="e-etc-fonts">/etc/fonts/*</primary>
+      </indexterm>
+
+      <indexterm zone="fontconfig fontconfig-config">
+        <primary sortas="e-etc-fonts-conf.d">/etc/fonts/conf.d/*</primary>
+      </indexterm>
+
+      <indexterm zone="fontconfig fontconfig-config">
+        <primary sortas="e-usr-share-fontconfig-conf.avail">/usr/share/fontconfig/conf.avail/*</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        The main configuration file for <application>Fontconfig</application> is
+        <filename>/etc/fonts/fonts.conf</filename>. Generally you do not want
+        to edit this file. It will also read <filename>/etc/fonts/local.conf</filename>
+        and any files in <filename class="directory">/etc/fonts/conf.d</filename>.
+        To put a new font directory in the configuration, create
+        (or update) the <filename>/etc/fonts/local.conf</filename> file with your
+        local information or add a new file in
+        <filename class="directory">/etc/fonts/conf.d</filename>. The default
+        location of fonts in <application>Fontconfig</application> is:
+      </para>
+
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            /usr/share/fonts
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ~/.local/share/fonts
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ~/.fonts <emphasis>(this is now deprecated, but for the moment
+            it still works)</emphasis>
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <para>
+        <application>Fontconfig</application> also ships many example
+        configuration files in the
+        <filename class="directory">/usr/share/fontconfig/conf.avail</filename>
+        directory. Symlinking specific files to
+        <filename class="directory">/etc/fonts/conf.d</filename>
+        will enable them. The default setup is generally good enough for
+        most users. See <filename>/etc/fonts/conf.d/README</filename>
+        for a description of the configuration files.
+      </para>
+
+      <indexterm zone="fontconfig fontconfig-config">
+        <primary sortas="e-usr-share-fonts">/usr/share/fonts</primary>
+      </indexterm>
+
+      <indexterm zone="fontconfig fontconfig-config">
+        <primary sortas="e-AA.fonts">~/.fonts</primary>
+      </indexterm>
+
+      <para>
+        More information about configuring <application>Fontconfig</application>
+        can be found in the user's manual in <ulink
+        url="file:///usr/share/doc/fontconfig-&fontconfig-version;/fontconfig-user.html"/>.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          fc-cache, fc-cat, fc-conflist, fc-list, fc-match, fc-pattern,
+          fc-query, fc-scan, and fc-validate
+        </seg>
+        <seg>
+          libfontconfig.so
+        </seg>
+        <seg>
+          /etc/fonts,
+          /usr/include/fontconfig,
+          /usr/share/doc/fontconfig-&fontconfig-version;,
+          /usr/share/fontconfig,
+          /usr/share/xml/fontconfig, and
+          /var/cache/fontconfig
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fc-cache">
+        <term><command>fc-cache</command></term>
+        <listitem>
+          <para>
+            is used to create font information caches
+          </para>
+          <indexterm zone="fontconfig fc-cache">
+            <primary sortas="b-fc-cache">fc-cache</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-cat">
+        <term><command>fc-cat</command></term>
+        <listitem>
+          <para>
+            is used to read font information caches
+          </para>
+          <indexterm zone="fontconfig fc-cat">
+            <primary sortas="b-fc-cat">fc-cat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-conflist">
+        <term><command>fc-conflist</command></term>
+        <listitem>
+          <para>
+            shows the ruleset files' information on the system
+          </para>
+          <indexterm zone="fontconfig fc-conflist">
+            <primary sortas="b-fc-conflist">fc-conflist</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-list">
+        <term><command>fc-list</command></term>
+        <listitem>
+          <para>
+            is used to create font lists
+          </para>
+          <indexterm zone="fontconfig fc-list">
+            <primary sortas="b-fc-list">fc-list</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-match">
+        <term><command>fc-match</command></term>
+        <listitem>
+          <para>
+            is used to match available fonts, or find fonts that match
+            a given pattern
+          </para>
+          <indexterm zone="fontconfig fc-match">
+            <primary sortas="b-fc-match">fc-match</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-pattern">
+        <term><command>fc-pattern</command></term>
+        <listitem>
+          <para>
+            is used to parse pattern (empty pattern by default) and show
+            the parsed result
+          </para>
+          <indexterm zone="fontconfig fc-pattern">
+            <primary sortas="b-fc-pattern">fc-pattern</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-query">
+        <term><command>fc-query</command></term>
+        <listitem>
+          <para>
+            is used to query fonts files and print resulting patterns
+          </para>
+          <indexterm zone="fontconfig fc-query">
+            <primary sortas="b-fc-query">fc-query</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-scan">
+        <term><command>fc-scan</command></term>
+        <listitem>
+          <para>
+            is used to scan font files and directories, and print resulting
+            patterns
+          </para>
+          <indexterm zone="fontconfig fc-scan">
+            <primary sortas="b-fc-scan">fc-scan</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fc-validate">
+        <term><command>fc-validate</command></term>
+        <listitem>
+          <para>
+            is used to validate font files
+          </para>
+          <indexterm zone="fontconfig fc-validate">
+            <primary sortas="b-fc-validate">fc-validate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libfontconfig">
+        <term><filename class="libraryfile">libfontconfig.so</filename></term>
+        <listitem>
+          <para>
+            contains functions used by the <application>Fontconfig</application>
+            programs and also by other programs to configure or customize font
+            access
+          </para>
+          <indexterm zone="fontconfig libfontconfig">
+            <primary sortas="c-libfontconfig">libfontconfig.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

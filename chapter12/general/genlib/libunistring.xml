@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libunistring-download-http "&gnu-http;/libunistring/libunistring-&libunistring-version;.tar.xz">
+  <!ENTITY libunistring-download-ftp  " ">
+  <!ENTITY libunistring-md5sum        "6b4ea63617bf09d76e5234379e75e7f9">
+  <!ENTITY libunistring-size          "2.4 MB">
+  <!ENTITY libunistring-buildsize     "54 MB (add 56 MB for tests)">
+  <!ENTITY libunistring-time          "0.5 SBU; add 0.3 SBU for tests; both using parallelism=4">
+]>
+
+<sect1 id="libunistring" xreflabel="libunistring-&libunistring-version;">
+  <?dbhtml filename="libunistring.html"?>
+
+
+  <title>libunistring-&libunistring-version;</title>
+
+  <indexterm zone="libunistring">
+    <primary sortas="a-libunistring">libunistring</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libunistring</title>
+
+    <para>
+      <application>libunistring</application> is a library that provides
+      functions for manipulating Unicode strings and for manipulating C
+      strings according to the Unicode standard.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libunistring-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libunistring-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libunistring-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libunistring-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libunistring-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libunistring-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libunistring Dependencies</bridgehead>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
+      (to rebuild the documentation)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libunistring</title>
+
+    <para>
+      Install <application>libunistring</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/libunistring-&libunistring-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>libunistring.so</seg>
+        <seg>
+          /usr/include/unistring and
+          /usr/share/doc/libunistring-&libunistring-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libunistring-lib">
+        <term><command>libunistring.so</command></term>
+        <listitem>
+          <para>
+            provides the unicode string library API
+          </para>
+          <indexterm zone="libunistring libunistring-lib">
+            <primary sortas="c-libunistring-lib">libunistring.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

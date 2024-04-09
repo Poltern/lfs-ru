@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+]>
+
+<sect1 id="general-sysutils">
+  <?dbhtml filename="sysutils.html"?>
+
+  <title>System Utilities</title>
+
+  <para>
+    This chapter contains mainly hardware utilities. It also contains
+    some applications used by other applications in the book for
+    installation or configuration purposes.
+  </para>
+
+
+</sect1>

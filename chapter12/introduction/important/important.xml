@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="important">
+  <?dbhtml filename="important.html"?>
+
+  <title>Important Information</title>
+
+  <para>This chapter is used to explain some of the policies used throughout
+  the book, to introduce important concepts and to explain some issues you may
+  see with some of the included packages.</para>
+
+
+
+</sect1>

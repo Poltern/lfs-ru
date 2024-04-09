@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+]>
+
+<sect1 id="general-prog">
+  <?dbhtml filename="prog.html" ?>
+
+  <title>Programming</title>
+
+  <para>
+    A base LFS system can be used as a development
+    platform, however the base system only includes language support for
+    <application>C</application>, <application>C++</application>,
+    <application>Perl</application>, and <application>Python</application>.
+    This chapter provides instructions to build many popular programming
+    environments to greatly expand your system's development capabilities.
+  </para>
+
+
+
+</sect1>

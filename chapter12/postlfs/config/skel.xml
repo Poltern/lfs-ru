@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-config-skel" xreflabel="Configuring for Adding Users">
+  <?dbhtml filename="skel.html"?>
+
+
+  <title>Configuring for Adding Users</title>
+
+  <indexterm zone="postlfs-config-skel">
+    <primary sortas="e-etc-skel">/etc/skel/*</primary>
+  </indexterm>
+
+  <indexterm zone="postlfs-config-skel">
+    <primary sortas="e-etc-default-useradd">/etc/default/useradd</primary>
+  </indexterm>
+
+  <para>
+    Together, the <command>/usr/sbin/useradd</command> command and <filename
+    class="directory">/etc/skel</filename> directory (both are easy to
+    set up and use) provide a way to assure new users are added to your LFS
+    system with the same beginning settings for things such as the
+    <envar>PATH</envar>, keyboard processing and other environmental variables.
+    Using these two facilities makes it easier to assure this initial state for
+    each new user added to the system.
+  </para>
+
+  <para>
+    The <filename class="directory">/etc/skel</filename> directory holds
+    copies of various initialization and other files that may be copied to the
+    new user's home directory when the <command>/usr/sbin/useradd</command>
+    program adds the new user.
+  </para>
+
+  <bridgehead renderas="sect5">Useradd</bridgehead>
+
+  <para>
+    The <command>useradd</command> program uses a collection of default
+    values kept in <filename>/etc/default/useradd</filename>. This file
+    is created in a base LFS installation by the
+    <application>Shadow</application> package. If it has been removed or
+    renamed, the <command>useradd</command> program uses some internal
+    defaults.  You can see the default values by running
+    <command>/usr/sbin/useradd -D</command>.
+  </para>
+
+  <para>
+    To change these values, simply modify the
+    <filename>/etc/default/useradd</filename> file as the
+    <systemitem class='username'>root</systemitem> user. An alternative to
+    directly modifying the file is to run <command>useradd</command> as the
+    <systemitem class='username'>root</systemitem> user while supplying the
+    desired modifications on the command line. Information on how to do this
+    can be found in the <command>useradd</command> man page.
+  </para>
+
+  <bridgehead renderas="sect5">/etc/skel</bridgehead>
+
+  <para>
+    To get started, create an
+    <filename class="directory">/etc/skel</filename> directory and make sure it
+    is writable only by the system administrator, usually
+    <systemitem class="username">root</systemitem>. Creating the directory as
+    <systemitem class="username">root</systemitem> is the best way to go.
+  </para>
+
+  <para>
+    The mode of any files from this part of the book that you put in <filename
+    class="directory">/etc/skel</filename> should be writable only by the
+    owner. Also, since there is no telling what kind of sensitive information
+    a user may eventually place in their copy of these files, you should
+    make them unreadable by "group" and "other".
+  </para>
+
+  <para>
+    You can also put other files in
+    <filename class="directory">/etc/skel</filename> and
+    different permissions may be needed for them.
+  </para>
+
+  <para>
+    Decide which initialization files should be provided in every (or most)
+    new user's home directory. The decisions you make will affect what you
+    do in the next two sections, <xref linkend="postlfs-config-profile"/> and
+    <xref linkend="postlfs-config-vimrc"/>. Some or all of those files will be
+    useful for <systemitem class="username">root</systemitem>, any
+    already-existing users, and new users.
+  </para>
+
+  <para>
+    The files from those sections that you might want to place in
+    <filename class="directory">/etc/skel</filename> include
+    <filename>.inputrc</filename>, <filename>.bash_profile</filename>,
+    <filename>.bashrc</filename>, <filename>.bash_logout</filename>,
+    <filename>.dircolors</filename>, and <filename>.vimrc</filename>. If
+    you are unsure which of these should be placed there, just continue to
+    the following sections, read each section and any references provided,
+    and then make your decision.
+  </para>
+
+  <para>
+    You will run a slightly modified set of commands for files which are
+    placed in <filename class="directory">/etc/skel</filename>. Each section
+    will remind you of this. In brief, the book's commands have been written
+    for files <emphasis>not</emphasis> added to <filename class="directory">
+    /etc/skel</filename> and instead just sends the results to the user's
+    home directory. If the file is going to be in <filename class="directory">
+    /etc/skel</filename>, change the book's command(s) to send output there
+    instead and then just copy the file from <filename class="directory">
+    /etc/skel</filename> to the appropriate directories, like <filename
+    class="directory">/etc</filename>, <filename class="directory">~
+    </filename> or the home directory of any other user already in the system.
+  </para>
+
+  <bridgehead renderas="sect5">When Adding a User</bridgehead>
+
+  <para>
+    When adding a new user with <command>useradd</command>, use
+    the <option>-m</option> parameter, which tells
+    <command>useradd</command> to create the user's home directory and
+    copy files from <filename class="directory">/etc/skel</filename> (can be
+    overridden) to the new user's home directory.  For example (perform as the
+    <systemitem class="username">root</systemitem> user):
+  </para>
+
+<screen role="root"><userinput>useradd -m <replaceable>&lt;newuser&gt;</replaceable></userinput></screen>
+
+  <para>
+    If you are sharing a <filename class="directory">/home</filename>
+    or <filename class="directory">/usr/src</filename> with another
+    Linux distro (for example, the host distro used for building LFS), you
+    can create a user with the same UID (and, same primary group GID) to
+    keep the file ownership consistent across the systems.  First, on
+    <emphasis>the other distro</emphasis>, get the UID of the user and the
+    GID of the user's primary group:
+  </para>
+
+<screen role="nodump"><userinput>getent passwd <replaceable>&lt;username&gt;</replaceable> | cut -d ':' -f 3,4</userinput></screen>
+
+  <para>
+    The command should output the UID and GID, separated by a colon.  Now
+    on the BLFS system, create the primary group and the user:
+  </para>
+
+<screen role="root"><userinput>groupadd -g <replaceable>&lt;GID&gt;</replaceable> <replaceable>&lt;username&gt;</replaceable> &amp;&amp;
+useradd -u <replaceable>&lt;UID&gt;</replaceable> -g <replaceable>&lt;username&gt;</replaceable> <replaceable>&lt;username&gt;</replaceable></userinput></screen>
+
+</sect1>

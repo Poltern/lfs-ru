@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!-- Place this in the packages.ent file
+  <!ENTITY TEMPLATE-version "">
+  -->
+
+  <!ENTITY TEMPLATE-download-http "https://">
+  <!ENTITY TEMPLATE-md5sum        "MD5 sum">
+  <!ENTITY TEMPLATE-size          "?? MB">
+  <!ENTITY TEMPLATE-buildsize     "?? MB">
+  <!ENTITY TEMPLATE-time          "?? SBU">
+<!-- SBU should be rounded to nearer integer if greater than 10, to one
+     decimal if less than 10, and should be "less than 0.1 SBU" if
+     less than 0.1. If the SBU without parallelisation is too long,
+     it is acceptable to give the value "with parallelism=N", where
+     N is the number of threads used. Note that some build systems
+     automatically fix N equal to the number of available CPU cores
+     on the machine. -->
+]>
+
+<!-- Try to keep the indentation used in this file-->
+<sect1 id="TEMPLATE" xreflabel="TEMPLATE-&TEMPLATE-version;">
+  <?dbhtml filename="TEMPLATE.html"?>
+
+
+  <!-- No other tags inside any title.
+       Use Title Case in All Titles
+       (i.e., Capitalize Everything
+       *Except* Articles, Short Prepositions,
+       and Coordinating Conjunctions.-->
+  <title>TEMPLATE-&TEMPLATE-version;</title>
+
+  <indexterm zone="TEMPLATE">
+    <primary sortas="a-TEMPLATE">TEMPLATE</primary>
+  </indexterm>
+
+  <!--Required section-->
+  <sect2 role="package">
+    <title>Introduction to TEMPLATE</title>
+
+    <para>
+      The <application>TEMPLATE</application> package contains...
+      This is useful for...
+    </para>
+
+    <!-- if it builds but hasn't been tested: -->
+    &lfs1?_built;
+    <!-- if it works: -->
+    &lfs1?_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&TEMPLATE-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &TEMPLATE-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &TEMPLATE-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &TEMPLATE-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &TEMPLATE-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <!-- As required -->
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/TEMPLATE-&TEMPLATE-version;-patch_name-patch_version.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">TEMPLATE Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="BLFS_DEPENDENCY"/> <!-- notice no period as this is not
+      a sentence. If there are more than two, they must be separated by commas
+      with the last member having "and" in front of it. The use of a serial
+      comma is preferred (a comma after the next to last member before the
+      "and"). BLFS_DEPENDENCY should be an "id" attribute defined somewhere
+      in the book (usually in a <sect1>). -->
+      <xref role="runtime" linkend="RUNTIME_DEPENDENCY"/> (runtime)
+      <!-- Specifying that a dependency is a runtime one may avoid circular
+      dependencies. Add role="runtime" to help jhalfs -->
+    </para>
+
+    <!-- It may be nice to have a separate section for runtime dependencies.
+    Do it as follows. -->
+    <bridgehead renderas="sect4">Required at runtime</bridgehead>
+    <para role="required">
+      <xref role="runtime" linkend="RUNTIME_DEPENDENCY"/>
+    </para>
+
+    <!-- As required -->
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="BLFS_DEPENDENCY"/> <!-- notice no period as this is not
+      a sentence. See above for the use of "and" and commas. Normally, neither
+      required nor recommended dependencies should be <ulink>. -->
+      <xref linkend="ANOTHER_RECOMMENDED_DEP"/> (required if building
+        <xref role="nodep" linkend="SOME_FANCY_PACKAGE"/>) <!-- You may need
+      to refer to another package, which is not a dependency. Use the role
+      attibute with value "nodep". -->
+      <!-- See above for runtime dependencies -->
+    </para>
+
+    <!-- As required -->
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="BLFS_DEPENDENCY"/> and
+      <ulink url="http://www.some.url/">EXTERNAL DEPENDENCY</ulink>
+      <!-- notice no period as this is not a sentence. See above for the use
+      of commas and "and". The order should be <xref> before <ulink>.-->
+      <!-- See above for references to another package which is not a
+      dependency. -->
+    </para>
+
+    <!--  Only use this if you want to note something in the wiki
+    <para condition="html" role="usernotes">
+      Editor Notes: <ulink url="&blfs-wiki;/TEMPLATE"/>
+    </para>
+    -->
+  </sect2>
+
+  <!-- Optional section for packages that need a specific kernel
+  configuration-->
+  <sect2 role="kernel" id="TEMPLATE-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      Enable the following options in the kernel configuration and recompile the
+      kernel if necessary:
+    </para>
+
+    <!-- Create a .toml file in the kernel-config tree to describe the
+         needed configuration.  Then run
+         "make -C kernel-config KERNEL_TREE=</usr/src/linux-x.y.z> -j<N>"
+         to regenerate the XML file.  Please use the latest kernel patch release
+         with the same major.minor version as the LFS development book.  -->
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="template-kernel.xml"/>
+
+    <para>
+      Select the appropriate sub-options that appear when the above options are
+      selected. As much as possible, the layout should be the same as in
+      kernel configuration menus.
+    </para>
+
+    <indexterm zone="TEMPLATE TEMPLATE-kernel">
+      <primary sortas="d-TEMPLATE">TEMPLATE</primary>
+    </indexterm>
+  </sect2>
+
+  <!--Required section-->
+  <sect2 role="installation">
+    <title>Installation of TEMPLATE</title>
+
+    <para>
+      Install <application>TEMPLATE</application> by running the following
+      commands:
+    </para>
+
+<!-- Spaces are significant in <screen> sections -->
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <!-- Optional paragraph. Add it when some instructions for building
+         documentation need optional or external packages. The remap="doc"
+         attribute signals that kind of instructions. Note: instructions
+         for generating documentation that can be built with
+         recommended/required/LFS book packages may be included in the
+         same block as configure and make. -->
+
+    <para>
+      If you have installed <xref linkend="optional-dep"/>, you can build
+      the documentation (or additional formats of the documentation) by issuing:    </para>
+
+<screen remap="doc"><userinput>make -C doc pdf</userinput></screen>
+
+    <!-- adjust the instructions as needed. -->
+
+    <!-- Optional paragraph. Use one of the two formats below about the test
+         suite; delete the line that is not applicable. Of course, if the
+         test suite uses syntax other than 'make check', revise the
+         line to reflect the actual syntax to run the test suite -->
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <!-- Sometimes, more complex instructions are needed for running tests, or
+         they need to be run as root. They can then be put inside screen
+         tags using the remap="test" attribute as in the following example: -->
+
+    <para>
+      If you want to run the tests, first create some needed files:
+    </para>
+
+<screen remap="test"><userinput>make prepare-tests</userinput></screen>
+
+    <para>
+      Then run the tests as the &root; user:
+    </para>
+
+<screen role="root" remap="test"><userinput>make tests</userinput></screen>
+
+    <para>
+      Now, as the &root; user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <!-- Optional paragraph for documentation that has been generated using
+         optional/external packages: -->
+
+    <para>
+      If you have built the optional documentation, install it as the
+      &root; user:
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>install -vdm 755 /usr/share/doc/template-&template-version; &amp;&amp;
+mv doc/* /usr/share/doc/template-&template-version;</userinput></screen>
+  </sect2>
+
+  <!--Optional section-->
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+    <para>
+      <command>COMMAND</command>: This command does something.
+    </para>
+
+    <para>
+      <parameter>--PARAMETER</parameter>: This parameter does something
+      mandatory for BLFS purposes. It will be in the instructions above. It is
+      not optional and is why it is listed as a parameter and not an option.
+    </para>
+
+    <para>
+      <option>--OPTION</option>: This option does something optionally per the
+      user's desires. It is not listed in the instructions above, but instead,
+      is listed here because many (some) readers may want to include it.
+    </para>
+  </sect2>
+
+  <!--Optional section-->
+  <sect2 role="using">
+    <title>Using TEMPLATE</title>
+
+    <para>
+      Stuff about how to use TEMPLATE to do something. This section is rarely
+      used.
+    </para>
+  </sect2>
+
+  <!--Optional section-->
+  <sect2 role="configuration">
+    <title>Configuring TEMPLATE</title>
+
+    <sect3 id="TEMPLATE-config">
+      <title>Config Files</title>
+      <para>
+        <filename>~/.Configfilename1</filename> and
+        <filename>/etc/path/Configfilename2</filename> <!-- notice no period as this is not a sentence-->
+      </para>
+
+      <indexterm zone="TEMPLATE TEMPLATE-config">
+        <primary sortas="e-AA.Configfilename1">~/.Configfilename1</primary>
+      </indexterm>
+
+      <indexterm zone="TEMPLATE TEMPLATE-config">
+        <primary
+        sortas="e-etc-path-Configfilename2">/etc/path/Configfilename2</primary>
+      </indexterm>
+    </sect3>
+
+    <sect3><title>Configuration Information</title>
+
+      <para>
+        Blah blah blah about config.
+      </para>
+
+<screen><userinput>USER CONFIG COMMANDS</userinput></screen>
+
+<screen role="root"><userinput>ROOT CONFIG COMMANDS</userinput></screen>
+
+      <!-- File creation. Add the appropriate <indexterm> block if needed.-->
+      <para>
+        Create the file .... for ...
+      </para>
+
+<screen role="root"><userinput>cat &gt;&gt; /PATH/FILENAME &lt;&lt; "EOF"
+<literal># Begin FILENAME
+
+TEXT
+
+# End FILENAME</literal>
+EOF</userinput></screen>
+    </sect3>
+
+    <sect3  id="TEMPLATE-init">
+      <title>Boot Script</title>
+
+      <para>
+        To automatically start the <command>TEMPLATE</command> daemon when the
+        system is rebooted, install the
+        <filename>/etc/rc.d/init.d/TEMPLATE</filename> bootscript from the
+        <xref linkend="bootscripts" revision="sysv"/>
+        <xref linkend="systemd-units" revision="systemd"/> package as the
+        &root; user:
+      </para>
+
+      <indexterm zone="TEMPLATE TEMPLATE-init">
+        <primary sortas="f-TEMPLATE">TEMPLATE</primary>
+      </indexterm>
+
+<screen role="root"><userinput>make install-TEMPLATE</userinput></screen>
+    </sect3>
+  </sect2>
+
+  <!--Required section-->
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program(s)</segtitle>
+      <segtitle>Installed Librar(y,ies)</segtitle>
+      <segtitle>Installed Director(y,ies)</segtitle>
+
+      <!-- If there were no programs, libraries, or directories created, then
+           we would list the section as "None". However, a decision must have
+           been made to change the "None" to just removing the whole section
+           because I've noticed that many packages have had the "None"
+           removed and the section completely removed as well. The reasoning
+           was that by putting "None", it appears as if we know there are none.
+           Without anything it appears as we are not sure. -->
+
+      <seglistitem>
+        <seg>
+          PROGRAM1, PROGRAM2 and PROGRAM3<!-- no period here since it is not
+          a sentence -->
+        </seg>
+        <seg>
+          libLIBRARY1.so, libLIBRARY2.so and libLIBRARY3.so<!-- no period here
+          since it is not a sentence -->
+        </seg>
+        <seg>
+          /etc/TEMPLATE, /usr/include/TEMPLATE, /usr/lib/TEMPLATE,
+          /usr/share/TEMPLATE-&TEMPLATE-version;,
+          /usr/share/doc/TEMPLATE-&TEMPLATE-version; and
+          /var/lib/TEMPLATE<!-- no period here
+          since it is not a sentence -->
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <!-- If the program or library name conflicts with (is the same as) the
+      package name, add -prog or -lib to the varlistentry entity id
+      and the 2nd entry of the indexterm zone entity -->
+
+      <varlistentry id="PROGRAM1">
+        <term><command>PROGRAM1</command></term>
+        <listitem>
+          <para>
+            does this ..... (no period at the end)
+          </para>
+          <indexterm zone="TEMPLATE PROGRAM1">
+            <primary sortas="b-PROGRAM1">PROGRAM1</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="PROGRAM2">
+        <term><command>PROGRAM2</command></term>
+        <listitem>
+          <para>
+            does this ..... (no period at the end)
+          </para>
+          <indexterm zone="TEMPLATE PROGRAM2">
+            <primary sortas="b-PROGRAM2">PROGRAM2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libLIBRARY1">
+        <term><filename class="libraryfile">libLIBRARY1.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that ..... (no period at the end)
+          </para>
+          <indexterm zone="TEMPLATE libLIBRARY1">
+            <primary sortas="c-libLIBRARY1">libLIBRARY1.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+</sect1>

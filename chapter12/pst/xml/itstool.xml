@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY itstool-download-http "https://files.itstool.org/itstool/itstool-&itstool-version;.tar.bz2">
+  <!ENTITY itstool-download-ftp  " ">
+  <!ENTITY itstool-md5sum        "267a3bdc72a2d8abb1b824f2ea32ee9b">
+  <!ENTITY itstool-size          "104 KB">
+  <!ENTITY itstool-buildsize     "688 KB">
+  <!ENTITY itstool-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="itstool" xreflabel="itstool-&itstool-version;">
+  <?dbhtml filename="itstool.html"?>
+
+
+  <title>itstool-&itstool-version;</title>
+
+  <indexterm zone="itstool">
+    <primary sortas="a-itstool">itstool</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to itstool</title>
+
+    <para>
+      <application>Itstool</application> extracts messages from XML files
+      and outputs PO template files, then merges translations from MO files
+      to create translated XML files. It determines what to translate and how to
+       chunk it into messages using the W3C Internationalization Tag Set (ITS).
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&itstool-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&itstool-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &itstool-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &itstool-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &itstool-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &itstool-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Itstool Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="DocBook"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of itstool</title>
+
+    <para>
+      First, fix some compatibility problems with Python-3.12:
+    </para>
+
+<screen><userinput remap="pre">sed -i 's/re.sub(/re.sub(r/'         itstool.in &amp;&amp;
+sed -i 's/re.compile(/re.compile(r/' itstool.in</userinput></screen>
+
+    <para>
+      Install <application>itstool</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>PYTHON=/usr/bin/python3 ./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+<!--
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+-->
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          itstool
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/itstool
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="itstool-prog">
+        <term><command>itstool</command></term>
+        <listitem>
+          <para>
+            is used to create translated XML files
+          </para>
+          <indexterm zone="itstool itstool-prog">
+            <primary sortas="b-itstool">itstool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+<para>
+  <parameter>--with-system-</parameter>...: Unless this parameter is used,
+  the included versions of these libraries  will be statically compiled
+  into the programs which need them.  If you decided not to install a
+  recommended library, omit the corresponding switch.
+</para>

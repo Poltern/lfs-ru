@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libtirpc-download-http "&sourceforge-dl;/libtirpc/libtirpc-&libtirpc-version;.tar.bz2">
+  <!ENTITY libtirpc-download-ftp  " ">
+  <!ENTITY libtirpc-md5sum        "375dbe7ceb2d0300d173fb40321b49b6">
+  <!ENTITY libtirpc-size          "552 KB">
+  <!ENTITY libtirpc-buildsize     "7.6 MB">
+  <!ENTITY libtirpc-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="libtirpc" xreflabel="libtirpc-&libtirpc-version;">
+  <?dbhtml filename="libtirpc.html"?>
+
+
+  <title>libtirpc-&libtirpc-version;</title>
+
+  <indexterm zone="libtirpc">
+    <primary sortas="a-libtirpc">libtirpc</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libtirpc</title>
+
+    <para>
+      The <application>libtirpc</application> package contains
+      libraries that support programs that use the Remote Procedure Call (RPC)
+      API. It replaces the RPC, but not the NIS library entries that
+      used to be in glibc.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libtirpc-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libtirpc-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libtirpc-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libtirpc-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libtirpc-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libtirpc-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libtirpc Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      mitkrb for the GSSAPI
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libtirpc</title>
+
+    <note>
+      <para>
+        If updating this package, you will also need to update
+        any existing version of rpcbind
+      </para>
+    </note>
+<!--  Looks like this is incorporated in version 1.0.3
+    <para>
+      Fix a symbol name needed by NIS libraries:
+    </para>
+
+<screen><userinput>sed '/key_secret_is/s/secret/secretkey/' -i src/libtirpc.map</userinput></screen>
+    <para>
+      Install <application>libtirpc</application> by running the following
+      commands:
+    </para>
+-->
+<screen><userinput>./configure --prefix=/usr                                   \
+            --sysconfdir=/etc                               \
+            --disable-static                                \
+            --disable-gssapi                                &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <parameter>--disable-gssapi</parameter>: This switch is needed if
+      no GSSAPI is installed. Remove this switch if you have one
+      installed (for example mitkrb and you wish to use it.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libtirpc.so
+        </seg>
+        <seg>
+          /usr/include/tirpc
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libtirpc-lib">
+        <term><filename class="libraryfile">libtirpc.so</filename></term>
+        <listitem>
+          <para>
+            provides the Remote Procedure Call (RPC) API functions required by
+            other programs
+          </para>
+          <indexterm zone="libtirpc libtirpc-lib">
+            <primary sortas="c-libtirpc">libtirpc.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

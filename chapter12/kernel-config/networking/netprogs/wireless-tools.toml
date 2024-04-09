@@ -1,0 +1,4 @@
+NET='*'
+WIRELESS='*'
+CFG80211='*M'
+CFG80211_WEXT='*'

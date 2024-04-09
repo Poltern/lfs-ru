@@ -1,0 +1,12 @@
+MD='*'
+# TODO: is M really suitable?  But anyway I don't think it make too much
+# sense to set this to * but the desired types to M ...
+BLK_DEV_MD='*M'
+MD_AUTODETECT='*'
+MD_RAID1='*M '
+MD_RAID10='*M '
+MD_RAID456='*M '
+
+[MD_RAID0]
+value = '*M '
+comment = 'Only the RAID types desired are required'

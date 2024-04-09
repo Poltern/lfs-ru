@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libevent-source "https://github.com/libevent/libevent/releases/download">
+
+  <!ENTITY libevent-download-http "&libevent-source;/release-&libevent-version;-stable/libevent-&libevent-version;-stable.tar.gz">
+  <!ENTITY libevent-download-ftp  " ">
+  <!ENTITY libevent-md5sum        "b5333f021f880fe76490d8a799cd79f4">
+  <!ENTITY libevent-size          "1.0 MB">
+  <!ENTITY libevent-buildsize     "20 MB (add 4 MB for tests and 4 MB for API docs)">
+  <!ENTITY libevent-time          "0.3 SBU (add 11 SBU for tests)">
+]>
+
+<sect1 id="libevent" xreflabel="libevent-&libevent-version;">
+  <?dbhtml filename="libevent.html"?>
+
+
+  <title>libevent-&libevent-version;</title>
+
+  <indexterm zone="libevent">
+    <primary sortas="a-libevent">libevent</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libevent</title>
+
+    <para>
+      <application>libevent</application> is an asynchronous event notification
+      software library. The <application>libevent</application> API provides a
+      mechanism to execute a callback function when a specific event occurs on
+      a file descriptor or after a timeout has been reached. Furthermore,
+      <application>libevent</application> also supports callbacks due to
+      signals or regular timeouts.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libevent-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libevent-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libevent-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libevent-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libevent-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libevent-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libevent Dependencies</bridgehead>
+    <!-- Python3 ports of the rpcgen_event.py file were produced in 2.1.9 -->
+<!--
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="openssl"/>
+    </para>
+-->
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="doxygen"/> (for API documentation)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libevent</title>
+
+    <para>
+      First, fix an issue that prevents event_rpcgen.py from working:
+    </para>
+
+<screen><userinput remap="pre">sed -i 's/python/&amp;3/' event_rpcgen.py</userinput></screen>
+
+    <para>
+      Install <application>libevent</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      If you have <!--<xref linkend="doxygen"/> -->installed and wish to build API
+      documentation, issue :
+    </para>
+
+<screen remap="doc"><userinput>doxygen Doxyfile</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make verify</command>. Six tests in
+      every suite related to <filename>regress_ssl.c</filename> and
+      <filename>regress_http.c</filename> are known to fail due to
+      incompatibilities with OpenSSL-3. Some tests that are related to
+      <filename>regress_dns.c</filename> are also known to fail intermittently
+      due to insufficient test timeouts.
+      <!-- https://github.com/libevent/libevent/issues/1271 and
+      https://github.com/libevent/libevent/issues/1304. There are three commits
+      that we could apply, but since they just touch the tests it's probably
+      not necessary to fix it. The relevant PRs are #1305, #1045, and the commit
+      linked in #1271. This should be fixed in libevent-2.2.-->
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you built the API documentation, install it by issuing the following
+      commands as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>install -v -m755 -d /usr/share/doc/libevent-&libevent-version;/api &amp;&amp;
+cp      -v -R       doxygen/html/* \
+                    /usr/share/doc/libevent-&libevent-version;/api</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          event_rpcgen.py
+        </seg>
+        <seg>
+          libevent_core.so,
+          libevent_extra.so,
+          libevent_openssl.so,
+          libevent_pthreads.so and
+          libevent.so
+        </seg>
+        <seg>
+         /usr/include/event2 and
+         /usr/share/doc/libevent-&libevent-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <!-- Who knows what these things do?
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="event_rpcgen.py">
+        <term><command>event_rpcgen.py</command></term>
+        <listitem>
+          <para>
+            does this .....
+          </para>
+          <indexterm zone="libevent event_rpcgen.py">
+            <primary sortas="b-event_rpcgen.py">event_rpcgen.py</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libevent_core">
+        <term><filename class="libraryfile">libevent_core.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that .....
+          </para>
+          <indexterm zone="libevent libevent_core">
+            <primary sortas="c-libevent_core">libevent_core.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+      <varlistentry id="libevent_extra">
+        <term><filename class="libraryfile">libevent_extra.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that .....
+          </para>
+          <indexterm zone="libevent libevent_extra">
+            <primary sortas="c-libevent_extra">libevent_extra.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+      <varlistentry id="libevent_openssl">
+        <term><filename class="libraryfile">libevent_openssl.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that .....
+          </para>
+          <indexterm zone="libevent libevent_openssl">
+            <primary sortas="c-libevent_openssl">libevent_openssl.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+      <varlistentry id="libevent_pthreads">
+        <term><filename class="libraryfile">libevent_pthreads.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that .....
+          </para>
+          <indexterm zone="libevent libevent_pthreads">
+            <primary sortas="c-libevent_pthreads">libevent_pthreads.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+      <varlistentry id="libevent-lib">
+        <term><filename class="libraryfile">libevent.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that .....
+          </para>
+          <indexterm zone="libevent libevent-lib">
+            <primary sortas="c-libevent">libevent.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist> -->
+
+  </sect2>
+
+</sect1>

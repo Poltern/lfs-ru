@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../../general.ent">
+  %general-entities;
+
+ <!-- for modules referenced outside of perl, put them in general/prog/perl-modules/
+   and use a link to &perl_authors;/id/X/XY/XYZZY/Fu-Bar-$Fu-Bar-version; -->
+  <!ENTITY my-download-http "&perl_authors;/id/X/XY/XYZZY/Fu-Bar-&Fu-Bar-version;.tar.gz">
+ <!-- but for modules which are only dependencies of other modules, put them in
+   general/pprog/perl-deps with a link to &metacpan_authors; that includes the /id part -->
+  <!ENTITY my-download-http "&metacpan_authors;/X/XY/XYZZY/Fu-Bar-&Fu-Bar-version;.tar.gz">
+ <!-- only one of the above choices -->
+  <!ENTITY my-md5sum "fix-me-please-editor-0cc7774186c">
+
+]>
+
+  <!-- Begin Fu::Bar -->
+  <sect2 id="perl-fu-bar" xreflabel="Fu-Bar-&Fu-Bar-version;">
+
+    <title>Fu::Bar-&Fu-Bar-version;</title>
+
+    <indexterm zone="perl-fu-bar">
+      <primary sortas="a-Fu-Bar">Fu::Bar</primary>
+    </indexterm>
+
+    <sect3 role="package">
+      <title>Introduction to Fu::Bar</title>
+
+      <para>
+        Fu::Bar does something.
+      </para>
+
+<!--  &lfs8x_checked; -->
+
+      <bridgehead renderas="sect4">Package Information</bridgehead>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Download (HTTP): <ulink url="&my-download-http;"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Download MD5 sum: &my-md5sum;
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <bridgehead renderas="sect4">Additional Download</bridgehead>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Required patch:
+            <ulink url="&patch-root;/Fu-Bar-&Fu-Bar-version;-do_something-1.patch"/>
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <!-- omit dependencies if not needed.
+       If module A currently brings in the required dep of B, add a comment that
+       B is pulled in by A.  This is to keep it maintainable as deps change. -->
+      <bridgehead renderas="sect4">Fu::Bar Dependencies</bridgehead>
+
+      <bridgehead renderas="sect5">Required</bridgehead>
+      <para role="required">
+        <xref linkend="perl-bar-baz"/>,
+        <!-- perl-bar-baz pulls in perl-mojotasticity -->
+        <xref linkend="perl-wibble"/> and
+        <xref linkend="perl-wobble"/>
+
+      <bridgehead renderas="sect5">Recommended (required for the test suite)</bridgehead>
+      <para role="recommended">
+        <xref linkend="perl-silly"/>,
+        <!-- perl-silly pulls in perl-bar-eejit for its own test suite -->
+        <xref linkend="perl-teststuff"/>
+
+      </para>
+
+    </sect3>
+
+    <sect3 role="installation">
+      <title>Installation of Fu::Bar</title>
+
+      <para>
+        First, apply a patch to do something ...
+      </para>
+
+<!-- Any specific action for the module (patches, etc) should come first -->
+<screen><userinput>patch -Np1 -i ../Fu-Bar-https-&Fu-Bar-version;-do_something-1.patch</userinput></screen>
+
+<!-- If the module uses standard installation instructions: -->
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="../../../xincludes/perl-standard-install.xml"/>
+
+<!-- If the module uses installation instructions using Build.PL: -->
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="../../../xincludes/perl-build-install.xml"/>
+
+<!-- Exceptionally, if a scripted build requires a value to be passed to 'yes',
+  copy the xinclude inline and add the command explanation -->
+    </sect3>
+
+    <!-- only include a command explanation if yes or similar is needed in
+       scripting -->
+    <sect3 role="commands">
+      <title>Command Explanations</title>
+
+      <para>
+        <command>yes 'n'</command>: Perl will ask if you wish to do ...
+        and will wait for a response. Using 'yes' allows you to script this.
+      </para>
+
+    </sect3>
+
+    <!-- omit content unless prog(s) or lib is installed in /usr -->
+    <sect3 role="content">
+      <title>Contents</title>
+
+      <segmentedlist>
+        <segtitle>Installed Programs</segtitle>
+        <!-- omit libraries entirely unless present in /usr, there are often
+         perl libraries in site-perl so 'none' can be misleading -->
+        <segtitle>Installed Libraries</segtitle>
+
+        <seglistitem>
+          <seg>
+            dibbler
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+      <variablelist>
+        <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+        <?dbfo list-presentation="list"?>
+        <?dbhtml list-presentation="table"?>
+
+        <varlistentry id="dibbler-prog">
+          <term><command>dibbler</command></term>
+          <listitem>
+            <para>
+              sells sausage inna bun.
+            </para>
+            <!-- the -prog is for while (old) and new- perl module pages
+             are both in the book, without it the link to the package is
+             correct, but the link to the prog goes to the progs in old
+             perl-modules.xml -->
+            <indexterm zone="perl-fu-bar dibbler-prog">
+              <primary sortas="b-dibbler">dibbler</primary>
+            </indexterm>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+
+    </sect3>
+
+  </sect2>

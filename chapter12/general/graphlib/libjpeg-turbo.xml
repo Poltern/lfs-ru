@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libjpeg-download-http "&sourceforge-dl;/libjpeg-turbo/libjpeg-turbo-&libjpeg-turbo-version;.tar.gz">
+  <!ENTITY libjpeg-download-ftp  " ">
+  <!ENTITY libjpeg-md5sum        "1fdc6494521a8724f5f7cf39b0f6aff3">
+  <!ENTITY libjpeg-size          "2.7 MB">
+  <!ENTITY libjpeg-buildsize     "55 MB (with tests)">
+  <!ENTITY libjpeg-time          "0.5 SBU (with tests; both using parallelism=4)">
+]>
+
+<sect1 id="libjpeg" xreflabel="libjpeg-turbo-&libjpeg-turbo-version;">
+  <?dbhtml filename="libjpeg.html"?>
+
+
+  <title>libjpeg-turbo-&libjpeg-turbo-version;</title>
+
+  <indexterm zone="libjpeg">
+    <primary sortas="a-libjpeg-turbo">libjpeg-turbo</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libjpeg-turbo</title>
+
+    <para>
+      <application>libjpeg-turbo</application> is a fork of the original
+      IJG <application>libjpeg</application> which uses SIMD to accelerate
+      baseline JPEG compression and decompression.
+      <application>libjpeg</application> is a library that implements JPEG
+      image encoding, decoding and transcoding.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libjpeg-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libjpeg-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libjpeg-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libjpeg-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libjpeg-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libjpeg-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libjpeg-turbo Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="cmake"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="nasm"/> or <xref linkend="yasm"/>
+      (for building the package with optimized assembly routine)
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libjpeg-turbo</title>
+
+    <para>
+      Install <application>libjpeg-turbo</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr        \
+      -DCMAKE_BUILD_TYPE=RELEASE         \
+      -DENABLE_STATIC=FALSE              \
+      -DCMAKE_INSTALL_DEFAULT_LIBDIR=lib \
+      -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/libjpeg-turbo-&libjpeg-turbo-version; \
+      .. &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make test</command>.
+    </para>
+<!--
+    <note><para>
+      If installing <application>libjpeg-turbo</application> over an older jpeg
+      installation, not all library symbolic links are updated properly.  To fix
+      this before installation, run the following as the <systemitem
+      class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>rm -f /usr/lib/libjpeg.so*</userinput></screen>
+
+    </note>
+-->
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <option>-DWITH_JPEG8=ON</option>: This switch enables compatibility
+      with <application>libjpeg</application> version 8.
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          cjpeg, djpeg, jpegtran, rdjpgcom, tjbench, and wrjpgcom
+        </seg>
+        <seg>
+          libjpeg.so and libturbojpeg.so
+        </seg>
+        <seg>
+          /usr/share/doc/libjpeg-turbo-&libjpeg-turbo-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cjpeg">
+        <term><command>cjpeg</command></term>
+        <listitem>
+          <para>
+            compresses image files to produce a JPEG/JFIF file on the
+            standard output. Currently supported input file formats are: PPM
+            (PBMPLUS color format), PGM (PBMPLUS gray-scale format),
+            BMP, and Targa
+          </para>
+          <indexterm zone="libjpeg cjpeg">
+            <primary sortas="b-cjpeg">cjpeg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="djpeg">
+        <term><command>djpeg</command></term>
+        <listitem>
+          <para>
+            decompresses image files from JPEG/JFIF format to either
+            PPM (PBMPLUS color format), PGM (PBMPLUS gray-scale format),
+            BMP, or Targa format
+          </para>
+          <indexterm zone="libjpeg djpeg">
+            <primary sortas="b-djpeg">djpeg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jpegtran">
+        <term><command>jpegtran</command></term>
+        <listitem>
+          <para>
+            is used for lossless transformation of JPEG files
+          </para>
+          <indexterm zone="libjpeg jpegtran">
+            <primary sortas="b-jpegtran">jpegtran</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rdjpgcom">
+        <term><command>rdjpgcom</command></term>
+        <listitem>
+          <para>
+            displays text comments from within a JPEG file
+          </para>
+          <indexterm zone="libjpeg rdjpgcom">
+            <primary sortas="b-rdjpgcom">rdjpgcom</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tjbench">
+        <term><command>tjbench</command></term>
+        <listitem>
+          <para>
+            is used to benchmark the performance of libjpeg-turbo
+          </para>
+          <indexterm zone="libjpeg tjbench">
+            <primary sortas="b-tjbench">tjbench</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wrjpgcom">
+        <term><command>wrjpgcom</command></term>
+        <listitem>
+          <para>
+            inserts text comments into a JPEG file
+          </para>
+          <indexterm zone="libjpeg wrjpgcom">
+            <primary sortas="b-wrjpgcom">wrjpgcom</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libjpeg-lib">
+        <term><filename class="libraryfile">libjpeg.so</filename></term>
+        <listitem>
+          <para>
+            contains functions used for reading and writing JPEG images
+        </para>
+          <indexterm zone="libjpeg libjpeg-lib">
+            <primary sortas="c-libjpeg">libjpeg.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gpm-download-http "&sources-anduin-http;/gpm/gpm-&gpm-version;.tar.bz2">
+  <!ENTITY gpm-download-ftp  " ">
+  <!ENTITY gpm-md5sum        "bf84143905a6a903dbd4d4b911a2a2b8">
+  <!ENTITY gpm-size          "820 KB">
+  <!ENTITY gpm-buildsize     "7.4 MB">
+  <!ENTITY gpm-time          "0.1 SBU">
+]>
+
+<sect1 id="gpm" xreflabel="GPM-&gpm-version;">
+  <?dbhtml filename="gpm.html"?>
+
+
+  <title>GPM-&gpm-version;</title>
+
+  <indexterm zone="gpm">
+    <primary sortas="a-GPM">GPM</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GPM</title>
+
+    <para>
+      The <application>GPM</application> (General Purpose Mouse daemon)
+      package contains a mouse server for the console and
+      <command>xterm</command>. It not only provides cut and paste support
+      generally, but its library component is used by various software such as
+      <application>Links</application> to provide mouse support to the
+      application.  It is useful on desktops, especially if following (Beyond)
+      Linux From Scratch instructions; it's often much easier (and less error
+      prone) to cut and paste between two console windows than to type
+      everything by hand!
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gpm-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gpm-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gpm-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gpm-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gpm-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gpm-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/gpm-&gpm-version;-consolidated-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GPM Dependencies</bridgehead>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="texlive"/> (for documentation)
+    </para>-->
+  </sect2>
+
+  <sect2 role="kernel" id='gpm-kernel'>
+    <title>Kernel Configuration</title>
+
+     <para>
+      Enable the following option in the kernel configuration and recompile the
+      kernel if necessary:
+     </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="gpm-kernel.xml"/>
+
+     <indexterm zone="gpm gpm-kernel">
+        <primary sortas="d-gpm">gpm</primary>
+     </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GPM</title>
+
+    <para>
+      Install <application>GPM</application> by running
+      the following commands:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../gpm-&gpm-version;-consolidated-1.patch                &amp;&amp;
+./autogen.sh                                                    &amp;&amp;
+./configure --prefix=/usr --sysconfdir=/etc ac_cv_path_emacs=no &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      If <!--<xref linkend='texlive'/>--> is installed, build the GPM manual as
+      dvi, ps, and pdf formats:
+    </para>
+
+<screen remap='doc'><userinput>make -C doc gpm.{dvi,ps} &amp;&amp;
+dvipdfm doc/gpm.dvi -o doc/gpm.pdf</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install                                          &amp;&amp;
+
+install-info --dir-file=/usr/share/info/dir           \
+             /usr/share/info/gpm.info                 &amp;&amp;
+
+rm -fv /usr/lib/libgpm.a                              &amp;&amp;
+ln -sfv libgpm.so.2.1.0 /usr/lib/libgpm.so            &amp;&amp;
+install -v -m644 conf/gpm-root.conf /etc              &amp;&amp;
+
+install -v -m755 -d /usr/share/doc/gpm-&gpm-version;/support &amp;&amp;
+install -v -m644    doc/support/*                     \
+                    /usr/share/doc/gpm-&gpm-version;/support &amp;&amp;
+install -v -m644    doc/{FAQ,HACK_GPM,README*}        \
+                    /usr/share/doc/gpm-&gpm-version;</userinput></screen>
+
+    <para>
+      If TeXlive is installed and you've built GPM
+      manual as dvi, ps, and pdf formats, install them as the &root; user:
+    </para>
+
+<screen role='root' remap='doc'><userinput>install -vm644 doc/gpm.{dvi,ps,pdf} /usr/share/doc/gpm-&gpm-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>./autogen.sh</command>: This command creates the missing
+      <command>configure</command> script.
+    </para>
+
+    <para>
+      <parameter>ac_cv_path_emacs=no</parameter>: This variable works around
+      an issue causing the package fail to build with
+      <!--<xref linkend='emacs'/> installed.  It also suppresses the
+      installations of some <quote>Emacs support files</quote> shipped with
+      GPM.  These files are quite outdated and they should be superseded
+      with <xref linkend='emacs'/> built-in GPM support.  If you need to use
+      <xref linkend='emacs'/> in Linux console with mouse support, you
+      should install (or reinstall) <xref linkend='emacs'/>-->
+      <emphasis role='bold'>after</emphasis> GPM.
+    </para>
+
+    <para>
+      <command>install-info ...</command>: This package installs a
+      <filename class="extension">.info</filename> file, but does not update
+      the system <filename>dir</filename> file. This command makes the update.
+    </para>
+
+    <para>
+      <command>ln -v -sfn libgpm.so.2.1.0 /usr/lib/libgpm.so</command>: This
+      command is used to create (or update) the <filename
+      class="extension">.so</filename> symlink to the library.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring GPM</title>
+
+    <sect3 id="gpm-init">
+      <title><phrase revision="sysv">Boot Script</phrase>
+             <phrase revision="systemd">Systemd Unit</phrase></title>
+
+      <indexterm zone="gpm gpm-init">
+        <primary sortas="f-gpm-init">gpm</primary>
+      </indexterm>
+
+      <para revision="sysv">
+        Install the
+        <filename>/etc/rc.d/init.d/gpm</filename> init script included in the
+        <xref linkend="bootscripts"/> package.
+      </para>
+
+      <para revision="systemd">
+        To start the <command>gpm</command> daemon at boot,
+        install the systemd unit from the <xref linkend="systemd-units"/>
+        package by running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>make install-gpm</userinput></screen>
+
+    </sect3>
+
+    <sect3 id="gpm-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/gpm-root.conf</filename> and
+        <filename>~/.gpm-root</filename>: The default and individual user
+        <command>gpm-root</command> configuration files.
+      </para>
+
+      <para revision="sysv">
+        <filename>/etc/sysconfig/mouse</filename>:
+        This file contains the name of your mouse device and the protocol
+        it uses.  To create this file, run the following as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root" revision="sysv"><userinput>cat &gt; /etc/sysconfig/mouse &lt;&lt; "EOF"
+<literal># Begin /etc/sysconfig/mouse
+
+MDEVICE="<replaceable>&lt;yourdevice&gt;</replaceable>"
+PROTOCOL="<replaceable>&lt;yourprotocol&gt;</replaceable>"
+GPMOPTS="<replaceable>&lt;additional options&gt;</replaceable>"
+
+# End /etc/sysconfig/mouse</literal>
+EOF</userinput></screen>
+
+      <indexterm zone="gpm gpm-config">
+        <primary sortas="e-AA.gpm-root">~/.gpm-root</primary>
+      </indexterm>
+
+      <indexterm zone="gpm gpm-config">
+        <primary sortas="e-etc-gpm-root.conf">/etc/gpm-root.conf</primary>
+      </indexterm>
+
+      <indexterm zone="gpm gpm-config" revision="sysv">
+        <primary sortas="e-etc-sysconfig-mouse">/etc/sysconfig/mouse</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para revision="sysv">
+        Examples of values to set <envar>MDEVICE</envar>,
+        <envar>PROTOCOL</envar>, and <envar>GPMOPTS</envar> to are:
+      </para>
+
+<screen revision="sysv"><literal>MDEVICE="/dev/input/mice"
+PROTOCOL="imps2"
+GPMOPTS=""</literal></screen>
+
+      <para revision="sysv">
+        A list of which protocol values are known can be found by running
+        <command>gpm -m <replaceable>[device]</replaceable> -t -help</command>.
+        The <envar>MDEVICE</envar> setting depends on which type of mouse you
+        have.  For example, <filename>/dev/ttyS0</filename> for a serial mouse
+        (on Windows this is COM1), <filename>/dev/input/mice</filename> is
+        often used for USB mice and <filename>/dev/psaux</filename> for PS2
+        mice. <envar>GPMOPTS</envar> is the 'catch all' for any additional
+        options that are needed for your hardware.
+      </para>
+
+      <para revision="systemd">
+        <application>GPM</application> is by default started with
+        the following parameters:
+        <parameter>-m /dev/input/mice -t imps2</parameter>. If the
+        mentioned parameters don't suit your needs, you can override
+        them by running the following commands as
+        the <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="nodump" revision="systemd"><userinput>install -v -dm755 /etc/systemd/system/gpm.service.d &amp;&amp;
+cat &gt; /etc/systemd/system/gpm.service.d/99-user.conf &lt;&lt; EOF
+<literal>[Service]
+ExecStart=/usr/sbin/gpm <replaceable>&lt;list of parameters&gt;</replaceable>
+</literal>EOF</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>disable-paste, display-buttons, display-coords, get-versions, gpm,
+        gpm-root, hltest, mev, and mouse-test</seg>
+        <seg>libgpm.so</seg>
+        <seg>/usr/share/doc/gpm-&gpm-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="disable-paste">
+        <term><command>disable-paste</command></term>
+        <listitem>
+          <para>
+            is a security mechanism used to disable the paste buffer
+          </para>
+          <indexterm zone="gpm disable-paste">
+            <primary sortas="b-disable-paste">disable-paste</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="display-buttons">
+        <term><command>display-buttons</command></term>
+        <listitem>
+          <para>
+            is a simple program that reports the mouse buttons being
+            pressed and released
+          </para>
+          <indexterm zone="gpm display-buttons">
+            <primary sortas="b-display-buttons">display-buttons</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="display-coords">
+        <term><command>display-coords</command></term>
+        <listitem>
+          <para>
+            is a simple program that reports the mouse coordinates
+          </para>
+          <indexterm zone="gpm display-coords">
+            <primary sortas="b-display-coords">display-coords</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="get-versions">
+        <term><command>get-versions</command></term>
+        <listitem>
+          <para>
+            is used to report the <application>GPM</application> library
+            and server versions
+          </para>
+          <indexterm zone="gpm get-versions">
+            <primary sortas="b-get-versions">get-versions</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gpm-prog">
+        <term><command>gpm</command></term>
+        <listitem>
+          <para>
+            is a cut and paste utility and mouse server for virtual consoles
+          </para>
+          <indexterm zone="gpm gpm-prog">
+            <primary sortas="b-gpm">gpm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gpm-root">
+        <term><command>gpm-root</command></term>
+        <listitem>
+          <para>
+            is a default handler for <command>gpm</command>. It is used to
+            draw menus on the root window
+          </para>
+          <indexterm zone="gpm gpm-root">
+            <primary sortas="b-gpm-root">gpm-root</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hltest">
+        <term><command>hltest</command></term>
+        <listitem>
+          <para>
+            is a simple sample application using the high-level library, meant
+            to be read by programmers trying to use the high-level library
+          </para>
+          <indexterm zone="gpm hltest">
+            <primary sortas="b-hltest">hltest</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mev">
+        <term><command>mev</command></term>
+        <listitem>
+          <para>
+            is a program to report mouse events
+          </para>
+          <indexterm zone="gpm mev">
+            <primary sortas="b-mev">mev</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mouse-test">
+        <term><command>mouse-test</command></term>
+        <listitem>
+          <para>
+            is a tool for determining the mouse type and device it's
+            attached to
+          </para>
+          <indexterm zone="gpm mouse-test">
+            <primary sortas="b-mouse-test">mouse-test</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgpm">
+        <term><filename class="libraryfile">libgpm.so</filename></term>
+        <listitem>
+          <para>
+            contains the API functions to access the
+            <application>GPM</application> daemon
+          </para>
+          <indexterm zone="gpm libgpm">
+            <primary sortas="c-libgpm">libgpm.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

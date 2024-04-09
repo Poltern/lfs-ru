@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../../general.ent">
+  %general-entities;
+
+  <!ENTITY efivar-download-http "https://github.com/rhboot/efivar/archive/&efivar-version;/efivar-&efivar-version;.tar.gz">
+  <!ENTITY efivar-download-ftp  " ">
+  <!ENTITY efivar-md5sum        "a8fc3e79336cd6e738ab44f9bc96a5aa">
+  <!ENTITY efivar-size          "456 KB">
+  <!ENTITY efivar-buildsize     "21 MB">
+  <!ENTITY efivar-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="efivar" xreflabel="efivar-&efivar-version;">
+  <?dbhtml filename="efivar.html"?>
+
+
+  <title>efivar-&efivar-version;</title>
+
+  <indexterm zone="efivar">
+    <primary sortas="a-efivar">efivar</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to efivar</title>
+
+    <para>
+      The <application>efivar</application> package provides tools and
+      libraries to manipulate EFI variables.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&efivar-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&efivar-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &efivar-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &efivar-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &efivar-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &efivar-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Optional patch (Required for 32-bit systems):
+          <ulink url="&patch-root;/efivar-&efivar-version;-i686-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">efivar Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="mandoc"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of efivar</title>
+
+    <note>
+      <para>
+        This package cannot function properly on a 32-bit system with a
+        64-bit UEFI implementation.  Don't install this package (or
+        efibootmgr) on 32-bit system unless you are absolutely sure you have
+        a 32-bit UEFI implementation, which is very rare in practice.
+      </para>
+    </note>
+
+    <para>
+      Build <application>efivar</application> with the following commands:
+    </para>
+
+<screen><userinput>make</userinput></screen>
+
+    <para>
+      The test suite of this package is dangerous.  Running it may trigger
+      firmware bugs and make your system unusable without using some special
+      hardware to reprogram the firmware.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install LIBDIR=/usr/lib</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>LIBDIR=/usr/lib</parameter>:
+      This option overrides the default library directory of the package
+      (<filename class="directory">/usr/lib64</filename>, which is not used
+      by LFS).
+    </para>
+
+    <para>
+      <option>ENABLE_DOCS=0</option>: Disable the generation of man pages.
+      Append this option after the <command>make</command> and
+      <command>make install</command> commands if you don't need the man
+      pages to allow building this package without <xref linkend='mandoc'/>
+      installed.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          efisecdb and efivar
+        </seg>
+        <seg>
+          libefiboot.so, libefisec.so, and libefivar.so
+        </seg>
+        <seg>
+          /usr/include/efivar
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="efisecdb">
+        <term><command>efisecdb</command></term>
+        <listitem>
+          <para>
+            is an utility for managing UEFI signature lists
+          </para>
+          <indexterm zone="efivar efisecdb">
+            <primary sortas="b-efisecdb">efisecdb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="efivar-prog">
+        <term><command>efivar</command></term>
+        <listitem>
+          <para>
+            is a tool to manipulate UEFI variables
+          </para>
+          <indexterm zone="efivar efivar-prog">
+            <primary sortas="b-efivar">efivar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libefiboot">
+        <term><filename class="libraryfile">libefiboot.so</filename></term>
+        <listitem>
+          <para>
+            is a library used by <command>efibootmgr</command>
+          </para>
+          <indexterm zone="efivar libefiboot">
+            <primary sortas="c-libefiboot">libefiboot.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libefisec">
+        <term><filename class="libraryfile">libefisec.so</filename></term>
+        <listitem>
+          <para>
+            is a library for managing UEFI signature lists
+          </para>
+          <indexterm zone="efivar libefisec">
+            <primary sortas="c-libefisec">libefisec.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libefivar">
+        <term><filename class="libraryfile">libefivar.so</filename></term>
+        <listitem>
+          <para>
+            is a library for the manipulation of EFI variables
+          </para>
+          <indexterm zone="efivar libefivar">
+            <primary sortas="c-libefivar">libefivar.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

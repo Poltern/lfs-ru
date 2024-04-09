@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+<para role="optional">
+  The source ships with its own versions of several libraries which are either
+  not under active development, or only used for limited functionality.  If
+  you install these, as with some other optional dependencies in this book you
+  will need to tell <command>configure</command> to use the system versions.
+  <ulink url="https://libgd.github.io/">GD</ulink>,
+  <ulink url="https://www.t1lib.org/">t1lib</ulink>,
+  <ulink url="https://github.com/gdraheim/zziplib/">ZZIPlib</ulink>,
+  <ulink url="https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=TECkitDownloads">TECkit</ulink>
+</para>

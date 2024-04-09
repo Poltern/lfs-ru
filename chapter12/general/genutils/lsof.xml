@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+
+<!ENTITY lsof-download-http "https://github.com/lsof-org/lsof/releases/download/&lsof-version;/lsof-&lsof-version;.tar.gz">
+<!ENTITY lsof-download-ftp  " ">
+<!ENTITY lsof-md5sum        "8c858675f6d6e137df9b4e26ad6c46e8">
+<!ENTITY lsof-size          "1.1 MB">
+<!ENTITY lsof-buildsize     "14 MB (with tests)">
+<!ENTITY lsof-time          "0.1 SBU (with tests)">
+]>
+
+<sect1 id="lsof" xreflabel="lsof-&lsof-version;">
+  <?dbhtml filename="lsof.html"?>
+
+
+  <title>lsof-&lsof-version;</title>
+
+  <indexterm zone="lsof">
+    <primary sortas="a-lsof">lsof</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to lsof</title>
+
+    <para>
+      The <application>lsof</application> package is useful to LiSt Open
+      Files for a given running application or process.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&lsof-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&lsof-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &lsof-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &lsof-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &lsof-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &lsof-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">lsof Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libtirpc"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      nmap (with a symbolic link <command>nc</command>
+      pointing to <command>ncat</command> in <filename class="directory">
+      /usr/bin</filename>; used in tests)
+    </para>
+
+  </sect2>
+
+  <sect2 role="kernel" id="lsof-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      To run the tests, the following option should be enabled in the kernel
+      configuration:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="lsof-test-kernel.xml"/>
+
+    <indexterm zone="lsof lsof-kernel">
+      <primary sortas="d-lsof">lsof (testing)</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of lsof</title>
+
+    <para>
+      Install <application>lsof</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      The tests should be run as the <systemitem
+      class="username">root</systemitem> user. They require that the
+      POSIX message queues are enabled in the kernel, and that 
+      nmap be installed with a symbolic link
+      <filename>/usr/bin/nc</filename> pointing to <command>ncat</command>.
+    </para>
+
+<screen role="root"
+        remap="test"><userinput>make check</userinput></screen>
+
+<!--
+    <para>
+      One test, case-20-ux-socket-endpoint, is known to fail.
+      Other test may fail if the tests are run in a script.
+    </para>
+-->
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+<!--
+    <para>
+      <command>./Configure -n linux</command>: Avoid AFS, customization, and
+      inventory checks, and use the linux dialect.
+    </para>
+
+    <para>
+      <command>install -m4755 ...</command>: <command>lsof</command> should
+      be suid root to allow users to list all files. This may be a security
+      threat on some systems. In that case change to <option>-m755</option>
+      and use <command>sudo</command> to run the program.
+    </para>
+-->
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>lsof</seg>
+        <seg>liblsof.so</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="lsof-app">
+        <term><command>lsof</command></term>
+        <listitem>
+          <para>
+            lists open files for running processes
+          </para>
+          <indexterm zone="lsof lsof-app">
+            <primary sortas="b-lsof">lsof</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="liblsof">
+        <term><filename class="libraryfile">liblsof.so</filename></term>
+        <listitem>
+          <para>
+            contains an interface for applications to list open files
+          </para>
+          <indexterm zone="lsof liblsof">
+            <primary sortas="c-liblsof">liblsof.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

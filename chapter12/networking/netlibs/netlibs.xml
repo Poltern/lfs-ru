@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="basicnet-netlibs">
+  <?dbhtml filename="netlibs.html"?>
+
+  <title>Networking Libraries</title>
+
+  <para>
+    These applications are support libraries for other applications in the
+    book. It is unlikely that you would just install these libraries, you
+    will generally find that you will be referred to this chapter to satisfy
+    a dependency of other applications.
+  </para>
+
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="curl.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libevent.xml"/>
+
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libnftnl.xml"/> -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libnl.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libpcap.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libpsl.xml"/>
+
+</sect1>

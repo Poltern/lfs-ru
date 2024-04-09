@@ -1,0 +1,120 @@
+<!ENTITY gnome-download-http  "https://download.gnome.org/sources">
+<!ENTITY gnome-download-ftp   "ftp://ftp.acc.umu.se/pub/gnome/sources">
+<!ENTITY gnome-minor          "3.12">
+<!ENTITY gnome-minor-20       "3.20">
+<!ENTITY gnome-minor-22       "3.22">
+<!ENTITY gnome-minor-24       "3.24">
+<!ENTITY gnome-minor-26       "3.26">
+<!ENTITY gnome-minor-28       "3.28">
+<!ENTITY gnome-minor-36       "3.36">
+<!ENTITY gnome-minor-40       "3.40">
+<!ENTITY gnome-minor-42       "3.42">
+<!ENTITY gnome-minor-44       "3.44">
+<!ENTITY gnome-minor-46       "3.46">
+<!ENTITY gnome-minor-48       "3.48">
+<!ENTITY gnome-minor-50       "3.50">
+<!ENTITY gnome-40             "40">
+<!ENTITY gnome-41             "41">
+<!ENTITY gnome-42             "42">
+<!ENTITY gnome-43             "43">
+<!ENTITY gnome-44             "44">
+<!ENTITY gnome-45             "45">
+<!ENTITY gnome-46             "46">
+<!-- See about removing some of the above entities after 40.0 is in. -->
+
+<!-- Chapter 30 -->
+<!-- Platform -->
+<!ENTITY gcr-minor                         "3.41">
+<!ENTITY gcr-version                       "&gcr-minor;.2">
+<!ENTITY gcr4-minor                        "4.2">
+<!ENTITY gcr4-version                      "&gcr4-minor;.1">
+<!ENTITY gsettings-desktop-schemas-version "46.0">
+<!ENTITY libsecret-version                 "0.21.4">
+<!ENTITY rest-version                      "0.9.1">
+<!ENTITY totem-pl-parser-version           "3.26.6">
+<!ENTITY vte-minor                         "0.76">
+<!ENTITY vte-version                       "&vte-minor;.0">
+<!ENTITY yelp-xsl-version                  "42.1">
+<!ENTITY GConf-version                     "3.2.6">
+<!ENTITY geocode-glib-version              "3.26.4">
+<!ENTITY gjs-version                       "1.80.2">
+<!ENTITY gnome-autoar-version              "0.4.4">
+<!ENTITY gnome-desktop-version             "44.0">
+<!ENTITY gnome-menus-version               "3.36.0">
+<!ENTITY gnome-video-effects-version       "0.6.0">
+<!ENTITY gnome-online-accounts-version     "3.48.0">
+<!ENTITY grilo-version                     "0.3.16">
+<!ENTITY libchamplain-version              "0.12.21">
+<!ENTITY libgdata-version                  "0.18.1">
+<!ENTITY libgee-version                    "0.20.6">
+<!ENTITY libgtop-version                   "2.40.0">
+<!ENTITY libgweather-minor                 "4.4">
+<!ENTITY libgweather-version               "&libgweather-minor;.2">
+<!ENTITY libpeas-version                   "1.36.0">
+<!ENTITY libshumate-version                "1.1.3">
+<!ENTITY libwnck-version                   "43.0">
+<!ENTITY evolution-data-server-version     "3.50.4">
+<!--<!ENTITY folks-version                     "0.15.5">-->
+<!--<!ENTITY gfbgraph-version                  "0.2.5">-->
+<!ENTITY tracker3-version                  "3.6.0">
+<!ENTITY tracker3-miners-version           "3.6.2">
+<!ENTITY gsound-version                    "1.0.3">
+<!ENTITY xdg-desktop-portal-gnome-version  "45.1">
+
+<!-- Runtime (sysv) and Desktop (systemd) -->
+<!--<!ENTITY caribou-version                   "0.4.21">-->
+<!ENTITY dconf-version                     "0.40.0">
+<!ENTITY dconf-editor-version              "45.0.1">
+<!ENTITY gnome-backgrounds-version         "45.0">
+<!ENTITY gvfs-version                      "1.54.0">
+<!ENTITY gexiv2-minor                      "0.14">
+<!ENTITY gexiv2-version                    "&gexiv2-minor;.2">
+<!ENTITY nautilus-version                  "45.2.1">
+<!--<!ENTITY zenity-version                    "3.42.1">-->
+<!ENTITY gnome-bluetooth-version           "42.8">
+<!ENTITY gnome-keyring-version             "42.1">
+<!ENTITY gnome-settings-daemon-version     "45.1">
+<!ENTITY tecla-version                     "45.0">
+<!ENTITY gnome-control-center-version      "45.3">
+<!ENTITY mutter-version                    "45.4">
+<!ENTITY gnome-shell-version               "45.4">
+<!ENTITY gnome-shell-extensions-version    "45.2">
+<!ENTITY gnome-session-version             "45.0">
+<!-- GDM Moved to display managers -->
+<!--<!ENTITY gdm-version                       "43.0">-->
+<!ENTITY gnome-user-docs-version           "45.1">
+<!-- Icons moved to packages.ent, since they're now in the Icons chapter.-->
+<!ENTITY yelp-version                      "42.2">
+<!-- notification-daemon moved to System Utilites, so it's now in packages.ent -->
+<!-- polkit-gnome moved to Security, so it's now in packages.ent -->
+
+<!-- Chapter 31 -->
+<!-- Applications -->
+<!ENTITY baobab-version                    "45.0">
+<!ENTITY brasero-version                   "3.12.3">
+<!--<!ENTITY cheese-version                    "44.1">-->
+<!ENTITY eog-version                       "45.2">
+<!ENTITY evince-version                    "45.0">
+<!ENTITY evolution-version                 "3.50.4">
+<!ENTITY file-roller-version               "43.1">
+<!-- gedit moved to Editors, so it's now in packages.ent -->
+<!ENTITY gnome-calculator-version          "45.0.2">
+<!ENTITY gnome-color-manager-version       "3.36.0">
+<!ENTITY gnome-disk-utility-version        "45.1">
+<!ENTITY gnome-logs-version                "43.0">
+<!ENTITY gnome-maps-version                "45.5">
+<!ENTITY gnome-nettool-version             "42.0">
+<!ENTITY gnome-power-manager-version       "43.0">
+<!ENTITY gnome-screenshot-version          "41.0">
+<!ENTITY gnome-system-monitor-version      "45.0.2">
+<!ENTITY gnome-terminal-version            "3.50.1">
+<!ENTITY gnome-tweaks-version              "45.1">
+<!ENTITY gnome-weather-version             "46.0">
+<!-- "major" version also used for links to unicode downloads -->
+<!ENTITY gucharmap-major-version         "15.1">
+<!ENTITY gucharmap-version               "&gucharmap-major-version;.2">
+<!-- nm-applet moved to Networking Utilities, so it's now in packages.ent -->
+<!ENTITY seahorse-version                  "43.0">
+<!ENTITY snapshot-version                  "46.1">
+<!ENTITY vinagre-version                   "3.22.0">
+<!--<!ENTITY vino-version                      "3.22.0">-->

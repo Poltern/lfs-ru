@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY emacs-download-http "&gnu-http;/emacs/emacs-&emacs-version;.tar.xz">
+  <!ENTITY emacs-download-ftp  " ">
+  <!ENTITY emacs-md5sum        "1e402f3f632b68a56cb9fab4dff8e313">
+  <!ENTITY emacs-size          "50 MB">
+  <!ENTITY emacs-buildsize     "526 MB">
+  <!ENTITY emacs-time          "0.7 SBU (Using parallelism=4)">
+]>
+
+<sect1 id="emacs" xreflabel="Emacs-&emacs-version;">
+  <?dbhtml filename="emacs.html"?>
+
+
+  <title>Emacs-&emacs-version;</title>
+
+  <indexterm zone="emacs">
+    <primary sortas="a-Emacs">Emacs</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Emacs</title>
+
+    <para>
+      The <application>Emacs</application> package contains an extensible,
+      customizable, self-documenting real-time display editor.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&emacs-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&emacs-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &emacs-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &emacs-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &emacs-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &emacs-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Emacs Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="harfbuzz"/>,
+      <xref linkend="giflib"/>,
+      <xref linkend="gnutls"/>,
+      <xref linkend="jansson"/>, and
+      <xref linkend="libtiff"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="x-window-system"/>,
+      <xref linkend="alsa-lib"/>,
+      <xref linkend="cairo"/>,
+      <xref linkend="dbus"/>,
+      &gobject-introspection;,
+      <xref linkend="gsettings-desktop-schemas"/>,
+      <xref linkend="gpm"/>,
+      <xref linkend="gtk3"/>,
+      <xref linkend="imagemagick"/>,
+      <xref linkend="lcms2"/>,
+      <xref linkend="libjpeg"/>,
+      <xref linkend="libpng"/>,
+      <xref linkend="librsvg"/>,
+      <xref linkend="libseccomp"/>,
+      <xref linkend="libwebp"/>,
+      <xref linkend="libxml2"/>,
+      <xref linkend="mitkrb"/>,
+      <xref linkend="sqlite"/>,
+      <xref linkend="valgrind"/>,
+      <ulink url="&gnu-http;/intlfonts/">intlfonts</ulink>,
+      <ulink url="https://directory.fsf.org/wiki/Libungif">libungif</ulink>,
+      <ulink url="https://www.nongnu.org/m17n/">libotf</ulink>, and
+      <ulink url="https://www.nongnu.org/m17n/">m17n-lib</ulink> - to correctly
+      display such complex scripts as Indic and Khmer, and also for scripts
+      that require Arabic shaping support (Arabic and Farsi),
+      <ulink url="https://mailutils.org/">mailutils</ulink>, and
+      <ulink url="&xorg-download-http;/lib/">libXaw3d</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Emacs</title>
+
+    <para>
+      Install <application>Emacs</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite. If make succeeds, you can
+      test the result by running <command>src/emacs -Q</command>, which is the
+      program that will be installed, with its auxiliary files. This should
+      start and display the application opening screen.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root" revision="systemd"><userinput>make install &amp;&amp;
+chown -v -R root:root /usr/share/emacs/&emacs-version;</userinput></screen>
+
+<screen role="root" revision="sysv"><userinput>make install &amp;&amp;
+chown -v -R root:root /usr/share/emacs/&emacs-version; &amp;&amp;
+rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-update-icon-cache.xml"/>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <!-- With 27.2, it writes scores to ~/.emacs.d/games
+    <para>
+      <parameter>- -localstatedir=/var</parameter>: Create game score files
+      in <filename class='directory'>/var/games/emacs</filename> instead
+      of <filename class='directory'>/usr/var/games/emacs</filename>.
+    </para>
+    -->
+
+    <para>
+      <option>--with-imagemagick</option>: Use this if you have installed
+      <xref linkend="imagemagick"/> and wish to link against it.
+    </para>
+
+    <para>
+      <option>--with-gif=no</option>: Use this if you have not installed
+      <xref linkend="giflib"/> or
+      <ulink url="https://directory.fsf.org/wiki/Libungif">libungif</ulink>.
+    </para>
+
+    <para>
+      <option>--with-tiff=no</option>: Use this if you have not installed
+      <xref linkend="libtiff"/>.
+    </para>
+
+    <para>
+      <option>--with-gnutls=no</option>: Use this if you have not installed
+      <xref linkend="gnutls"/>.
+    </para>
+
+    <para>
+      <option>--without-harfbuzz</option>: Use this if you have not installed
+      <xref linkend="harfbuzz"/>.
+    </para>
+
+    <para>
+      <option>--with-json=no</option>: Use this if you have not installed
+      <xref linkend="jansson"/>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>ctags,
+             ebrowse,
+             emacs (symlink),
+             emacs-&emacs-version;,
+             emacsclient, and
+             etags</seg>
+        <seg>None</seg>
+        <seg>/usr/libexec/emacs and
+             /usr/share/emacs</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ctags">
+        <term><command>ctags</command></term>
+        <listitem>
+          <para>
+            creates cross-reference tagfile database files
+            for source code
+          </para>
+          <indexterm zone="emacs ctags">
+            <primary sortas="b-ctags">ctags</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ebrowse">
+        <term><command>ebrowse</command></term>
+        <listitem>
+          <para>
+            permits browsing of C++ class hierarchies from
+            within <command>emacs</command>
+          </para>
+          <indexterm zone="emacs ebrowse">
+            <primary sortas="b-ebrowse">ebrowse</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="emacs-prog">
+        <term><command>emacs</command></term>
+        <listitem>
+          <para>
+            is an editor
+          </para>
+          <indexterm zone="emacs emacs-prog">
+            <primary sortas="b-emacs">emacs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="emacsclient">
+        <term><command>emacsclient</command></term>
+        <listitem>
+          <para>
+            attaches an <command>emacs</command> session to an already
+            running <command>emacsserver</command> instance
+          </para>
+          <indexterm zone="emacs emacsclient">
+            <primary sortas="b-emacsclient">emacsclient</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="etags">
+        <term><command>etags</command></term>
+        <listitem>
+          <para>
+            is another program to generate source code
+            cross-reference tagfiles
+          </para>
+          <indexterm zone="emacs etags">
+            <primary sortas="b-etags">etags</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libpsl-download-http "https://github.com/rockdaboot/libpsl/releases/download/&libpsl-version;/libpsl-&libpsl-version;.tar.gz">
+  <!ENTITY libpsl-download-ftp  " ">
+  <!ENTITY libpsl-md5sum        "870a798ee9860b6e77896548428dba7b">
+  <!ENTITY libpsl-size          "7.3 MB">
+  <!ENTITY libpsl-buildsize     "50 MB">
+  <!ENTITY libpsl-time          "less than 0.1 SBU (including tests)">
+]>
+
+<sect1 id="libpsl" xreflabel="libpsl-&libpsl-version;">
+  <?dbhtml filename="libpsl.html"?>
+
+
+  <title>libpsl-&libpsl-version;</title>
+
+  <indexterm zone="libpsl">
+    <primary sortas="a-libpsl">libpsl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libpsl</title>
+
+    <para>
+      The <application>libpsl</application> package provides a library for
+      accessing and resolving information from the Public Suffix List (PSL). The PSL
+      is a set of domain names beyond the standard suffixes, such as .com.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libpsl-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libpsl-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libpsl-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libpsl-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libpsl-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libpsl-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libpsl Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libidn2"/> and
+      <xref linkend='libunistring'/>
+    </para>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk-doc"/> (for documentation) and
+      <xref linkend="valgrind"/> (for tests)
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libpsl</title>
+
+    <para>
+      Install <application>libpsl</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+meson setup --prefix=/usr --buildtype=release &amp;&amp;
+
+ninja</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>ninja test</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>ninja install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/meson-buildtype-release.xml"/>
+
+  </sect2>
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          psl
+        </seg>
+        <seg>
+          libpsl.so
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="psl">
+        <term><command>psl</command></term>
+        <listitem>
+          <para>
+            queries the Public Suffix List
+          </para>
+          <indexterm zone="libpsl psl">
+            <primary sortas="b-psl">psl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpsl-lib">
+        <term><filename class="libraryfile">libpsl.so</filename></term>
+        <listitem>
+          <para>
+            contains a library used to access the Public Suffix List
+          </para>
+          <indexterm zone="libpsl libpsl-lib">
+            <primary sortas="c-libpsl">libpsl.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>

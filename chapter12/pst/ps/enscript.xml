@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!-- Keeping this URL as this is the actual maintainer's site
+  <!ENTITY enscript-download-http "http://www.iki.fi/mtr/genscript/enscript-&enscript-version;.tar.gz">
+  -->
+
+  <!ENTITY enscript-download-http "&gnu-http;/enscript/enscript-&enscript-version;.tar.gz">
+  <!ENTITY enscript-download-ftp  " ">
+  <!ENTITY enscript-md5sum        "3acc242b829adacabcaf28533f049afd">
+  <!ENTITY enscript-size          "1.3 MB">
+  <!ENTITY enscript-buildsize     "14 MB">
+  <!ENTITY enscript-time          "0.1 SBU">
+]>
+
+<sect1 id="enscript" xreflabel="Enscript-&enscript-version;">
+  <?dbhtml filename="enscript.html"?>
+
+
+  <title>Enscript-&enscript-version;</title>
+
+  <indexterm zone="enscript">
+    <primary sortas="a-Enscript">Enscript</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Enscript</title>
+
+    <para>
+      <application>Enscript</application> converts ASCII text files
+      to PostScript, HTML, RTF, ANSI and overstrikes.
+    </para>
+
+    &lfs121_checked;
+
+    <caution>
+      <para>
+        <application>Enscript</application> cannot convert UTF-8 encoded
+        text to PostScript. The issue is discussed in detail in the
+        <xref linkend="locale-not-valid-option"/> section of the
+        <xref linkend="locale-issues"/> page.
+        The solution is to use <xref linkend="paps"/>, instead of
+        <application>Enscript</application>, for converting
+        UTF-8 encoded text to PostScript.
+      </para>
+    </caution>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&enscript-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&enscript-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &enscript-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &enscript-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &enscript-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &enscript-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <!-- <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch: <ulink url=
+            "&patch-root;/enscript-&enscript-version;-security_fixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist> -->
+
+    <bridgehead renderas="sect3">Enscript Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Enscript</title>
+
+    <para>
+      Install <application>Enscript</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr              \
+            --sysconfdir=/etc/enscript \
+            --localstatedir=/var       \
+            --with-media=Letter &amp;&amp;
+make &amp;&amp;
+
+pushd docs &amp;&amp;
+  makeinfo --plaintext -o enscript.txt enscript.texi &amp;&amp;
+popd</userinput></screen>
+
+    <para>
+      If you have <xref linkend="texlive"/> installed, you can create
+      Postscript and PDF documentation by issuing (does not support parallel
+      make):
+    </para>
+
+<screen remap="doc"><userinput>make -j1 -C docs ps pdf</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+
+install -v -m755 -d /usr/share/doc/enscript-&enscript-version; &amp;&amp;
+install -v -m644    README* *.txt docs/*.txt \
+                    /usr/share/doc/enscript-&enscript-version;</userinput></screen>
+
+    <para>
+      If you built Postscript and PDF documentation, install it
+      using the following command as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>install -v -m644 docs/*.{dvi,pdf,ps} \
+                 /usr/share/doc/enscript-&enscript-version;</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--sysconfdir=/etc/enscript</parameter>: This switch puts
+      configuration data in <filename class="directory">/etc/enscript</filename>
+      instead of <filename class="directory">/usr/etc</filename>.
+    </para>
+
+    <para>
+      <parameter>--localstatedir=/var</parameter>: This switch sets the
+      directory for runtime data to <filename class="directory">/var</filename>
+      instead of <filename class="directory">/usr/var</filename>.
+    </para>
+
+    <para>
+      <parameter>--with-media=Letter</parameter>: This switch sets the
+      medium format to letter size instead of the A4 default.
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>diffpp, enscript, mkafmmap, over, sliceprint,
+        and states</seg>
+        <seg>None</seg>
+        <seg>/etc/enscript, /usr/share/doc/enscript-&enscript-version;, and
+        /usr/share/enscript</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="diffpp">
+        <term><command>diffpp</command></term>
+        <listitem>
+          <para>
+            converts <command>diff</command> output files to a format
+            suitable to be printed with <command>enscript</command>
+          </para>
+          <indexterm zone="enscript diffpp">
+            <primary sortas="b-diffpp">diffpp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="enscript-prog">
+        <term><command>enscript</command></term>
+        <listitem>
+          <para>
+            is a filter, used primarily by printing scripts, that
+            converts ASCII text files to PostScript, HTML, RTF, ANSI and
+            overstrikes
+          </para>
+          <indexterm zone="enscript enscript-prog">
+            <primary sortas="b-enscript">enscript</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkafmmap">
+        <term><command>mkafmmap</command></term>
+        <listitem>
+          <para>
+            creates a font map from a given file
+          </para>
+          <indexterm zone="enscript mkafmmap">
+            <primary sortas="b-mkafmmap">mkafmmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="over">
+        <term><command>over</command></term>
+        <listitem>
+          <para>
+            is a script which calls <command>enscript</command> and
+            passes the correct parameters to create overstriked fonts
+          </para>
+          <indexterm zone="enscript over">
+            <primary sortas="b-over">over</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sliceprint">
+        <term><command>sliceprint</command></term>
+        <listitem>
+          <para>
+            slices documents with long lines
+          </para>
+          <indexterm zone="enscript sliceprint">
+            <primary sortas="b-sliceprint">sliceprint</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="states">
+        <term><command>states</command></term>
+        <listitem>
+          <para>
+            is an <command>awk</command>-like text processing tool
+            with some state machine extensions. It is designed for program
+            source code highlighting and for similar tasks where state
+            information helps input processing
+          </para>
+          <indexterm zone="enscript states">
+            <primary sortas="b-states">states</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

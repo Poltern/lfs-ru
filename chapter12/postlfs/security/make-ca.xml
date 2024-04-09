@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY certhost              "https://hg.mozilla.org/">
+  <!ENTITY certpath              "/lib/ckfw/builtins/certdata.txt">
+  <!ENTITY make-ca-buildsize     "6.9 MB (with all runtime deps)">
+  <!ENTITY make-ca-time          "0.1 SBU (with all runtime deps)">
+
+  <!ENTITY make-ca-download      "https://github.com/lfs-book/make-ca/releases/download/v&make-ca-version;/make-ca-&make-ca-version;.tar.xz">
+  <!ENTITY make-ca-size          "32 KB">
+  <!ENTITY make-ca-md5sum        "04bd86fe2eb299788439c3466782ce45">
+]>
+
+<sect1 id="make-ca" xreflabel="make-ca-&make-ca-version;">
+  <?dbhtml filename="make-ca.html"?>
+
+
+  <title>make-ca-&make-ca-version;</title>
+  <indexterm zone="make-ca">
+    <primary sortas="a-make-ca">make-ca</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to make-ca</title>
+
+    <para>
+      Public Key Infrastructure (PKI) is a method to validate the authenticity
+      of an otherwise unknown entity across untrusted networks. PKI works by
+      establishing a chain of trust, rather than trusting each individual host
+      or entity explicitly. In order for a certificate presented by a remote
+      entity to be trusted, that certificate must present a complete chain of
+      certificates that can be validated using the root certificate of a
+      Certificate Authority (CA) that is trusted by the local machine.
+    </para>
+
+    <para>
+      Establishing trust with a CA involves validating things like company
+      address, ownership, contact information, etc., and ensuring that the CA
+      has followed best practices, such as undergoing periodic security audits
+      by independent investigators and maintaining an always available
+      certificate revocation list. This is well outside the scope of BLFS (as
+      it is for most Linux distributions). The certificate store provided here
+      is taken from the Mozilla Foundation, who have established very strict
+      inclusion policies described <ulink
+        url="https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/">here</ulink>.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&make-ca-download;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &make-ca-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 Sum: &make-ca-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &make-ca-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &make-ca-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <note>
+      <para>
+        This package ships a CA certificate for validating the identity of
+        <ulink url='&certhost;'/>.  If the trust chain of this website
+        has been changed after the release of make-ca-&make-ca-version;,
+        it may fail to get the revision of <filename>certdata.txt</filename>
+        from server.  Use an updated make-ca release at
+        <ulink url='https://github.com/lfs-book/make-ca/releases'>the
+        release page</ulink> if this issue happens.
+      </para>
+    </note>
+
+    <bridgehead renderas="sect3">make-ca Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <!-- Attention: no role="runtime" here because jhalfs don't assume
+           runtime dependencies are needed to run commands.  -->
+      <xref linkend="p11-kit"/> (runtime, built after
+      <xref role="nodep" linkend="libtasn1"/>, required in the following
+      instructions to generate certificate stores from trust anchors, and
+      each time <command>make-ca</command> is run)
+    </para>
+    <!-- /usr/bin/trust is needed to extract the certs to /etc/ssl/certs -->
+
+ <!--  <bridgehead renderas="sect4">Optional (runtime)</bridgehead>
+    <para role="optional">
+      <xref role="runtime" linkend="nss"/> (to generate a shared NSSDB)
+    </para> -->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of make-ca and Generation of the CA-certificates stores</title>
+
+    <para>
+      The <application>make-ca</application> script will download and process
+      the certificates included in the <filename>certdata.txt</filename> file
+      for use as trust anchors for the <xref linkend="p11-kit"/> trust module.
+      Additionally, it will generate system certificate stores used by BLFS
+      applications (if the recommended and optional applications are present
+      on the system). Any local certificates stored in
+      <filename>/etc/ssl/local</filename> will be imported to both the trust
+      anchors and the generated certificate stores (overriding Mozilla's
+      trust). Additionally, any modified trust values will be copied from the
+      trust anchors to <filename>/etc/ssl/local</filename> prior to any
+      updates, preserving custom trust values that differ from Mozilla when
+      using the <command>trust</command> utility from
+      <application>p11-kit</application> to operate on the trust store.
+    </para>
+
+    <para>
+      To install the various certificate stores, first install the
+      <application>make-ca</application> script into the correct location.
+      As the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -vdm755 /etc/ssl/local</userinput></screen>
+
+   <note>
+     <para>
+       Technically, this package is already installed at this point.
+       But most packages listing <application>make-ca</application> as
+       a dependency actually require the system certificate store set up
+       by this package, rather than the <command>make-ca</command>
+       program itself.  So the instructions for using
+       <command>make-ca</command> for setting up the system certificate
+       store are included in this section.  You should make sure the required
+       runtime dependency for <application>make-ca</application> is
+       satisfied now, and continue to follow the instructions.
+     </para>
+   </note>
+
+   <para>
+     As the <systemitem class="username">root</systemitem> user,
+     download the certificate source and
+     prepare for system use with the following command:
+   </para>
+
+    <note>
+      <para>
+        If running the script a second time with the same version of
+        <filename>certdata.txt</filename>, for instance, to update the
+        stores when <application>make-ca</application> is upgraded, or to
+        add additional stores as the requisite software is installed,
+        replace the <parameter>-g</parameter> switch with the
+        <parameter>-r</parameter> switch in the command line. If packaging,
+        run <command>make-ca --help</command> to see all available command
+        line options.
+      </para>
+    </note>
+
+<screen role="root"><userinput>/usr/sbin/make-ca -g</userinput></screen>
+
+    <para>
+      You should periodically update the store with the above command,
+      either manually, or via a <phrase revision="sysv">cron job.</phrase>
+      <phrase revision="systemd">systemd timer. A timer is installed at
+      <filename>/usr/lib/systemd/system/update-pki.timer</filename> that, if
+      enabled, will check for updates weekly.</phrase><phrase
+      revision="sysv">If you've installed <xref linkend="fcron"/> and
+      completed the section on periodic jobs, execute</phrase> <phrase
+      revision="systemd">Execute</phrase> the following commands, as the
+      <systemitem class="username">root</systemitem> user, to <phrase
+      revision="sysv">create a weekly cron job:</phrase><phrase
+      revision="systemd">enable the systemd timer:</phrase>
+    </para>
+
+<screen role="nodump" revision="sysv"><userinput>cat &gt; /etc/cron.weekly/update-pki.sh &lt;&lt; "EOF" &amp;&amp;
+<literal>#!/bin/bash
+/usr/sbin/make-ca -g</literal>
+EOF
+chmod 754 /etc/cron.weekly/update-pki.sh</userinput></screen>
+
+<screen role="root" revision="systemd"><userinput>systemctl enable update-pki.timer</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="configuration" id="make-ca-config">
+    <title>Configuring make-ca</title>
+
+<!--    <para>
+      For most users, no additional configuration is necessary, however,
+      the default <filename>certdata.txt</filename> file provided by make-ca
+      is obtained from the mozilla-release branch, and is modified to provide a
+      Mercurial revision. This will be the correct version for most systems.
+      There are several other variants of the file available for use that might
+      be preferred for one reason or another, including the files shipped with
+      Mozilla products in this book. RedHat and OpenSUSE, for instance, use the
+      version included in <xref linkend="nss"/>. Additional upstream downloads
+      are available at the links included in
+      <filename>/etc/make-ca/make-ca.conf.dist</filename>. Simply copy the
+      file to
+      <filename>/etc/make-ca.conf</filename> and edit as appropriate.
+    </para>-->
+
+    <indexterm zone="make-ca make-ca-config">
+      <primary sortas="e-etc-make-ca-conf">/etc/make-ca.conf</primary>
+    </indexterm>
+
+    <bridgehead renderas="sect3">About Trust Arguments</bridgehead>
+
+    <para>
+      There are three trust types that are recognized by the
+      <application>make-ca</application> script, SSL/TLS, S/Mime, and code
+      signing. For <application>OpenSSL</application>, these are
+      <parameter>serverAuth</parameter>,
+      <parameter>emailProtection</parameter>, and
+      <parameter>codeSigning</parameter> respectively. If one of the three
+      trust arguments is omitted, the certificate is neither trusted, nor
+      rejected for that role. Clients that use
+      <application>OpenSSL</application> or <application>NSS</application>
+      encountering this certificate will present a warning to the user.
+      Clients using
+      <application>GnuTLS</application> without
+      <application>p11-kit</application> support are not aware of trusted
+      certificates. To include this CA into the
+      <filename>ca-bundle.crt</filename>,
+      <filename>email-ca-bundle.crt</filename>, or
+      <filename>objsign-ca-bundle.crt</filename> files
+      (the <application>GnuTLS</application> legacy bundles), it must have the
+      appropriate trust arguments.
+    </para>
+
+    <bridgehead renderas="sect3">Adding Additional CA Certificates</bridgehead>
+
+    <para>
+      The <filename class="directory">/etc/ssl/local</filename> directory
+      is available to add additional CA certificates to the system trust store.
+      This directory is also used to store certificates that were added to or
+      modified  in the system trust store by <xref linkend="p11-kit"/> so that
+      trust values are maintained across upgrades. Files in this directory must
+      be in the <application>OpenSSL</application> trusted certificate format.
+      Certificates imported using the <command>trust</command> utility from
+      <xref linkend="p11-kit"/> will utilize the x509 Extended Key Usage values
+      to assign default trust values for the system anchors.
+    </para>
+
+    <para>If you need to override trust values, or otherwise need to create
+      an <application>OpenSSL</application> trusted certificate manually
+      from a regular PEM encoded file, you need to add trust arguments to the
+      <command>openssl</command> command, and create a new certificate. For
+      example, using the <ulink url="http://www.cacert.org/">CAcert</ulink>
+      roots, if you want to trust both for all three roles, the following
+      commands will create appropriate OpenSSL trusted certificates (run as
+      the <systemitem class="username">root</systemitem> user after <xref
+      linkend="wget"/> is installed):
+    </para>
+
+<screen role="nodump"><userinput>wget http://www.cacert.org/certs/root.crt &amp;&amp;
+wget http://www.cacert.org/certs/class3.crt &amp;&amp;
+openssl x509 -in root.crt -text -fingerprint -setalias "CAcert Class 1 root" \
+        -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
+        > /etc/ssl/local/CAcert_Class_1_root.pem &amp;&amp;
+openssl x509 -in class3.crt -text -fingerprint -setalias "CAcert Class 3 root" \
+        -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
+        > /etc/ssl/local/CAcert_Class_3_root.pem &amp;&amp;
+/usr/sbin/make-ca -r</userinput></screen>
+
+    <bridgehead renderas="sect3">Overriding Mozilla Trust</bridgehead>
+
+    <para>
+      Occasionally, there may be instances where you don't agree with
+      Mozilla's inclusion of a particular certificate authority. If you'd like
+      to override the default trust of a particular CA, simply create a copy of
+      the existing certificate in <filename
+      class="directory">/etc/ssl/local</filename> with different trust
+      arguments. For example, if you'd like to distrust the
+      "Makebelieve_CA_Root" file, run the following commands:
+    </para>
+
+<screen role="nodump"><userinput>openssl x509 -in /etc/ssl/certs/Makebelieve_CA_Root.pem \
+             -text \
+             -fingerprint \
+             -setalias "Disabled Makebelieve CA Root" \
+             -addreject serverAuth \
+             -addreject emailProtection \
+             -addreject codeSigning \
+       > /etc/ssl/local/Disabled_Makebelieve_CA_Root.pem &amp;&amp;
+/usr/sbin/make-ca -r</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="configuration" id="make-ca-python">
+    <title>Using make-ca with Python3</title>
+
+    <para>
+      When <application>Python3</application> was installed in LFS it included
+      the <application>pip3</application> module with vendored certificates
+      from the <application>Certifi</application> module. That was necessary,
+      but it means that whenever <command>pip3</command> is used it can reference
+      those certificates, primarily when creating a virtual environment or when
+      installing a module with all its wheel dependencies in one go.
+    </para>
+
+    <para>
+      It is generally considered that the System Administrator should be in
+      charge of which certificates are available. Now that <xref
+      linkend="make-ca"/> and <xref linkend="p11-kit"/> have been installed and
+      <application>make-ca</application> has been configured, it is possible to
+      make <command>pip3</command> use the system certificates.
+    </para>
+
+    <para>
+      The vendored certificates installed in LFS are a snapshot from when the
+      pulled-in version of <application>Certifi</application> was created. If
+      you regularly update the system certificates, the vendored version will
+      become out of date.
+    </para>
+
+    <para>
+      To use the system certificates in <application>Python3</application> you
+      should set <envar>_PIP_STANDALONE_CERT</envar> to point to them, e.g for
+      the <application>bash</application> shell:
+    </para>
+
+<screen><userinput>export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt</userinput></screen>
+
+    <warning>
+      <para>
+        If you have created virtual environments, for example when testing modules,
+        and those include the <application>Requests</application> and
+        <application>Certifi</application> modules in <filename
+        class="directory">~/.local/lib/python3.11/</filename> then those local
+        modules will be used instead of the system certificates unless you
+        remove the local modules.
+      </para>
+    </warning>
+
+    <para>
+      To use the system certificates in <application>Python3</application> with
+      the BLFS profiles add the following variable to your system or personal
+      profiles:
+    </para>
+
+<screen role="root"><userinput>mkdir -pv /etc/profile.d &amp;&amp;
+cat &gt; /etc/profile.d/pythoncerts.sh &lt;&lt; "EOF"
+<literal># Begin /etc/profile.d/pythoncerts.sh
+
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+
+# End /etc/profile.d/pythoncerts.sh</literal>
+EOF</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>make-ca</seg>
+        <seg>/etc/ssl/{certs,local} and
+        /etc/pki/{nssdb,anchors,tls/{certs,java}}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+   <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="make-ca-bin">
+        <term><command>make-ca</command></term>
+        <listitem>
+          <para>
+            is a shell script that adapts a current version of
+            <filename>certdata.txt</filename>, and prepares it for use
+            as the system trust store
+          </para>
+          <indexterm zone="make-ca make-ca">
+            <primary sortas="b-make-ca">make-ca</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+   </variablelist>
+
+  </sect2>
+
+</sect1>

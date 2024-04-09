@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY xmlto-download-http "https://releases.pagure.org/xmlto/xmlto-&xmlto-version;.tar.bz2">
+  <!ENTITY xmlto-download-ftp  " ">
+  <!ENTITY xmlto-md5sum        "93bab48d446c826399d130d959fe676f">
+  <!ENTITY xmlto-size          "128 KB">
+  <!ENTITY xmlto-buildsize     "1.5 MB (with tests)">
+  <!ENTITY xmlto-time          "less than 0.1 SBU (with tests)">
+]>
+
+<sect1 id="xmlto" xreflabel="xmlto-&xmlto-version;">
+  <?dbhtml filename="xmlto.html"?>
+
+
+  <title>xmlto-&xmlto-version;</title>
+
+  <indexterm zone="xmlto">
+    <primary sortas="a-xmlto">xmlto</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to xmlto</title>
+
+    <para>
+      The <application>xmlto</application> package is a front-end to a XSL
+      toolchain. It chooses an appropriate stylesheet for the conversion you
+      want and applies it using an external XSLT processor. It also performs
+      any necessary post-processing.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&xmlto-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&xmlto-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &xmlto-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &xmlto-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &xmlto-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &xmlto-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">xmlto Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="DocBook"/>,
+      <xref linkend="docbook-xsl"/>, and
+      <xref linkend="libxslt"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (for DVI, PDF, and postscript
+    backend post-processing)</bridgehead>
+    <para role="optional">
+      fop,
+<!--    <ulink url="https://dblatex.sourceforge.net/">dblatex</ulink>, and -->
+      <ulink url="https://sourceforge.net/projects/dblatex/files/dblatex/">dblatex</ulink>, and
+      <ulink url="https://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html">
+      PassiveTeX</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (for text backend
+    post-processing)</bridgehead>
+    <para role="optional">
+      One of
+      <xref role="runtime" linkend="Links"/>,
+      <xref role="runtime" linkend="lynx"/>,
+      <ulink url="&w3m-url;">W3m</ulink>, or
+      <ulink url="&elinks-url;">ELinks</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">Editor Notes:
+    <ulink url="&blfs-wiki;/xmlto"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of xmlto</title>
+
+    <para>
+      Install <application>xmlto</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>LINKS="/usr/bin/links" \
+./configure --prefix=/usr &amp;&amp;
+
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <envar>LINKS="/usr/bin/links"</envar>: This environment variable fixes a
+      bug causing <command>xmlto</command> to think that
+      <command>links</command> command is the same as
+      <command>elinks</command>. Setting this variable does not cause problems
+      if <xref linkend="links"/> is not installed, unless
+      you have <ulink url="http://elinks.or.cz/">ELinks</ulink> installed, and
+      wish to use it for text backend post-processing, in which case,
+      remove it.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>xmlif and xmlto</seg>
+        <seg>None</seg>
+        <seg>/usr/share/xmlto</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="xmlif">
+        <term><command>xmlif</command></term>
+        <listitem>
+          <para>
+            is a conditional processing instructions for XML
+          </para>
+          <indexterm zone="xmlto xmlif">
+            <primary sortas="b-xmlif">xmlif</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xmlto-prog">
+        <term><command>xmlto</command></term>
+        <listitem>
+          <para>
+            applies an XSL stylesheet to an XML document
+          </para>
+          <indexterm zone="xmlto xmlto-prog">
+            <primary sortas="b-xmlto">xmlto</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

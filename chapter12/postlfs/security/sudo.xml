@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY sudo-download-http "https://www.sudo.ws/dist/sudo-&sudo-version;.tar.gz">
+  <!ENTITY sudo-download-ftp  " ">
+  <!ENTITY sudo-md5sum        "4166279cb188ecb6641c7a2ba5f68270">
+  <!ENTITY sudo-size          "5.1 MB">
+  <!ENTITY sudo-buildsize     "53 MB (add 18 MB for tests)">
+  <!ENTITY sudo-time          "0.2 SBU (with parallelism=4; add 0.1 SBU for tests)">
+]>
+
+<sect1 id="sudo" xreflabel="Sudo-&sudo-version;">
+  <?dbhtml filename="sudo.html"?>
+
+
+  <title>Sudo-&sudo-version;</title>
+
+  <indexterm zone="sudo">
+    <primary sortas="a-Sudo">Sudo</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Sudo</title>
+
+    <para>
+      The <application>Sudo</application> package allows a system administrator
+      to give certain users (or groups of users) the ability to run
+      some (or all) commands as
+      <systemitem class="username">root</systemitem> or another user while
+      logging the commands and arguments.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&sudo-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&sudo-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &sudo-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &sudo-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &sudo-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &sudo-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Sudo Dependencies</bridgehead>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="linux-pam"/>,
+      <xref linkend="mitkrb"/>,
+      <xref linkend="openldap"/>,
+      <xref linkend="server-mail"/> (that provides a
+      <command>sendmail</command> command),
+      <ulink url="https://www.openafs.org/">AFS</ulink>,
+
+      <ulink url="https://github.com/linux-audit/audit-userspace">libaudit</ulink>,
+      <ulink url="&sourceforge-dl;/opie/">Opie</ulink>, and
+      <ulink url="https://sssd.io/">Sssd</ulink>
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Sudo</title>
+
+    <para>
+      Install <application>Sudo</application> by running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr              \
+            --libexecdir=/usr/lib      \
+            --with-secure-path         \
+            --with-env-editor          \
+            --docdir=/usr/share/doc/sudo-&sudo-version; \
+            --with-passprompt="[sudo] password for %p: " &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue:
+      <!-- line breaks in command tags confuse jhalfs -->
+      <command>env LC_ALL=C make check |&amp; tee make-check.log</command>.
+      Check the results with <command>grep failed make-check.log</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<!-- for a DESTDIR install as normal user, use
+    "make install INSTALL_OWNER= DESTDIR=<destdir>"-->
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+     <parameter>--libexecdir=/usr/lib</parameter>: This switch controls where
+     private programs are installed.  Everything in that directory is a library, so
+     they belong under <filename class="directory">/usr/lib</filename> instead of
+     <filename class="directory">/usr/libexec</filename>.
+    </para>
+
+    <para>
+      <parameter>--with-secure-path</parameter>: This switch transparently adds
+      <filename class="directory">/sbin</filename> and <filename
+      class="directory">/usr/sbin</filename> directories to the
+      <envar>PATH</envar> environment variable.
+    </para>
+
+    <para>
+      <parameter>--with-env-editor</parameter>: This switch enables use of the
+      environment variable EDITOR for <command>visudo</command>.
+    </para>
+
+    <para>
+      <parameter>--with-passprompt</parameter>: This switch sets the password prompt.
+      The <parameter>%p</parameter> will be expanded to the name of the user whose password is being requested.
+    </para>
+
+    <para>
+      <option>--without-pam</option>: This switch avoids building
+      <application>Linux-PAM</application> support when
+      <application>Linux-PAM</application> is installed on the system.
+    </para>
+
+    <para>
+      <option>--with-all-insults</option>: This switch includes all the
+      sudo insult sets. Insults are printed if the user types a bad
+      password, and if enabled in <filename>/etc/sudoers</filename>. Use
+      <option>--with-insults</option> to have them enabled by default.
+      Various sets of insults can be selected with some other switches.
+    </para>
+
+    <note>
+      <para>
+        There are many options to <application>sudo</application>'s
+        <command>configure</command> command. Check the
+        <command>configure --help</command> output for a complete list.
+      </para>
+    </note>
+    <!-- Seems to be fixed
+    <para>
+      <command>ln -sfv libsudo_util...</command>: Works around a bug in the
+      installation process, which links to the previously installed
+      version (if there is one) instead of the new one.
+    </para>
+    -->
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Sudo</title>
+
+    <sect3 id="sudo-config">
+      <title>Config File</title>
+
+      <para>
+        <filename>/etc/sudoers</filename>
+      </para>
+
+      <indexterm zone="sudo sudo-config">
+        <primary sortas="e-etc-sudoers">/etc/sudoers</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        The <filename>sudoers</filename> file can be quite complicated.  It
+        is composed of two types of entries: aliases (basically variables) and
+        user specifications (which specify who may run what).  The installation
+        installs a default configuration that has no privileges installed for
+        any user.
+      </para>
+
+      <para>
+        A couple of common configuration changes are to set the path for the
+        super user and to allow members of the wheel group to execute all
+        commands after providing their own credentials. Use the following
+        commands to create the <filename>/etc/sudoers.d/00-sudo</filename>
+        configuration file as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/sudoers.d/00-sudo &lt;&lt; "EOF"
+<literal>Defaults secure_path="/usr/sbin:/usr/bin"
+%wheel ALL=(ALL) ALL</literal>
+EOF</userinput></screen>
+
+      <note>
+        <para>
+          In very simple installations where there is only one user, it
+          may be easier to just edit the <filename>/etc/sudoers</filename>
+          file directly.  In that case, the <varname>secure_path</varname>
+          entry may not be needed and using <command>sudo -E ...</command> can
+          import the non-privileged user's full environment into the
+          privileged session.
+        </para>
+
+        <para>
+          The files in the <filename class="directory">/etc/sudoers.d</filename>
+          directory are parsed in sorted lexical order. Be careful that entries
+          in an added file do not overwrite previous entries.
+        </para>
+      </note>
+
+      <para>
+        For details, see <command>man sudoers</command>.
+      </para>
+
+      <note>
+        <para>
+          The <application>Sudo</application> developers highly recommend
+          using the <command>visudo</command> program to edit the
+          <filename>sudoers</filename> file. This will provide basic sanity
+          checking like syntax parsing and file permission to avoid some
+          possible mistakes that could lead to a vulnerable configuration.
+        </para>
+      </note>
+
+      <para>
+        If <application>PAM</application> is installed on the system,
+        <application>Sudo</application> is built with
+        <application>PAM</application> support. In that case, issue the
+        following command as the <systemitem class="username">root</systemitem>
+        user to create the <application>PAM</application> configuration file:
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/pam.d/sudo &lt;&lt; "EOF"
+<literal># Begin /etc/pam.d/sudo
+
+# include the default auth settings
+auth      include     system-auth
+
+# include the default account settings
+account   include     system-account
+
+# Set default environment variables for the service user
+session   required    pam_env.so
+
+# include system session defaults
+session   include     system-session
+
+# End /etc/pam.d/sudo</literal>
+EOF
+chmod 644 /etc/pam.d/sudo</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          cvtsudoers, sudo, sudo_logsrvd, sudo_sendlog,
+          sudoedit (symlink), sudoreplay, and visudo
+        </seg>
+        <seg>
+          <!-- [pierre, September 25, 2020] except libsudo_util, the other
+          shared objects in /usr/lib/sudo look more like modules than
+          libraries. Leaving them now, and updating the list, but I think
+          they should not be listed. -->
+          audit_json.so, group_file.so, libsudo_util.so,
+          sudoers.so, sudo_intercept.so, sudo_noexec.so, and system_group.so
+        </seg>
+        <seg>
+          /etc/sudoers.d,
+          /usr/lib/sudo,
+          /usr/share/doc/sudo-&sudo-version;, and
+          /var/lib/sudo
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cvtsudoers">
+        <term><command>cvtsudoers</command></term>
+        <listitem>
+          <para>
+            converts between sudoers file formats
+          </para>
+          <indexterm zone="sudo cvtsudoers">
+            <primary sortas="b-cvtsudoers">cvtsudoers</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sudo_prog">
+        <term><command>sudo</command></term>
+        <listitem>
+          <para>
+            executes a command as another user as permitted by
+            the <filename>/etc/sudoers</filename> configuration file
+          </para>
+          <indexterm zone="sudo sudo">
+            <primary sortas="b-sudo">sudo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sudo_logsrvd">
+        <term><command>sudo_logsrvd</command></term>
+        <listitem>
+          <para>
+            is a sudo event and I/O log server
+          </para>
+          <indexterm zone="sudo sudo_logsrvd">
+            <primary sortas="b-sudo_logsrvd">sudo_logsrvd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sudo_sendlog">
+        <term><command>sudo_sendlog</command></term>
+        <listitem>
+          <para>
+            sends sudo I/O logs to the log server
+          </para>
+          <indexterm zone="sudo sudo_sendlog">
+            <primary sortas="b-sudo_sendlog">sudo_sendlog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sudoedit">
+        <term><command>sudoedit</command></term>
+        <listitem>
+          <para>
+            is a symlink to <command>sudo</command> that implies the
+            <option>-e</option> option to invoke an editor as another user
+          </para>
+          <indexterm zone="sudo sudoedit">
+            <primary sortas="b-sudoedit">sudoedit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sudoreplay">
+        <term><command>sudoreplay</command></term>
+        <listitem>
+          <para>
+            is used to play back or list the output
+            logs created by <command>sudo</command>
+          </para>
+          <indexterm zone="sudo sudoreplay">
+            <primary sortas="b-sudoreplay">sudoreplay</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="visudo">
+        <term><command>visudo</command></term>
+        <listitem>
+          <para>
+            allows for safer editing of the <filename>sudoers</filename>
+            file
+          </para>
+          <indexterm zone="sudo visudo">
+            <primary sortas="b-visudo">visudo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

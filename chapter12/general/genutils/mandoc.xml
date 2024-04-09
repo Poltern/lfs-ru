@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY mandoc-download-http "https://mandoc.bsd.lv/snapshots/mandoc-&mandoc-version;.tar.gz">
+  <!ENTITY mandoc-download-ftp  " ">
+  <!ENTITY mandoc-md5sum        "f0adf24e8fdef5f3e332191f653e422a">
+  <!ENTITY mandoc-size          "684 KB">
+  <!ENTITY mandoc-buildsize     "22 MB (with tests)">
+  <!ENTITY mandoc-time          "less than 0.1 SBU (with tests)">
+]>
+
+<sect1 id="mandoc" xreflabel="mandoc-&mandoc-version;">
+  <?dbhtml filename="mandoc.html"?>
+
+
+  <title>mandoc-&mandoc-version;</title>
+
+  <indexterm zone="mandoc">
+    <primary sortas="a-mandoc">mandoc</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to mandoc</title>
+
+    <para>
+      mandoc is an utility to format manual pages.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&mandoc-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&mandoc-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &mandoc-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &mandoc-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &mandoc-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &mandoc-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of mandoc</title>
+
+    <para>
+      Many utilities provided by <application>mandoc</application> conflicts
+      with <application>Man-DB</application> in LFS.  Only build the
+      <command>mandoc</command> command:
+    </para>
+
+<screen><userinput>./configure &amp;&amp;
+make mandoc</userinput></screen>
+
+    <para>
+      To test the package, issue: <command>make regress</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -vm755 mandoc   /usr/bin &amp;&amp;
+install -vm644 mandoc.1 /usr/share/man/man1</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+
+      <seglistitem>
+        <seg>
+          mandoc
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="mandoc-prog">
+        <term><command>mandoc</command></term>
+        <listitem>
+          <para>
+            Formats manual pages
+          </para>
+          <indexterm zone="mandoc mandoc-prog">
+            <primary sortas="b-mandoc-prog">mandoc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

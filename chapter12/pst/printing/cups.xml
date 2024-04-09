@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cups-download-http "https://github.com/OpenPrinting/cups/releases/download/v&cups-version;/cups-&cups-version;-source.tar.gz">
+  <!ENTITY cups-download-ftp  " ">
+  <!ENTITY cups-md5sum        "e0a5ddbf53dfad41da26fc1ef60b2256">
+  <!ENTITY cups-size          "7.8 MB">
+  <!ENTITY cups-buildsize     "77 MB (Add 49 MB for tests)">
+  <!ENTITY cups-time          "0.4 SBU (Add 1.0 SBU for tests)">
+]>
+
+<sect1 id="cups" xreflabel="Cups-&cups-version;">
+  <?dbhtml filename="cups.html"?>
+
+
+  <title>Cups-&cups-version;</title>
+
+  <indexterm zone="cups">
+    <primary sortas="a-Cups">Cups</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Cups</title>
+
+    <para>
+      The Common Unix Printing System (CUPS) is a print spooler and
+      associated utilities. It is based on the "Internet Printing
+      Protocol" and provides printing services to most PostScript
+      and raster printers.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cups-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cups-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cups-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cups-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cups-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cups-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Cups Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gnutls"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="colord"/>,
+      <xref linkend="dbus"/>,
+      <xref linkend="libusb"/>,
+      <xref linkend="linux-pam"/>, and
+      <xref linkend="xdg-utils"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="avahi"/>,
+      <xref linkend="libpaper"/>,
+      <xref linkend="mitkrb"/>,
+      <!--<xref linkend="openjdk"/>, Not found in 2.4.0 -->
+      <xref linkend="php"/>, and
+      <xref linkend="python2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Required (Postinstall)</bridgehead>
+    <para role="required">
+      <xref role="runtime" linkend="cups-filters"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (Postinstall)</bridgehead>
+    <para role="optional">
+      <xref role="runtime" linkend="gutenprint"/> and
+      <ulink role="runtime" url="https://developers.hp.com/hp-linux-imaging-and-printing">hplip</ulink> (HP printers)
+    </para>
+
+  </sect2>
+
+  <sect2 role="kernel" id="cups-kernel">
+    <title>Kernel Configuration</title>
+
+    <note>
+      <para>
+        There used to be a conflict between the <application>Cups</application>
+        <application>libusb</application> backend and the usblp kernel driver.
+        This is no longer the case and cups will work with both of these
+        enabled.
+      </para>
+    </note>
+
+    <para>
+      If you want to use the kernel usblp driver (for example, if you wish to
+      use <application>escputil</application> from <xref
+      linkend="gutenprint"/>) enable the following options in your kernel
+      configuration and recompile the kernel:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="usb-printer-kernel.xml"/>
+
+    <para>
+      If you have a parallel printer, enable the following options in your
+      kernel configuration and recompile the kernel:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="parallel-printer-kernel.xml"/>
+
+    <indexterm zone="cups cups-kernel">
+      <primary sortas="d-cups">cups</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Cups</title>
+
+    <para>
+      You will need to add an <systemitem class="username">lp</systemitem>
+      user, as <application>Cups</application> will create some files owned
+      by this user. (The <systemitem class="username">lp</systemitem> user
+      is the default used by <application>Cups</application>, but may be
+      changed to a different user by passing a parameter to the
+      <command>configure</command> script.) Use the following command as
+      the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>useradd -c "Print Service User" -d /var/spool/cups -g lp -s /bin/false -u 9 lp</userinput></screen>
+
+    <para>
+      You will also need a dedicated group that will contain users allowed to
+      do <application>Cups</application> administrative tasks. Add the group
+      by running the following command as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>groupadd -g 19 lpadmin</userinput></screen>
+
+    <para>
+      If you want to add a user to the <application>Cups</application>
+      administrative group, run the following command as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>usermod -a -G lpadmin <replaceable>&lt;username&gt;</replaceable></userinput></screen>
+
+    <para>
+      If you didn't install <xref linkend="xdg-utils"/>, use the following
+      <command>sed</command> to change the default browser that will be used
+      to access the <application>Cups</application> web interface:
+    </para>
+
+<screen><userinput>sed -i 's#@CUPS_HTMLVIEW@#firefox#' desktop/cups.desktop.in</userinput></screen>
+
+    <para>
+      Replace <command>firefox</command> with the web browser of your
+      choice.
+    </para>
+
+    <para>
+      Build <application>Cups</application> by running the following commands:
+    </para>
+
+<screen revision="sysv"><userinput>./configure --libdir=/usr/lib            \
+            --disable-systemd            \
+            --with-rcdir=/tmp/cupsinit   \
+            --with-rundir=/run/cups      \
+            --with-system-groups=lpadmin \
+            --with-docdir=/usr/share/cups/doc-&cups-version; &amp;&amp;
+make</userinput></screen>
+
+<screen revision="systemd"><userinput>./configure --libdir=/usr/lib            \
+            --with-rundir=/run/cups      \
+            --with-system-groups=lpadmin \
+            --with-docdir=/usr/share/cups/doc-&cups-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>LC_ALL=C make -k check</command>. An already
+      active graphical session with bus address is necessary to run the tests.
+      Make sure that there is not other instance of <application>Cups</application>
+      running, otherwise at least 4 tests will fail with "address in use".
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<!-- dev note: make BUILDROOT=<DESTDIR> install -->
+
+<screen role="root"><userinput>make install &amp;&amp;
+ln -svnf ../cups/doc-&cups-version; /usr/share/doc/cups-&cups-version;</userinput></screen>
+
+    <para revision="sysv">
+      Remove the shipped bootscript, which is incompatible with LFS:
+    </para>
+
+<screen role="root" revision="sysv"><userinput>rm -rf /tmp/cupsinit</userinput></screen>
+
+    <para>
+      Create a basic <application>Cups</application> client configuration file
+      by running the following command as the <systemitem
+      class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>echo "ServerName /run/cups/cups.sock" > /etc/cups/client.conf</userinput></screen>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-update-icon-cache.xml"/>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para revision="sysv">
+      <parameter>--disable-systemd</parameter>: Systemd is not supported by
+      this version of BLFS.
+    </para>
+
+    <para revision="sysv">
+      <parameter>--with-rcdir=/tmp/cupsinit</parameter>: This switch tells the
+      build process to install the shipped bootscript into <filename
+      class="directory">/tmp</filename> instead of <filename
+      class="directory">/etc/rc.d</filename>.
+    </para>
+
+    <para>
+      <parameter>--with-rundir=/run/cups</parameter>: This switch prevents
+      the package from referring to the deprecated
+      <filename class='directory'>/var/run</filename> directory.
+    </para>
+
+    <para>
+      <parameter>--with-system-groups=lpadmin</parameter>: This switch ensures
+      that only <systemitem class="groupname">lpadmin</systemitem> will be used
+      as the <application>Cups</application> administrative group.
+    </para>
+
+    <para>
+      <option>--disable-libusb</option>: Use this switch if you have installed
+      <xref linkend="libusb"/>, but wish to use the kernel usblp driver.
+    </para>
+
+    <para>
+      <option>--enable-libpaper</option>: Use this switch if you have installed
+      <application>libpaper</application> and wish to use it with
+      <application>Cups</application>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Cups</title>
+
+    <sect3 id="cups-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/cups/*</filename>
+      </para>
+
+      <indexterm zone="cups cups-config">
+        <primary sortas="e-etc-cups">/etc/cups/*</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        Normally, printers are set up via a web browser.  The
+        <application>Cups</application> server will normally connect via
+        the url http://localhost:631.  From there printers, print
+        jobs, and the server configuration can be set up and managed.
+        Remote system administration can also be set up.  Configuration
+        can also be done from the command line via the
+        <command>lpadmin</command>, <command>lpoptions</command>,
+        and <command>lpstat</command> commands.
+      </para>
+
+      <para>
+        Configuration of <application>Cups</application> is dependent on
+        the type of printer and can be complex. Generally, PostScript printers
+        are easier. For detailed instructions on configuration and use of
+        <application>Cups</application>, see <ulink
+        url="https://www.cups.org/documentation.html"/>.
+      </para>
+
+      <para>
+        For non-PostScript printers to print with
+        <application>Cups</application>, you need to install <xref
+        linkend="gs"/> to convert PostScript to raster images and a driver
+        (e.g. from <xref linkend="gutenprint"/>) to convert the resulting
+        raster images to a form that the printer understands.  <ulink
+        url="https://wiki.linuxfoundation.org/openprinting/database/foomatic">Foomatic</ulink>
+        drivers use <xref linkend="gs"/> to convert PostScript to a printable
+        form directly, but this is considered suboptimal by
+        <application>Cups</application> developers.
+      </para>
+
+    </sect3>
+
+    <sect3>
+      <title>Linux PAM Configuration</title>
+
+      <para>
+        If <application>CUPS</application> has been built with
+        <application>Linux PAM</application> support, you need to create a
+        <application>PAM</application> configuration file to get it working
+        correctly with BLFS.
+      </para>
+
+      <para>
+        Issue the following command as the <systemitem
+        class="username">root</systemitem> user to create the configuration
+        file for <application>Linux PAM</application>:
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/pam.d/cups &lt;&lt; "EOF"
+<literal># Begin /etc/pam.d/cups
+
+auth    include system-auth
+account include system-account
+session include system-session
+
+# End /etc/pam.d/cups</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+    <sect3 id="cups-init">
+      <title><phrase revision="sysv">Boot Script</phrase>
+             <phrase revision="systemd">Systemd Unit</phrase></title>
+
+      <para revision="sysv">
+        If you want the <application>Cups</application> print service to start
+        automatically when the system is booted, install the init script
+        included in the <xref linkend="bootscripts"/> package:
+      </para>
+
+      <para revision="systemd">
+        To start the <command>cupsd</command> daemon when something tries to
+        access it, enable the previously installed systemd units by running
+        the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+      <indexterm zone="cups cups-init">
+        <primary sortas="f-cups">cups</primary>
+      </indexterm>
+
+<screen role="root" revision="sysv"><userinput>make install-cups</userinput></screen>
+
+<screen role="root" revision="systemd"><userinput>systemctl enable cups</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          cancel, cupsaccept, cups-config, cupsctl, cupsd, cupsdisable,
+          cupsenable, cupsfilter, cupsreject, cupstestppd, ippeveprinter,
+          ippfind, ipptool, lp, lpadmin, lpc, lpinfo, lpmove, lpoptions, lpq,
+          lpr, lprm, lpstat, ppdc, ppdhtml, ppdi, ppdmerge, and ppdpo
+        </seg>
+        <seg>
+          libcupsimage.so
+          and libcups.so
+        </seg>
+        <seg>
+          /etc/cups,
+          /usr/{include,lib,share}/cups,
+          /usr/share/doc/cups-&cups-version;,
+          /run/cups, and
+          /var/{cache,log,spool}/cups
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+     <varlistentry id="cancel-cups">
+        <term><command>cancel</command></term>
+        <listitem>
+          <para>
+            cancels existing print jobs from the print queues
+          </para>
+          <indexterm zone="cups cancel-cups">
+            <primary sortas="b-cancel">cancel</primary>
+          </indexterm>
+        </listitem>
+     </varlistentry>
+
+     <varlistentry id="cupsaccept">
+        <term><command>cupsaccept</command></term>
+        <listitem>
+          <para>
+            accept jobs sent to a destination
+          </para>
+          <indexterm zone="cups cupsaccept">
+            <primary sortas="b-cupsaccept">cupsaccept</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cups-config-prog">
+        <term><command>cups-config</command></term>
+        <listitem>
+          <para>
+            is a <application>Cups</application>
+            program configuration utility
+          </para>
+          <indexterm zone="cups cups-config-prog">
+            <primary sortas="b-cups-config">cups-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cupsctl">
+        <term><command>cupsctl</command></term>
+        <listitem>
+          <para>
+            updates or queries the cupsd.conf file for a server
+          </para>
+          <indexterm zone="cups cupsctl">
+            <primary sortas="b-cupsctl">cupsctl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cupsd">
+        <term><command>cupsd</command></term>
+        <listitem>
+          <para>
+            is the scheduler for the Common Unix Printing System
+          </para>
+          <indexterm zone="cups cupsd">
+            <primary sortas="b-cupsd">cupsd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cupsdisable">
+        <term><command>cupsdisable</command></term>
+        <listitem>
+          <para>
+            stop printers and classes
+          </para>
+          <indexterm zone="cups cupsdisable">
+            <primary sortas="b-cupsdisable">cupsdisable</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cupsenable">
+        <term><command>cupsenable</command></term>
+        <listitem>
+          <para>
+            start printers and classes
+          </para>
+          <indexterm zone="cups cupsenable">
+            <primary sortas="b-cupsenable">cupsenable</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cupsfilter">
+        <term><command>cupsfilter</command></term>
+        <listitem>
+          <para>
+            is a front-end to the <application>Cups</application>
+            filter subsystem which allows you to convert a file
+            to a specific format
+          </para>
+          <indexterm zone="cups cupsfilter">
+            <primary sortas="b-cupsfilter">cupsfilter</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cupsreject">
+        <term><command>cupsreject</command></term>
+        <listitem>
+          <para>
+            reject jobs sent to a destination
+          </para>
+          <indexterm zone="cups cupsreject">
+            <primary sortas="b-cupsreject">cupsreject</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cupstestppd">
+        <term><command>cupstestppd</command></term>
+        <listitem>
+          <para>
+            tests the conformance of PPD files
+          </para>
+          <indexterm zone="cups cupstestppd">
+            <primary sortas="b-cupstestppd">cupstestppd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ippeveprinter">
+        <term><command>ippeveprinter</command></term>
+        <listitem>
+          <para>
+            is an IPP Everywhere printer for CUPS
+          </para>
+          <indexterm zone="cups ippeveprinter">
+            <primary sortas="b-ippeveprinter">ippeveprinter</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ippfind">
+        <term><command>ippfind</command></term>
+        <listitem>
+          <para>
+            finds Internet Printing Protocol printers
+          </para>
+          <indexterm zone="cups ippfind">
+            <primary sortas="b-ippfind">ippfind</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ipptool">
+        <term><command>ipptool</command></term>
+        <listitem>
+          <para>
+            sends IPP requests to the specified URI and tests
+            and/or displays the results
+          </para>
+          <indexterm zone="cups ipptool">
+            <primary sortas="b-ipptool">ipptool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lp-cups">
+        <term><command>lp</command></term>
+        <listitem>
+          <para>
+            submits files for printing or alters a pending job
+          </para>
+          <indexterm zone="cups lp-cups">
+            <primary sortas="b-lp">lp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpadmin">
+        <term><command>lpadmin</command></term>
+        <listitem>
+          <para>
+            configures printer and class queues provided by
+            <application>Cups</application>
+          </para>
+          <indexterm zone="cups lpadmin">
+            <primary sortas="b-lpadmin">lpadmin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpc-cups">
+        <term><command>lpc</command></term>
+        <listitem>
+          <para>
+            provides limited control over printer and class queues
+            provided by <application>Cups</application>
+          </para>
+          <indexterm zone="cups lpc-cups">
+            <primary sortas="b-lpc">lpc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpinfo">
+        <term><command>lpinfo</command></term>
+        <listitem>
+          <para>
+            lists the available devices or drivers known to the
+            <application>Cups</application> server
+          </para>
+          <indexterm zone="cups lpinfo">
+            <primary sortas="b-lpinfo">lpinfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpmove">
+        <term><command>lpmove</command></term>
+        <listitem>
+          <para>
+            moves the specified job to a new destination
+          </para>
+          <indexterm zone="cups lpmove">
+            <primary sortas="b-lpmove">lpmove</primary>
+          </indexterm>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpoptions">
+        <term><command>lpoptions</command></term>
+        <listitem>
+          <para>
+            displays or sets printer options and defaults
+          </para>
+          <indexterm zone="cups lpoptions">
+            <primary sortas="b-lpoptions">lpoptions</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpq-cups">
+        <term><command>lpq</command></term>
+        <listitem>
+          <para>
+            shows the current print queue status on the named printer
+          </para>
+          <indexterm zone="cups lpq-cups">
+            <primary sortas="b-lpq">lpq</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpr-cups">
+        <term><command>lpr</command></term>
+        <listitem>
+          <para>
+            submits files for printing
+          </para>
+          <indexterm zone="cups lpr-cups">
+            <primary sortas="b-lpr">lpr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lprm-cups">
+        <term><command>lprm</command></term>
+        <listitem>
+          <para>
+            cancels print jobs that have been queued for printing
+          </para>
+          <indexterm zone="cups lprm-cups">
+            <primary sortas="b-lprm">lprm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lpstat-cups">
+        <term><command>lpstat</command></term>
+        <listitem>
+          <para>
+            displays status information about the current classes, jobs,
+            and printers
+          </para>
+          <indexterm zone="cups lpstat-cups">
+            <primary sortas="b-lpstat">lpstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ppdc">
+        <term><command>ppdc</command></term>
+        <listitem>
+          <para>
+            compiles PPDC source files into one or more PPD files
+          </para>
+          <indexterm zone="cups ppdc">
+            <primary sortas="b-ppdc">ppdc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ppdhtml">
+        <term><command>ppdhtml</command></term>
+        <listitem>
+          <para>
+            reads a driver information file and produces a HTML summary
+            page that lists all of the drivers in a file and the
+            supported options
+          </para>
+          <indexterm zone="cups ppdhtml">
+            <primary sortas="b-ppdhtml">ppdhtml</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ppdi">
+        <term><command>ppdi</command></term>
+        <listitem>
+          <para>
+            imports one or more PPD files into a PPD compiler source file
+          </para>
+          <indexterm zone="cups ppdi">
+            <primary sortas="b-ppdi">ppdi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ppdmerge">
+        <term><command>ppdmerge</command></term>
+        <listitem>
+          <para>
+            merges two or more PPD files into a single, multi-language
+            PPD file
+          </para>
+          <indexterm zone="cups ppdmerge">
+            <primary sortas="b-ppdmerge">ppdmerge</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ppdpo">
+        <term><command>ppdpo</command></term>
+        <listitem>
+          <para>
+            extracts UI strings from PPDC source files and
+            updates either a GNU gettext or Mac OS X strings
+            format message catalog source file for translation
+          </para>
+          <indexterm zone="cups ppdpo">
+            <primary sortas="b-ppdpo">ppdpo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcups">
+        <term><filename class="libraryfile">libcups.so</filename></term>
+        <listitem>
+          <para>
+            contains the <application>Cups</application> API functions
+          </para>
+          <indexterm zone="cups libcups">
+            <primary sortas="c-libcups">libcups.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

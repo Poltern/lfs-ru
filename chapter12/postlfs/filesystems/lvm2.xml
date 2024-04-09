@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY lvm2-download-http "https://sourceware.org/ftp/lvm2/LVM2.&lvm2-version;.tgz">
+  <!ENTITY lvm2-download-ftp  " ">
+  <!ENTITY lvm2-md5sum        "0535b5e638b6f0b48f7b259e0ec0ba65">
+  <!ENTITY lvm2-size          "2.7 MB">
+  <!ENTITY lvm2-buildsize     "39 MB (add 20 MB for tests; transient files can grow up to around 300 MB in the /tmp directory during tests)">
+  <!-- My build size was 124 MB with tests, but I'll leave this here. -renodr
+       The files in /tmp are transient. I monitor /tmp with a loop during
+       tests. -pierre, August 2020
+
+       Build size with tests was 58M.  The largest size of /tmp I saw was 289MB.
+       ### 412 tests: 245 passed, 155 skipped, 0 timed out, 1 warned, 11 failed
+       Aug 2023 LVM2.2.03.22 - bdubbs
+
+       ### 424 tests: 261 passed, 153 skipped, 0 timed out, 1 warned, 9 failed
+       Nov 2023 LVM2.2.03.23 - bdubbs
+       -->
+  <!ENTITY lvm2-time          "0.1 SBU (using parallelism=4; add 9 to 48 SBU for tests, depending on disk speed and whether ram block device is enabled in the kernel)">
+]>
+
+<sect1 id="lvm2" xreflabel="LVM2-&lvm2-version;">
+  <?dbhtml filename="lvm2.html"?>
+
+
+  <title>LVM2-&lvm2-version;</title>
+
+  <indexterm zone="lvm2">
+    <primary sortas="a-LVM2">LVM2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to LVM2</title>
+
+    <para>
+      The <application>LVM2</application> package is a set of tools that manage
+      logical partitions. It allows spanning of file systems across multiple
+      physical disks and disk partitions and provides for dynamic growing or
+      shrinking of logical partitions, mirroring and low storage footprint
+      snapshots.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&lvm2-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&lvm2-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &lvm2-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &lvm2-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &lvm2-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &lvm2-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">LVM2 Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend='libaio'/>
+     </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend='mdadm'/>,
+      <xref linkend='valgrind'/>,
+      <xref linkend='which'/>,
+      <xref linkend='xfsprogs'/> (all four may be used, but are not required,
+        for tests),
+      <ulink 
+        url='https://mirrors.edge.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/'>
+        reiserfsprogs</ulink>,
+      <ulink url='https://github.com/jthornber/thin-provisioning-tools'>
+        thin-provisioning-tools</ulink>, and
+        <ulink url="https://github.com/dm-vdo/vdo">vdo</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="kernel" id="lvm2-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      Enable the following options in the kernel configuration
+      and recompile the kernel:
+    </para>
+
+    <note><para>
+      There are several other Device Mapper options in the kernel beyond those
+      listed below.  In order to get reasonable results if running the
+      regression tests, all must be enabled either internally or as a module.
+      The tests will all time out if Magic SysRq key is not enabled.
+    </para></note>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="lvm2-kernel.xml"/>
+
+    <indexterm zone="lvm2 lvm2-kernel">
+      <primary sortas="d-lvm2">lvm2</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of LVM2</title>
+
+    <para>
+      Install <application>LVM2</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>PATH+=:/usr/sbin                \
+./configure --prefix=/usr       \
+            --enable-cmdlib     \
+            --enable-pkgconfig  \
+            --enable-udev_sync  &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      The tests use <application>udev</application> for logical volume
+      synchronization, so the LVM udev rules and some utilities need to
+      be installed before running the tests. If you are installing
+      <application>LVM2</application> for the first time, and do not
+      want to install the full package before running the tests, the minimal
+      set of utilities can be installed by running the following instructions
+      as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="test"><userinput>make -C tools install_tools_dynamic &amp;&amp;
+make -C udev  install               &amp;&amp;
+make -C libdm install</userinput></screen>
+
+    <para>
+      To test the results, issue, as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="test"><userinput>LC_ALL=en_US.UTF-8 make check_local</userinput></screen>
+
+    <para>
+      Some tests may hang. In this case they can be skipped by adding
+      <command>S=&lt;testname&gt;</command> to the <command>make</command>
+      command.
+      Other targets are available and can be listed with
+      <command>make -C test help</command>. The test timings are very dependent
+      on the speed of the disk(s), and on the number of enabled kernel options.
+    </para>
+
+    <!-- Results for LVM2.2.02.176:
+    ### 292 tests: 177 passed, 46 skipped, 0 timed out, 60 warned, 9 failed
+
+    Results for LVM2.2.03.01:
+    ### 302 tests: 182 passed, 43 skipped, 0 timed out, 62 warned, 15 failed
+
+    Results for LVM2.2.03.05:
+    ### 326 tests: 255 passed, 58 skipped, 0 timed out, 2 warned, 11 failed
+
+    Results for LVM2.2.03.09:
+    ### 338 tests: 212 passed, 41 skipped, 0 timed out, 70 warned, 15 failed
+
+    Results for LVM2.2.03.11:
+    ### 357 tests: 231 passed, 32 skipped, 0 timed out, 77 warned, 17 failed
+
+    Results for LVM2.2.03.14:
+    ### 389 tests: 304 passed, 73 skipped, 0 timed out, 2 warned, 10 failed
+
+    Results for LVM2.2.03.16:
+    ### 395 tests: 241 passed, 145 skipped, 0 timed out, 1 warned, 8 failed
+
+    Results for LVM2.2.03.17:
+    ### 403 tests: 333 passed, 61 skipped, 0 timed out, 3 warned, 6 failed
+
+    Results for LVM2.2.03.20 [pierre]:
+    ### 407 tests: 324 passed, 75 skipped, 0 timed out, 3 warned, 5 failed
+    -->
+
+    <para>
+      The tests do not implement the <quote>expected fail</quote> possibility,
+      and a small number of test failures is expected by upstream.
+      <!-- 1 -->More failures may happen because some kernel options are missing.
+      For example, the lack of the <emphasis>dm-delay</emphasis> device
+      mapper target  explains some failures.
+      <!-- 2 -->Some tests may fail if there is insufficient free space available
+      in the partition with the /tmp directory.  At least one test fails if 16 TB
+      is not available.
+      <!-- 3 -->Some tests are flagged  <quote>warned</quote> if
+      <ulink url='https://github.com/jthornber/thin-provisioning-tools'>
+      thin-provisioning-tools</ulink> are not installed. A workaround is to
+      add the following flags to <command>configure</command>:
+    </para>
+
+<screen role="nodump"><userinput>     --with-thin-check=    \
+     --with-thin-dump=     \
+     --with-thin-repair=   \
+     --with-thin-restore=  \
+     --with-cache-check=   \
+     --with-cache-dump=    \
+     --with-cache-repair=  \
+     --with-cache-restore= \</userinput></screen>
+
+    <para>
+      Some tests may hang. They can be removed if necessary, for example:
+      <command>rm test/shell/lvconvert-raid-reshape.sh</command>. The tests
+      generate a lot of kernel messages, which may clutter your terminal. You
+      can disable them by issuing <command>dmesg -D</command> before running
+      the tests (do not forget to issue <command>dmesg -E</command> when tests
+      are done).
+
+      <note><simpara>The checks create device nodes in the /tmp directory.  The
+      tests will fail if /tmp is mounted with the nodev option.
+      </simpara></note>
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root" revision="sysv"><userinput>make install
+rm -fv /usr/lib/udev/rules.d/69-dm-lvm.rules</userinput></screen>
+
+<screen role="root" revision="systemd"><userinput>make install
+make install_systemd_units</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>PATH+=:/usr/sbin</command>: The path
+      must contain
+      <filename class='directory'>/usr/sbin</filename> for proper system tool
+      detection by the <command>configure</command> script. This instruction
+      ensures that PATH is properly set even if you build as an unprivileged user.
+    </para>
+
+    <para>
+      <parameter>--enable-cmdlib</parameter>: This switch enables
+      building of the shared command library. It is required
+      when building the event daemon.
+    </para>
+
+    <para>
+      <parameter>--enable-pkgconfig</parameter>: This switch enables
+      installation of <command>pkg-config</command> support files.
+    </para>
+
+    <para>
+     <parameter>--enable-udev_sync</parameter>: This switch enables
+      synchronisation with <application>Udev</application> processing.
+    </para>
+
+    <para>
+      <option>--enable-dmeventd</option>: This switch enables
+      building of the <application>Device Mapper</application>
+      event daemon.
+    </para>
+
+    <para revision="sysv">
+      <command>rm .../69-dm-lvm.rules</command>: Under certain circumstances,
+      this udev rule calls <command>systemd-run</command>, which is not
+      available on sysv. It performs actions that are done by another boot
+      script anyway, so it is not needed.
+    </para>
+
+    <para revision="systemd">
+      <command>make install_systemd_units</command>: This is needed to install
+      a unit that activates logical volumes at boot. It is not installed
+      by default.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration" revision="systemd">
+    <title>Configuring LVM2</title>
+
+    <sect3 id="lvm2-config">
+      <title>Config File</title>
+      <para>
+        <filename>/etc/lvm/lvm.conf</filename>
+      </para>
+
+      <indexterm zone="lvm2 lvm2-config">
+        <primary
+        sortas="e-etc-lvm-lvm.conf">/etc/lvm/lvm.conf</primary>
+      </indexterm>
+    </sect3>
+
+    <sect3><title>Configuration Information</title>
+      <para>
+        The default configuration still references the obsolete <filename
+        class="directory">/var/lock</filename> directory. This creates
+        a deadlock at boot time. Change this (as the <systemitem
+        class="username">root</systemitem> user):
+      </para>
+
+<screen role="root"><userinput>sed -e '/locking_dir =/{s/#//;s/var/run/}' \
+    -i /etc/lvm/lvm.conf</userinput></screen>
+
+    </sect3>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          blkdeactivate, dmeventd (optional), dmsetup, fsadm, lvm, lvmdump,
+          and lvm_import_vdo.
+          There are also numerous symbolic links to lvm that implement specific
+          functionalities
+        </seg>
+        <seg>
+          libdevmapper.so and liblvm2cmd.so; optional:
+          libdevmapper-event.so, libdevmapper-event-lvm2.so,
+          libdevmapper-event-lvm2mirror.so, libdevmapper-event-lvm2raid.so,
+          libdevmapper-event-lvm2snapshot.so, libdevmapper-event-lvm2thin.so,
+          and libdevmapper-event-lvm2vdo.so
+        </seg>
+        <seg>
+          /etc/lvm and
+          /usr/lib/device-mapper (optional)
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+
+     <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="blkdeactivate">
+        <term><command>blkdeactivate</command></term>
+        <listitem>
+          <para>
+            is a utility to deactivate block devices
+          </para>
+          <indexterm zone="lvm2 blkdeactivate">
+            <primary sortas="b-blkdeactivate">blkdeactivate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dmeventd">
+        <term><command>dmeventd</command></term>
+        <listitem>
+          <para>
+            (optional) is the Device Mapper event daemon
+          </para>
+          <indexterm zone="lvm2 dmeventd">
+            <primary sortas="b-dmeventd">dmeventd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dmsetup">
+        <term><command>dmsetup</command></term>
+        <listitem>
+          <para>
+            is a low level logical volume management tool
+          </para>
+          <indexterm zone="lvm2 dmsetup">
+            <primary sortas="b-dmsetup">dmsetup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fsadm">
+        <term><command>fsadm</command></term>
+        <listitem>
+          <para>
+            is a utility used to resize or check filesystem on a device
+          </para>
+          <indexterm zone="lvm2 fsadm">
+            <primary sortas="b-fsadm">fsadm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lvm">
+        <term><command>lvm</command></term>
+        <listitem>
+          <para>
+            provides the command-line tools for <application>LVM2</application>.
+            Commands are implemented via symbolic links to this program to
+            manage physical devices (pv*), volume groups (vg*) and logical
+            volumes (lv*)
+          </para>
+          <indexterm zone="lvm2 lvm">
+            <primary sortas="b-lvm">lvm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <!--
+      <varlistentry id="lvmconf">
+        <term><command>lvmconf</command></term>
+        <listitem>
+          <para>
+            is a script that modifies the locking configuration in
+            the <application>LVM2</application> configuration file.
+          </para>
+          <indexterm zone="lvm2 lvmconf">
+            <primary sortas="b-lvmconf">lvmconf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+      -->
+
+      <varlistentry id="lvmdump">
+        <term><command>lvmdump</command></term>
+        <listitem>
+          <para>
+            is a tool used to dump various information concerning
+            <application>LVM2</application>
+          </para>
+          <indexterm zone="lvm2 lvmdump">
+            <primary sortas="b-lvmdump">lvmdump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vgimportclone">
+        <term><command>vgimportclone</command></term>
+        <listitem>
+          <para>
+            is used to import a duplicated VG (e.g. hardware snapshot)
+          </para>
+          <indexterm zone="lvm2 vgimportclone">
+            <primary sortas="b-vgimportclone">vgimportclone</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libdevmapper">
+        <term><filename class="libraryfile">libdevmapper.so</filename></term>
+        <listitem>
+          <para>
+            contains the <application>Device Mapper</application> API
+            functions
+          </para>
+          <indexterm zone="lvm2 libdevmapper">
+            <primary sortas="c-libdevmapper">libdevmapper.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

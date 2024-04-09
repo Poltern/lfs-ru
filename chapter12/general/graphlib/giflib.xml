@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY giflib-download-http "https://sourceforge.net/projects/giflib/files/giflib-&giflib-version;.tar.gz">
+  <!ENTITY giflib-download-ftp  " ">
+  <!ENTITY giflib-http-md5sum   "913dd251492134e235ee3c9a91987a4d">
+  <!ENTITY giflib-http-size     "440 KB">
+  <!ENTITY giflib-buildsize     "4.0 MB (with documentation)">
+  <!ENTITY giflib-time          "less than 0.1 SBU (with documentation)">
+]>
+
+<sect1 id="giflib" xreflabel="giflib-&giflib-version;">
+  <?dbhtml filename="giflib.html"?>
+
+
+  <title>giflib-&giflib-version;</title>
+
+  <indexterm zone="giflib">
+    <primary sortas="a-giflib">giflib</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to giflib</title>
+
+    <para>
+      The <application>giflib</application> package contains libraries
+      for reading and writing GIFs as well as programs for converting and
+      working with GIF files.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&giflib-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&giflib-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &giflib-http-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &giflib-http-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &giflib-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &giflib-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/giflib-&giflib-version;-upstream_fixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">giflib Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="xmlto"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of giflib</title>
+
+    <para>
+      First, prevent the build process from installing XML files instead of man
+      pages:
+    </para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../giflib-&giflib-version;-upstream_fixes-1.patch</userinput></screen>
+
+    <para>
+      Next, remove an unnecessary dependency on <xref linkend="imagemagick"/>
+      by moving a file into an expected location:
+    </para>
+
+<screen><userinput remap="pre">cp pic/gifgrid.gif doc/giflib-logo.gif</userinput></screen>
+
+    <para>
+      Install <application>giflib</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>make</userinput></screen>
+
+<!--    <para>
+      To test the results, issue: <command>make check-TESTS</command>. Test
+      suite results are kept in <filename>test.sh.log</filename>.
+    </para>
+    There doesn't seem to be a test suite in 5.1.6 -->
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make PREFIX=/usr install &amp;&amp;
+
+rm -fv /usr/lib/libgif.a &amp;&amp;
+
+find doc \( -name Makefile\* -o -name \*.1 \
+         -o -name \*.xml \) -exec rm -v {} \; &amp;&amp;
+
+install -v -dm755 /usr/share/doc/giflib-&giflib-version; &amp;&amp;
+cp -v -R doc/* /usr/share/doc/giflib-&giflib-version;</userinput></screen>
+<!--
+    <para>
+      If <xref linkend="xmlto"/> is installed, then the API documentation has
+      been built.  If you wish to install the distributed and the just built
+      documentations, issue, as the <systemitem
+      class="username">root</systemitem> user:
+    </para>
+-->
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>rm -fv /usr/lib/libgif.a</command>: This command removes a
+      static library which is not used by any BLFS package.
+    </para>
+
+    <para>
+      <command>find doc ... -exec rm -v {} \;</command>: This command removes
+      <filename>Makefiles</filename>, man and xml files from the documentation
+      directory that would otherwise be installed by the commands that follow.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>gif2rgb, gifbuild, gifclrmp, giffix, giftext, and giftool</seg>
+        <seg>libgif.so</seg>
+        <seg>/usr/share/doc/giflib-&giflib-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gif2rgb">
+        <term><command>gif2rgb</command></term>
+        <listitem>
+          <para>
+            converts images saved as GIF to 24-bit RGB images
+          </para>
+          <indexterm zone="giflib gif2rgb">
+            <primary sortas="b-gif2rgb">gif2rgb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gifbuild">
+        <term><command>gifbuild</command></term>
+        <listitem>
+          <para>
+            dumps GIF data in a textual format, or undumps it to a GIF
+          </para>
+          <indexterm zone="giflib gifbuild">
+            <primary sortas="b-gifbuild">gifbuild</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gifclrmp">
+        <term><command>gifclrmp</command></term>
+        <listitem>
+          <para>
+            modifies GIF image colormaps
+          </para>
+          <indexterm zone="giflib gifclrmp">
+            <primary sortas="b-gifclrmp">gifclrmp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="giffix">
+        <term><command>giffix</command></term>
+        <listitem>
+          <para>
+            clumsily attempts to fix truncated GIF images
+          </para>
+          <indexterm zone="giflib giffix">
+            <primary sortas="b-giffix">giffix</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="giftext">
+        <term><command>giftext</command></term>
+        <listitem>
+          <para>
+            prints (text only) general information about a GIF file
+          </para>
+          <indexterm zone="giflib giftext">
+            <primary sortas="b-giftext">giftext</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="giftool">
+        <term><command>giftool</command></term>
+        <listitem>
+          <para>
+            is a GIF transformation tool
+          </para>
+          <indexterm zone="giflib giftool">
+            <primary sortas="b-giftool">giftool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgif">
+        <term><filename class="libraryfile">libgif.so</filename></term>
+        <listitem>
+          <para>
+            contains API functions required by the
+            <application>giflib</application> programs and any other programs
+            needing library functionality to read, write and manipulate GIF
+            images
+          </para>
+          <indexterm zone="giflib libgif">
+            <primary sortas="c-libgif">libgif.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+]>
+
+<sect1 id="general-genlib">
+  <?dbhtml filename="genlib.html"?>
+
+  <title>General Libraries</title>
+
+  <para>
+    Libraries contain code which is often required by more than
+    one program.  This has the advantage that each program doesn't need to
+    duplicate code (and risk introducing bugs), it just has to call
+    functions from the libraries installed on the system.  The most obvious
+    example of a set of libraries is <application>Glibc</application> which is
+    installed during the LFS book.  This contains all of the
+    <application>C</application> library functions which programs use.
+  </para>
+
+  <para>
+    There are two types of libraries: static and shared.  Shared libraries
+    (usually <filename>libXXX.so</filename>) are loaded into memory from the
+    shared copy at runtime (hence the name).  Static libraries (<filename>
+    libXXX.a</filename>) are actually linked into the program executable file
+    itself, thus making the program file larger.  Quite often, you will find
+    both static and shared copies of the same library on your system.
+  </para>
+
+  <para>
+    Generally, you only need to install libraries when you are
+    installing software that needs the functionality they supply.  In
+    the BLFS book, each package is presented with a list of (known)
+    dependencies.  Thus, you can figure out which libraries you need to have
+    before installing that program.  If you are installing something without
+    using BLFS instructions, usually the <filename>README</filename> or
+    <filename>INSTALL</filename> file will contain
+    details of the program's requirements.
+  </para>
+
+  <para>
+    There are certain libraries which nearly <emphasis>everyone</emphasis> will
+    need at some point.  In this chapter these and some others are listed and
+    it is explained why you may want to install them.
+  </para>
+
+ 
+
+</sect1>

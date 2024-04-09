@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-users-groups" xreflabel="About System Users and Groups">
+  <?dbhtml filename="users.html"?>
+
+
+  <title>About System Users and Groups</title>
+
+  <indexterm zone="postlfs-users-groups">
+    <primary sortas="e-etc-passwd">/etc/passwd</primary>
+  </indexterm>
+
+  <indexterm zone="postlfs-users-groups">
+    <primary sortas="e-etc-group">/etc/group</primary>
+  </indexterm>
+
+  <indexterm zone="postlfs-users-groups">
+    <primary sortas="e-etc-login.defs">/etc/login.defs</primary>
+  </indexterm>
+
+  <para>
+    Throughout BLFS, many packages install programs that run as daemons or in
+    some way should have a user or group name assigned.  Generally these
+    names are used to map a user ID (uid) or group ID (gid) for system use.
+    Generally the specific uid or gid numbers used by these applications are
+    not significant.  The exception of course, is that <systemitem
+    class='username'>root</systemitem> has a uid and gid of 0 (zero) that
+    is indeed special.  The uid values are stored in
+    <filename>/etc/passwd</filename> and the gid values are found in
+    <filename>/etc/group</filename>.
+  </para>
+
+  <para>
+    Customarily, Unix systems classify users and groups into two categories:
+    system users and regular users.  The system users and groups are given
+    low numbers and regular users and groups have numeric values greater
+    than all the system values.  The cutoff for these numbers is found in
+    two parameters in the <filename>/etc/login.defs</filename> configuration
+    file.  The default UID_MIN value is 1000 and the default GID_MIN value
+    is 1000.  If a specific uid or gid value is not specified when creating
+    a user with <command>useradd</command> or a group with
+    <command>groupadd</command> the values assigned will always be above
+    these cutoff values.
+  </para>
+
+  <para>
+    Additionally, the <ulink url=
+      "https://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/usernames.html">
+    Linux Standard Base</ulink> recommends that system uid and gid values
+    should be below 100.
+  </para>
+
+  <para>
+    Below is a table of suggested uid/gid values used in BLFS beyond those
+    defined in a base LFS installation.  These can be changed as desired, but
+    provide a suggested set of consistent values.
+  </para>
+
+  <table id="uidgid" class="uidvalues">
+    <title>UID/GID Suggested Values</title>
+    <?dbfo table-width="2in" ?>
+    <tgroup cols="3">
+      <colspec colnum="1" colwidth="1.2in"/>
+      <colspec colnum="2" colwidth=".4in"/>
+      <colspec colnum="3" colwidth=".4in"/>
+      <thead>
+        <row><entry>Name</entry><entry>uid</entry><entry>gid</entry></row>
+      </thead>
+      <tbody>
+        <row><entry>bin     </entry><entry> 1</entry><entry>  </entry></row>
+        <row><entry>lp      </entry><entry> 9</entry><entry>  </entry></row>
+        <!--<row><entry>usb     </entry><entry>  </entry><entry>14</entry></row> -->
+        <row><entry>adm     </entry><entry>  </entry><entry>16</entry></row>
+        <row><entry>atd     </entry><entry>17</entry><entry>17</entry></row>
+        <row><entry>messagebus</entry><entry>18</entry><entry>18</entry></row>
+        <row><entry>lpadmin </entry><entry></entry><entry>19</entry></row>
+        <row><entry>named   </entry><entry>20</entry><entry>20</entry></row>
+        <row><entry>gdm     </entry><entry>21</entry><entry>21</entry></row>
+        <row><entry>fcron   </entry><entry>22</entry><entry>22</entry></row>
+        <row><entry>systemd-journal</entry><entry>23</entry><entry>23</entry></row>
+        <row><entry>apache  </entry><entry>25</entry><entry>25</entry></row>
+        <row><entry>smmsp   </entry><entry>26</entry><entry>26</entry></row>
+        <row><entry>polkitd </entry><entry>27</entry><entry>27</entry></row>
+        <row><entry>rpc     </entry><entry>28</entry><entry>28</entry></row>
+        <!-- <row><entry>courier </entry><entry>30</entry><entry>30</entry></row> -->
+        <row><entry>exim    </entry><entry>31</entry><entry>31</entry></row>
+        <row><entry>postfix </entry><entry>32</entry><entry>32</entry></row>
+        <row><entry>postdrop</entry><entry>  </entry><entry>33</entry></row>
+        <row><entry>sendmail</entry><entry>34</entry><entry>  </entry></row>
+        <row><entry>mail    </entry><entry>  </entry><entry>34</entry></row>
+        <row><entry>vmailman</entry><entry>35</entry><entry>35</entry></row>
+        <row><entry>news    </entry><entry>36</entry><entry>36</entry></row>
+        <row><entry>kdm     </entry><entry>37</entry><entry>37</entry></row>
+        <row><entry>fetchmail</entry><entry>38</entry><entry>  </entry></row>
+        <row><entry>mysql   </entry><entry>40</entry><entry>40</entry></row>
+        <row><entry>postgres</entry><entry>41</entry><entry>41</entry></row>
+        <row><entry>dovecot </entry><entry>42</entry><entry>42</entry></row>
+        <row><entry>dovenull</entry><entry>43</entry><entry>43</entry></row>
+        <row><entry>ftp     </entry><entry>45</entry><entry>45</entry></row>
+        <row><entry>proftpd </entry><entry>46</entry><entry>46</entry></row>
+        <row><entry>vsftpd  </entry><entry>47</entry><entry>47</entry></row>
+        <row><entry>rsyncd  </entry><entry>48</entry><entry>48</entry></row>
+        <row><entry>sshd    </entry><entry>50</entry><entry>50</entry></row>
+        <row><entry>stunnel </entry><entry>51</entry><entry>51</entry></row>
+        <row><entry>dhcpcd  </entry><entry>52</entry><entry>52</entry></row>
+        <row><entry>svn     </entry><entry>56</entry><entry>56</entry></row>
+        <row><entry>svntest </entry><entry>  </entry><entry>57</entry></row>
+        <row><entry>git     </entry><entry>58</entry><entry>58</entry></row>
+        <!-- <row><entry>pulse   </entry><entry>58</entry><entry>58</entry></row>
+        <row><entry>pulse-access</entry><entry></entry><entry>59</entry></row>
+-->
+        <row><entry>games   </entry><entry>60</entry><entry>60</entry></row>
+        <row><entry>kvm     </entry><entry>  </entry><entry>61</entry></row>
+        <row><entry>wireshark</entry><entry> </entry><entry>62</entry></row>
+        <row><entry>sddm    </entry><entry>64</entry><entry>64</entry></row>
+        <row><entry>lightdm </entry><entry>65</entry><entry>65</entry></row>
+        <row><entry>scanner </entry><entry>  </entry><entry>70</entry></row>
+        <row><entry>colord  </entry><entry>71</entry><entry>71</entry></row>
+
+        <!-- Begin systemd specific users and groups -->
+        <!--<row><entry>systemd-bus-proxy</entry><entry>72</entry><entry>72</entry></row>-->
+        <row><entry>systemd-journal-gateway</entry><entry>73</entry><entry>73</entry></row>
+        <row><entry>systemd-journal-remote</entry><entry>74</entry><entry>74</entry></row>
+        <row><entry>systemd-journal-upload</entry><entry>75</entry><entry>75</entry></row>
+        <row><entry>systemd-network</entry><entry>76</entry><entry>76</entry></row>
+        <row><entry>systemd-resolve</entry><entry>77</entry><entry>77</entry></row>
+        <row><entry>systemd-timesync</entry><entry>78</entry><entry>78</entry></row>
+        <row><entry>systemd-coredump</entry><entry>79</entry><entry>79</entry></row>
+        <!-- End systemd specific users and groups -->
+
+        <row><entry>uuidd   </entry><entry>80</entry><entry>80</entry></row>
+        <row><entry>systemd-oom</entry><entry>81</entry><entry>81</entry></row>
+        <row><entry>ldap    </entry><entry>83</entry><entry>83</entry></row>
+        <row><entry>avahi   </entry><entry>84</entry><entry>84</entry></row>
+        <row><entry>avahi-autoipd</entry><entry>85</entry><entry>85</entry></row>
+        <row><entry>netdev  </entry><entry>  </entry><entry>86</entry></row>
+        <row><entry>ntp     </entry><entry>87</entry><entry>87</entry></row>
+        <row><entry>unbound </entry><entry>88</entry><entry>88</entry></row>
+        <row><entry>plugdev </entry><entry>  </entry><entry>90</entry></row>
+        <row><entry>wheel   </entry><entry>  </entry><entry>97</entry></row>
+        <row><entry>anonymous</entry><entry>98</entry><entry>  </entry></row>
+        <row><entry>nobody  </entry><entry>65534</entry><entry>  </entry></row>
+        <row><entry>nogroup </entry><entry>  </entry><entry>65534</entry></row>
+      </tbody>
+    </tgroup>
+  </table>
+<!--
+  <para>
+    One value that is missing is 65534.  This value is customarily assigned
+    to the user <systemitem class="username">nobody</systemitem> and group
+    <systemitem class="groupname">nogroup</systemitem> and is unnecessary.
+  </para>
+-->
+</sect1>

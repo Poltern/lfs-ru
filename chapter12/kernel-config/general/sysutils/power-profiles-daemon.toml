@@ -1,0 +1,17 @@
+# Selected by CPU_SUP_INTEL, which is always y when !CONFIG_EXPERT
+CPU_FREQ = { value = '*', forced = true }
+# If one of X86_INTEL_PSTATE and X86_AMD_PSTATE is selected, it's forced
+# to '*'.  Let's not consider VIA, Transmeta, etc. for now...
+CPU_FREQ_GOV_PERFORMANCE = { value = '*', forced = '*' }
+CPU_FREQ_GOV_POWERSAVE = '*M'
+# Not really forced: if you unset SCHED_MC you may unset this as well
+X86_INTEL_PSTATE = { value = ' *', comment = 'Select if CPU is Intel' }
+X86_AMD_PSTATE = { value = ' *', comment = 'Select if CPU is AMD' }
+
+[X86_PLATFORM_DEVICES]
+value = ' *'
+comment = [
+	'Some drivers under this submenu provide "platform profile" support',
+	'and power-profiles-daemon can take advantage from platform profiles;',
+	'select a driver if suitable for your platform',
+]

@@ -1,0 +1,4 @@
+INOTIFY_USER = '*'
+# not really forced, but if you select DRM_I915 it will seem "forced"
+TMPFS='*'
+TMPFS_POSIX_ACL='*'

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY DocBook-download-http "https://www.docbook.org/xml/&docBook-45-xml-version;/docbook-xml-&docBook-45-xml-version;.zip">
+  <!ENTITY DocBook-download-ftp  " ">
+  <!ENTITY DocBook-md5sum        "03083e288e87a7e829e437358da7ef9e">
+  <!ENTITY DocBook-size          "96 KB">
+  <!ENTITY DocBook-buildsize     "1.2 MB">
+  <!ENTITY DocBook-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="DocBook" xreflabel="docbook-xml-&docBook-45-xml-version;">
+  <?dbhtml filename="docbook.html"?>
+
+
+  <title>docbook-xml-&docBook-45-xml-version;</title>
+
+  <indexterm zone="DocBook">
+    <primary sortas="a-DocBook-XML-DTD">DocBook XML DTD</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to DocBook-4.5 XML DTD</title>
+
+    <para>
+      The <application>DocBook-4.5 XML DTD</application>-&docBook-45-xml-version;
+      package contains document type definitions for verification of XML data
+      files against the DocBook rule set. These are useful for structuring
+      books and software documentation to a standard allowing you to utilize
+      transformations already written for that standard.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&DocBook-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&DocBook-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &DocBook-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &DocBook-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &DocBook-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &DocBook-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">DocBook-4.5 XML DTD Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libxml2"/>,
+      <xref linkend="sgml-common"/>, and
+      <xref linkend="unzip"/> (or libarchive)
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of DocBook-4.5 XML DTD</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../xincludes/use-unzip.xml"/>
+
+    <para>
+      Install <application>DocBook XML DTD</application> by running the
+      following commands as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>install -v -d -m755 /usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version; &amp;&amp;
+install -v -d -m755 /etc/xml &amp;&amp;
+cp -v -af --no-preserve=ownership docbook.cat *.dtd ent/ *.mod \
+    /usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;</userinput></screen>
+
+    <para>
+      Create (or update) and populate the <filename>/etc/xml/docbook</filename>
+      catalog file by running the following
+      commands as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><?dbfo keep-together="auto"?><userinput>if [ ! -e /etc/xml/docbook ]; then
+    xmlcatalog --noout --create /etc/xml/docbook
+fi &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//DTD DocBook XML V&docBook-45-xml-version;//EN" \
+    "http://www.oasis-open.org/docbook/xml/&docBook-45-xml-version;/docbookx.dtd" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//DTD DocBook XML CALS Table Model V&docBook-45-xml-version;//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/calstblx.dtd" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/soextblx.dtd" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//ELEMENTS DocBook XML Information Pool V&docBook-45-xml-version;//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/dbpoolx.mod" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V&docBook-45-xml-version;//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/dbhierx.mod" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//ELEMENTS DocBook XML HTML Tables V&docBook-45-xml-version;//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/htmltblx.mod" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//ENTITIES DocBook XML Notations V&docBook-45-xml-version;//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/dbnotnx.mod" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//ENTITIES DocBook XML Character Entities V&docBook-45-xml-version;//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/dbcentx.mod" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "public" \
+    "-//OASIS//ENTITIES DocBook XML Additional General Entities V&docBook-45-xml-version;//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;/dbgenent.mod" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "rewriteSystem" \
+    "http://www.oasis-open.org/docbook/xml/&docBook-45-xml-version;" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;" \
+    /etc/xml/docbook &amp;&amp;
+xmlcatalog --noout --add "rewriteURI" \
+    "http://www.oasis-open.org/docbook/xml/&docBook-45-xml-version;" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;" \
+    /etc/xml/docbook</userinput></screen>
+
+    <para>
+      Create (or update) and populate the
+      <filename>/etc/xml/catalog</filename> catalog file by running the
+      following commands as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>if [ ! -e /etc/xml/catalog ]; then
+    xmlcatalog --noout --create /etc/xml/catalog
+fi &amp;&amp;
+xmlcatalog --noout --add "delegatePublic" \
+    "-//OASIS//ENTITIES DocBook XML" \
+    "file:///etc/xml/docbook" \
+    /etc/xml/catalog &amp;&amp;
+xmlcatalog --noout --add "delegatePublic" \
+    "-//OASIS//DTD DocBook XML" \
+    "file:///etc/xml/docbook" \
+    /etc/xml/catalog &amp;&amp;
+xmlcatalog --noout --add "delegateSystem" \
+    "http://www.oasis-open.org/docbook/" \
+    "file:///etc/xml/docbook" \
+    /etc/xml/catalog &amp;&amp;
+xmlcatalog --noout --add "delegateURI" \
+    "http://www.oasis-open.org/docbook/" \
+    "file:///etc/xml/docbook" \
+    /etc/xml/catalog</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring DocBook-4.5 XML DTD</title>
+
+    <sect3 id="docbook-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/xml/catalog</filename> and
+        <filename>/etc/xml/docbook</filename>
+      </para>
+
+      <indexterm zone="DocBook docbook-config">
+        <primary sortas="e-etc-xml-docbook">/etc/xml/docbook</primary>
+      </indexterm>
+
+      <indexterm zone="DocBook docbook-config">
+        <primary sortas="e-etc-xml-catalog">/etc/xml/catalog</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <caution>
+        <para>
+          Various BLFS packages request
+          <application>DocBook XML DTD</application> version 4.x before
+          V&docBook-45-xml-version;, so the following step must be done for
+          those packages to be built successfully.
+        </para>
+      </caution>
+
+      <para>
+        The above installation creates the files and updates the catalogs.
+        In order to utilize <application>DocBook XML DTD</application>
+        V&docBook-45-xml-version; when any version 4.x is requested in the System
+        Identifier, you need to add additional statements to the catalog
+        files. If you have any of the <application>DocBook XML
+        DTD</application>'s referenced below already installed on your
+        system, remove those entries from the <command>for</command> command
+        below (issue the commands as the <systemitem
+        class="username">root</systemitem> user):
+      </para>
+
+<screen role="root"><userinput>for DTDVERSION in 4.1.2 4.2 4.3 4.4
+do
+  xmlcatalog --noout --add "public" \
+    "-//OASIS//DTD DocBook XML V$DTDVERSION//EN" \
+    "http://www.oasis-open.org/docbook/xml/$DTDVERSION/docbookx.dtd" \
+    /etc/xml/docbook
+  xmlcatalog --noout --add "rewriteSystem" \
+    "http://www.oasis-open.org/docbook/xml/$DTDVERSION" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;" \
+    /etc/xml/docbook
+  xmlcatalog --noout --add "rewriteURI" \
+    "http://www.oasis-open.org/docbook/xml/$DTDVERSION" \
+    "file:///usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;" \
+    /etc/xml/docbook
+  xmlcatalog --noout --add "delegateSystem" \
+    "http://www.oasis-open.org/docbook/xml/$DTDVERSION/" \
+    "file:///etc/xml/docbook" \
+    /etc/xml/catalog
+  xmlcatalog --noout --add "delegateURI" \
+    "http://www.oasis-open.org/docbook/xml/$DTDVERSION/" \
+    "file:///etc/xml/docbook" \
+    /etc/xml/catalog
+done</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Files</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>None</seg>
+        <seg>DTD, MOD and ENT files</seg>
+        <seg>/etc/xml and /usr/share/xml/docbook/xml-dtd-&docBook-45-xml-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="DTD-files">
+        <term><filename>DTD files</filename></term>
+        <listitem>
+          <para>
+            contain a document type definition which defines the element
+            types and the attribute lists that can be used in the corresponding
+            <filename>XML</filename> files
+          </para>
+          <indexterm zone="DocBook DTD-files">
+            <primary sortas="g-XML-DTD-files">XML DTD Files</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="MOD-files">
+        <term><filename>MOD files</filename></term>
+        <listitem>
+          <para>
+            contain components of the document type definition that
+            are sourced into the <filename>DTD</filename> files
+          </para>
+          <indexterm zone="DocBook MOD-files">
+            <primary sortas="g-XML-MOD-files">XML MOD files</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ENT-files">
+        <term><filename>ENT files</filename></term>
+        <listitem>
+          <para>
+            contain lists of named character entities allowed in HTML
+          </para>
+          <indexterm zone="DocBook ENT-files">
+            <primary sortas="g-XML-ENT-files">XML entity files</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

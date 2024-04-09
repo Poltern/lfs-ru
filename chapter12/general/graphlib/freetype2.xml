@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY freetype2-download-http "&sourceforge-dl;/freetype/freetype-&freetype2-version;.tar.xz">
+  <!ENTITY freetype2-download-ftp  " ">
+  <!ENTITY freetype2-md5sum        "1f625f0a913c449551b1e3790a1817d7">
+  <!ENTITY freetype2-size          "2.4 MB">
+  <!ENTITY freetype2-buildsize     "33 MB (with additional documentation)">
+  <!ENTITY freetype2-time          "0.2 SBU (with additional documentation)">
+
+  <!ENTITY freetype2-doc-version   "&freetype2-version;">
+  <!ENTITY freetype2-doc-download-http "&sourceforge-dl;/freetype/freetype-doc-&freetype2-doc-version;.tar.xz">
+  <!ENTITY freetype2-doc-download-ftp  " ">
+  <!ENTITY freetype2-doc-md5sum        "e6466f08934ebf2d7f711b0464d7a6cf">
+  <!ENTITY freetype2-doc-size          "2.1 MB">
+]>
+
+<sect1 id="freetype2" xreflabel="FreeType-&freetype2-version;">
+  <?dbhtml filename="freetype2.html"?>
+
+
+  <title>FreeType-&freetype2-version;</title>
+
+  <indexterm zone="freetype2">
+    <primary sortas="a-FreeType">FreeType</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to FreeType2</title>
+
+    <para>
+      The <application>FreeType2</application> package contains
+      a library which allows applications to properly render
+      <application>TrueType</application> fonts.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&freetype2-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&freetype2-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &freetype2-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &freetype2-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &freetype2-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &freetype2-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <title>Additional Documentation</title>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&freetype2-doc-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &freetype2-doc-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &freetype2-doc-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">FreeType2 Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="harfbuzz"/>
+      (first, install without it, after it is installed, reinstall
+      <xref linkend="freetype2"/>),
+      <xref linkend="libpng"/>, and
+      <xref linkend="which"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="brotli"/> and
+      <xref linkend="librsvg"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (for documentation)</bridgehead>
+    <para role="optional">
+      <ulink url="https://pypi.org/project/docwriter/">docwriter</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of FreeType2</title>
+
+    <para>
+      If you downloaded the additional documentation, unpack it into the
+      source tree using the following command:
+    </para>
+
+<screen><userinput>tar -xf ../freetype-doc-&freetype2-doc-version;.tar.xz --strip-components=2 -C docs</userinput></screen>
+
+    <para>
+      Install <application>FreeType2</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg &amp;&amp;
+
+sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
+    -i include/freetype/config/ftoption.h  &amp;&amp;
+
+./configure --prefix=/usr --enable-freetype-config --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you downloaded the optional documentation, install it as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>cp -v -R docs -T /usr/share/doc/freetype-&freetype2-version; &amp;&amp;
+rm -v /usr/share/doc/freetype-&freetype2-version;/freetype-config.1</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -ri ...</command>: First command enables GX/AAT and OpenType
+      table validation and second command enables Subpixel Rendering. Note that
+      Subpixel Rendering may have patent issues.  Be sure to read the
+      <literal>'Other patent issues'</literal> part of <ulink
+      url="https://freetype.org/patents.html"/> before enabling this option.
+    </para>
+
+    <para>
+      <parameter>--enable-freetype-config</parameter>: This switch
+      ensure that the man page for freetype-config is installed.
+    </para>
+
+    <para>
+      <option>--without-harfbuzz</option>: If
+      <application>harfbuzz</application> is installed prior to
+      <application>freetype</application> without
+      <application>freetype</application> support, use this switch to avoid a
+      build failure.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+    <!-- No longer valid with 2.10.1, /usr/bin/freetype-config is installed
+         by the 'make install' command.
+    <para>
+      <command>cp builds/unix/freetype-config /usr/bin</command>: Manually
+      place the freetype configureation program needed by other programs when
+      using the freetype library.
+    </para>
+    -->
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          freetype-config
+        </seg>
+        <seg>
+          libfreetype.so
+        </seg>
+        <seg>
+          /usr/include/freetype2 and
+          /usr/share/doc/freetype-&freetype2-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="freetype-config">
+        <term><command>freetype-config</command></term>
+        <listitem>
+          <para>
+            is used to get <application>FreeType</application> compilation
+            and linking information
+          </para>
+          <indexterm zone="freetype2 freetype-config">
+            <primary sortas="b-freetype-config">freetype2-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libfreetype">
+        <term><filename class="libraryfile">libfreetype.so</filename></term>
+        <listitem>
+          <para>
+            contains functions for rendering various font types, such
+            as TrueType and Type1
+          </para>
+          <indexterm zone="freetype2 libfreetype">
+            <primary sortas="c-libfreetype">libfreetype.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

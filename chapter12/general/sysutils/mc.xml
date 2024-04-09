@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY mc-download-http "http://ftp.midnight-commander.org/mc-&mc-version;.tar.xz">
+  <!ENTITY mc-download-ftp  " ">
+  <!ENTITY mc-md5sum        "2c3dd9af66e4cfef5a7a460df1cdf868">
+  <!ENTITY mc-size          "2.3 MB">
+  <!ENTITY mc-buildsize     "71 MB (add 96 MB for tests)">
+  <!ENTITY mc-time          "0.3 SBU (using parallelism=4; add 0.2 SBU for tests)">
+]>
+
+<sect1 id="mc" xreflabel="MC-&mc-version;">
+  <?dbhtml filename="mc.html"?>
+
+
+  <title>MC-&mc-version;</title>
+
+  <indexterm zone="mc">
+    <primary sortas="a-MC">MC</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to MC</title>
+
+    <para>
+      <application>MC</application> (Midnight Commander) is a text-mode
+      full-screen file manager and visual shell. It provides a clear,
+      user-friendly, and somewhat protected interface to a Unix system while
+      making many frequent file operations more efficient and preserving the
+      full power of the command prompt.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&mc-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&mc-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &mc-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &mc-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &mc-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &mc-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">MC Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="glib2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      slang
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+     <!-- <xref linkend="doxygen"/>,
+      <xref linkend="gpm"/>,
+      <xref linkend="graphviz"/>,
+      <xref linkend="libssh2"/>,
+      <xref linkend="pcre2"/>,
+      <xref linkend="ruby"/>,
+
+      <xref linkend="unzip"/>,
+      <xref linkend="x-window-system"/>, and
+      <xref linkend="zip"/>-->
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of MC</title>
+
+    <para>
+      Install <application>MC</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --enable-charset &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--sysconfdir=/etc</parameter>: This switch places the
+      global configuration directory in <filename
+      class="directory">/etc</filename>.
+    </para>
+
+    <para>
+      <parameter>--enable-charset</parameter>: This switch adds support
+      to <command>mcedit</command> for editing files in encodings different
+      from the one implied by the current locale.
+    </para>
+
+    <para>
+      <option>--with-search-engine=pcre2</option>: Use this switch if you would
+      prefer to use <xref linkend="pcre2" role="nodep"/> instead of GLib for
+      the built-in search engine.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring MC</title>
+
+    <sect3 id="mc-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>~/.config/mc/*</filename>
+      </para>
+
+      <indexterm zone="mc mc-config">
+        <primary sortas="e-AA.config/.mc/*">~/.config/.mc/*</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        The <filename class="directory">~/.config/mc</filename> directory and
+        its contents are created when you start <command>mc</command> for the
+        first time. Then you can edit the main <filename>~/.config/mc/ini
+        </filename> configuration file manually or through the <application>
+        MC</application> shell. Consult the <ulink role='man'
+        url='&man;mc.1'>mc(1)</ulink> man page for details.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>mc and the symlinks mcdiff, mcedit and mcview</seg>
+        <seg>None</seg>
+        <seg>/etc/mc and /usr/{libexec,share}/mc</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <!-- This program is installed in /usr/libexec
+      <varlistentry id="conssaver">
+        <term><command>cons.saver</command></term>
+        <listitem>
+          <para>
+            is used internally by <command>mc</command> for saving and
+            restoring the text behind the panels on Linux text console
+          </para>
+          <indexterm zone="mc conssaver">
+            <primary sortas="b-conssaver">cons.saver</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+      -->
+
+      <varlistentry id="mc-prog">
+        <term><command>mc</command></term>
+        <listitem>
+          <para>
+            is a visual shell
+          </para>
+          <indexterm zone="mc mc-prog">
+            <primary sortas="b-mc">mc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mcdiff">
+        <term><command>mcdiff</command></term>
+        <listitem>
+          <para>
+            is an internal visual diff tool
+          </para>
+          <indexterm zone="mc mcdiff">
+            <primary sortas="b-mcdiff">mcdiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mcedit">
+        <term><command>mcedit</command></term>
+        <listitem>
+          <para>
+            is an internal file editor
+          </para>
+          <indexterm zone="mc mcedit">
+            <primary sortas="b-mcedit">mcedit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mcview">
+        <term><command>mcview</command></term>
+        <listitem>
+          <para>
+            is an internal file viewer
+          </para>
+          <indexterm zone="mc mcview">
+            <primary sortas="b-mcview">mcview</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

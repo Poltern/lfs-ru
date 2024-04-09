@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="locale-issues" xreflabel="Locale Related Issues">
+  <?dbhtml filename="locale-issues.html"?>
+
+
+  <title>Locale Related Issues</title>
+
+  <para>This page contains information about locale related problems and
+  issues. In the following paragraphs you'll find a generic overview of
+  things that can come up when configuring your system for various locales.
+  Many (but not all) existing locale related problems can be classified
+  and fall under one of the headings below. The severity ratings below use
+  the following criteria:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>Critical: The program doesn't perform its main function.
+      The fix would be very intrusive, it's better to search for a
+      replacement.</para>
+    </listitem>
+    <listitem>
+      <para>High: Part of the functionality that the program provides
+      is not usable. If that functionality is required, it's better to
+      search for a replacement.</para>
+    </listitem>
+    <listitem>
+      <para>Low: The program works in all typical use cases, but lacks
+      some functionality normally provided by its equivalents.</para>
+    </listitem>
+  </itemizedlist>
+
+  <para>If there is a known workaround for a specific package, it will
+    appear on that package's page.</para>
+
+  <sect2 id="locale-not-valid-option"
+         xreflabel="Needed Encoding Not a Valid Option">
+
+    <title>The Needed Encoding is Not a Valid Option in the Program</title>
+
+    <para>Severity: Critical</para>
+
+    <para>Some programs require the user to specify the character encoding
+    for their input or output data and present only a limited choice of
+    encodings. This is the case for the <option>-X</option> option in
+<!--    <xref linkend="a2ps"/> and<xref linkend="enscript"/>,
+    the <option>-input-charset</option> option in unpatched
+    <xref linkend="cdrtools"/>--> !! LINK !!, and the character sets offered for display
+    in the menu of <xref linkend="Links"/>. If the required encoding is not
+    in the list, the program usually becomes completely unusable. For
+    non-interactive programs, it may be possible to work around this by
+    converting the document to a supported input character set before
+    submitting to the program.</para>
+
+    <para>A solution to this type of problem is to implement the necessary
+    support for the missing encoding as a patch to the original program or to
+    find a replacement.</para>
+
+  </sect2>
+
+  <sect2 id="locale-assumed-encoding"
+         xreflabel="Program Assumes Encoding">
+
+    <title>The Program Assumes the Locale-Based Encoding of External
+    Documents</title>
+
+    <para>Severity: High for non-text documents, low for text
+    documents</para>
+
+    <para>Some programs, <xref linkend="nano"/> or !!! LINK !!!
+    <!--<xref linkend="joe"/>--> for example, assume that documents are always
+    in the encoding implied by the current locale. While this assumption
+    may be valid for the user-created documents, it is not safe for
+    external ones. When this assumption fails, non-ASCII characters are
+    displayed incorrectly, and the document may become unreadable.</para>
+
+    <para>If the external document is entirely text based, it can be
+    converted to the current locale encoding using the
+    <command>iconv</command> program.</para>
+
+    <para>For documents that are not text-based, this is not possible.
+    In fact, the assumption made in the program may be completely
+    invalid for documents where the Microsoft Windows operating system
+    has set de facto standards. An example of this problem is ID3v1 tags
+    in MP3 files. For these cases, the only solution is to find a
+    replacement program that doesn't have the issue (e.g., one that
+    will allow you to specify the assumed document encoding).</para>
+
+    <para>Among BLFS packages, this problem applies to
+    <xref linkend="nano"/>, !!! ССЫЛКИ !!!<!--<xref linkend="joe"/>, and all media players
+    except <xref linkend="audacious"/>-->.</para>
+
+    <para>Another problem in this category is when someone cannot read
+    the documents you've sent them because their operating system is
+    set up to handle character encodings differently. This can happen
+    often when the other person is using Microsoft Windows, which only
+    provides one character encoding for a given country. For example,
+    this causes problems with UTF-8 encoded TeX documents created in
+    Linux. On Windows, most applications will assume that these documents
+    have been created using the default Windows 8-bit encoding.
+    </para>
+
+    <para>In extreme cases, Windows encoding compatibility issues may be
+    solved only by running Windows programs under
+    <ulink url="https://www.winehq.org/">Wine</ulink>.</para>
+
+  </sect2>
+
+  <sect2 id="locale-wrong-filename-encoding"
+         xreflabel="Wrong Filename Encoding">
+
+    <title>The Program Uses or Creates Filenames in the Wrong Encoding</title>
+
+    <para>Severity: Critical</para>
+
+    <para>The POSIX standard mandates that the filename encoding is
+    the encoding implied by the current LC_CTYPE locale category. This
+    information is well-hidden on the page which specifies the behavior
+    of <application>Tar</application> and <application>Cpio</application>
+    programs. Some programs get it wrong by default (or simply don't
+    have enough information to get it right). The result is that they
+    create filenames which are not subsequently shown correctly by
+    <command>ls</command>, or they refuse to accept filenames that
+    <command>ls</command> shows properly. For the <xref linkend="glib2"/>
+    library, the problem can be corrected by setting the
+    <envar>G_FILENAME_ENCODING</envar> environment variable to the special
+    "@locale" value. <application>Glib2</application> based programs that
+    don't respect that environment variable are buggy.</para>
+
+    <para>The <xref linkend="zip"/> and <xref linkend="unzip"/> have this
+    problem because they hard-code the expected filename encoding.
+    <application>UnZip</application> contains a hard-coded conversion table
+    between the CP850 (DOS) and ISO-8859-1 (UNIX) encodings and uses this table
+    when extracting archives created under DOS or Microsoft Windows. However,
+    this assumption only works for those in the US and not for anyone using a
+    UTF-8 locale. Non-ASCII characters will be mangled in the extracted
+    filenames.</para>
+
+    <!--<para>On the other hand,
+    <application>Nautilus CD Burner</application> checks names of
+    files added to its window for UTF-8 validity. This is wrong for
+    users of non-UTF-8 locales. Also,
+    <application>Nautilus CD Burner</application> unconditionally
+    calls <command>mkisofs</command> with the
+    <parameter>-input-charset UTF-8</parameter> parameter, which is
+    only correct in UTF-8 locales.</para>-->
+
+    <para>The general rule for avoiding this class of problems is to
+    avoid installing broken programs. If this is impossible, the
+    <ulink url="https://j3e.de/linux/convmv/">convmv</ulink>
+    command-line tool can be used to fix filenames created by these
+    broken programs, or intentionally mangle the existing filenames
+    to meet the broken expectations of such programs.</para>
+
+    <para>In other cases, a similar problem is caused by importing
+    filenames from a system using a different locale with a tool that
+    is not locale-aware (e.g., <!--<xref linkend="nfs-utils"/> or-->
+    <xref linkend="openssh"/>). In order to avoid mangling non-ASCII
+    characters when transferring files to a system with a different
+    locale, any of the following methods can be used:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Transfer anyway, fix the damage with
+        <command>convmv</command>.</para>
+      </listitem>
+      <listitem>
+        <para>On the sending side, create a tar archive with the
+        <parameter>--format=posix</parameter> switch passed to
+        <command>tar</command> (this will be the default in a future
+        version of <command>tar</command>).</para>
+      </listitem>
+      <listitem>
+        <para>Mail the files as attachments. Mail clients specify the
+        encoding of attached filenames.</para>
+      </listitem>
+      <listitem>
+        <para>Write the files to a removable disk formatted with a FAT or
+        FAT32 filesystem.</para>
+      </listitem>
+      <listitem>
+        <para>Transfer the files using Samba.</para>
+      </listitem>
+      <listitem>
+        <para>Transfer the files via FTP using RFC2640-aware server
+        (this currently means only wu-ftpd, which has bad security history)
+        and client (e.g., lftp).</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>The last four methods work because the filenames are automatically
+    converted from the sender's locale to UNICODE and stored or sent in this
+    form. They are then transparently converted from UNICODE to the
+    recipient's locale encoding.</para>
+
+  </sect2>
+
+  <sect2 id="locale-wrong-multibyte-characters"
+         xreflabel="Breaks Multibyte Characters">
+
+    <title>The Program Breaks Multibyte Characters or Doesn't Count
+    Character Cells Correctly</title>
+
+    <para>Severity: High or critical</para>
+
+    <para>Many programs were written in an older era where multibyte
+    locales were not common. Such programs assume that C "char" data
+    type, which is one byte, can be used to store single characters.
+    Further, they assume that any sequence of characters is a valid
+    string and that every character occupies a single character cell.
+    Such assumptions completely break in UTF-8 locales. The visible
+    manifestation is that the program truncates strings prematurely
+    (i.e., at 80 bytes instead of 80 characters). Terminal-based
+    programs don't place the cursor correctly on the screen, don't react
+    to the "Backspace" key by erasing one character, and leave junk
+    characters around when updating the screen, usually turning the
+    screen into a complete mess.</para>
+
+    <para>Fixing this kind of problems is a tedious task from a
+    programmer's point of view, like all other cases of retrofitting new
+    concepts into the old flawed design. In this case, one has to redesign
+    all data structures in order to accommodate to the fact that a complete
+    character may span a variable number of "char"s (or switch to wchar_t
+    and convert as needed). Also, for every call to the "strlen" and
+    similar functions, find out whether a number of bytes, a number of
+    characters, or the width of the string was really meant. Sometimes it
+    is faster to write a program with the same functionality from scratch.
+    </para>
+
+    <para>Among BLFS packages, this problem applies to !!! ССЫЛКА !!!
+    <!--<xref linkend="xine-ui"/>--> and all the shells.</para>
+
+  </sect2>
+
+  <sect2 id="locale-wrong-manpage-encoding"
+         xreflabel="Incorrect Manual Page Encoding">
+
+    <title>The Package Installs Manual Pages in Incorrect or
+    Non-Displayable Encoding</title>
+
+    <para>Severity: Low</para>
+
+    <para>LFS expects that manual pages are in the language-specific (usually
+    8-bit) encoding, as specified on the <ulink
+    url="&lfs-root;/chapter08/man-db.html">LFS Man DB page</ulink>. However,
+    some packages install translated manual pages in UTF-8 encoding (e.g.,
+    Shadow, already dealt with), or manual pages in languages not in the table.
+    Not all BLFS packages have been audited for conformance with the
+    requirements put in LFS (the large majority have been checked, and fixes
+    placed in the book for packages known to install non-conforming manual
+    pages). If you find a manual page installed by any of BLFS packages that is
+    obviously in the wrong encoding, please remove or convert it as needed, and
+    report this to BLFS team as a bug.</para>
+
+    <para>You can easily check your system for any non-conforming manual pages
+    by copying the following short shell script to some accessible location,
+
+<screen><literal>#!/bin/sh
+# Begin checkman.sh
+# Usage: find /usr/share/man -type f | xargs checkman.sh
+for a in "$@"
+do
+    # echo "Checking $a..."
+    # Pure-ASCII manual page (possibly except comments) is OK
+    grep -v '.\\"' "$a" | iconv -f US-ASCII -t US-ASCII >/dev/null 2>&amp;1 \
+        &amp;&amp; continue
+    # Non-UTF-8 manual page is OK
+    iconv -f UTF-8 -t UTF-8 "$a" >/dev/null 2>&amp;1 || continue
+    # Found a UTF-8 manual page, bad.
+    echo "UTF-8 manual page: $a" >&amp;2
+done
+# End checkman.sh
+</literal></screen>
+
+    and then issuing the following command (modify the command below if the
+    <command>checkman.sh</command> script is not in your <envar>PATH</envar>
+    environment variable):</para>
+
+<screen><userinput>find /usr/share/man -type f | xargs checkman.sh</userinput></screen>
+
+    <para>Note that if you have manual pages installed in any location other
+    than <filename class='directory'>/usr/share/man</filename> (e.g.,
+    <filename class='directory'>/usr/local/share/man</filename>), you must
+    modify the above command to include this additional location.</para>
+
+  </sect2>
+
+</sect1>

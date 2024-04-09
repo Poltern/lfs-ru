@@ -42,6 +42,7 @@
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter09/chapter09.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter10/chapter10.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter11/chapter11.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter12/chapter12.xml"/>
 </part>
 
 <part id="part5">

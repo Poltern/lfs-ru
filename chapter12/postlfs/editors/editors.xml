@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-editors">
+  <?dbhtml filename="editors.html"?>
+
+  <title>Text Editors</title>
+
+  <para>
+    This chapter is referenced in the LFS book for those wishing to
+    use other editors on their LFS system. You're also shown how some LFS
+    installed programs benefit from being recompiled after GUI libraries
+    have been installed.
+  </para>
+
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="emacs.xml"/> -->
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nano.xml"/>-->
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vim.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="others.xml"/>-->
+
+</sect1>

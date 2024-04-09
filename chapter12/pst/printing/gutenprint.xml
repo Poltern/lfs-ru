@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gutenprint-download-http "&sourceforge-dl;/gimp-print/gutenprint-&gutenprint-version;.tar.xz">
+  <!ENTITY gutenprint-download-ftp  " ">
+  <!ENTITY gutenprint-md5sum        "dc208cfb873f13a93439185c15aa6f81">
+  <!ENTITY gutenprint-size          "5.1 MB">
+  <!ENTITY gutenprint-buildsize     "59 MB (without tests)">
+  <!ENTITY gutenprint-time          "0.4 SBU (without tests)">
+  <!-- Tests add 75 SBU and 13GB to the equation - updated info in the tests below -->
+]>
+
+<sect1 id="gutenprint" xreflabel="Gutenprint-&gutenprint-version;">
+  <?dbhtml filename="gutenprint.html"?>
+
+
+  <title>Gutenprint-&gutenprint-version;</title>
+
+  <indexterm zone="gutenprint">
+    <primary sortas="a-Gutenprint">Gutenprint</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Gutenprint</title>
+
+    <para>
+      The <application>Gutenprint</application> (formerly
+      <application>Gimp-Print</application>) package contains high
+      quality drivers for many brands and models of printers for use with
+      <xref linkend="cups"/>
+      and the
+      <application>GIMP-2.0</application>. See a list of supported printers at
+      <ulink url="https://gutenprint.sourceforge.net/p_Supported_Printers.php"/>.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gutenprint-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gutenprint-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gutenprint-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gutenprint-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gutenprint-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gutenprint-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Gutenprint Dependencies</bridgehead>
+
+    <!-- recommend cups since we describe how to use it, and the gimp
+    so that we can use gutenprint's driver to print photos there -->
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="cups"/> and
+      <xref linkend="gimp"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended (at runtime)</bridgehead>
+    <para role="recommended">
+      Two families of DyeSub photo printers each require another library at
+      runtime. Unless you have one of these devices you will not want these
+      libraries.
+    </para>
+
+    <para role="recommended">
+      For the Sinfonia S6145 and the Ciaat Brava 21, <ulink
+      url="https://git.shaftnet.org/gitea/slp/selphy_print/src/branch/master/lib6145">libS6145ImageReProcess</ulink>,
+      see <ulink role="nodep"
+      url="https://www.peachyphotos.com/blog/posts/201601301524-sinfonia-chc-s6145-cs2-and-ciaat-brava-21-revited/">Peachy
+      Photos (Sinfonia)</ulink> for instructions on how to build and test this.
+    </para>
+
+    <para role="recommended">
+      For the Mitsubishi D70 family and the similar Kodak 305, <ulink
+	  url="https://git.shaftnet.org/gitea/slp/selphy_print/src/branch/master/lib70x">libMitsuD70ImageReProcess</ulink>,
+      see <ulink role="nodep"
+      url="https://www.peachyphotos.com/blog/posts/201610061508-mitsubishi-cp-d70-family-working/">Peachy
+      Photos (Mitsubishi CP-D70)</ulink> for instructions on how to build and
+      test this.
+    </para>
+
+    <bridgehead renderas="sect4">Optional (to Regenerate Documentation)</bridgehead>
+    <para role="optional">
+      <xref linkend="imagemagick"/>,
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>),
+      <xref linkend="doxygen"/>, and
+      <xref linkend="docbook-utils"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="kernel" id="gutenprint-escputil">
+    <title>Kernel Configuration</title>
+
+    <para>
+      If you intend to use <application>escputil</application> with a USB-connected
+      Epson Stylus printer for commands such as <command>--ink-level</command>
+      which need to access the raw device, you must enable the kernel's usblp
+      driver. Enable the following options in your kernel configuration and
+      recompile the kernel:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="usb-printer-kernel.xml"/>
+
+    <indexterm zone="gutenprint escputil">
+      <primary sortas="d-escputil">escputil for usb printers</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Gutenprint</title>
+
+    <para>
+      Install <application>Gutenprint</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>sed -i 's|$(PACKAGE)/doc|doc/$(PACKAGE)-$(VERSION)|' \
+       {,doc/,doc/developer/}Makefile.in &amp;&amp;
+
+./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <!-- this is supposed to discourage you from running the tests if you upgrade
+    the package - but the tests in 5.2.12 have changed and I thought I read they
+    were more parallel -->
+    <para>
+      To test the results, issue: <command>make check</command>.  The tests
+      take a very long time and use a lot of disk space.  When last tested
+      (version 5.2.15 in June 2019) this needed 75 SBU and 13.5 GB
+      to complete the tests (one test, rastertogutenprint failed because the
+      CUPS ppds are for a previous version. Maybe genppds should be run before
+      the tests). Note that the tests used only one CPU.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d /usr/share/doc/gutenprint-&gutenprint-version;/api/gutenprint{,ui2} &amp;&amp;
+install -v -m644    doc/gutenprint/html/* \
+                    /usr/share/doc/gutenprint-&gutenprint-version;/api/gutenprint &amp;&amp;
+install -v -m644    doc/gutenprintui2/html/* \
+                    /usr/share/doc/gutenprint-&gutenprint-version;/api/gutenprintui2</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -i '...' ...Makefile.in</command>: This
+      command is used so that the package documentation is installed in the
+      conventional <filename class='directory'>/usr/share/doc</filename>
+      directory structure instead of
+      <filename class='directory'>/usr/share/gutenprint/doc</filename>.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Gutenprint</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        For <application>CUPS</application> to see newly installed print
+        drivers, it has to be restarted (as the <systemitem
+        class="username">root</systemitem> user):
+      </para>
+
+<screen role="root" revision="sysv"><userinput>/etc/rc.d/init.d/cups restart</userinput></screen>
+
+<screen role="root" revision="systemd"><userinput>systemctl restart cups</userinput></screen>
+
+      <!-- <para>
+        This command may take a long time (up to 10 minutes)
+        to complete. Don't panic while <application>CUPS</application>
+        is rescanning the list of PPD files. The long delay will happen
+        only once.
+      </para> -->
+
+      <para>
+        Then point your web browser to <ulink url="http://localhost:631/"/>
+        to add a new printer to <application>CUPS</application>.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          cups-calibrate, cups-genppd.5.2, cups-genppdupdate, escputil,
+          and testpattern
+        </seg>
+        <seg>
+          libgutenprint.so, libgutenprintui2.so and optionally, various
+          <application>CUPS</application> filters and backend drivers under
+          /usr/lib/gutenprint/5.2/modules/
+        </seg>
+        <seg>
+          /usr/{include,lib,share}/gutenprint,
+          /usr/include/gutenprintui2 and
+          /usr/share/doc/gutenprint-&gutenprint-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cups-calibrate">
+        <term><command>cups-calibrate</command></term>
+        <listitem>
+          <para>
+            calibrates the color output of printers using the
+            <application>Gutenprint</application>,
+            <application>CUPS</application> or
+            <application>ESP Print Pro</application> drivers
+          </para>
+          <indexterm zone="gutenprint cups-calibrate">
+            <primary sortas="b-cups-calibrate">cups-calibrate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cups-genppd.5.2">
+        <term><command>cups-genppd.5.2</command></term>
+        <listitem>
+          <para>
+            generates Gutenprint PPD files for use with CUPS
+          </para>
+          <indexterm zone="gutenprint cups-genppd.5.2">
+            <primary sortas="b-cups-genppd.5.2">cups-genppd.5.2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cups-genppdupdate">
+        <term><command>cups-genppdupdate</command></term>
+        <listitem>
+          <para>
+            regenerates the Gutenprint PPD files in use by CUPS
+          </para>
+          <indexterm zone="gutenprint cups-genppdupdate">
+            <primary sortas="b-cups-genppdupdate">cups-genppdupdate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="escputil">
+        <term><command>escputil</command></term>
+        <listitem>
+          <para>
+            is a command line utility to perform various maintenance
+            tasks on Epson Stylus inkjet printers
+          </para>
+          <indexterm zone="gutenprint escputil">
+            <primary sortas="b-escputil">escputil</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+      <!-- With 5.2.15, even with IJS installed, this program no longer exists.
+      cups-filters-1.25.0 dropped support for IJS filters entirely. -->
+      <!--
+      <varlistentry id="ijsgutenprint.5.2">
+        <term><command>ijsgutenprint.5.2</command></term>
+        <listitem>
+          <para>
+            is a Ghostscript driver for HP InkJet and LaserJet printers.
+          </para>
+          <indexterm zone="gutenprint ijsgutenprint.5.2">
+            <primary sortas="b-ijsgutenprint.5.2">ijsgutenprint.5.2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+      -->
+
+     <varlistentry id="testpattern">
+        <term><command>testpattern</command></term>
+        <listitem>
+          <para>
+            is a test program to learn how to use libgutenprint
+          </para>
+          <indexterm zone="gutenprint testpattern">
+            <primary sortas="b-testpattern">testpattern</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+   </variablelist>
+
+  </sect2>
+
+</sect1>

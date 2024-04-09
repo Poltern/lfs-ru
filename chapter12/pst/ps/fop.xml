@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY fop-download-http "https://archive.apache.org/dist/xmlgraphics/fop/source/fop-&fop-version;-src.tar.gz">
+  <!ENTITY fop-download-ftp  " ">
+  <!ENTITY fop-md5sum        "f7537ca7f2e16971fa99c8bb0dad62c7">
+  <!ENTITY fop-size          "20 MB">
+  <!ENTITY fop-buildsize     "333 MB (including files downloaded to the user directory)">
+  <!ENTITY fop-time          "0.9 SBU">
+<!--
+  <!ENTITY pdfbox-version    "2.0.27">
+  <!ENTITY pdfbox-download   "https://archive.apache.org/dist/pdfbox/&pdfbox-version;/pdfbox-&pdfbox-version;.jar">
+  <!ENTITY pdfbox-md5sum     "ddd46402b1692eed9e5c73b4a94c45d8">
+  <!ENTITY pdfbox-size       "2.7 MB">
+
+  <!ENTITY fontbox-download  "https://archive.apache.org/dist/pdfbox/&pdfbox-version;/fontbox-&pdfbox-version;.jar">
+  <!ENTITY fontbox-md5sum    "587744efe2a82d3584c2f3969fa4dca0">
+  <!ENTITY fontbox-size      "1.5 MB">
+-->
+  <!ENTITY maven-major        "3">
+  <!ENTITY maven-version      "3.9.4">
+  <!ENTITY maven-download     "https://archive.apache.org/dist/maven/maven-&maven-major;/&maven-version;/binaries/apache-maven-&maven-version;-bin.tar.gz">
+  <!ENTITY maven-md5sum       "0698a533397eda60cbebcc0fb68ae842">
+  <!ENTITY maven-size         "9.0 MB (additionally, about 90 MB are downloaded to the building user's directory)">
+
+  <!ENTITY offo-download     "&sourceforge-dl;/offo/2.2/offo-hyphenation.zip">
+  <!ENTITY offo-md5sum       "bf9c09bf05108ef9661b8f08d91c2336">
+  <!ENTITY offo-size         "862 KB">
+]>
+
+<sect1 id="fop" xreflabel="fop-&fop-version;">
+  <?dbhtml filename="fop.html"?>
+
+
+  <title>fop-&fop-version;</title>
+
+  <indexterm zone="fop">
+    <primary sortas="a-fop">fop</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to fop</title>
+
+    <para>
+      The <application>FOP</application> (Formatting Objects Processor)
+      package contains a print formatter driven by XSL formatting objects
+      (XSL-FO). It is a <application>Java</application> application that reads
+      a formatting object tree and renders the resulting pages to a specified
+      output. Output formats currently supported include PDF, PCL, PostScript,
+      SVG, XML (area tree representation), print, AWT, MIF and ASCII text. The
+      primary output target is PDF.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&fop-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&fop-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &fop-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &fop-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &fop-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &fop-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <title>Required Additional Downloads:</title>
+<!--
+      <listitem>
+        <para>
+          PDFBox:
+          <simplelist>
+            <member><ulink url="&pdfbox-download;"/></member>
+            <member>&pdfbox-md5sum;</member>
+            <member>&pdfbox-size;</member>
+          </simplelist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          PDFBox Fonts:
+          <simplelist>
+            <member><ulink url="&fontbox-download;"/></member>
+            <member>&fontbox-md5sum;</member>
+            <member>&fontbox-size;</member>
+          </simplelist>
+        </para>
+      </listitem>
+-->
+      <listitem>
+        <para>
+          Maven build system:
+          <simplelist>
+            <member><ulink url="&maven-download;"/></member>
+            <member>&maven-md5sum;</member>
+            <member>&maven-size;</member>
+          </simplelist>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <itemizedlist spacing="compact">
+      <title>Recommended packages</title>
+      <listitem>
+        <para>
+          Objects for Formatting Objects (OFFO) hyphenation patterns:
+          <simplelist>
+            <member><ulink url="&offo-download;"/></member>
+            <member>&offo-md5sum;</member>
+            <member>&offo-size;</member>
+          </simplelist>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">fop Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="apache-ant"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="x-window-system"/> (to run tests),
+      <ulink url="https://jai-tools.blogspot.com/">JAI Image I/O Tools</ulink>, and
+      <ulink url="https://jeuclid.sourceforge.net/">JEuclid</ulink>
+<!-- [pierre 2017-04-29] Note to devs: there are a lot of bundled dependencies.
+     Some were listed here, but not all. I am not sure it is possible to
+     use system ones. So, I have removed them, and kept only those which
+     are not bundled. -->
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of fop</title>
+
+    <para>
+      Ensure <envar>$JAVA_HOME</envar> is set correctly before beginning
+      the build. To build the <application>JIMI SDK</application> and/or
+      <application>XMLUnit</application> extension classes, ensure the
+      corresponding <filename class='extension'>.jar</filename> files can be
+      found via the <envar>CLASSPATH</envar> environment variable.
+    </para>
+
+    <sect3>
+      <title>Installing OFFO Hyphenation Patterns</title>
+
+      <para>
+        Copy the XML hyphenation patterns into the fop source tree by running
+        the following commands:
+      </para>
+
+<screen><userinput>unzip ../offo-hyphenation.zip &amp;&amp;
+cp offo-hyphenation/hyph/* fop/hyph &amp;&amp;
+rm -rf offo-hyphenation</userinput></screen>
+
+    </sect3>
+
+    <sect3>
+      <title>Installing a temporary Maven binary</title>
+
+      <para>
+        Starting with fop-2.5, the Maven build system is required. We use
+        the binary provided by apache, that we install in a temporary location:
+      </para>
+
+<screen><userinput>tar -xf ../apache-maven-&maven-version;-bin.tar.gz -C /tmp</userinput></screen>
+
+    </sect3>
+
+    <sect3>
+      <title>Installing fop Components</title>
+
+      <para>
+        The <command>javadoc</command> command that ships with OpenJDK 10 and
+        later has
+        become much stricter than previous versions regarding conformance of
+        the Javadoc comments in source code to HTML. The FOP documentation does
+        not meet those standards, so the conformance checks have to be
+        disabled. This can be done with the following command:
+      </para>
+
+<screen><userinput>sed -i '\@&lt;/javad@i\
+&lt;arg value="-Xdoclint:none"/&gt;\
+&lt;arg value="--allow-script-in-comments"/&gt;\
+&lt;arg value="--ignore-source-errors"/&gt;' \
+    fop/build.xml</userinput></screen>
+
+<!--
+      <para>
+        The <filename>build.xml</filename> file calls for an old version of
+        <application>PDFBox</application> components that are no longer
+        available. Copy the updated PDFBox components into the source tree:
+      </para>
+
+<screen><userinput>cp ../{pdf,font}box-&pdfbox-version;.jar fop/lib</userinput></screen>
+-->
+      <para>
+        Compile <application>fop</application> by running the following
+        commands:
+      </para>
+
+<screen><userinput>cd fop &amp;&amp;
+
+LC_ALL=en_US.UTF-8                     \
+PATH=$PATH:/tmp/apache-maven-&maven-version;/bin \
+ant all javadocs &amp;&amp;
+
+mv build/javadocs .</userinput></screen>
+
+      <para>
+        This package comes with a test suite, but the java infrastructure
+        installed in this book does not allow running it.
+      </para>
+
+      <para>
+        Now, install <application>Fop</application> as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>install -v -d -m755 -o root -g root          /opt/fop-&fop-version; &amp;&amp;
+cp -vR build conf examples fop* javadocs lib /opt/fop-&fop-version; &amp;&amp;
+chmod a+x /opt/fop-&fop-version;/fop                                &amp;&amp;
+ln -v -sfn fop-&fop-version; /opt/fop</userinput></screen>
+
+      <para>
+        The last thing to do is to clean what we have done:
+      </para>
+
+<screen><userinput>rm -rf /tmp/apache-maven-&maven-version;</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -i ... build.xml</command>: This adds three switches to the
+      <command>javadoc</command> command, preventing some errors from occurring
+      when building the documentation.
+    </para>
+
+    <para>
+      <command>export LC_ALL=en_US.UTF-8</command>: the compiler fails if using
+      an ASCII locale.
+    </para>
+
+    <para>
+      <command>ant <option>target</option></command>: This reads the file
+      <filename>build.xml</filename> and builds the target: <option>compile
+      </option> compiles the java sources, <option>jar-main</option> generates
+      jar archives, <option>jar-hyphenation</option> generates the hyphenation
+      patterns for FOP, <option>junit</option> runs the
+      <application>junit</application> tests, and <option>javadocs</option>
+      builds the documentation. The <option>all</option> target runs all of the
+      above.
+    </para>
+
+    <para>
+      <command>ln -v -sf fop-&fop-version; /opt/fop</command>: This is
+      optional and creates a convenience symlink so that
+      <envar>$FOP_HOME</envar> doesn't have to be changed each time there's a
+      package version change.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring fop</title>
+
+    <sect3 id="fop-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>~/.foprc</filename>
+      </para>
+
+      <indexterm zone="fop fop-config">
+        <primary sortas="e-AA.foprc">~/.foprc</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        Using <application>fop</application> to process some large FO's
+        (including the FO derived from the BLFS XML sources), can lead to
+        memory errors. Unless you add a parameter to the
+        <command>java</command> command used in the <command>fop</command>
+        script you may receive messages similar to the one shown below:
+      </para>
+
+      <para>
+        <computeroutput>
+          Exception in thread "main" java.lang.OutOfMemoryError: Java heap
+          space
+        </computeroutput>
+      </para>
+
+      <para>
+        To avoid errors like this, you need to pass an extra parameter to
+        the <command>java</command> command used in the <command>fop</command>
+        script. This can be accomplished by creating a
+        <filename>~/.foprc</filename> (which is sourced by the
+        <command>fop</command> script) and adding the parameter to the
+        <envar>FOP_OPTS</envar> environment variable.
+      </para>
+
+      <para>
+        The <command>fop</command> script looks for a
+        <envar>FOP_HOME</envar> environment variable to locate the
+        <application>fop</application> class libraries. You can create this
+        variable using the <filename>~/.foprc</filename> file as well. Create
+        a <filename>~/.foprc</filename> file using the following commands:
+      </para>
+
+<screen><userinput>cat &gt; ~/.foprc &lt;&lt; "EOF"
+<literal>FOP_OPTS="-Xmx<replaceable>&lt;RAM_Installed&gt;</replaceable>m"
+FOP_HOME="/opt/fop"</literal>
+EOF</userinput></screen>
+
+      <para>
+        Replace <replaceable>&lt;RAM_Installed&gt;</replaceable> with a
+        number representing the amount of RAM installed in your computer (in
+        megabytes). An example would be
+        <userinput>FOP_OPTS="-Xmx768m"</userinput>.
+        <!--  the URL is broken
+        For more information about
+        memory issues running <application>fop</application>, see
+        <ulink url="http://xml.apache.org/fop/running.html#memory"/>.
+        -->
+      </para>
+
+      <para>
+        To include the <command>fop</command> script in your path,
+        update the system-wide profile with the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/fop.sh &lt;&lt; "EOF"
+<literal># Begin /etc/profile.d/fop.sh
+
+pathappend /opt/fop
+
+# End /etc/profile.d/fop.sh</literal>
+EOF</userinput></screen>
+
+      <note>
+        <para>
+          Running <command>fop</command> can be somewhat verbose.
+          The default logging level can be changed from INFO to any of
+          FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE, ALL, or OFF.
+          To do this, edit
+          <filename>$JAVA_HOME/jre/lib/logging.properties</filename> and change
+          the entries for <option>.level</option> and
+          <option>java.util.logging.ConsoleHandler.level</option> to
+          the desired value.
+        </para>
+      </note>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>fop</seg>
+        <seg>fop.jar and numerous support library classes located in
+        <filename class="directory">/opt/fop/{build,lib}</filename>; JAI
+        components include libmlib_jai.so, jai_codec.jar, jai_core.jar, and
+        mlibwrapper_jai.jar</seg>
+        <seg>/opt/fop-&fop-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fop-prog">
+        <term><command>fop</command></term>
+        <listitem>
+          <para>
+            is a wrapper script to the <command>java</command> command
+            which sets up the <application>fop</application>
+            environment and passes the required parameters
+          </para>
+          <indexterm zone="fop fop-prog">
+            <primary sortas="b-fop">fop</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fop.jar">
+        <term><filename class="libraryfile">fop.jar</filename></term>
+        <listitem>
+          <para>
+            contains all the <application>fop</application>
+            <application>Java</application> classes
+          </para>
+          <indexterm zone="fop fop.jar">
+            <primary sortas="c-fop.jar">fop.jar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

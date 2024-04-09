@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+<para>
+  <parameter>--prefix=</parameter>,
+  <parameter>--bindir=</parameter>,
+  <parameter>--datarootdir=</parameter>,
+  and other <quote>dir</quote> switches: these switches ensure that the files
+  installed from source
+  will overwrite any corresponding files previously installed by
+  <application>install-tl-unx</application> so that the alternative methods of
+  installing <application>texlive</application> are consistent.
+</para>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-security">
+  <?dbhtml filename="security.html"?>
+
+  <title>Security</title>
+
+  <para>
+    Security takes many forms in a computing environment. After some
+    initial discussion, this chapter
+    gives examples of three different types of security: access, prevention
+    and detection.
+  </para>
+
+  <para>
+    Access for users is usually handled by <command>login</command> or an
+    application designed to handle the login function. In this chapter, we show
+    how to enhance <command>login</command> by setting policies with
+    <application>PAM</application> modules.  Access via networks can also be
+    secured by policies set by <application>iptables</application>, commonly
+    referred to as a firewall. The Network Security Services (NSS) and
+    Netscape Portable Runtime (NSPR) libraries can be installed and shared
+    among the many applications requiring them. For applications that don't
+    offer the best security, you can use the
+    <application>Stunnel</application> package to wrap an application daemon
+    inside an SSL tunnel.
+  </para>
+
+  <para>
+    Prevention of breaches, like a trojan, are assisted by applications like
+    <application>GnuPG</application>, specifically the ability to confirm
+    signed packages, which recognizes modifications of the tarball
+    after the packager creates it.
+  </para>
+
+  <para>
+    Finally, we touch on detection with a package that stores "signatures"
+    of critical files (defined by the administrator) and then regenerates those
+    "signatures" and compares for files that have been changed.
+  </para>
+
+
+
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="volume_key.xml"/>-->
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="firewalling.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nftables.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="firewalld.xml"/>-->
+
+</sect1>

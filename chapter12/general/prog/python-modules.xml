@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="python-modules" xreflabel="Python Modules">
+  <?dbhtml filename="python-modules.html" ?>
+
+
+  <title>Python Modules</title>
+
+  <indexterm zone="python-modules">
+    <primary sortas="a-Python-Modules">Python Modules</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Python Modules</title>
+
+    <para>
+      The <application>Python</application> module packages add useful objects
+      to the <application>Python</application> language. Modules utilized by
+      packages throughout BLFS are listed here, along with their dependencies.
+    </para>
+
+    <note>
+      <para>
+        If you want to run tests, several of the following modules depend on
+        the <option>sqlite3</option> core python module that has not been
+        built in LFS. It is therefore recommended to rebuild Python after
+        installing the recommended dependency listed in
+        <xref linkend="python3"/>.
+      </para>
+    </note>
+
+    <important>
+      <para>
+        In BLFS, we normally build and install Python 3 modules with
+        <command>pip3</command>.  Please take care that the
+        <command>pip3 install</command> commands in the book should be
+        run as &root; unless it's for a Python virtual environment.  Running
+        <command>pip3 install</command> as a non-&root; user may seem to
+        work fine, but it will cause the installed module to be inaccessible by
+        other users.
+      </para>
+      <para>
+        <command>pip3 install</command> will not reinstall an already
+        installed module by default.  For using the
+        <command>pip3 install</command> command to upgrade a module (for
+        example, from meson-0.61.3 to meson-0.62.0), insert
+        <parameter>--upgrade</parameter> into the command line.  If it's really
+        necessary to downgrade a module or reinstall the same version for
+        some reason, insert <parameter>--force-reinstall</parameter> into
+        the command line.
+      </para>
+    </important>
+
+    <itemizedlist spacing="compact">
+<!--
+      <listitem>
+        <para>
+          <xref linkend="pythonhosted"/>
+        </para>
+      </listitem>
+-->
+
+      <listitem>
+        <para>
+          <xref linkend="packaging"/>
+        </para>
+      </listitem>
+
+    </itemizedlist>
+  </sect2>
+
+
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="python-modules/packaging.xml"/>
+
+
+
+</sect1>

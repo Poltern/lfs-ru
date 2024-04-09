@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libnl-download-http "https://github.com/thom311/libnl/releases/download/libnl&libnl-dl-version;/libnl-&libnl-version;.tar.gz">
+  <!ENTITY libnl-download-ftp  " ">
+  <!ENTITY libnl-md5sum        "27bffaccbb22ab9d8cff377b320f6014">
+  <!ENTITY libnl-size          "1.1 MB">
+  <!ENTITY libnl-buildsize     "74 MB (with API documentation)">
+  <!ENTITY libnl-time          "0.6 SBU (with API documentation)">
+
+
+  <!ENTITY libnl-doc-download-http "https://github.com/thom311/libnl/releases/download/libnl&libnl-dl-version;/libnl-doc-&libnl-version;.tar.gz">
+  <!ENTITY libnl-doc-download-ftp  " ">
+  <!ENTITY libnl-doc-md5sum        "3259c70458712f34a40b8345f405f5ac">
+  <!ENTITY libnl-doc-size          "3.8 MB">
+]>
+
+<sect1 id="libnl" xreflabel="libnl-&libnl-version;">
+  <?dbhtml filename="libnl.html"?>
+
+  <title>libnl-&libnl-version;</title>
+
+  <indexterm zone="libnl">
+    <primary sortas="a-libnl">libnl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libnl</title>
+
+    <para>
+      The <application>libnl</application> suite is a collection of libraries
+      providing APIs to netlink protocol based Linux kernel interfaces.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libnl-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libnl-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libnl-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libnl-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libnl-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libnl-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Optional Download</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libnl-doc-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libnl-doc-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libnl-doc-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libnl-doc-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>
+          Optional patch: <ulink
+          url="&patch-root;/libnl-&libnl-version;-upstream_test_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libnl</title>
+<!--
+    <para>
+      If you are going to run the package tests apply this patch:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../libnl-&libnl-version;-upstream_test_fix-1.patch
+autoreconf -fi</userinput></screen>
+-->
+    <para>
+      Install <application>libnl</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --disable-static  &amp;&amp;
+make</userinput></screen>
+
+    <!-- "keyboard inputs not displayed at all" highly reproducible in
+         a QEMU VM with -j8 under Linux console.  In xterm I've seen "all
+         texts blinking".  I'd considered this caused by my CFLAGS, but
+         this time I've not deviated from the book at all.  -->
+    <note>
+      <para>
+        If the <command>make</command> command was executed with
+        multiple parallel jobs enabled, it might disrupt the terminal mode
+        and cause some <quote>amusing</quote> visual effects.  In the
+        worst case, this issue may cause keyboard inputs not
+        displayed on the screen at all (but you can still run any command
+        if you can type it correctly).  Run the <command>reset</command>
+        to fix such an issue.
+      </para>
+    </note>
+
+    <para>
+      If you wish to run the tests, check that the following options
+      are enabled in the kernel configuration and recompile the kernel
+      if necessary.  Some of them may not be strictly needed, but they
+      should support a complete test coverage.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="libnl-test-kernel.xml"/>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you wish to install the API documentation, as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>mkdir -vp /usr/share/doc/libnl-&libnl-version; &amp;&amp;
+tar -xf ../libnl-doc-&libnl-version;.tar.gz --strip-components=1 --no-same-owner \
+    -C  /usr/share/doc/libnl-&libnl-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <option>--disable-cli</option>: Use this parameter if you
+      don't want to install cli tools provided by the package.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          genl-ctrl-list,
+          idiag-socket-details,
+          nl-class-add,
+          nl-class-delete,
+          nl-classid-lookup,
+          nl-class-list,
+          nl-cls-add,
+          nl-cls-delete,
+          nl-cls-list,
+          nl-link-list,
+          nl-pktloc-lookup,
+          nl-qdisc-add,
+          nl-qdisc-delete,
+          nl-qdisc-list, and 48 other helper programs with nl- and nf- prefixes
+        </seg>
+        <seg>
+          libnl-3.so,
+          libnl-cli-3.so,
+          libnl-genl-3.so,
+          libnl-idiag-3.so,
+          libnl-nf-3.so,
+          libnl-route-3.so,
+          libnl-xfrm-3.so, and
+          cli modules under /usr/lib/libnl/cli tree
+        </seg>
+        <seg>
+          /etc/libnl,
+          /usr/include/libnl3,
+          /usr/lib/libnl, and
+          /usr/share/doc/libnl-&libnl-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+     <varlistentry id="genl-ctrl-list">
+        <term><command>genl-ctrl-list</command></term>
+        <listitem>
+          <para>
+            queries the Generic Netlink controller in the kernel and prints
+            a list of all registered Generic Netlink families including
+            the version of the interface that has been registered
+          </para>
+          <indexterm zone="libnl genl-ctrl-list">
+            <primary sortas="b-genl-ctrl-list">genl-ctrl-list</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-class-add">
+        <term><command>nl-class-add</command></term>
+        <listitem>
+          <para>
+            adds, updates, or replaces Traffic Classes
+          </para>
+          <indexterm zone="libnl nl-class-add">
+            <primary sortas="b-nl-class-add">nl-class-add</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-class-delete">
+        <term><command>nl-class-delete</command></term>
+        <listitem>
+          <para>
+            deletes Traffic Classes
+          </para>
+          <indexterm zone="libnl nl-class-delete">
+            <primary sortas="b-nl-class-delete">nl-class-delete</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-classid-lookup">
+        <term><command>nl-classid-lookup</command></term>
+        <listitem>
+          <para>
+            is used to resolve qdisc/class names to classid values and vice
+            versa
+          </para>
+          <indexterm zone="libnl nl-classid-lookup">
+            <primary sortas="b-nl-classid-lookup">nl-classid-lookup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-class-list">
+        <term><command>nl-class-list</command></term>
+        <listitem>
+          <para>
+            lists Traffic Classes
+          </para>
+          <indexterm zone="libnl nl-class-list">
+            <primary sortas="b-nl-class-list">nl-class-list</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-cls-add">
+        <term><command>nl-cls-add</command></term>
+        <listitem>
+          <para>
+            adds a classifier
+          </para>
+          <indexterm zone="libnl nl-cls-add">
+            <primary sortas="b-nl-cls-add">nl-cls-add</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-cls-delete">
+        <term><command>nl-cls-delete</command></term>
+        <listitem>
+          <para>
+            deletes a classifier
+          </para>
+          <indexterm zone="libnl nl-cls-delete">
+            <primary sortas="b-nl-cls-delete">nl-cls-delete</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-cls-list">
+        <term><command>nl-cls-list</command></term>
+        <listitem>
+          <para>
+            lists classifiers
+          </para>
+          <indexterm zone="libnl nl-cls-list">
+            <primary sortas="b-nl-cls-list">nl-cls-list</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-link-list">
+        <term><command>nl-link-list</command></term>
+        <listitem>
+          <para>
+            dumps link attributes
+          </para>
+          <indexterm zone="libnl nl-link-list">
+            <primary sortas="b-nl-link-list">nl-link-list</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-pktloc-lookup">
+        <term><command>nl-pktloc-lookup</command></term>
+        <listitem>
+          <para>
+            allows the lookup of packet location definitions
+          </para>
+          <indexterm zone="libnl nl-pktloc-lookup">
+            <primary sortas="b-nl-pktloc-lookup">nl-pktloc-lookup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-qdisc-add">
+        <term><command>nl-qdisc-add</command></term>
+        <listitem>
+          <para>
+            adds queueing disciplines (qdiscs) in the kernel
+          </para>
+          <indexterm zone="libnl nl-qdisc-add">
+            <primary sortas="b-nl-qdisc-add">nl-qdisc-add</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-qdisc-delete">
+        <term><command>nl-qdisc-delete</command></term>
+        <listitem>
+          <para>
+             deletes queueing disciplines (qdiscs) in the kernel
+          </para>
+          <indexterm zone="libnl nl-qdisc-delete">
+            <primary sortas="b-nl-qdisc-delete">nl-qdisc-delete</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="nl-qdisc-list">
+        <term><command>nl-qdisc-list</command></term>
+        <listitem>
+          <para>
+            lists queueing disciplines (qdiscs) in the kernel
+          </para>
+          <indexterm zone="libnl nl-qdisc-list">
+            <primary sortas="b-nl-qdisc-list">nl-qdisc-list</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libnl-lib">
+        <term><filename class="libraryfile">libnl*-3.so</filename></term>
+        <listitem>
+          <para>
+            These libraries contain API functions used to access Netlink
+            interfaces in Linux kernel
+          </para>
+          <indexterm zone="libnl libnl-lib">
+            <primary sortas="c-libnl">libnl*-3.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

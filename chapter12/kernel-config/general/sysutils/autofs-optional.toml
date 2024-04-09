@@ -1,0 +1,4 @@
+# what are these for ?
+NETWORK_FILESYSTEMS='*'
+NFS_FS='*M'
+CIFS='*M'

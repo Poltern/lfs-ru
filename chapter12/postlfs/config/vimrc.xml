@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE part PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="postlfs-config-vimrc" xreflabel="The vimrc Files">
+  <?dbhtml filename="vimrc.html"?>
+
+
+  <title>The /etc/vimrc and ~/.vimrc Files</title>
+
+  <indexterm zone="postlfs-config-vimrc">
+    <primary sortas="e-etc-vimrc">/etc/vimrc</primary>
+  </indexterm>
+
+  <indexterm zone="postlfs-config-vimrc">
+    <primary sortas="e-AA.vimrc">~/.vimrc</primary>
+  </indexterm>
+
+  <para>
+    The LFS book installs <application>Vim</application> as its text editor.
+    At this point it should be noted that there are a <emphasis>lot</emphasis>
+    of different editing applications out there including
+    <application>Emacs</application>, <application>nano</application>,
+    <application>Joe</application> and many more.  Anyone who has been
+    around the Internet (especially usenet) for a short time will certainly
+    have observed at least one flame war, usually involving
+    <application>Vim</application> and <application>Emacs</application> users!
+  </para>
+
+  <para>
+    The LFS book creates a basic <filename>vimrc</filename> file. In this
+    section you'll find an attempt to enhance this file. At startup,
+    <command>vim</command> reads the global configuration file
+    (<filename>/etc/vimrc</filename>) as well as a user-specific file
+    (<filename>~/.vimrc</filename>). Either or both can be tailored to suit
+    the needs of your particular system.
+  </para>
+
+  <para>
+    Here is a slightly expanded <filename>.vimrc</filename> that you can put
+    in <filename>~/.vimrc</filename> to provide user specific effects. Of
+    course, if you put it into <filename>/etc/skel/.vimrc</filename> instead,
+    it will be made available to users you add to the system later. You
+    can also copy the file from <filename>/etc/skel/.vimrc</filename> to
+    the home directory of users already on the system, such as <systemitem
+    class='username'>root</systemitem>. Be sure to set permissions, owner,
+    and group if you do copy anything directly from <filename
+    class="directory">/etc/skel</filename>.
+  </para>
+
+<screen><literal>" Begin .vimrc
+
+set columns=80
+set wrapmargin=8
+set ruler
+
+" End .vimrc</literal></screen>
+
+  <para>
+    Note that the comment tags are " instead of the more
+    usual # or //.  This is correct, the syntax for
+    <filename>vimrc</filename> is slightly unusual.
+  </para>
+
+  <para>
+    Below you'll find a quick explanation of what each of the
+    options in this example file means here:
+  </para>
+
+  <itemizedlist>
+    <!--
+    <listitem>
+      <para>
+        <option>set nocompatible</option> : This option
+        stops <command>vim</command> from behaving in a strongly <command>vi
+        </command>-compatible way. It should be at the start of any
+        <filename>vimrc </filename> file as it can affect lots of other
+        options which you may want to override.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <option>set bs=2</option>: This influences the behavior of the
+        backspace option.  It is fairly complex so see <command>:help 'bs'
+        </command> for more details.
+      </para>
+    </listitem>
+    -->
+    <listitem>
+      <para>
+        <option>set columns=80</option>: This simply sets the
+        number of columns used on the screen.
+      </para>
+    </listitem>
+    <!--
+    <listitem>
+      <para>
+        <option>set background=dark</option>: This tells
+        <command>vim</command> to use colors which look good on a dark
+        background.
+      </para>
+    </listitem>
+    -->
+    <listitem>
+      <para>
+        <option>set wrapmargin=8</option>: This is the number of
+        characters from the right window border where wrapping starts.
+      </para>
+    </listitem>
+    <!--
+    <listitem>
+      <para>
+        <option>syntax on</option>: Enables
+        <command>vim</command>'s syntax highlighting.
+      </para>
+    </listitem>
+    -->
+    <listitem>
+      <para>
+        <option>set ruler</option>: This makes <command>vim</command>
+        show the current row and column at the bottom right of the screen.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <para>
+    More information on the <emphasis>many</emphasis>
+    <command>vim</command> options can be found by reading the help
+    inside <command>vim</command> itself.  Do this by typing
+    <command>:</command><option>help</option> in
+    <command>vim</command> to get the general help, or by typing
+    <command>:</command><option>help usr_toc.txt</option> to view
+    the User Manual Table of Contents.
+  </para>
+
+</sect1>

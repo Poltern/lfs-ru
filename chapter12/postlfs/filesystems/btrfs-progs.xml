@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY btrfs-progs-download-http "&kernel-dl;/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v&btrfs-progs-version;.tar.xz">
+  <!ENTITY btrfs-progs-download-ftp  " ">
+  <!ENTITY btrfs-progs-md5sum        "729b0927484ebb34e375849b632e287d">
+  <!ENTITY btrfs-progs-size          "2.5 MB">
+  <!ENTITY btrfs-progs-buildsize     "62 MB (transient files created during tests need up to 10 GB)">
+  <!ENTITY btrfs-progs-time          "0.3 SBU (with parallelism=4; add 2.5 SBU for tests, up to 14 SBU on slow disks)">
+]>
+
+<sect1 id="btrfs-progs" xreflabel="btrfs-progs-&btrfs-progs-version;">
+  <?dbhtml filename="btrfs-progs.html"?>
+
+
+  <title>btrfs-progs-&btrfs-progs-version;</title>
+
+  <indexterm zone="btrfs-progs">
+    <primary sortas="a-btrfs-progs">btrfs-progs</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to btrfs-progs</title>
+
+    <para>
+      The <application>btrfs-progs</application> package contains
+      administration and debugging tools for the B-tree file system (btrfs).
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&btrfs-progs-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&btrfs-progs-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &btrfs-progs-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &btrfs-progs-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &btrfs-progs-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &btrfs-progs-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+<bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch if building with linux kernel headers version
+          before 5.12:
+          <ulink url="&patch-root;/btrfs-progs-&btrfs-progs-version;-headers_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">Btrfs-progs Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="lzo"/>
+    </para>
+    <!-- In v6.2.1 (and maybe previous), sphinx is required for the doc
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="asciidoc"/> (or <xref role="nodep" linkend="asciidoctor"/>)
+      and <xref linkend="xmlto"/> (both required to generate man pages)
+    </para>
+    -->
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="lvm2"/> (<command>dmsetup</command> is used in tests),
+      <xref linkend="sphinx"/> and <xref linkend="sphinx_rtd_theme"/>
+      (required to build documentation), and
+      <ulink 
+        url='https://mirrors.edge.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/'>
+        reiserfsprogs</ulink> (for tests).
+
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="kernel" id="btrfs-progs-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      Enable the following option in the kernel configuration
+      and recompile the kernel:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="btrfs-progs-kernel.xml"/>
+
+    <para>
+      In addition to the above and to the options required for
+      <xref linkend="lvm2"/>, the following
+      options must be enabled for running tests:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="btrfs-progs-test-kernel.xml"/>
+
+    <indexterm zone="btrfs-progs btrfs-progs-kernel">
+      <primary sortas="d-btrfs-progs">BTRFS Programs</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of btrfs-progs</title>
+
+    <para>
+      Install <application>btrfs-progs</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr           \
+            --disable-static        \
+            --disable-documentation &amp;&amp;
+make</userinput></screen>
+
+    <note>
+      <para>
+        Some tests require grep built with perl regular expressions. To
+        obtain this, rebuild grep with the LFS Chapter 8 instructions after
+        installing <xref linkend="pcre2"/>.
+      </para>
+    </note>
+<!-- Keeping this for now, but it seems that calling "make test" is
+     simpler and does the same thing -->
+    <para>
+      Before running tests, build a support program:
+    </para>
+
+<screen remap="test"><userinput>make fssum</userinput></screen>
+
+    <para>
+      To test the results, issue (as the &root; user):
+    </para>
+
+<screen role="root" remap="test"><userinput>pushd tests
+   ./fsck-tests.sh
+   ./mkfs-tests.sh
+   ./cli-tests.sh
+   #./convert-tests.sh
+   ./misc-tests.sh
+   ./fuzz-tests.sh
+popd</userinput></screen>
+
+<!-- Template for failed test removal:
+      the other ones to run:
+    </para>
+
+<screen remap="test"><userinput>mv tests/fsck-tests/012-leaf-corruption/test.sh{,.broken}</userinput></screen>
+Substitute your test failure with the one above.
+    <para>
+      To test the results, run (as the
+      <systemitem class="username">root</systemitem> user):
+    </para>
+
+<screen role="root" remap="test"><userinput>make -j1 -k test</userinput></screen>
+-->
+    <note>
+      <para>
+        If the above mentioned kernel options are not enabled, some tests
+        fail, and prevent all the remaining tests from running because the test
+        disk image is not cleanly unmounted.
+      </para>
+    </note>
+
+    <para>
+      The convert-tests scripts are known to fail.
+      Tests 004-shrink-fs and 062-fi-show-raw-dm-all-devices in the misc-tests 
+      are known to fail.
+    </para>
+
+    <para>
+      Install the package as the &root; user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you have passed <parameter>--disable-documentation</parameter> to
+      <command>configure</command> and you need the manual pages, install them
+      by running, as the &root; user:
+    </para>
+
+<screen role="root"><userinput>for i in 5 8; do
+   install Documentation/*.$i /usr/share/man/man$i
+done</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <parameter>--disable-documentation</parameter>: This switch
+      disables rebuilding the manual pages, because it requires
+      <xref linkend="sphinx"/>.
+    </para>
+<!--
+    <para>
+      <command>sed 's/,orphan_file//" ...</command>: In this version of
+      <application>btrfs-progs</application>, the
+      <command>btrfs-convert</command> program produces a btrfs filesystem
+      containing errors if converting from an ext4 filesystem created
+      with the <quote>orphan_file</quote> feature. This command creates
+      a custom configuration file that prevents creating a filesystem
+      with this feature.
+    </para>
+-->
+    <!--
+    <para>
+      <command>ln -s ... /usr/lib/libbtrfs.so</command>: Creates a
+      symbolic link in the directory where it is expected.
+    </para>
+
+    <para>
+      <command>rm /lib/libbtrfs.{a,so}</command>: Removes unneeded
+      library entries.
+    </para>
+-->
+  </sect2>
+<!--
+  <sect2 role="using" id="using-btrfs-convert">
+    <title>Using the btrfs-convert Program</title>
+
+    <para>
+      This version of <application>btrfs-progs</application> does not convert
+      correctly ext4 filesystems to btrfs if the ext4
+      <option>orphan_file</option> feature is turned on. If you happen to
+      convert such a filesystem, you need to first run:
+    </para>
+
+<screen role="nodump"><userinput>tune2fs -O ^orphan_file <replaceable>/dev/sdxx</replaceable></userinput></screen>
+
+    <para>
+      where <filename>/dev/sdxx</filename> is the partition of the filesystem
+      you want to convert.
+    </para>
+  </sect2>
+-->
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          btrfs,
+          btrfs-convert,
+          btrfs-find-root,
+          btrfs-image,
+          btrfs-map-logical,
+          btrfs-select-super,
+          btrfsck (link to btrfs),
+          btrfstune,
+          fsck.btrfs, and
+          mkfs.btrfs
+        </seg>
+
+        <seg>
+          libbtrfs.so and
+          libbtrfsutil.so
+        </seg>
+
+        <seg>/usr/include/btrfs</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="btrfs-prog">
+        <term><command>btrfs</command></term>
+        <listitem>
+          <para>
+            is the main interface into btrfs filesystem operations
+          </para>
+          <indexterm zone="btrfs-progs btrfs-prog">
+            <primary sortas="b-btrfs">btrfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="btrfs-convert">
+        <term><command>btrfs-convert</command></term>
+        <listitem>
+          <para>
+            converts from an ext2/3/4 or reiserfs filesystem to btrfs <!--(see
+            <xref linkend="using-btrfs-convert"/> above)-->
+          </para>
+          <indexterm zone="btrfs-progs btrfs-convert">
+            <primary sortas="b-btrfs-convert">btrfs-convert</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="btrfs-find-root">
+        <term><command>btrfs-find-root</command></term>
+        <listitem>
+          <para>
+            is a filter to find btrfs root
+          </para>
+          <indexterm zone="btrfs-progs btrfs-find-root">
+            <primary sortas="b-btrfs-find-root">btrfs-find-root</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="btrfs-map-logical">
+        <term><command>btrfs-map-logical</command></term>
+        <listitem>
+          <para>
+            maps btrfs logical extent to physical extent
+          </para>
+          <indexterm zone="btrfs-progs btrfs-map-logical">
+            <primary sortas="b-btrfs-map-logical">btrfs-map-logical</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="btrfs-select-super">
+        <term><command>btrfs-select-super</command></term>
+        <listitem>
+          <para>
+            overwrites the primary superblock with a backup copy
+          </para>
+          <indexterm zone="btrfs-progs btrfs-select-super">
+            <primary sortas="b-btrfs-select-super">btrfs-select-super</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="btrfstune">
+        <term><command>btrfstune</command></term>
+        <listitem>
+          <para>
+            tunes various filesystem parameters
+          </para>
+          <indexterm zone="btrfs-progs btrfstune">
+            <primary sortas="b-btrfstune">btrfstune</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fsck.btrfs">
+        <term><command>fsck.btrfs</command></term>
+        <listitem>
+          <para>
+            does nothing, but is present for consistency with fstab
+          </para>
+          <indexterm zone="btrfs-progs fsck.btrfs">
+            <primary sortas="b-fsck.btrfs">fsck.btrfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkfs.btrfs">
+        <term><command>mkfs.btrfs</command></term>
+        <listitem>
+          <para>
+            creates a btrfs file system
+          </para>
+          <indexterm zone="btrfs-progs mkfs.btrfs">
+            <primary sortas="b-mkfs.btrfs">mkfs.btrfs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

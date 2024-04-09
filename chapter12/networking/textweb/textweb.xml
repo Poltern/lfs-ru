@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="basicnet-textweb">
+  <?dbhtml filename="textweb.html"?>
+
+  <title>Text Web Browsers</title>
+
+  <para>
+    People who are new to Unix-based systems tend to ask the question "Why on
+    earth would I want a text-mode browser? I'm going to compile
+    <application>X</application> and use <application>
+    Firefox</application>/<application>Falkon</application>/Whatever!".
+    Those who have been around systems for a while know that when (not if)
+    you manage to mess up your graphical browser install and you need to
+    look up some information on the web, a console based browser will save
+    you.  Also, there are quite a few people who prefer to use one of these
+    browsers as their primary method of browsing; either to avoid the clutter
+    and bandwidth which accompanies images or because they may use a
+    text-to-speech synthesizer which can read the page to them (of use for
+    instance to partially sighted or blind users). In this chapter you will
+    find installation instructions for two console web browsers:
+  </para>
+
+ <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="links.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lynx.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="w3m.xml"/>-->
+
+</sect1>

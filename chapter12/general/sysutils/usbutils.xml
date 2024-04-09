@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY usbutils-download-http "https://kernel.org/pub/linux/utils/usb/usbutils/usbutils-&usbutils-version;.tar.xz">
+  <!ENTITY usbutils-download-ftp  " ">
+  <!ENTITY usbutils-md5sum        "8ff21441faf2e8128e4810b3d6e49059">
+  <!ENTITY usbutils-size          "168 KB">
+  <!ENTITY usbutils-buildsize     "4.4 MB">
+  <!ENTITY usbutils-time          "0.1 SBU">
+]>
+
+<sect1 id="usbutils" xreflabel="usbutils-&usbutils-version;">
+  <?dbhtml filename="usbutils.html"?>
+
+
+  <title>usbutils-&usbutils-version;</title>
+
+  <indexterm zone="usbutils">
+    <primary sortas="a-usbutils">usbutils</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to USB Utils</title>
+
+    <para>
+      The <application>USB Utils</application> package contains utilities
+      used to display information about USB buses in the system and the
+      devices connected to them.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&usbutils-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&usbutils-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &usbutils-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &usbutils-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &usbutils-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &usbutils-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/usbutils-&usbutils-version;-lsusb_bugfixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">USB Utils Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libusb"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref role="runtime" linkend="hwdata"/> (runtime)
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of USB Utils</title>
+
+    <para>
+      Install <application>USB Utils</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --datadir=/usr/share/hwdata &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      For the <filename>usb.ids</filename> data file, install the
+      <xref linkend='hwdata'/> package.
+    </para>
+
+    <para>
+      The script <command>lsusb.py</command> displays information in a more
+      easily readable form than <command>lsusb</command>. To find the options,
+      use <command>lsusb.py -h</command>. One form of use recommended by the
+      developer is <command>lsusb.py -ciu</command>.
+    </para>
+
+  </sect2>
+<!-- No longer needed
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed ... lsusb.py</command>: Instructs lsusb.py where to search
+      <filename>usb.ids</filename>.
+    </para>
+
+  </sect2>
+-->
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          lsusb, lsusb.py, usb-devices, and usbhid-dump
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="lsusb">
+        <term><command>lsusb</command></term>
+        <listitem>
+          <para>
+            is a utility for displaying information about all USB buses
+            in the system and all devices connected to them, but not in human
+            friendly form
+          </para>
+          <indexterm zone="usbutils lsusb">
+            <primary sortas="b-lsusb">lsusb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lsusb.py">
+        <term><command>lsusb.py</command></term>
+        <listitem>
+          <para>
+            displays information about all USB buses in the system and all
+            devices connected to them in reasonable human friendly form
+          </para>
+          <indexterm zone="usbutils lsusb.py">
+            <primary sortas="b-lsusb.py">lsusb.py</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="usb-devices">
+        <term><command>usb-devices</command></term>
+        <listitem>
+          <para>
+            is a shell script that displays details of USB buses and devices
+            connected to them. It is designed to be used if /proc/bus/usb/devices
+            is not available on your system
+          </para>
+          <indexterm zone="usbutils usb-devices">
+            <primary sortas="b-usb-devices">usb-devices</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="usbhid-dump">
+        <term><command>usbhid-dump</command></term>
+        <listitem>
+          <para>
+            is used to dump report descriptors and streams from HID
+            (human interface device) interfaces of USB devices
+          </para>
+          <indexterm zone="usbutils usbhid-dump">
+            <primary sortas="b-usbhid-dump">usbhid-dump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

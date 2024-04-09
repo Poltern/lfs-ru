@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../../general.ent">
+  %general-entities;
+
+  <!ENTITY grub-efi-download-http "https://ftp.gnu.org/gnu/grub/grub-&grub-version;.tar.xz">
+  <!ENTITY grub-efi-download-ftp  " ">
+  <!ENTITY grub-efi-md5sum        "60c564b1bdc39d8e43b3aab4bc0fb140">
+  <!ENTITY grub-efi-size          "6.4 MB">
+  <!ENTITY grub-efi-buildsize     "183 MB">
+  <!ENTITY grub-efi-time          "0.4 SBU (on 64-bit LFS, using parallelism=4)">
+
+  <!ENTITY unifont-download-http  "https://unifoundry.com/pub/unifont/unifont-&unifont-version;/font-builds/unifont-&unifont-version;.pcf.gz">
+  <!ENTITY unifont-md5sum         "72f95e7ecb47a4c7ed610babe6959ead">
+  <!ENTITY unifont-size           "1.3 MB">
+]>
+
+<sect1 id="grub-efi" xreflabel="GRUB-&grub-version; for EFI">
+  <?dbhtml filename="grub-efi.html"?>
+
+
+  <title>GRUB-&grub-version; for EFI</title>
+
+  <indexterm zone="grub-efi">
+    <primary sortas="a-grub-efi">grub-efi</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GRUB</title>
+
+    <para>
+      The <application>GRUB</application> package provides GRand Unified
+      Bootloader.  In this page it will be built with UEFI support, which
+      is not enabled for GRUB built in LFS.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&grub-efi-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&grub-efi-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &grub-efi-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &grub-efi-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &grub-efi-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &grub-efi-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <!--
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/grub-&grub-version;-upstream_fixes-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+    -->
+    <itemizedlist spacing="compact">
+      <title>Unicode font data used to display GRUB menu</title>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&unifont-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &unifont-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &unifont-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <itemizedlist spacing="compact">
+      <title>GCC (only needed if building on 32-bit LFS)</title>
+      <listitem>
+        <para>
+          Refer to <xref linkend='gcc'/> page for download info.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GRUB Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref role="runtime" linkend="efibootmgr"/> (runtime) and
+      <xref linkend="freetype2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="lvm2"/>
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GRUB</title>
+
+    <para>
+      First, install font data as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>mkdir -pv /usr/share/fonts/unifont &amp;&amp;
+gunzip -c ../unifont-&unifont-version;.pcf.gz > /usr/share/fonts/unifont/unifont.pcf</userinput></screen>
+
+    <warning>
+      <para>Unset any environment variables which may affect the build:</para>
+
+      <screen><userinput>unset {C,CPP,CXX,LD}FLAGS</userinput></screen>
+
+      <para>Don't try <quote>tuning</quote> this package with custom
+      compilation flags: this package is a bootloader, with low-level
+      operations in the source code which is likely to be broken by some
+      aggressive optimizations.</para>
+    </warning>
+
+    <para>
+      Add a file missing from the release tarball:
+    </para>
+
+    <screen><userinput>echo <literal>depends bli part_gpt</literal> > grub-core/extra_deps.lst</userinput></screen>
+
+    <para>If you are running a 32-bit LFS, prepare a 64-bit compiler:</para>
+
+<!-- 'literal' is used deliberately to show this is only for 32-bit LFS -->
+<screen><userinput>case $(uname -m) in i?86 )
+    <literal>tar xf ../gcc-&gcc-version;.tar.xz
+    mkdir gcc-&gcc-version;/build
+    pushd gcc-&gcc-version;/build
+        ../configure --prefix=$PWD/../../x86_64-gcc \
+                     --target=x86_64-linux-gnu      \
+                     --with-system-zlib             \
+                     --enable-languages=c,c++       \
+                     --with-ld=/usr/bin/ld
+        make all-gcc
+        make install-gcc
+    popd
+    export TARGET_CC=$PWD/x86_64-gcc/bin/x86_64-linux-gnu-gcc</literal>
+esac</userinput></screen>
+
+    <para>
+      Build <application>GRUB</application> with the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr        \
+            --sysconfdir=/etc    \
+            --disable-efiemu     \
+            --enable-grub-mkfont \
+            --with-platform=efi  \
+            --target=x86_64      \
+            --disable-werror     &amp;&amp;
+unset TARGET_CC &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not have a test suite providing meaningful results.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--enable-grub-mkfont</parameter>: Build the tool named
+      <command>grub-mkfont</command> to generate the font file for the boot
+      loader from the font data we've installed.
+    </para>
+
+    <warning>
+      <para>If the recommended dependency <xref linkend="freetype2"/> is not
+      installed, it is possible to omit this option and build GRUB.  However,
+      if <command>grub-mkfont</command> is not built, or the unicode font
+      data is not available at the time GRUB is built, GRUB won't install
+      any font for the boot loader.  The GRUB boot menu will be displayed
+      using a coarse font or in a smaller region on the screen.</para>
+    </warning>
+
+    <para>
+      <parameter>--with-platform=efi</parameter>: Ensures building GRUB with
+      EFI enabled.
+    </para>
+
+    <para>
+      <parameter>--target=x86_64</parameter>: Ensures building GRUB for
+      x86_64 even if building on a 32-bit LFS system.  Most EFI firmware
+      on x86_64 does not support 32-bit bootloaders.
+    </para>
+
+    <para>
+      <option>--target=i386</option>: A few 32-bit x86 platforms have EFI
+      support.  And, some x86_64 platforms have a 32-bit EFI implementation,
+      but they are very old and rare. Use this instead of
+      <parameter>--target=x86_64</parameter> if you are
+      <emphasis role='bold'>absolutely sure</emphasis> that LFS is running
+      on such a system.
+    </para>
+
+  </sect2>
+
+  <sect2>
+    <title>Configuring GRUB</title>
+
+    <para>
+      Using GRUB to make the LFS system bootable on UEFI platform will be
+      discussed in <xref linkend="grub-setup"/>.
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <para>See the page for GRUB in LFS book.</para>
+  </sect2>
+
+</sect1>

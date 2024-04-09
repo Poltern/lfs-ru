@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gsl-download-http "&gnu-http;/gsl/gsl-&gsl-version;.tar.gz">
+  <!ENTITY gsl-download-ftp  " ">
+  <!ENTITY gsl-md5sum        "36aee97e67f64dbdab7afae197e3483b">
+  <!ENTITY gsl-size          "7.2 MB">
+  <!ENTITY gsl-buildsize     "213 MB (with tests, without docs)">
+  <!ENTITY gsl-time          "1.2 SBU (Using parallelism=4; with tests, without docs)">
+]>
+
+<sect1 id="gsl" xreflabel="Gsl-&gsl-version;">
+  <?dbhtml filename="gsl.html"?>
+
+
+  <title>Gsl-&gsl-version;</title>
+
+  <indexterm zone="gsl">
+    <primary sortas="a-gsl">Gsl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Gsl</title>
+
+    <para>
+      The GNU Scientific Library (GSL) is a numerical library for C and C++
+      programmers. It provides a wide range of mathematical routines such as
+      random number generators, special functions and least-squares fitting.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gsl-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gsl-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gsl-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gsl-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gsl-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gsl-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Gsl Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="sphinx_rtd_theme"/>
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Gsl</title>
+
+    <para>
+      Install <application>Gsl</application> by running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      If you have <xref linkend="sphinx_rtd_theme"/>
+      installed, build the documentation with:
+    </para>
+
+<screen remap="doc"><userinput>make html</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If you built the documentation, install it (as <systemitem
+      class="username">root</systemitem>) with:
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>mkdir                   /usr/share/doc/gsl-&gsl-version; &amp;&amp;
+cp -R doc/_build/html/* /usr/share/doc/gsl-&gsl-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../xincludes/static-libraries.xml"/>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          gsl-config, gsl-histogram, and gsl-randist
+        </seg>
+        <seg>
+          libgslcblas.so and libgsl.so
+        </seg>
+        <seg>
+          /usr/include/gsl and /usr/share/doc/gsl-&gsl-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gsl-config">
+        <term><command>gsl-config</command></term>
+        <listitem>
+          <para>
+            is a shell script to get the version number and compiler flags of
+            the installed <application>Gsl</application> library
+          </para>
+          <indexterm zone="gsl gsl-config">
+            <primary sortas="b-gsl-config">gsl-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gsl-histogram">
+        <term><command>gsl-histogram</command></term>
+        <listitem>
+          <para>
+            is a demonstration program for the GNU Scientific Library that
+            computes a histogram from data taken from stdin
+          </para>
+          <indexterm zone="gsl gsl-histogram">
+            <primary sortas="b-gsl-histogram">gsl-histogram</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gsl-randist">
+        <term><command>gsl-randist</command></term>
+        <listitem>
+          <para>
+            is a demonstration program for the GNU Scientific Library that
+            generates random samples from various distributions
+          </para>
+          <indexterm zone="gsl gsl-randist">
+            <primary sortas="b-gsl-randist">gsl-randist</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgslcblas">
+        <term><filename class="libraryfile">libgslcblas.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that implement a C interface to Basic Linear
+            Algebra Subprograms
+          </para>
+          <indexterm zone="gsl libgslcblas">
+            <primary sortas="c-libgslcblas">libgslcblas.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgsl.so">
+        <term><filename class="libraryfile">libgsl.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that provide a collection of numerical routines
+            for scientific computing
+          </para>
+          <indexterm zone="gsl libgsl.so">
+            <primary sortas="c-libgsl.so">libgsl.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>

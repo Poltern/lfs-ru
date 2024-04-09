@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pst-xml">
+  <?dbhtml filename="xml.html"?>
+
+  <title>Extensible Markup Language (XML)</title>
+
+  <para>
+    This chapter contains the DocBook XML document type definition
+    (DTD) and DocBook Stylesheets which are used to validate, transform,
+    format and publish DocBook documents.
+  </para>
+
+
+</sect1>

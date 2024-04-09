@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY parted-download-http "&gnu-http;/parted/parted-&parted-version;.tar.xz">
+  <!ENTITY parted-download-ftp  " ">
+  <!ENTITY parted-md5sum        "93d2d8f22baebc5eb65b85da05a79e4e">
+  <!ENTITY parted-size          "1.8 MB">
+  <!ENTITY parted-buildsize     "29 MB (additional 3 MB for the tests and additional 2 MB for optional PDF and Postscript documentation)">
+  <!ENTITY parted-time          "0.3 SBU (additional 3.6 SBU for the tests)">
+]>
+
+<sect1 id="parted" xreflabel="parted-&parted-version;">
+  <?dbhtml filename="parted.html"?>
+
+
+  <title>parted-&parted-version;</title>
+
+  <indexterm zone="parted">
+    <primary sortas="a-parted">Parted</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to parted</title>
+
+    <para>
+      The <application>Parted</application> package is a disk partitioning and
+      partition resizing tool.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&parted-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&parted-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &parted-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &parted-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &parted-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &parted-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+    <!--
+      <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+             Optional, to fix build without device mapper support: <ulink
+               url="&patch-root;/parted-&parted-version;-devmapper-1.patch"/>
+          </para>
+        </listitem>
+      </itemizedlist>
+    This seems to be unneeded now. The fix was merged. -->
+    <bridgehead renderas="sect3">Parted Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="lvm2"/> (device-mapper, required if building
+      <application>udisks</application>)
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="dosfstools"/>,
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>), and
+      <ulink url="https://metacpan.org/pod/Digest::CRC">Digest::CRC</ulink> (for tests)
+    </para>
+
+  </sect2>
+
+  <sect2 role="kernel" id="parted-kernel">
+    <title>Optional Kernel Configuration for Tests</title>
+
+    <para>
+      About 20 % more tests are run if the following kernel module is built:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="parted-test-kernel.xml"/>
+
+    <indexterm zone="parted parted-kernel">
+      <primary sortas="d-parted">parted (testing)</primary>
+    </indexterm>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of parted</title>
+    <!--
+    <para>
+      If you want to build without device mapper support, a fix is necessary:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../parted-&parted-version;-devmapper-1.patch</userinput></screen>
+    -->
+    <para>
+      Install <application>Parted</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make &amp;&amp;
+
+make -C doc html                                       &amp;&amp;
+makeinfo --html      -o doc/html       doc/parted.texi &amp;&amp;
+makeinfo --plaintext -o doc/parted.txt doc/parted.texi</userinput></screen>
+
+    <para>
+      If you have <xref linkend="texlive"/> installed and wish to create
+      PDF and Postscript documentation issue the following commands:
+    </para>
+
+<screen remap="doc"><userinput>cp build-aux/texinfo.tex doc               &amp;&amp;
+texi2pdf -o doc/parted.pdf doc/parted.texi &amp;&amp;
+texi2dvi -o doc/parted.dvi doc/parted.texi &amp;&amp;
+dvips    -o doc/parted.ps  doc/parted.dvi</userinput></screen>
+
+    <para>
+      To test the results, issue, as the <systemitem
+      class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"
+        remap="test"><userinput>make check</userinput></screen>
+
+<!-- For devs: several tests are skipped with the message
+     "FS test with sector size != 512". This is expected since the same tests
+     are run with simulated sector of 1024, 2048, and 4096 bytes; only the
+     last group of tests is done with simulated sector size of 512, so that
+     less tests are skipped.
+
+     When I ran these tests over ssh, it really made my xfce environment
+     unusable.  Restarting xfce fixed things, but I don't want to retry
+     right now.  - Bruce
+-->
+    <note>
+      <para>
+        Many tests are skipped if not run as the <systemitem
+        class="username">root</systemitem> user.
+      </para>
+    </note>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d /usr/share/doc/parted-&parted-version;/html &amp;&amp;
+install -v -m644    doc/html/* \
+                    /usr/share/doc/parted-&parted-version;/html &amp;&amp;
+install -v -m644    doc/{FAT,API,parted.{txt,html}} \
+                    /usr/share/doc/parted-&parted-version;</userinput></screen>
+
+    <para>
+      Install the optional PDF and Postscript documentation by issuing the
+      following command as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"
+        remap="doc"><userinput>install -v -m644 doc/FAT doc/API doc/parted.{pdf,ps,dvi} \
+                    /usr/share/doc/parted-&parted-version;</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <option>--disable-device-mapper</option>: This option disables device
+      mapper support. Add this parameter if you have not installed
+      <application>LVM2</application>.
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          parted and
+          partprobe
+        </seg>
+        <seg>
+          libparted.so and
+          libparted-fs-resize.so</seg>
+        <seg>
+          /usr/include/parted and
+          /usr/share/doc/parted-&parted-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="parted-prog">
+        <term><command>parted</command></term>
+        <listitem>
+          <para>
+            is a partition manipulation program
+          </para>
+          <indexterm zone="parted parted-prog">
+            <primary sortas="b-parted">parted</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="partprobe">
+        <term><command>partprobe</command></term>
+        <listitem>
+          <para>
+            informs the OS of partition table changes
+          </para>
+          <indexterm zone="parted partprobe">
+            <primary sortas="b-partprobe">partprobe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libparted">
+        <term><filename class="libraryfile">libparted.so</filename></term>
+        <listitem>
+          <para>
+            contains the <application>Parted</application> API functions
+          </para>
+          <indexterm zone="parted libparted">
+            <primary sortas="c-libparted">libparted.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+</sect1>

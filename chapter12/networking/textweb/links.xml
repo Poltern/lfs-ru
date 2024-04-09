@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY links-download-http "http://links.twibright.com/download/links-&links-version;.tar.bz2">
+  <!ENTITY links-download-ftp  " ">
+  <!ENTITY links-md5sum        "f60b87ffee090c5d6820951eba710572">
+  <!ENTITY links-size          "6.2 MB">
+  <!ENTITY links-buildsize     "35 MB">
+  <!ENTITY links-time          "0.2 SBU">
+]>
+
+<sect1 id="Links" xreflabel="Links-&links-version;">
+  <?dbhtml filename="links.html"?>
+
+
+  <title>Links-&links-version;</title>
+
+  <indexterm zone="Links">
+    <primary sortas="a-Links">Links</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Links</title>
+
+    <para>
+      <application>Links</application> is a text and graphics mode
+      WWW browser. It includes support for rendering
+      tables and frames, features background downloads, can display colors
+      and has many other features.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&links-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&links-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &links-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &links-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &links-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &links-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Links Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="libevent"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      Graphics mode requires at least one of
+      <xref linkend="gpm"/> (mouse support to be used with a framebuffer-based
+      console),
+     <!-- <ulink url="https://www.svgalib.org/">SVGAlib</ulink>,
+      <ulink url="https://pkgs.fedoraproject.org/repo/pkgs/directfb/">
+        DirectFB
+      </ulink>, and
+      <xref linkend="x-window-system"/>-
+    </para>
+
+    <para role="optional">
+      For decoding various image formats <application>Links</application>
+      can utilize
+      <xref linkend="libavif"/>,
+      <xref linkend="libpng"/>,
+      <xref linkend="libjpeg"/>,
+      <xref linkend="librsvg"/>, and
+      <xref linkend="libtiff"/>
+    </para>
+
+    <para role="optional">
+      For decompressing web pages that are compressed with Brotli,
+      <application>Links</application> can utilize
+      <xref linkend="brotli"/>-->
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Links</title>
+
+    <para>
+      Install <application>Links</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --mandir=/usr/share/man &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role='root'><userinput>make install &amp;&amp;
+install -v -d -m755 /usr/share/doc/links-&links-version; &amp;&amp;
+install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
+    /usr/share/doc/links-&links-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <option>--enable-graphics</option>: This switch enables support
+      for graphics mode.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Links</title>
+
+    <sect3 id="links-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>~/.links/*</filename>
+      </para>
+
+      <indexterm zone="Links links-config">
+        <primary sortas="e-AA.links/*">~/.links/*</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        <application>Links</application> stores its configuration in per-user
+        files in the <filename class="directory">~/.links</filename> directory.
+        These files are created automatically when <command>links</command> is
+        run for the first time.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>links</seg>
+        <seg>None</seg>
+        <seg>/usr/share/doc/links-&links-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="links">
+        <term><command>links</command></term>
+        <listitem>
+          <para>
+            is a text and graphics mode WWW browser
+          </para>
+          <indexterm zone="Links links">
+            <primary sortas="b-links">links</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

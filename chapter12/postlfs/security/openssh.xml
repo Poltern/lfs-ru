@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY openssh-download-http
+           "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-&openssh-version;.tar.gz">
+  <!ENTITY openssh-download-ftp  " ">
+  <!ENTITY openssh-md5sum        "&openssh-md5sum;">
+  <!ENTITY openssh-size          "1.7 MB">
+  <!ENTITY openssh-buildsize     "45 MB (add 22 MB for tests)">
+  <!ENTITY openssh-time          "0.2 SBU (Using parallelism=4;
+                                  running the tests takes about 20 minutes,
+                                  irrespective of processor speed)">
+]>
+
+  <!-- make check: real 18m13.005s;  9.2p1  3 Feb 2023 -->
+  <!-- make check: real 18m08.654s;  9.3p1 17 Mar 2023 -->
+
+<sect1 id="openssh" xreflabel="OpenSSH-&openssh-version;">
+  <?dbhtml filename="openssh.html"?>
+
+  <title>OpenSSH-&openssh-version;</title>
+
+  <indexterm zone="openssh">
+    <primary sortas="a-OpenSSH">OpenSSH</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to OpenSSH</title>
+
+    <para>
+      The <application>OpenSSH</application> package contains
+      <command>ssh</command> clients and the <command>sshd</command> daemon.
+      This is useful for encrypting authentication and subsequent traffic over
+      a network. The <command>ssh</command> and <command>scp</command> commands
+      are secure implementations of <command>telnet</command> and
+      <command>rcp</command> respectively.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&openssh-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&openssh-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &openssh-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &openssh-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &openssh-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &openssh-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/openssh-&openssh-version;-glibc_2.31_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">OpenSSH Dependencies</bridgehead>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gdb"/> (for tests),
+      <xref linkend="linux-pam"/> (PAM configuration files from
+      <xref linkend="shadow"/> are used to create openssh ones),
+      <xref linkend="xorg7-app"/> (or
+      <xref linkend='xorg-env' role='nodep'/>, see Command Explanations),
+      <xref linkend="mitkrb"/>,
+      <xref linkend="which"/> (for tests),
+      <ulink url="https://www.thrysoee.dk/editline/">libedit</ulink>,
+      <ulink url="https://www.libressl.org/">LibreSSL Portable</ulink>,
+      <ulink url="https://github.com/OpenSC/OpenSC/wiki">OpenSC</ulink>, and
+      <ulink url="http://www.citi.umich.edu/projects/smartcard/sectok.html">libsectok</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional Runtime (Used only to gather entropy)</bridgehead>
+    <para role="optional">
+      <xref role="runtime" linkend="net-tools"/>, and
+      <xref role="runtime" linkend="sysstat"/>
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of OpenSSH</title>
+
+    <para>
+      <application>OpenSSH</application> runs as two processes when connecting
+      to other computers. The first process is a privileged process and controls
+      the issuance of privileges as necessary. The second process communicates
+      with the network. Additional installation steps are necessary to set up
+      the proper environment, which are performed by issuing the following
+      commands as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -g sys -m700 -d /var/lib/sshd &amp;&amp;
+
+groupadd -g 50 sshd        &amp;&amp;
+useradd  -c 'sshd PrivSep' \
+         -d /var/lib/sshd  \
+         -g sshd           \
+         -s /bin/false     \
+         -u 50 sshd</userinput></screen>
+<!--
+    <para>
+      Apply a patch to allow OpenSSH to build and function with
+      <application>Glibc-2.31</application> and later:
+    </para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../openssh-&openssh-version;-glibc_2.31_fix-1.patch</userinput></screen>
+-->
+
+<!-- Applied in 8.5p1
+    <para>
+      First, adapt <application>ssh-copy-id</application> to changes
+      in bash-5.1:
+    </para>
+
+<screen><userinput remap="pre">sed -e '/INSTALLKEYS_SH/s/)//' -e '260a\  )' -i contrib/ssh-copy-id</userinput></screen>
+
+    <para>
+      Next, fix an issue on platforms other than x86_64:
+    </para>
+    <screen><userinput remap="pre">if [ "$(uname -m)" != "x86_64" ]; then
+    l1="#ifdef __NR_pselect6_time64"
+    l2="    SC_ALLOW(__NR_pselect6_time64),"
+    l3="#endif"
+    sed -e "/^#ifdef __NR_read$/ i $l1\n$l2\n$l3" \
+        -i sandbox-seccomp-filter.c
+fi</userinput></screen>
+-->
+    <para>
+      Install <application>OpenSSH</application> by running the following
+      commands:
+    </para>
+
+<!-- -\-with-md5-passwords used to be here, but a comment inside of a <screen>
+     block leaves an eyesore. -->
+<screen><userinput>./configure --prefix=/usr                            \
+            --sysconfdir=/etc/ssh                    \
+            --with-privsep-path=/var/lib/sshd        \
+            --with-default-path=/usr/bin             \
+            --with-superuser-path=/usr/sbin:/usr/bin \
+            --with-pid-dir=/run                      &amp;&amp;
+make</userinput></screen>
+
+<!--  I got all tests passed without this with 9.3p1, June 12, 2023.
+    <para>
+      The test suite requires an installed copy of <command>scp</command> to
+      complete the multiplexing tests. To run the test suite, first copy the
+      <command>scp</command> program to
+      <filename class="directory">/usr/bin</filename>, making sure that you
+      backup any existing copy first.
+    </para>
+-->
+<!--  I got all tests passed without this with 9.0p1.  Apr 13, 2022.
+    <para>
+      If you wish to run the tests, remove a test suite that is not valid on
+      Linux-based platforms:
+    </para>
+
+<screen><userinput>sed -i 's/conch-ciphers//' regress/Makefile</userinput></screen>
+-->
+    <para>
+      To test the results, issue: <command>make -j1 tests</command>.
+      <!--One test, <filename>key options</filename>, fails when run in chroot.-->
+    </para>
+
+<!-- commenting this, I get "all tests passed" [ ken ]
+ NB tests should be run as _user_ but the role in the comment is root
+
+ commenting [ bruce ]:  There are a couple of tests that want root.
+ The log mentions that SUDO is not set.  These skipped tests are
+ ignored and the end says 'all tests passed' even when not root
+
+    <para>
+      To run the test suite, issue the following commands:
+    </para>
+
+<screen role="root"><userinput>make tests 2&gt;&amp;1 | tee check.log
+grep FATAL check.log</userinput></screen>
+
+    <para>
+      If the above command produces no 'FATAL' errors, then proceed with the
+      installation, as the <systemitem class="username">root</systemitem> user:
+    </para>-->
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755    contrib/ssh-copy-id /usr/bin     &amp;&amp;
+
+install -v -m644    contrib/ssh-copy-id.1 \
+                    /usr/share/man/man1              &amp;&amp;
+install -v -m755 -d /usr/share/doc/openssh-&openssh-version;     &amp;&amp;
+install -v -m644    INSTALL LICENCE OVERVIEW README* \
+                    /usr/share/doc/openssh-&openssh-version;</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--sysconfdir=/etc/ssh</parameter>: This prevents the
+      configuration files from being installed in
+      <filename class="directory">/usr/etc</filename>.
+    </para>
+
+    <para>
+      <parameter>--with-default-path=/usr/bin</parameter> and
+      <parameter>--with-superuser-path=/usr/sbin:/usr/bin</parameter>:
+      These set <envar>PATH</envar> consistent with LFS and BLFS
+      <application>Shadow</application> package.
+    </para>
+
+    <para>
+      <parameter>--with-pid-dir=/run</parameter>: This prevents
+      <application>OpenSSH</application> from referring to deprecated
+      <filename class="directory">/var/run</filename>.
+    </para>
+<!--
+    <para>
+      <parameter>- -without-zlib-version-check</parameter>: This prevents
+      <application>OpenSSH</application> from checking the version of
+      the system <application>Zlib</application>.  We need to use this
+      switch or the version check would mistakenly report the latest
+      <application>Zlib</application> 1.13 <quote>too old</quote> and
+      reject it.
+    </para>
+-->
+    <para>
+      <option>--with-pam</option>: This parameter enables
+      <application>Linux-PAM</application> support in the build.
+    </para>
+
+    <para>
+      <option>--with-xauth=$XORG_PREFIX/bin/xauth</option>: Set the default
+      location for the <command>xauth</command> binary for X authentication.
+      The environment variable <envar>XORG_PREFIX</envar> should be set
+      following !!! LINK !!!<!--<xref linkend='xorg-env'/>-->. This can also be controlled from
+      <filename>sshd_config</filename> with the XAuthLocation keyword. You can
+      omit this switch if <application>Xorg</application> is already installed.
+    </para>
+
+    <para>
+      <option>--with-kerberos5=/usr</option>: This option is used to
+      include Kerberos 5 support in the build.
+    </para>
+
+    <para>
+      <option>--with-libedit</option>: This option enables line editing
+      and history features for <command>sftp</command>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring OpenSSH</title>
+
+    <sect3 id="openssh-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>~/.ssh/*</filename>,
+      <filename>/etc/ssh/ssh_config</filename>, and
+      <filename>/etc/ssh/sshd_config</filename>
+        </para>
+
+      <indexterm zone="openssh openssh-config">
+        <primary sortas="e-AA.ssh">~/.ssh/*</primary>
+      </indexterm>
+
+      <indexterm zone="openssh openssh-config">
+        <primary sortas="e-etc-ssh-ssh_config">/etc/ssh/ssh_config</primary>
+      </indexterm>
+
+      <indexterm zone="openssh openssh-config">
+        <primary sortas="e-etc-ssh-sshd_config">/etc/ssh/sshd_config</primary>
+      </indexterm>
+
+      <para>
+        There are no required changes to any of these files. However,
+        you may wish to view the
+        <filename class='directory'>/etc/ssh/</filename> files and make any
+        changes appropriate for the security of your system. One recommended
+        change is that you disable
+        <systemitem class='username'>root</systemitem> login via
+        <command>ssh</command>. Execute the following command as the
+        <systemitem class='username'>root</systemitem> user to disable
+        <systemitem class='username'>root</systemitem> login via
+        <command>ssh</command>:
+      </para>
+
+<screen role="root"><userinput>echo "PermitRootLogin no" &gt;&gt; /etc/ssh/sshd_config</userinput></screen>
+
+      <para>
+        If you want to be able to log in without typing in your password, first
+        create ~/.ssh/id_rsa and ~/.ssh/id_rsa.pub with
+        <command>ssh-keygen</command> and then copy ~/.ssh/id_rsa.pub to
+        ~/.ssh/authorized_keys on the remote computer that you want to log into.
+        You'll need to change REMOTE_USERNAME and REMOTE_HOSTNAME for the username and hostname of the remote
+        computer and you'll also need to enter your password for the ssh-copy-id command
+        to succeed:
+      </para>
+
+<screen role='nodump'><userinput>ssh-keygen &amp;&amp;
+ssh-copy-id -i ~/.ssh/id_ed25519.pub <replaceable>REMOTE_USERNAME</replaceable>@<replaceable>REMOTE_HOSTNAME</replaceable></userinput></screen>
+
+      <para>
+        Once you've got passwordless logins working it's actually more secure
+        than logging in with a password (as the private key is much longer than
+        most people's passwords). If you would like to now disable password
+        logins, as the <systemitem class="username">root</systemitem> user:
+      </para>
+
+
+<screen role="root"><userinput>echo "PasswordAuthentication no" >> /etc/ssh/sshd_config &amp;&amp;
+echo "KbdInteractiveAuthentication no" >> /etc/ssh/sshd_config</userinput></screen>
+
+      <para>
+        If you added <application>Linux-PAM</application> support and you want
+        ssh to use it then you will need to add a configuration file for
+        <application>sshd</application> and enable use of
+        <application>LinuxPAM</application>. Note, ssh only uses PAM to check
+        passwords, if you've disabled password logins these commands are not
+        needed. If you want to use PAM, issue the following commands as the
+        <systemitem class='username'>root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>sed 's@d/login@d/sshd@g' /etc/pam.d/login &gt; /etc/pam.d/sshd &amp;&amp;
+chmod 644 /etc/pam.d/sshd &amp;&amp;
+echo "UsePAM yes" &gt;&gt; /etc/ssh/sshd_config</userinput></screen>
+
+      <para>
+        Additional configuration information can be found in the man
+        pages for <command>sshd</command>, <command>ssh</command> and
+        <command>ssh-agent</command>.
+      </para>
+    </sect3>
+
+    <sect3  id="openssh-init">
+      <title><phrase revision="sysv">Boot Script</phrase>
+             <phrase revision="systemd">Systemd Unit</phrase></title>
+
+      <para revision="sysv">
+        To start the SSH server at system boot, install the
+        <filename>/etc/rc.d/init.d/sshd</filename> init script included
+        in the <xref linkend="bootscripts"/> package.
+      </para>
+
+      <para revision="systemd">
+        To start the SSH server at system boot, install the
+        <filename>sshd.service</filename> unit included in the
+        <xref linkend="systemd-units"/> package.
+      </para>
+
+      <indexterm zone="openssh openssh-init">
+        <primary sortas="f-sshd">sshd</primary>
+      </indexterm>
+
+<screen role="root"><userinput>make install-sshd</userinput></screen>
+    </sect3>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          scp, sftp, <!--slogin (symlink to ssh),--> ssh, ssh-add, ssh-agent,
+          ssh-copy-id, ssh-keygen, ssh-keyscan, and sshd
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /etc/ssh,
+          /usr/share/doc/openssh-&openssh-version;, and
+          /var/lib/sshd
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="scp">
+        <term><command>scp</command></term>
+        <listitem>
+          <para>
+            is a file copy program that acts like <command>rcp</command> except
+            it uses an encrypted protocol
+          </para>
+          <indexterm zone="openssh scp">
+            <primary sortas="b-scp">scp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sftp">
+        <term><command>sftp</command></term>
+        <listitem>
+          <para>
+            is an FTP-like program that works over the SSH1 and SSH2 protocols
+          </para>
+          <indexterm zone="openssh sftp">
+            <primary sortas="b-sftp">sftp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+<!-- Not installed anymore as of 8.5p1
+      <varlistentry id="slogin">
+        <term><command>slogin</command></term>
+        <listitem>
+          <para>
+            is a symlink to <command>ssh</command>
+          </para>
+          <indexterm zone="openssh slogin">
+            <primary sortas="b-slogin">slogin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+-->
+      <varlistentry id="ssh">
+        <term><command>ssh</command></term>
+        <listitem>
+          <para>
+            is an <command>rlogin</command>/<command>rsh</command>-like client
+            program except it uses an encrypted protocol
+          </para>
+          <indexterm zone="openssh ssh">
+            <primary sortas="b-ssh">ssh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sshd">
+        <term><command>sshd</command></term>
+        <listitem>
+          <para>
+            is a daemon that listens for <command>ssh</command> login requests
+          </para>
+          <indexterm zone="openssh sshd">
+            <primary sortas="b-sshd">sshd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ssh-add">
+        <term><command>ssh-add</command></term>
+        <listitem>
+          <para>
+            is a tool which adds keys to the <command>ssh-agent</command>
+          </para>
+          <indexterm zone="openssh ssh-add">
+            <primary sortas="b-ssh-add">ssh-add</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ssh-agent">
+        <term><command>ssh-agent</command></term>
+        <listitem>
+          <para>
+            is an authentication agent that can store private keys
+          </para>
+          <indexterm zone="openssh ssh-agent">
+            <primary sortas="b-ssh-agent">ssh-agent</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ssh-copy-id">
+        <term><command>ssh-copy-id</command></term>
+        <listitem>
+          <para>
+            is a script that enables logins on remote machines using local keys
+          </para>
+          <indexterm zone="openssh ssh-copy-id">
+            <primary sortas="b-ssh-copy-id">ssh-copy-id</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ssh-keygen">
+        <term><command>ssh-keygen</command></term>
+        <listitem>
+          <para>
+            is a key generation tool
+          </para>
+          <indexterm zone="openssh ssh-keygen">
+            <primary sortas="b-ssh-keygen">ssh-keygen</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ssh-keyscan">
+        <term><command>ssh-keyscan</command></term>
+        <listitem>
+          <para>
+            is a utility for gathering public host keys from a number of hosts
+          </para>
+          <indexterm zone="openssh ssh-keyscan">
+            <primary sortas="b-ssh-keyscan">ssh-keyscan</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </sect2>
+
+</sect1>

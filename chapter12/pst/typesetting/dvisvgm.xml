@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!-- This can be accessed via https://dvisvgm.de/Downloads/
+       NOT via the tags at github - those use autogen.sh -->
+  <!ENTITY dvisvgm-download-http "https://github.com/mgieseki/dvisvgm/releases/download/&dvisvgm-version;/dvisvgm-&dvisvgm-version;.tar.gz">
+  <!ENTITY dvisvgm-download-ftp  " ">
+  <!ENTITY dvisvgm-md5sum        "19d8506d97d2312c9b3e932a2155df1e">
+  <!ENTITY dvisvgm-size          "2.9 MB">
+  <!-- for dvisvgm-3.22 on top of TL2023, 7 MB for program,
+       a few KB for bigger dvisvgm.1 and the PDF man page was not updated.
+       For a DESTDIR this would be 313 MB and 45 MB. -->
+  <!ENTITY dvisvgm-buildsize     "269 MB (net 7 MB installed after overwriting files in $TEXLIVE_PREFIX/texmf-dist/, add 948 MB for the tests)">
+  <!ENTITY dvisvgm-time          "0.8 SBU (add 0.5 SBU for the tests, both using parallelism=4)">
+]>
+
+<sect1 id="dvisvgm" xreflabel="dvisvgm-&dvisvgm-version;">
+  <?dbhtml filename="dvisvgm.html"?>
+
+
+  <title>dvisvgm-&dvisvgm-version;</title>
+
+  <indexterm zone="dvisvgm">
+    <primary sortas="a-dvisvgm">dvisvgm</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to dvisvgm</title>
+
+    <para>
+      The <application>dvisvgm</application> package converts DVI, EPS and
+      PDF files to SVG format.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&dvisvgm-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&dvisvgm-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &dvisvgm-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &dvisvgm-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &dvisvgm-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &dvisvgm-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">dvisvgm Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <!-- EDITORS: the docs say it needs clipper, but it uses an internal
+       modified version and cannot be built with system clipper -->
+      <xref linkend="brotli"/>,
+      <xref linkend="gs"/>,
+      <xref linkend="potrace"/>, and
+      <xref linkend="texlive"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="woff2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="asciidoc"/> with
+      <xref linkend="xmlto"/> and
+      <xref linkend="libxslt"/> (see command explanations),
+      <ulink url="https://dblatex.sourceforge.net/">dblatex</ulink> (with the above) and
+      <!-- version checked for dvisvgm-2.9, 0.7.3 is mentioned in the
+           news and is the latest version at 2020-03-21
+           maybe change to 'a recent version' if that releases faster -->
+      <ulink url="https://github.com/Cyan4973/xxHash/releases/latest">xxHash</ulink>
+      (the current version is included in the tarball)
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of dvisvgm</title>
+
+<!-- Editors: This is in the book for svg output from asymptote. tested in
+ https://www.linuxfromscratch.org/~ken/asy-nontex-testfiles/asy-test-20200123.tar.xz
+ Can also be tested with texlive including tikz
+ https://www.linuxfromscratch.org/~ken/tex-testfiles/ https://www.linuxfromscratch.org/~ken/
+ Or, use use it to convert first or specified page(s) of a PDF to SVG - see the man page
+-->
+
+   <!-- symlink for kpathsea moved to texlive so that if it already exists for
+   evince from a previous year it will be recreated -->
+
+    <para>
+      The test suite assumes that a modern version of <application>Python</application>
+      has been installed as plain <command>python</command>. Changing this to use
+      <command>python3</command> requires a sed to one <filename>Makefile.in</filename>
+      file.
+    </para>
+
+    <para>
+      Install <application>dvisvgm</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>sed -i 's/python/&amp;3/' tests/Makefile.in         &amp;&amp;
+./configure                                     \
+    --bindir=$TEXLIVE_PREFIX/bin/${TEXARCH}     \
+    --mandir=$TEXLIVE_PREFIX/texmf-dist/doc/man \
+    --with-kpathsea=$TEXLIVE_PREFIX             &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+<!-- This is now done in Texlive
+    <para>
+      <command>ln -svf $TEXLIVE_PREFIX/lib/libkpathsea.so /usr/lib</command>:
+      Without this, the program will not link correctly,
+    </para>
+-->
+<!-- The autoreconf command is not used above anymore.
+    <para>
+      <command>autoreconf -fiv</command>: The versions of
+      <application>autoconf</application> and <application>automake</application>
+      used when this package was created are older than the current versions in
+      LFS. That causes 'make' to fail when it reaches the 'tests' subdirectory
+      unless autoreconf is forced to install missing (i.e. newer) auxiliary
+      files.
+    </para>
+-->
+
+    <!-- EDITORS: the doc target to rebuild the manpage (make man) is not
+      recognised unless invoked from the doc directory (unlike make pdf which
+      can be invoked from top-level but needs dblatex), and I see no utility
+      in explaining how to regenerate it. ken -->
+    <para>
+      <parameter>--with-kpathsea=$TEXLIVE_PREFIX</parameter>: This allows
+      the build system to find the headers for <filename
+      class="libraryfile">kpathsea</filename>
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          dvisvgm
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="dvisvgm-prog">
+        <term><command>dvisvgm</command></term>
+        <listitem>
+          <para>
+            converts DVI, EPS and PDF files to the SVG format
+          </para>
+          <indexterm zone="dvisvgm dvisvgm-prog">
+            <primary sortas="b-dvisvgm">dvisvgm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </sect2>
+
+</sect1>

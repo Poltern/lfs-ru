@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY hwdata-download-http "https://github.com/vcrhonek/hwdata/archive/v&hwdata-version;/hwdata-&hwdata-version;.tar.gz">
+  <!ENTITY hwdata-download-ftp  " ">
+  <!ENTITY hwdata-md5sum        "9db68f209f3393aa5bfa3217d7c890c5">
+  <!ENTITY hwdata-size          "2.3 MB">
+  <!ENTITY hwdata-buildsize     "18 MB">
+  <!ENTITY hwdata-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="hwdata" xreflabel="hwdata-&hwdata-version;">
+  <?dbhtml filename="hwdata.html"?>
+
+
+  <title>hwdata-&hwdata-version;</title>
+
+  <indexterm zone="hwdata">
+    <primary sortas="g-hwdata">hwdata</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to hwdata</title>
+
+    <para>
+      The <application>hwdata</application> package contains
+      current PCI and vendor id data.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&hwdata-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&hwdata-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &hwdata-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &hwdata-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &hwdata-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &hwdata-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of hwdata</title>
+
+    <para>
+      Install <application>hwdata</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-blacklist</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the &root; user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>None</seg>
+        <seg>
+          /usr/share/hwdata
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+  </sect2>
+
+</sect1>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY pciutils-download-http "https://mj.ucw.cz/download/linux/pci/pciutils-&pciutils-version;.tar.gz">
+  <!ENTITY pciutils-download-ftp  " ">
+  <!ENTITY pciutils-md5sum        "43498696be1ff05c369019296b4dc21d">
+  <!ENTITY pciutils-size          "652.6 KB">
+  <!ENTITY pciutils-buildsize     "5.7 MB">
+  <!ENTITY pciutils-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="pciutils" xreflabel="pciutils-&pciutils-version;">
+  <?dbhtml filename="pciutils.html"?>
+
+
+  <title>pciutils-&pciutils-version;</title>
+
+  <indexterm zone="pciutils">
+    <primary sortas="a-pciutils">pciutils</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to PCI Utils</title>
+
+    <para>
+      The <application>PCI Utils</application> package contains
+      a set of programs for listing PCI devices, inspecting
+      their status and setting their configuration registers.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&pciutils-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&pciutils-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &pciutils-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &pciutils-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &pciutils-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &pciutils-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">pciutils Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+       <xref role="runtime" linkend="hwdata"/> (runtime)
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of PCI Utils</title>
+
+    <para>
+      Prevent the installation of the <filename>pci.ids</filename> file
+      to avoid a conflict with the <xref linkend='hwdata'/> package:
+    </para>
+
+    <screen><userinput>sed -r '/INSTALL.*(PCI_IDS|update-pciids)/d' \
+    -i Makefile</userinput></screen>
+
+    <para>
+      Install <application>PCI Utils</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>make PREFIX=/usr                \
+     SHAREDIR=/usr/share/hwdata \
+     SHARED=yes</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make PREFIX=/usr                \
+     SHAREDIR=/usr/share/hwdata \
+     SHARED=yes                 \
+     install install-lib        &amp;&amp;
+
+chmod -v 755 /usr/lib/libpci.so</userinput></screen>
+
+    <para>
+      Next, install the <xref linkend='hwdata'/> package for the
+      <filename>pci.ids</filename> file.
+    </para>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>SHARED=yes</parameter>: This parameter enables building of
+      the shared library instead of the static one.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          lspci, pcilmr, and setpci
+        </seg>
+        <seg>
+          libpci.so
+        </seg>
+        <seg>
+          /usr/include/pci
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="lspci">
+        <term><command>lspci</command></term>
+        <listitem>
+          <para>
+            is a utility for displaying information about all PCI buses
+            in the system and all devices connected to them
+          </para>
+          <indexterm zone="pciutils lspci">
+            <primary sortas="b-lspci">lspci</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pcilmr">
+        <term><command>pcilmr</command></term>
+        <listitem>
+          <para>
+            is a utility for margining PCIe links
+          </para>
+          <indexterm zone="pciutils pcilmr">
+            <primary sortas="b-pcilmr">pcilmr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="setpci">
+        <term><command>setpci</command></term>
+        <listitem>
+          <para>
+            is a utility for querying and configuring PCI devices
+          </para>
+          <indexterm zone="pciutils setpci">
+            <primary sortas="b-setpci">setpci</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpci">
+      <term><filename class="libraryfile">libpci.so</filename></term>
+      <listitem>
+        <para>
+          is a library that allows applications to access the PCI
+          subsystem
+        </para>
+        <indexterm zone="pciutils libpci">
+          <primary sortas="c-libpci">libpci.so</primary>
+        </indexterm>
+      </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY desktop-file-utils-download-http
+           "https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-&desktop-file-utils-version;.tar.xz">
+  <!ENTITY desktop-file-utils-download-ftp  " ">
+  <!ENTITY desktop-file-utils-md5sum        "fdf9215aea91acb6aebc43f770537f2c">
+  <!ENTITY desktop-file-utils-size          "80 KB">
+  <!ENTITY desktop-file-utils-buildsize     "1.2 MB">
+  <!ENTITY desktop-file-utils-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="desktop-file-utils" xreflabel="desktop-file-utils-&desktop-file-utils-version;">
+  <?dbhtml filename="desktop-file-utils.html"?>
+
+
+  <title>desktop-file-utils-&desktop-file-utils-version;</title>
+
+  <indexterm zone="desktop-file-utils">
+    <primary sortas="a-desktop-file-utils">desktop-file-utils</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Desktop File Utils</title>
+
+    <para>
+      The <application>Desktop File Utils</application> package contains
+      command line utilities for working with <ulink
+      url="https://standards.freedesktop.org/desktop-entry-spec/latest/">
+      Desktop entries</ulink>. These utilities are used by Desktop
+      Environments and other applications to manipulate the MIME-types
+      application databases and help adhere to the Desktop Entry
+      Specification.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&desktop-file-utils-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&desktop-file-utils-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &desktop-file-utils-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &desktop-file-utils-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &desktop-file-utils-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &desktop-file-utils-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Desktop File Utils Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="glib2"/>
+    </para>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="emacs"/>
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Desktop File Utils</title>
+
+    <warning>
+      <para>
+        If you are upgrading from a previous version of desktop-file-utils that
+        used the Autotools method of installing and configuring the package,
+        you must remove the desktop-file-edit symlink by using the following
+        commands.
+      </para>
+    </warning>
+    <!-- Works around a bug in meson's symlink creation exposed by this package -->
+
+<screen role="root"><userinput>rm -fv /usr/bin/desktop-file-edit</userinput></screen>
+
+    <para>
+      Install <application>Desktop File Utils</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+meson setup --prefix=/usr --buildtype=release .. &amp;&amp;
+ninja</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>ninja install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/meson-buildtype-release.xml"/>
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Desktop File Utils</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        The <ulink
+        url="https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG
+        Base Directory</ulink> specification defines the standard locations for
+        applications to place data and configuration files. These files can be
+        used, for instance, to define the menu structure and menu items in a
+        desktop environment.
+      </para>
+
+      <para>
+        The default location for configuration files to be installed
+        is <filename class="directory">/etc/xdg</filename>, and the default
+        locations for data files are <filename
+        class="directory">/usr/local/share</filename> and <filename
+        class="directory">/usr/share</filename>. These locations can be
+        extended with the environment variables <envar>XDG_CONFIG_DIRS</envar>
+        and <envar>XDG_DATA_DIRS</envar>, respectively. The
+        <application>GNOME</application>, <application>KDE</application> and
+        <application>XFCE</application> environments respect these
+        settings.
+      </para>
+
+      <para>
+        When a package installs a <filename>.desktop</filename> file
+        to a location in one of the base data directories, the database
+        that maps MIME-types to available applications can be updated. For
+        instance, the cache file at
+        <filename>/usr/share/applications/mimeinfo.cache</filename> can
+        be rebuilt by executing the following command as the <systemitem
+        class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>install -vdm755 /usr/share/applications &amp;&amp;
+update-desktop-database /usr/share/applications</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          desktop-file-edit, desktop-file-install,
+          desktop-file-validate and
+          update-desktop-database
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="desktop-file-edit">
+        <term><command>desktop-file-edit</command></term>
+        <listitem>
+          <para>
+            is used to modify an existing desktop file entry
+          </para>
+          <indexterm zone="desktop-file-utils desktop-file-edit">
+            <primary sortas="b-desktop-file-edit">desktop-file-edit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="desktop-file-install">
+        <term><command>desktop-file-install</command></term>
+        <listitem>
+          <para>
+            is used to install a new desktop file entry. It is
+            also used to rebuild or modify the MIME-types application
+            database
+          </para>
+          <indexterm zone="desktop-file-utils desktop-file-install">
+            <primary sortas="b-desktop-file-install">desktop-file-install</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="desktop-file-validate">
+        <term><command>desktop-file-validate</command></term>
+        <listitem>
+          <para>
+            is used to verify the integrity of a desktop file
+          </para>
+          <indexterm zone="desktop-file-utils desktop-file-validate">
+            <primary sortas="b-desktop-file-validate">desktop-file-validate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="update-desktop-database">
+        <term><command>update-desktop-database</command></term>
+        <listitem>
+          <para>
+            is used to update the MIME-types application database
+          </para>
+          <indexterm zone="desktop-file-utils update-desktop-database">
+            <primary sortas="b-update-desktop-database">update-desktop-database</primary>
+          </indexterm>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+  </sect2>
+
+</sect1>

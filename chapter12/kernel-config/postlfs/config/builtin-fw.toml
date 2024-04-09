@@ -1,0 +1,6 @@
+# not really forced, though it should display as forced on most editors'
+# system
+FW_LOADER='*'
+
+EXTRA_FIRMWARE='xx/aa.bin xx/bb.bin'
+EXTRA_FIRMWARE_DIR='/lib/firmware'

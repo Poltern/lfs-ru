@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <para>
+      <parameter>sed -i ... SIOCGSTAMP ...</parameter>: In linux-5.2 the
+      definitions of SIOCGSTAMP and SIOCGSTAMPNS were moved from
+      &lt;sys/socket.h&gt; which packages have traditionally included to
+      get them. The sed(s) to hard-code the values enable the package to
+      compile correctly.
+    </para>

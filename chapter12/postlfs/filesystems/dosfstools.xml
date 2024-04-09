@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY dosfstools-download-http "https://github.com/dosfstools/dosfstools/releases/download/v&dosfstools-version;/dosfstools-&dosfstools-version;.tar.gz">
+  <!ENTITY dosfstools-download-ftp  " ">
+  <!ENTITY dosfstools-md5sum        "49c8e457327dc61efab5b115a27b087a">
+  <!ENTITY dosfstools-size          "314 KB">
+  <!ENTITY dosfstools-buildsize     "4.5 MB (with tests)">
+  <!ENTITY dosfstools-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="dosfstools" xreflabel="dosfstools-&dosfstools-version;">
+  <?dbhtml filename="dosfstools.html"?>
+
+
+  <title>dosfstools-&dosfstools-version;</title>
+
+  <indexterm zone="dosfstools">
+    <primary sortas="a-dosfstools">dosfstools</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to dosfstools</title>
+
+    <para>
+      The <application>dosfstools</application> package contains various
+      utilities for use with the FAT family of file systems.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&dosfstools-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&dosfstools-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &dosfstools-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &dosfstools-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &dosfstools-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &dosfstools-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+
+  </sect2>
+
+  <sect2 role="kernel" id='dosfstools-kernel'>
+    <title>Kernel Configuration</title>
+
+    <para>
+      Enable the following option in the kernel configuration
+      and recompile the kernel if you need to mount a FAT-family filesystem:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="dosfstools-kernel.xml"/>
+
+    <para>
+      Note that <option>CONFIG_MSDOS_FS</option> deliberately unsupport
+      long file names.  <option>CONFIG_VFAT_FS</option> should be used
+      instead unless you really want to enforce the DOS-style
+      <quote>8.3</quote> file names.
+    </para>
+
+    <para>
+      You can mount a FAT-family filesystem once the kernel supports it.
+      If you don't need to create, check, or relabel a FAT-family system,
+      you may skip this package.
+    </para>
+
+    <indexterm zone="dosfstools dosfstools-kernel">
+      <primary sortas="d-fat">FAT Support in Kernel</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of dosfstools</title>
+
+    <para>
+      Install <application>dosfstools</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr            \
+            --enable-compat-symlinks \
+            --mandir=/usr/share/man  \
+            --docdir=/usr/share/doc/dosfstools-&dosfstools-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--enable-compat-symlinks</parameter>: This switch creates the
+      <application>dosfsck</application>,
+      <application>dosfslabel</application>,
+      <application>fsck.msdos</application>,
+      <application>fsck.vfat</application>,
+      <application>mkdosfs</application>,
+      <application>mkfs.msdos</application>, and
+      <application>mkfs.vfat</application> symlinks required by some programs.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+
+      <seglistitem>
+        <seg>fatlabel, fsck.fat, and mkfs.fat</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fatlabel">
+        <term><command>fatlabel</command></term>
+        <listitem>
+          <para>
+            sets or gets a MS-DOS filesystem label from a given device
+          </para>
+          <indexterm zone="dosfstools fatlabel">
+            <primary sortas="b-fatlabel">fatlabel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fsckfat">
+        <term><command>fsck.fat</command></term>
+        <listitem>
+          <para>
+            checks and repairs MS-DOS filesystems
+          </para>
+          <indexterm zone="dosfstools fsckfat">
+            <primary sortas="b-fsckfat">fsck.fat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkfsfat">
+        <term><command>mkfs.fat</command></term>
+        <listitem>
+          <para>
+            creates an MS-DOS filesystem under Linux
+          </para>
+          <indexterm zone="dosfstools mkfsfat">
+            <primary sortas="b-mkfsfat">mkfs.fat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

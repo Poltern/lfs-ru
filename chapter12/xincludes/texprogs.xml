@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+
+          <para>The programs included in <application>TeX</application>
+          are too numerous to individually list. Please refer to the individual
+          program HTML and PDF pages in the
+          <!-- the html and pdf here refer to file extensions, not abbreviations,
+           so they are in lowercase -->
+          various html, man, or pdf files within the subdirectories of
+          <filename class="directory">&texlive-year;/texmf-dist/</filename>.
+          Using <command>texdoc pdflatex</command> ( replace
+          <emphasis>pdflatex</emphasis> with the command name ) may also be
+          useful
+          </para>

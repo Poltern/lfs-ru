@@ -1,0 +1,44 @@
+# Forced by !EXPERT
+NAMESPACES = { value = '*', forced = true }
+
+USER_NS='*'
+NET_NS='*'
+
+NET='*'
+INET='*'
+IP_ADVANCED_ROUTER='*'
+IP_MULTIPLE_TABLES='*'
+NET_IPIP='*M'
+NET_IPGRE_DEMUX='*M'
+NET_IPGRE='*M'
+NET_IPVTI='*M'
+IPV6='*'
+IPV6_TUNNEL='*M'
+IPV6_SIT='*M'
+IPV6_MULTIPLE_TABLES='*'
+NETFILTER='*'
+NF_TABLES='*M'
+NF_TABLES_NETDEV='*'
+
+# forced by NFT_FWD_NETDEV
+NF_DUP_NETDEV = { value = '*M', forced = true }
+
+NFT_FWD_NETDEV = '*M'
+BRIDGE='*M'
+
+# forced by IPVLAN
+NET_L3_MASTER_DEV = { value = '*', forced = true }
+
+VLAN_8021Q='*M'
+NETDEVICES='*'
+NET_CORE='*'
+BONDING='*M'
+DUMMY='*M'
+IFB='*M'
+MACVLAN='*M'
+MACVTAP='*M'
+IPVLAN='*M'
+VXLAN='*M'
+MACSEC='*M'
+VETH='*M'
+NET_VRF='*M'

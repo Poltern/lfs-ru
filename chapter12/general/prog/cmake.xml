@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cmake-download-http "https://cmake.org/files/v&cmake-major-version;/cmake-&cmake-version;.tar.gz">
+  <!ENTITY cmake-download-ftp  " ">
+  <!ENTITY cmake-md5sum        "03e9a16acb09f15d1b56fb09ef781a79">
+  <!ENTITY cmake-size          "10.7 MB">
+  <!ENTITY cmake-buildsize     "446 MB (add 1.2 GB for tests)">
+  <!ENTITY cmake-time          "2.2 SBU (add 3.9 SBU for tests, both using parallelism=4)">
+]>
+
+<sect1 id="cmake" xreflabel="CMake-&cmake-version;">
+  <?dbhtml filename="cmake.html"?>
+
+
+  <title>CMake-&cmake-version;</title>
+
+  <indexterm zone="cmake">
+    <primary sortas="a-CMake">CMake</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to CMake</title>
+
+    <para>
+      The <application>CMake</application> package contains a modern
+      toolset used for generating Makefiles. It is a successor of the
+      auto-generated <command>configure</command> script and aims to
+      be platform- and compiler-independent. A significant user of
+      <application>CMake</application> is <application>KDE</application>
+      since version 4.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cmake-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cmake-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cmake-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cmake-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cmake-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cmake-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/cmake-&cmake-version;-upstream_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+
+    <bridgehead renderas="sect3">CMake Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="curl"/>,
+      <xref linkend="libarchive"/>,
+      <xref linkend="libuv"/>, and
+      <xref linkend="nghttp2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gcc"/> (for gfortran),
+      <xref linkend="git"/> (for use during tests),
+      <xref linkend="mercurial"/> (for use during tests),
+      <xref linkend="openjdk"/> (for use during tests),
+      &qt5-deps; or <xref linkend="qt6" role="nodep"/> (for the Qt-based GUI),
+      <xref linkend="sphinx"/> (for building documents),
+      <xref linkend="subversion"/> (for testing),
+      <ulink url="https://github.com/google/cppdap/">cppdap</ulink>,
+      <ulink url="https://github.com/open-source-parsers/jsoncpp/">jsoncpp</ulink>, and
+      <ulink url="https://rhash.sourceforge.net/">rhash</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of CMake</title>
+
+ <!--
+    <para>
+      First, adapt the FindBoost module to use Boost-1.80.0:
+    </para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../cmake-&cmake-version;-upstream_fix-1.patch</userinput></screen>
+-->
+
+    <para>
+      Install <application>CMake</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake &amp;&amp;
+
+./bootstrap --prefix=/usr        \
+            --system-libs        \
+            --mandir=/share/man  \
+            --no-system-jsoncpp  \
+            --no-system-cppdap   \
+            --no-system-librhash \
+            --docdir=/share/doc/cmake-&cmake-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>LC_ALL=en_US.UTF-8 bin/ctest
+      -j<replaceable>&lt;N&gt;</replaceable> -O
+      cmake-&cmake-version;-test.log</command>, where
+      <replaceable>&lt;N&gt;</replaceable> is an integer between 1 and the
+      number of system cores. Setting <envar>LC_ALL</envar> is needed to
+      prevent some test failures when some of the locale variables are
+      set to non English locales.
+      <!--
+        One test, RunCMake.FindBoost, is known to fail.
+        Now cmake-3.27.0.  All tests pass.
+      -->
+    </para>
+
+    <para>
+      If you want to investigate a problem with a given "problem1-test",
+      use <command>bin/ctest -R "problem1-test"</command> and, to omit it, use
+      <command>bin/ctest -E "problem1-test"</command>. These options can be
+      used together:
+      <command>bin/ctest -R "problem1-test" -E "problem2-test"</command>.
+      Option <option>-N</option> can be used to display all
+      available tests, and you can run <command>bin/ctest</command> for a
+      sub-set of tests by using separated by spaces names or numbers as
+      options. Option <option>--help</option> can be used to show all options.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed ... Modules/GNUInstallDirs.cmake</command>:
+      This command disables applications using cmake from attempting to
+      install files in /usr/lib64/.
+    </para>
+
+    <para>
+      <parameter>--system-libs</parameter>: This switch forces the build
+      system to link against the system installed version for all needed
+      libraries but those explicitly specified via a
+      <option>--no-system-*</option> option.
+    </para>
+
+    <para>
+      <parameter>--no-system-jsoncpp</parameter> and
+      <parameter>--no-system-cppdap</parameter>: These switches remove the
+      <application>JSON-C++</application> library from the list of system
+      libraries. A bundled version of that library is used instead.
+    </para>
+
+    <para>
+      <parameter>--no-system-librhash</parameter>: This switch removes the
+      <application>librhash</application> library from the list of system
+      libraries used. A bundled version of that library is used instead.
+    </para>
+
+    <para>
+      <option>--no-system-{curl,libarchive,libuv,nghttp2}</option>: Use
+      the corresponding option in the list for the
+      <command>bootstrap</command> if one of the recommended dependencies is
+      not installed. A bundled version of the dependency will be used instead.
+    </para>
+
+    <para>
+      <option>--qt-gui</option>: This switch enables building the
+      <application>Qt</application>-based  GUI for
+      <application>CMake</application>.
+    </para>
+
+    <para>
+      <option>--parallel=</option>: This switch enables performing the
+      <application>CMake</application> bootstrap with multiple jobs
+      at one time.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          ccmake, cmake, cmake-gui (optional), cpack, and ctest
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/cmake-&cmake-major-version; and
+          /usr/share/doc/cmake-&cmake-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ccmake">
+        <term><command>ccmake</command></term>
+        <listitem>
+          <para>
+            is a curses based interactive frontend to
+            <command>cmake</command>
+          </para>
+          <indexterm zone="cmake ccmake">
+            <primary sortas="b-ccmake">ccmake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cmake-prog">
+        <term><command>cmake</command></term>
+        <listitem>
+          <para>
+            is the makefile generator
+          </para>
+          <indexterm zone="cmake cmake-prog">
+            <primary sortas="b-cmake">cmake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cmake-gui">
+        <term><command>cmake-gui</command></term>
+        <listitem>
+          <para>
+            (optional) is the <application>Qt</application>-based frontend to
+            <command>cmake</command>
+          </para>
+          <indexterm zone="cmake cmake-gui">
+            <primary sortas="b-cmake-gui">cmake-gui</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cpack">
+        <term><command>cpack</command></term>
+        <listitem>
+          <para>
+            is the <application>CMake</application> packaging program
+          </para>
+          <indexterm zone="cmake cpack">
+            <primary sortas="b-cpack">cpack</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ctest">
+        <term><command>ctest</command></term>
+        <listitem>
+          <para>
+            is a testing utility for cmake-generated build trees
+          </para>
+          <indexterm zone="cmake ctest">
+            <primary sortas="b-ctest">ctest</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;]>
+
+
+    <!-- to go inside a NOTE on mozilla packages which need shm
+         mounted when configured or similar in chroot.
+         Unfortunately, the DTD says an xinclude can only include
+         one paragraph.
+
+         We now have exactly one paragraph, git blame this line for
+         details.                                             -->
+
+    <para>
+      If you are compiling this package in chroot you must
+      ensure that <filename>/dev/shm</filename> is mounted. If you do not
+      do this, the <application>Python</application> configuration will fail
+      with a traceback report referencing
+      <filename>/usr/lib/pythonN.N/multiprocessing/synchronize.py</filename>.
+      As the &root; user, run:
+
+<screen role="nodump"><userinput>mountpoint -q /dev/shm || mount -t tmpfs devshm /dev/shm</userinput></screen>
+
+    </para>

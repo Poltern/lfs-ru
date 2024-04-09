@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
+
+
+    <para>
+      This module uses the standard build and installation instructions:
+
+<screen><userinput>perl Makefile.PL &amp;&amp;
+make             &amp;&amp;
+make test</userinput></screen>
+
+      Now, as the <systemitem class="username">root</systemitem> user:
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    </para>

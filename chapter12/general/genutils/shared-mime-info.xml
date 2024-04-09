@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY shared-mime-info-download-http
+           "https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/&shared-mime-info-version;/shared-mime-info-&shared-mime-info-version;.tar.gz">
+  <!ENTITY shared-mime-info-download-ftp  " ">
+  <!ENTITY shared-mime-info-md5sum        "aac56db912b7b12a04fb0018e28f2f36">
+  <!ENTITY shared-mime-info-size          "7.5 MB">
+  <!ENTITY shared-mime-info-buildsize     "26 MB (with tests)">
+  <!ENTITY shared-mime-info-time          "less than 0.1 SBU (with tests)">
+
+  <!ENTITY xdgmime-download-http "&sources-anduin-http;/xdgmime/xdgmime.tar.xz">
+  <!ENTITY xdgmime-md5sum        "7dfb4446705d345d3acd672024049e86">
+
+]>
+
+<sect1 id="shared-mime-info"
+xreflabel="shared-mime-info-&shared-mime-info-version;">
+  <?dbhtml filename="shared-mime-info.html" ?>
+
+
+  <title>shared-mime-info-&shared-mime-info-version;</title>
+
+  <indexterm zone="shared-mime-info">
+    <primary sortas="a-shared-mime-info">shared-mime-info</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Shared Mime Info</title>
+
+    <para>
+      The <application>Shared Mime Info</application> package contains a
+      MIME database. This allows central updates of MIME information for all
+      supporting applications.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&shared-mime-info-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&shared-mime-info-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &shared-mime-info-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &shared-mime-info-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &shared-mime-info-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &shared-mime-info-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Optional download, required to run the test suite:
+          <ulink url="&xdgmime-download-http;"/>
+        </para>
+        <para>
+          xdgmime md5sum: &xdgmime-md5sum;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Shared Mime Info Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="glib2"/> and
+      <xref linkend="libxml2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="xmlto"/>
+    </para>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Shared Mime Info</title>
+
+    <para>
+      Install <application>Shared Mime Info</application> by running the
+      following commands:
+    </para>
+
+    <para>
+      If you wish to run the test suite, you must first extract the
+      <filename>xdgmime</filename> tarball into the current directory,
+      and compile it so that <command>meson</command> can find it:
+    </para>
+
+<screen remap="test"><userinput>tar -xf ../xdgmime.tar.xz &amp;&amp;
+make -C xdgmime</userinput></screen>
+
+    <para>
+      Now build the package:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+meson setup --prefix=/usr --buildtype=release -Dupdate-mimedb=true .. &amp;&amp;
+ninja</userinput></screen>
+
+    <para role="optional">
+      If you have followed the instructions above to build
+      <application>xdgmime</application>, to test the result issue
+      <command>ninja test</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>ninja install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/meson-buildtype-release.xml"/>
+
+    <para>
+      <parameter>-Dupdate-mimedb=true</parameter>: This parameter tells
+      the build system to run <command>update-mime-database</command> during
+      installation. Otherwise, this must be done manually in order to be
+      able to use the MIME database.
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          update-mime-database
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/mime
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="update-mime-database">
+        <term><command>update-mime-database</command></term>
+        <listitem>
+          <para>
+            assists in adding MIME data to the database
+          </para>
+          <indexterm zone="shared-mime-info update-mime-database">
+            <primary sortas="b-update-mime-database">update-mime-database</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

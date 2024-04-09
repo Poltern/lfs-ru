@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libavif-download-http "https://github.com/AOMediaCodec/libavif/archive/v&libavif-version;/libavif-&libavif-version;.tar.gz">
+  <!ENTITY libavif-download-ftp  " ">
+  <!ENTITY libavif-md5sum        "8c786fd21f8757ace8cc011401e4d420">
+  <!ENTITY libavif-size          "11 MB">
+  <!ENTITY libavif-buildsize     "16 MB">
+  <!ENTITY libavif-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="libavif" xreflabel="libavif-&libavif-version;">
+  <?dbhtml filename="libavif.html"?>
+
+  <title>libavif-&libavif-version;</title>
+
+  <indexterm zone="libavif">
+    <primary sortas="a-libavif">libavif</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libavif</title>
+
+    <para>
+      The <application>libavif</application> package contains a library used
+      for encoding and decoding AVIF files.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libavif-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libavif-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libavif-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libavif-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libavif-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libavif-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libavif Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libaom"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="gdk-pixbuf"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <ulink url="https://github.com/google/googletest">gtest</ulink>,
+      <ulink url="https://code.videolan.org/videolan/dav1d">libdav1d</ulink>,
+      <ulink url="https://chromium.googlesource.com/libyuv/libyuv/">libyuv</ulink>,
+      <ulink url="https://github.com/xiph/rav1e">rav1e</ulink>, and
+      <ulink url="https://gitlab.com/AOMediaCodec/SVT-AV1">svt-av1</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libavif</title>
+
+    <para>
+      Install <application>libavif</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DAVIF_CODEC_AOM=ON         \
+      -DAVIF_BUILD_GDK_PIXBUF=ON  \
+      -G Ninja .. &amp;&amp;
+ninja</userinput></screen>
+
+    <para>
+      This package does come with a test suite, but it requires
+      <ulink url="https://github.com/google/googletest">gtest</ulink>, which
+      is not part of BLFS.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>ninja install</userinput></screen>
+
+    <para>
+      The AV1 format needs to be added to the loaders cache. As the
+      &root; user:
+    </para>
+
+<screen role="root"><userinput>gdk-pixbuf-query-loaders --update-cache</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>-DAVIF_CODEC_AOM=ON</parameter>: This switch enables using
+      the AOM codec. This package is useless without at least one codec
+      built in.
+    </para>
+
+    <para>
+      <parameter>-DAVIF_BUILD_GDK_PIXBUF=ON</parameter>: This switch builds
+      the AVIF loader for applications which use gdk-pixbuf. Remove it if you
+      have not installed <xref role="nodep" linkend="gdk-pixbuf"/>.
+    </para>
+
+    <para>
+      <option>-DAVIF_CODEC_DAV1D=ON</option>: Use this switch if you have
+      installed <ulink url="https://code.videolan.org/videolan/dav1d">libdav1d</ulink>
+      and wish to use it as a codec.
+    </para>
+
+    <para>
+      <option>-DAVIF_CODEC_RAV1E=ON</option>: Use this switch if you have
+      installed <ulink url="https://github.com/xiph/rav1e">rav1e</ulink> and
+      wish to use it as a codec.
+    </para>
+
+    <para>
+      <option>-DAVIF_CODEC_SVT=ON</option>: Use this switch if you have
+      installed <ulink url="https://gitlab.com/AOMediaCodec/SVT-AV1">svt-av1</ulink>
+      and wish to use it as a codec.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libavif.so and
+          libpixbbufloader-avif.so (in /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders)
+        </seg>
+        <seg>
+          /usr/include/avif and
+          /usr/lib/cmake/libavif
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libavif-lib">
+        <term><filename class="libraryfile">libavif.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that provide a portable C implementation of the
+            AV1 Image Format
+          </para>
+          <indexterm zone="libavif-lib libavif">
+            <primary sortas="c-libavif">libavif.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpixbufloader-avif">
+        <term><filename class="libraryfile">libpixbufloader-avif.so</filename></term>
+        <listitem>
+          <para>
+            allows applications which use gdk-pixbuf to read AVIF images
+          </para>
+          <indexterm zone="libavif libpixbufloader-avif">
+            <primary sortas="c-libpixbufloader-avif">libpixbufloader-avif.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+</sect1>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY doxygen-download-http "https://doxygen.nl/files/doxygen-&doxygen-version;.src.tar.gz">
+  <!ENTITY doxygen-download-ftp  " ">
+  <!ENTITY doxygen-md5sum        "c7455e9961c3491479929935c5087bf6">
+  <!ENTITY doxygen-size          "8.0 MB">
+  <!ENTITY doxygen-buildsize     "253 MB (with tests)">
+  <!ENTITY doxygen-time          "2.1 SBU (using parallelism=4; with tests)">
+]>
+
+<sect1 id="doxygen" xreflabel="Doxygen-&doxygen-version;">
+  <?dbhtml filename="doxygen.html"?>
+
+
+  <title>Doxygen-&doxygen-version;</title>
+
+  <indexterm zone="doxygen">
+    <primary sortas="a-Doxygen">Doxygen</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Doxygen</title>
+
+    <para>
+      The <application>Doxygen</application> package contains a documentation
+      system for C++, C, Java, Objective-C, Corba IDL and to some extent PHP,
+      C# and D. It is useful for generating HTML documentation and/or an
+      off-line reference manual from a set of documented source files. There
+      is also support for generating output in RTF, PostScript, hyperlinked
+      PDF, compressed HTML, and Unix man pages. The documentation is extracted
+      directly from the sources, which makes it much easier to keep the
+      documentation consistent with the source code.
+    </para>
+
+    <para>
+      You can also configure <application>Doxygen</application> to extract
+      the code structure from undocumented source files. This is very useful
+      to quickly find your way in large source distributions. Used along with
+      <application>Graphviz</application>, you can also visualize the relations
+      between the various elements by means of include dependency graphs,
+      inheritance diagrams, and collaboration diagrams, which are all generated
+      automatically.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&doxygen-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&doxygen-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &doxygen-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &doxygen-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &doxygen-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &doxygen-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>
+          Required patch: <ulink
+          url="&patch-root;/doxygen-&doxygen-version;-flex_2_6_0_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>-->
+
+    <bridgehead renderas="sect3">Doxygen Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="cmake"/> and
+      <xref linkend="git"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="graphviz"/>,
+      <xref linkend="gs"/>,
+      <xref linkend="libxml2"/> (required for the tests),
+      <xref linkend="llvm"/> (with clang),
+      <!-- Can someone check this? With LLVM7, it fails to build. -->
+      &qt5-deps; (for doxywizard),
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>),
+      <xref linkend="xapian"/> (for doxyindexer), and
+      <ulink url="https://javacc.github.io/javacc/">javacc</ulink>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Doxygen</title>
+
+    <note>
+      <para>
+        When untarring this package, you may see messages such as
+        <quote>Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.apple.TextEncoding'</quote>.
+        These messages are harmless, and can be safely ignored.
+      </para>
+    </note>
+
+    <para>
+      First, fix up some python scripts:
+    </para>
+
+<screen><userinput>grep -rl '^#!.*python$' | xargs sed -i '1s/python/&amp;3/'</userinput></screen>
+
+    <para>
+      Install <application>Doxygen</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir -v build &amp;&amp;
+cd       build &amp;&amp;
+
+cmake -G "Unix Makefiles"         \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -Wno-dev .. &amp;&amp;
+
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make tests</command>.
+      <!--One test, 012_cite.dox, is known to fail.-->
+    </para>
+
+    <para>
+      If you wish to generate the package documentation, you must have
+      <application>Python</application>, <application>TeX Live</application>
+      (for HTML docs) and <application>Ghostscript</application> (for PDF docs)
+      installed, then issue the following command:
+    </para>
+
+<screen remap="doc"><userinput>cmake -DDOC_INSTALL_DIR=share/doc/doxygen-&doxygen-version; -Dbuild_doc=ON .. &amp;&amp;
+
+make docs</userinput></screen>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -vm644 ../doc/*.1 /usr/share/man/man1</userinput></screen>
+
+    <para>
+      If you have generated the package documentation, then the man pages are
+      automatically installed, and you do not need to run the last
+      <command>install ...</command> command.
+    </para>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <option>-Dbuild_wizard=ON</option>: Use this switch if
+      <application>Qt5</application> is installed and you wish to build the GUI
+      front-end.
+    </para>
+
+    <para>
+      <option>-Dbuild_search=ON</option>: Use this switch if
+      <application>xapian</application> is installed and you wish to build
+      external search tools (<command>doxysearch.cgi</command> and
+      <command>doxyindexer)</command>.
+    </para>
+<!--
+    <para>
+      <option>-Dforce_qt4=ON</option>: Use this switch to build
+      <command>doxywizard</command> with Qt4 even if Qt5 is installed.
+    </para>-->
+
+    <para>
+      <option>-Duse_libclang=ON</option>: Use this switch if
+      <application>llvm</application> with <application>clang</application> are
+      installed, to add support for libclang parsing.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Doxygen</title>
+
+    <para>
+      There is no real configuration necessary for the
+      <application>Doxygen</application> package although three additional
+      packages are required if you wish to use extended capabilities.
+      If you require formulas to create PDF
+      documentation, then you must have <xref linkend="texlive"/> installed.
+      If you require formulas to convert PostScript files to bitmaps, then
+      you must have <xref linkend="gs"/> installed.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          doxygen and optionally,
+          doxywizard, doxyindexer and doxysearch.cgi
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/doc/doxygen-&doxygen-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="doxygen-prog">
+        <term><command>doxygen</command></term>
+        <listitem>
+          <para>
+            is a command-line based utility used to generate template
+            configuration files and then generate documentation from these
+            templates. Use <command>doxygen --help</command> for an
+            explanation of the command-line parameters
+          </para>
+          <indexterm zone="doxygen doxygen-prog">
+            <primary sortas="b-doxygen">doxygen</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="doxywizard">
+        <term><command>doxywizard</command></term>
+        <listitem>
+          <para>
+            is a GUI front-end for configuring and
+            running <command>doxygen</command>
+          </para>
+          <indexterm zone="doxygen doxywizard">
+            <primary sortas="b-doxywizard">doxywizard</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="doxyindexer">
+        <term><command>doxyindexer</command></term>
+        <listitem>
+          <para>
+            generates a search index called <filename>doxysearch.db</filename>
+            from one or more search data files produced by
+            <command>doxygen</command>. See, e.g.
+            <ulink url="https://javacc.github.io/javacc/"/>
+          </para>
+          <indexterm zone="doxygen doxyindexer">
+            <primary sortas="b-doxyindexer">doxyindexer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="doxysearch.cgi">
+        <term><command>doxysearch.cgi</command></term>
+        <listitem>
+          <para>
+            is a CGI program to search the data indexed by
+            <command>doxyindexer</command>
+          </para>
+          <indexterm zone="doxygen doxysearch.cgi">
+            <primary sortas="b-doxysearch.cgi">doxysearch.cgi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

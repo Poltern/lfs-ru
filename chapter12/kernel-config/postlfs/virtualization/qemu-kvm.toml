@@ -1,0 +1,4 @@
+VIRTUALIZATION='*'
+KVM='*M'
+KVM_INTEL = { value = '*M ', comment = 'Enable the option for your CPU' }
+KVM_AMD='*M '

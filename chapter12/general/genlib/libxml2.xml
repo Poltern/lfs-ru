@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!-- Also update the download, md5, size entities in libxml2py2.xml -->
+  <!ENTITY libxml2-download-http "https://download.gnome.org/sources/libxml2/2.12/libxml2-&libxml2-version;.tar.xz">
+<!--  <!ENTITY libxml2-download-http "http://xmlsoft.org/sources/libxml2-&libxml2-version;.tar.xz">-->
+  <!ENTITY libxml2-download-ftp  " ">
+  <!ENTITY libxml2-md5sum        "37fab9ace78d8a085af81dc9a19f36d9">
+  <!ENTITY libxml2-size          "2.5 MB">
+  <!ENTITY libxml2-buildsize     "103 MB (with tests)">
+  <!ENTITY libxml2-time          "0.4 SBU (Using parallelism=4; with tests)">
+  <!ENTITY testsuite-version     "20130923">
+]>
+
+<sect1 id="libxml2" xreflabel="libxml2-&libxml2-version;">
+  <?dbhtml filename="libxml2.html"?>
+
+
+  <title>libxml2-&libxml2-version;</title>
+
+  <indexterm zone="libxml2">
+    <primary sortas="a-libxml2">libxml2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libxml2</title>
+
+    <para>
+      The <application>libxml2</application> package contains libraries
+      and utilities used for parsing XML files.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libxml2-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libxml2-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libxml2-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libxml2-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libxml2-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libxml2-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Optional Test Suite:
+          <ulink url="https://www.w3.org/XML/Test/xmlts&testsuite-version;.tar.gz"/> - This
+          enables <command>make check</command> to do complete testing.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libxml2 Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="icu"/>
+    </para>
+
+<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="valgrind"/> (may be used in the tests)
+    </para>-->
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libxml2</title>
+
+    <para>
+      Install <application>libxml2</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr           \
+            --sysconfdir=/etc       \
+            --disable-static        \
+            --with-history          \
+            --with-icu              \
+            PYTHON=/usr/bin/python3 \
+            --docdir=/usr/share/doc/libxml2-&libxml2-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      If you downloaded the test suite, issue the following command:
+    </para>
+
+<screen><userinput>tar xf ../xmlts&testsuite-version;.tar.gz</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check &gt; check.log</command>.
+      This command will print several lines of error messages like
+      <quote><computeroutput>Failed to parse
+      xstc/...</computeroutput></quote> because some test files are missing
+      and these messages can be safely ignored.
+      A summary of the results can be obtained with <command>grep -E
+      '^Total|expected|Ran' check.log</command>. <!--If <xref linkend="valgrind"/> is
+      installed and you want to check for memory leaks, replace
+      <command>check</command> with <command>check-valgrind</command>.-->
+    </para>
+
+    <note>
+      <para>
+        The tests use <ulink url="http://localhost/">http://localhost/</ulink>
+        to test parsing of external entities. If the machine where you run the
+        tests serves as a web site, the tests may hang, depending on the
+        content of the file served. It is therefore recommended to shut down
+        the server during the tests, as the <systemitem
+        class="username">root</systemitem> user:
+      </para>
+
+<screen role="nodump" revision="sysv"><userinput>/etc/init.d/httpd stop</userinput></screen>
+<screen role="nodump" revision="systemd"><userinput>systemctl stop httpd.service</userinput></screen>
+
+    </note>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      Finally, prevent some packages from unnecessarily linking to ICU using
+      the following commands as the &root; user:
+    </para>
+
+<screen role="root"><userinput>rm -vf /usr/lib/libxml2.la &amp;&amp;
+sed '/libs=/s/xml2.*/xml2"/' -i /usr/bin/xml2-config</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <parameter>--with-history</parameter>: This switch enables
+      <application>Readline</application> support when running
+      <command>xmlcatalog</command> or <command>xmllint</command> in shell mode.
+    </para>
+
+    <para>
+      <parameter>--with-icu</parameter>: This switch enables support for
+      <application>ICU</application>, which provides additional Unicode support.
+      This is needed for some packages in BLFS, such as for QtWebEngine.
+    </para>
+
+    <para>
+      <parameter>PYTHON=/usr/bin/python3</parameter>: Allows building
+      the libxml2 module with Python3 instead of Python2.
+    </para>
+
+<!--
+    <para>
+      <option>- -with-icu</option>: Add this switch if you have built
+      <xref linkend="icu"/>, for better unicode support.
+    </para>
+
+    <note>
+      <para>
+        If the <option>- -with-icu</option> switch is used, the BLFS editors
+        recommend removing unneeded references to the ICU libraries. This
+        will prevent many packages that use libxml2 from unnecessarily linking
+        to the ICU libraries.  This, in turn, will prevent the need for
+        rebuilding many packages when upgrading ICU to a new major version.
+        After installing libxml2, as the &root; user, issue:
+      </para>
+
+<screen role="nodump"><userinput>rm -vf /usr/lib/libxml2.la &amp;&amp;
+sed '/libs=/s/xml2.*/xml2"/' -i /usr/bin/xml2-config</userinput></screen>
+    </note>
+-->
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          xml2-config,
+          xmlcatalog, and
+          xmllint
+        </seg>
+        <seg>
+          libxml2.so
+        </seg>
+        <seg>
+          /usr/include/libxml2,
+          /usr/lib/cmake/libxml2,
+          /usr/share/doc/libxml2-&libxml2-version;, and
+          /usr/share/gtk-doc/html/libxml2
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="xml2-config">
+        <term><command>xml2-config</command></term>
+        <listitem>
+          <para>
+            determines the compile and linker flags that should be used to
+            compile and link programs that use
+            <filename class="libraryfile">libxml2</filename>
+          </para>
+          <indexterm zone="libxml2 xml2-config">
+            <primary sortas="b-xml2-config">xml2-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xmlcatalog">
+        <term><command>xmlcatalog</command></term>
+        <listitem>
+          <para>
+            is used to monitor and manipulate XML and SGML catalogs
+          </para>
+          <indexterm zone="libxml2 xmlcatalog">
+            <primary sortas="b-xmlcatalog">xmlcatalog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xmllint">
+        <term><command>xmllint</command></term>
+        <listitem>
+          <para>
+            parses XML files and outputs reports (based upon options) to detect
+            errors in XML coding
+          </para>
+          <indexterm zone="libxml2 xmllint">
+            <primary sortas="b-xmllint">xmllint</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libxml2-lib">
+        <term><filename class="libraryfile">libxml2.so</filename></term>
+        <listitem>
+          <para>
+            provides functions for programs to parse files that use the XML
+            format
+          </para>
+          <indexterm zone="libxml2 libxml2-lib">
+            <primary sortas="c-libxml2">libxml2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

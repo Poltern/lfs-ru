@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY sgml-common-download-http "https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-&sgml-common-version;.tgz">
+  <!ENTITY sgml-common-download-ftp  " ">
+  <!ENTITY sgml-common-md5sum        "103c9828f24820df86e55e7862e28974">
+  <!ENTITY sgml-common-size          "75 KB">
+  <!ENTITY sgml-common-buildsize     "1.5 MB">
+  <!ENTITY sgml-common-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="sgml-common" xreflabel="sgml-common-&sgml-common-version;">
+  <?dbhtml filename="sgml-common.html"?>
+
+
+  <title>sgml-common-&sgml-common-version;</title>
+
+  <indexterm zone="sgml-common">
+    <primary sortas="a-SGML-Common">SGML Common</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to SGML Common</title>
+
+    <para>
+      The <application>SGML Common</application> package contains
+      <command>install-catalog</command>. This is useful for creating and
+      maintaining centralized SGML catalogs.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&sgml-common-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&sgml-common-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &sgml-common-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &sgml-common-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &sgml-common-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &sgml-common-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>
+          Required patch: <ulink url=
+            "&patch-root;/sgml-common-&sgml-common-version;-manpage-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of SGML Common</title>
+
+    <para>
+      Instead of the normal convention of including the autotools files
+      in the package, the maintainers included symlinks to the files in
+      <filename class="directory">/usr/share/automake</filename>. For previous
+      versions of <application>Automake</application> this convention is
+      correct, but recent versions of <application>Automake</application>
+      install the internal files in version specific directories. This causes
+      the <command>configure</command> script to abort. To fix this error, the
+      autotools are regenerated. Since the included
+      <filename>Makefile.am</filename> file uses a syntax not supported by
+      current versions of <application>Automake</application>, a patch is
+      required to fix the syntax.
+    </para>
+
+<screen><userinput>patch -Np1 -i ../sgml-common-0.6.3-manpage-1.patch &amp;&amp;
+autoreconf -f -i</userinput></screen>
+
+    <para>
+      Install <application>SGML Common</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --sysconfdir=/etc &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make docdir=/usr/share/doc install &amp;&amp;
+
+install-catalog --add /etc/sgml/sgml-ent.cat \
+    /usr/share/sgml/sgml-iso-entities-8879.1986/catalog &amp;&amp;
+
+install-catalog --add /etc/sgml/sgml-docbook.cat \
+    /etc/sgml/sgml-ent.cat</userinput></screen>
+
+    <tip>
+      <title>Update Hint</title>
+
+      <para>
+        Remove the above catalog items prior to upgrading (as the
+        <systemitem class='username'>root</systemitem> user) with:
+      </para>
+
+<screen role="nodump"><userinput>install-catalog --remove /etc/sgml/sgml-ent.cat \
+    /usr/share/sgml/sgml-iso-entities-8879.1986/catalog &amp;&amp;
+
+install-catalog --remove /etc/sgml/sgml-docbook.cat \
+    /etc/sgml/sgml-ent.cat</userinput></screen>
+
+    </tip>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring SGML Common</title>
+
+    <sect3 id="sgml-common-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/sgml/sgml.conf</filename>
+      </para>
+
+      <indexterm zone="sgml-common sgml-common-config">
+        <primary sortas="e-etc-sgml-sgml.conf">/etc/sgml/sgml.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        No change in this file is necessary.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Files</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>install-catalog and sgmlwhich</seg>
+        <seg>None</seg>
+        <seg>SGML and XML DocBook entity files</seg>
+        <seg>/etc/sgml, /usr/share/doc/sgml-common-&sgml-common-version;, and
+        /usr/share/sgml</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="install-catalog">
+        <term><command>install-catalog</command></term>
+        <listitem>
+          <para>
+            creates a centralized catalog that maintains references to
+            catalogs scattered throughout the
+            <filename class="directory">/usr/share/sgml</filename> directory
+          tree
+          </para>
+          <indexterm zone="sgml-common install-catalog">
+            <primary sortas="b-install-catalog">install-catalog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sgmlwhich">
+        <term><command>sgmlwhich</command></term>
+        <listitem>
+          <para>
+            prints to standard output the name of the main configuration file
+          </para>
+          <indexterm zone="sgml-common sgmlwhich">
+            <primary sortas="b-sgmlwhich">sgmlwhich</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="SGML-entities">
+        <term><filename>SGML entities files</filename></term>
+        <listitem>
+          <para>
+            contains the basic character entities defined with SDATA entries
+          </para>
+          <indexterm zone="sgml-common SGML-entities">
+            <primary sortas="g-SGML-ENT-files">SGML entity files</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="XML-entities">
+        <term><filename>XML entities files</filename></term>
+        <listitem>
+          <para>
+            contains the basic character entities defined by a hexadecimal
+            representation of the Unicode character number
+          </para>
+          <indexterm zone="sgml-common XML-entities">
+            <primary sortas="g-XML-ENT-files">XML entity files</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
