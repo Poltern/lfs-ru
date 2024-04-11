@@ -27,6 +27,8 @@
 
 <!--editors-->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/editors.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/ed.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/joe.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/nano.xml"/>
 
 <!--genlib-->
@@ -41,13 +43,12 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pst/xml/docbook-xsl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pst/sgml/sgml-common.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pst/xml/docbook-45-xml.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pst/xml/docbook5.xml"/>
+  <!--<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pst/xml/docbook5.xml"/>-->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pst/xml/xmlto.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genlib/libxslt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genlib/pcre2.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/prog/python-modules/packaging.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genlib/glib2.xml"/>
-
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genutils/desktop-file-utils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genutils/shared-mime-info.xml"/>
 
@@ -60,11 +61,8 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/sysutils/gpm.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/sysutils/which.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/sysutils/mc.xml"/>
-
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="networking/netlibs/libtirpc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genutils/lsof.xml"/>
- <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genutils/lsof-test-kernel.xml"/>-->
-
 
 <!--sec-->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/security/security.xml"/>
@@ -101,10 +99,5 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="networking/netlibs/libevent.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="networking/textweb/links.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="networking/textweb/lynx.xml"/>
-
-
-<!-- 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="pst/xml/xmlto.xml"/>
--->
 
 </chapter>

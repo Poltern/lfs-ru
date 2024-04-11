@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY ed-download-http "&gnu-http;/ed/ed-&ed-version;.tar.lz">
+  <!ENTITY ed-download-ftp  " ">
+  <!ENTITY ed-md5sum        "f9e7c445acebf6c49ccb7f86a5b17f5d">
+  <!ENTITY ed-size          "68 KB">
+  <!ENTITY ed-buildsize     "1.0 MB">
+  <!ENTITY ed-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="ed" xreflabel="Ed-&ed-version;">
+  <?dbhtml filename="ed.html"?>
+
+
+  <title>Ed-&ed-version;</title>
+
+  <indexterm zone="ed">
+    <primary sortas="a-Ed">Ed</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Введение в Ed</title>
+
+    <para>
+      <application>Ed</application> строчный текстовый редактор. Он используется для 
+	  создания, отображения, изменения и иного манипулирования текстовыми файлами как 
+	  в интерактивном режиме, так и с помощью скриптов оболочки. Редактор Ed применяется 
+	  не очень часто обычными пользователями. Он описан здесь, потому что его могут 
+	  использовать патчи программ, однако это случается редко, так как в наши дни 
+	  предпочтительнее использовать патчи на основе diff.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Информация о пакете</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Ссылка на загрузку (HTTP): <ulink url="&ed-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Ссылка на загрузку (FTP): <ulink url="&ed-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Контрольная сумма MD5: &ed-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Размер пакета: &ed-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Требуемое дисковое пространство: &ed-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Приблизительное время сборки: &ed-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Зависимости пакета Ed</bridgehead>
+
+    <bridgehead renderas="sect4">Требуется для распаковки архива с исходным кодом</bridgehead>
+    <para role="required">
+      <xref linkend="libarchive"/> (содержащий bsdtar)
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета Ed</title>
+
+    <para>
+      Установите <application>Ed</application>, выполнив следующие команды:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      Чтобы протестировать пакет, выполните: <command>make check</command>.
+    </para>
+
+    <para>
+      Теперь, от имени пользователя <systemitem class="username">root</systemitem>, 
+	  установите пакет:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Содержимое пакета</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>ed и red</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ed-prog">
+        <term><command>ed</command></term>
+        <listitem>
+          <para>
+            это строчный текстовый редактор
+          </para>
+          <indexterm zone="ed ed-prog">
+            <primary sortas="b-ed">ed</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="red">
+        <term><command>red</command></term>
+        <listitem>
+          <para>
+            это ограниченная версия <command>ed</command>&mdash;он может редактировать 
+			только файлы в текущем каталоге и не может выполнять скрипты оболочки
+          </para>
+          <indexterm zone="ed red">
+            <primary sortas="b-red">red</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
