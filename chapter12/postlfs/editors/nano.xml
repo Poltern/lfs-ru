@@ -24,46 +24,46 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Nano</title>
+    <title>Общая информация о Nano</title>
 
     <para>
-      The <application>Nano</application> package contains a small,
-      simple text editor which aims to replace <application>Pico</application>,
-      the default editor in the <application>Pine</application> package.
+      Пакет <application>Nano</application> содержит небольшой, простой текстовый редактор, 
+	  пришедший на замену <application>Pico</application> - редактора, поставляемого с пакетом  
+	  <application>Pine</application>
     </para>
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&nano-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&nano-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&nano-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&nano-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &nano-md5sum;
+          Контрольная сумма MD5: &nano-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &nano-size;
+          Размер пакета: &nano-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &nano-buildsize;
+          Требуемое дисковое пространство: &nano-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &nano-time;
+          Приблизительное время сборки: &nano-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -71,11 +71,10 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Nano</title>
+    <title>Установка пакета Nano</title>
 
     <para>
-      Install <application>Nano</application> by running the following
-      commands:
+      Установите <application>Nano</application>, выполнив следующие команды:
     </para>
 
 <screen><userinput>./configure --prefix=/usr     \
@@ -85,11 +84,12 @@
 make</userinput></screen>
 
     <para>
-      This package does not come with a test suite.
+      Этот пакет не содержит набор тестов.
     </para>
 
     <para>
-      Now, as the <systemitem class="username">root</systemitem> user:
+      Теперь, от имени пользователя <systemitem class="username">root</systemitem>, 
+	  установите пакет:
     </para>
 
 <screen role="root"><userinput>make install &amp;&amp;
@@ -98,23 +98,23 @@ install -v -m644 doc/{nano.html,sample.nanorc} /usr/share/doc/nano-&nano-version
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
-      <parameter>--enable-utf8</parameter>: This switch enables unicode support
-      in <application>Nano</application>.
+      <parameter>--enable-utf8</parameter>: Эта опция включает поддержку Unicode в 
+      <application>Nano</application>.
     </para>
 
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring nano</title>
+    <title>Настройка nano</title>
 
     <sect3 id="nano-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
-        <filename>/etc/nanorc</filename> and
+        <filename>/etc/nanorc</filename> и 
         <filename>~/.nanorc</filename>
       </para>
 
@@ -129,12 +129,11 @@ install -v -m644 doc/{nano.html,sample.nanorc} /usr/share/doc/nano-&nano-version
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
-        Example configuration (create as a system-wide
-        <filename>/etc/nanorc</filename> or a personal
-        <filename>~/.nanorc</filename> file)
+        Пример конфигурации (создайте общесистемный файл <filename>/etc/nanorc</filename> 
+		или личный <filename>~/.nanorc</filename>)
       </para>
 
 <screen><literal>set autoindent
@@ -148,20 +147,20 @@ set quickblank
 set regexp</literal></screen>
 
       <para>
-        Check the <filename>sample.nanorc</filename> file in the installed
-        documentation directory. It includes color configurations and has
-        some documentation included in the comments.
+        Дополнительно можно изучить файл <filename>sample.nanorc</filename> в каталоге 
+		с документацией. Он включает в себя цветовые конфигурации и дополнительную 
+		информацию в комментариях.
       </para>
 
       <para>
-        Syntax highlighting is provided for several file types, in
-        <filename class="directory">/usr/share/nano/</filename> directory.
-        E.g., for shell scripts, you can insert
-        <option>include /usr/share/nano/sh.nanorc</option> in the personal or
-        global configuration file. If you wish highlighting for all supported
-        files, use <option>include /usr/share/nano/*.nanorc</option>. This
-        include does not descend into the <filename class="directory">extra</filename>
-        directory. Move required files one level up.
+        Подсветка синтаксиса предусмотрена для нескольких типов файлов в каталоге 
+		<filename class="directory">/usr/share/nano/</filename>. Например, для скриптов 
+		оболочки вы можете вставить <option>include /usr/share/nano/sh.nanorc</option> 
+		в личный или глобальный файл конфигурации. Если вы хотите включить подсветку для 
+		всех поддерживаемых файлов, используйте вариант 
+		<option>include /usr/share/nano/*.nanorc</option>. При этом сюда не относятся файлы 
+		из каталога <filename class="directory">extra</filename>. При необходимости переместите 
+		необходимые файлы (из extra) на уровень выше.
       </para>
 
     </sect3>
@@ -169,29 +168,29 @@ set regexp</literal></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
-          nano and rnano (symlink)
+          nano и rnano (символическая ссылка)
         </seg>
         <seg>
-          None
+          Нет
         </seg>
         <seg>
-          /usr/share/nano and
+          /usr/share/nano и 
           /usr/share/doc/nano-&nano-version;
         </seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
@@ -199,9 +198,8 @@ set regexp</literal></screen>
         <term><command>nano</command></term>
         <listitem>
           <para>
-            is a small, simple text editor which aims to replace
-            <application>Pico</application>, the default editor in the
-            <application>Pine</application> package
+            небольшой, простой текстовый редактор, пришедший на замену  
+			<application>Pico</application>
           </para>
           <indexterm zone="nano nano-prog">
             <primary sortas="b-nano">nano</primary>
@@ -213,7 +211,7 @@ set regexp</literal></screen>
         <term><command>rnano</command></term>
         <listitem>
           <para>
-            is a restricted mode for <command>nano</command>
+            ограниченный режим для <command>nano</command>
           </para>
           <indexterm zone="nano rnano-prog">
             <primary sortas="b-rnano">rnano</primary>

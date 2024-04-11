@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Введение в Ed</title>
+    <title>Общая информация о Ed</title>
 
     <para>
       <application>Ed</application> строчный текстовый редактор. Он используется для 
