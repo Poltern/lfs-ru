@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libarchive-download-http "https://github.com/libarchive/libarchive/releases/download/v&libarchive-version;/libarchive-&libarchive-version;.tar.xz">
+  <!ENTITY libarchive-download-ftp  " ">
+  <!ENTITY libarchive-md5sum        "b60683739a16ff6f00f32aa3516402ed">
+  <!ENTITY libarchive-size          "5.2 MB">
+  <!ENTITY libarchive-buildsize     "42 MB (add 32 MB for tests)">
+  <!ENTITY libarchive-time          "0.4 SBU (add 0.6 SBU for tests)">
+]>
+
+<sect1 id="libarchive" xreflabel="libarchive-&libarchive-version;">
+  <?dbhtml filename="libarchive.html"?>
+
+
+  <title>libarchive-&libarchive-version;</title>
+
+  <indexterm zone="libarchive">
+    <primary sortas="a-libarchive">libarchive</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libarchive</title>
+
+    <para>
+      The <application>libarchive</application> library provides a single
+      interface for reading/writing various compression formats.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libarchive-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libarchive-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libarchive-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libarchive-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libarchive-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libarchive-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+<!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/libarchive-&libarchive-version;-testsuite_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">libarchive Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libxml2"/>,
+      lzo, 
+      nettle, and
+      <xref linkend="pcre2"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libarchive</title>
+
+    <para>
+      Install <application>libarchive</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>LC_ALL=C make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <option>--without-xml2</option>: This switch sets expat for xar archive
+      format support instead of preferred libxml2 if both packages are installed.
+    </para>
+
+    <para>
+      <option>--without-nettle</option>: This switch sets OpenSSL for crypto
+      support instead of preferred Nettle if both packages are installed.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          bsdcat, bsdcpio, bsdtar, and bsdunzip
+        </seg>
+        <seg>
+          libarchive.so
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="bsdcat">
+        <term><command>bsdcat</command></term>
+        <listitem>
+          <para>
+            expands files to standard output
+          </para>
+          <indexterm zone="libarchive bsdcat">
+            <primary sortas="b-bsdcat">bsdcat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="bsdcpio">
+        <term><command>bsdcpio</command></term>
+        <listitem>
+          <para>
+            is a tool similar to <command>cpio</command>
+          </para>
+          <indexterm zone="libarchive bsdcpio">
+            <primary sortas="b-bsdcpio">bsdcpio</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="bsdtar">
+        <term><command>bsdtar</command></term>
+        <listitem>
+          <para>
+            is a tool similar to GNU <command>tar</command>
+          </para>
+          <indexterm zone="libarchive bsdtar">
+            <primary sortas="b-bsdtar">bsdtar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="bsdunzip">
+        <term><command>bsdunzip</command></term>
+        <listitem>
+          <para>
+            is a tool similar to Info-ZIP <command>unzip</command>
+          </para>
+          <indexterm zone="libarchive bsdunzip">
+            <primary sortas="b-bsdunzip">bsdunzip</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libarchive-lib">
+        <term><filename class="libraryfile">libarchive.so</filename></term>
+        <listitem>
+          <para>
+            is a library that can create and read several streaming
+            archive formats
+          </para>
+          <indexterm zone="libarchive libarchive-lib">
+            <primary sortas="c-libarchive">libarchive.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

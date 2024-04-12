@@ -20,6 +20,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/config/firmware.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/config/devices.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/config/profile.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/config/vimrc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/config/logon.xml"/>
 
 <!--filesystem-->
@@ -28,8 +29,10 @@
 <!--editors-->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/editors.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/ed.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/emacs.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/joe.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/nano.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="postlfs/editors/vim.xml"/>
 
 <!--genlib-->
 <!--genutils-->
@@ -51,6 +54,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genlib/glib2.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genutils/desktop-file-utils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genutils/shared-mime-info.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/genlib/libarchive.xml"/>
 
 <!--system-->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="general/sysutils/sysutils.xml"/>

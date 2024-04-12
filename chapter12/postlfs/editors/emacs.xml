@@ -70,34 +70,34 @@
 
     <bridgehead renderas="sect4">Recommended</bridgehead>
     <para role="recommended">
-      <xref linkend="harfbuzz"/>,
-      <xref linkend="giflib"/>,
-      <xref linkend="gnutls"/>,
-      <xref linkend="jansson"/>, and
-      <xref linkend="libtiff"/>
+      harfbuzz,
+      giflib,
+      gnutls,
+      jansson, and
+      libtiff
     </para>
 
     <bridgehead renderas="sect4">Optional</bridgehead>
     <para role="optional">
-      <xref linkend="x-window-system"/>,
-      <xref linkend="alsa-lib"/>,
-      <xref linkend="cairo"/>,
-      <xref linkend="dbus"/>,
+      x-window-system
+      alsa-lib
+      cairo
+      dbus,
       &gobject-introspection;,
-      <xref linkend="gsettings-desktop-schemas"/>,
+      gsettings-desktop-schemas
       <xref linkend="gpm"/>,
-      <xref linkend="gtk3"/>,
-      <xref linkend="imagemagick"/>,
-      <xref linkend="lcms2"/>,
-      <xref linkend="libjpeg"/>,
-      <xref linkend="libpng"/>,
-      <xref linkend="librsvg"/>,
-      <xref linkend="libseccomp"/>,
-      <xref linkend="libwebp"/>,
+      gtk3,
+      imagemagick,
+      lcms2,
+      libjpeg,
+      libpng,
+      librsvg,
+      libseccomp,
+      libwebp,
       <xref linkend="libxml2"/>,
-      <xref linkend="mitkrb"/>,
-      <xref linkend="sqlite"/>,
-      <xref linkend="valgrind"/>,
+      mitkrb
+      sqlite
+      valgrind,
       <ulink url="&gnu-http;/intlfonts/">intlfonts</ulink>,
       <ulink url="https://directory.fsf.org/wiki/Libungif">libungif</ulink>,
       <ulink url="https://www.nongnu.org/m17n/">libotf</ulink>, and
@@ -157,33 +157,33 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
 
     <para>
       <option>--with-imagemagick</option>: Use this if you have installed
-      <xref linkend="imagemagick"/> and wish to link against it.
+      imagemagick and wish to link against it.
     </para>
 
     <para>
       <option>--with-gif=no</option>: Use this if you have not installed
-      <xref linkend="giflib"/> or
+      giflib or
       <ulink url="https://directory.fsf.org/wiki/Libungif">libungif</ulink>.
     </para>
 
     <para>
       <option>--with-tiff=no</option>: Use this if you have not installed
-      <xref linkend="libtiff"/>.
+      libtiff.
     </para>
 
     <para>
       <option>--with-gnutls=no</option>: Use this if you have not installed
-      <xref linkend="gnutls"/>.
+      gnutls.
     </para>
 
     <para>
       <option>--without-harfbuzz</option>: Use this if you have not installed
-      <xref linkend="harfbuzz"/>.
+      harfbuzz.
     </para>
 
     <para>
       <option>--with-json=no</option>: Use this if you have not installed
-      <xref linkend="jansson"/>.
+      jansson.
     </para>
 
   </sect2>
