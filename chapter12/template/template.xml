@@ -52,7 +52,7 @@
     <!-- if it works: -->
     &lfs1?_checked;
 
-    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
+    <bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>

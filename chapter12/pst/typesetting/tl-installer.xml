@@ -94,7 +94,7 @@ and it might have been removed by next year. -->
 
     &lfs121_checked;
 
-    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
+    <bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>

@@ -80,7 +80,7 @@
     </para>
   </note>
 
-  <para condition="html" role="usernotes">Editor Notes:
+  <para condition="html" role="usernotes">Примечание редактора:
   <ulink url="&blfs-wiki;/bash-shell-startup-files"/></para>
 
   <sect2 id="etc-profile-profile">

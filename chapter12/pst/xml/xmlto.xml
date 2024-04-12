@@ -34,7 +34,7 @@
 
     &lfs121_checked;
 
-    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
+    <bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -97,7 +97,7 @@
       <ulink url="&elinks-url;">ELinks</ulink>
     </para>
 
-    <para condition="html" role="usernotes">Editor Notes:
+    <para condition="html" role="usernotes">Примечание редактора:
     <ulink url="&blfs-wiki;/xmlto"/></para>
 
   </sect2>
