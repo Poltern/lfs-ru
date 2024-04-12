@@ -40,7 +40,7 @@
 
       <para>.Если вы предпочитаете другой текстовый редактор, например, Emacs,
       Joe или Nano, обратитесь к <ulink
-      url="&blfs-book;postlfs/editors.html"/> за рекомендациями по установке.</para>
+      url="&lfs-book;chapter12/postlfs/editors.html"/> за рекомендациями по установке.</para>
     </tip>
 
   </sect2>

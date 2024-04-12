@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY joe-download-http "&sourceforge-dl;/joe-editor/joe-&joe-version;.tar.gz">
+  <!ENTITY joe-download-ftp  " ">
+  <!ENTITY joe-md5sum        "9017484e6116830d846678b625ea5c43">
+  <!ENTITY joe-size          "1.8 MB">
+  <!ENTITY joe-buildsize     "22 MB">
+  <!ENTITY joe-time          "0.2 SBU">
+]>
+
+<sect1 id="joe" xreflabel="JOE-&joe-version;">
+  <?dbhtml filename="joe.html"?>
+
+
+  <title>JOE-&joe-version;</title>
+
+  <indexterm zone="joe">
+    <primary sortas="a-JOE">JOE</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Общая информация о JOE</title>
+
+    <para>
+      <application>JOE</application> рекурсивный акроним от англ. Joe's own editor,  
+	  <quote>собственный редактор Джо</quote> - небольшой текстовый редактор, 
+	  ориентированный на управление с помощью <quote>горячих клавиш</quote> и способный 
+	  эмулировать WordStar, <application>Pico</application> и 
+	  <application>Emacs</application>.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Информация о пакете</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Ссылка на загрузку (HTTP): <ulink url="&joe-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Ссылка на загрузку (FTP): <ulink url="&joe-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Контрольная сумма MD5: &joe-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Размер пакета: &joe-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Требуемое дисковое пространство: &joe-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Приблизительное время сборки: &joe-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Установка пакета JOE</title>
+
+    <para>
+      Установите <application>JOE</application>, выполнив следующие команды:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --docdir=/usr/share/doc/joe-&joe-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      Этот пакет не содержит набор тестов.
+    </para>
+
+    <para>
+      Теперь, от имени пользователя <systemitem class="username">root</systemitem>, 
+	  установите пакет:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+
+install -vm 755 joe/util/{stringify,termidx,uniproc} /usr/bin</userinput></screen>
+
+<!--  These do not appear to be useful.  There are txt files in
+       joe/util/unicode*/ bit I cannot we where they are used.
+install -vdm755 /usr/share/doc/joe-&joe-version;/util &amp;&amp;
+install -vm 644 joe/util/{*.txt,README} /usr/share/doc/joe-&joe-version;/util</userinput></screen>
+-->
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Настройка JOE</title>
+
+    <sect3 id="joe-config">
+      <title>Конфигурационные файлы</title>
+
+      <para>
+        <filename>/etc/joe/jmacsrc</filename>,
+        <filename>/etc/joe/joerc</filename>,
+        <filename>/etc/joe/jpicorc</filename>,
+        <filename>/etc/joe/jstarrc</filename>,
+        <filename>/etc/joe/rjoerc</filename> 
+        и <filename>~/.joerc</filename>
+      </para>
+
+      <indexterm zone="joe joe-config">
+        <primary sortas="e-etc-joe-jmacsrc">/etc/joe/jmacsrc</primary>
+      </indexterm>
+
+      <indexterm zone="joe joe-config">
+        <primary sortas="e-etc-joe-joerc">/etc/joe/joerc</primary>
+      </indexterm>
+
+      <indexterm zone="joe joe-config">
+        <primary sortas="e-etc-joe-jpicorc">/etc/joe/jpicorc</primary>
+      </indexterm>
+
+      <indexterm zone="joe joe-config">
+        <primary sortas="e-etc-joe-jstarrc">/etc/joe/jstarrc</primary>
+      </indexterm>
+
+      <indexterm zone="joe joe-config">
+        <primary sortas="e-etc-joe-rjoerc">/etc/joe/rjoerc</primary>
+      </indexterm>
+
+      <indexterm zone="joe joe-config">
+        <primary sortas="e-AA.joerc">~/.joerc</primary>
+      </indexterm>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Содержимое пакета</title>
+
+    <segmentedlist>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
+
+      <seglistitem>
+        <seg>
+          jmacs,
+          joe,
+          jpico,
+          jstar,
+          rjoe,
+          stringify,
+          termidx и 
+          uniproc
+        </seg>
+        <seg>
+          Нет
+        </seg>
+        <seg>
+          /etc/joe,
+          /usr/share/joe и 
+          /usr/share/doc/joe-&joe-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="jmacs">
+        <term><command>jmacs</command></term>
+        <listitem>
+          <para>
+            символическая ссылка на <command>joe</command>, используемая для 
+			запуска режима эмуляции <application>Emacs</application>
+          </para>
+          <indexterm zone="joe jmacs">
+            <primary sortas="b-jmacs">jmacs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="joe-prog">
+        <term><command>joe</command></term>
+        <listitem>
+          <para>
+            небольшой текстовый редактор, способный эмулировать 
+            WordStar, <application>Pico</application> и 
+            <application>Emacs</application>
+          </para>
+          <indexterm zone="joe joe-prog">
+            <primary sortas="b-joe">joe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jpico">
+        <term><command>jpico</command></term>
+        <listitem>
+          <para>
+            это символическая ссылка на <command>joe</command>, используемая для запуска 
+			режима эмуляции <application>Pico</application>
+          </para>
+          <indexterm zone="joe jpico">
+            <primary sortas="b-jpico">jpico</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jstar">
+        <term><command>jstar</command></term>
+        <listitem>
+          <para>
+            символическая ссылка на <command>joe</command>, используемая для запуска 
+			режима эмуляции WordStar
+          </para>
+          <indexterm zone="joe jstar">
+            <primary sortas="b-jstar">jstar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rjoe">
+        <term><command>rjoe</command></term>
+        <listitem>
+          <para>
+            это символическая ссылка на <command>joe</command>, которая разрешает 
+			<application>JOE</application> редактировать только файлы, указанные в 
+			командной строке
+          </para>
+          <indexterm zone="joe rjoe">
+            <primary sortas="b-rjoe">rjoe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="stringify">
+        <term><command>stringify</command></term>
+        <listitem>
+          <para>
+            программа, используемая <command>joe</command> для преобразования 
+			файлов rc и .jsf в файл C (подробности смотрите в 
+            /usr/share/doc/joe-&joe-version;/util/README)
+          </para>
+          <indexterm zone="joe stringify">
+            <primary sortas="b-stringify">stringify</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="termidx">
+        <term><command>termidx</command></term>
+        <listitem>
+          <para>
+            это программа, используемая <command>joe</command> для создания индексного 
+			файла termcap (смотрите файл 
+            /usr/share/doc/joe-&joe-version;/util/README)
+          </para>
+          <indexterm zone="joe termidx">
+            <primary sortas="b-termidx">termidx</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="uniproc">
+        <term><command>uniproc</command></term>
+        <listitem>
+          <para>
+            программа, используемая <command>joe</command> для создания файла базы 
+			данных joe - unicat.c из Blocks.txt, CaseFolding.txt, EastAsianWidth.txt и 
+			UnicodeData.txt (их можно найти в 
+            /usr/share/doc/joe-&joe-version;/util; более подробно в 
+            usr/share/doc/joe-&joe-version;/util/README)
+          </para>
+          <indexterm zone="joe uniproc">
+            <primary sortas="b-uniproc">uniproc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
