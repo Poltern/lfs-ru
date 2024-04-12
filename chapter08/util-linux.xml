@@ -91,7 +91,13 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>По желанию запустите набор тестов от имени пользователя без полномочий &root;:</para>
+    <!-- To editors:
+         Two tests need a /etc/fstab file.  They are skipped if the host
+         distro isn't using systemd as the init system, so don't remove
+         the creation of /etc/fstab unless you've tested it with such a
+         host distro (for example LFS systemd or Debian).  -->
+    <para>По желанию создайте фиктивный файл <filename>/etc/fstab</filename> для выполнения двух 
+	тестов и запустите набор тестов от имени пользователя без полномочий &root;:</para>
 
     <warning><para>Запуск набора тестов от имени пользователя <systemitem class="username">root</systemitem> 
 	может повредить вашу систему. Чтобы запустить тесты, опция CONFIG_SCSI_DEBUG для ядра должна 
@@ -102,7 +108,8 @@
 <screen role="nodump"><userinput>bash tests/run.sh --srcdir=$PWD --builddir=$PWD</userinput></screen>
     </warning>
 
-<screen><userinput remap="test">chown -R tester .
+<screen><userinput remap="test">touch /etc/fstab
+chown -R tester .
 su tester -c "make -k check"</userinput></screen>
 
     <para>
