@@ -144,7 +144,7 @@
 <!ENTITY e2fsprogs-size "9,412 KB">
 <!ENTITY e2fsprogs-url "https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v&e2fsprogs-version;/e2fsprogs-&e2fsprogs-version;.tar.gz">
 <!ENTITY e2fsprogs-md5 "6b4f18a33873623041857b4963641ee9">
-<!ENTITY e2fsprogs-home "http://e2fsprogs.sourceforge.net/">
+<!ENTITY e2fsprogs-home "https://e2fsprogs.sourceforge.net/">
 <!ENTITY e2fsprogs-fin-du "95 MB">
 <!ENTITY e2fsprogs-fin-sbu "2.4 SBU на жестком диске, 0.4 SBU на SSD диске">
 
@@ -713,7 +713,7 @@
 <!ENTITY tcl-size "11,355 KB">
 <!ENTITY tcl-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-md5 "c30b57c6051be28fa928d09aca82841e">
-<!ENTITY tcl-home "http://tcl.sourceforge.net/">
+<!ENTITY tcl-home "https://tcl.sourceforge.net/">
 <!ENTITY tcl-docs-url "https://downloads.sourceforge.net/tcl/tcl&tcl-version;-html.tar.gz">
 <!ENTITY tcl-docs-md5 "5467198f8d57c54835bf80b98ffb0170">
 <!ENTITY tcl-docs-size "1,167 KB">
