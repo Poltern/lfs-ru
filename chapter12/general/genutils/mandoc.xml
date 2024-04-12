@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to mandoc</title>
+    <title>Общая информация о mandoc</title>
 
     <para>
       mandoc is an utility to format manual pages.
@@ -31,43 +31,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&mandoc-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&mandoc-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&mandoc-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&mandoc-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &mandoc-md5sum;
+          Контрольная сумма MD5: &mandoc-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &mandoc-size;
+          Размер пакета: &mandoc-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &mandoc-buildsize;
+          Требуемое дисковое пространство: &mandoc-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &mandoc-time;
+          Приблизительное время сборки: &mandoc-time;
         </para>
       </listitem>
     </itemizedlist>
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of mandoc</title>
+    <title>Установка пакета mandoc</title>
 
     <para>
       Many utilities provided by <application>mandoc</application> conflicts
@@ -92,10 +92,10 @@ install -vm644 mandoc.1 /usr/share/man/man1</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
         <seg>
@@ -105,7 +105,7 @@ install -vm644 mandoc.1 /usr/share/man/man1</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

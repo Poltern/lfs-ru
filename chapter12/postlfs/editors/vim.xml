@@ -25,7 +25,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Vim</title>
+    <title>Общая информация о Vim</title>
 
     <para>
       The <application>Vim</application> package, which is an
@@ -53,49 +53,49 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&vim-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&vim-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&vim-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&vim-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &vim-md5sum;
+          Контрольная сумма MD5: &vim-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &vim-size;
+          Размер пакета: &vim-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &vim-buildsize;
+          Требуемое дисковое пространство: &vim-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &vim-time;
+          Приблизительное время сборки: &vim-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Vim Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       x-window-system и 
       gtk3
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="gpm"/>,
       lua,
@@ -106,7 +106,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Vim</title>
+    <title>Установка пакета Vim</title>
 
     <note>
       <para>
@@ -226,7 +226,7 @@ vim -c ":helptags /usr/share/doc/vim-&vim-version;" -c ":q"</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--with-features=huge</parameter>: This switch enables all
@@ -273,10 +273,10 @@ vim -c ":helptags /usr/share/doc/vim-&vim-version;" -c ":q"</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Vim</title>
+    <title>Настройка Vim</title>
 
     <sect3 id='vim-config'>
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/vimrc</filename> and
@@ -320,7 +320,7 @@ EOF</userinput></screen>
     </sect3>
 -->
     <sect3 id='vim-init'>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         <application>Vim</application> has an integrated spell checker
@@ -373,7 +373,7 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <para>
       A list of the reinstalled files, along with their short
@@ -383,19 +383,19 @@ EOF</userinput></screen>
     </para>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>gview, gvim, gvimdiff, gvimtutor, rgview, and rgvim</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/usr/share/vim</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

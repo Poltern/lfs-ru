@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Gutenprint</title>
+    <title>Общая информация о Gutenprint</title>
 
     <para>
       The <application>Gutenprint</application> (formerly
@@ -38,36 +38,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gutenprint-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gutenprint-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&gutenprint-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&gutenprint-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gutenprint-md5sum;
+          Контрольная сумма MD5: &gutenprint-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gutenprint-size;
+          Размер пакета: &gutenprint-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &gutenprint-buildsize;
+          Требуемое дисковое пространство: &gutenprint-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &gutenprint-time;
+          Приблизительное время сборки: &gutenprint-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -76,7 +76,7 @@
 
     <!-- recommend cups since we describe how to use it, and the gimp
     so that we can use gutenprint's driver to print photos there -->
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="cups"/> and
       <xref linkend="gimp"/>
@@ -117,7 +117,7 @@
   </sect2>
 
   <sect2 role="kernel" id="gutenprint-escputil">
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       If you intend to use <application>escputil</application> with a USB-connected
@@ -137,7 +137,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Gutenprint</title>
+    <title>Установка пакета Gutenprint</title>
 
     <para>
       Install <application>Gutenprint</application> by running the
@@ -176,7 +176,7 @@ install -v -m644    doc/gutenprintui2/html/* \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed -i '...' ...Makefile.in</command>: This
@@ -192,10 +192,10 @@ install -v -m644    doc/gutenprintui2/html/* \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Gutenprint</title>
+    <title>Настройка Gutenprint</title>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         For <application>CUPS</application> to see newly installed print
@@ -224,12 +224,12 @@ install -v -m644    doc/gutenprintui2/html/* \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -250,7 +250,7 @@ install -v -m644    doc/gutenprintui2/html/* \
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

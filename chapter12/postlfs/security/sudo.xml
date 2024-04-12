@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Sudo</title>
+    <title>Общая информация о Sudo</title>
 
     <para>
       The <application>Sudo</application> package allows a system administrator
@@ -35,43 +35,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&sudo-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&sudo-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&sudo-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&sudo-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &sudo-md5sum;
+          Контрольная сумма MD5: &sudo-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &sudo-size;
+          Размер пакета: &sudo-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &sudo-buildsize;
+          Требуемое дисковое пространство: &sudo-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &sudo-time;
+          Приблизительное время сборки: &sudo-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Sudo Dependencies</bridgehead>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="linux-pam"/>,
       <xref linkend="mitkrb"/>,
@@ -88,7 +88,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Sudo</title>
+    <title>Установка пакета Sudo</title>
 
     <para>
       Install <application>Sudo</application> by running the following commands:
@@ -120,7 +120,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
      <parameter>--libexecdir=/usr/lib</parameter>: This switch controls where
@@ -177,10 +177,10 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Sudo</title>
+    <title>Настройка Sudo</title>
 
     <sect3 id="sudo-config">
-      <title>Config File</title>
+      <title>Конфигурационный файл</title>
 
       <para>
         <filename>/etc/sudoers</filename>
@@ -193,7 +193,7 @@ make</userinput></screen>
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         The <filename>sudoers</filename> file can be quite complicated.  It
@@ -280,17 +280,17 @@ chmod 644 /etc/pam.d/sudo</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
           cvtsudoers, sudo, sudo_logsrvd, sudo_sendlog,
-          sudoedit (symlink), sudoreplay, and visudo
+          sudoedit (символическая ссылка), sudoreplay, and visudo
         </seg>
         <seg>
           <!-- [pierre, September 25, 2020] except libsudo_util, the other
@@ -310,7 +310,7 @@ chmod 644 /etc/pam.d/sudo</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

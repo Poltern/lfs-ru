@@ -9,7 +9,7 @@
   <?dbhtml filename="wireless-kernel.html"?>
 
 
-  <title>Configuring the Linux Kernel for Wireless</title>
+  <title>Настройка the Linux Kernel for Wireless</title>
 
   <para>
     Before using any userspace tools for connecting to a wireless AP,

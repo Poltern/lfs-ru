@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Cups</title>
+    <title>Общая информация о Cups</title>
 
     <para>
       The Common Unix Printing System (CUPS) is a print spooler and
@@ -34,48 +34,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&cups-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&cups-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&cups-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&cups-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &cups-md5sum;
+          Контрольная сумма MD5: &cups-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &cups-size;
+          Размер пакета: &cups-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &cups-buildsize;
+          Требуемое дисковое пространство: &cups-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &cups-time;
+          Приблизительное время сборки: &cups-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Cups Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="gnutls"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="colord"/>,
       <xref linkend="dbus"/>,
@@ -84,7 +84,7 @@
       <xref linkend="xdg-utils"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="avahi"/>,
       <xref linkend="libpaper"/>,
@@ -108,7 +108,7 @@
   </sect2>
 
   <sect2 role="kernel" id="cups-kernel">
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <note>
       <para>
@@ -144,7 +144,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Cups</title>
+    <title>Установка пакета Cups</title>
 
     <para>
       You will need to add an <systemitem class="username">lp</systemitem>
@@ -242,7 +242,7 @@ ln -svnf ../cups/doc-&cups-version; /usr/share/doc/cups-&cups-version;</userinpu
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para revision="sysv">
       <parameter>--disable-systemd</parameter>: Systemd is not supported by
@@ -282,10 +282,10 @@ ln -svnf ../cups/doc-&cups-version; /usr/share/doc/cups-&cups-version;</userinpu
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Cups</title>
+    <title>Настройка Cups</title>
 
     <sect3 id="cups-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/cups/*</filename>
@@ -298,7 +298,7 @@ ln -svnf ../cups/doc-&cups-version; /usr/share/doc/cups-&cups-version;</userinpu
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         Normally, printers are set up via a web browser.  The
@@ -391,12 +391,12 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -420,7 +420,7 @@ EOF</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

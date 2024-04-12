@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libxslt</title>
+    <title>Общая информация о libxslt</title>
 
     <para>
       The <application>libxslt</application> package contains
@@ -34,41 +34,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libxslt-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libxslt-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libxslt-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libxslt-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libxslt-md5sum;
+          Контрольная сумма MD5: &libxslt-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libxslt-size;
+          Размер пакета: &libxslt-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libxslt-buildsize;
+          Требуемое дисковое пространство: &libxslt-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libxslt-time;
+          Приблизительное время сборки: &libxslt-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -80,7 +80,7 @@
 -->
     <bridgehead renderas="sect3">libxslt Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="libxml2"/>
     </para>
@@ -100,7 +100,7 @@
       </para>
     </note>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="libgcrypt"/>
     </para>-->
@@ -108,7 +108,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libxslt</title>
+    <title>Установка пакета libxslt</title>
 
     <para>
       Install <application>libxslt</application> by running the following
@@ -134,7 +134,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -142,12 +142,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -169,7 +169,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

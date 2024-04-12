@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to lsof</title>
+    <title>Общая информация о lsof</title>
 
     <para>
       The <application>lsof</application> package is useful to LiSt Open
@@ -33,48 +33,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&lsof-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&lsof-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&lsof-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&lsof-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &lsof-md5sum;
+          Контрольная сумма MD5: &lsof-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &lsof-size;
+          Размер пакета: &lsof-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &lsof-buildsize;
+          Требуемое дисковое пространство: &lsof-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &lsof-time;
+          Приблизительное время сборки: &lsof-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">lsof Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="libtirpc"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       nmap (with a symbolic link <command>nc</command>
       pointing to <command>ncat</command> in <filename class="directory">
@@ -84,7 +84,7 @@
   </sect2>
 
   <sect2 role="kernel" id="lsof-kernel">
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       To run the tests, the following option should be enabled in the kernel
@@ -101,7 +101,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of lsof</title>
+    <title>Установка пакета lsof</title>
 
     <para>
       Install <application>lsof</application> by running the
@@ -138,7 +138,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
 <!--
     <para>
@@ -160,22 +160,22 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>lsof</seg>
         <seg>liblsof.so</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

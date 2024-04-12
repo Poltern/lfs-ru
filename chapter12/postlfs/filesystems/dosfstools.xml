@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to dosfstools</title>
+    <title>Общая информация о dosfstools</title>
 
     <para>
       The <application>dosfstools</application> package contains various
@@ -32,36 +32,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&dosfstools-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&dosfstools-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&dosfstools-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&dosfstools-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &dosfstools-md5sum;
+          Контрольная сумма MD5: &dosfstools-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &dosfstools-size;
+          Размер пакета: &dosfstools-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &dosfstools-buildsize;
+          Требуемое дисковое пространство: &dosfstools-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &dosfstools-time;
+          Приблизительное время сборки: &dosfstools-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -70,7 +70,7 @@
   </sect2>
 
   <sect2 role="kernel" id='dosfstools-kernel'>
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       Enable the following option in the kernel configuration
@@ -100,7 +100,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of dosfstools</title>
+    <title>Установка пакета dosfstools</title>
 
     <para>
       Install <application>dosfstools</application> by running the
@@ -126,7 +126,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--enable-compat-symlinks</parameter>: This switch creates the
@@ -142,10 +142,10 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
         <seg>fatlabel, fsck.fat, and mkfs.fat</seg>
@@ -153,7 +153,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

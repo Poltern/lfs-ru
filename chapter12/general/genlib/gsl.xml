@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Gsl</title>
+    <title>Общая информация о Gsl</title>
 
     <para>
       The GNU Scientific Library (GSL) is a numerical library for C and C++
@@ -33,43 +33,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gsl-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gsl-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&gsl-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&gsl-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gsl-md5sum;
+          Контрольная сумма MD5: &gsl-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gsl-size;
+          Размер пакета: &gsl-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &gsl-buildsize;
+          Требуемое дисковое пространство: &gsl-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &gsl-time;
+          Приблизительное время сборки: &gsl-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Gsl Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="sphinx_rtd_theme"/>
     </para>
@@ -78,7 +78,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Gsl</title>
+    <title>Установка пакета Gsl</title>
 
     <para>
       Install <application>Gsl</application> by running the following commands:
@@ -116,19 +116,19 @@ cp -R doc/_build/html/* /usr/share/doc/gsl-&gsl-version;</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../../xincludes/static-libraries.xml"/>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -144,7 +144,7 @@ cp -R doc/_build/html/* /usr/share/doc/gsl-&gsl-version;</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

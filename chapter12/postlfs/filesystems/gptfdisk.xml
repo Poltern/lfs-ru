@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to gptfdisk</title>
+    <title>Общая информация о gptfdisk</title>
 
     <para>
       The <application>gptfdisk</application> package is a set of programs for
@@ -36,41 +36,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gptfdisk-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gptfdisk-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&gptfdisk-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&gptfdisk-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gptfdisk-md5sum;
+          Контрольная сумма MD5: &gptfdisk-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gptfdisk-size;
+          Размер пакета: &gptfdisk-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &gptfdisk-buildsize;
+          Требуемое дисковое пространство: &gptfdisk-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &gptfdisk-time;
+          Приблизительное время сборки: &gptfdisk-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -82,12 +82,12 @@
 
     <bridgehead renderas="sect3">gptfdisk Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="popt"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="icu"/>
     </para>
@@ -95,7 +95,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of gptfdisk</title>
+    <title>Установка пакета gptfdisk</title>
 
     <para>
       The <application>gptfdisk</application> package comes with a
@@ -124,7 +124,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>patch -Np1 ...</command>: This patch modifies the
@@ -135,10 +135,10 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
         <seg>
@@ -148,7 +148,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

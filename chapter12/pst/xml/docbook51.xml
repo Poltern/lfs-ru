@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to DocBook XML Schemas 5.1</title>
+    <title>Общая информация о DocBook XML Schemas 5.1</title>
 
     <para>
       The <application>DocBook XML Schemas</application>-5.1 package
@@ -35,43 +35,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&docbook51-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&docbook51-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&docbook51-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&docbook51-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &docbook51-md5sum;
+          Контрольная сумма MD5: &docbook51-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &docbook51-size;
+          Размер пакета: &docbook51-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &docbook51-buildsize;
+          Требуемое дисковое пространство: &docbook51-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &docbook51-time;
+          Приблизительное время сборки: &docbook51-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">DocBook XML Schemas 5.1 Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="libxml2"/>,
       <xref linkend="sgml-common"/>, and
@@ -82,7 +82,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of DocBook XML Schemas 5.1</title>
+    <title>Установка пакета DocBook XML Schemas 5.1</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../../xincludes/use-unzip.xml"/>
@@ -233,10 +233,10 @@ xmlcatalog --noout --add "delegateURI" \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring DocBook XML Schemas 5.1</title>
+    <title>Настройка DocBook XML Schemas 5.1</title>
 
     <sect3 id="docbook51-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/xml/catalog</filename> and
@@ -256,12 +256,12 @@ xmlcatalog --noout --add "delegateURI" \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Files</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>db4-entities.pl</seg>
@@ -272,7 +272,7 @@ xmlcatalog --noout --add "delegateURI" \
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

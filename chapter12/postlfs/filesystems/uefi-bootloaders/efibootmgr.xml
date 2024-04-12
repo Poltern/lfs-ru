@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to efibootmgr</title>
+    <title>Общая информация о efibootmgr</title>
 
     <para>
       The <application>efibootmgr</application> package provides tools and
@@ -32,43 +32,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&efibootmgr-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&efibootmgr-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&efibootmgr-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&efibootmgr-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &efibootmgr-md5sum;
+          Контрольная сумма MD5: &efibootmgr-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &efibootmgr-size;
+          Размер пакета: &efibootmgr-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &efibootmgr-buildsize;
+          Требуемое дисковое пространство: &efibootmgr-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &efibootmgr-time;
+          Приблизительное время сборки: &efibootmgr-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">efibootmgr Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="efivar"/> and
       <xref linkend="popt"/>
@@ -78,7 +78,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of efibootmgr</title>
+    <title>Установка пакета efibootmgr</title>
 
     <para>
       Build <application>efibootmgr</application> with the following
@@ -100,7 +100,7 @@
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>EFIDIR=LFS</parameter>:
@@ -118,10 +118,10 @@
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
         <seg>
@@ -131,7 +131,7 @@
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

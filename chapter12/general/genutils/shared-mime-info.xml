@@ -29,7 +29,7 @@ xreflabel="shared-mime-info-&shared-mime-info-version;">
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Shared Mime Info</title>
+    <title>Общая информация о Shared Mime Info</title>
 
     <para>
       The <application>Shared Mime Info</application> package contains a
@@ -39,41 +39,41 @@ xreflabel="shared-mime-info-&shared-mime-info-version;">
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&shared-mime-info-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&shared-mime-info-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&shared-mime-info-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&shared-mime-info-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &shared-mime-info-md5sum;
+          Контрольная сумма MD5: &shared-mime-info-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &shared-mime-info-size;
+          Размер пакета: &shared-mime-info-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &shared-mime-info-buildsize;
+          Требуемое дисковое пространство: &shared-mime-info-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &shared-mime-info-time;
+          Приблизительное время сборки: &shared-mime-info-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -88,13 +88,13 @@ xreflabel="shared-mime-info-&shared-mime-info-version;">
 
     <bridgehead renderas="sect3">Shared Mime Info Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="glib2"/> and
       <xref linkend="libxml2"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="xmlto"/>
     </para>
@@ -103,7 +103,7 @@ xreflabel="shared-mime-info-&shared-mime-info-version;">
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Shared Mime Info</title>
+    <title>Установка пакета Shared Mime Info</title>
 
     <para>
       Install <application>Shared Mime Info</application> by running the
@@ -144,7 +144,7 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/meson-buildtype-release.xml"/>
@@ -158,12 +158,12 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -179,7 +179,7 @@ ninja</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

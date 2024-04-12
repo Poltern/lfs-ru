@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to cups-browsed</title>
+    <title>Общая информация о cups-browsed</title>
 
     <para>
       The <application>cups-browsed</application> daemon is used to
@@ -34,43 +34,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&cups-browsed-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&cups-browsed-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&cups-browsed-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&cups-browsed-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &cups-browsed-md5sum;
+          Контрольная сумма MD5: &cups-browsed-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &cups-browsed-size;
+          Размер пакета: &cups-browsed-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &cups-browsed-buildsize;
+          Требуемое дисковое пространство: &cups-browsed-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &cups-browsed-time;
+          Приблизительное время сборки: &cups-browsed-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">cups-browsed Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="avahi"/>,
       <xref linkend="libcupsfilters"/> and
@@ -79,12 +79,12 @@
 
 <!-- as of 2.0.0 \-\-disable-avahi is still accepted by configure,
   but make fails.https://github.com/OpenPrinting/cups-browsed/issues/21
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="avahi"/>
     </para>-->
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="openldap"/>
     </para>
@@ -92,7 +92,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of cups-browsed</title>
+    <title>Установка пакета cups-browsed</title>
 
     <para>
       Install <application>cups-browsed</application> by running the
@@ -130,7 +130,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -151,7 +151,7 @@ make</userinput></screen>
 <!-- TODO: Write a bootscript for cups-browsed -->
 
   <sect2 role="configuration" revision="systemd">
-    <title>Configuring cups-browsed</title>
+    <title>Настройка cups-browsed</title>
 
     <sect3 id="cups-browsed-init">
       <title>Systemd Unit</title>
@@ -173,12 +173,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -194,7 +194,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

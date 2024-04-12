@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to efivar</title>
+    <title>Общая информация о efivar</title>
 
     <para>
       The <application>efivar</application> package provides tools and
@@ -32,41 +32,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&efivar-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&efivar-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&efivar-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&efivar-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &efivar-md5sum;
+          Контрольная сумма MD5: &efivar-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &efivar-size;
+          Размер пакета: &efivar-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &efivar-buildsize;
+          Требуемое дисковое пространство: &efivar-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &efivar-time;
+          Приблизительное время сборки: &efivar-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -78,7 +78,7 @@
 -->
     <bridgehead renderas="sect3">efivar Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="mandoc"/>
     </para>
@@ -86,7 +86,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of efivar</title>
+    <title>Установка пакета efivar</title>
 
     <note>
       <para>
@@ -118,7 +118,7 @@
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>LIBDIR=/usr/lib</parameter>:
@@ -138,12 +138,12 @@
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -159,7 +159,7 @@
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Doxygen</title>
+    <title>Общая информация о Doxygen</title>
 
     <para>
       The <application>Doxygen</application> package contains a documentation
@@ -48,41 +48,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&doxygen-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&doxygen-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&doxygen-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&doxygen-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &doxygen-md5sum;
+          Контрольная сумма MD5: &doxygen-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &doxygen-size;
+          Размер пакета: &doxygen-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &doxygen-buildsize;
+          Требуемое дисковое пространство: &doxygen-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &doxygen-time;
+          Приблизительное время сборки: &doxygen-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -94,13 +94,13 @@
 
     <bridgehead renderas="sect3">Doxygen Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="cmake"/> and
       <xref linkend="git"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="graphviz"/>,
       <xref linkend="gs"/>,
@@ -116,7 +116,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Doxygen</title>
+    <title>Установка пакета Doxygen</title>
 
     <note>
       <para>
@@ -179,7 +179,7 @@ install -vm644 ../doc/*.1 /usr/share/man/man1</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <option>-Dbuild_wizard=ON</option>: Use this switch if
@@ -208,7 +208,7 @@ install -vm644 ../doc/*.1 /usr/share/man/man1</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Doxygen</title>
+    <title>Настройка Doxygen</title>
 
     <para>
       There is no real configuration necessary for the
@@ -223,12 +223,12 @@ install -vm644 ../doc/*.1 /usr/share/man/man1</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -245,7 +245,7 @@ install -vm644 ../doc/*.1 /usr/share/man/man1</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to paps</title>
+    <title>Общая информация о paps</title>
 
     <para>
       <application>paps</application> is a text to PostScript converter that
@@ -35,48 +35,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&paps-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&paps-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&paps-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&paps-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &paps-md5sum;
+          Контрольная сумма MD5: &paps-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &paps-size;
+          Размер пакета: &paps-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &paps-buildsize;
+          Требуемое дисковое пространство: &paps-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &paps-time;
+          Приблизительное время сборки: &paps-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">paps Dependencies</bridgehead>
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="fmt"/> and
       <xref linkend="pango"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="doxygen"/>
     </para>
@@ -85,7 +85,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of paps</title>
+    <title>Установка пакета paps</title>
 
     <para>
       Install <application>paps</application> by running the following
@@ -110,22 +110,22 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>paps</seg>
-        <seg>None</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to LZO</title>
+    <title>Общая информация о LZO</title>
 
     <para>
       <application>LZO</application> is a data compression
@@ -33,36 +33,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&lzo-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&lzo-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&lzo-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&lzo-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &lzo-md5sum;
+          Контрольная сумма MD5: &lzo-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &lzo-size;
+          Размер пакета: &lzo-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &lzo-buildsize;
+          Требуемое дисковое пространство: &lzo-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &lzo-time;
+          Приблизительное время сборки: &lzo-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -70,7 +70,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of LZO</title>
+    <title>Установка пакета LZO</title>
 
     <para>
       Install <application>LZO</application> by running the
@@ -98,7 +98,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -106,12 +106,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -128,7 +128,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-    <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+    <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

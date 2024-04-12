@@ -34,7 +34,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to LVM2</title>
+    <title>Общая информация о LVM2</title>
 
     <para>
       The <application>LVM2</application> package is a set of tools that manage
@@ -46,48 +46,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&lvm2-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&lvm2-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&lvm2-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&lvm2-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &lvm2-md5sum;
+          Контрольная сумма MD5: &lvm2-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &lvm2-size;
+          Размер пакета: &lvm2-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &lvm2-buildsize;
+          Требуемое дисковое пространство: &lvm2-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &lvm2-time;
+          Приблизительное время сборки: &lvm2-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">LVM2 Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend='libaio'/>
      </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend='mdadm'/>,
       <xref linkend='valgrind'/>,
@@ -105,7 +105,7 @@
   </sect2>
 
   <sect2 role="kernel" id="lvm2-kernel">
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       Enable the following options in the kernel configuration
@@ -129,7 +129,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of LVM2</title>
+    <title>Установка пакета LVM2</title>
 
     <para>
       Install <application>LVM2</application> by running the following
@@ -253,7 +253,7 @@ make install_systemd_units</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>PATH+=:/usr/sbin</command>: The path
@@ -301,10 +301,10 @@ make install_systemd_units</userinput></screen>
   </sect2>
 
   <sect2 role="configuration" revision="systemd">
-    <title>Configuring LVM2</title>
+    <title>Настройка LVM2</title>
 
     <sect3 id="lvm2-config">
-      <title>Config File</title>
+      <title>Конфигурационный файл</title>
       <para>
         <filename>/etc/lvm/lvm.conf</filename>
       </para>
@@ -315,7 +315,7 @@ make install_systemd_units</userinput></screen>
       </indexterm>
     </sect3>
 
-    <sect3><title>Configuration Information</title>
+    <sect3><title>Информация о настройках</title>
       <para>
         The default configuration still references the obsolete <filename
         class="directory">/var/lock</filename> directory. This creates
@@ -330,12 +330,12 @@ make install_systemd_units</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -359,7 +359,7 @@ make install_systemd_units</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
 
      <?dbhtml list-presentation="table"?>

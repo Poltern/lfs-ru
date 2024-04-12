@@ -47,7 +47,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to biber</title>
+    <title>Общая информация о biber</title>
 
     <para>
       Biber is a BibTeX replacement for users of biblatex, written in
@@ -76,36 +76,36 @@
          biber, biblatex.
  -->
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&biber-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&biber-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&biber-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&biber-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &biber-md5sum;
+          Контрольная сумма MD5: &biber-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &biber-size;
+          Размер пакета: &biber-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &biber-buildsize;
+          Требуемое дисковое пространство: &biber-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &biber-time;
+          Приблизительное время сборки: &biber-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -160,24 +160,24 @@
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&biblatex-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&biblatex-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &biblatex-md5sum;
+          Контрольная сумма MD5: &biblatex-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &biblatex-size;
+          Размер пакета: &biblatex-size;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Biber Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <!-- KFM: the order listed in Build.PL is not alphabetical -->
       <xref linkend="perl-autovivification"/>
@@ -258,7 +258,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Biber</title>
+    <title>Установка пакета Biber</title>
 
     <!-- https://github.com/plk/biber/commit/d9e9617 -->
     <!--
@@ -303,7 +303,7 @@ texhash &amp;&amp;
   </sect2>
 <!--
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>tar -xf biblatex-&biblatex-version;.tds.tar.gz -C
@@ -320,22 +320,22 @@ texhash &amp;&amp;
   </sect2>
 -->
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>biber</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/usr/lib/perl5/site_perl/5.*{,/&lt;arch&gt;-linux/auto}/Biber</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

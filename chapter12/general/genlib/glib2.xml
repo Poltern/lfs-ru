@@ -28,7 +28,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to GLib</title>
+    <title>Общая информация о GLib</title>
 
     <para>
       The <application>GLib</application> package contains low-level
@@ -39,41 +39,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&glib2-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&glib2-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&glib2-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&glib2-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &glib2-md5sum;
+          Контрольная сумма MD5: &glib2-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &glib2-size;
+          Размер пакета: &glib2-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &glib2-buildsize;
+          Требуемое дисковое пространство: &glib2-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &glib2-time;
+          Приблизительное время сборки: &glib2-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
 
     <para>
       <emphasis role="strong">GObject Introspection (Recommended)</emphasis>
@@ -86,12 +86,12 @@
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gobject-introspection-md5sum;
+          Контрольная сумма MD5: &gobject-introspection-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gobject-introspection-size;
+          Размер пакета: &gobject-introspection-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -110,19 +110,19 @@
 
     <bridgehead renderas="sect3">GLib Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend='packaging'/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <!--<xref linkend='docutils'/>,-->
       <xref linkend="libxslt"/>, and
       <xref linkend="pcre2"/>
     </para>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend='cairo'/> (for some GObject Introspection tests),
       <xref linkend="dbus"/> (for some tests),
@@ -158,7 +158,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of GLib</title>
+    <title>Установка пакета GLib</title>
 
     <para>
       If desired, apply the optional patch. In many cases, applications that
@@ -299,7 +299,7 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/meson-buildtype-release.xml"/>
@@ -312,14 +312,14 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <bridgehead renderas="sect3">GLib Contents</bridgehead>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -355,8 +355,8 @@ ninja</userinput></screen>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <!-- g-ir-doc-tool is installed if Mako and Markdown are present -->
       <seglistitem>
@@ -379,7 +379,7 @@ ninja</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

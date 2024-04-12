@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to GPM</title>
+    <title>Общая информация о GPM</title>
 
     <para>
       The <application>GPM</application> (General Purpose Mouse daemon)
@@ -39,41 +39,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gpm-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gpm-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&gpm-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&gpm-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gpm-md5sum;
+          Контрольная сумма MD5: &gpm-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gpm-size;
+          Размер пакета: &gpm-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &gpm-buildsize;
+          Требуемое дисковое пространство: &gpm-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &gpm-time;
+          Приблизительное время сборки: &gpm-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -85,14 +85,14 @@
 
     <bridgehead renderas="sect3">GPM Dependencies</bridgehead>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="texlive"/> (for documentation)
     </para>-->
   </sect2>
 
   <sect2 role="kernel" id='gpm-kernel'>
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
      <para>
       Enable the following option in the kernel configuration and recompile the
@@ -109,7 +109,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of GPM</title>
+    <title>Установка пакета GPM</title>
 
     <para>
       Install <application>GPM</application> by running
@@ -162,7 +162,7 @@ install -v -m644    doc/{FAQ,HACK_GPM,README*}        \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>./autogen.sh</command>: This command creates the missing
@@ -196,7 +196,7 @@ install -v -m644    doc/{FAQ,HACK_GPM,README*}        \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring GPM</title>
+    <title>Настройка GPM</title>
 
     <sect3 id="gpm-init">
       <title><phrase revision="sysv">Boot Script</phrase>
@@ -224,7 +224,7 @@ install -v -m644    doc/{FAQ,HACK_GPM,README*}        \
     </sect3>
 
     <sect3 id="gpm-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/gpm-root.conf</filename> and
@@ -264,7 +264,7 @@ EOF</userinput></screen>
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para revision="sysv">
         Examples of values to set <envar>MDEVICE</envar>,
@@ -306,12 +306,12 @@ ExecStart=/usr/sbin/gpm <replaceable>&lt;list of parameters&gt;</replaceable>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>disable-paste, display-buttons, display-coords, get-versions, gpm,
@@ -322,7 +322,7 @@ ExecStart=/usr/sbin/gpm <replaceable>&lt;list of parameters&gt;</replaceable>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

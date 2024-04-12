@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libjpeg-turbo</title>
+    <title>Общая информация о libjpeg-turbo</title>
 
     <para>
       <application>libjpeg-turbo</application> is a fork of the original
@@ -35,48 +35,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libjpeg-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libjpeg-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libjpeg-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libjpeg-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libjpeg-md5sum;
+          Контрольная сумма MD5: &libjpeg-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libjpeg-size;
+          Размер пакета: &libjpeg-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libjpeg-buildsize;
+          Требуемое дисковое пространство: &libjpeg-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libjpeg-time;
+          Приблизительное время сборки: &libjpeg-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">libjpeg-turbo Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="cmake"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="nasm"/> or <xref linkend="yasm"/>
       (for building the package with optimized assembly routine)
@@ -85,7 +85,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libjpeg-turbo</title>
+    <title>Установка пакета libjpeg-turbo</title>
 
     <para>
       Install <application>libjpeg-turbo</application> by running the
@@ -126,7 +126,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <option>-DWITH_JPEG8=ON</option>: This switch enables compatibility
@@ -135,12 +135,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -156,7 +156,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

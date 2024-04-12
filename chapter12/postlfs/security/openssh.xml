@@ -28,7 +28,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to OpenSSH</title>
+    <title>Общая информация о OpenSSH</title>
 
     <para>
       The <application>OpenSSH</application> package contains
@@ -41,41 +41,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&openssh-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&openssh-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&openssh-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&openssh-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &openssh-md5sum;
+          Контрольная сумма MD5: &openssh-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &openssh-size;
+          Размер пакета: &openssh-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &openssh-buildsize;
+          Требуемое дисковое пространство: &openssh-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &openssh-time;
+          Приблизительное время сборки: &openssh-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -87,7 +87,7 @@
 -->
     <bridgehead renderas="sect3">OpenSSH Dependencies</bridgehead>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="gdb"/> (for tests),
       <xref linkend="linux-pam"/> (PAM configuration files from
@@ -111,7 +111,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of OpenSSH</title>
+    <title>Установка пакета OpenSSH</title>
 
     <para>
       <application>OpenSSH</application> runs as two processes when connecting
@@ -228,7 +228,7 @@ install -v -m644    INSTALL LICENCE OVERVIEW README* \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--sysconfdir=/etc/ssh</parameter>: This prevents the
@@ -285,10 +285,10 @@ install -v -m644    INSTALL LICENCE OVERVIEW README* \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring OpenSSH</title>
+    <title>Настройка OpenSSH</title>
 
     <sect3 id="openssh-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>~/.ssh/*</filename>,
@@ -344,8 +344,8 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub <replaceable>REMOTE_USERNAME</replaceable>@
       </para>
 
 
-<screen role="root"><userinput>echo "PasswordAuthentication no" >> /etc/ssh/sshd_config &amp;&amp;
-echo "KbdInteractiveAuthentication no" >> /etc/ssh/sshd_config</userinput></screen>
+<screen role="root"><userinput>echo "PasswordAuthentication no" > /etc/ssh/sshd_config &amp;&amp;
+echo "KbdInteractiveAuthentication no" > /etc/ssh/sshd_config</userinput></screen>
 
       <para>
         If you added <application>Linux-PAM</application> support and you want
@@ -393,12 +393,12 @@ echo "UsePAM yes" &gt;&gt; /etc/ssh/sshd_config</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -417,7 +417,7 @@ echo "UsePAM yes" &gt;&gt; /etc/ssh/sshd_config</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

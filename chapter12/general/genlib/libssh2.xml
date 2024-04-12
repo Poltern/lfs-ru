@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libssh2</title>
+    <title>Общая информация о libssh2</title>
 
     <para>
       <application>Libssh2</application> package is a client-side C library
@@ -32,42 +32,42 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libssh2-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libssh2-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libssh2-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libssh2-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libssh2-md5sum;
+          Контрольная сумма MD5: &libssh2-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libssh2-size;
+          Размер пакета: &libssh2-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libssh2-buildsize;
+          Требуемое дисковое пространство: &libssh2-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libssh2-time;
+          Приблизительное время сборки: &libssh2-time;
         </para>
       </listitem>
     </itemizedlist>
 
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -79,7 +79,7 @@
 
     <bridgehead renderas="sect3">libssh2 Dependencies</bridgehead>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="cmake"/> (can be used instead of the
       <command>configure</command> script),
@@ -91,7 +91,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libssh2</title>
+    <title>Установка пакета libssh2</title>
 
     <para>
       <!-- the Terrapin attack -->
@@ -131,7 +131,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--disable-docker-tests</parameter>: Disable the tests
@@ -145,12 +145,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -166,7 +166,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

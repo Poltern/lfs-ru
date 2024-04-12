@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to xindy</title>
+    <title>Общая информация о xindy</title>
 
     <para>
       <!-- LaTeX for the system, but just latex for the command -->
@@ -36,36 +36,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&xindy-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&xindy-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&xindy-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&xindy-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &xindy-md5sum;
+          Контрольная сумма MD5: &xindy-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &xindy-size;
+          Размер пакета: &xindy-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &xindy-buildsize;
+          Требуемое дисковое пространство: &xindy-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &xindy-time;
+          Приблизительное время сборки: &xindy-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -82,7 +82,7 @@
 
     <bridgehead renderas="sect3">Xindy Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="clisp"/> and
       <xref linkend="texlive"/>
@@ -91,7 +91,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of xindy</title>
+    <title>Установка пакета xindy</title>
 
     <para>
       Install <application>xindy</application> by running the following
@@ -128,7 +128,7 @@ make LC_ALL=POSIX</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed -i "s/ grep -v '^;'/ awk NF/" ...</command>: The build
@@ -178,12 +178,12 @@ make LC_ALL=POSIX</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -199,7 +199,7 @@ make LC_ALL=POSIX</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to WPA Supplicant</title>
+    <title>Общая информация о WPA Supplicant</title>
 
     <para>
       <application>WPA Supplicant</application> is a Wi-Fi Protected Access
@@ -38,41 +38,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&wpa_supplicant-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&wpa_supplicant-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&wpa_supplicant-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&wpa_supplicant-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &wpa_supplicant-md5sum;
+          Контрольная сумма MD5: &wpa_supplicant-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &wpa_supplicant-size;
+          Размер пакета: &wpa_supplicant-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &wpa_supplicant-buildsize;
+          Требуемое дисковое пространство: &wpa_supplicant-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &wpa_supplicant-time;
+          Приблизительное время сборки: &wpa_supplicant-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -89,14 +89,14 @@
       <xref linkend="wireless-kernel"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="desktop-file-utils"/> (for running
         <command>update-desktop-database</command>) and
       <xref linkend="libnl"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <phrase revision="sysv">dbus,</phrase>
       <xref linkend="libxml2"/>, and
@@ -107,7 +107,7 @@
   </sect2>
 
   <sect2 role="kernel" id="wpa_supplicant-kernel">
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       To use <application>wpa_supplicant</application>, the kernel must have
@@ -121,7 +121,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of WPA Supplicant</title>
+    <title>Установка пакета WPA Supplicant</title>
 
     <para>
       First you will need to create an initial configuration file for the
@@ -267,7 +267,7 @@ install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg /usr/share/pixmaps/</userinput></
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring wpa_supplicant</title>
+    <title>Настройка wpa_supplicant</title>
 
     <important>
       <para>
@@ -281,7 +281,7 @@ install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg /usr/share/pixmaps/</userinput></
     </important>
 
     <sect3 id="wpa_supplicant-config">
-      <title>Config File</title>
+      <title>Конфигурационный файл</title>
 
       <para revision="sysv">
         <filename>/etc/sysconfig/wpa_supplicant-*.conf</filename>
@@ -304,7 +304,7 @@ install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg /usr/share/pixmaps/</userinput></
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         To connect to an access point that uses a password, you need to put
@@ -524,12 +524,12 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -545,7 +545,7 @@ EOF</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

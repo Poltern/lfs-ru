@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libarchive</title>
+    <title>Общая информация о libarchive</title>
 
     <para>
       The <application>libarchive</application> library provides a single
@@ -32,42 +32,42 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libarchive-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libarchive-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libarchive-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libarchive-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libarchive-md5sum;
+          Контрольная сумма MD5: &libarchive-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libarchive-size;
+          Размер пакета: &libarchive-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libarchive-buildsize;
+          Требуемое дисковое пространство: &libarchive-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libarchive-time;
+          Приблизительное время сборки: &libarchive-time;
         </para>
       </listitem>
     </itemizedlist>
 
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -79,7 +79,7 @@
 -->
     <bridgehead renderas="sect3">libarchive Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="libxml2"/>,
       lzo, 
@@ -89,7 +89,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libarchive</title>
+    <title>Установка пакета libarchive</title>
 
     <para>
       Install <application>libarchive</application> by running the following
@@ -112,7 +112,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -130,12 +130,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -151,7 +151,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Lynx</title>
+    <title>Общая информация о Lynx</title>
 
     <para>
       <application>Lynx</application> is a text based web browser.
@@ -31,41 +31,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&lynx-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&lynx-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&lynx-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&lynx-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &lynx-md5sum;
+          Контрольная сумма MD5: &lynx-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &lynx-size;
+          Размер пакета: &lynx-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &lynx-buildsize;
+          Требуемое дисковое пространство: &lynx-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &lynx-time;
+          Приблизительное время сборки: &lynx-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -77,12 +77,12 @@
 
     <bridgehead renderas="sect3">Lynx Dependencies</bridgehead>
 <!--
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="openssl"/>
     </para>
 -->
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="gnutls"/> (experimental, to replace openssl),
       <xref linkend="zip"/>,
@@ -97,7 +97,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Lynx</title>
+    <title>Установка пакета Lynx</title>
 
     <para>
       First, apply a patch to fix a security vulnerability:
@@ -134,7 +134,7 @@ chgrp -v -R root /usr/share/doc/lynx-&lynx-version;/lynx_doc</userinput></screen
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--sysconfdir=/etc/lynx</parameter>: This parameter is
@@ -234,10 +234,10 @@ chgrp -v -R root /usr/share/doc/lynx-&lynx-version;/lynx_doc</userinput></screen
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Lynx</title>
+    <title>Настройка Lynx</title>
 
     <sect3 id="lynx-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/lynx/lynx.cfg</filename>
@@ -250,7 +250,7 @@ chgrp -v -R root /usr/share/doc/lynx-&lynx-version;/lynx_doc</userinput></screen
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         The proper way to get the display character set is to examine the
@@ -307,22 +307,22 @@ chgrp -v -R root /usr/share/doc/lynx-&lynx-version;/lynx_doc</userinput></screen
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
     <segtitle>Installed Program</segtitle>
-    <segtitle>Installed Libraries</segtitle>
-    <segtitle>Installed Directories</segtitle>
+    <segtitle>Установленные библиотеки</segtitle>
+    <segtitle>Созданные каталоги</segtitle>
 
     <seglistitem>
       <seg>lynx</seg>
-      <seg>None</seg>
+      <seg>Нет</seg>
       <seg>/etc/lynx and /usr/share/doc/lynx-&lynx-version;</seg>
     </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to xfsprogs</title>
+    <title>Общая информация о xfsprogs</title>
 
     <para>
       The <application>xfsprogs</application> package contains
@@ -32,49 +32,49 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&xfsprogs-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&xfsprogs-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&xfsprogs-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&xfsprogs-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &xfsprogs-md5sum;
+          Контрольная сумма MD5: &xfsprogs-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &xfsprogs-size;
+          Размер пакета: &xfsprogs-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &xfsprogs-buildsize;
+          Требуемое дисковое пространство: &xfsprogs-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &xfsprogs-time;
+          Приблизительное время сборки: &xfsprogs-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">xfsprogs Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="inih"/> and
       <xref linkend="liburcu"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="icu"/> (for unicode name scanning in xfs_scrub)
     </para>
@@ -82,7 +82,7 @@
   </sect2>
 
   <sect2 role="kernel" id="xfsprogs-kernel">
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       Enable the following options in the kernel configuration
@@ -99,7 +99,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of xfsprogs</title>
+    <title>Установка пакета xfsprogs</title>
 
       <!-- Now appears to be fixed -->
 <!--
@@ -134,7 +134,7 @@ rm -rfv /usr/lib/libhandle.{a,la}</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>DEBUG=-DNDEBUG</parameter>: Turns off debugging
@@ -156,12 +156,12 @@ rm -rfv /usr/lib/libhandle.{a,la}</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>fsck.xfs, mkfs.xfs, xfs_admin, xfs_bmap, xfs_copy, xfs_db,
@@ -178,7 +178,7 @@ rm -rfv /usr/lib/libhandle.{a,la}</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

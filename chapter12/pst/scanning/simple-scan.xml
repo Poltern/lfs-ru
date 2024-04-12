@@ -22,7 +22,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Simple-scan</title>
+    <title>Общая информация о Simple-scan</title>
 
     <para>
       The <application>Simple-scan</application> package contains a modern
@@ -32,43 +32,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&simple-scan-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&simple-scan-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&simple-scan-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&simple-scan-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &simple-scan-md5sum;
+          Контрольная сумма MD5: &simple-scan-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &simple-scan-size;
+          Размер пакета: &simple-scan-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &simple-scan-buildsize;
+          Требуемое дисковое пространство: &simple-scan-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &simple-scan-time;
+          Приблизительное время сборки: &simple-scan-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Simple-scan Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="colord"/>,
       <xref linkend="itstool"/>,
@@ -81,7 +81,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Simple-scan</title>
+    <title>Установка пакета Simple-scan</title>
 
     <para>
       Install <application>Simple-scan</application> by running the following
@@ -108,7 +108,7 @@ gtk-update-icon-cache -qtf /usr/share/icons/hicolor</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/meson-buildtype-release.xml"/>
@@ -122,12 +122,12 @@ gtk-update-icon-cache -qtf /usr/share/icons/hicolor</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -143,7 +143,7 @@ gtk-update-icon-cache -qtf /usr/share/icons/hicolor</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

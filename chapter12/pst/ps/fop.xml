@@ -42,7 +42,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to fop</title>
+    <title>Общая информация о fop</title>
 
     <para>
       The <application>FOP</application> (Formatting Objects Processor)
@@ -56,41 +56,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&fop-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&fop-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&fop-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&fop-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &fop-md5sum;
+          Контрольная сумма MD5: &fop-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &fop-size;
+          Размер пакета: &fop-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &fop-buildsize;
+          Требуемое дисковое пространство: &fop-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &fop-time;
+          Приблизительное время сборки: &fop-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <title>Required Additional Downloads:</title>
 <!--
@@ -143,12 +143,12 @@
 
     <bridgehead renderas="sect3">fop Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="apache-ant"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="x-window-system"/> (to run tests),
       <ulink url="https://jai-tools.blogspot.com/">JAI Image I/O Tools</ulink>, and
@@ -163,7 +163,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of fop</title>
+    <title>Установка пакета fop</title>
 
     <para>
       Ensure <envar>$JAVA_HOME</envar> is set correctly before beginning
@@ -265,7 +265,7 @@ ln -v -sfn fop-&fop-version; /opt/fop</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed -i ... build.xml</command>: This adds three switches to the
@@ -299,10 +299,10 @@ ln -v -sfn fop-&fop-version; /opt/fop</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring fop</title>
+    <title>Настройка fop</title>
 
     <sect3 id="fop-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>~/.foprc</filename>
@@ -315,7 +315,7 @@ ln -v -sfn fop-&fop-version; /opt/fop</userinput></screen>
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         Using <application>fop</application> to process some large FO's
@@ -398,12 +398,12 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>fop</seg>
@@ -416,7 +416,7 @@ EOF</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

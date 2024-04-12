@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to DocBook-utils</title>
+    <title>Общая информация о DocBook-utils</title>
 
     <para>
       The <application>DocBook-utils</application> package is a collection
@@ -37,41 +37,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&docbook-utils-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&docbook-utils-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&docbook-utils-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&docbook-utils-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &docbook-utils-md5sum;
+          Контрольная сумма MD5: &docbook-utils-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &docbook-utils-size;
+          Размер пакета: &docbook-utils-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &docbook-utils-buildsize;
+          Требуемое дисковое пространство: &docbook-utils-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &docbook-utils-time;
+          Приблизительное время сборки: &docbook-utils-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -83,7 +83,7 @@
 
     <bridgehead renderas="sect3">DocBook-utils Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="openjade"/>,
       <xref linkend="docbook-dsssl"/>, and
@@ -104,7 +104,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of DocBook-utils</title>
+    <title>Установка пакета DocBook-utils</title>
 
     <para>
       Install <application>DocBook-utils</application> by running the
@@ -151,7 +151,7 @@ done</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>patch -Np1 -i ../docbook-utils-&docbook-utils-version;-grep_fix-1.patch</command>:
@@ -174,19 +174,19 @@ done</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
       <segtitle>Installed Symlinks</segtitle>
 
       <seglistitem>
         <seg>docbook2dvi, docbook2html, docbook2man, docbook2pdf, docbook2ps,
         docbook2rtf, docbook2tex, docbook2texi, docbook2txt, jw, and
         sgmldiff</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/usr/share/doc/docbook-utils-&docbook-utils-version; and
         /usr/share/sgml/docbook/utils-&docbook-utils-version;</seg>
         <seg>db2dvi, db2html, db2man, db2pdf, db2ps, db2rtf, db2tex, db2texi,
@@ -195,7 +195,7 @@ done</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

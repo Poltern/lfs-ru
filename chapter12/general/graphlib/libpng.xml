@@ -29,7 +29,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libpng</title>
+    <title>Общая информация о libpng</title>
 
     <para>
       The <application>libpng</application> package contains libraries used
@@ -40,41 +40,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libpng-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libpng-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libpng-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libpng-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libpng-md5sum;
+          Контрольная сумма MD5: &libpng-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libpng-size;
+          Размер пакета: &libpng-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libpng-buildsize;
+          Требуемое дисковое пространство: &libpng-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libpng-time;
+          Приблизительное время сборки: &libpng-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -96,7 +96,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libpng</title>
+    <title>Установка пакета libpng</title>
 
     <para>
       If you want to patch libpng to support apng files, apply it here:
@@ -127,7 +127,7 @@ cp -v README libpng-manual.txt /usr/share/doc/libpng-&libpng-version;</userinput
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -135,16 +135,16 @@ cp -v README libpng-manual.txt /usr/share/doc/libpng-&libpng-version;</userinput
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
-          libpng-config (symlink), libpng16-config, pngfix and png-fix-itxt
+          libpng-config (символическая ссылка), libpng16-config, pngfix and png-fix-itxt
         </seg>
         <seg>
           libpng.so
@@ -157,7 +157,7 @@ cp -v README libpng-manual.txt /usr/share/doc/libpng-&libpng-version;</userinput
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

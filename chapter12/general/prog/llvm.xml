@@ -44,7 +44,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to LLVM</title>
+    <title>Общая информация о LLVM</title>
 
     <para>
       The <application>LLVM</application> package contains a collection of
@@ -72,41 +72,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&llvm-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&llvm-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&llvm-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&llvm-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &llvm-md5sum;
+          Контрольная сумма MD5: &llvm-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &llvm-size;
+          Размер пакета: &llvm-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &llvm-buildsize;
+          Требуемое дисковое пространство: &llvm-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &llvm-time;
+          Приблизительное время сборки: &llvm-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <para>
       <emphasis role="strong">Cmake modules for LLVM</emphasis>
     </para>
@@ -118,12 +118,12 @@
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &cmake-llvm-md5sum;
+          Контрольная сумма MD5: &cmake-llvm-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &cmake-llvm-size;
+          Размер пакета: &cmake-llvm-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -139,12 +139,12 @@
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &llvm-3rdparty-md5sum;
+          Контрольная сумма MD5: &llvm-3rdparty-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &llvm-3rdparty-size;
+          Размер пакета: &llvm-3rdparty-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -162,12 +162,12 @@
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &clang-md5sum;
+          Контрольная сумма MD5: &clang-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &clang-size;
+          Размер пакета: &clang-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -184,23 +184,23 @@
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &compiler-rt-md5sum;
+          Контрольная сумма MD5: &compiler-rt-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &compiler-rt-size;
+          Размер пакета: &compiler-rt-size;
         </para>
       </listitem>
     </itemizedlist>
     <bridgehead renderas="sect3">LLVM Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="cmake"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="doxygen"/>,
       <xref linkend="git"/>,
@@ -221,7 +221,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of LLVM</title>
+    <title>Установка пакета LLVM</title>
 
     <para>
       Two additional tarballs
@@ -420,7 +420,7 @@ rmdir -v --ignore-fail-on-non-empty /usr/share/doc/LLVM</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>-DLLVM_ENABLE_FFI=ON</parameter>: This switch allows
@@ -514,10 +514,10 @@ rmdir -v --ignore-fail-on-non-empty /usr/share/doc/LLVM</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring LLVM</title>
+    <title>Настройка LLVM</title>
 
     <sect3 id="llvm-config-info">
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         If you've built Clang, as the &root; user create two configuration
@@ -535,12 +535,12 @@ done</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -599,7 +599,7 @@ done</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

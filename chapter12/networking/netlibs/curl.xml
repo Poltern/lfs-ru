@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to cURL</title>
+    <title>Общая информация о cURL</title>
 
     <para>
       The <application>cURL</application> package contains an utility
@@ -37,41 +37,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&curl-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&curl-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&curl-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&curl-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &curl-md5sum;
+          Контрольная сумма MD5: &curl-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &curl-size;
+          Размер пакета: &curl-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &curl-buildsize;
+          Требуемое дисковое пространство: &curl-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &curl-time;
+          Приблизительное время сборки: &curl-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -84,7 +84,7 @@
 
     <bridgehead renderas="sect3">cURL Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="libpsl"/>
     </para>
@@ -97,12 +97,12 @@
       </para>
     </note>
 
-    <bridgehead renderas="sect4">Recommended at runtime</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые во время выполнения</bridgehead>
     <para role="recommended">
       <xref role="runtime" linkend="make-ca"/>
     </para>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="brotli"/>,
       <xref linkend="c-ares"/>,
@@ -137,7 +137,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of cURL</title>
+    <title>Установка пакета cURL</title>
 
     <para>
       Install <application>cURL</application> by running the following
@@ -439,7 +439,7 @@ cp -v -R docs -T /usr/share/doc/curl-&curl-version;</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -501,12 +501,12 @@ cp -v -R docs -T /usr/share/doc/curl-&curl-version;</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -523,7 +523,7 @@ cp -v -R docs -T /usr/share/doc/curl-&curl-version;</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

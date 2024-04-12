@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to parted</title>
+    <title>Общая информация о parted</title>
 
     <para>
       The <application>Parted</application> package is a disk partitioning and
@@ -32,41 +32,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&parted-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&parted-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&parted-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&parted-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &parted-md5sum;
+          Контрольная сумма MD5: &parted-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &parted-size;
+          Размер пакета: &parted-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &parted-buildsize;
+          Требуемое дисковое пространство: &parted-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &parted-time;
+          Приблизительное время сборки: &parted-time;
         </para>
       </listitem>
     </itemizedlist>
     <!--
-      <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+      <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
       <itemizedlist spacing="compact">
         <listitem>
           <para>
@@ -78,13 +78,13 @@
     This seems to be unneeded now. The fix was merged. -->
     <bridgehead renderas="sect3">Parted Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="lvm2"/> (device-mapper, required if building
       <application>udisks</application>)
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="dosfstools"/>,
       <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>), and
@@ -109,7 +109,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of parted</title>
+    <title>Установка пакета parted</title>
     <!--
     <para>
       If you want to build without device mapper support, a fix is necessary:
@@ -187,7 +187,7 @@ install -v -m644    doc/{FAT,API,parted.{txt,html}} \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -200,12 +200,12 @@ install -v -m644    doc/{FAT,API,parted.{txt,html}} \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -222,7 +222,7 @@ install -v -m644    doc/{FAT,API,parted.{txt,html}} \
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

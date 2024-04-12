@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to rsync</title>
+    <title>Общая информация о rsync</title>
 
     <para>
       The <application>rsync</application> package contains the
@@ -33,36 +33,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&rsync-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&rsync-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&rsync-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&rsync-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &rsync-md5sum;
+          Контрольная сумма MD5: &rsync-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &rsync-size;
+          Размер пакета: &rsync-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &rsync-buildsize;
+          Требуемое дисковое пространство: &rsync-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &rsync-time;
+          Приблизительное время сборки: &rsync-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -70,12 +70,12 @@
     <bridgehead renderas="sect3">rsync Dependencies</bridgehead>
 
     <!-- This now uses LZ4, OpenSSL, and zstd from LFS. -->
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="popt"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       doxygen and
       <ulink url="https://cyan4973.github.io/xxHash/">xxhash</ulink>
@@ -84,7 +84,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of rsync</title>
+    <title>Установка пакета rsync</title>
 
     <para>
       For security reasons, running the <application>rsync</application>
@@ -138,7 +138,7 @@ install -v -m644 dox/html/*  /usr/share/doc/rsync-&rsync-version;/api</userinput
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--disable-xxhash</parameter>: This switch disables advanced
@@ -154,10 +154,10 @@ install -v -m644 dox/html/*  /usr/share/doc/rsync-&rsync-version;/api</userinput
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring rsync</title>
+    <title>Настройка rsync</title>
 
     <sect3 id="rsync-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/rsyncd.conf</filename>
@@ -170,7 +170,7 @@ install -v -m644 dox/html/*  /usr/share/doc/rsync-&rsync-version;/api</userinput
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         For client access to remote files, you may need to install the
@@ -270,22 +270,22 @@ systemctl start rsyncd.socket</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>rsync and rsync-ssl</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>Optionally, /usr/share/doc/rsync-&rsync-version;</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

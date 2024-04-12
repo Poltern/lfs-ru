@@ -27,7 +27,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to GRUB</title>
+    <title>Общая информация о GRUB</title>
 
     <para>
       The <application>GRUB</application> package provides GRand Unified
@@ -37,41 +37,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&grub-efi-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&grub-efi-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&grub-efi-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&grub-efi-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &grub-efi-md5sum;
+          Контрольная сумма MD5: &grub-efi-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &grub-efi-size;
+          Размер пакета: &grub-efi-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &grub-efi-buildsize;
+          Требуемое дисковое пространство: &grub-efi-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &grub-efi-time;
+          Приблизительное время сборки: &grub-efi-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <!--
     <itemizedlist spacing="compact">
       <listitem>
@@ -86,17 +86,17 @@
       <title>Unicode font data used to display GRUB menu</title>
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&unifont-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&unifont-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &unifont-md5sum;
+          Контрольная сумма MD5: &unifont-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &unifont-size;
+          Размер пакета: &unifont-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -112,13 +112,13 @@
 
     <bridgehead renderas="sect3">GRUB Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref role="runtime" linkend="efibootmgr"/> (runtime) and
       <xref linkend="freetype2"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="lvm2"/>
     </para>
@@ -127,7 +127,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of GRUB</title>
+    <title>Установка пакета GRUB</title>
 
     <para>
       First, install font data as the
@@ -200,7 +200,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--enable-grub-mkfont</parameter>: Build the tool named
@@ -240,7 +240,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
   </sect2>
 
   <sect2>
-    <title>Configuring GRUB</title>
+    <title>Настройка GRUB</title>
 
     <para>
       Using GRUB to make the LFS system bootable on UEFI platform will be
@@ -249,7 +249,7 @@ mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userin
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <para>See the page for GRUB in LFS book.</para>
   </sect2>

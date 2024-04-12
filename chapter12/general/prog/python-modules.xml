@@ -16,7 +16,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Python Modules</title>
+    <title>Общая информация о Python Modules</title>
 
     <para>
       The <application>Python</application> module packages add useful objects

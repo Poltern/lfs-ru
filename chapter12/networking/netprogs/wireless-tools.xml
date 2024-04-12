@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Wireless Tools</title>
+    <title>Общая информация о Wireless Tools</title>
 
     <para>
       The Wireless Extension (WE) is a generic API in the Linux kernel allowing
@@ -42,41 +42,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&wireless-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&wireless-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&wireless-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&wireless-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &wireless-md5sum;
+          Контрольная сумма MD5: &wireless-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &wireless-size;
+          Размер пакета: &wireless-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &wireless-buildsize;
+          Требуемое дисковое пространство: &wireless-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &wireless-time;
+          Приблизительное время сборки: &wireless-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -97,7 +97,7 @@
   </sect2>
 
   <sect2 role="kernel" id='wireless-tools-kernel'>
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       To use <application>Wireless Tools</application>, the kernel must have
@@ -117,7 +117,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Wireless Tools</title>
+    <title>Установка пакета Wireless Tools</title>
 
     <para>
       First, apply a patch that fixes a problem when numerous
@@ -146,7 +146,7 @@
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>INSTALL_MAN=/usr/share/man</command>: Install manual pages
@@ -157,23 +157,23 @@
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>ifrename, iwconfig, iwevent, iwgetid, iwlist, iwpriv,
              and iwspy</seg>
         <seg>libiw.so</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

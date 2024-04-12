@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Fontconfig</title>
+    <title>Общая информация о Fontconfig</title>
 
     <para>
       The <application>Fontconfig</application> package contains
@@ -34,41 +34,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&fontconfig-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&fontconfig-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&fontconfig-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&fontconfig-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &fontconfig-md5sum;
+          Контрольная сумма MD5: &fontconfig-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &fontconfig-size;
+          Размер пакета: &fontconfig-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &fontconfig-buildsize;
+          Требуемое дисковое пространство: &fontconfig-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &fontconfig-time;
+          Приблизительное время сборки: &fontconfig-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -80,12 +80,12 @@
 -->
     <bridgehead renderas="sect3">Fontconfig Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="freetype2"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="bubblewrap"/> (used by some tests),
       <xref linkend="curl"/> and <xref linkend="unzip"/>
@@ -111,7 +111,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Fontconfig</title>
+    <title>Установка пакета Fontconfig</title>
 
     <para>
       Install <application>Fontconfig</application> by running the following
@@ -157,7 +157,7 @@ install -v -m644 doc/*.{pdf,sgml,txt,html} \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--disable-docs</parameter>: This switch avoids building the
@@ -168,10 +168,10 @@ install -v -m644 doc/*.{pdf,sgml,txt,html} \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Fontconfig</title>
+    <title>Настройка Fontconfig</title>
 
     <sect3 id="fontconfig-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>
@@ -196,7 +196,7 @@ install -v -m644 doc/*.{pdf,sgml,txt,html} \
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         The main configuration file for <application>Fontconfig</application> is
@@ -259,12 +259,12 @@ install -v -m644 doc/*.{pdf,sgml,txt,html} \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -286,7 +286,7 @@ install -v -m644 doc/*.{pdf,sgml,txt,html} \
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

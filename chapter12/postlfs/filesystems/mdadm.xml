@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to mdadm</title>
+    <title>Общая информация о mdadm</title>
 
     <para>
       The <application>mdadm</application> package contains administration
@@ -33,43 +33,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&mdadm-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&mdadm-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&mdadm-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&mdadm-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &mdadm-md5sum;
+          Контрольная сумма MD5: &mdadm-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &mdadm-size;
+          Размер пакета: &mdadm-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &mdadm-buildsize;
+          Требуемое дисковое пространство: &mdadm-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &mdadm-time;
+          Приблизительное время сборки: &mdadm-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">mdadm Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       A <xref linkend="server-mail"/>
     </para>
@@ -87,7 +87,7 @@
   </sect2>
 
   <sect2 role="kernel" id='mdadm-kernel'>
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       Enable the following options in the kernel configuration
@@ -105,7 +105,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of mdadm</title>
+    <title>Установка пакета mdadm</title>
 <!--
     <para>
       Fix a build error introduced by gcc-7.1:
@@ -169,7 +169,7 @@
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>make everything</command>: This optional target creates extra
@@ -204,22 +204,22 @@
 
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>mdadm and mdmon <!--and optionally mdassemble--></seg>
-        <seg>None</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

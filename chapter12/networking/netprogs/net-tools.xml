@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Net-tools</title>
+    <title>Общая информация о Net-tools</title>
 
     <para>
       The <application>Net-tools</application> package is a collection
@@ -32,41 +32,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&net-tools-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&net-tools-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&net-tools-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&net-tools-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &net-tools-md5sum;
+          Контрольная сумма MD5: &net-tools-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &net-tools-size;
+          Размер пакета: &net-tools-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &net-tools-buildsize;
+          Требуемое дисковое пространство: &net-tools-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &net-tools-time;
+          Приблизительное время сборки: &net-tools-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -81,7 +81,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Net-tools</title>
+    <title>Установка пакета Net-tools</title>
 
     <para id="net-tools-automate-example" xreflabel="Net-tools">
       The instructions below automate the configuration process by piping
@@ -146,7 +146,7 @@ cp -a install/* /</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>export BINDIR='/usr/bin' SBINDIR='/usr/bin'</command>:
@@ -166,12 +166,12 @@ cp -a install/* /</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>arp,
@@ -185,13 +185,13 @@ cp -a install/* /</userinput></screen>
         route, and
         slattach
         </seg>
-        <seg>None</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

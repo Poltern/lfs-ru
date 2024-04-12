@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Emacs</title>
+    <title>Общая информация о Emacs</title>
 
     <para>
       The <application>Emacs</application> package contains an extensible,
@@ -32,43 +32,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&emacs-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&emacs-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&emacs-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&emacs-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &emacs-md5sum;
+          Контрольная сумма MD5: &emacs-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &emacs-size;
+          Размер пакета: &emacs-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &emacs-buildsize;
+          Требуемое дисковое пространство: &emacs-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &emacs-time;
+          Приблизительное время сборки: &emacs-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Emacs Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       harfbuzz,
       giflib,
@@ -77,7 +77,7 @@
       libtiff
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       x-window-system
       alsa-lib
@@ -111,7 +111,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Emacs</title>
+    <title>Установка пакета Emacs</title>
 
     <para>
       Install <application>Emacs</application> by running the following
@@ -145,7 +145,7 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <!-- With 27.2, it writes scores to ~/.emacs.d/games
     <para>
@@ -189,28 +189,28 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>ctags,
              ebrowse,
-             emacs (symlink),
+             emacs (символическая ссылка),
              emacs-&emacs-version;,
              emacsclient, and
              etags</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/usr/libexec/emacs and
              /usr/share/emacs</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

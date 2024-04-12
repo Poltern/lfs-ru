@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to DocBook-3.1 SGML DTD</title>
+    <title>Общая информация о DocBook-3.1 SGML DTD</title>
 
     <para>
       The <application>DocBook SGML DTD</application> package contains
@@ -36,43 +36,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&sgml-dtd-3-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&sgml-dtd-3-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&sgml-dtd-3-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&sgml-dtd-3-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &sgml-dtd-3-md5sum;
+          Контрольная сумма MD5: &sgml-dtd-3-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &sgml-dtd-3-size;
+          Размер пакета: &sgml-dtd-3-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &sgml-dtd-3-buildsize;
+          Требуемое дисковое пространство: &sgml-dtd-3-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &sgml-dtd-3-time;
+          Приблизительное время сборки: &sgml-dtd-3-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">DocBook-3.1 SGML DTD Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="sgml-common"/> and
       <xref linkend="unzip"/> (or <xref role='nodep' linkend='libarchive'/>)
@@ -82,7 +82,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of DocBook-3.1 SGML DTD</title>
+    <title>Установка пакета DocBook-3.1 SGML DTD</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../../xincludes/use-unzip.xml"/>
@@ -118,7 +118,7 @@ install-catalog --add /etc/sgml/sgml-docbook-dtd-&docbook-3.1-dtd-version;.cat \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed -i -e '/ISO 8879/d' docbook.cat</command>: This command
@@ -136,10 +136,10 @@ install-catalog --add /etc/sgml/sgml-docbook-dtd-&docbook-3.1-dtd-version;.cat \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring DocBook-3.1 SGML DTD</title>
+    <title>Настройка DocBook-3.1 SGML DTD</title>
 
     <sect3 id="sgml-dtd-3-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/sgml/catalog</filename>
@@ -152,7 +152,7 @@ install-catalog --add /etc/sgml/sgml-docbook-dtd-&docbook-3.1-dtd-version;.cat \
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         The above installation script updates the catalog.
@@ -177,24 +177,24 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
       <segtitle>Installed Files</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>None</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
         <seg>SGML DTD and MOD files</seg>
         <seg>/usr/share/sgml/docbook/sgml-dtd-&docbook-3.1-dtd-version;</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

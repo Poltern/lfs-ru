@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to CMake</title>
+    <title>Общая информация о CMake</title>
 
     <para>
       The <application>CMake</application> package contains a modern
@@ -36,42 +36,42 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&cmake-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&cmake-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&cmake-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&cmake-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &cmake-md5sum;
+          Контрольная сумма MD5: &cmake-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &cmake-size;
+          Размер пакета: &cmake-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &cmake-buildsize;
+          Требуемое дисковое пространство: &cmake-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &cmake-time;
+          Приблизительное время сборки: &cmake-time;
         </para>
       </listitem>
     </itemizedlist>
 
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -84,7 +84,7 @@
 
     <bridgehead renderas="sect3">CMake Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="curl"/>,
       <xref linkend="libarchive"/>,
@@ -92,7 +92,7 @@
       <xref linkend="nghttp2"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="gcc"/> (for gfortran),
       <xref linkend="git"/> (for use during tests),
@@ -109,7 +109,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of CMake</title>
+    <title>Установка пакета CMake</title>
 
  <!--
     <para>
@@ -170,7 +170,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed ... Modules/GNUInstallDirs.cmake</command>:
@@ -220,12 +220,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -243,7 +243,7 @@ make</userinput></screen>
 
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

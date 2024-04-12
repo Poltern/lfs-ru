@@ -40,7 +40,7 @@
 
   <!--Required section-->
   <sect2 role="package">
-    <title>Introduction to TEMPLATE</title>
+    <title>Общая информация о TEMPLATE</title>
 
     <para>
       The <application>TEMPLATE</application> package contains...
@@ -52,37 +52,37 @@
     <!-- if it works: -->
     &lfs1?_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&TEMPLATE-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&TEMPLATE-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &TEMPLATE-md5sum;
+          Контрольная сумма MD5: &TEMPLATE-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &TEMPLATE-size;
+          Размер пакета: &TEMPLATE-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &TEMPLATE-buildsize;
+          Требуемое дисковое пространство: &TEMPLATE-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &TEMPLATE-time;
+          Приблизительное время сборки: &TEMPLATE-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <!-- As required -->
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -94,7 +94,7 @@
 
     <bridgehead renderas="sect3">TEMPLATE Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="BLFS_DEPENDENCY"/> <!-- notice no period as this is not
       a sentence. If there are more than two, they must be separated by commas
@@ -115,7 +115,7 @@
     </para>
 
     <!-- As required -->
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="BLFS_DEPENDENCY"/> <!-- notice no period as this is not
       a sentence. See above for the use of "and" and commas. Normally, neither
@@ -128,7 +128,7 @@
     </para>
 
     <!-- As required -->
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="BLFS_DEPENDENCY"/> and
       <ulink url="http://www.some.url/">EXTERNAL DEPENDENCY</ulink>
@@ -148,7 +148,7 @@
   <!-- Optional section for packages that need a specific kernel
   configuration-->
   <sect2 role="kernel" id="TEMPLATE-kernel">
-    <title>Kernel Configuration</title>
+    <title>Настройка ядра</title>
 
     <para>
       Enable the following options in the kernel configuration and recompile the
@@ -176,7 +176,7 @@
 
   <!--Required section-->
   <sect2 role="installation">
-    <title>Installation of TEMPLATE</title>
+    <title>Установка пакета TEMPLATE</title>
 
     <para>
       Install <application>TEMPLATE</application> by running the following
@@ -252,7 +252,7 @@ mv doc/* /usr/share/doc/template-&template-version;</userinput></screen>
 
   <!--Optional section-->
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -289,10 +289,10 @@ mv doc/* /usr/share/doc/template-&template-version;</userinput></screen>
 
   <!--Optional section-->
   <sect2 role="configuration">
-    <title>Configuring TEMPLATE</title>
+    <title>Настройка TEMPLATE</title>
 
     <sect3 id="TEMPLATE-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
       <para>
         <filename>~/.Configfilename1</filename> and
         <filename>/etc/path/Configfilename2</filename> <!-- notice no period as this is not a sentence-->
@@ -308,7 +308,7 @@ mv doc/* /usr/share/doc/template-&template-version;</userinput></screen>
       </indexterm>
     </sect3>
 
-    <sect3><title>Configuration Information</title>
+    <sect3><title>Информация о настройках</title>
 
       <para>
         Blah blah blah about config.
@@ -354,7 +354,7 @@ EOF</userinput></screen>
 
   <!--Required section-->
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program(s)</segtitle>
@@ -389,7 +389,7 @@ EOF</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

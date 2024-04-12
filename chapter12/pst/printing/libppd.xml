@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libppd</title>
+    <title>Общая информация о libppd</title>
 
     <para>
       The <application>libppd</application> library contains
@@ -33,43 +33,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libppd-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libppd-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libppd-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libppd-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libppd-md5sum;
+          Контрольная сумма MD5: &libppd-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libppd-size;
+          Размер пакета: &libppd-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libppd-buildsize;
+          Требуемое дисковое пространство: &libppd-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libppd-time;
+          Приблизительное время сборки: &libppd-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">libppd Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="libcupsfilters"/>
     </para>
@@ -77,7 +77,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libppd</title>
+    <title>Установка пакета libppd</title>
 
     <para>
       Install <application>libppd</application> by running the
@@ -104,7 +104,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -126,12 +126,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -153,7 +153,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

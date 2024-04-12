@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libtasn1</title>
+    <title>Общая информация о libtasn1</title>
 
     <para>
       <application>libtasn1</application> is a highly portable C library
@@ -32,36 +32,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libtasn1-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libtasn1-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libtasn1-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libtasn1-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libtasn1-md5sum;
+          Контрольная сумма MD5: &libtasn1-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libtasn1-size;
+          Размер пакета: &libtasn1-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libtasn1-buildsize;
+          Требуемое дисковое пространство: &libtasn1-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libtasn1-time;
+          Приблизительное время сборки: &libtasn1-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -69,12 +69,12 @@
     <bridgehead renderas="sect3">libtasn1 Dependencies</bridgehead>
 
 <!-- does not seem to be needed anymore:
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="six"/>
     </para>
 -->
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="gtk-doc"/> and
       <xref linkend="valgrind"/>
@@ -83,7 +83,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libtasn1</title>
+    <title>Установка пакета libtasn1</title>
 
     <para>
       Install <application>libtasn1</application> by running the
@@ -116,7 +116,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -127,12 +127,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -148,7 +148,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

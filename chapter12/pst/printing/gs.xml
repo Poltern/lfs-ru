@@ -36,7 +36,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Ghostscript</title>
+    <title>Общая информация о Ghostscript</title>
 
     <para>
       <application>Ghostscript</application> is a versatile processor
@@ -46,41 +46,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gs-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gs-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&gs-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&gs-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gs-md5sum;
+          Контрольная сумма MD5: &gs-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gs-size;
+          Размер пакета: &gs-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &gs-buildsize;
+          Требуемое дисковое пространство: &gs-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &gs-time;
+          Приблизительное время сборки: &gs-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <!-- devs: do not comment out the bridgehead, unless you comment
          out all the additional downloads (including font files)
          Commenting this out since it's no longer needed, but keeping it for the
@@ -103,17 +103,17 @@
       <title>Standard Fonts</title>
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gs-standard-fonts-download;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gs-standard-fonts-download;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gs-standard-fonts-md5sum;
+          Контрольная сумма MD5: &gs-standard-fonts-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gs-standard-fonts-size;
+          Размер пакета: &gs-standard-fonts-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -122,24 +122,24 @@
       <title>Other Fonts</title>
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gs-other-fonts-download;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gs-other-fonts-download;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gs-other-fonts-md5sum;
+          Контрольная сумма MD5: &gs-other-fonts-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gs-other-fonts-size;
+          Размер пакета: &gs-other-fonts-size;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Ghostscript Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="cups"/> (required for building the <quote>cups</quote>
       device backend, which is needed by
@@ -154,7 +154,7 @@
       <xref linkend="openjpeg2"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="cairo"/>,
       <xref linkend="gtk3"/>,
@@ -167,7 +167,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Ghostscript</title>
+    <title>Установка пакета Ghostscript</title>
 
     <note>
       <para>
@@ -282,7 +282,7 @@ fc-cache -v /usr/share/ghostscript/fonts/</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>rm -rf zlib </command>: <application>zlib</application>
@@ -325,11 +325,11 @@ fc-cache -v /usr/share/ghostscript/fonts/</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -352,7 +352,7 @@ fc-cache -v /usr/share/ghostscript/fonts/</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

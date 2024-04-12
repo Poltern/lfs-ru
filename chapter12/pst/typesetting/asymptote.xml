@@ -25,7 +25,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to asymptote</title>
+    <title>Общая информация о asymptote</title>
 
     <para>
       <application>Asymptote</application> is a powerful descriptive vector
@@ -37,41 +37,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&asymptote-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&asymptote-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&asymptote-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&asymptote-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &asymptote-md5sum;
+          Контрольная сумма MD5: &asymptote-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &asymptote-size;
+          Размер пакета: &asymptote-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &asymptote-buildsize;
+          Требуемое дисковое пространство: &asymptote-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &asymptote-time;
+          Приблизительное время сборки: &asymptote-time;
         </para>
       </listitem>
     </itemizedlist>
 
-<!--<bridgehead renderas="sect3">Additional Downloads</bridgehead>
+<!--<bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -83,13 +83,13 @@
 
     <bridgehead renderas="sect3">asymptote Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="gs"/> and
       <xref linkend="texlive"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="curl"/>,
       <xref linkend="freeglut"/>,
@@ -99,12 +99,12 @@
       <xref linkend="libtirpc"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended at runtime</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые во время выполнения</bridgehead>
     <para role="recommended">
       <xref role="runtime" linkend="dvisvgm"/> to allow svg output
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="fftw"/>,
       <xref linkend="gsl"/>,
@@ -133,7 +133,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of asymptote</title>
+    <title>Установка пакета asymptote</title>
 
     <note>
       <!-- This is specifically about my cylinder test - it has been
@@ -192,7 +192,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
      href="../../xincludes/tex-prefix.xml"/>
@@ -243,12 +243,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -266,7 +266,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

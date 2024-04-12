@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to itstool</title>
+    <title>Общая информация о itstool</title>
 
     <para>
       <application>Itstool</application> extracts messages from XML files
@@ -34,43 +34,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&itstool-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&itstool-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&itstool-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&itstool-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &itstool-md5sum;
+          Контрольная сумма MD5: &itstool-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &itstool-size;
+          Размер пакета: &itstool-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &itstool-buildsize;
+          Требуемое дисковое пространство: &itstool-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &itstool-time;
+          Приблизительное время сборки: &itstool-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Itstool Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="DocBook"/>
     </para>
@@ -78,7 +78,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of itstool</title>
+    <title>Установка пакета itstool</title>
 
     <para>
       First, fix some compatibility problems with Python-3.12:
@@ -114,12 +114,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -135,7 +135,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -29,7 +29,7 @@ xreflabel="docbook-dsssl-&docbook-dsssl-version;">
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to DocBook DSSSL Stylesheets</title>
+    <title>Общая информация о DocBook DSSSL Stylesheets</title>
 
     <para>
       The <application>DocBook DSSSL Stylesheets</application> package
@@ -40,58 +40,58 @@ xreflabel="docbook-dsssl-&docbook-dsssl-version;">
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&docbook-dsssl-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&docbook-dsssl-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&docbook-dsssl-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&docbook-dsssl-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &docbook-dsssl-md5sum;
+          Контрольная сумма MD5: &docbook-dsssl-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &docbook-dsssl-size;
+          Размер пакета: &docbook-dsssl-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &docbook-dsssl-buildsize;
+          Требуемое дисковое пространство: &docbook-dsssl-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &docbook-dsssl-time;
+          Приблизительное время сборки: &docbook-dsssl-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing='compact'>
       <title>Documentation and test data</title>
 
       <listitem>
         <para>
-          Download (HTTP):
+          Ссылка на загрузку (HTTP):
           <ulink url="&docbook-dsssl-doc-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &docbook-dsssl-doc-md5sum;
+          Контрольная сумма MD5: &docbook-dsssl-doc-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &docbook-dsssl-doc-size;
+          Размер пакета: &docbook-dsssl-doc-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -99,7 +99,7 @@ xreflabel="docbook-dsssl-&docbook-dsssl-version;">
     <bridgehead renderas="sect3">DocBook DSSSL Stylesheets
     Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="sgml-common"/>
     </para>
@@ -117,7 +117,7 @@ xreflabel="docbook-dsssl-&docbook-dsssl-version;">
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of DocBook DSSSL Stylesheets</title>
+    <title>Установка пакета DocBook DSSSL Stylesheets</title>
 
     <para>
       If you downloaded the documentation, run:
@@ -148,7 +148,7 @@ install-catalog --add /etc/sgml/sgml-docbook.cat              \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       The above commands create an installation script for this package.
@@ -220,24 +220,24 @@ install-catalog --add /etc/sgml/sgml-docbook.cat              \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
       <segtitle>Installed Files</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>collateindex.pl</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>DSSSL stylesheets</seg>
         <seg>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

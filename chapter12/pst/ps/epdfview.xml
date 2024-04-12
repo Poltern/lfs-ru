@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to ePDFView-gtk3</title>
+    <title>Общая информация о ePDFView-gtk3</title>
 
     <para>
       <application>ePDFView-gtk3</application> is a fork of the old
@@ -37,56 +37,56 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&epdfview-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&epdfview-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&epdfview-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&epdfview-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &epdfview-md5sum;
+          Контрольная сумма MD5: &epdfview-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &epdfview-size;
+          Размер пакета: &epdfview-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &epdfview-buildsize;
+          Требуемое дисковое пространство: &epdfview-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &epdfview-time;
+          Приблизительное время сборки: &epdfview-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">ePDFView Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="gtk3"/> and
       <xref linkend="poppler"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="Recommended">
       <xref linkend="cups"/> (to access print queues),
       <xref linkend="desktop-file-utils"/>, and
       <xref linkend="hicolor-icon-theme"/> (both for the icons this installs)
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       The home page of the project's repository mentions that there are optional
       dependencies, which are enabled by switches. These are for building the
@@ -100,7 +100,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of ePDFView-gtk3</title>
+    <title>Установка пакета ePDFView-gtk3</title>
 
     <para>
       Install <application>ePDFView-gtk3</application> by running the following
@@ -132,7 +132,7 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
     <para>
       <command>-Denable-printing=true</command>: builds the code to link to the
       <application>cups</application> print queue(s). Omit this if you have not
@@ -141,7 +141,7 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring ePDFView-gtk3</title>
+    <title>Настройка ePDFView-gtk3</title>
 
       <para>
         ePDFView-gtk3 has several keyboard hotkeys for optional features. Most
@@ -170,22 +170,22 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>epdfview</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/usr/share/epdfview</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

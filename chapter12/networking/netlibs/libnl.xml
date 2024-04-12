@@ -28,7 +28,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libnl</title>
+    <title>Общая информация о libnl</title>
 
     <para>
       The <application>libnl</application> suite is a collection of libraries
@@ -37,36 +37,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libnl-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libnl-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libnl-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libnl-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libnl-md5sum;
+          Контрольная сумма MD5: &libnl-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libnl-size;
+          Размер пакета: &libnl-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libnl-buildsize;
+          Требуемое дисковое пространство: &libnl-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libnl-time;
+          Приблизительное время сборки: &libnl-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -75,27 +75,27 @@
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libnl-doc-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libnl-doc-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libnl-doc-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libnl-doc-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libnl-doc-md5sum;
+          Контрольная сумма MD5: &libnl-doc-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libnl-doc-size;
+          Размер пакета: &libnl-doc-size;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -108,7 +108,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libnl</title>
+    <title>Установка пакета libnl</title>
 <!--
     <para>
       If you are going to run the package tests apply this patch:
@@ -175,7 +175,7 @@ tar -xf ../libnl-doc-&libnl-version;.tar.gz --strip-components=1 --no-same-owner
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -188,12 +188,12 @@ tar -xf ../libnl-doc-&libnl-version;.tar.gz --strip-components=1 --no-same-owner
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -232,7 +232,7 @@ tar -xf ../libnl-doc-&libnl-version;.tar.gz --strip-components=1 --no-same-owner
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

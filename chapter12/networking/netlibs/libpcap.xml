@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libpcap</title>
+    <title>Общая информация о libpcap</title>
 
     <para>
       <application>libpcap</application> provides functions for user-level
@@ -32,42 +32,42 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libpcap-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libpcap-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libpcap-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libpcap-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libpcap-md5sum;
+          Контрольная сумма MD5: &libpcap-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libpcap-size;
+          Размер пакета: &libpcap-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libpcap-buildsize;
+          Требуемое дисковое пространство: &libpcap-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libpcap-time;
+          Приблизительное время сборки: &libpcap-time;
         </para>
       </listitem>
     </itemizedlist>
 
 <!-- Not needed with 1.10.0
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -81,7 +81,7 @@
 
     <bridgehead renderas="sect3">libpcap Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="bluez"/>,
       <xref linkend="libnl"/>,
@@ -95,7 +95,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libpcap</title>
+    <title>Установка пакета libpcap</title>
 
     <para>
       Install <application>libpcap</application> by running the
@@ -124,12 +124,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -145,7 +145,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

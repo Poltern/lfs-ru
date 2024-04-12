@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to make-ca</title>
+    <title>Общая информация о make-ca</title>
 
     <para>
       Public Key Infrastructure (PKI) is a method to validate the authenticity
@@ -50,16 +50,16 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&make-ca-download;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&make-ca-download;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &make-ca-size;
+          Размер пакета: &make-ca-size;
         </para>
       </listitem>
       <listitem>
@@ -69,12 +69,12 @@
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &make-ca-buildsize;
+          Требуемое дисковое пространство: &make-ca-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &make-ca-time;
+          Приблизительное время сборки: &make-ca-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -93,7 +93,7 @@
 
     <bridgehead renderas="sect3">make-ca Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <!-- Attention: no role="runtime" here because jhalfs don't assume
            runtime dependencies are needed to run commands.  -->
@@ -112,7 +112,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of make-ca and Generation of the CA-certificates stores</title>
+    <title>Установка пакета make-ca and Generation of the CA-certificates stores</title>
 
     <para>
       The <application>make-ca</application> script will download and process
@@ -199,7 +199,7 @@ chmod 754 /etc/cron.weekly/update-pki.sh</userinput></screen>
   </sect2>
 
   <sect2 role="configuration" id="make-ca-config">
-    <title>Configuring make-ca</title>
+    <title>Настройка make-ca</title>
 
 <!--    <para>
       For most users, no additional configuration is necessary, however,
@@ -367,11 +367,11 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>make-ca</seg>
@@ -381,7 +381,7 @@ EOF</userinput></screen>
     </segmentedlist>
 
    <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

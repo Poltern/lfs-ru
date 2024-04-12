@@ -6,7 +6,7 @@
   ]>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>-w dist</parameter>: builds the appropriate

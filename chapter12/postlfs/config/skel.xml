@@ -9,7 +9,7 @@
   <?dbhtml filename="skel.html"?>
 
 
-  <title>Configuring for Adding Users</title>
+  <title>Настройка for Adding Users</title>
 
   <indexterm zone="postlfs-config-skel">
     <primary sortas="e-etc-skel">/etc/skel/*</primary>

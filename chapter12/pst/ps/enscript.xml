@@ -27,7 +27,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Enscript</title>
+    <title>Общая информация о Enscript</title>
 
     <para>
       <application>Enscript</application> converts ASCII text files
@@ -48,41 +48,41 @@
       </para>
     </caution>
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&enscript-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&enscript-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&enscript-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&enscript-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &enscript-md5sum;
+          Контрольная сумма MD5: &enscript-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &enscript-size;
+          Размер пакета: &enscript-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &enscript-buildsize;
+          Требуемое дисковое пространство: &enscript-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &enscript-time;
+          Приблизительное время сборки: &enscript-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <!-- <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <!-- <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -94,7 +94,7 @@
 
     <bridgehead renderas="sect3">Enscript Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
     </para>
@@ -102,7 +102,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Enscript</title>
+    <title>Установка пакета Enscript</title>
 
     <para>
       Install <application>Enscript</application> by running the
@@ -153,7 +153,7 @@ install -v -m644    README* *.txt docs/*.txt \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--sysconfdir=/etc/enscript</parameter>: This switch puts
@@ -174,24 +174,24 @@ install -v -m644    README* *.txt docs/*.txt \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>diffpp, enscript, mkafmmap, over, sliceprint,
         and states</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/etc/enscript, /usr/share/doc/enscript-&enscript-version;, and
         /usr/share/enscript</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libunistring</title>
+    <title>Общая информация о libunistring</title>
 
     <para>
       <application>libunistring</application> is a library that provides
@@ -33,43 +33,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libunistring-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libunistring-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libunistring-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libunistring-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libunistring-md5sum;
+          Контрольная сумма MD5: &libunistring-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libunistring-size;
+          Размер пакета: &libunistring-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libunistring-buildsize;
+          Требуемое дисковое пространство: &libunistring-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libunistring-time;
+          Приблизительное время сборки: &libunistring-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">libunistring Dependencies</bridgehead>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
       (to rebuild the documentation)
@@ -78,7 +78,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libunistring</title>
+    <title>Установка пакета libunistring</title>
 
     <para>
       Install <application>libunistring</application> by running the following
@@ -103,7 +103,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -111,15 +111,15 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>libunistring.so</seg>
         <seg>
           /usr/include/unistring and
@@ -129,7 +129,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

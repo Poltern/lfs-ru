@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to PCI Utils</title>
+    <title>Общая информация о PCI Utils</title>
 
     <para>
       The <application>PCI Utils</application> package contains
@@ -33,43 +33,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&pciutils-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&pciutils-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&pciutils-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&pciutils-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &pciutils-md5sum;
+          Контрольная сумма MD5: &pciutils-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &pciutils-size;
+          Размер пакета: &pciutils-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &pciutils-buildsize;
+          Требуемое дисковое пространство: &pciutils-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &pciutils-time;
+          Приблизительное время сборки: &pciutils-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">pciutils Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
        <xref role="runtime" linkend="hwdata"/> (runtime)
     </para>
@@ -77,7 +77,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of PCI Utils</title>
+    <title>Установка пакета PCI Utils</title>
 
     <para>
       Prevent the installation of the <filename>pci.ids</filename> file
@@ -119,7 +119,7 @@ chmod -v 755 /usr/lib/libpci.so</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>SHARED=yes</parameter>: This parameter enables building of
@@ -129,12 +129,12 @@ chmod -v 755 /usr/lib/libpci.so</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -150,7 +150,7 @@ chmod -v 755 /usr/lib/libpci.so</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

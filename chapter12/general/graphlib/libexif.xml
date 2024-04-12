@@ -29,7 +29,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libexif</title>
+    <title>Общая информация о libexif</title>
 
     <para>
       The <application>libexif</application> package contains a library for
@@ -41,36 +41,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libexif-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libexif-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libexif-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libexif-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libexif-md5sum;
+          Контрольная сумма MD5: &libexif-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libexif-size;
+          Размер пакета: &libexif-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libexif-buildsize;
+          Требуемое дисковое пространство: &libexif-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libexif-time;
+          Приблизительное время сборки: &libexif-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -86,7 +86,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libexif</title>
+    <title>Установка пакета libexif</title>
 
 <!--
     <para>
@@ -128,7 +128,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -136,12 +136,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -158,7 +158,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

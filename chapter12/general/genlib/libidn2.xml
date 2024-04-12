@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libidn2</title>
+    <title>Общая информация о libidn2</title>
 
     <para>
       <application>libidn2</application> is a package designed for
@@ -35,48 +35,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libidn2-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libidn2-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libidn2-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libidn2-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libidn2-md5sum;
+          Контрольная сумма MD5: &libidn2-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libidn2-size;
+          Размер пакета: &libidn2-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libidn2-buildsize;
+          Требуемое дисковое пространство: &libidn2-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libidn2-time;
+          Приблизительное время сборки: &libidn2-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">libidn2 Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="libunistring"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       git and
       gtk-doc
@@ -86,7 +86,7 @@
 
   <!--Required section-->
   <sect2 role="installation">
-    <title>Installation of libidn2</title>
+    <title>Установка пакета libidn2</title>
 
     <para>
       Install <application>libidn2</application> by running the following
@@ -108,7 +108,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -119,12 +119,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -140,7 +140,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

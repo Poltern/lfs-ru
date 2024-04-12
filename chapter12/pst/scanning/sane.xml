@@ -32,7 +32,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to SANE</title>
+    <title>Общая информация о SANE</title>
 
     <para>
       <application>SANE</application> is short for Scanner Access Now Easy.
@@ -55,32 +55,32 @@
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&sane-be-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&sane-be-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&sane-be-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&sane-be-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &sane-be-md5sum;
+          Контрольная сумма MD5: &sane-be-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &sane-be-size;
+          Размер пакета: &sane-be-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &sane-be-buildsize;
+          Требуемое дисковое пространство: &sane-be-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &sane-be-time;
+          Приблизительное время сборки: &sane-be-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -90,32 +90,32 @@
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&sane-fe-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&sane-fe-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&sane-fe-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&sane-fe-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &sane-fe-md5sum;
+          Контрольная сумма MD5: &sane-fe-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &sane-fe-size;
+          Размер пакета: &sane-fe-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &sane-fe-buildsize;
+          Требуемое дисковое пространство: &sane-fe-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &sane-fe-time;
+          Приблизительное время сборки: &sane-fe-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -180,10 +180,10 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of SANE</title>
+    <title>Установка пакета SANE</title>
 
     <sect3>
-      <title>Installation of SANE Back Ends</title>
+      <title>Установка пакета SANE Back Ends</title>
 
       <para>
         The <application>SANE</application> daemon should run with its own
@@ -253,7 +253,7 @@ chgrp -v scanner  /run/lock/sane</userinput></screen>
 
 <!--
     <sect3>
-      <title>Installation of SANE Front Ends</title>
+      <title>Установка пакета SANE Front Ends</title>
 
       <para>
         The <application>SANE</application>-frontends package
@@ -313,7 +313,7 @@ install -v -m644 doc/sane.png xscanimage-icon-48x48-2.png \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sg scanner -c "..."</command>: runs the command between double
@@ -346,10 +346,10 @@ install -v -m644 doc/sane.png xscanimage-icon-48x48-2.png \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring SANE</title>
+    <title>Настройка SANE</title>
 
     <sect3 id="sane-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/sane.d/*.conf</filename>
@@ -362,7 +362,7 @@ install -v -m644 doc/sane.png xscanimage-icon-48x48-2.png \
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <sect4>
         <title>Backend Configuration</title>
@@ -467,12 +467,12 @@ ln -svf ../sane/xscanimage-icon-48x48-2.png /usr/share/pixmaps/xscanimage.png</u
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>gamma4scanimage,
@@ -491,9 +491,9 @@ ln -svf ../sane/xscanimage-icon-48x48-2.png /usr/share/pixmaps/xscanimage.png</u
 <!--
     <bridgehead renderas="sect4">Front Ends:</bridgehead>
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>scanadf,
@@ -501,13 +501,13 @@ ln -svf ../sane/xscanimage-icon-48x48-2.png /usr/share/pixmaps/xscanimage.png</u
         xscanimage</seg>
         <seg><application>GIMP</application> plugin embedded in
         <command>xscanimage</command></seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 -->
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

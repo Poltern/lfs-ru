@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to cpio</title>
+    <title>Общая информация о cpio</title>
 
     <para>
       The <application>cpio</application> package contains
@@ -32,43 +32,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&cpio-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&cpio-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&cpio-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&cpio-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &cpio-md5sum;
+          Контрольная сумма MD5: &cpio-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &cpio-size;
+          Размер пакета: &cpio-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &cpio-buildsize;
+          Требуемое дисковое пространство: &cpio-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &cpio-time;
+          Приблизительное время сборки: &cpio-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">CPIO Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
 <!--    <para role="optional">
       <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
     </para>-->
@@ -76,7 +76,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of cpio</title>
+    <title>Установка пакета cpio</title>
 
     <para>
       Install <application>cpio</application> by running the following
@@ -127,7 +127,7 @@ install -v -m644    doc/cpio.{html,txt} \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <!-- FIXME: Removed due to merged-/usr transition
     <para>
@@ -152,22 +152,22 @@ install -v -m644    doc/cpio.{html,txt} \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>cpio and mt</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/usr/share/doc/cpio-&cpio-version;</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

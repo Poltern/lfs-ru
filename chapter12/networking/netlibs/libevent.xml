@@ -25,7 +25,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libevent</title>
+    <title>Общая информация о libevent</title>
 
     <para>
       <application>libevent</application> is an asynchronous event notification
@@ -38,36 +38,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libevent-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libevent-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libevent-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libevent-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libevent-md5sum;
+          Контрольная сумма MD5: &libevent-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libevent-size;
+          Размер пакета: &libevent-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libevent-buildsize;
+          Требуемое дисковое пространство: &libevent-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libevent-time;
+          Приблизительное время сборки: &libevent-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -75,12 +75,12 @@
     <bridgehead renderas="sect3">libevent Dependencies</bridgehead>
     <!-- Python3 ports of the rpcgen_event.py file were produced in 2.1.9 -->
 <!--
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="openssl"/>
     </para>
 -->
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="doxygen"/> (for API documentation)
     </para>-->
@@ -88,7 +88,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libevent</title>
+    <title>Установка пакета libevent</title>
 
     <para>
       First, fix an issue that prevents event_rpcgen.py from working:
@@ -143,7 +143,7 @@ cp      -v -R       doxygen/html/* \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -151,12 +151,12 @@ cp      -v -R       doxygen/html/* \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -178,7 +178,7 @@ cp      -v -R       doxygen/html/* \
 
     <!-- Who knows what these things do?
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

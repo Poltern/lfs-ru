@@ -21,7 +21,7 @@
     </indexterm>
 
     <sect2 role="package">
-      <title>Introduction to Packaging Module</title>
+      <title>Общая информация о Packaging Module</title>
 
       <para>
         The <application>Packaging</application> library provides utilities
@@ -36,32 +36,32 @@
       <itemizedlist spacing="compact">
         <listitem>
           <para>
-            Download (HTTP): <ulink url="&packaging-download-http;"/>
+            Ссылка на загрузку (HTTP): <ulink url="&packaging-download-http;"/>
           </para>
         </listitem>
         <listitem>
           <para>
-            Download (FTP): <ulink url="&packaging-download-ftp;"/>
+            Ссылка на загрузку (FTP): <ulink url="&packaging-download-ftp;"/>
           </para>
         </listitem>
         <listitem>
           <para>
-            Download MD5 sum: &packaging-md5sum;
+            Контрольная сумма MD5: &packaging-md5sum;
           </para>
         </listitem>
         <listitem>
           <para>
-            Download size: &packaging-size;
+            Размер пакета: &packaging-size;
           </para>
         </listitem>
         <listitem>
           <para>
-            Estimated disk space required: &packaging-buildsize;
+            Требуемое дисковое пространство: &packaging-buildsize;
           </para>
         </listitem>
         <listitem>
           <para>
-            Estimated build time: &packaging-time;
+            Приблизительное время сборки: &packaging-time;
           </para>
         </listitem>
       </itemizedlist>
@@ -78,7 +78,7 @@
     </sect2>
 
     <sect2 role="installation">
-      <title>Installation of Packaging</title>
+      <title>Установка пакета Packaging</title>
 
     <para> Build the module: </para>
 
@@ -108,16 +108,16 @@ deactivate</userinput></screen>
       href="../../../xincludes/pip3-cmd-explain.xml"/>
 
     <sect2 role="content">
-      <title>Contents</title>
+      <title>Содержимое пакета</title>
 
       <segmentedlist>
-        <segtitle>Installed Programs</segtitle>
-        <segtitle>Installed Libraries</segtitle>
-        <segtitle>Installed Directories</segtitle>
+        <segtitle>Установленные программы</segtitle>
+        <segtitle>Установленные библиотеки</segtitle>
+        <segtitle>Созданные каталоги</segtitle>
 
         <seglistitem>
-          <seg>None</seg>
-          <seg>None</seg>
+          <seg>Нет</seg>
+          <seg>Нет</seg>
           <seg>
             /usr/lib/python&python3-majorver;/site-packages/packaging and
             /usr/lib/python&python3-majorver;/site-packages/packaging-&packaging-version;.dist-info

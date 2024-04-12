@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to GDB</title>
+    <title>Общая информация о GDB</title>
 
     <para>
       <application>GDB</application>, the GNU Project debugger, allows you
@@ -36,41 +36,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&gdb-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&gdb-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&gdb-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&gdb-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &gdb-md5sum;
+          Контрольная сумма MD5: &gdb-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &gdb-size;
+          Размер пакета: &gdb-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &gdb-buildsize;
+          Требуемое дисковое пространство: &gdb-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &gdb-time;
+          Приблизительное время сборки: &gdb-time;
         </para>
       </listitem>
     </itemizedlist>
     <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -89,7 +89,7 @@
       installed in LFS)
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="doxygen"/>,
       <xref linkend="gcc"/> (ada, gfortran, and go are used for tests),
@@ -103,7 +103,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of GDB</title>
+    <title>Установка пакета GDB</title>
     <!--
     <para>
       First, apply a patch that fixes problems when debugging programs compiled
@@ -256,7 +256,7 @@ cp -Rv gdb/doc/doxy /usr/share/doc/gdb-&gdb-version;</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--with-system-readline</parameter>: This switch forces
@@ -272,12 +272,12 @@ cp -Rv gdb/doc/doxy /usr/share/doc/gdb-&gdb-version;</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -293,7 +293,7 @@ cp -Rv gdb/doc/doxy /usr/share/doc/gdb-&gdb-version;</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

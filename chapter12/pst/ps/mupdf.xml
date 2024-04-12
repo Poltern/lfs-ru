@@ -25,7 +25,7 @@ can be found there, no need to change directory -->
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to MuPDF</title>
+    <title>Общая информация о MuPDF</title>
 
     <para>
       <application>MuPDF</application> is a lightweight PDF and XPS viewer.
@@ -33,36 +33,36 @@ can be found there, no need to change directory -->
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&mupdf-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&mupdf-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&mupdf-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&mupdf-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &mupdf-md5sum;
+          Контрольная сумма MD5: &mupdf-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &mupdf-size;
+          Размер пакета: &mupdf-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &mupdf-buildsize;
+          Требуемое дисковое пространство: &mupdf-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &mupdf-time;
+          Приблизительное время сборки: &mupdf-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -81,13 +81,13 @@ can be found there, no need to change directory -->
 
     <bridgehead renderas="sect3">MuPDF Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="glu"/> and <!-- previously recommended via system freeglut -->
       <xref linkend="xorg7-lib"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <!--<xref linkend="freeglut"/>, use of the bundled glut is preferred -->
       <xref linkend="harfbuzz"/>,
@@ -98,7 +98,7 @@ can be found there, no need to change directory -->
       <xref linkend="curl"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref role="runtime" linkend="xdg-utils"/> (runtime),
       <ulink url="https://jbig2dec.com">jbig2dec</ulink>, and
@@ -113,7 +113,7 @@ can be found there, no need to change directory -->
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of MuPDF</title>
+    <title>Установка пакета MuPDF</title>
 <!--
     <para>First, fix the Makefile to link properly with the shared library:</para>
 
@@ -169,7 +169,7 @@ ln -sfv mupdf-x11 /usr/bin/mupdf</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>ln -sfv mupdf-x11 /usr/bin/mupdf </command>:
@@ -180,16 +180,16 @@ ln -sfv mupdf-x11 /usr/bin/mupdf</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
-          mupdf (symlink),
+          mupdf (символическая ссылка),
           mupdf-gl,
           mupdf-x11,
           mupdf-x11-curl,
@@ -207,7 +207,7 @@ ln -sfv mupdf-x11 /usr/bin/mupdf</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

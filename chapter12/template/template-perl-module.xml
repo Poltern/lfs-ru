@@ -25,7 +25,7 @@
     </indexterm>
 
     <sect3 role="package">
-      <title>Introduction to Fu::Bar</title>
+      <title>Общая информация о Fu::Bar</title>
 
       <para>
         Fu::Bar does something.
@@ -37,12 +37,12 @@
       <itemizedlist spacing="compact">
         <listitem>
           <para>
-            Download (HTTP): <ulink url="&my-download-http;"/>
+            Ссылка на загрузку (HTTP): <ulink url="&my-download-http;"/>
           </para>
         </listitem>
         <listitem>
           <para>
-            Download MD5 sum: &my-md5sum;
+            Контрольная сумма MD5: &my-md5sum;
           </para>
         </listitem>
       </itemizedlist>
@@ -62,7 +62,7 @@
        B is pulled in by A.  This is to keep it maintainable as deps change. -->
       <bridgehead renderas="sect4">Fu::Bar Dependencies</bridgehead>
 
-      <bridgehead renderas="sect5">Required</bridgehead>
+      <bridgehead renderas="sect5">Обязательные</bridgehead>
       <para role="required">
         <xref linkend="perl-bar-baz"/>,
         <!-- perl-bar-baz pulls in perl-mojotasticity -->
@@ -80,7 +80,7 @@
     </sect3>
 
     <sect3 role="installation">
-      <title>Installation of Fu::Bar</title>
+      <title>Установка пакета Fu::Bar</title>
 
       <para>
         First, apply a patch to do something ...
@@ -104,7 +104,7 @@
     <!-- only include a command explanation if yes or similar is needed in
        scripting -->
     <sect3 role="commands">
-      <title>Command Explanations</title>
+      <title>Пояснения к командам</title>
 
       <para>
         <command>yes 'n'</command>: Perl will ask if you wish to do ...
@@ -115,13 +115,13 @@
 
     <!-- omit content unless prog(s) or lib is installed in /usr -->
     <sect3 role="content">
-      <title>Contents</title>
+      <title>Содержимое пакета</title>
 
       <segmentedlist>
-        <segtitle>Installed Programs</segtitle>
+        <segtitle>Установленные программы</segtitle>
         <!-- omit libraries entirely unless present in /usr, there are often
          perl libraries in site-perl so 'none' can be misleading -->
-        <segtitle>Installed Libraries</segtitle>
+        <segtitle>Установленные библиотеки</segtitle>
 
         <seglistitem>
           <seg>
@@ -131,7 +131,7 @@
       </segmentedlist>
 
       <variablelist>
-        <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+        <bridgehead renderas="sect3">Краткое описание</bridgehead>
         <?dbfo list-presentation="list"?>
         <?dbhtml list-presentation="table"?>
 

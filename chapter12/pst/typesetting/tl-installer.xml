@@ -44,7 +44,7 @@ and it might have been removed by next year. -->
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to TeX Live and its installer</title>
+    <title>Общая информация о TeX Live and its installer</title>
 
     <para>
       The <application>TeX Live</application> package is a comprehensive
@@ -94,42 +94,42 @@ and it might have been removed by next year. -->
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&tl-installer-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&tl-installer-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&tl-installer-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&tl-installer-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          <!--Download MD5 sum: &tl-installer-md5sum; (for &tl-installer-date;)-->
-          Download MD5 sum: Varies frequently
+          <!--Контрольная сумма MD5: &tl-installer-md5sum; (for &tl-installer-date;)-->
+          Контрольная сумма MD5: Varies frequently
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &tl-installer-size;
+          Размер пакета: &tl-installer-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &tl-installer-buildsize;
+          Требуемое дисковое пространство: &tl-installer-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &tl-installer-time;
+          Приблизительное время сборки: &tl-installer-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="gnupg2"/> (to validate both the initial downloads, and also
       any updates you might later make using <command>tlmgr</command>.)
@@ -284,7 +284,7 @@ done
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>test -f $F &amp;&amp; sed ...</command>: in a small install these
@@ -304,22 +304,22 @@ done
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>Over 300 binaries and symlinks to scripts</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/opt/texlive</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to dhcpcd</title>
+    <title>Общая информация о dhcpcd</title>
 
     <para>
       <application>dhcpcd</application> is an implementation of the
@@ -35,43 +35,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&dhcpcd-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&dhcpcd-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&dhcpcd-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&dhcpcd-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &dhcpcd-md5sum;
+          Контрольная сумма MD5: &dhcpcd-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &dhcpcd-size;
+          Размер пакета: &dhcpcd-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &dhcpcd-buildsize;
+          Требуемое дисковое пространство: &dhcpcd-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &dhcpcd-time;
+          Приблизительное время сборки: &dhcpcd-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
 
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -84,7 +84,7 @@
 
     <bridgehead renderas="sect3">dhcpcd Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       llvm (with Clang),
       ntp,
@@ -123,7 +123,7 @@ chown    -v dhcpcd:dhcpcd /var/lib/dhcpcd </userinput></screen>
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of dhcpcd</title>
+    <title>Установка пакета dhcpcd</title>
 
 <!--
     <para>
@@ -184,7 +184,7 @@ install -v -m 644 dhcpcd-hooks/50-dhcpcd-compat /lib/dhcpcd/dhcpcd-hooks/</useri
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--libexecdir=/usr/lib/dhcpcd</parameter>: This switch sets a
@@ -227,10 +227,10 @@ install -v -m 644 dhcpcd-hooks/50-dhcpcd-compat /lib/dhcpcd/dhcpcd-hooks/</useri
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring dhcpcd</title>
+    <title>Настройка dhcpcd</title>
 
     <sect3 id="dhcpcd-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/dhcpcd.conf</filename>
@@ -305,7 +305,7 @@ EOF</userinput></screen>
     </sect3>
 
     <sect3 id="dhcpcd-init2" revision="sysv">
-      <title>Configuration Information: fixed ip</title>
+      <title>Информация о настройках: fixed ip</title>
 
       <para id="dhcpcd-config4">
         Although not usual, it is possible that you need
@@ -415,12 +415,12 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>dhcpcd</seg>
@@ -430,7 +430,7 @@ EOF</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

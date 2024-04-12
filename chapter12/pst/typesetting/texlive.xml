@@ -56,7 +56,7 @@ and it might have been removed by next year. -->
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to TeX Live from source</title>
+    <title>Общая информация о TeX Live from source</title>
 
     <note>
       <para>
@@ -96,36 +96,36 @@ and it might have been removed by next year. -->
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&texlive-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&texlive-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&texlive-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&texlive-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &texlive-md5sum;
+          Контрольная сумма MD5: &texlive-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &texlive-size;
+          Размер пакета: &texlive-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &texlive-buildsize;
+          Требуемое дисковое пространство: &texlive-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &texlive-time;
+          Приблизительное время сборки: &texlive-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -150,22 +150,22 @@ and it might have been removed by next year. -->
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&texlive-texmf-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&texlive-texmf-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&texlive-texmf-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&texlive-texmf-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &texlive-texmf-md5sum;
+          Контрольная сумма MD5: &texlive-texmf-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &texlive-texmf-size;
+          Размер пакета: &texlive-texmf-size;
         </para>
       </listitem>
     </itemizedlist>
@@ -179,22 +179,22 @@ and it might have been removed by next year. -->
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&texlive-extra-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&texlive-extra-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&texlive-extra-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&texlive-extra-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &texlive-extra-md5sum;
+          Контрольная сумма MD5: &texlive-extra-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &texlive-extra-size;
+          Размер пакета: &texlive-extra-size;
         </para>
       </listitem>
 
@@ -208,7 +208,7 @@ and it might have been removed by next year. -->
 
     <bridgehead renderas="sect3">TeX Live from source Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="x-window-system"/>
     </para>
@@ -224,7 +224,7 @@ and it might have been removed by next year. -->
       described in <xref linkend="tex-path"/>.
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <!-- text for optional deps -->
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
      href="../../xincludes/texoptional.xml"/>
@@ -237,7 +237,7 @@ and it might have been removed by next year. -->
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of TeX Live</title>
+    <title>Установка пакета TeX Live</title>
 
     <para>
       Install TeX Live by running the following commands:
@@ -404,7 +404,7 @@ fmtutil-sys --all</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>-C</command>: create config.cache, this saves significant
@@ -483,12 +483,12 @@ fmtutil-sys --all</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>Over 300 binaries and symlinks to scripts</seg>
@@ -507,7 +507,7 @@ fmtutil-sys --all</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to ICU</title>
+    <title>Общая информация о ICU</title>
 
     <para>
       The <application>International Components for Unicode</application> (ICU)
@@ -71,41 +71,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&icu-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&icu-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&icu-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&icu-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &icu-md5sum;
+          Контрольная сумма MD5: &icu-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &icu-size;
+          Размер пакета: &icu-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &icu-buildsize;
+          Требуемое дисковое пространство: &icu-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &icu-time;
+          Приблизительное время сборки: &icu-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -117,7 +117,7 @@
 -->
     <bridgehead renderas="sect3">ICU Dependencies</bridgehead>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="llvm"/> (with Clang), and
       <xref linkend="doxygen"/> (for documentation)
@@ -126,7 +126,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of ICU</title>
+    <title>Установка пакета ICU</title>
 
     <note>
       <para>
@@ -178,12 +178,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -205,7 +205,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

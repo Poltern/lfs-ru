@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to inih</title>
+    <title>Общая информация о inih</title>
 
     <para>
       This package is a simple .INI file parser written in C.
@@ -32,36 +32,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&inih-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&inih-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&inih-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&inih-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &inih-md5sum;
+          Контрольная сумма MD5: &inih-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &inih-size;
+          Размер пакета: &inih-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &inih-buildsize;
+          Требуемое дисковое пространство: &inih-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &inih-time;
+          Приблизительное время сборки: &inih-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -69,7 +69,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of inih</title>
+    <title>Установка пакета inih</title>
 
     <para>
       Install <application>inih</application> by running
@@ -100,12 +100,12 @@ The tests seem to be run, but there is no output or log.
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -121,7 +121,7 @@ The tests seem to be run, but there is no output or log.
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

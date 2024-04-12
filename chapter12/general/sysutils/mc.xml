@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to MC</title>
+    <title>Общая информация о MC</title>
 
     <para>
       <application>MC</application> (Midnight Commander) is a text-mode
@@ -35,53 +35,53 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&mc-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&mc-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&mc-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&mc-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &mc-md5sum;
+          Контрольная сумма MD5: &mc-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &mc-size;
+          Размер пакета: &mc-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &mc-buildsize;
+          Требуемое дисковое пространство: &mc-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &mc-time;
+          Приблизительное время сборки: &mc-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">MC Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="glib2"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       slang
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
      <!-- <xref linkend="doxygen"/>,
       <xref linkend="gpm"/>,
@@ -98,7 +98,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of MC</title>
+    <title>Установка пакета MC</title>
 
     <para>
       Install <application>MC</application> by
@@ -124,7 +124,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--sysconfdir=/etc</parameter>: This switch places the
@@ -147,10 +147,10 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring MC</title>
+    <title>Настройка MC</title>
 
     <sect3 id="mc-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>~/.config/mc/*</filename>
@@ -163,7 +163,7 @@ make</userinput></screen>
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         The <filename class="directory">~/.config/mc</filename> directory and
@@ -179,22 +179,22 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>mc and the symlinks mcdiff, mcedit and mcview</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/etc/mc and /usr/{libexec,share}/mc</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

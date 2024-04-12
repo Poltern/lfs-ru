@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Zip</title>
+    <title>Общая информация о Zip</title>
 
     <para>
       The <application>Zip</application> package contains
@@ -34,36 +34,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&zip-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&zip-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&zip-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&zip-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &zip-md5sum;
+          Контрольная сумма MD5: &zip-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &zip-size;
+          Размер пакета: &zip-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &zip-buildsize;
+          Требуемое дисковое пространство: &zip-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &zip-time;
+          Приблизительное время сборки: &zip-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -71,7 +71,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Zip</title>
+    <title>Установка пакета Zip</title>
 
     <para>
       Install <application>Zip</application> by running the following
@@ -93,7 +93,7 @@
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>make prefix=/usr -f unix/Makefile install</command>: This
@@ -107,22 +107,22 @@
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>zip, zipcloak, zipnote, and zipsplit</seg>
-        <seg>None</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

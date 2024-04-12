@@ -29,7 +29,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to FreeType2</title>
+    <title>Общая информация о FreeType2</title>
 
     <para>
       The <application>FreeType2</application> package contains
@@ -39,63 +39,63 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&freetype2-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&freetype2-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&freetype2-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&freetype2-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &freetype2-md5sum;
+          Контрольная сумма MD5: &freetype2-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &freetype2-size;
+          Размер пакета: &freetype2-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &freetype2-buildsize;
+          Требуемое дисковое пространство: &freetype2-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &freetype2-time;
+          Приблизительное время сборки: &freetype2-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <title>Additional Documentation</title>
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&freetype2-doc-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&freetype2-doc-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &freetype2-doc-md5sum;
+          Контрольная сумма MD5: &freetype2-doc-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &freetype2-doc-size;
+          Размер пакета: &freetype2-doc-size;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">FreeType2 Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="harfbuzz"/>
       (first, install without it, after it is installed, reinstall
@@ -104,7 +104,7 @@
       <xref linkend="which"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="brotli"/> and
       <xref linkend="librsvg"/>
@@ -118,7 +118,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of FreeType2</title>
+    <title>Установка пакета FreeType2</title>
 
     <para>
       If you downloaded the additional documentation, unpack it into the
@@ -161,7 +161,7 @@ rm -v /usr/share/doc/freetype-&freetype2-version;/freetype-config.1</userinput><
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed -ri ...</command>: First command enables GX/AAT and OpenType
@@ -198,12 +198,12 @@ rm -v /usr/share/doc/freetype-&freetype2-version;/freetype-config.1</userinput><
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -220,7 +220,7 @@ rm -v /usr/share/doc/freetype-&freetype2-version;/freetype-config.1</userinput><
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

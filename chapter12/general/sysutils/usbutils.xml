@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to USB Utils</title>
+    <title>Общая информация о USB Utils</title>
 
     <para>
       The <application>USB Utils</application> package contains utilities
@@ -33,41 +33,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&usbutils-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&usbutils-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&usbutils-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&usbutils-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &usbutils-md5sum;
+          Контрольная сумма MD5: &usbutils-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &usbutils-size;
+          Размер пакета: &usbutils-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &usbutils-buildsize;
+          Требуемое дисковое пространство: &usbutils-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &usbutils-time;
+          Приблизительное время сборки: &usbutils-time;
         </para>
       </listitem>
     </itemizedlist>
 <!--
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -79,12 +79,12 @@
 -->
     <bridgehead renderas="sect3">USB Utils Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="libusb"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref role="runtime" linkend="hwdata"/> (runtime)
     </para>
@@ -92,7 +92,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of USB Utils</title>
+    <title>Установка пакета USB Utils</title>
 
     <para>
       Install <application>USB Utils</application> by
@@ -127,7 +127,7 @@ make</userinput></screen>
   </sect2>
 <!-- No longer needed
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed ... lsusb.py</command>: Instructs lsusb.py where to search
@@ -138,12 +138,12 @@ make</userinput></screen>
 -->
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -159,7 +159,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

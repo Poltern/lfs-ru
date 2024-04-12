@@ -35,7 +35,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to GNU Which</title>
+    <title>Общая информация о GNU Which</title>
 
     <para>
       The first option is to install the actual GNU
@@ -44,36 +44,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&which-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&which-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&which-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&which-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &which-md5sum;
+          Контрольная сумма MD5: &which-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &which-size;
+          Размер пакета: &which-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &which-buildsize;
+          Требуемое дисковое пространство: &which-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &which-time;
+          Приблизительное время сборки: &which-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -81,7 +81,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Which</title>
+    <title>Установка пакета Which</title>
 
     <para>
       Install <application>which</application> by running the following
@@ -104,22 +104,22 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>which</seg>
-        <seg>None</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

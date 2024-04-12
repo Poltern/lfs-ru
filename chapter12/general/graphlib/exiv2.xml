@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Exiv2</title>
+    <title>Общая информация о Exiv2</title>
 
     <para>
       <application>Exiv2</application> is a C++ library and a command
@@ -32,42 +32,42 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&exiv2-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&exiv2-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&exiv2-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&exiv2-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &exiv2-md5sum;
+          Контрольная сумма MD5: &exiv2-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &exiv2-size;
+          Размер пакета: &exiv2-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &exiv2-buildsize;
+          Требуемое дисковое пространство: &exiv2-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &exiv2-time;
+          Приблизительное время сборки: &exiv2-time;
         </para>
       </listitem>
     </itemizedlist>
 
 <!--
-   <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+   <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -80,19 +80,19 @@
 
     <bridgehead renderas="sect3">Exiv2 dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="cmake"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="brotli"/>,
       <xref linkend="curl"/>, and
       <xref linkend="inih"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <ulink url="https://www.libssh.org/">libssh</ulink>
     </para>
@@ -107,7 +107,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Exiv2</title>
+    <title>Установка пакета Exiv2</title>
 <!--
     <para>
       First, disable building a sample program that fails:
@@ -145,7 +145,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>-DEXIV2_ENABLE_VIDEO=yes</parameter>:
@@ -182,12 +182,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -205,7 +205,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

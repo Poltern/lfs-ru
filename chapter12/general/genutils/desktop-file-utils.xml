@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Desktop File Utils</title>
+    <title>Общая информация о Desktop File Utils</title>
 
     <para>
       The <application>Desktop File Utils</application> package contains
@@ -38,48 +38,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&desktop-file-utils-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&desktop-file-utils-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&desktop-file-utils-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&desktop-file-utils-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &desktop-file-utils-md5sum;
+          Контрольная сумма MD5: &desktop-file-utils-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &desktop-file-utils-size;
+          Размер пакета: &desktop-file-utils-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &desktop-file-utils-buildsize;
+          Требуемое дисковое пространство: &desktop-file-utils-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &desktop-file-utils-time;
+          Приблизительное время сборки: &desktop-file-utils-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Desktop File Utils Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="glib2"/>
     </para>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="emacs"/>
     </para>-->
@@ -87,7 +87,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Desktop File Utils</title>
+    <title>Установка пакета Desktop File Utils</title>
 
     <warning>
       <para>
@@ -125,17 +125,17 @@ ninja</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/meson-buildtype-release.xml"/>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Desktop File Utils</title>
+    <title>Настройка Desktop File Utils</title>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         The <ulink
@@ -177,12 +177,12 @@ update-desktop-database /usr/share/applications</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -200,7 +200,7 @@ update-desktop-database /usr/share/applications</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

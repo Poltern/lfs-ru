@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to giflib</title>
+    <title>Общая информация о giflib</title>
 
     <para>
       The <application>giflib</application> package contains libraries
@@ -33,41 +33,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&giflib-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&giflib-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&giflib-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&giflib-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &giflib-http-md5sum;
+          Контрольная сумма MD5: &giflib-http-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &giflib-http-size;
+          Размер пакета: &giflib-http-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &giflib-buildsize;
+          Требуемое дисковое пространство: &giflib-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &giflib-time;
+          Приблизительное время сборки: &giflib-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -79,7 +79,7 @@
 
     <bridgehead renderas="sect3">giflib Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="xmlto"/>
     </para>
@@ -87,7 +87,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of giflib</title>
+    <title>Установка пакета giflib</title>
 
     <para>
       First, prevent the build process from installing XML files instead of man
@@ -144,7 +144,7 @@ cp -v -R doc/* /usr/share/doc/giflib-&giflib-version;</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>rm -fv /usr/lib/libgif.a</command>: This command removes a
@@ -160,12 +160,12 @@ cp -v -R doc/* /usr/share/doc/giflib-&giflib-version;</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>gif2rgb, gifbuild, gifclrmp, giffix, giftext, and giftool</seg>
@@ -175,7 +175,7 @@ cp -v -R doc/* /usr/share/doc/giflib-&giflib-version;</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

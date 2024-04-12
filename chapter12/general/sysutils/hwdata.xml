@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to hwdata</title>
+    <title>Общая информация о hwdata</title>
 
     <para>
       The <application>hwdata</application> package contains
@@ -32,36 +32,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&hwdata-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&hwdata-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&hwdata-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&hwdata-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &hwdata-md5sum;
+          Контрольная сумма MD5: &hwdata-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &hwdata-size;
+          Размер пакета: &hwdata-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &hwdata-buildsize;
+          Требуемое дисковое пространство: &hwdata-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &hwdata-time;
+          Приблизительное время сборки: &hwdata-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -69,7 +69,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of hwdata</title>
+    <title>Установка пакета hwdata</title>
 
     <para>
       Install <application>hwdata</application> by
@@ -91,16 +91,16 @@
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directory</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
-        <seg>None</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
+        <seg>Нет</seg>
         <seg>
           /usr/share/hwdata
         </seg>

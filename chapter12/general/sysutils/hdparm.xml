@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Hdparm</title>
+    <title>Общая информация о Hdparm</title>
 
     <para>
       The <application>Hdparm</application> package contains a utility that
@@ -44,36 +44,36 @@
       </para>
     </warning>
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&hdparm-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&hdparm-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&hdparm-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&hdparm-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &hdparm-md5sum;
+          Контрольная сумма MD5: &hdparm-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &hdparm-size;
+          Размер пакета: &hdparm-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &hdparm-buildsize;
+          Требуемое дисковое пространство: &hdparm-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &hdparm-time;
+          Приблизительное время сборки: &hdparm-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -81,7 +81,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Hdparm</title>
+    <title>Установка пакета Hdparm</title>
 
     <para>
       Build <application>Hdparm</application> by running the following
@@ -116,12 +116,12 @@
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -137,7 +137,7 @@
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

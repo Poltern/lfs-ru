@@ -28,7 +28,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to dvisvgm</title>
+    <title>Общая информация о dvisvgm</title>
 
     <para>
       The <application>dvisvgm</application> package converts DVI, EPS and
@@ -37,43 +37,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&dvisvgm-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&dvisvgm-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&dvisvgm-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&dvisvgm-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &dvisvgm-md5sum;
+          Контрольная сумма MD5: &dvisvgm-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &dvisvgm-size;
+          Размер пакета: &dvisvgm-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &dvisvgm-buildsize;
+          Требуемое дисковое пространство: &dvisvgm-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &dvisvgm-time;
+          Приблизительное время сборки: &dvisvgm-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">dvisvgm Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <!-- EDITORS: the docs say it needs clipper, but it uses an internal
        modified version and cannot be built with system clipper -->
@@ -83,12 +83,12 @@
       <xref linkend="texlive"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="woff2"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="asciidoc"/> with
       <xref linkend="xmlto"/> and
@@ -104,7 +104,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of dvisvgm</title>
+    <title>Установка пакета dvisvgm</title>
 
 <!-- Editors: This is in the book for svg output from asymptote. tested in
  https://www.linuxfromscratch.org/~ken/asy-nontex-testfiles/asy-test-20200123.tar.xz
@@ -148,7 +148,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
 <!-- This is now done in Texlive
     <para>
@@ -180,12 +180,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -201,7 +201,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

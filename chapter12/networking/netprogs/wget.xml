@@ -24,7 +24,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Wget</title>
+    <title>Общая информация о Wget</title>
 
     <para>
       The <application>Wget</application> package contains a utility useful for
@@ -33,53 +33,53 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&wget-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&wget-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&wget-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&wget-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &wget-md5sum;
+          Контрольная сумма MD5: &wget-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &wget-size;
+          Размер пакета: &wget-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &wget-buildsize;
+          Требуемое дисковое пространство: &wget-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &wget-time;
+          Приблизительное время сборки: &wget-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Wget Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="libpsl"/>
     </para>
 
-    <bridgehead renderas="sect4">Recommended at runtime</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые во время выполнения</bridgehead>
     <para role="recommended">
       <xref role="runtime" linkend="make-ca"/>
     </para>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="gnutls"/>,
       <xref linkend="perl-http-daemon"/> (for the test suite),
@@ -92,7 +92,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Wget</title>
+    <title>Установка пакета Wget</title>
 
     <para>
       Install <application>Wget</application> by running the following commands:
@@ -128,7 +128,7 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--sysconfdir=/etc</parameter>: This relocates the configuration
@@ -149,10 +149,10 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Wget</title>
+    <title>Настройка Wget</title>
 
     <sect3 id="wget-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/wgetrc</filename> and
@@ -174,7 +174,7 @@ make</userinput></screen>
         <systemitem class="username">root</systemitem> user:
       </para>
 
-<screen role="root"><userinput>echo ca-directory=/etc/ssl/certs >> /etc/wgetrc</userinput></screen>
+<screen role="root"><userinput>echo ca-directory=/etc/ssl/certs > /etc/wgetrc</userinput></screen>
 -->
 
     </sect3>
@@ -182,12 +182,12 @@ make</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -203,7 +203,7 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

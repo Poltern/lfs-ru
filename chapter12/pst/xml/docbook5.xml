@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to DocBook XML DTD and Schemas 5.0</title>
+    <title>Общая информация о DocBook XML DTD and Schemas 5.0</title>
 
     <para>
       The <application>DocBook XML DTD and Schemas</application>-5.0 package
@@ -37,43 +37,43 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&docbook5-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&docbook5-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&docbook5-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&docbook5-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &docbook5-md5sum;
+          Контрольная сумма MD5: &docbook5-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &docbook5-size;
+          Размер пакета: &docbook5-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &docbook5-buildsize;
+          Требуемое дисковое пространство: &docbook5-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &docbook5-time;
+          Приблизительное время сборки: &docbook5-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">DocBook XML DTD and Schemas 5.0 Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="libxml2"/>,
       <xref linkend="sgml-common"/>, and
@@ -84,7 +84,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of DocBook XML DTD and Schemas 5.0</title>
+    <title>Установка пакета DocBook XML DTD and Schemas 5.0</title>
 
     <para>
       Install <application>DocBook XML DTD and Schemas</application>
@@ -318,10 +318,10 @@ xmlcatalog --noout --add "delegateURI" \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring DocBook XML DTD and Schemas 5.0</title>
+    <title>Настройка DocBook XML DTD and Schemas 5.0</title>
 
     <sect3 id="docbook5-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/xml/catalog</filename> and
@@ -341,11 +341,11 @@ xmlcatalog --noout --add "delegateURI" \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Files</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>DTD, RNC, RNG, SCH and XSD files</seg>
@@ -354,7 +354,7 @@ xmlcatalog --noout --add "delegateURI" \
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

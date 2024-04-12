@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to SGML Common</title>
+    <title>Общая информация о SGML Common</title>
 
     <para>
       The <application>SGML Common</application> package contains
@@ -33,41 +33,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&sgml-common-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&sgml-common-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&sgml-common-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&sgml-common-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &sgml-common-md5sum;
+          Контрольная сумма MD5: &sgml-common-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &sgml-common-size;
+          Размер пакета: &sgml-common-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &sgml-common-buildsize;
+          Требуемое дисковое пространство: &sgml-common-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &sgml-common-time;
+          Приблизительное время сборки: &sgml-common-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing='compact'>
       <listitem>
         <para>
@@ -81,7 +81,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of SGML Common</title>
+    <title>Установка пакета SGML Common</title>
 
     <para>
       Instead of the normal convention of including the autotools files
@@ -143,10 +143,10 @@ install-catalog --remove /etc/sgml/sgml-docbook.cat \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring SGML Common</title>
+    <title>Настройка SGML Common</title>
 
     <sect3 id="sgml-common-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>/etc/sgml/sgml.conf</filename>
@@ -159,7 +159,7 @@ install-catalog --remove /etc/sgml/sgml-docbook.cat \
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         No change in this file is necessary.
@@ -170,17 +170,17 @@ install-catalog --remove /etc/sgml/sgml-docbook.cat \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
       <segtitle>Installed Files</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>install-catalog and sgmlwhich</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>SGML and XML DocBook entity files</seg>
         <seg>/etc/sgml, /usr/share/doc/sgml-common-&sgml-common-version;, and
         /usr/share/sgml</seg>
@@ -188,7 +188,7 @@ install-catalog --remove /etc/sgml/sgml-docbook.cat \
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

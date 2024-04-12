@@ -26,7 +26,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to libxml2</title>
+    <title>Общая информация о libxml2</title>
 
     <para>
       The <application>libxml2</application> package contains libraries
@@ -35,41 +35,41 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&libxml2-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&libxml2-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&libxml2-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&libxml2-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &libxml2-md5sum;
+          Контрольная сумма MD5: &libxml2-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &libxml2-size;
+          Размер пакета: &libxml2-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &libxml2-buildsize;
+          Требуемое дисковое пространство: &libxml2-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &libxml2-time;
+          Приблизительное время сборки: &libxml2-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <bridgehead renderas="sect3">Дополнительные загрузки</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
@@ -82,19 +82,19 @@
 
     <bridgehead renderas="sect3">libxml2 Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="icu"/>
     </para>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="valgrind"/> (may be used in the tests)
     </para>-->
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of libxml2</title>
+    <title>Установка пакета libxml2</title>
 
     <para>
       Install <application>libxml2</application> by running the following
@@ -160,7 +160,7 @@ sed '/libs=/s/xml2.*/xml2"/' -i /usr/bin/xml2-config</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/static-libraries.xml"/>
@@ -206,12 +206,12 @@ sed '/libs=/s/xml2.*/xml2"/' -i /usr/bin/xml2-config</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -232,7 +232,7 @@ sed '/libs=/s/xml2.*/xml2"/' -i /usr/bin/xml2-config</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

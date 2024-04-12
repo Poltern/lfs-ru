@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to slang</title>
+    <title>Общая информация о slang</title>
 
     <para>
       <application>S-Lang</application> (slang) is an interpreted language
@@ -34,37 +34,37 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&slang-download-http;"/></para>
+          Ссылка на загрузку (HTTP): <ulink url="&slang-download-http;"/></para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&slang-download-ftp;"/></para>
+          Ссылка на загрузку (FTP): <ulink url="&slang-download-ftp;"/></para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &slang-md5sum;</para>
+          Контрольная сумма MD5: &slang-md5sum;</para>
       </listitem>
       <listitem>
         <para>
-          Download size: &slang-size;</para>
+          Размер пакета: &slang-size;</para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &slang-buildsize;</para>
+          Требуемое дисковое пространство: &slang-buildsize;</para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &slang-time;</para>
+          Приблизительное время сборки: &slang-time;</para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Slang Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="libpng"/> and
       <ulink url="https://github.com/kkos/oniguruma">Oniguruma</ulink>
@@ -73,7 +73,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Slang</title>
+    <title>Установка пакета Slang</title>
 
     <note>
       <para>
@@ -105,7 +105,7 @@ make -j1</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <parameter>--with-readline=gnu</parameter>: This parameter sets GNU
@@ -123,10 +123,10 @@ make -j1</userinput></screen>
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring slang</title>
+    <title>Настройка slang</title>
 
     <sect3 id="slang-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
       <para>
         <filename>~/.slshrc</filename> and
         <filename>/etc/slsh.rc</filename>
@@ -144,12 +144,12 @@ make -j1</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>slsh</seg>
@@ -160,7 +160,7 @@ make -j1</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

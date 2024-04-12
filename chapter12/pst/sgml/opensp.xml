@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to OpenSP</title>
+    <title>Общая информация о OpenSP</title>
 
     <para>
       The <application>OpenSP</application> package contains a
@@ -34,48 +34,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&opensp-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&opensp-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&opensp-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&opensp-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &opensp-md5sum;
+          Контрольная сумма MD5: &opensp-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &opensp-size;
+          Размер пакета: &opensp-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &opensp-buildsize;
+          Требуемое дисковое пространство: &opensp-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &opensp-time;
+          Приблизительное время сборки: &opensp-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">OpenSP Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Required</bridgehead>
+    <bridgehead renderas="sect4">Обязательные</bridgehead>
     <para role="required">
       <xref linkend="sgml-common"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="libnsl"/> and
       <xref linkend="xmlto"/>
@@ -84,7 +84,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of OpenSP</title>
+    <title>Установка пакета OpenSP</title>
 
     <para>
       Install <application>OpenSP</application> by running the following
@@ -129,7 +129,7 @@ ln -v -sf libosp.so /usr/lib/libsp.so</userinput></screen>
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <command>sed -i 's/32,/253,/...unicode.syn}</command>:
@@ -185,12 +185,12 @@ ln -v -sf libosp.so /usr/lib/libsp.so</userinput></screen>
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
+      <segtitle>Установленные программы</segtitle>
       <segtitle>Installed Library</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>onsgmls, osgmlnorm, ospam, ospcat, ospent, osx, and the
@@ -204,7 +204,7 @@ ln -v -sf libosp.so /usr/lib/libsp.so</userinput></screen>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

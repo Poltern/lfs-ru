@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Links</title>
+    <title>Общая информация о Links</title>
 
     <para>
       <application>Links</application> is a text and graphics mode
@@ -34,48 +34,48 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&links-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&links-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&links-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&links-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &links-md5sum;
+          Контрольная сумма MD5: &links-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &links-size;
+          Размер пакета: &links-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &links-buildsize;
+          Требуемое дисковое пространство: &links-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &links-time;
+          Приблизительное время сборки: &links-time;
         </para>
       </listitem>
     </itemizedlist>
 
     <bridgehead renderas="sect3">Links Dependencies</bridgehead>
 
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="libevent"/>
     </para>
 
-    <bridgehead renderas="sect4">Optional</bridgehead>
+    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       Graphics mode requires at least one of
       <xref linkend="gpm"/> (mouse support to be used with a framebuffer-based
@@ -106,7 +106,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Links</title>
+    <title>Установка пакета Links</title>
 
     <para>
       Install <application>Links</application> by running the following
@@ -132,7 +132,7 @@ install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <para>
       <option>--enable-graphics</option>: This switch enables support
@@ -142,10 +142,10 @@ install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring Links</title>
+    <title>Настройка Links</title>
 
     <sect3 id="links-config">
-      <title>Config Files</title>
+      <title>Конфигурационные файлы</title>
 
       <para>
         <filename>~/.links/*</filename>
@@ -158,7 +158,7 @@ install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
     </sect3>
 
     <sect3>
-      <title>Configuration Information</title>
+      <title>Информация о настройках</title>
 
       <para>
         <application>Links</application> stores its configuration in per-user
@@ -172,22 +172,22 @@ install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
       <segtitle>Installed Program</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>links</seg>
-        <seg>None</seg>
+        <seg>Нет</seg>
         <seg>/usr/share/doc/links-&links-version;</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

@@ -23,7 +23,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to p11-kit</title>
+    <title>Общая информация о p11-kit</title>
 
     <para>
       The <application>p11-kit</application> package provides a way to load and
@@ -32,36 +32,36 @@
 
     &lfs121_checked;
 
-    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <title><bridgehead renderas="sect3">Информация о пакете</bridgehead>
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&p11-kit-download-http;"/>
+          Ссылка на загрузку (HTTP): <ulink url="&p11-kit-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&p11-kit-download-ftp;"/>
+          Ссылка на загрузку (FTP): <ulink url="&p11-kit-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &p11-kit-md5sum;
+          Контрольная сумма MD5: &p11-kit-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &p11-kit-size;
+          Размер пакета: &p11-kit-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &p11-kit-buildsize;
+          Требуемое дисковое пространство: &p11-kit-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &p11-kit-time;
+          Приблизительное время сборки: &p11-kit-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -70,7 +70,7 @@
 
     <!-- There is a check for libsystemd. It seems to install a systemd service
     in /usr/lib/systemd/user.-->
-    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       <xref linkend="libtasn1"/>
     </para>
@@ -80,7 +80,7 @@
       <xref role="runtime" linkend="make-ca"/>
     </para>
 
-<!--    <bridgehead renderas="sect4">Optional</bridgehead>
+<!--    <bridgehead renderas="sect4">Необязательные</bridgehead>
     <para role="optional">
       <xref linkend="gtk-doc"/>,
       <xref linkend="libxslt"/>, and
@@ -90,7 +90,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of p11-kit</title>
+    <title>Установка пакета p11-kit</title>
 
     <!-- https://github.com/p11-glue/p11-kit/pull/535
          The issue causes test failures in glib-networking and libsoup 
@@ -146,7 +146,7 @@ ln -sfv /usr/libexec/p11-kit/trust-extract-compat \
   </sect2>
 
   <sect2 role="commands">
-    <title>Command Explanations</title>
+    <title>Пояснения к командам</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/meson-buildtype-release.xml"/>
@@ -171,7 +171,7 @@ ln -sfv /usr/libexec/p11-kit/trust-extract-compat \
   </sect2>
 
   <sect2 role="configuration">
-    <title>Configuring p11-kit</title>
+    <title>Настройка p11-kit</title>
 
     <para>
       The <application>p11-kit</application> trust module
@@ -189,12 +189,12 @@ ln -sfv /usr/libexec/p11-kit/trust-extract-compat \
   </sect2>
 
   <sect2 role="content">
-    <title>Contents</title>
+    <title>Содержимое пакета</title>
 
     <segmentedlist>
-      <segtitle>Installed Programs</segtitle>
-      <segtitle>Installed Libraries</segtitle>
-      <segtitle>Installed Directories</segtitle>
+      <segtitle>Установленные программы</segtitle>
+      <segtitle>Установленные библиотеки</segtitle>
+      <segtitle>Созданные каталоги</segtitle>
 
       <seglistitem>
         <seg>
@@ -215,7 +215,7 @@ ln -sfv /usr/libexec/p11-kit/trust-extract-compat \
     </segmentedlist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
