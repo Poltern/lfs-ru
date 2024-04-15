@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240318">
-<!ENTITY iana-etc-size "589 KB">
+<!ENTITY iana-etc-version "20240412">
+<!ENTITY iana-etc-size "590 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "8cd6cf31cfd5fd4c4efca61722eb9f74">
+<!ENTITY iana-etc-md5 "d53e2729bb4f3ef9f5cdc23a4bbb6739">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "8">
-<!ENTITY linux-patch-version "2">
+<!ENTITY linux-patch-version "6">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "139,173 KB">
+<!ENTITY linux-size "139,255 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "728e7da5137577232593b2210ae1bdc4">
+<!ENTITY linux-md5 "8ff592792d0b75149d64de7b86899eb1">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -478,10 +478,10 @@
 <!ENTITY make-fin-du "13 MB">
 <!ENTITY make-fin-sbu "0.5 SBU">
 
-<!ENTITY man-db-version "2.12.0">
-<!ENTITY man-db-size "1,941 KB">
+<!ENTITY man-db-version "2.12.1">
+<!ENTITY man-db-size "1,994 KB">
 <!ENTITY man-db-url "&savannah;/releases/man-db/man-db-&man-db-version;.tar.xz">
-<!ENTITY man-db-md5 "67e0052fa200901b314fad7b68c9db27">
+<!ENTITY man-db-md5 "7b044e5020aab89db41ac7ee59d6d84a">
 <!ENTITY man-db-home "https://www.nongnu.org/man-db/">
 <!ENTITY man-db-fin-du "41 MB">
 <!ENTITY man-db-fin-sbu "0.2 SBU">
@@ -539,18 +539,18 @@
 <!ENTITY ncurses-fin-du "45 MB">
 <!ENTITY ncurses-fin-sbu "0.2 SBU">
 
-<!ENTITY ninja-version "1.11.1">
-<!ENTITY ninja-size "225 KB">
+<!ENTITY ninja-version "1.12.0">
+<!ENTITY ninja-size "235 KB">
 <!ENTITY ninja-url "&github;/ninja-build/ninja/archive/v&ninja-version;/ninja-&ninja-version;.tar.gz">
-<!ENTITY ninja-md5 "32151c08211d7ca3c1d832064f6939b0">
+<!ENTITY ninja-md5 "302530c3d94dcb08e4ab0750a7f4cf20">
 <!ENTITY ninja-home "https://ninja-build.org/">
 <!ENTITY ninja-fin-du "75 MB">
 <!ENTITY ninja-fin-sbu "0.3 SBU">
 
-<!ENTITY openssl-version "3.2.1">
-<!ENTITY openssl-size "17,318 KB">
+<!ENTITY openssl-version "3.3.0">
+<!ENTITY openssl-size "17,616 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "c239213887804ba00654884918b37441">
+<!ENTITY openssl-md5 "c8b063afbea85d867e161ecb8816cfa9">
 <!ENTITY openssl-home "https://www.openssl.org/">
 <!ENTITY openssl-fin-du "805 MB">
 <!ENTITY openssl-fin-sbu "1.8 SBU">
@@ -606,19 +606,19 @@
 <!-- If python minor version changes, updates in python and
      meson pages will be needed: python3.6 and python3.6m -->
 
-<!ENTITY python-version "3.12.2">
+<!ENTITY python-version "3.12.3">
 <!ENTITY python-minor "3.12">
-<!ENTITY python-size "20,109 KB">
+<!ENTITY python-size "20,142 KB">
 <!ENTITY python-url "https://www.python.org/ftp/python/&python-version;/Python-&python-version;.tar.xz">
-<!ENTITY python-md5 "e7c178b97bf8f7ccd677b94d614f7b3c">
+<!ENTITY python-md5 "8defb33f0c37aa4bdd3a38ba52abde4e">
 <!ENTITY python-home "https://www.python.org/">
 <!ENTITY python-tmp-du "598 MB">
 <!ENTITY python-tmp-sbu "0.5 SBU">
 <!ENTITY python-fin-du "485 MB">
 <!ENTITY python-fin-sbu "1.8 SBU">
 <!ENTITY python-docs-url "https://www.python.org/ftp/python/doc/&python-version;/python-&python-version;-docs-html.tar.bz2">
-<!ENTITY python-docs-md5 "8a6310f6288e7f60c3565277ec3b5279">
-<!ENTITY python-docs-size "8,065 KB">
+<!ENTITY python-docs-md5 "6025ee63c0ded34aac874f5da8f1a90c">
+<!ENTITY python-docs-size "8,110 KB">
 
 <!ENTITY readline-version "8.2">
 <!ENTITY readline-soversion "8.2"><!-- used for stripping -->
@@ -639,10 +639,10 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "69.2.0">
-<!ENTITY setuptools-size "2,171 KB">
+<!ENTITY setuptools-version "69.5.1">
+<!ENTITY setuptools-size "2,238 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "940ffdb3a2ce4f6a5ee80032aa115fc7">
+<!ENTITY setuptools-md5 "645f672221ed628e888e38a9da6c5aed">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "20 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
@@ -746,13 +746,13 @@
 <!ENTITY util-linux-fin-du "313 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.1.0161">
+<!ENTITY vim-version "9.1.0330">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim91">
-<!ENTITY vim-size "17,320 KB">
+<!ENTITY vim-size "17,428 KB">
 <!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
 <!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-md5 "a5dc0dc859a084ac7b6afe90d1b02c9d">
+<!ENTITY vim-md5 "88d5656c21668ae98a0cd1a13abb3d12">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "236 MB">
 <!ENTITY vim-fin-sbu "2.5 SBU">

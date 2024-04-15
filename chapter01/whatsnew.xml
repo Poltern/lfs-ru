@@ -175,9 +175,9 @@
     <!--<listitem>
       <para>Make-&make-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Man-DB-&man-db-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Man-pages-&man-pages-version;</para>
     </listitem>
@@ -196,12 +196,12 @@
     <!--<listitem>
       <para>Ncurses-&ncurses-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Ninja-&ninja-version;</para>
-    </listitem>-->
-    <!--<listitem>
+    </listitem>
+    <listitem>
       <para>OpenSSL-&openssl-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Patch-&patch-version;</para>
     </listitem>-->
@@ -217,9 +217,9 @@
     <listitem>
       <para>Psmisc-&psmisc-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Python-&python-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Readline-&readline-version;</para>
     </listitem>-->
