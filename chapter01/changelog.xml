@@ -40,6 +40,15 @@
     -->
 
     <listitem>
+      <para>2024-04-16</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Make minor change to ifup script output text.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-04-15</para>
       <itemizedlist>
         <listitem>

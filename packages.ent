@@ -381,7 +381,7 @@
 <!ENTITY less-fin-du "12 MB">
 <!ENTITY less-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY lfs-bootscripts-version "20230728">      <!-- Scripts depend on this format -->
+<!ENTITY lfs-bootscripts-version "20240416">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
 <!ENTITY lfs-bootscripts-url "&downloads-root;lfs-bootscripts-&lfs-bootscripts-version;.tar.xz">
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">

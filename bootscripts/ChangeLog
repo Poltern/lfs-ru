@@ -1,3 +1,7 @@
+2024-04-16 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Remove blank output line generated in ifup script when bringing
+	  up wireless interface.
+
 2023-10-04 Pierre Labastie <pierre.labastie@neuf.fr>
    * After the changes done on 2022-03-24, several "halt stop" should
      have been changed to "halt start". Done now. Fortunately, those
