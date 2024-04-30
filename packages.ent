@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "8">
-<!ENTITY linux-patch-version "6">
+<!ENTITY linux-patch-version "8">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "139,255 KB">
+<!ENTITY linux-size "139,243 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "8ff592792d0b75149d64de7b86899eb1">
+<!ENTITY linux-md5 "d802ace782a45e14cc4a8efee7510dfd">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -526,15 +526,12 @@
 <!ENTITY mpfr-fin-du "44 MB">
 <!ENTITY mpfr-fin-sbu "0.3 SBU">
 
-<!ENTITY ncurses-release "6.4">
-<!ENTITY ncurses-version "&ncurses-release;-20230520">
+<!ENTITY ncurses-version "6.5">
 <!ENTITY ncurses-size "2,156 KB">
-<!-- switch back to invisible-mirror.net for 6.5 -->
-<!--ENTITY ncurses-url "https://invisible-mirror.net/archives/ncurses/ncurses-&ncurses-version;.tar.gz"-->
-<!ENTITY ncurses-url "&anduin-sources;/ncurses-&ncurses-version;.tar.xz">
-<!ENTITY ncurses-md5 "c5367e829b6d9f3f97b280bb3e6bfbc3">
+<!ENTITY ncurses-url "https://invisible-mirror.net/archives/ncurses/ncurses-&ncurses-version;.tar.gz">
+<!ENTITY ncurses-md5 "ac2d2629296f04c8537ca706b6977687">
 <!ENTITY ncurses-home "&gnu-software;ncurses/">
-<!ENTITY ncurses-tmp-du "51 MB">
+<!ENTITY ncurses-tmp-du "3,603 KB">
 <!ENTITY ncurses-tmp-sbu "0.3 SBU">
 <!ENTITY ncurses-fin-du "45 MB">
 <!ENTITY ncurses-fin-sbu "0.2 SBU">
