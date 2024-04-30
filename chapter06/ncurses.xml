@@ -136,12 +136,12 @@ popd</userinput></screen>
         <listitem>
           <para>Этот аргумент указывает, что необходимо скомпилировать библиотеки
 		  расширенных символов (такие как, <filename
-          class="libraryfile">libncursesw.so.&ncurses-version;</filename>)
-          вместо обычных (таких как, <filename class="libraryfile">libncurses.so.&ncurses-version;</filename>).
-		  Эти библиотеки расширенных символов можно использовать как в многобайтовой, так и
+          class="libraryfile">libncursesw.so.&ncurses-release;</filename>)
+          вместо обычных (<filename class="libraryfile">libncurses.so.&ncurses-release;</filename>).
+		  Библиотеки расширенных символов можно использовать как в многобайтовой, так и
           традиционной 8-битной локали, в то время как обычные библиотеки корректно работают
           только в 8-битных локалях. Библиотеки расширенных символов и обычные совместимы на
-		  уровне исходного кода, но не совместимы в двоичном.</para>
+		  уровне исходного кода, но бинарно не совместимы.</para>
 
         </listitem>
       </varlistentry>

@@ -8,7 +8,7 @@
 <sect1 id="pre-prerequisites">
   <?dbhtml filename="prerequisites.html"?>
 
-  <title>Предпосылки</title>
+  <title>Требования к уровню подготовки</title>
 
   <para>Создание системы LFS — непростая задача. Это требует определенного 
   уровня знаний системного администрирования Unix для решения проблем и 
