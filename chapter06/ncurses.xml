@@ -69,8 +69,7 @@ popd</userinput></screen>
             --with-cxx-shared            \
             --without-debug              \
             --without-ada                \
-            --disable-stripping          \
-            --enable-widec</userinput></screen>
+            --disable-stripping</userinput></screen>
 
     <variablelist>
       <title>Значение новых параметров настройки:</title>
@@ -130,14 +129,14 @@ popd</userinput></screen>
 		  хоста в кросс-компилируемой программе может привести к сбою.</para>
         </listitem>
       </varlistentry>
-
+<!-- this is the default >= 6.5
       <varlistentry>
-        <term><parameter>--enable-widec</parameter></term>
+        <term><parameter>- -enable-widec</parameter></term>
         <listitem>
           <para>Этот аргумент указывает, что необходимо скомпилировать библиотеки
 		  расширенных символов (такие как, <filename
-          class="libraryfile">libncursesw.so.&ncurses-release;</filename>)
-          вместо обычных (<filename class="libraryfile">libncurses.so.&ncurses-release;</filename>).
+          class="libraryfile">libncursesw.so.&ncurses-version;</filename>)
+          вместо обычных (<filename class="libraryfile">libncurses.so.&ncurses-version;</filename>).
 		  Библиотеки расширенных символов можно использовать как в многобайтовой, так и
           традиционной 8-битной локали, в то время как обычные библиотеки корректно работают
           только в 8-битных локалях. Библиотеки расширенных символов и обычные совместимы на
@@ -145,7 +144,7 @@ popd</userinput></screen>
 
         </listitem>
       </varlistentry>
-
+-->
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>
