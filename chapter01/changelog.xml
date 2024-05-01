@@ -40,6 +40,71 @@
     -->
 
     <listitem>
+      <para>2024-05-01</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Add security fix to glibc. Fixes
+          <ulink url='&lfs-ticket-root;5481'>#5481</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.8.8. Fixes
+          <ulink url='&lfs-ticket-root;5480'>#5480</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to ncurses-6.5. Fixes
+          <ulink url='&lfs-ticket-root;5483'>#5483</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem revision='sysv'>
+      <para>2024-04-16</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Make minor change to ifup script output text.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2024-04-15</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to setuptools-69.5.1. Fixes
+          <ulink url='&lfs-ticket-root;5478'>#5478</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to python3-3.12.3. Fixes
+          <ulink url='&lfs-ticket-root;5476'>#5476</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to openssl-3.3.0. Fixes
+          <ulink url='&lfs-ticket-root;5475'>#5475</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to ninja-1.12.0. Fixes
+          <ulink url='&lfs-ticket-root;5477'>#5477</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to man-db-2.12.1. Fixes
+          <ulink url='&lfs-ticket-root;5474'>#5474</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.8.6. Fixes
+          <ulink url='&lfs-ticket-root;5472'>#5472</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20240412. Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to vim-9.1.0330. Addresses
+          <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-03-31</para>
       <itemizedlist>
         <listitem>

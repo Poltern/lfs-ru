@@ -81,11 +81,14 @@
 
     </variablelist>
 
+    <para>Тесты этого пакета не могут быть выполнены в среде chroot, так как для  
+	них требуется <ulink url="&blfs-book;general/cmake.html">cmake</ulink>.</para>
+<!--
     <para>Чтобы протестировать пакет, выполните:</para>
 
 <screen><userinput remap="test">./ninja ninja_test
-./ninja_test --gtest_filter=-SubprocessTest.SetWithLots</userinput></screen>
-
+./ninja_test - -gtest_filter=-SubprocessTest.SetWithLots</userinput></screen>
+-->
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">install -vm755 ninja /usr/bin/
