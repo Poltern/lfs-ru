@@ -110,7 +110,7 @@ for S in ${SERVICE}; do
   fi
 done
 
-if [ "${SERVICE}" = "wpa" ]; then log_success_msg; fi
+#if [ "${SERVICE}" = "wpa" ]; then log_success_msg; fi
 
 # Create/configure the interface
 for S in ${SERVICE}; do

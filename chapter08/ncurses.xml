@@ -49,9 +49,9 @@
             --without-normal        \
             --with-cxx-shared       \
             --enable-pc-files       \
-            --enable-widec          \
             --with-pkg-config-libdir=/usr/lib/pkgconfig</userinput></screen>
 
+      <!--  - -enable-widec this is now the default -->
     <variablelist>
       <title>Значение новых параметров настройки:</title>
 
@@ -93,21 +93,21 @@
           </para>
         </listitem>
       </varlistentry>
-
+<!--
       <varlistentry>
-        <term><parameter>--enable-widec</parameter></term>
+        <term><parameter>- -enable-widec</parameter></term>
         <listitem>
           <para>Этот параметр указывает, что при сборке пакета вместо обычных библиотек
-		  (например, <filename class="libraryfile">libncurses.so.&ncurses-release;</filename>)
+		  (например, <filename class="libraryfile">libncurses.so.&ncurses-version;</filename>)
 		  будут использоваться библиотеки с расширенным набором символов (например, <filename
-          class="libraryfile">libncursesw.so.&ncurses-release;</filename>). Библиотеки с
+          class="libraryfile">libncursesw.so.&ncurses-version;</filename>). Библиотеки с
 		  расширенным набором символов могут использоваться как с многобайтовыми локалями,
 		  так и с традиционными 8-битовыми локалями, тогда как обычные библиотеки работают
 		  только с 8-битовыми локалями. Библиотеки с расширенным набором символов и обычные
 		  библиотеки совместимы на уровне исходного кода, но не совместимыми на уровне двоичного.</para>
         </listitem>
       </varlistentry>
-
+-->
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>

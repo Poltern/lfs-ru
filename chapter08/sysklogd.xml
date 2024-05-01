@@ -55,7 +55,7 @@ sed -i 's/union wait/int/' syslogd.c</userinput></screen>
 
     <para>Установите пакет:</para>
 
-<screen><userinput remap="install">make BINDIR=/sbin install</userinput></screen>
+<screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
