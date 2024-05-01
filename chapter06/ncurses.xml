@@ -226,8 +226,7 @@ CXX="$LFS_TGT-g++ -m32"             \
             --with-cxx-shared       \
             --without-debug         \
             --without-ada           \
-            --disable-stripping     \
-            --enable-widec</userinput></screen>
+            --disable-stripping</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
 
@@ -266,8 +265,7 @@ CXX="$LFS_TGT-g++ -mx32"            \
             --with-cxx-shared       \
             --without-debug         \
             --without-ada           \
-            --disable-stripping     \
-            --enable-widec</userinput></screen>
+            --disable-stripping</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
 

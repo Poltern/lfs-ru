@@ -209,7 +209,6 @@ cp -av lib/lib*.so.5* /usr/lib</userinput></screen>
             --without-normal        \
             --with-cxx-shared       \
             --enable-pc-files       \
-            --enable-widec          \
             --with-pkg-config-libdir=/usr/lib32/pkgconfig</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
@@ -254,7 +253,6 @@ rm -rf DESTDIR</userinput></screen>
             --without-debug         \
             --without-normal        \
             --enable-pc-files       \
-            --enable-widec          \
             --with-pkg-config-libdir=/usr/libx32/pkgconfig</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
