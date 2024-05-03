@@ -673,7 +673,8 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
       <varlistentry id="ldconfig">
         <term><command>ldconfig</command></term>
         <listitem>
-          <para>Настраивает привязки времени выполнения динамического компоновщика</para>
+          <para>Создаёт необходимые привязки и кэш динамических библиотек, который 
+		  используется компоновщиком для связывания во время выполнения</para>
           <indexterm zone="ch-system-glibc ldconfig">
             <primary sortas="b-ldconfig">ldconfig</primary>
           </indexterm>

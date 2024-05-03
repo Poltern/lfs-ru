@@ -90,9 +90,6 @@
 	автоматически перезапускает неудачно завершённые тесты. Если сначала тест не пройден, но 
 	пройден при повторном запуске, его следует считать пройденным.</para>
 
-    <para>Известно, что два теста с именами <filename>test_xml_etree</filename> и 
-	<filename>test_xml_etree_c</filename> завершаются неудачно с expat-2.6.0 или новее.</para>
-
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
