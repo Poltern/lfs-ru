@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY linux-pam-download-http "https://github.com/linux-pam/linux-pam/releases/download/v&linux-pam-version;/Linux-PAM-&linux-pam-version;.tar.xz">
+  <!ENTITY linux-pam-download-ftp  " ">
+  <!ENTITY linux-pam-md5sum        "8ad1e72d1ff6480d8e0af658e2d7b768">
+  <!ENTITY linux-pam-size          "1.0 MB">
+  <!ENTITY linux-pam-buildsize     "39 MB (with tests)">
+  <!ENTITY linux-pam-time          "0.4 SBU (with tests)">
+
+  <!ENTITY linux-pam-docs-download "https://github.com/linux-pam/linux-pam/releases/download/v&linux-pam-version;/Linux-PAM-&linux-pam-docs-version;-docs.tar.xz">
+  <!ENTITY linux-pam-docs-md5sum   "46dc9f9a27ef73a2fbe3b667877e88da">
+  <!ENTITY linux-pam-docs-size     "455 KB">
+  <!--
+  <!ENTITY debian-pam-docs         "http://debian.securedservers.com/kernel/pub/linux/libs/pam">
+  -->
+]>
+
+<sect1 id="linux-pam" xreflabel="Linux-PAM-&linux-pam-version;">
+  <?dbhtml filename="linux-pam.html"?>
+
+
+  <title>Linux-PAM-&linux-pam-version;</title>
+
+  <indexterm zone="linux-pam">
+    <primary sortas="a-Linux-PAM">Linux-PAM</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Linux PAM</title>
+
+    <para>
+      The <application>Linux PAM</application> package contains
+      Pluggable Authentication Modules used by the local
+      system administrator to control how application programs authenticate
+      users.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&linux-pam-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&linux-pam-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &linux-pam-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &linux-pam-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &linux-pam-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &linux-pam-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+    <title>Optional Documentation</title>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&linux-pam-docs-download;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &linux-pam-docs-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &linux-pam-docs-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Linux PAM Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libnsl"/>,
+      <xref linkend="libtirpc"/>,
+      <xref linkend="rpcsvc-proto"/>,
+      &berkeley-db;,
+      <ulink url="https://github.com/linux-audit/audit-userspace">libaudit</ulink>,
+      <ulink url="https://github.com/openSUSE/libeconf">libeconf</ulink>, and
+      <ulink url="https://www.prelude-siem.org">Prelude</ulink>
+    </para>
+<!-- With 1.5.3, building the doc requires the namespaced version of
+     docbook-xsl, which is beyond BLFS.
+
+    <bridgehead renderas="sect4">Optional (To Rebuild the Documentation)</bridgehead>
+    <para role="optional">
+      <xref linkend="DocBook"/>,
+      <xref linkend="docbook-xsl"/>,
+      <xref linkend="fop"/>,
+      <xref linkend="libxslt"/> and either
+      <xref linkend="lynx"/> or
+      <ulink url="&w3m-url;">W3m</ulink>
+    </para>
+-->
+    <note>
+      <para role="required">
+        <xref role="runtime" linkend="shadow"/>
+        <phrase revision="systemd"> and <xref role="runtime" linkend="systemd"/>
+        must</phrase><phrase revision="sysv">must</phrase> be reinstalled
+        and reconfigured
+        after installing and configuring <application>Linux PAM</application>.
+      </para>
+
+      <para role="recommended">
+         With Linux-PAM-1.4.0 and higher, the pam_cracklib module is not
+         installed by default. Use <xref role="runtime" linkend="libpwquality"/>
+         to enforce strong passwords.
+      </para>
+    </note>
+
+  </sect2>
+
+  <sect2 role="kernel" id="linux-pam-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      For the PAM module <filename
+      class='libraryfile'>pam_loginuid.so</filename> (referred by
+      the PAM configuration file <filename>system-session</filename> if
+      <phrase revision='sysv'><xref linkend='elogind'/> is
+      built</phrase><phrase revision='systemd'><xref linkend='systemd'/> is
+      rebuilt with PAM support</phrase> later) to work,
+      a kernel configuration parameter need to be set or the module will
+      just do nothing:
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="linux-pam-kernel.xml"/>
+
+    <indexterm zone="linux-pam linux-pam-kernel">
+      <primary sortas="d-linux-pam">Linux-PAM</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Linux PAM</title>
+
+    <para revision="sysv">
+      First, prevent the installation of an unneeded systemd file:
+    </para>
+
+<screen revision="sysv"><userinput>sed -e /service_DATA/d \
+    -i modules/pam_namespace/Makefile.am &amp;&amp;
+autoreconf</userinput></screen>
+
+    <para>
+      If you downloaded the documentation, unpack the tarball by issuing
+      the following command.
+    </para>
+
+<screen><userinput>tar -xf ../Linux-PAM-&linux-pam-docs-version;-docs.tar.xz --strip-components=1</userinput></screen>
+<!--
+    <para>
+      If you want to regenerate the documentation yourself, fix the
+      <command>configure</command> script so it will detect lynx:
+    </para>
+
+<screen><userinput>sed -e 's/dummy elinks/dummy lynx/'                                    \
+    -e 's/-no-numbering -no-references/-force-html -nonumbers -stdin/' \
+    -i configure</userinput></screen>
+-->
+    <para>
+      Compile and link <application>Linux PAM</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr                        \
+            --sbindir=/usr/sbin                  \
+            --sysconfdir=/etc                    \
+            --libdir=/usr/lib                    \
+            --enable-securedir=/usr/lib/security \
+            --docdir=/usr/share/doc/Linux-PAM-&linux-pam-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, a suitable <filename>/etc/pam.d/other</filename>
+      configuration file must exist.
+    </para>
+
+    <caution>
+      <title>Reinstallation or Upgrade of Linux PAM</title>
+      <para>
+        If you have a system with Linux PAM installed and working, be careful
+        when modifying the files in
+        <filename class="directory">/etc/pam.d</filename>, since your system
+        may become totally unusable. If you want to run the tests, you do not
+        need to create another <filename>/etc/pam.d/other</filename> file. The
+        existing file can be used for the tests.
+      </para>
+
+      <para>
+         You should also be aware that <command>make install</command>
+         overwrites the configuration files in
+         <filename class="directory">/etc/security</filename> as well as
+         <filename>/etc/environment</filename>. If you
+         have modified those files, be sure to back them up.
+      </para>
+    </caution>
+
+    <para>
+      For a first-time installation, create a configuration file by issuing the
+      following commands as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>install -v -m755 -d /etc/pam.d &amp;&amp;
+
+cat &gt; /etc/pam.d/other &lt;&lt; "EOF"
+<literal>auth     required       pam_deny.so
+account  required       pam_deny.so
+password required       pam_deny.so
+session  required       pam_deny.so</literal>
+EOF</userinput></screen>
+
+    <para>
+      Now run the tests by issuing <command>make check</command>.
+      Be sure the tests produced no errors before continuing the
+      installation. Note that the tests are very long.
+      Redirect the output to a log file, so you can inspect it thoroughly.
+    </para>
+
+    <para>
+      For a first-time installation, remove the configuration file
+      created earlier by issuing the following command as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>rm -fv /etc/pam.d/other</userinput></screen>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+chmod -v 4755 /usr/sbin/unix_chkpwd</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--enable-securedir=/usr/lib/security</parameter>:
+      This switch sets the installation location for the
+      <application>PAM</application> modules.
+    </para>
+<!--
+    <para>
+      <option>- -disable-regenerate-docu</option> : If the needed dependencies
+      (<xref linkend="DocBook"/>, <xref linkend="docbook-xsl"/>, <xref
+      linkend="libxslt"/>, and <xref linkend="lynx"/> or <ulink
+      url="&w3m-url;">W3m</ulink>) are installed, the manual pages, and the
+      html and text documentation files, are generated and installed.
+      Furthermore, if <xref linkend="fop"/> is installed, the PDF
+      documentation is generated and installed. Use this switch if you do not
+      want to rebuild the documentation.
+    </para>
+-->
+    <para>
+      <command>chmod -v 4755 /usr/sbin/unix_chkpwd</command>:
+      The setuid bit for the <command>unix_chkpwd</command> helper program must be
+      turned on, so that non-<systemitem class="username">root</systemitem>
+      processes can access the shadow file.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Linux-PAM</title>
+
+    <sect3 id="pam-config">
+      <title>Configuration Files</title>
+
+      <para>
+        <filename>/etc/security/*</filename> and
+        <filename>/etc/pam.d/*</filename>
+      </para>
+
+      <indexterm zone="linux-pam pam-config">
+        <primary sortas="e-etc-security">/etc/security/*</primary>
+      </indexterm>
+
+      <indexterm zone="linux-pam pam-config">
+        <primary sortas="e-etc-pam.d">/etc/pam.d/*</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        Configuration information is placed in
+        <filename class="directory">/etc/pam.d/</filename>.
+        Here is a sample file:
+      </para>
+
+<screen><literal># Begin /etc/pam.d/other
+
+auth            required        pam_unix.so     nullok
+account         required        pam_unix.so
+session         required        pam_unix.so
+password        required        pam_unix.so     nullok
+
+# End /etc/pam.d/other</literal></screen>
+
+      <para>
+        Now create some generic configuration files.  As the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>install -vdm755 /etc/pam.d &amp;&amp;
+cat &gt; /etc/pam.d/system-account &lt;&lt; "EOF" &amp;&amp;
+<literal># Begin /etc/pam.d/system-account
+
+account   required    pam_unix.so
+
+# End /etc/pam.d/system-account</literal>
+EOF
+
+cat &gt; /etc/pam.d/system-auth &lt;&lt; "EOF" &amp;&amp;
+<literal># Begin /etc/pam.d/system-auth
+
+auth      required    pam_unix.so
+
+# End /etc/pam.d/system-auth</literal>
+EOF
+
+cat &gt; /etc/pam.d/system-session &lt;&lt; "EOF" &amp;&amp;
+<literal># Begin /etc/pam.d/system-session
+
+session   required    pam_unix.so
+
+# End /etc/pam.d/system-session</literal>
+EOF
+
+cat &gt; /etc/pam.d/system-password &lt;&lt; "EOF"
+<literal># Begin /etc/pam.d/system-password
+
+# use yescrypt hash for encryption, use shadow, and try to use any
+# previously defined authentication token (chosen password) set by any
+# prior module.
+password  required    pam_unix.so       yescrypt shadow try_first_pass
+
+# End /etc/pam.d/system-password</literal>
+EOF
+</userinput></screen>
+
+     <para>
+       If you wish to enable strong password support, install
+       <xref linkend="libpwquality"/>, and follow the
+       instructions on that page to configure the pam_pwquality
+       PAM module with strong password support.
+     </para>
+
+      <para>
+        Next, add a restrictive <filename>/etc/pam.d/other</filename>
+        configuration file.  With this file, programs that are PAM aware will
+        not run unless a configuration file specifically for that application
+        exists.
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/pam.d/other &lt;&lt; "EOF"
+<literal># Begin /etc/pam.d/other
+
+auth        required        pam_warn.so
+auth        required        pam_deny.so
+account     required        pam_warn.so
+account     required        pam_deny.so
+password    required        pam_warn.so
+password    required        pam_deny.so
+session     required        pam_warn.so
+session     required        pam_deny.so
+
+# End /etc/pam.d/other</literal>
+EOF</userinput></screen>
+
+      <para>
+        The <application>PAM</application> man page (<command>man
+        pam</command>) provides a good starting point to learn
+        about the several fields, and allowable entries.
+        <!-- not accessible 2022-09-08 -->
+        <!-- it's available at a different address 2022-10-23-->
+        The
+        <ulink url="https://www.docs4dev.com/docs/en/linux-pam/1.1.2/reference/Linux-PAM_SAG.html">
+          Linux-PAM System Administrators' Guide
+        </ulink> is recommended for additional information.
+      </para>
+
+      <important>
+        <para>
+          You should now reinstall the <xref linkend="shadow"/>
+          <phrase revision="sysv">package</phrase>
+          <phrase revision="systemd"> and <xref linkend="systemd"/>
+          packages</phrase>.
+        </para>
+      </important>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          faillock, mkhomedir_helper, pam_namespace_helper,
+          pam_timestamp_check, pwhistory_helper, unix_chkpwd and
+          unix_update
+        </seg>
+        <seg>
+          libpam.so, libpamc.so and libpam_misc.so
+        </seg>
+        <seg>
+          /etc/security,
+          /usr/lib/security,
+          /usr/include/security and
+          /usr/share/doc/Linux-PAM-&linux-pam-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="faillock">
+        <term><command>faillock</command></term>
+        <listitem>
+          <para>
+            displays and modifies the authentication failure record files
+          </para>
+          <indexterm zone="linux-pam faillock">
+            <primary sortas="b-faillock">faillock</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mkhomedir_helper">
+        <term><command>mkhomedir_helper</command></term>
+        <listitem>
+          <para>
+            is a helper binary that creates home directories
+          </para>
+          <indexterm zone="linux-pam mkhomedir_helper">
+            <primary sortas="b-mkhomedir_helper">mkhomedir_helper</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pam_namespace_helper">
+        <term><command>pam_namespace_helper</command></term>
+        <listitem>
+          <para>
+            is a helper program used to configure a private namespace for a
+            user session
+          </para>
+          <indexterm zone="linux-pam pam_namespace_helper">
+            <primary sortas="b-pam_namespace_helper">pam_namespace_helper</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pwhistory_helper">
+        <term><command>pwhistory_helper</command></term>
+        <listitem>
+          <para>
+            is a helper program that transfers password hashes from passwd or
+            shadow to opasswd
+          </para>
+          <indexterm zone="linux-pam pwhistory_helper">
+            <primary sortas="b-pwhistory_helper">pwhistory_helper</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+<!-- Removed with the removal of the pam_tally{,2} module
+      <varlistentry id="pam_tally">
+        <term><command>pam_tally</command></term>
+        <listitem>
+          <para>
+            is used to interrogate and manipulate the login counter file.
+          </para>
+          <indexterm zone="linux-pam pam_tally">
+            <primary sortas="b-pam_tally">pam_tally</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pam_tally2">
+        <term><command>pam_tally2</command></term>
+        <listitem>
+          <para>
+            is used to interrogate and manipulate the login counter file, but
+            does not have some limitations that <command>pam_tally</command>
+            does.
+          </para>
+          <indexterm zone="linux-pam pam_tally2">
+            <primary sortas="b-pam_tally2">pam_tally2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+-->
+
+      <varlistentry id="pam_timestamp_check">
+        <term><command>pam_timestamp_check</command></term>
+        <listitem>
+          <para>
+            is used to check if the default timestamp is valid
+          </para>
+          <indexterm zone="linux-pam pam_timestamp_check">
+            <primary sortas="b-pam_timestamp_check">pam_timestamp_check</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unix_chkpwd">
+        <term><command>unix_chkpwd</command></term>
+        <listitem>
+          <para>
+            is a helper binary that verifies the password of the current user
+          </para>
+          <indexterm zone="linux-pam unix_chkpwd">
+            <primary sortas="b-unix_chkpwd">unix_chkpwd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unix_update">
+        <term><command>unix_update</command></term>
+        <listitem>
+          <para>
+            is a helper binary that updates the password of a given user
+          </para>
+          <indexterm zone="linux-pam unix_update">
+            <primary sortas="b-unix_update">unix_update</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpam">
+        <term><filename class="libraryfile">libpam.so</filename></term>
+        <listitem>
+          <para>
+            provides the interfaces between applications and the
+            PAM modules
+          </para>
+          <indexterm zone="linux-pam libpam">
+            <primary sortas="c-libpam">libpam.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

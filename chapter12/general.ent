@@ -4,10 +4,10 @@
                                       set to IGNORE for release or rc -->
 <!ENTITY % release     "IGNORE"> <!-- set to INCLUDE for release,
                                       set to IGNORE for development or rc -->
-<!ENTITY % relyear    "2023">
-<!ENTITY % relnum     "11.3">
-<!ENTITY % reldate    "March 1st, 2023">
-<!ENTITY % relpubdate "2023-03-01">
+<!ENTITY % relyear    "2024">
+<!ENTITY % relnum     "12.1">
+<!ENTITY % reldate    "1 марта 2024">
+<!ENTITY % relpubdate "2024-03-01">
 <!-- ================================================================== -->
 <!-- Do not change anything below unless the www or book layouts change -->
 
@@ -116,7 +116,7 @@
 
 <!-- End LFS versions -->
 
-<!ENTITY blfs-bootscripts-version     "20240209">
+<!ENTITY blfs-bootscripts-version     "20240416">
 <!ENTITY systemd-units-version        "20240205">
 
 <!ENTITY blfs-wiki                    "https://wiki.&lfs-domainname;/blfs/wiki">
@@ -213,5 +213,3 @@ export -f as_root</userinput></screen>
 <!ENTITY berkeley-db "<ulink url='https://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz'>Berkeley DB</ulink> (deprecated)">
 
 <!ENTITY gobject-introspection "<xref linkend='glib2'/> (with GObject Introspection)">
-
-<!ENTITY postlfs-config-logon "<xref linkend='postlfs-config-logon' />">

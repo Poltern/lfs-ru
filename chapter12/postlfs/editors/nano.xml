@@ -5,11 +5,11 @@
   %general-entities;
 
   <!-- Note minor version in URL -->
-  <!ENTITY nano-download-http "https://www.nano-editor.org/dist/v7/nano-&nano-version;.tar.xz">
+  <!ENTITY nano-download-http "https://www.nano-editor.org/dist/v8/nano-&nano-version;.tar.xz">
   <!ENTITY nano-download-ftp  " ">
-  <!ENTITY nano-md5sum        "13742c686c6ddb0b7b294634f0c13cec">
-  <!ENTITY nano-size          "1.5 MB">
-  <!ENTITY nano-buildsize     "20 MB">
+  <!ENTITY nano-md5sum        "328e7a8c30095178997b9925c89d99e5">
+  <!ENTITY nano-size          "1.6 MB">
+  <!ENTITY nano-buildsize     "23 MB">
   <!ENTITY nano-time          "0.2 SBU">
 ]>
 

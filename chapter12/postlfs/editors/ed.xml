@@ -6,7 +6,7 @@
 
   <!ENTITY ed-download-http "&gnu-http;/ed/ed-&ed-version;.tar.lz">
   <!ENTITY ed-download-ftp  " ">
-  <!ENTITY ed-md5sum        "f9e7c445acebf6c49ccb7f86a5b17f5d">
+  <!ENTITY ed-md5sum        "8f31ca1cb5a2e2ca8ee2598cc0bf53e1">
   <!ENTITY ed-size          "68 KB">
   <!ENTITY ed-buildsize     "1.0 MB">
   <!ENTITY ed-time          "less than 0.1 SBU">

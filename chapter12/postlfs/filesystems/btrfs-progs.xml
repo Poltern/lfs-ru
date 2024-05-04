@@ -6,7 +6,7 @@
 
   <!ENTITY btrfs-progs-download-http "&kernel-dl;/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v&btrfs-progs-version;.tar.xz">
   <!ENTITY btrfs-progs-download-ftp  " ">
-  <!ENTITY btrfs-progs-md5sum        "729b0927484ebb34e375849b632e287d">
+  <!ENTITY btrfs-progs-md5sum        "e22810ab7d616b5628b7912923ff127b">
   <!ENTITY btrfs-progs-size          "2.5 MB">
   <!ENTITY btrfs-progs-buildsize     "62 MB (transient files created during tests need up to 10 GB)">
   <!ENTITY btrfs-progs-time          "0.3 SBU (with parallelism=4; add 2.5 SBU for tests, up to 14 SBU on slow disks)">

@@ -6,7 +6,7 @@
 
   <!ENTITY xfsprogs-download-http "&kernel-dl;/linux/utils/fs/xfs/xfsprogs/xfsprogs-&xfsprogs-version;.tar.xz">
   <!ENTITY xfsprogs-download-ftp  " ">
-  <!ENTITY xfsprogs-md5sum        "c008a752fae65aaf761096eb4698df86">
+  <!ENTITY xfsprogs-md5sum        "0bde7bc8b3d8cbbd01064f756f67911f">
   <!ENTITY xfsprogs-size          "1.3 MB">
   <!ENTITY xfsprogs-buildsize     "56 MB">
   <!ENTITY xfsprogs-time          "0.3 SBU (Using parallelism=4)">
