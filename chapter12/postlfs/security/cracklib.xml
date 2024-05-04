@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cracklib-url "https://github.com/cracklib/cracklib/releases/download">
+
+  <!ENTITY cracklib-download-http "&cracklib-url;/v&cracklib-version;/cracklib-&cracklib-version;.tar.xz">
+  <!ENTITY cracklib-download-ftp  " ">
+  <!ENTITY cracklib-md5sum        "a6dfb1766aab43a54e1cbd78abf0a20a">
+  <!ENTITY cracklib-size          "452 KB">
+  <!ENTITY cracklib-buildsize     "6.8 MB">
+  <!ENTITY cracklib-time          "0.1 SBU">
+
+  <!ENTITY crackdict-download     "&cracklib-url;/v&cracklib-version;/cracklib-words-&cracklib-version;.xz">
+  <!ENTITY crackdict-size         "4.0 MB">
+  <!ENTITY crackdict-md5sum       "f27804022dbf2682a7f7c353317f9a53">
+]>
+
+<sect1 id="cracklib" xreflabel="CrackLib-&cracklib-version;">
+  <?dbhtml filename="cracklib.html"?>
+
+
+  <title>CrackLib-&cracklib-version;</title>
+
+  <indexterm zone="cracklib">
+    <primary sortas="a-CrackLib">CrackLib</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to CrackLib</title>
+
+    <para>
+      The <application>CrackLib</application> package contains a
+      library used to enforce strong passwords by comparing user selected
+      passwords to words in chosen word lists.
+    </para>
+
+    &lfs121_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cracklib-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cracklib-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cracklib-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cracklib-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cracklib-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cracklib-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <para>Recommended word list for English-speaking countries:</para>
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&crackdict-download;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+           Download MD5 sum: &crackdict-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+            Download size:  &crackdict-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      There are additional word lists available for download, e.g., from
+      <ulink url="https://wiki.skullsecurity.org/index.php/Passwords"/>.
+      <application>CrackLib</application> can utilize as many, or as few word
+      lists you choose to install.
+    </para>
+
+    <important>
+      <para>
+        Users tend to base their passwords on regular words of the spoken
+        language, and crackers know that. <application>CrackLib</application>
+        is intended to filter out such bad passwords at the source using a
+        dictionary created from word lists. To accomplish this, the word
+        list(s) for use with <application>CrackLib</application> must be an
+        exhaustive list of words and word-based keystroke combinations likely
+        to be chosen by users of the system as (guessable) passwords.
+      </para>
+
+      <para>
+        The default word list recommended above for downloading mostly
+        satisfies this role in English-speaking countries. In other situations,
+        it may be necessary to download (or even create) additional word lists.
+      </para>
+
+      <para>
+        Note that word lists suitable for spell-checking are not usable
+        as <application>CrackLib</application> word lists in countries with
+        non-Latin based alphabets, because of <quote>word-based keystroke
+        combinations</quote> that make bad passwords.
+      </para>
+    </important>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of CrackLib</title>
+
+    <para>
+      Install <application>CrackLib</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>autoreconf -fiv &amp;&amp;
+
+PYTHON=python3               \
+./configure --prefix=/usr    \
+            --disable-static \
+            --with-default-dict=/usr/lib/cracklib/pw_dict &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      Issue the following commands as the
+      <systemitem class="username">root</systemitem> user to install the
+      recommended word list and create the <application>CrackLib</application>
+      dictionary. Other word lists (text based, one word per line) can also be
+      used by simply installing them into
+      <filename class="directory">/usr/share/dict</filename> and adding them
+      to the <command>create-cracklib-dict</command> command.
+    </para>
+
+<screen role="root"><userinput>install -v -m644 -D    ../cracklib-words-&cracklib-version;.xz \
+                         /usr/share/dict/cracklib-words.xz    &amp;&amp;
+
+unxz -v                  /usr/share/dict/cracklib-words.xz    &amp;&amp;
+ln -v -sf cracklib-words /usr/share/dict/words                &amp;&amp;
+echo $(hostname) >>      /usr/share/dict/cracklib-extra-words &amp;&amp;
+install -v -m755 -d      /usr/lib/cracklib                    &amp;&amp;
+
+create-cracklib-dict     /usr/share/dict/cracklib-words \
+                         /usr/share/dict/cracklib-extra-words</userinput></screen>
+
+    <para>
+      If desired, check the proper operation of the library as an
+      unprivileged user by issuing the following command:
+    </para>
+
+<screen remap="test"><userinput>make test</userinput></screen>
+
+    <important>
+      <para>
+        If you are installing <application>CrackLib</application> after
+        your LFS system has been completed and you have the
+        <application>Shadow</application> package installed, you must
+        reinstall <xref linkend="shadow"/> if you wish to provide strong
+        password support on your system. If you are now going to install the
+        <xref linkend="linux-pam"/> package, you may disregard this note as
+        <application>Shadow</application> will be reinstalled after the
+        <application>Linux-PAM</application> installation.
+      </para>
+    </important>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>autoreconf -fiv</command>: The configure script shipped with
+      the package is too old to get the right version string of Python
+      3.10 or later. This command regenerates it with a more recent version
+      of autotools, which fixes the issue.
+    </para>
+
+    <para>
+      <envar>PYTHON=python3</envar>: This forces the installation of
+      python bindings for Python 3, even if Python 2 is installed.
+    </para>
+
+    <para>
+      <parameter>--with-default-dict=/usr/lib/cracklib/pw_dict</parameter>:
+      This parameter forces the installation of the
+      <application>CrackLib</application> dictionary to the
+      <filename class="directory">/lib</filename> hierarchy.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <command>install -v -m644 -D ...</command>: This command creates the
+      <filename class="directory">/usr/share/dict</filename> directory (if it
+      doesn't already exist) and installs the compressed word list there.
+    </para>
+
+    <para>
+      <command>ln -v -s cracklib-words /usr/share/dict/words</command>: The
+      word list is linked to <filename>/usr/share/dict/words</filename> as
+      historically, <filename>words</filename> is the primary word list in the
+      <filename class="directory">/usr/share/dict</filename> directory. Omit
+      this command if you already have a
+      <filename>/usr/share/dict/words</filename> file installed on your system.
+    </para>
+
+    <para>
+      <command>echo $(hostname) >>...</command>: The value of
+      <command>hostname</command> is echoed to a file called
+      <filename>cracklib-extra-words</filename>. This extra file is intended
+      to be a site specific list which includes easy to guess passwords such
+      as company or department names, user names, product names, computer
+      names, domain names, etc.
+    </para>
+
+    <para>
+      <command>create-cracklib-dict ...</command>: This command creates the
+      <application>CrackLib</application> dictionary from the word lists.
+      Modify the command to add any additional word lists you have installed.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>cracklib-check, cracklib-format, cracklib-packer,
+        cracklib-unpacker, cracklib-update, and create-cracklib-dict</seg>
+
+        <seg>libcrack.so and the _cracklib.so
+          (<application>Python</application> module)</seg>
+
+        <seg>/usr/lib/cracklib, /usr/share/dict and /usr/share/cracklib</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cracklib-check">
+        <term><command>cracklib-check</command></term>
+        <listitem>
+          <para>
+            is used to determine if a password is strong
+          </para>
+          <indexterm zone="cracklib cracklib-check">
+            <primary sortas="b-cracklib-check">cracklib-check</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cracklib-format">
+        <term><command>cracklib-format</command></term>
+        <listitem>
+          <para>
+            is used to format text files (lowercases all words,
+            removes control characters and sorts the lists)
+          </para>
+          <indexterm zone="cracklib cracklib-format">
+            <primary sortas="b-cracklib-format">cracklib-format</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="cracklib-packer">
+        <term><command>cracklib-packer</command></term>
+        <listitem>
+          <para>
+            creates a database with words read from standard input
+          </para>
+          <indexterm zone="cracklib cracklib-packer">
+            <primary sortas="b-cracklib-packer">cracklib-packer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="cracklib-unpacker">
+        <term><command>cracklib-unpacker</command></term>
+        <listitem>
+          <para>
+            displays on standard output the database specified
+          </para>
+          <indexterm zone="cracklib cracklib-packer">
+            <primary sortas="b-cracklib-packer">cracklib-packer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="create-cracklib-dict">
+        <term><command>create-cracklib-dict</command></term>
+        <listitem>
+          <para>
+            is used to create the <application>CrackLib</application>
+            dictionary from the given word list(s)
+          </para>
+          <indexterm zone="cracklib create-cracklib-dict">
+            <primary sortas="b-create-cracklib-dict">create-cracklib-dict</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcrack">
+        <term><filename class="libraryfile">libcrack.so</filename></term>
+        <listitem>
+          <para>
+            provides a fast dictionary lookup method for strong
+            password enforcement
+          </para>
+          <indexterm zone="cracklib libcrack">
+            <primary sortas="c-libcrack">libcrack.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

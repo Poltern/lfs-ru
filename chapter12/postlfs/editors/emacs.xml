@@ -26,8 +26,8 @@
     <title>Общая информация о Emacs</title>
 
     <para>
-      Пакет <application>Emacs</application> содержит расширяемый, настраиваемый, 
-	  самодокументируемый текстовый редактор реального времени.
+      The <application>Emacs</application> package contains an extensible,
+      customizable, self-documenting real-time display editor.
     </para>
 
     &lfs121_checked;
@@ -66,14 +66,14 @@
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Зависимости Emacs</bridgehead>
+    <bridgehead renderas="sect3">Emacs Dependencies</bridgehead>
 
     <bridgehead renderas="sect4">Рекомендуемые</bridgehead>
     <para role="recommended">
       harfbuzz,
       giflib,
       gnutls,
-      jansson и 
+      jansson, and
       libtiff
     </para>
 
@@ -100,11 +100,11 @@
       valgrind,
       <ulink url="&gnu-http;/intlfonts/">intlfonts</ulink>,
       <ulink url="https://directory.fsf.org/wiki/Libungif">libungif</ulink>,
-      <ulink url="https://www.nongnu.org/m17n/">libotf</ulink> и 
-      <ulink url="https://www.nongnu.org/m17n/">m17n-lib</ulink> - для правильного 
-	  отображения таких сложных шрифтов, как индийский и кхмерский, а также для скриптов, 
-	  требующих поддержки арабского языка (арабский и фарси), 
-      <ulink url="https://mailutils.org/">mailutils</ulink> и 
+      <ulink url="https://www.nongnu.org/m17n/">libotf</ulink>, and
+      <ulink url="https://www.nongnu.org/m17n/">m17n-lib</ulink> - to correctly
+      display such complex scripts as Indic and Khmer, and also for scripts
+      that require Arabic shaping support (Arabic and Farsi),
+      <ulink url="https://mailutils.org/">mailutils</ulink>, and
       <ulink url="&xorg-download-http;/lib/">libXaw3d</ulink>
     </para>
 
@@ -114,21 +114,22 @@
     <title>Установка пакета Emacs</title>
 
     <para>
-      Установите <application>Emacs</application>, выполнив следующие команды:
+      Install <application>Emacs</application> by running the following
+      commands:
     </para>
 
 <screen><userinput>./configure --prefix=/usr &amp;&amp;
 make</userinput></screen>
 
     <para>
-      В этот пакет не входит набор тестов. Если make завершится успешно, вы можете 
-	  проверить результат, запустив <command>src/emacs -Q</command> — программу, 
-	  которая будет установлена, с ее вспомогательными файлами. Программа должна запуститься 
-	  и отобразить экран открытия приложения.
+      This package does not come with a test suite. If make succeeds, you can
+      test the result by running <command>src/emacs -Q</command>, which is the
+      program that will be installed, with its auxiliary files. This should
+      start and display the application opening screen.
     </para>
 
     <para>
-      Сейчас, от имени пользователя <systemitem class="username">root</systemitem>, выполните:
+      Now, as the <systemitem class="username">root</systemitem> user:
     </para>
 
 <screen role="root" revision="systemd"><userinput>make install &amp;&amp;
@@ -155,34 +156,34 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
     -->
 
     <para>
-      <option>--with-imagemagick</option>: используйте этот параметр, если у вас 
-	  установлен imagemagick и вы хотите создать ссылку на него.
+      <option>--with-imagemagick</option>: Use this if you have installed
+      imagemagick and wish to link against it.
     </para>
 
     <para>
-      <option>--with-gif=no</option>: используйте этот параметр, если у вас еще не 
-	  установлен giflib или 
+      <option>--with-gif=no</option>: Use this if you have not installed
+      giflib or
       <ulink url="https://directory.fsf.org/wiki/Libungif">libungif</ulink>.
     </para>
 
     <para>
-      <option>--with-tiff=no</option>: используйте этот параметр, если у вас еще не 
-	  установлен libtiff.
+      <option>--with-tiff=no</option>: Use this if you have not installed
+      libtiff.
     </para>
 
     <para>
-      <option>--with-gnutls=no</option>: используйте этот параметр, если у вас еще не 
-	  установлен gnutls.
+      <option>--with-gnutls=no</option>: Use this if you have not installed
+      gnutls.
     </para>
 
     <para>
-      <option>--without-harfbuzz</option>: используйте этот параметр, если у вас еще не 
-	  установлен harfbuzz.
+      <option>--without-harfbuzz</option>: Use this if you have not installed
+      harfbuzz.
     </para>
 
     <para>
-      <option>--with-json=no</option>: используйте этот параметр, если у вас еще не 
-	  установлен jansson.
+      <option>--with-json=no</option>: Use this if you have not installed
+      jansson.
     </para>
 
   </sect2>
@@ -200,10 +201,10 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
              ebrowse,
              emacs (символическая ссылка),
              emacs-&emacs-version;,
-             emacsclient и 
+             emacsclient, and
              etags</seg>
         <seg>Нет</seg>
-        <seg>/usr/libexec/emacs и 
+        <seg>/usr/libexec/emacs and
              /usr/share/emacs</seg>
       </seglistitem>
     </segmentedlist>
@@ -217,8 +218,8 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
         <term><command>ctags</command></term>
         <listitem>
           <para>
-            создает базу данных файлов тегов с перекрестными ссылками на исходной 
-			код
+            creates cross-reference tagfile database files
+            for source code
           </para>
           <indexterm zone="emacs ctags">
             <primary sortas="b-ctags">ctags</primary>
@@ -230,7 +231,8 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
         <term><command>ebrowse</command></term>
         <listitem>
           <para>
-            позволяет просматривать иерархию классов C++ из <command>emacs</command>
+            permits browsing of C++ class hierarchies from
+            within <command>emacs</command>
           </para>
           <indexterm zone="emacs ebrowse">
             <primary sortas="b-ebrowse">ebrowse</primary>
@@ -242,7 +244,7 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
         <term><command>emacs</command></term>
         <listitem>
           <para>
-            редактор
+            is an editor
           </para>
           <indexterm zone="emacs emacs-prog">
             <primary sortas="b-emacs">emacs</primary>
@@ -254,8 +256,8 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
         <term><command>emacsclient</command></term>
         <listitem>
           <para>
-            присоединяет сеанс <command>emacs</command> к уже работающему экземпляру 
-			<command>emacsserver</command>
+            attaches an <command>emacs</command> session to an already
+            running <command>emacsserver</command> instance
           </para>
           <indexterm zone="emacs emacsclient">
             <primary sortas="b-emacsclient">emacsclient</primary>
@@ -267,8 +269,8 @@ rm -vf /usr/lib/systemd/user/emacs.service</userinput></screen>
         <term><command>etags</command></term>
         <listitem>
           <para>
-            еще одна программа для генерации файлов тегов с перекрестными ссылками на 
-			исходный код
+            is another program to generate source code
+            cross-reference tagfiles
           </para>
           <indexterm zone="emacs etags">
             <primary sortas="b-etags">etags</primary>
