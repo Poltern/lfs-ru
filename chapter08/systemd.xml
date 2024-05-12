@@ -228,7 +228,7 @@ ninja test</userinput></screen>
          after initializing the system with systemd.  -->
     <para>Известно, что тест с именем <literal>systemd:core / test-namespace</literal> 
     завершился неудачно в среде chroot LFS. Некоторые другие тесты могут не пройти, поскольку 
-	они зависят от различных параметров конфигурации ядра..</para>
+	они зависят от различных параметров конфигурации ядра.</para>
 
     <para>Установите пакет:</para>
 

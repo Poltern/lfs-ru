@@ -65,6 +65,12 @@
 	самого Expect), потерпят фатальный сбой, а также могут произойти другие незначительные 
 	сбои.</para>
 
+
+    <para>Теперь внесите некоторые изменения, чтобы разрешить использование пакета с gcc-14.1 
+	или более поздней версией:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../expect-&expect-version;-gcc14-1.patch</userinput></screen>
+
     <para>Подготовьте Expect к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr           \
