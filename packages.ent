@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240412">
+<!ENTITY iana-etc-version "20240502">
 <!ENTITY iana-etc-size "590 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "d53e2729bb4f3ef9f5cdc23a4bbb6739">
+<!ENTITY iana-etc-md5 "73921d46a934eb5ac4286fc8111c2174">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -526,15 +526,12 @@
 <!ENTITY mpfr-fin-du "44 MB">
 <!ENTITY mpfr-fin-sbu "0.3 SBU">
 
-<!ENTITY ncurses-release "6.4">
-<!ENTITY ncurses-version "&ncurses-release;-20230520">
+<!ENTITY ncurses-version "6.5">
 <!ENTITY ncurses-size "2,156 KB">
-<!-- switch back to invisible-mirror.net for 6.5 -->
-<!--ENTITY ncurses-url "https://invisible-mirror.net/archives/ncurses/ncurses-&ncurses-version;.tar.gz"-->
-<!ENTITY ncurses-url "&anduin-sources;/ncurses-&ncurses-version;.tar.xz">
-<!ENTITY ncurses-md5 "c5367e829b6d9f3f97b280bb3e6bfbc3">
+<!ENTITY ncurses-url "https://invisible-mirror.net/archives/ncurses/ncurses-&ncurses-version;.tar.gz">
+<!ENTITY ncurses-md5 "ac2d2629296f04c8537ca706b6977687">
 <!ENTITY ncurses-home "&gnu-software;ncurses/">
-<!ENTITY ncurses-tmp-du "51 MB">
+<!ENTITY ncurses-tmp-du "3,603 KB">
 <!ENTITY ncurses-tmp-sbu "0.3 SBU">
 <!ENTITY ncurses-fin-du "45 MB">
 <!ENTITY ncurses-fin-sbu "0.2 SBU">
@@ -750,9 +747,20 @@
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim91">
 <!ENTITY vim-size "17,428 KB">
-<!--<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">
-<!ENTITY vim-md5 "88d5656c21668ae98a0cd1a13abb3d12">
+<!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
+<!-- N.B. LFS 9.0 uses
+     https://github.com/vim/vim/archive/v8.1.1846/vim-8.1.1846.tar.gz
+     and it still works after years, the md5sum of the resulted tarball
+     is unchanged as well.  Thus GitHub download seems stable enough for
+     vim and there's no need to use anduin.
+
+     BTW if we click the "Next" button enough times on
+     https://github.com/vim/vim/tags, we can eventually see the old
+     release.  The "Next" button just sets "after=" in the URL.  For
+     example, https://github.com/vim/vim/tags?after=v8.1.1847 will show
+     us v8.1.1846. -->
+<!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
+<!ENTITY vim-md5 "5379f5542310ee7ffbd6aea312407042">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "236 MB">
 <!ENTITY vim-fin-sbu "2.5 SBU">

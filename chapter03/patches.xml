@@ -75,15 +75,15 @@
         <para>Контрольная сумма MD5: <literal>&gcc-upstream-fixes-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
-
+-->
     <varlistentry>
-      <term>Glibc Upstream Fixes Patch - <token>&glibc-upstream-fixes-patch-size;</token>:</term>
+      <term>Glibc Upstream Fix Patch - <token>&glibc-upstream-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&glibc-upstream-fixes-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&glibc-upstream-fixes-patch-md5;</literal></para>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&glibc-upstream-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&glibc-upstream-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
+
     <varlistentry>
       <term>Glibc FHS Patch - <token>&glibc-fhs-patch-size;</token>:</term>
       <listitem>
