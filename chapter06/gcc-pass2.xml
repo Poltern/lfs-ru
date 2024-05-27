@@ -121,10 +121,10 @@ cd       build</userinput></screen>
       <varlistentry>
         <term><parameter>--target=$LFS_TGT</parameter></term>
         <listitem>
-          <para>Поскольку мы выполняем кросс-компиляцию GCC, невозможно создать
+          <para>Поскольку мы выполняем кросс-компиляцию GCC, невозможно собрать
 		  целевые библиотеки (<filename class="libraryfile">libgcc</filename>
-          и <filename class="libraryfile">libstdc++</filename>) с ранее скомпилированными
-		  двоичными файлами GCC, потому что эти двоичные файлы не будут работать на
+          и <filename class="libraryfile">libstdc++</filename>) с помощью двоичных
+		  файлов GCC, скомпилированных на этом шаге, эти двоичные файлы не будут работать на
 		  хост-дистрибутиве. Система сборки GCC по умолчанию попытается использовать 
 		  компиляторы C и C++ хоста в качестве обходного пути.
           Сейчас не поддерживается создание целевых библиотек GCC с помощью другой версии GCC,
@@ -148,11 +148,9 @@ cd       build</userinput></screen>
         <term><parameter>--disable-libsanitizer</parameter></term>
         <listitem>
           <para>Отключает библиотеки среды выполнения GCC sanitizer. Они не нужны для 
-		  временного набора инструментов. Этот параметр необходим для сборки GCC без
-          установки <systemitem class='library'>libcrypt</systemitem> для целевого 
-		  объекта. В <xref linkend='ch-tools-gcc-pass1'/> это решалось с помощью 
-		  параметра <parameter>--disable-libstdcxx</parameter>, но теперь мы должны 
-		  передать его явно.</para>
+		  временного набора инструментов. В <xref linkend='ch-tools-gcc-pass1'/> это 
+		  решалось с помощью параметра <parameter>--disable-libstdcxx</parameter>, но теперь 
+		  мы должны передать его явно.</para>
         </listitem>
       </varlistentry>
 

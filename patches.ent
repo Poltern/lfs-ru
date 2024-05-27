@@ -10,9 +10,9 @@
 <!ENTITY bzip2-docs-patch-md5 "6a5ac7e89b791aae556de0f745916f7f">
 <!ENTITY bzip2-docs-patch-size "1.6 KB">
 
-<!ENTITY coreutils-i18n-patch "coreutils-&coreutils-version;-i18n-1.patch">
-<!ENTITY coreutils-i18n-patch-md5 "ce7529b74564aac887c3f48582a5e6cf">
-<!ENTITY coreutils-i18n-patch-size "159 KB">
+<!ENTITY coreutils-i18n-patch "coreutils-&coreutils-version;-i18n-2.patch">
+<!ENTITY coreutils-i18n-patch-md5 "58961caf5bbdb02462591fa506c73b6d">
+<!ENTITY coreutils-i18n-patch-size "164 KB">
 
 <!ENTITY expect-gcc14-patch "expect-&expect-version;-gcc14-1.patch">
 <!ENTITY expect-gcc14-patch-md5 "0b8b5ac411d011263ad40b0664c669f0">

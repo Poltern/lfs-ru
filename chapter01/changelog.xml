@@ -40,6 +40,18 @@
     -->
 
     <listitem>
+      <para>2024-05-13</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Synchronize coreutils i18n patch from Fedora
+          to fix a build failure on 32-bit x86 and an alarming compiler
+          warning on both 32-bit x86 and x86_64 with GCC 14.1 or
+          later.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-05-11</para>
       <itemizedlist>
         <listitem>

@@ -932,7 +932,7 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Diffutils, Findutils, Gawk, GCC,
-          Gettext, Glibc, GMP, Grep, Libxcrypt, M4, Make, MPC, MPFR, Patch,
+          Gettext, Glibc, GMP, Grep, M4, Make, MPC, MPFR, Patch,
           Perl, Sed, Tar, Texinfo и Zstd</seg>
         </seglistitem>
       </segmentedlist>
@@ -1884,7 +1884,7 @@
       <segmentedlist id="libxcrypt-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>GCC, Perl, Python, Shadow и &systemd-udev;</seg>
+          <seg>Perl, Python, Shadow и &systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
