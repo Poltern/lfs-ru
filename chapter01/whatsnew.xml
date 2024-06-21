@@ -67,9 +67,9 @@
     <!--<listitem>
       <para>Diffutils-&diffutils-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
        <para>E2fsprogs-&e2fsprogs-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
        <para>Expat-&expat-version;</para>
     </listitem>
@@ -148,9 +148,9 @@
     <!--<listitem>
       <para>LFS-Bootscripts-&lfs-bootscripts-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Libcap-&libcap-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Libelf из Elfutils-&elfutils-version;</para>
     </listitem>

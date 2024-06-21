@@ -140,10 +140,10 @@
 <!ENTITY diffutils-fin-du "36 MB">
 <!ENTITY diffutils-fin-sbu "0.3 SBU">
 
-<!ENTITY e2fsprogs-version "1.47.0">
-<!ENTITY e2fsprogs-size "9,412 KB">
+<!ENTITY e2fsprogs-version "1.47.1">
+<!ENTITY e2fsprogs-size "9,720 KB">
 <!ENTITY e2fsprogs-url "https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v&e2fsprogs-version;/e2fsprogs-&e2fsprogs-version;.tar.gz">
-<!ENTITY e2fsprogs-md5 "6b4f18a33873623041857b4963641ee9">
+<!ENTITY e2fsprogs-md5 "75e6d1353cbe6d5728a98fb0267206cb">
 <!ENTITY e2fsprogs-home "https://e2fsprogs.sourceforge.net/">
 <!ENTITY e2fsprogs-fin-du "95 MB">
 <!ENTITY e2fsprogs-fin-sbu "2.4 SBU на жестком диске, 0.4 SBU на SSD диске">
@@ -341,10 +341,10 @@
 <!ENTITY intltool-fin-du "1.5 MB">
 <!ENTITY intltool-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY iproute2-version "6.8.0">
-<!ENTITY iproute2-size "896 KB">
+<!ENTITY iproute2-version "6.9.0">
+<!ENTITY iproute2-size "897 KB">
 <!ENTITY iproute2-url "&kernel;linux/utils/net/iproute2/iproute2-&iproute2-version;.tar.xz">
-<!ENTITY iproute2-md5 "9d6ea453986900d98e3b6bcb868815cd">
+<!ENTITY iproute2-md5 "0ca5c21a5a42157fbb88b39791963364">
 <!ENTITY iproute2-home "&kernel;linux/utils/net/iproute2/">
 <!ENTITY iproute2-fin-du "17 MB">
 <!ENTITY iproute2-fin-sbu "0.1 SBU">
@@ -389,10 +389,10 @@
 <!ENTITY lfs-bootscripts-cfg-du "BOOTSCRIPTS-INSTALL-KB KB">
 <!ENTITY lfs-bootscripts-cfg-sbu "менее 0.1 SBU">
 
-<!ENTITY libcap-version "2.69">
-<!ENTITY libcap-size "185 KB">
+<!ENTITY libcap-version "2.70">
+<!ENTITY libcap-size "187 KB">
 <!ENTITY libcap-url "&kernel;linux/libs/security/linux-privs/libcap2/libcap-&libcap-version;.tar.xz">
-<!ENTITY libcap-md5 "4667bacb837f9ac4adb4a1a0266f4b65">
+<!ENTITY libcap-md5 "df0e20c6eeca849347b87d5d6a8870c0">
 <!ENTITY libcap-home "https://sites.google.com/site/fullycapable/">
 <!ENTITY libcap-fin-du "2.9 MB">
 <!ENTITY libcap-fin-sbu "менее 0.1 SBU">
@@ -430,13 +430,13 @@
 <!ENTITY libxcrypt-fin-sbu "0.1 SBU">
 
 <!ENTITY linux-major-version "6">
-<!ENTITY linux-minor-version "8">
-<!ENTITY linux-patch-version "9">
+<!ENTITY linux-minor-version "9">
+<!ENTITY linux-patch-version "3">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "139,241 KB">
+<!ENTITY linux-size "140,661 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "95b3e4b76c4449bad8dd39ec16140a62">
+<!ENTITY linux-md5 "1cedde7aa0f267c61897cead90a74788">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -486,10 +486,10 @@
 <!ENTITY man-db-fin-du "41 MB">
 <!ENTITY man-db-fin-sbu "0.2 SBU">
 
-<!ENTITY man-pages-version "6.7">
-<!ENTITY man-pages-size "2,132 KB">
+<!ENTITY man-pages-version "6.8">
+<!ENTITY man-pages-size "1,809 KB">
 <!ENTITY man-pages-url "&kernel;linux/docs/man-pages/man-pages-&man-pages-version;.tar.xz">
-<!ENTITY man-pages-md5 "1bd39d60e741f37b550d27f9d4fb1656">
+<!ENTITY man-pages-md5 "b4bbf3d7ba22877eeec4916168b40268">
 <!ENTITY man-pages-home "https://www.kernel.org/doc/man-pages/">
 <!ENTITY man-pages-fin-du "33 MB">
 <!ENTITY man-pages-fin-sbu "менее 0.1 SBU">
@@ -502,10 +502,10 @@
 <!ENTITY markupsafe-fin-du "508 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY meson-version "1.4.0">
-<!ENTITY meson-size "2,173 KB">
+<!ENTITY meson-version "1.4.1">
+<!ENTITY meson-size "2,184 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "a5cddd4299ead830106242c53ea7f10f">
+<!ENTITY meson-md5 "543a78b55b2d162135e75623b85a59c6">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "42 MB">
 <!ENTITY meson-fin-sbu "менее 0.1 SBU">
@@ -536,10 +536,10 @@
 <!ENTITY ncurses-fin-du "45 MB">
 <!ENTITY ncurses-fin-sbu "0.2 SBU">
 
-<!ENTITY ninja-version "1.12.0">
+<!ENTITY ninja-version "1.12.1">
 <!ENTITY ninja-size "235 KB">
 <!ENTITY ninja-url "&github;/ninja-build/ninja/archive/v&ninja-version;/ninja-&ninja-version;.tar.gz">
-<!ENTITY ninja-md5 "302530c3d94dcb08e4ab0750a7f4cf20">
+<!ENTITY ninja-md5 "6288992b05e593a391599692e2f7e490">
 <!ENTITY ninja-home "https://ninja-build.org/">
 <!ENTITY ninja-fin-du "75 MB">
 <!ENTITY ninja-fin-sbu "0.3 SBU">
@@ -636,10 +636,10 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "69.5.1">
-<!ENTITY setuptools-size "2,238 KB">
+<!ENTITY setuptools-version "70.0.0">
+<!ENTITY setuptools-size "2,213 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "645f672221ed628e888e38a9da6c5aed">
+<!ENTITY setuptools-md5 "88caf808cae6c9096abf8939f2d074bb">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "20 MB">
 <!ENTITY setuptools-fin-sbu "0.1 SBU">
@@ -781,10 +781,10 @@
 <!ENTITY xml-parser-fin-du "2.4 MB">
 <!ENTITY xml-parser-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY xz-version "5.4.6">
-<!ENTITY xz-size "1,648 KB">
-<!ENTITY xz-url "&anduin-sources;/xz-&xz-version;.tar.xz">
-<!ENTITY xz-md5 "7ade7bd1181a731328f875bec62a9377">
+<!ENTITY xz-version "5.6.2">
+<!ENTITY xz-size "1,277 KB">
+<!ENTITY xz-url "https://github.com//tukaani-project/xz/releases/download/v&xz-version;/xz-&xz-version;.tar.xz">
+<!ENTITY xz-md5 "bbf73fb28425cebb854328599f85c4cf">
 <!ENTITY xz-home "https://tukaani.org/xz">
 <!ENTITY xz-tmp-du "22 MB">
 <!ENTITY xz-tmp-sbu "0.1 SBU">
