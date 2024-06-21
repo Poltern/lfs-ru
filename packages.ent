@@ -182,10 +182,10 @@
 <!ENTITY file-fin-du "17 MB">
 <!ENTITY file-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY findutils-version "4.9.0">
-<!ENTITY findutils-size "1,999 KB">
+<!ENTITY findutils-version "4.10.0">
+<!ENTITY findutils-size "2,189 KB">
 <!ENTITY findutils-url "&gnu;findutils/findutils-&findutils-version;.tar.xz">
-<!ENTITY findutils-md5 "4a4a547e888a944b2f3af31d789a1137">
+<!ENTITY findutils-md5 "870cfd71c07d37ebe56f9f4aaf4ad872">
 <!ENTITY findutils-home "&gnu-software;findutils/">
 <!ENTITY findutils-tmp-du "42 MB">
 <!ENTITY findutils-tmp-sbu "0.1 SBU">
@@ -230,7 +230,7 @@
 <!ENTITY gcc-fin-du "5.5 GB ">
 <!ENTITY gcc-fin-sbu "42 SBU (с тестами)">
 <!ENTITY libquadmath-version "0.0.0">
-<!ENTITY libstdcpp-version   "6.0.32">
+<!ENTITY libstdcpp-version   "6.0.33">
 <!ENTITY libitm-version      "1.0.0">
 <!ENTITY libatomic-version   "1.2.0">
 
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240502">
+<!ENTITY iana-etc-version "20240607">
 <!ENTITY iana-etc-size "590 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "73921d46a934eb5ac4286fc8111c2174">
+<!ENTITY iana-etc-md5 "924a0799dc0342ce82dc4fc95c0f1a1e">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "9">
-<!ENTITY linux-patch-version "3">
+<!ENTITY linux-patch-version "4">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "140,661 KB">
+<!ENTITY linux-size "140,683 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "1cedde7aa0f267c61897cead90a74788">
+<!ENTITY linux-md5 "b4d1dd34887178ad0b90973f779e238b">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -544,10 +544,10 @@
 <!ENTITY ninja-fin-du "75 MB">
 <!ENTITY ninja-fin-sbu "0.3 SBU">
 
-<!ENTITY openssl-version "3.3.0">
-<!ENTITY openssl-size "17,616 KB">
+<!ENTITY openssl-version "3.3.1">
+<!ENTITY openssl-size "17,633 KB">
 <!ENTITY openssl-url "https://www.openssl.org/source/openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-md5 "c8b063afbea85d867e161ecb8816cfa9">
+<!ENTITY openssl-md5 "8a4342b399c18f870ca6186299195984">
 <!ENTITY openssl-home "https://www.openssl.org/">
 <!ENTITY openssl-fin-du "805 MB">
 <!ENTITY openssl-fin-sbu "1.8 SBU">
@@ -563,13 +563,13 @@
 <!ENTITY patch-fin-sbu "0.1 SBU">
 
 <!ENTITY perl-version-major "5">
-<!ENTITY perl-version-minor "38">
-<!ENTITY perl-version-patch "2">
+<!ENTITY perl-version-minor "40">
+<!ENTITY perl-version-patch "0">
 <!ENTITY perl-version-min "&perl-version-major;.&perl-version-minor;">
 <!ENTITY perl-version "&perl-version-major;.&perl-version-minor;.&perl-version-patch;">
-<!ENTITY perl-size "13,359 KB">
+<!ENTITY perl-size "13,481 KB">
 <!ENTITY perl-url "https://www.cpan.org/src/5.0/perl-&perl-version;.tar.xz">
-<!ENTITY perl-md5 "d3957d75042918a23ec0abac4a2b7e0a">
+<!ENTITY perl-md5 "cfe14ef0709b9687f9c514042e8e1e82">
 <!ENTITY perl-home "https://www.perl.org/">
 <!ENTITY perl-tmp-du "280 MB">
 <!ENTITY perl-tmp-sbu "0.6 SBU">
@@ -603,19 +603,19 @@
 <!-- If python minor version changes, updates in python and
      meson pages will be needed: python3.6 and python3.6m -->
 
-<!ENTITY python-version "3.12.3">
+<!ENTITY python-version "3.12.4">
 <!ENTITY python-minor "3.12">
-<!ENTITY python-size "20,142 KB">
+<!ENTITY python-size "20,176 KB">
 <!ENTITY python-url "https://www.python.org/ftp/python/&python-version;/Python-&python-version;.tar.xz">
-<!ENTITY python-md5 "8defb33f0c37aa4bdd3a38ba52abde4e">
+<!ENTITY python-md5 "d68f25193eec491eb54bc2ea664a05bd">
 <!ENTITY python-home "https://www.python.org/">
 <!ENTITY python-tmp-du "598 MB">
 <!ENTITY python-tmp-sbu "0.5 SBU">
 <!ENTITY python-fin-du "485 MB">
 <!ENTITY python-fin-sbu "1.8 SBU">
 <!ENTITY python-docs-url "https://www.python.org/ftp/python/doc/&python-version;/python-&python-version;-docs-html.tar.bz2">
-<!ENTITY python-docs-md5 "6025ee63c0ded34aac874f5da8f1a90c">
-<!ENTITY python-docs-size "8,110 KB">
+<!ENTITY python-docs-md5 "cca155c92f53882cf45a69364315640d">
+<!ENTITY python-docs-size "8,258 KB">
 
 <!ENTITY readline-version "8.2">
 <!ENTITY readline-soversion "8.2"><!-- used for stripping -->
@@ -660,20 +660,20 @@
 <!ENTITY sysklogd-fin-du "680 KB">
 <!ENTITY sysklogd-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY systemd-version  "255">
+<!ENTITY systemd-version  "256">
 <!--<!ENTITY systemd-stable   "6b4878d">-->
 <!-- The above entity is used whenever we move to a stable backport branch. In the event of a critical problem or kernel
      change that is incompatible, we will switch to the backport branch until the next stable release. -->
-<!ENTITY systemd-size     "14,516 KB">
+<!ENTITY systemd-size     "15,274 KB">
 <!ENTITY systemd-url      "&github;/systemd/systemd/archive/v&systemd-version;/systemd-&systemd-version;.tar.gz">
 <!--<!ENTITY systemd-url      "&anduin-sources;/systemd-&systemd-version;-&systemd-stable;.tar.xz">-->
-<!ENTITY systemd-md5      "521cda27409a9edf0370c128fae3e690">
+<!ENTITY systemd-md5      "4796b6eb1e23d809a1f11426d171b065">
 <!ENTITY systemd-home     "https://www.freedesktop.org/wiki/Software/systemd/">
-<!ENTITY systemd-man-version "255">
-<!ENTITY systemd-man-size "652 KB">
+<!ENTITY systemd-man-version "256">
+<!ENTITY systemd-man-size "675 KB">
 <!--<!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-version;-&systemd-stable;.tar.xz">-->
 <!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-man-version;.tar.xz">
-<!ENTITY systemd-man-md5  "1ebe54d7a80f9abf8f2d14ddfeb2432d">
+<!ENTITY systemd-man-md5  "dc1b3a86479f50740f6591b4a1fb2c2a">
 <!ENTITY systemd-fin-du   "247 MB">
 <!ENTITY systemd-fin-sbu  "0.7 SBU">
 

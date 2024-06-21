@@ -79,9 +79,9 @@
     <!--<listitem>
        <para>File-&file-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Findutils-&findutils-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Flex-&flex-version;</para>
     </listitem>-->
@@ -205,9 +205,9 @@
     <!--<listitem>
       <para>Patch-&patch-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Perl-&perl-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Pkgconf-&pkgconf-version;</para>
     </listitem>
@@ -235,9 +235,9 @@
     <!--<listitem revision="sysv">
       <para>Sysklogd-&sysklogd-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Systemd-&systemd-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem revision="sysv">
       <para>SysVinit-&sysvinit-version;</para>
     </listitem>-->

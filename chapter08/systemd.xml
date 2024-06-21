@@ -46,26 +46,6 @@
  <screen><userinput remap="pre">sed -i -e 's/GROUP="render"/GROUP="video"/' \
        -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in</userinput></screen>
 
- <para>Далее внесите исправление для совместимости с заголовочными файлами API из 
- Linux-6.9 и более поздних версий.:</para>
-
- <screen><userinput remap="pre">sed -i '/DEVMEM_MAGIC 0/{n;n;a \
-/* cb12fd8e0dabb9a1c8aef55a6a41e2c255fcdf4b (6.8) */ \
-#ifndef PID_FS_MAGIC \
-#define PID_FS_MAGIC 0x50494446 \
-#endif
-}' src/basic/missing_magic.h
-
-sed -i '/OVERLAYFS_SUPER_MAGIC/a \
-pidfs,           {PID_FS_MAGIC}' src/basic/filesystems-gperf.gperf</userinput></screen>
-
-    <!-- https://github.com/systemd/systemd/pull/30549 -->
-    <para>Теперь исправьте уязвимость безопасности при проверке DNSSEC в 
-    <command>systemd-resolved</command> и ошибку запуска 
-	<command>systemd-analyze verify</command> у созданного экземпляра юнита systemd:</para>
-
-<screen><userinput remap='pre'>patch -Np1 -i ../&systemd-upstream-patch;</userinput></screen>
-
     <para>Подготовьте systemd к компиляции:</para>
 
 <screen><userinput remap="configure">mkdir -p build
@@ -237,11 +217,12 @@ meson setup \
 <screen><userinput remap="test">echo 'NAME="Linux From Scratch"' &gt; /etc/os-release
 ninja test</userinput></screen>
 
-    <!-- This test needs /run/systemd/inaccessible/sock, which only exists
+    <!-- test-namespace needs /run/systemd/inaccessible/sock, which only exists
          after initializing the system with systemd.  -->
-    <para>Известно, что тест с именем <literal>systemd:core / test-namespace</literal> 
-    завершился неудачно в среде chroot LFS. Некоторые другие тесты могут не пройти, поскольку 
-	они зависят от различных параметров конфигурации ядра.</para>
+    <para>Три теста, <literal>systemd:core / test-namespace</literal> 
+    <literal>test-chase</literal> и <literal>test-systemd-tmpfiles</literal>,  
+	завершились неудачно в среде chroot LFS. Некоторые другие тесты могут не пройти, 
+	поскольку они зависят от различных параметров конфигурации ядра.</para>
 
     <para>Установите пакет:</para>
 
