@@ -58,15 +58,15 @@
         <para>Контрольная сумма MD5: <literal>&coreutils-i18n-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
-      <term>Coreutils Chmod Fix Patch - <token>&coreutils-chmod-patch-size;</token>:</term>
+      <term>Expect GCC14 Patch - <token>&expect-gcc14-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&coreutils-chmod-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&coreutils-chmod-patch-md5;</literal></para>
+        <para>Download: <ulink url="&patches-root;&expect-gcc14-patch;"/></para>
+        <para>MD5 sum: <literal>&expect-gcc14-patch-md5;</literal></para>
       </listitem>
    </varlistentry>
--->
+
 <!--
     <varlistentry>
       <term>Gcc glibc-2.36 Fixes Patch - <token>&gcc-upstream-fixes-patch-size;</token>:</term>
@@ -77,7 +77,7 @@
     </varlistentry>
 -->
     <varlistentry>
-      <term>Glibc Upstream Fixes Patch - <token>&glibc-upstream-patch-size;</token>:</term>
+      <term>Glibc Upstream Fix Patch - <token>&glibc-upstream-patch-size;</token>:</term>
       <listitem>
         <para>Ссылка на загрузку: <ulink url="&patches-root;&glibc-upstream-patch;"/></para>
         <para>Контрольная сумма MD5: <literal>&glibc-upstream-patch-md5;</literal></para>
@@ -140,7 +140,7 @@
         <para>Контрольная сумма MD5: <literal>&sysvinit-consolidated-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
-
+<!--
     <varlistentry revision="systemd">
       <term>Systemd Upstream Fixes Patch - <token>&systemd-upstream-patch-size;</token>:</term>
       <listitem>
@@ -148,6 +148,7 @@
         <para>Контрольная сумма MD5: <literal>&systemd-upstream-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
+-->
 <!--
     <varlistentry>
       <term>Xz Upstream Fix Patch - <token>&xz-upstream-fix-patch-size;</token>:</term>

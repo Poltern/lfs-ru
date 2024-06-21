@@ -46,13 +46,6 @@
  <screen><userinput remap="pre">sed -i -e 's/GROUP="render"/GROUP="video"/' \
        -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in</userinput></screen>
 
-    <!-- https://github.com/systemd/systemd/pull/30549 -->
-    <para>Теперь исправьте уязвимость безопасности при проверке DNSSEC в 
-    <command>systemd-resolved</command> и ошибку запуска 
-	<command>systemd-analyze verify</command> у созданного экземпляра юнита systemd:</para>
-
-<screen><userinput remap='pre'>patch -Np1 -i ../&systemd-upstream-patch;</userinput></screen>
-
     <para>Подготовьте systemd к компиляции:</para>
 
 <screen><userinput remap="configure">mkdir -p build
@@ -217,6 +210,19 @@ meson setup \
     <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">ninja</userinput></screen>
+
+    <para>Для некоторых тестов требуется файл <filename>/etc/os-release</filename>. 
+    Чтобы протестировать пакет, выполните:</para>
+
+<screen><userinput remap="test">echo 'NAME="Linux From Scratch"' &gt; /etc/os-release
+ninja test</userinput></screen>
+
+    <!-- test-namespace needs /run/systemd/inaccessible/sock, which only exists
+         after initializing the system with systemd.  -->
+    <para>Три теста, <literal>systemd:core / test-namespace</literal> 
+    <literal>test-chase</literal> и <literal>test-systemd-tmpfiles</literal>,  
+	завершились неудачно в среде chroot LFS. Некоторые другие тесты могут не пройти, 
+	поскольку они зависят от различных параметров конфигурации ядра.</para>
 
     <para>Установите пакет:</para>
 

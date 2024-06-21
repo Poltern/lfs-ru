@@ -122,7 +122,9 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
 	стандартный ввод подключен к PTY из хост-дистрибутива, и узел устройства для 
 	такого PTY недоступен из среды chroot LFS):</para>
 
-<screen><userinput remap="test">su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check" &lt; /dev/null</userinput></screen>
+
+<screen><userinput remap="test">su tester -c "PATH=$PATH make -k RUN_EXPENSIVE_TESTS=yes check" \
+   &lt; /dev/null</userinput></screen>
 
     <para>Удалить временную группу:</para>
 

@@ -147,7 +147,7 @@ if ( $package == "Python"     ) $dirpath = "https://www.python.org/downloads/sou
 if ( $package == "shadow"     ) $dirpath = github("shadow-maint/shadow");
 if ( $package == "sysvinit"   ) $dirpath = github("slicer69/sysvinit");
 if ( $package == "MarkupSafe" ) $dirpath = "https://pypi.python.org/pypi/MarkupSafe/";
-if ( $package == "Jinja"      ) $dirpath = "https://pypi.python.org/pypi/Jinja2/";
+if ( $package == "jinja"      ) $dirpath = "https://pypi.python.org/pypi/Jinja2/";
 if ( $package == "systemd"    ) $dirpath = github("systemd/systemd");
 //if ( $package == "tcl"        ) $dirpath = "https://sourceforge.net/projects/tcl/files";
 if ( $package == "tcl"        ) $dirpath = "https://www.tcl.tk/software/tcltk/download.html";
@@ -263,7 +263,7 @@ if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
   if ( $package == "grub" )
      return find_max( $lines, "/grub/", "/^.*grub-([\d\.]+).tar.xz.*$/" );
 
-  if ( $package == "Jinja" )
+  if ( $package == "jinja" )
      return find_max( $lines, "/Jinja/", "/^.*Jinja2 ([\d\.]+).*$/" );
 
   if ( $package == "lz" )

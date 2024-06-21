@@ -40,6 +40,134 @@
     -->
 
     <listitem>
+      <para>2024-06-15</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to vim-9.1.0478. Addresses
+          <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20240607. Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to systemd-256. Fixes
+          <ulink url='&lfs-ticket-root;5504'>#5504</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to python3-3.12.4. Fixes
+          <ulink url='&lfs-ticket-root;5502'>#5502</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to perl-5.40.0. Fixes
+          <ulink url='&lfs-ticket-root;5503'>#5503</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to openssl-3.3.1 (Security fix). Fixes
+          <ulink url='&lfs-ticket-root;5500'>#5500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.9.4. Fixes
+          <ulink url='&lfs-ticket-root;5491'>#5505</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to findutils-4.10.0. Fixes
+          <ulink url='&lfs-ticket-root;5499'>#5499</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2024-05-31</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to meson-1.4.1. Fixes
+          <ulink url='&lfs-ticket-root;5498'>#5498</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to xz-5.6.2. Fixes
+          <ulink url='&lfs-ticket-root;5471'>#5471</ulink>.</para>
+        </listitem>
+        <listitem>
+           <para>[bdubbs] - Add linux-6.9.x compatibility instructions to 
+           <phrase revision="systemd">systemd</phrase>
+           <phrase revision="sysv">udev</phrase>. 
+           Fixes <ulink url='&lfs-ticket-root;5496'>#5496</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to setuptools-70.0.0 (python module). Fixes
+          <ulink url='&lfs-ticket-root;5491'>#5491</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to ninja-1.12.1. Fixes
+          <ulink url='&lfs-ticket-root;5489'>#5489</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to man-pages-6.8. Fixes
+          <ulink url='&lfs-ticket-root;5494'>#5494</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.9.3. Fixes
+          <ulink url='&lfs-ticket-root;5491'>#5491</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libcap-2.70. Fixes
+          <ulink url='&lfs-ticket-root;5493'>#5493</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iproute2-6.9.0. Fixes
+          <ulink url='&lfs-ticket-root;5492'>#5492</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to e2fsprogs-1.47.1. Fixes
+          <ulink url='&lfs-ticket-root;5495'>#5495</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2024-05-13</para>
+      <itemizedlist>
+        <listitem>
+          <para>[xry111] - Synchronize coreutils i18n patch from Fedora
+          to fix a build failure on 32-bit x86 and an alarming compiler
+          warning on both 32-bit x86 and x86_64 with GCC 14.1 or
+          later.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2024-05-11</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to vim-9.1.0405. Addresses
+          <ulink url='&lfs-ticket-root;4500'>#4500</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to util-linux-2.40.1. Fixes
+          <ulink url='&lfs-ticket-root;5482'>#5482</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.8.9. Fixes
+          <ulink url='&lfs-ticket-root;5484'>#5484</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to jinja2-3.1.4 (Python module). Fixes
+          <ulink url='&lfs-ticket-root;5485'>#5485</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20240502. Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to gcc-14.1.0. Fixes
+          <ulink url='&lfs-ticket-root;5486'>#5486</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-05-01</para>
       <itemizedlist>
         <listitem>
