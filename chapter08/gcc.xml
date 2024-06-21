@@ -83,6 +83,7 @@ cd       build</userinput></screen>
              --enable-languages=c,c++    \
              --enable-default-pie        \
              --enable-default-ssp        \
+             --enable-host-pie           \
              --enable-multilib           \
              --with-multilib-list=$mlist \
              --disable-bootstrap         \
