@@ -23,6 +23,11 @@ DMIID='*'
 INOTIFY_USER='*'
 TMPFS='*'
 TMPFS_POSIX_ACL='*'
+CGROUP_SCHED='* '
+
+[RT_GROUP_SCHED]
+value = ' '
+comment = 'This may cause some systemd features malfunction'
 
 revision='systemd'
 
