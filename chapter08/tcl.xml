@@ -55,7 +55,22 @@
 <screen><userinput remap="configure">SRCDIR=$(pwd)
 cd unix
 ./configure --prefix=/usr           \
-            --mandir=/usr/share/man</userinput></screen>
+            --mandir=/usr/share/man \
+            --disable-rpath</userinput></screen>
+
+    <variablelist>
+      <title>Значение новых параметров конфигурации:</title>
+
+      <varlistentry>
+        <term><parameter>--disable-rpath</parameter></term>
+        <listitem>
+          <para>Этот параметр предотвращает использование библиотеки поиска списка жестко 
+		  запрограммированных путей (rpath) в двоичных исполняемых файлах и общих библиотеках. 
+		  Этому пакету не требуется rpath для установки в стандартное местоположение, кроме того, 
+		  rpath иногда может вызывать нежелательные эффекты или даже проблемы с безопасностью.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
     <para>Соберите пакет:</para>
 
