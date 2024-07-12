@@ -107,10 +107,10 @@
 	всю необходимую информацию. Ниже приведен пример информации, которая
 	должна быть включена в экранный вывод <command>make</command>:</para>
 
-<screen><computeroutput>gcc -DALIASPATH=\"/mnt/lfs/usr/share/locale:.\"
--DLOCALEDIR=\"/mnt/lfs/usr/share/locale\"
--DLIBDIR=\"/mnt/lfs/usr/lib\"
--DINCLUDEDIR=\"/mnt/lfs/usr/include\" -DHAVE_CONFIG_H -I. -I.
+<screen><computeroutput>gcc -D ALIASPATH=\"/mnt/lfs/usr/share/locale:.\"
+-D LOCALEDIR=\"/mnt/lfs/usr/share/locale\"
+-D LIBDIR=\"/mnt/lfs/usr/lib\"
+-D INCLUDEDIR=\"/mnt/lfs/usr/include\" -D HAVE_CONFIG_H -I. -I.
 -g -O2 -c getopt1.c
 gcc -g -O2 -static -o make ar.o arscan.o commands.o dir.o
 expand.o file.o function.o getopt.o implicit.o job.o main.o

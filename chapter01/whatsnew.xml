@@ -40,9 +40,9 @@
     <!--<listitem>
       <para>Bash-&bash-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Bc-&bc-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Binutils-&binutils-version;</para>
     </listitem>-->
@@ -232,9 +232,9 @@
     <listitem>
       <para>Shadow-&shadow-version;</para>
     </listitem>
-    <!--<listitem revision="sysv">
+    <listitem revision="sysv">
       <para>Sysklogd-&sysklogd-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Systemd-&systemd-version;</para>
     </listitem>

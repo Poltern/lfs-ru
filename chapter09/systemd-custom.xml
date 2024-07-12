@@ -278,7 +278,7 @@ EOF</userinput></screen>
       <listitem>
         <para>
           <emphasis>Отключить во время сборки</emphasis>: вы можете запретить завершение процессов 
-		  при сборке systemd, добавив ключ <parameter>-Ddefault-kill-user-processes=false</parameter> 
+		  при сборке systemd, добавив ключ <parameter>-D default-kill-user-processes=false</parameter> 
 		  в команде <command>meson</command> для systemd. Это полностью отключает возможность systemd 
 		  убивать пользовательские процессы в конце сеанса.
         </para>

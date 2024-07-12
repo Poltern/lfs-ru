@@ -57,10 +57,10 @@
 <!ENTITY bash-fin-du "52 MB">
 <!ENTITY bash-fin-sbu "1.2 SBU">
 
-<!ENTITY bc-version "6.7.5">
-<!ENTITY bc-size "460 KB">
+<!ENTITY bc-version "6.7.6">
+<!ENTITY bc-size "463 KB">
 <!ENTITY bc-url "https://github.com/gavinhoward/bc/releases/download/&bc-version;/bc-&bc-version;.tar.xz">
-<!ENTITY bc-md5 "e249b1f86f886d6fb71c15f72b65dd3d">
+<!ENTITY bc-md5 "a47aa5e4e7395fbcd159a9228613b97b">
 <!ENTITY bc-home "https://git.gavinhoward.com/gavin/bc">
 <!ENTITY bc-fin-du "7.8 MB">
 <!ENTITY bc-fin-sbu "менее 0.1 SBU">
@@ -112,7 +112,7 @@
 <!ENTITY coreutils-tmp-du "173 MB">
 <!ENTITY coreutils-tmp-sbu "0.3 SBU">
 <!ENTITY coreutils-fin-du "175 MB">
-<!ENTITY coreutils-fin-sbu "1 SBU">
+<!ENTITY coreutils-fin-sbu "1.0 SBU">
 
 <!ENTITY dbus-version "1.14.10">
 <!ENTITY dbus-size "1,344 KB">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240607">
+<!ENTITY iana-etc-version "20240612">
 <!ENTITY iana-etc-size "590 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "924a0799dc0342ce82dc4fc95c0f1a1e">
+<!ENTITY iana-etc-md5 "e89d8925bf0180ad71da055c55738cf3">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -381,7 +381,7 @@
 <!ENTITY less-fin-du "12 MB">
 <!ENTITY less-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY lfs-bootscripts-version "20240416">      <!-- Scripts depend on this format -->
+<!ENTITY lfs-bootscripts-version "20240630">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
 <!ENTITY lfs-bootscripts-url "&downloads-root;lfs-bootscripts-&lfs-bootscripts-version;.tar.xz">
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "9">
-<!ENTITY linux-patch-version "4">
+<!ENTITY linux-patch-version "7">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "140,683 KB">
+<!ENTITY linux-size "140,725 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "b4d1dd34887178ad0b90973f779e238b">
+<!ENTITY linux-md5 "05d341be44220843c0cd5c1f11887919">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -486,10 +486,10 @@
 <!ENTITY man-db-fin-du "41 MB">
 <!ENTITY man-db-fin-sbu "0.2 SBU">
 
-<!ENTITY man-pages-version "6.8">
-<!ENTITY man-pages-size "1,809 KB">
+<!ENTITY man-pages-version "6.9.1">
+<!ENTITY man-pages-size "1,821 KB">
 <!ENTITY man-pages-url "&kernel;linux/docs/man-pages/man-pages-&man-pages-version;.tar.xz">
-<!ENTITY man-pages-md5 "b4bbf3d7ba22877eeec4916168b40268">
+<!ENTITY man-pages-md5 "4d56775b6cce4edf1e496249e7c01c1a">
 <!ENTITY man-pages-home "https://www.kernel.org/doc/man-pages/">
 <!ENTITY man-pages-fin-du "33 MB">
 <!ENTITY man-pages-fin-sbu "менее 0.1 SBU">
@@ -636,44 +636,44 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "70.0.0">
-<!ENTITY setuptools-size "2,213 KB">
+<!ENTITY setuptools-version "70.1.1">
+<!ENTITY setuptools-size "2,239 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "88caf808cae6c9096abf8939f2d074bb">
+<!ENTITY setuptools-md5 "ca9b74245ee9acf0fa34b02c03ec6f47">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "20 MB">
-<!ENTITY setuptools-fin-sbu "0.1 SBU">
+<!ENTITY setuptools-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY shadow-version "4.15.1">
-<!ENTITY shadow-size "1,742 KB">
+<!ENTITY shadow-version "4.16.0">
+<!ENTITY shadow-size "2,154 KB">
 <!ENTITY shadow-url "&github;/shadow-maint/shadow/releases/download/&shadow-version;/shadow-&shadow-version;.tar.xz">
-<!ENTITY shadow-md5 "006b0856abd49b5e7b45b7cb78ca272a">
+<!ENTITY shadow-md5 "eb70bad3316d08f0d3bb3d4bbeccb3b4">
 <!ENTITY shadow-home "&github;/shadow-maint/shadow/">
 <!ENTITY shadow-fin-du "49 MB">
 <!ENTITY shadow-fin-sbu "0.1 SBU">
 
-<!ENTITY sysklogd-version "1.5.1">
-<!ENTITY sysklogd-size "88 KB">
-<!ENTITY sysklogd-url "https://www.infodrom.org/projects/sysklogd/download/sysklogd-&sysklogd-version;.tar.gz">
-<!ENTITY sysklogd-md5 "c70599ab0d037fde724f7210c2c8d7f8">
+<!ENTITY sysklogd-version "2.5.2">
+<!ENTITY sysklogd-size "449 KB">
+<!ENTITY sysklogd-url "https://github.com/troglobit/sysklogd/releases/download/v&sysklogd-version;/sysklogd-&sysklogd-version;.tar.gz">
+<!ENTITY sysklogd-md5 "8d731aa7215a899f1070029c9794b423">
 <!ENTITY sysklogd-home "https://www.infodrom.org/projects/sysklogd/">
 <!ENTITY sysklogd-fin-du "680 KB">
 <!ENTITY sysklogd-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY systemd-version  "256">
+<!ENTITY systemd-version  "256.1">
 <!--<!ENTITY systemd-stable   "6b4878d">-->
 <!-- The above entity is used whenever we move to a stable backport branch. In the event of a critical problem or kernel
      change that is incompatible, we will switch to the backport branch until the next stable release. -->
-<!ENTITY systemd-size     "15,274 KB">
+<!ENTITY systemd-size     "15,277 KB">
 <!ENTITY systemd-url      "&github;/systemd/systemd/archive/v&systemd-version;/systemd-&systemd-version;.tar.gz">
 <!--<!ENTITY systemd-url      "&anduin-sources;/systemd-&systemd-version;-&systemd-stable;.tar.xz">-->
-<!ENTITY systemd-md5      "4796b6eb1e23d809a1f11426d171b065">
+<!ENTITY systemd-md5      "46c30853682f8017df979c3d26b9c9dc">
 <!ENTITY systemd-home     "https://www.freedesktop.org/wiki/Software/systemd/">
-<!ENTITY systemd-man-version "256">
-<!ENTITY systemd-man-size "675 KB">
+<!ENTITY systemd-man-version "256.1">
+<!ENTITY systemd-man-size "676 KB">
 <!--<!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-version;-&systemd-stable;.tar.xz">-->
 <!ENTITY systemd-man-url  "&anduin-sources;/systemd-man-pages-&systemd-man-version;.tar.xz">
-<!ENTITY systemd-man-md5  "dc1b3a86479f50740f6591b4a1fb2c2a">
+<!ENTITY systemd-man-md5  "cc246238b9d1c9c850bae45d85ff0843">
 <!ENTITY systemd-fin-du   "247 MB">
 <!ENTITY systemd-fin-sbu  "0.7 SBU">
 
@@ -743,10 +743,10 @@
 <!ENTITY util-linux-fin-du "313 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.1.0405">
+<!ENTITY vim-version "9.1.0478">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim91">
-<!ENTITY vim-size "17,428 KB">
+<!ENTITY vim-size "17,508 KB">
 <!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
 <!-- N.B. LFS 9.0 uses
      https://github.com/vim/vim/archive/v8.1.1846/vim-8.1.1846.tar.gz
@@ -760,7 +760,7 @@
      example, https://github.com/vim/vim/tags?after=v8.1.1847 will show
      us v8.1.1846. -->
 <!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-md5 "5379f5542310ee7ffbd6aea312407042">
+<!ENTITY vim-md5 "7d56919d58592c041ab61f45584e6f90">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "236 MB">
 <!ENTITY vim-fin-sbu "2.5 SBU">

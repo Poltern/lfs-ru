@@ -51,26 +51,25 @@
 <screen><userinput remap="configure">mkdir -p build
 cd       build
 
-meson setup \
-      --prefix=/usr                 \
-      --buildtype=release           \
-      -Ddefault-dnssec=no           \
-      -Dfirstboot=false             \
-      -Dinstall-tests=false         \
-      -Dldconfig=false              \
-      -Dsysusers=false              \
-      -Drpmmacrosdir=no             \
-      -Dhomed=disabled              \
-      -Duserdb=false                \
-      -Dman=disabled                \
-      -Dmode=release                \
-      -Dpamconfdir=no               \
-      -Ddev-kvm-mode=0660           \
-      -Dnobody-group=nogroup        \
-      -Dsysupdate=disabled          \
-      -Dukify=disabled              \
-      -Ddocdir=/usr/share/doc/systemd-&systemd-version; \
-      ..</userinput></screen>
+meson setup ..                \
+      --prefix=/usr           \
+      --buildtype=release     \
+      -D default-dnssec=no    \
+      -D firstboot=false      \
+      -D install-tests=false  \
+      -D ldconfig=false       \
+      -D sysusers=false       \
+      -D rpmmacrosdir=no      \
+      -D homed=disabled       \
+      -D userdb=false         \
+      -D man=disabled         \
+      -D mode=release         \
+      -D pamconfdir=no        \
+      -D dev-kvm-mode=0660    \
+      -D nobody-group=nogroup \
+      -D sysupdate=disabled   \
+      -D ukify=disabled       \
+      -D docdir=/usr/share/doc/systemd-&systemd-version;</userinput></screen>
 
     <variablelist>
       <title>Значение параметров meson:</title>
@@ -84,14 +83,14 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Ddefault-dnssec=no</parameter></term>
+        <term><parameter>-D default-dnssec=no</parameter></term>
         <listitem>
           <para>Этот параметр отключает экспериментальную поддержку DNSSEC.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dfirstboot=false</parameter></term>
+        <term><parameter>-D firstboot=false</parameter></term>
         <listitem>
           <para>Этот параметр предотвращает установку служб systemd, отвечающих за настройку 
 		  системы при первом запуске. Они бесполезны в LFS, потому что всё делается вручную.</para>
@@ -99,14 +98,14 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dinstall-tests=false</parameter></term>
+        <term><parameter>-D install-tests=false</parameter></term>
         <listitem>
           <para>Этот параметр предотвращает установку скомпилированных тестов.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dldconfig=false</parameter></term>
+        <term><parameter>-D ldconfig=false</parameter></term>
         <listitem>
           <para>Этот параметр предотвращает установку юнита systemd, который запускает
           <command>ldconfig</command> при каждой загрузке системы. Это бесполезно для
@@ -117,7 +116,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dsysusers=false</parameter></term>
+        <term><parameter>-D sysusers=false</parameter></term>
         <listitem>
           <para>Этот параметр предотвращает установку служб systemd отвечающих за настройку
           файлов
@@ -129,7 +128,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Drpmmacrosdir=no</parameter></term>
+        <term><parameter>-D rpmmacrosdir=no</parameter></term>
         <listitem>
           <para>Этот параметр отключает установку макросов RPM для использования с systemd, 
 		  поскольку LFS не поддерживает RPM.</para>
@@ -137,15 +136,15 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dhomed=disabled</parameter> and
-        <parameter>-Duserdb=false</parameter></term>
+        <term><parameter>-D homed=disabled</parameter> и 
+        <parameter>-D userdb=false</parameter></term>
         <listitem>
           <para>Удаляет две службы, чьи зависимости не удовлетворяют LFS.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dman=disabled</parameter></term>
+        <term><parameter>-D man=disabled</parameter></term>
         <listitem>
           <para> Предотвращает генерацию справочных страниц, чтобы избежать дополнительных 
 		  зависимостей. Мы установим предварительно сгенерированные справочные страницы 
@@ -154,7 +153,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dmode=release</parameter></term>
+        <term><parameter>-D mode=release</parameter></term>
         <listitem>
           <para>Отключает некоторые функции, которые разработчики считает экспериментальными.
           </para>
@@ -162,14 +161,14 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dpamconfdir=no</parameter></term>
+        <term><parameter>-D pamconfdir=no</parameter></term>
         <listitem>
           <para>Предотвращает установку файла конфигурации PAM, который не работает в LFS.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Ddev-kvm-mode=0660</parameter></term>
+        <term><parameter>-D dev-kvm-mode=0660</parameter></term>
         <listitem>
           <para>По умолчанию правило udev разрешает всем пользователям доступ к 
 		  <filename class='devicefile'>/dev/kvm</filename>. Редакторы LFS считают 
@@ -178,7 +177,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dnobody-group=nogroup</parameter></term>
+        <term><parameter>-D nobody-group=nogroup</parameter></term>
         <listitem>
           <para>Сообщает пакету, что имя группы с GID 65534 - это
           <systemitem class='groupname'>nogroup</systemitem>.</para>
@@ -186,7 +185,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dsysupdate=disabled</parameter></term>
+        <term><parameter>-D sysupdate=disabled</parameter></term>
         <listitem>
           <para>Предотвращает установку инструмента <command>systemd-sysupdate</command>. 
 		  Он предназначен для автоматического обновления бинарных дистрибутивов, поэтому 
@@ -197,7 +196,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dukify=disabled</parameter></term>
+        <term><parameter>-D ukify=disabled</parameter></term>
         <listitem>
           <para>Предотвращает установку скрипта <command>systemd-ukify</command>. Во время 
 		  выполнения этого сценария требуется модуль Python <application>pefile</application>, 
@@ -220,7 +219,7 @@ ninja test</userinput></screen>
     <!-- test-namespace needs /run/systemd/inaccessible/sock, which only exists
          after initializing the system with systemd.  -->
     <para>Три теста, <literal>systemd:core / test-namespace</literal> 
-    <literal>test-chase</literal> и <literal>test-systemd-tmpfiles</literal>,  
+    <literal>test-loopback</literal> и <literal>test-copy</literal>,  
 	завершились неудачно в среде chroot LFS. Некоторые другие тесты могут не пройти, 
 	поскольку они зависят от различных параметров конфигурации ядра.</para>
 
@@ -232,7 +231,7 @@ ninja test</userinput></screen>
 
     <!-- Please make sure systemd man pages tarball has a common leading
          component in the path.  -->
-<screen><userinput remap="install">tar -xf ../../systemd-man-pages-&systemd-version;.tar.xz \
+<screen><userinput remap="install">tar -xf ../../systemd-man-pages-&systemd-man-version;.tar.xz \
     --no-same-owner --strip-components=1   \
     -C /usr/share/man</userinput></screen>
 
