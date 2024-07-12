@@ -1933,7 +1933,8 @@
           <seg>
             <ulink url="&blfs-book;general/cpio.html">cpio</ulink> и
             <ulink url="&blfs-book;general/llvm.html">LLVM</ulink>
-            (с Clang)
+            (с Clang) и 
+	    <ulink url="&blfs-book;general/rust-bindgen.html">Rust-bindgen</ulink>
           </seg>
         </seglistitem>
       </segmentedlist>

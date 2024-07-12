@@ -148,6 +148,7 @@ if ( $package == "shadow"     ) $dirpath = github("shadow-maint/shadow");
 if ( $package == "sysvinit"   ) $dirpath = github("slicer69/sysvinit");
 if ( $package == "MarkupSafe" ) $dirpath = "https://pypi.python.org/pypi/MarkupSafe/";
 if ( $package == "jinja"      ) $dirpath = "https://pypi.python.org/pypi/Jinja2/";
+if ( $package == "sysklogd"   ) $dirpath = github("troglobit/sysklogd");
 if ( $package == "systemd"    ) $dirpath = github("systemd/systemd");
 //if ( $package == "tcl"        ) $dirpath = "https://sourceforge.net/projects/tcl/files";
 if ( $package == "tcl"        ) $dirpath = "https://www.tcl.tk/software/tcltk/download.html";
