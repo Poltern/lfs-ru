@@ -34,9 +34,9 @@
     <!--<listitem>
       <para>Autoconf-&autoconf-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Automake-&automake-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Bash-&bash-version;</para>
     </listitem>-->
@@ -94,9 +94,9 @@
     <listitem>
        <para>GCC-&gcc-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
        <para>GDBM-&gdbm-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Gettext-&gettext-version;</para>
     </listitem>
@@ -142,9 +142,9 @@
     <listitem>
       <para>Kmod-&kmod-version;</para>
    </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Less-&less-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>LFS-Bootscripts-&lfs-bootscripts-version;</para>
     </listitem>-->

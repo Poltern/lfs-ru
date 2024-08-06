@@ -38,11 +38,11 @@
 <!ENTITY autoconf-fin-sbu-tests "0.5">
 <!ENTITY autoconf-fin-sbu "менее 0.1 SBU (около &autoconf-fin-sbu-tests; SBU с тестами)">
 
-<!ENTITY automake-version "1.16.5">
-<!ENTITY am-minor-version "1.16">
-<!ENTITY automake-size "1,565 KB">
+<!ENTITY automake-version "1.17">
+<!ENTITY am-minor-version "1.17">
+<!ENTITY automake-size "1,614 KB">
 <!ENTITY automake-url "&gnu;automake/automake-&automake-version;.tar.xz">
-<!ENTITY automake-md5 "4017e96f89fca45ca946f1c5db6be714">
+<!ENTITY automake-md5 "7ab3a02318fee6f5bd42adfc369abf10">
 <!ENTITY automake-home "&gnu-software;automake/">
 <!ENTITY automake-fin-du "115 MB">
 <!ENTITY automake-fin-sbu "менее 0.1 SBU (около 1.6 SBU с тестами)">
@@ -237,10 +237,10 @@
 <!ENTITY libstdcpp-tmpp1-du "1.1 GB">
 <!ENTITY libstdcpp-tmpp1-sbu "0.2 SBU">
 
-<!ENTITY gdbm-version "1.23">
-<!ENTITY gdbm-size "1,092 KB">
+<!ENTITY gdbm-version "1.24">
+<!ENTITY gdbm-size "1,168 KB">
 <!ENTITY gdbm-url "&gnu;gdbm/gdbm-&gdbm-version;.tar.gz">
-<!ENTITY gdbm-md5 "8551961e36bf8c70b7500d255d3658ec">
+<!ENTITY gdbm-md5 "c780815649e52317be48331c1773e987">
 <!ENTITY gdbm-home "&gnu-software;gdbm/">
 <!ENTITY gdbm-fin-du "13 MB">
 <!ENTITY gdbm-fin-sbu "0.1 SBU">
@@ -317,10 +317,10 @@
 <!ENTITY gzip-fin-du "21 MB">
 <!ENTITY gzip-fin-sbu "0.3 SBU">
 
-<!ENTITY iana-etc-version "20240612">
+<!ENTITY iana-etc-version "20240701">
 <!ENTITY iana-etc-size "590 KB">
 <!ENTITY iana-etc-url "https://github.com/Mic92/iana-etc/releases/download/&iana-etc-version;/iana-etc-&iana-etc-version;.tar.gz">
-<!ENTITY iana-etc-md5 "e89d8925bf0180ad71da055c55738cf3">
+<!ENTITY iana-etc-md5 "d9ce95852cab1024eae4e40bc9ba1b49">
 <!ENTITY iana-etc-home "https://www.iana.org/protocols">
 <!ENTITY iana-etc-fin-du "4.8 MB">
 <!ENTITY iana-etc-fin-sbu "менее 0.1 SBU">
@@ -373,15 +373,15 @@
 <!ENTITY kmod-fin-du "12 MB">
 <!ENTITY kmod-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY less-version "643">
-<!ENTITY less-size "579 KB">
+<!ENTITY less-version "661">
+<!ENTITY less-size "634 KB">
 <!ENTITY less-url "https://www.greenwoodsoftware.com/less/less-&less-version;.tar.gz">
-<!ENTITY less-md5 "cf05e2546a3729492b944b4874dd43dd">
+<!ENTITY less-md5 "44f54b6313c5d71fa1ac224d8d84766a">
 <!ENTITY less-home "https://www.greenwoodsoftware.com/less/">
 <!ENTITY less-fin-du "12 MB">
 <!ENTITY less-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY lfs-bootscripts-version "20240630">      <!-- Scripts depend on this format -->
+<!ENTITY lfs-bootscripts-version "20240717">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
 <!ENTITY lfs-bootscripts-url "&downloads-root;lfs-bootscripts-&lfs-bootscripts-version;.tar.xz">
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">
@@ -431,12 +431,12 @@
 
 <!ENTITY linux-major-version "6">
 <!ENTITY linux-minor-version "9">
-<!ENTITY linux-patch-version "7">
+<!ENTITY linux-patch-version "9">
 <!--<!ENTITY linux-version "&linux-major-version;.&linux-minor-version;">-->
 <!ENTITY linux-version "&linux-major-version;.&linux-minor-version;.&linux-patch-version;">
-<!ENTITY linux-size "140,725 KB">
+<!ENTITY linux-size "140,754 KB">
 <!ENTITY linux-url "&kernel;linux/kernel/v&linux-major-version;.x/linux-&linux-version;.tar.xz">
-<!ENTITY linux-md5 "05d341be44220843c0cd5c1f11887919">
+<!ENTITY linux-md5 "15bd6e9fea3d295a3919efe5495bc8b7">
 <!ENTITY linux-home "https://www.kernel.org/">
 <!-- measured for 6.5.3 / gcc-13.2.0 on x86_64 with -j4 : minimum is
  allnoconfig + some configs we recommend for the users, rounded down to
@@ -502,10 +502,10 @@
 <!ENTITY markupsafe-fin-du "508 KB">
 <!ENTITY markupsafe-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY meson-version "1.4.1">
-<!ENTITY meson-size "2,184 KB">
+<!ENTITY meson-version "1.5.0">
+<!ENTITY meson-size "2,205 KB">
 <!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
-<!ENTITY meson-md5 "543a78b55b2d162135e75623b85a59c6">
+<!ENTITY meson-md5 "caa086c7659cce6a4eb604f93793019c">
 <!ENTITY meson-home "https://mesonbuild.com">
 <!ENTITY meson-fin-du "42 MB">
 <!ENTITY meson-fin-sbu "менее 0.1 SBU">
@@ -636,10 +636,10 @@
 <!ENTITY sed-fin-du "30 MB">
 <!ENTITY sed-fin-sbu "0.3 SBU">
 
-<!ENTITY setuptools-version "70.1.1">
-<!ENTITY setuptools-size "2,239 KB">
+<!ENTITY setuptools-version "70.3.0">
+<!ENTITY setuptools-size "2,279 KB">
 <!ENTITY setuptools-url "&pypi-src;/s/setuptools/setuptools-&setuptools-version;.tar.gz">
-<!ENTITY setuptools-md5 "ca9b74245ee9acf0fa34b02c03ec6f47">
+<!ENTITY setuptools-md5 "2ba75817d4b434bb6e3d67d48a808457">
 <!ENTITY setuptools-home "&pypi-home;/setuptools/">
 <!ENTITY setuptools-fin-du "20 MB">
 <!ENTITY setuptools-fin-sbu "менее 0.1 SBU">
@@ -733,20 +733,20 @@
 <!ENTITY udev-lfs-home    " ">
 
 <!ENTITY util-linux-minor "2.40">
-<!ENTITY util-linux-version "2.40.1"> <!-- 2.33.x -->
-<!ENTITY util-linux-size "8,617 KB">
+<!ENTITY util-linux-version "2.40.2"> <!-- 2.33.x -->
+<!ENTITY util-linux-size "8,648 KB">
 <!ENTITY util-linux-url "&kernel;linux/utils/util-linux/v&util-linux-minor;/util-linux-&util-linux-version;.tar.xz">
-<!ENTITY util-linux-md5 "42ca7b92a3d77087de362f43ac29a3df">
+<!ENTITY util-linux-md5 "88faefc8fefced097e58142077a3d14e">
 <!ENTITY util-linux-home "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/">
 <!ENTITY util-linux-tmp-du "172 MB">
 <!ENTITY util-linux-tmp-sbu "0.2 SBU">
 <!ENTITY util-linux-fin-du "313 MB">
 <!ENTITY util-linux-fin-sbu "0.5 SBU">
 
-<!ENTITY vim-version "9.1.0478">
+<!ENTITY vim-version "9.1.0580">
 <!-- <!ENTITY vim-majmin "90"> -->
 <!ENTITY vim-docdir "vim/vim91">
-<!ENTITY vim-size "17,508 KB">
+<!ENTITY vim-size "17,568 KB">
 <!ENTITY vim-url "https://github.com/vim/vim/archive/v&vim-version;/vim-&vim-version;.tar.gz">
 <!-- N.B. LFS 9.0 uses
      https://github.com/vim/vim/archive/v8.1.1846/vim-8.1.1846.tar.gz
@@ -760,7 +760,7 @@
      example, https://github.com/vim/vim/tags?after=v8.1.1847 will show
      us v8.1.1846. -->
 <!--<!ENTITY vim-url "&anduin-sources;/vim-&vim-version;.tar.gz">-->
-<!ENTITY vim-md5 "7d56919d58592c041ab61f45584e6f90">
+<!ENTITY vim-md5 "3e871c0773a6c2a491d3d730475b5698">
 <!ENTITY vim-home "https://www.vim.org">
 <!ENTITY vim-fin-du "236 MB">
 <!ENTITY vim-fin-sbu "2.5 SBU">
