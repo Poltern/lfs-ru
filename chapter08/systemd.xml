@@ -218,9 +218,8 @@ ninja test</userinput></screen>
 
     <!-- test-namespace needs /run/systemd/inaccessible/sock, which only exists
          after initializing the system with systemd.  -->
-    <para>Три теста, <literal>systemd:core / test-namespace</literal> 
-    <literal>test-loopback</literal> и <literal>test-copy</literal>,  
-	завершились неудачно в среде chroot LFS. Некоторые другие тесты могут не пройти, 
+    <para>Один тест с именем <literal>systemd:core / test-namespace</literal> 
+	завершился неудачно в среде chroot LFS. Некоторые другие тесты могут не пройти, 
 	поскольку они зависят от различных параметров конфигурации ядра.</para>
 
     <para>Установите пакет:</para>
