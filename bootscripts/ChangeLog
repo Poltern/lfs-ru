@@ -1,3 +1,11 @@
+2024-07-12 Xi Ruoyao <xry111@xry111.site>
+   * In mountvirtfs, recreate /dev/fd correctly if it's already created
+     by the initramfs.
+
+2024-07-06 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Add logic to init-functions to only print escape sequences
+	  if stdin and stdout are connected to a terminal.
+
 2024-04-16 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Remove blank output line generated in ifup script when bringing
 	  up wireless interface.

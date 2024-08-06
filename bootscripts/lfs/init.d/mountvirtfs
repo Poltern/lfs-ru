@@ -83,7 +83,7 @@ case "${1}" in
       ln -sf /proc/self/fd/2 /dev/stderr || failed=1
 
       log_info_msg2 " ${INFO}/dev/fd"
-      ln -sf /proc/self/fd   /dev/fd     || failed=1
+      ln -sfn /proc/self/fd  /dev/fd     || failed=1
 
       if [ -e /proc/kcore ]; then
          log_info_msg2 " ${INFO}/dev/core"
