@@ -12,7 +12,7 @@
 
   <para>Наконец, удалите некоторые лишние файлы, оставшиеся после запуска тестов:</para>
 
-<screen><userinput>rm -rf /tmp/*</userinput></screen>
+  <screen><userinput>rm -rf /tmp/{*,.*}</userinput></screen>
 
   <para>Также в каталогах /usr/lib и /usr/libexec есть несколько файлов с
   расширением .la. Это файлы <quote>архива libtool</quote>. Как было сказано ранее,
