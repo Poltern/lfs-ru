@@ -3006,8 +3006,8 @@
         </seglistitem>
       </segmentedlist>
 
-<!-- Begin Sysvinit dependency info -->
-  <bridgehead renderas="sect2" id="sysvinit-dep" revision='sysv'>Sysvinit</bridgehead>
+<!-- Begin SysVinit dependency info -->
+  <bridgehead renderas="sect2" id="sysvinit-dep" revision='sysv'>SysVinit</bridgehead>
 
       <segmentedlist id="sysvinit-depends" revision='sysv'>
         <segtitle>&dependencies;</segtitle>
