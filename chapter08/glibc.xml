@@ -49,11 +49,11 @@
 	данные в каталогах, совместимых с FHS:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
-
+<!--
     <para>Теперь исправьте уязвимость безопасности:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-upstream-patch;</userinput></screen>
-
+-->
     <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
 
 <screen><userinput remap="pre">mkdir -v build
