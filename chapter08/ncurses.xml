@@ -134,8 +134,8 @@
 	ABI расширенного набора символов, как это сделано в <xref linkend='ch-tools-ncurses'/>).</para>
 
 <screen><userinput remap="install">make DESTDIR=$PWD/dest install
-install -vm755 dest/usr/lib/libncursesw.so.&ncurses-release; /usr/lib
-rm -v  dest/usr/lib/libncursesw.so.&ncurses-release;
+install -vm755 dest/usr/lib/libncursesw.so.&ncurses-version; /usr/lib
+rm -v  dest/usr/lib/libncursesw.so.&ncurses-version;
 sed -e 's/^#if.*XOPEN.*$/#if 1/' \
     -i dest/usr/include/curses.h
 cp -av dest/* /</userinput></screen>
