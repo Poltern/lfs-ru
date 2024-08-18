@@ -126,7 +126,7 @@
          make will spawn new shell processes during "make install".  -->
 
     <para>Установка этого пакета приведет к перезаписи 
-	<filename class="libraryfile">libncursesw.so.&ncurses-release;</filename>. Это
+	<filename class="libraryfile">libncursesw.so.&ncurses-version;</filename>. Это
 	может привести к сбою процесса оболочки, который использует код и данные из
 	файла библиотеки. Установите пакет с помощью <literal>DESTDIR</literal> и правильно
 	замените файл библиотеки с помощью команды <command>install</command>(также отредактирован 
