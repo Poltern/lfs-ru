@@ -40,6 +40,50 @@
     -->
 
     <listitem>
+      <para>2024-08-17</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to setuptools-72.2.0. Fixes
+          <ulink url='&lfs-ticket-root;5542'>#5542</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kmod-33. Fixes
+          <ulink url='&lfs-ticket-root;5540'>#5540</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to binutils-2.43.1. Fixes
+          <ulink url='&lfs-ticket-root;5543'>#5543</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.10.5. Fixes
+          <ulink url='&lfs-ticket-root;5541'>#5541</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>2024-08-15</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to iana-etc-20240806. Addresses
+          <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to pkgconf-2.3.0. Fixes
+          <ulink url='&lfs-ticket-root;5537'>#5537</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to python3-3.12.5. Fixes
+          <ulink url='&lfs-ticket-root;5538'>#5538</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to linux-6.10.4. Fixes
+          <ulink url='&lfs-ticket-root;5539'>#5539</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>2024-08-05</para>
       <itemizedlist>
         <listitem>
