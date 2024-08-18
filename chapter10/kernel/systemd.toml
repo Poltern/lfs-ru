@@ -25,11 +25,11 @@ TMPFS='*'
 TMPFS_POSIX_ACL='*'
 CGROUP_SCHED='* '
 
+revision='systemd'
+
 [RT_GROUP_SCHED]
 value = ' '
 comment = 'This may cause some systemd features malfunction'
-
-revision='systemd'
 
 [DRM_FBDEV_EMULATION]
 value = ' *'
