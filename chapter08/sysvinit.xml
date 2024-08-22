@@ -14,16 +14,16 @@
     <address>&sysvinit-url;</address>
   </sect1info>
 
-  <title>Sysvinit-&sysvinit-version;</title>
+  <title>SysVinit-&sysvinit-version;</title>
 
   <indexterm zone="ch-system-sysvinit">
-    <primary sortas="a-Sysvinit">Sysvinit</primary>
+    <primary sortas="a-Sysvinit">SysVinit</primary>
   </indexterm>
 
   <sect2 role="package">
     <title/>
 
-    <para>Пакет Sysvinit содержит программы для управления загрузкой,
+    <para>Пакет SysVinit содержит программы для управления загрузкой,
     выполнением и выключением системы.</para>
 
     <segmentedlist>
@@ -39,7 +39,7 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Установка пакета Sysvinit</title>
+    <title>Установка пакета SysVinit</title>
 
 <!--
     <para>When run-levels are changed (for example, when halting the
@@ -59,7 +59,7 @@
     <command>mountpoint</command>, <command>last</command>,
     <command>mesg</command>, <command>sulogin</command>, and
     <command>utmpdump</command> programs were installed earlier by Util-linux.
-    Suppress the installation of Sysvinit's versions of these programs and
+    Suppress the installation of SysVinit's versions of these programs and
     their man pages:</para>
 
 <screen><userinput remap="make">sed -ri -e '/utmpdump/d'   \
@@ -85,7 +85,7 @@
   </sect2>
 
   <sect2 id="contents-sysvinit" role="content">
-    <title>Содержимое пакета Sysvinit</title>
+    <title>Содержимое пакета SysVinit</title>
 
     <segmentedlist>
       <segtitle>Установленные программы</segtitle>

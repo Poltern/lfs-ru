@@ -73,6 +73,7 @@ cd       build</userinput></screen>
     --enable-gprofng=no        \
     --disable-werror           \
     --enable-64-bit-bfd        \
+    --enable-new-dtags         \
     --enable-default-hash-style=gnu</userinput></screen>
 
     <variablelist>

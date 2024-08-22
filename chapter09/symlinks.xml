@@ -111,7 +111,7 @@
       <filename>/usr/lib/udev/network/99-default.link</filename>:</para>
 
 <screen role="nodump"><userinput>sed -e '/^AlternativeNamesPolicy/s/=.*$/=/'  \
-    -i /usr/lib/udev/network/99-default.link \
+       /usr/lib/udev/network/99-default.link \
      > /etc/udev/network/99-default.link</userinput></screen>
     </sect3>
 

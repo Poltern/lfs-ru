@@ -49,9 +49,12 @@
 <screen><userinput remap="pre">sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
 
-    <para>Теперь устраните проблему, выявленную разработчиками:</para>
+    <para>Запретите использование библиотеки поиска списка жестко запрограммированных путей 
+	(rpath) в общих библиотеках. Этому пакету не требуется rpath для установки в стандартное 
+	местоположение, кроме того, rpath иногда может вызывать нежелательные эффекты или даже 
+	проблемы с безопасностью:</para>
 
-<screen><userinput remap="pre">patch -Np1 -i ../&readline-fixes-patch;</userinput></screen>
+<screen><userinput>sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf</userinput></screen>
 
     <para>Подготовьте Readline к компиляции:</para>
 

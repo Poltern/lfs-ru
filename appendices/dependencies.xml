@@ -324,8 +324,8 @@
       <segmentedlist id="bison-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, M4, Make,
-          Perl и Sed</seg>
+          <seg>Bash, Binutils, Coreutils, Diffutils, GCC, Gettext, Glibc, Grep, M4, 
+		  Make, Perl и Sed</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -524,6 +524,7 @@
           <seg><ulink url="&blfs-book;x/x7lib.html">Библиотеки Xorg</ulink></seg>
         </seglistitem>
       </segmentedlist>
+
 <!-- Begin DejaGNU dependency info -->
   <bridgehead renderas="sect2" id="dejagnu-dep">DejaGNU</bridgehead>
 
@@ -932,7 +933,7 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Coreutils, Diffutils, Findutils, Gawk, GCC,
-          Gettext, Glibc, GMP, Grep, Libxcrypt, M4, Make, MPC, MPFR, Patch,
+          Gettext, Glibc, GMP, Grep, M4, Make, MPC, MPFR, Patch,
           Perl, Sed, Tar, Texinfo и Zstd</seg>
         </seglistitem>
       </segmentedlist>
@@ -1460,7 +1461,7 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
          <seg>Bash, Bison, Coreutils, Flex, GCC, Glibc, Make, Libcap, Libelf,
-         Linux API Headers и Zlib</seg>
+         Linux API Headers, Pkgconf и Zlib</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -1584,7 +1585,7 @@
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
           <seg>Bash, Binutils, Bison, Coreutils, Flex, GCC, Gettext, Glibc,
-          Gzip, Make, OpenSSL, Pkg-config, Sed, Xz и Zlib</seg>
+          Gzip, Make, OpenSSL, Pkgconf, Sed, Xz и Zlib</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -1612,7 +1613,9 @@
       <segmentedlist id="kmod-optdeps">
         <segtitle>&external;</segtitle>
         <seglistitem>
-          <seg>Нет</seg>
+          <seg>
+            <ulink url="https://git.sr.ht/~sircmpwn/scdoc/">scdoc</ulink> (для справочных страниц)
+          </seg>
         </seglistitem>
       </segmentedlist>
 
@@ -1884,7 +1887,7 @@
       <segmentedlist id="libxcrypt-before">
         <segtitle>&before;</segtitle>
         <seglistitem>
-          <seg>GCC, Perl, Python, Shadow и &systemd-udev;</seg>
+          <seg>Perl, Python, Shadow и &systemd-udev;</seg>
         </seglistitem>
       </segmentedlist>
 
@@ -1933,7 +1936,8 @@
           <seg>
             <ulink url="&blfs-book;general/cpio.html">cpio</ulink> и
             <ulink url="&blfs-book;general/llvm.html">LLVM</ulink>
-            (с Clang)
+            (с Clang) и 
+	    <ulink url="&blfs-book;general/rust-bindgen.html">Rust-bindgen</ulink>
           </seg>
         </seglistitem>
       </segmentedlist>
@@ -2062,7 +2066,7 @@
       <segmentedlist id="make-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, Make, Sed,
+          <seg>Bash, Binutils, Coreutils, GCC, Gettext, Glibc, Grep, Make, Sed 
           и Texinfo</seg>
         </seglistitem>
       </segmentedlist>
@@ -2541,7 +2545,7 @@
       <segmentedlist id="pkgconf-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Make,
+          <seg>Bash, Binutils, Coreutils, Gawk, GCC, Glibc, Grep, Make 
           и Sed</seg>
         </seglistitem>
       </segmentedlist>
@@ -2583,7 +2587,7 @@
       <segmentedlist id="procps-depends">
         <segtitle>&dependencies;</segtitle>
         <seglistitem>
-          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make, Ncurses,
+          <seg>Bash, Binutils, Coreutils, GCC, Glibc, Make, Ncurses, 
           <phrase revision='sysv'>и </phrase>Pkgconf<phrase
           revision='systemd'> и Systemd</phrase></seg>
         </seglistitem>
@@ -3005,8 +3009,8 @@
         </seglistitem>
       </segmentedlist>
 
-<!-- Begin Sysvinit dependency info -->
-  <bridgehead renderas="sect2" id="sysvinit-dep" revision='sysv'>Sysvinit</bridgehead>
+<!-- Begin SysVinit dependency info -->
+  <bridgehead renderas="sect2" id="sysvinit-dep" revision='sysv'>SysVinit</bridgehead>
 
       <segmentedlist id="sysvinit-depends" revision='sysv'>
         <segtitle>&dependencies;</segtitle>

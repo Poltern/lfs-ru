@@ -50,7 +50,7 @@
     </varlistentry>
   </variablelist>
 
-  <para>Другие файловые системы, включая FAT32, NTFS, ReiserFS, JFS и XFS,
+  <para>Другие файловые системы, включая FAT32, NTFS, JFS и XFS,
   полезны для конкретных задач. Более подробную информацию об этих файловых 
   системах и многих других можно найти по адресу <ulink
   url="https://en.wikipedia.org/wiki/Comparison_of_file_systems"/>.</para>

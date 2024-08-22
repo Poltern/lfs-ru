@@ -44,7 +44,7 @@
 
     <para>Скомпилируйте пакет:</para>
 
-<screen><userinput remap="make">make BUILD_STATIC=no</userinput></screen>
+<screen><userinput remap="make">make BUILD_STATIC=no PREFIX=/usr</userinput></screen>
 
     <para>Чтобы протестировать пакет, выполните:</para>
 

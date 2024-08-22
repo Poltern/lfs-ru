@@ -42,12 +42,13 @@
 
     <para>Подготовьте Kmod к компиляции:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr          \
-            --sysconfdir=/etc      \
-            --with-openssl         \
-            --with-xz              \
-            --with-zstd            \
-            --with-zlib</userinput></screen>
+<screen><userinput remap="configure">./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --with-openssl    \
+            --with-xz         \
+            --with-zstd       \
+            --with-zlib       \
+            --disable-manpages</userinput></screen>
 
     <variablelist>
       <title>Значение параметров настройки:</title>
@@ -69,6 +70,16 @@
         </term>
         <listitem>
           <para>Эти параметры позволяют Kmod обрабатывать сжатые модули ядра.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>
+          <parameter>--disable-manpages</parameter>
+        </term>
+        <listitem>
+          <para>Эта опция отключает генерацию справочных страниц, для которых требуется 
+		  внешняя программа.</para>
         </listitem>
       </varlistentry>
 

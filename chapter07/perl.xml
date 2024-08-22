@@ -45,16 +45,16 @@
 
     <para>Подготовьте Perl к компиляции:</para>
 
-    <screen><userinput remap="configure">sh Configure -des                                        \
-             -Dprefix=/usr                               \
-             -Dvendorprefix=/usr                         \
-             -Duseshrplib                                \
-             -Dprivlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
-             -Darchlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
-             -Dsitelib=/usr/lib/perl5/&perl-version-min;/site_perl     \
-             -Dsitearch=/usr/lib/perl5/&perl-version-min;/site_perl    \
-             -Dvendorlib=/usr/lib/perl5/&perl-version-min;/vendor_perl \
-             -Dvendorarch=/usr/lib/perl5/&perl-version-min;/vendor_perl</userinput></screen>
+    <screen><userinput remap="configure">sh Configure -des                                         \
+             -D prefix=/usr                               \
+             -D vendorprefix=/usr                         \
+             -D useshrplib                                \
+             -D privlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
+             -D archlib=/usr/lib/perl5/&perl-version-min;/core_perl     \
+             -D sitelib=/usr/lib/perl5/&perl-version-min;/site_perl     \
+             -D sitearch=/usr/lib/perl5/&perl-version-min;/site_perl    \
+             -D vendorlib=/usr/lib/perl5/&perl-version-min;/vendor_perl \
+             -D vendorarch=/usr/lib/perl5/&perl-version-min;/vendor_perl</userinput></screen>
 
     <variablelist>
       <title>Значение новых опций Configure:</title>
@@ -68,7 +68,7 @@
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dvendorprefix=/usr</parameter></term>
+        <term><parameter>-D vendorprefix=/usr</parameter></term>
         <listitem>
           <para>Параметр гарантирует, что <command>perl</command> знает, как указать 
 		  пакетам, где они должны устанавливать свои модули Perl.</para>
@@ -76,7 +76,7 @@
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Duseshrplib</parameter></term>
+        <term><parameter>-D useshrplib</parameter></term>
         <listitem>
           <para>Собрать библиотеку libperl, необходимую некоторым модулям Perl, 
 		  как общую библиотеку вместо статической.</para>
@@ -84,7 +84,7 @@
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dprivlib,-Darchlib,-Dsitelib,...</parameter></term>
+        <term><parameter>-D privlib,-D archlib,-D sitelib,...</parameter></term>
         <listitem>
           <para>Эти настройки определяют, где Perl ищет установленные модули.
           Редакторы LFS решили поместить их в структуру каталогов, основанную на 

@@ -49,11 +49,11 @@
 	данные в каталогах, совместимых с FHS:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-fhs-patch;</userinput></screen>
-
+<!--
     <para>Теперь исправьте уязвимость безопасности:</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-upstream-patch;</userinput></screen>
-
+-->
     <para>Документация Glibc рекомендует выполнять компиляцию в отдельном каталоге:</para>
 
 <screen><userinput remap="pre">mkdir -v build
@@ -338,8 +338,7 @@ install -v -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service</use
     Следующие инструкции установят минимальный набор локалей, необходимый для
 	оптимального охвата тестов</para>
 
-<screen role="nodump"><userinput remap="locale-test">mkdir -pv /usr/lib/locale
-localedef -i C -f UTF-8 C.UTF-8
+<screen role="nodump"><userinput remap="locale-test">localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
 localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
@@ -673,7 +672,8 @@ mkdir -pv /etc/ld.so.conf.d</userinput></screen>
       <varlistentry id="ldconfig">
         <term><command>ldconfig</command></term>
         <listitem>
-          <para>Настраивает привязки времени выполнения динамического компоновщика</para>
+          <para>Создаёт необходимые привязки и кэш динамических библиотек, который 
+		  используется компоновщиком для связывания во время выполнения</para>
           <indexterm zone="ch-system-glibc ldconfig">
             <primary sortas="b-ldconfig">ldconfig</primary>
           </indexterm>

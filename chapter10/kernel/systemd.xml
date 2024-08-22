@@ -11,7 +11,10 @@
                                                      ...  [PSI_DEFAULT_DISABLED]
   &lt; &gt; <emphasis role='blue'>E</emphasis>nable kernel headers through /sys/kernel/kheaders.tar.xz      [IKHEADERS]
   [*] <emphasis role='blue'>C</emphasis>ontrol Group support ---&gt;                                       [CGROUPS]
-    [*] M<emphasis role='blue'>e</emphasis>mory controller                                                [MEMCG]
+    [*]   M<emphasis role='blue'>e</emphasis>mory controller                                              [MEMCG]
+    [ /*] <emphasis role='blue'>C</emphasis>PU controller ---&gt;                                     [CGROUP_SCHED]
+      # This may cause some systemd features malfunction:
+      [ ] <emphasis role='blue'>G</emphasis>roup scheduling for SCHED_RR/FIFO                    [RT_GROUP_SCHED]
   [ ] <emphasis role='blue'>C</emphasis>onfigure standard kernel features (expert users) ---&gt;            [EXPERT]
 
 <emphasis role='blue'>P</emphasis>rocessor type and features ---&gt;
@@ -42,8 +45,8 @@
   <emphasis role='blue'>G</emphasis>raphics support ---&gt;
     &lt; /*/M&gt; <emphasis role='blue'>D</emphasis>irect Rendering Manager (XFree86 4.1.0 and higher DRI support) ---&gt;
                                                                       ...  [DRM]
-    # If [DRM] is selected as * or M, this must be selected:
-    [ /*]   <emphasis role='blue'>E</emphasis>nable legacy fbdev support for your modesetting driver
+      # If [DRM] is selected as * or M, this must be selected:
+      [ /*] <emphasis role='blue'>E</emphasis>nable legacy fbdev support for your modesetting driver
                                                       ...  [DRM_FBDEV_EMULATION]
     <emphasis role='blue'>C</emphasis>onsole display driver support ---&gt;
       # If [DRM] is selected as * or M, this must be selected:

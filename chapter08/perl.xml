@@ -60,26 +60,26 @@ export BUILD_BZIP2=0</userinput></screen>
 	как указано ниже, чтобы использовать значения по умолчанию, которые Perl
 	определяет автоматически:</para>
 
- <screen><userinput remap="configure">sh Configure -des                                         \
-             -Dprefix=/usr                                \
-             -Dvendorprefix=/usr                          \
-             -Dprivlib=/usr/lib/perl5/&perl-version-min;/core_perl      \
-             -Darchlib=/usr/lib/perl5/&perl-version-min;/core_perl      \
-             -Dsitelib=/usr/lib/perl5/&perl-version-min;/site_perl      \
-             -Dsitearch=/usr/lib/perl5/&perl-version-min;/site_perl     \
-             -Dvendorlib=/usr/lib/perl5/&perl-version-min;/vendor_perl  \
-             -Dvendorarch=/usr/lib/perl5/&perl-version-min;/vendor_perl \
-             -Dman1dir=/usr/share/man/man1                \
-             -Dman3dir=/usr/share/man/man3                \
-             -Dpager="/usr/bin/less -isR"                 \
-             -Duseshrplib                                 \
-             -Dusethreads</userinput></screen>
+ <screen><userinput remap="configure">sh Configure -des                                          \
+             -D prefix=/usr                                \
+             -D vendorprefix=/usr                          \
+             -D privlib=/usr/lib/perl5/&perl-version-min;/core_perl      \
+             -D archlib=/usr/lib/perl5/&perl-version-min;/core_perl      \
+             -D sitelib=/usr/lib/perl5/&perl-version-min;/site_perl      \
+             -D sitearch=/usr/lib/perl5/&perl-version-min;/site_perl     \
+             -D vendorlib=/usr/lib/perl5/&perl-version-min;/vendor_perl  \
+             -D vendorarch=/usr/lib/perl5/&perl-version-min;/vendor_perl \
+             -D man1dir=/usr/share/man/man1                \
+             -D man3dir=/usr/share/man/man3                \
+             -D pager="/usr/bin/less -isR"                 \
+             -D useshrplib                                 \
+             -D usethreads</userinput></screen>
 
     <variablelist>
       <title>Значение параметров Configure:</title>
 
       <varlistentry>
-        <term><parameter>-Dpager="/usr/bin/less -isR"</parameter></term>
+        <term><parameter>-D pager="/usr/bin/less -isR"</parameter></term>
         <listitem>
           <para>Параметр указывает использовать <userinput>less</userinput> вместо
 		  <userinput>more</userinput>.</para>
@@ -87,8 +87,8 @@ export BUILD_BZIP2=0</userinput></screen>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dman1dir=/usr/share/man/man1
-        -Dman3dir=/usr/share/man/man3</parameter></term>
+        <term><parameter>-D man1dir=/usr/share/man/man1
+        -D man3dir=/usr/share/man/man3</parameter></term>
         <listitem>
           <para>Так как Groff еще не установлен, <command>Configure</command> не 
 		  будет создавать man-страницы для Perl. Эти параметры переопределяют это поведение.</para>
@@ -96,7 +96,7 @@ export BUILD_BZIP2=0</userinput></screen>
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dusethreads</parameter></term>
+        <term><parameter>-D usethreads</parameter></term>
         <listitem>
           <para>Собрать Perl с поддержкой потоков.</para>
         </listitem>

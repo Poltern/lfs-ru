@@ -40,6 +40,11 @@
   <sect2 role="installation">
     <title>Установка пакета Inetutils</title>
 
+    <para>Сначала внесите некоторые изменения, чтобы сборку пакета с помощью gcc-14.1 или 
+	более поздней версии:</para>
+
+<screen><userinput remap="pre">sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c</userinput></screen>
+
     <para>Подготовьте Inetutils к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr        \

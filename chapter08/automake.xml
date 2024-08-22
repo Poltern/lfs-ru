@@ -61,8 +61,6 @@
     <para>Замените <replaceable>$((...))</replaceable> количеством логических ядер, которые 
 	вы хотите использовать, если вы не планируете использовать все.</para>
 
-    <para>Известно, что тест t/subobj.sh не проходит.</para>
-
     <para>Установите пакет:</para>
 
 <screen><userinput remap="install">make install</userinput></screen>

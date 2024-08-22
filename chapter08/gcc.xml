@@ -39,20 +39,7 @@
 
   <sect2 role="installation">
     <title>Установка пакета GCC</title>
-<!--
-    <para>At first, fix an issue breaking
-    <filename class="libraryfile">libasan.a</filename> building this package
-    with Glibc-2.34 or later:</para>
 
-<screen><userinput remap="pre">sed -e '/static.*SIGSTKSZ/d' \
-    -e 's/return kAltStackSize/return SIGSTKSZ * 4/' \
-    -i libsanitizer/sanitizer_common/sanitizer_posix_libcdep.cpp</userinput></screen>
--->
-<!--
-   <para>Сначала устраните проблему с последней версией glibc:</para>
-
-    <screen><userinput remap="pre">patch -Np1 -i ../&gcc-upstream-fixes-patch;</userinput></screen>
--->
     <para>При сборке на x86_64 измените имя каталога по умолчанию для 64-битных библиотек
 	на <quote>lib</quote>:</para>
 
@@ -75,6 +62,7 @@ cd       build</userinput></screen>
              --enable-languages=c,c++ \
              --enable-default-pie     \
              --enable-default-ssp     \
+             --enable-host-pie        \
              --disable-multilib       \
              --disable-bootstrap      \
              --disable-fixincludes    \
@@ -152,7 +140,16 @@ cd       build</userinput></screen>
 
 <screen><userinput remap="test">ulimit -s 32768</userinput></screen>
 
-    <para>Выполните тестирование под непривилегированным пользователем, но не останавливайтесь
+    <para>Теперь удалите /исправьте несколько известных ошибок тестирования:</para>
+
+<screen><userinput remap="test">sed -e '/cpython/d'               -i ../gcc/testsuite/gcc.dg/plugin/plugin.exp
+sed -e 's/no-pic /&amp;-no-pie /'     -i ../gcc/testsuite/gcc.target/i386/pr113689-1.c
+sed -e 's/300000/(1|300000)/'     -i ../libgomp/testsuite/libgomp.c-c++-common/pr109062.c
+sed -e 's/{ target nonpic } //' \
+    -e '/GOTPCREL/d'              -i ../gcc/testsuite/gcc.target/i386/fentryname3.c</userinput></screen>
+
+
+    <para>Выполните тестирование от имени непривилегированного пользователя, но не останавливайтесь
 	на ошибках:</para>
 
 <screen><userinput remap="test">chown -R tester .
@@ -168,14 +165,14 @@ su tester -c "PATH=$PATH make -k check"</userinput></screen>
     <para>Результаты можно сравнить с результатами, размещенными на <ulink
     url="&test-results;"/> и
     <ulink url="https://gcc.gnu.org/ml/gcc-testresults/"/>.</para>
-
+<!--
     <para>
 	Известно, что восемь тестов gcc (из более чем 185 000):
-    <!-- https://gcc.gnu.org/PR106375 --><filename>pr56837.c</filename>
+    <!- - https://gcc.gnu.org/PR106375 - -><filename>pr56837.c</filename>
 	и семь тестов из каталога <filename class='directory'>analyzer</filename> 
 	завершились неудачно.
 
-    <!-- https://gcc.gnu.org/PR109353 -->
+    <!- - https://gcc.gnu.org/PR109353 - ->
     Также провалился один тест libstdc++ (из более чем 15 000) — это <filename>copy.cc</filename>.
 
     Известно, что для g++ 21 тест (из примерно 250 000), 14 тестов <quote>AddressSanitizer*</quote> и 
@@ -184,10 +181,12 @@ su tester -c "PATH=$PATH make -k check"</userinput></screen>
     Кроме того, несколько тестов из каталога  
 	<filename class='directory'>vect</filename> завершаются неудачно, если 
 	оборудование не поддерживает AVX.</para>
-
-    <para>Не всегда удается избежать неожиданных сбоев. Разработчики GCC обычно знают
-	об этих проблемах, но еще не решили их. Если результаты теста не сильно отличаются
-	от результатов по указанному выше URL-адресу, можно продолжать.</para>
+-->
+    <para>Не всегда удается избежать неожиданных сбоев. В некоторых случаях неудачное 
+	завершение тестов - это следствие их выполнения на конкретном оборудовании системы.
+	<!--Разработчики GCC обычно знают об этих проблемах, но еще не решили их.--> Если 
+	результаты теста не сильно отличаются от результатов по указанному выше URL-адресу, 
+	можно продолжать.</para>
 
     <para>Установите пакет:</para>
 

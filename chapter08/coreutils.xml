@@ -118,11 +118,13 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure \
          remove < /dev/null.  -->
     <para>Теперь запустите тесты (используя <filename>/dev/null</filename> для 
 	стандартного ввода, иначе два теста могут быть не пройдены при сборке LFS в 
-	графическом терминале, или сеансе SSH, или GNU Screen и прочее, поскольку 
-	стандартный ввод подключен к PTY из хост-дистрибутива, и узел устройства для 
+	графическом терминале, или сеансе SSH, или GNU Screen, поскольку 
+	стандартный ввод подключен к PTY из хост-дистрибутива, а узел устройства для 
 	такого PTY недоступен из среды chroot LFS):</para>
 
-<screen><userinput remap="test">su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check" &lt; /dev/null</userinput></screen>
+
+<screen><userinput remap="test">su tester -c "PATH=$PATH make -k RUN_EXPENSIVE_TESTS=yes check" \
+   &lt; /dev/null</userinput></screen>
 
     <para>Удалить временную группу:</para>
 
