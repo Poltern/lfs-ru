@@ -294,13 +294,10 @@
     <listitem>
       <para>Lz4-&lz4-version;</para>
     </listitem>
-    <listitem>
-      <para>glibc-2.39-upstream_fix-1.patch</para>
-    </listitem>
   </itemizedlist>
 
   <itemizedlist>
-    <title>Удалены:</title>
+    <title>Removed:</title>
     <listitem>
       <para>bash-5.2.21-upstream_fixes-1.patch</para>
     </listitem>  
