@@ -74,6 +74,7 @@ cd       build</userinput></screen>
              --disable-nls       \
              --enable-gprofng=no \
              --disable-werror    \
+             --enable-new-dtags  \
              --enable-default-hash-style=gnu</userinput></screen>
 <screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure --prefix=$LFS/tools       \
              --with-sysroot=$LFS \
@@ -135,6 +136,17 @@ cd       build</userinput></screen>
         <listitem>
           <para>Этот параметр предотвращает остановку сборки в случае появления
 		  предупреждений от компилятора хоста.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-new-dtags</parameter></term>
+        <listitem>
+          <para>Этот параметр заставляет компоновщик использовать тег <quote>runpath</quote> 
+		  для встраивания путей поиска библиотек в исполняемые файлы и общие библиотеки 
+		  вместо традиционного тега <quote>rpath</quote>.  Это упрощает отладку динамически 
+		  подключаемых исполняемых файлов и устраняет потенциальные проблемы в наборах тестов 
+		  некоторых пакетов.</para>
         </listitem>
       </varlistentry>
 

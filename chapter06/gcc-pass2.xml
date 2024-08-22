@@ -157,17 +157,18 @@ cd       build</userinput></screen>
 		  компиляторы C и C++ хоста в качестве обходного пути.
           Сейчас не поддерживается создание целевых библиотек GCC с помощью другой версии GCC,
 		  поэтому использование компиляторов хоста может привести к сбою сборки. Этот
-		  параметр гарантирует сборку библиотек с помощью GCC собранного на первом проходе.</para>
+		  параметр гарантирует сборку библиотек с помощью GCC собранного в предыдущей главе.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>LDFLAGS_FOR_TARGET=...</parameter></term>
         <listitem>
-          <para>Разрешить <filename class="libraryfile">libstdc++</filename> использовать
-           общую библиотеку <filename class="libraryfile">libgcc</filename>,
-           собранную на этом этапе, вместо статической версии, собранной в GCC
-           Проход 1. Это необходимо для поддержки обработки исключений C++</para>
+          <para>Разрешить <filename class="libraryfile">libstdc++</filename> использовать 
+		  <filename class="libraryfile">libgcc</filename>, собранную на этом этапе, вместо 
+		  предыдущей версии, собранной в <внешняя ссылка='ch-tools-gcc-pass1'/>. Предыдущая 
+		  версия не поддерживает должным образом обработку исключений на C++, поскольку она 
+		  была собрана без поддержки libc</para>
         </listitem>
       </varlistentry>
 

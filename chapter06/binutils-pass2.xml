@@ -73,6 +73,7 @@ cd       build</userinput></screen>
     --enable-gprofng=no        \
     --disable-werror           \
     --enable-64-bit-bfd        \
+    --enable-new-dtags         \
     --enable-default-hash-style=gnu</userinput></screen>
 <screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure                   \
     --prefix=/usr              \

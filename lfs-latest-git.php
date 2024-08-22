@@ -135,12 +135,13 @@ if ( $package == "iana-etc"   ) $dirpath = github("Mic92/iana-etc");
 if ( $package == "intltool"   ) $dirpath = "https://launchpad.net/intltool/trunk";
 if ( $package == "libffi"     ) $dirpath = github("libffi/libffi");
 if ( $package == "libxcrypt"  ) $dirpath = github("besser82/libxcrypt");
-if ( $package == "lz"         ) $dirpath = github("lz4/lz4");
+if ( $package == "lz4"        ) $dirpath = github("lz4/lz4");
 if ( $package == "meson"      ) $dirpath = github("mesonbuild/meson");
 if ( $package == "mpc"        ) $dirpath = "https://ftp.gnu.org/gnu/mpc";
 if ( $package == "mpfr"       ) $dirpath = "https://mpfr.loria.fr/mpfr-current";
 if ( $package == "ncurses"    ) $dirpath = "https://invisible-mirror.net/archives/ncurses";
 if ( $package == "ninja"      ) $dirpath = github("ninja-build/ninja");
+if ( $package == "openssl"    ) $dirpath = github("openssl/openssl");
 if ( $package == "procps-ng"  ) $dirpath = "https://gitlab.com/procps-ng/procps/-/tags";
 if ( $package == "psmisc"     ) $dirpath = "https://gitlab.com/psmisc/psmisc/-/tags";
 if ( $package == "Python"     ) $dirpath = "https://www.python.org/downloads/source/";
@@ -148,6 +149,7 @@ if ( $package == "shadow"     ) $dirpath = github("shadow-maint/shadow");
 if ( $package == "sysvinit"   ) $dirpath = github("slicer69/sysvinit");
 if ( $package == "MarkupSafe" ) $dirpath = "https://pypi.python.org/pypi/MarkupSafe/";
 if ( $package == "jinja"      ) $dirpath = "https://pypi.python.org/pypi/Jinja2/";
+if ( $package == "sysklogd"   ) $dirpath = github("troglobit/sysklogd");
 if ( $package == "systemd"    ) $dirpath = github("systemd/systemd");
 //if ( $package == "tcl"        ) $dirpath = "https://sourceforge.net/projects/tcl/files";
 if ( $package == "tcl"        ) $dirpath = "https://www.tcl.tk/software/tcltk/download.html";
@@ -266,11 +268,11 @@ if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
   if ( $package == "jinja" )
      return find_max( $lines, "/Jinja/", "/^.*Jinja2 ([\d\.]+).*$/" );
 
-  if ( $package == "lz" )
-     return find_max( $lines, "/name.:/", '/^.*LZ4 v([\d\.]+)".*$/' );
+  if ( $package == "lz4" )
+     return find_max( $lines, "/tag_name/", '/^.*v([\d\.]+).*$/' );
 
   if ( $package == "openssl" )
-     return find_max( $lines, "/openssl/", "/^.*openssl-([\d\.p]*\d.?).tar.*$/" );
+     return find_max( $lines, "/name.:/", "/^.*OpenSSL ([\d\.]+\d).*$/" );
 
   if ( $package == "Python" )
      return find_max( $lines, "/Python 3/", "/^.*Python (3[\d\.]*\d) .*$/" );
@@ -345,6 +347,11 @@ function get_current()
       else if ( preg_match( "/gmp/", $file ) )
       {
         $pattern = "/\D*(\d.*[a-z]*)\.tar\D*/";
+      }
+
+      else if ( preg_match( "/lz4/", $file ) )
+      {
+        $pkg_pattern= "/(\D*4).*/";
       }
 
       else if ( preg_match( "/systemd-man-pages/", $file ) ) continue;

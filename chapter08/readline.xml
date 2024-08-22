@@ -56,10 +56,6 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
 
 <screen><userinput>sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf</userinput></screen>
 
-    <para>Теперь устраните проблему, выявленную разработчиками:</para>
-
-<screen><userinput remap="pre">patch -Np1 -i ../&readline-fixes-patch;</userinput></screen>
-
     <para>Подготовьте Readline к компиляции:</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr    \

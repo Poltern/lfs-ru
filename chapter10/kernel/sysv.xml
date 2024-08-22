@@ -31,8 +31,8 @@
   <emphasis role='blue'>G</emphasis>raphics support ---&gt;
     &lt; /*/M&gt; <emphasis role='blue'>D</emphasis>irect Rendering Manager (XFree86 4.1.0 and higher DRI support) ---&gt;
                                                                       ...  [DRM]
-    # If [DRM] is selected as * or M, this must be selected:
-    [ /*]   <emphasis role='blue'>E</emphasis>nable legacy fbdev support for your modesetting driver
+      # If [DRM] is selected as * or M, this must be selected:
+      [ /*] <emphasis role='blue'>E</emphasis>nable legacy fbdev support for your modesetting driver
                                                       ...  [DRM_FBDEV_EMULATION]
     <emphasis role='blue'>C</emphasis>onsole display driver support ---&gt;
       # If [DRM] is selected as * or M, this must be selected:

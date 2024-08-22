@@ -63,15 +63,14 @@
 <screen><userinput remap="configure">mkdir -p build
 cd       build
 
-meson setup \
-      --prefix=/usr                 \
-      --buildtype=release           \
-      -Dmode=release                \
-      -Ddev-kvm-mode=0660           \
-      -Dlink-udev-shared=false      \
-      -Dlogind=false                \
-      -Dvconsole=false              \
-      ..</userinput></screen>
+meson setup ..                  \
+      --prefix=/usr             \
+      --buildtype=release       \
+      -D mode=release           \
+      -D dev-kvm-mode=0660      \
+      -D link-udev-shared=false \
+      -D logind=false           \
+      -D vconsole=false</userinput></screen>
 
     <variablelist>
       <title>Значение параметров meson:</title>
@@ -85,7 +84,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dmode=release</parameter></term>
+        <term><parameter>-D mode=release</parameter></term>
         <listitem>
           <para>Отключает некоторые функции, которые разработчики считают экспериментальными.
           </para>
@@ -93,7 +92,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Ddev-kvm-mode=0660</parameter></term>
+        <term><parameter>-D dev-kvm-mode=0660</parameter></term>
         <listitem>
           <para>По умолчанию правило udev разрешает всем пользователям доступ к 
 		  <filename class='devicefile'>/dev/kvm</filename>. Редакторы LFS считают 
@@ -102,7 +101,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dlink-udev-shared=false</parameter></term>
+        <term><parameter>-D link-udev-shared=false</parameter></term>
         <listitem>
           <para>Эта опция запрещает udev связываться с внутренней общей библиотекой 
 		  systemd <systemitem class='library'>libsystemd-shared</systemitem>. Эта 
@@ -112,7 +111,7 @@ meson setup \
       </varlistentry>
 
       <varlistentry>
-        <term><parameter>-Dlogind=false -Dvconsole=false</parameter></term>
+        <term><parameter>-D logind=false -D vconsole=false</parameter></term>
         <listitem>
           <para>Эти параметры предотвращают создание нескольких файлов правил udev, 
 		  принадлежащих другим компонентам Systemd, которые мы не будем устанавливать.</para>

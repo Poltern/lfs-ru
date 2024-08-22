@@ -41,11 +41,12 @@
   <sect2 role="installation">
     <title>Установка пакета Sysklogd</title>
 
-    <para>Во-первых, устраните проблему, которая при некоторых условиях вызывает в 
-	klogd ошибку сегментирования и исправьте устаревшую программную конструкцию:</para>
+    <para>Подготовьте пакет к компиляции:</para>
 
-<screen><userinput remap="pre">sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
-sed -i 's/union wait/int/' syslogd.c</userinput></screen>
+<screen><userinput remap="configure">./configure --prefix=/usr      \
+            --sysconfdir=/etc  \
+            --runstatedir=/run \
+            --without-logger</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
 
@@ -97,7 +98,7 @@ EOF</userinput></screen>
       <segtitle>Установленные программы</segtitle>
 
       <seglistitem>
-        <seg>klogd и syslogd</seg>
+        <seg>syslogd</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -105,16 +106,6 @@ EOF</userinput></screen>
       <bridgehead renderas="sect3">Краткое описание</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
-
-      <varlistentry id="klogd">
-        <term><command>klogd</command></term>
-        <listitem>
-          <para>Системный демон для перехвата и регистрации сообщений ядра</para>
-          <indexterm zone="ch-system-sysklogd klogd">
-            <primary sortas="b-klogd">klogd</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
 
       <varlistentry id="syslogd">
         <term><command>syslogd</command></term>

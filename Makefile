@@ -236,7 +236,7 @@ dist:
 	$(Q)DIST=/tmp/LFS-RELEASE ./git-version.sh $(REV)
 	$(Q)rm -f lfs-$$(</tmp/LFS-RELEASE).tar.xz
 	$(Q)tar cJf lfs-$$(</tmp/LFS-RELEASE).tar.xz \
-		$(shell git ls-tree HEAD . --name-only) version.ent \
+		$(shell git ls-tree HEAD . --name-only -r) version.ent \
 		-C /tmp LFS-RELEASE \
 		--transform "s,^,lfs-$$(</tmp/LFS-RELEASE)/,"
 	$(Q)echo "Generated XML tarball lfs-$$(</tmp/LFS-RELEASE).tar.xz"

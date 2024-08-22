@@ -34,18 +34,18 @@
     <!--<listitem>
       <para>Autoconf-&autoconf-version;</para>
     </listitem>-->
-    <!--<listitem>
+    <listitem>
       <para>Automake-&automake-version;</para>
-    </listitem>-->
-    <!--<listitem>
+    </listitem>
+    <listitem>
       <para>Bash-&bash-version;</para>
-    </listitem>-->
-    <!--<listitem>
+    </listitem>
+    <listitem>
       <para>Bc-&bc-version;</para>
-    </listitem>-->
-    <!--<listitem>
+    </listitem>
+    <listitem>
       <para>Binutils-&binutils-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Bison-&bison-version;</para>
     </listitem>-->
@@ -94,15 +94,15 @@
     <listitem>
        <para>GCC-&gcc-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
        <para>GDBM-&gdbm-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Gettext-&gettext-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Glibc-&glibc-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>GMP-&gmp-version;</para>
     </listitem>-->
@@ -142,9 +142,9 @@
     <listitem>
       <para>Kmod-&kmod-version;</para>
    </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Less-&less-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>LFS-Bootscripts-&lfs-bootscripts-version;</para>
     </listitem>-->
@@ -166,9 +166,9 @@
     <listitem>
       <para>Linux-&linux-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Lz4-&lz4-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>M4-&m4-version;</para>
     </listitem>-->
@@ -220,9 +220,9 @@
     <listitem>
       <para>Python-&python-version;</para>
     </listitem>
-    <!--<listitem>
+    <listitem>
       <para>Readline-&readline-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Sed-&sed-version;</para>
     </listitem>-->
@@ -232,15 +232,15 @@
     <listitem>
       <para>Shadow-&shadow-version;</para>
     </listitem>
-    <!--<listitem revision="sysv">
+    <listitem revision="sysv">
       <para>Sysklogd-&sysklogd-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Systemd-&systemd-version;</para>
     </listitem>
-    <!--<listitem revision="sysv">
+    <listitem revision="sysv">
       <para>SysVinit-&sysvinit-version;</para>
-    </listitem>-->
+    </listitem>
     <!--<listitem>
       <para>Tar-&tar-version;</para>
     </listitem>-->
@@ -253,9 +253,9 @@
     <!--<listitem>
       <para>Tzdata-&tzdata-version;</para>
     </listitem>-->
-    <!--<listitem revision="sysv">
+    <listitem revision="sysv">
       <para>Udev из Systemd-&systemd-version;</para>
-    </listitem>-->
+    </listitem>
     <listitem>
       <para>Util-linux-&util-linux-version;</para>
     </listitem>
@@ -294,16 +294,16 @@
     <listitem>
       <para>Lz4-&lz4-version;</para>
     </listitem>
-    <listitem>
-      <para>glibc-2.39-upstream_fix-1.patch</para>
-    </listitem>
   </itemizedlist>
 
   <itemizedlist>
-    <title>Удалены:</title>
-    <!-- <listitem><para></para></listitem>  satisfy build -->
-    <listitem><para></para></listitem>
- 
+    <title>Removed:</title>
+    <listitem>
+      <para>bash-5.2.21-upstream_fixes-1.patch</para>
+    </listitem>  
+    <listitem>
+      <para>readline-8.2-upstream_fixes-3.patch</para>
+    </listitem>  
   </itemizedlist>
 
 </sect1>
