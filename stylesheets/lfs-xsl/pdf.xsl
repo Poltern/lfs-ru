@@ -27,7 +27,7 @@
   <xsl:include href="pdf/lfs-pagesetup.xsl"/>
   <xsl:include href="pdf/lfs-xref.xsl"/>
 
-  <!-- Activate FOP-1 extensions. We use FOP-0.93 as the FO procesor. -->
+  <!-- Activate FOP-1 extensions. We use FOP-0.93 as the FO processor. -->
   <xsl:param name="fop1.extensions" select="1"/>
 
   <!-- Deactivate draft mode. -->
@@ -97,7 +97,7 @@
   <!-- Processing instruction for hard page breaks.
        FOP-0.93 supports @keep-*.*, @orphans, and @widows attributes,
        that solves several page break issues.
-       It also supports the soft page break procesing instruction included
+       It also supports the soft page break processing instruction included
        in the DocBook stylesheets.
        But sometimes we may need hard page breaks for final book versions.
        To understand all of the page break features, see

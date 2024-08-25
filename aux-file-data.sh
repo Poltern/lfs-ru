@@ -15,7 +15,7 @@ base=$(basename $bootscripts .tar.xz)
 bootsize=$(ls -l --block-size=1024 $bootscripts | cut -f5 -d" ")
 bootmd5=$(md5sum $bootscripts | cut -f1 -d" ")
 
-# Figure intalled size of bootscripts
+# Figure installed size of bootscripts
 TOPDIR=$(pwd)
 TMP_DIR=$(mktemp -d /tmp/lfsbootfiles.XXXXXX)
 pushd $TMP_DIR > /dev/null

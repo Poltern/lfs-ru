@@ -176,7 +176,7 @@
   </xsl:template>
 
     <!-- chapter title:
-           Small font size and left alignament. -->
+           Small font size and left alignment. -->
     <!-- The original template is in {docbook-xsl}/fo/titlepage.templates.xsl -->
   <xsl:template match="title" mode="chapter.titlepage.recto.auto.mode">
     <fo:block xsl:use-attribute-sets="chapter.titlepage.recto.style"
@@ -243,7 +243,7 @@
 
   <!-- page.number.format FOR ENGLISH
        We want roman numerals only in book's preface, not parts prefaces
-       (if any). The original template is in {docbook-xsl}/fo/pagesetup.xsl 
+       (if any). The original template is in {docbook-xsl}/fo/pagesetup.xsl -->
   <xsl:template name="page.number.format">
     <xsl:param name="element" select="local-name(.)"/>
     <xsl:param name="master-reference" select="''"/>

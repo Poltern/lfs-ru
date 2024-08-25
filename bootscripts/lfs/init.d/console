@@ -47,7 +47,7 @@ case "${1}" in
       log_info_msg "Setting up Linux console..."
 
       # Figure out if a framebuffer console is used
-      [ -d /sys/class/graphics/fb0 ] && use_fb=1 || use_fb=0
+      [ -d /sys/class/graphics/fbcon ] && use_fb=1 || use_fb=0
 
       # Figure out the command to set the console into the
       # desired mode

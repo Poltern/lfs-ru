@@ -86,6 +86,9 @@ mail.* -/var/log/mail.log
 user.* -/var/log/user.log
 *.emerg *
 
+# Do not open any internet ports.
+secure_mode 2
+
 # End /etc/syslog.conf</literal>
 EOF</userinput></screen>
 

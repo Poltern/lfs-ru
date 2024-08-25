@@ -322,7 +322,7 @@ function get_current()
       $file = basename( $line ) . "\n";
       if ( preg_match( "/patch$/", $file ) ) { continue; } // Skip patches
 
-      $file = preg_replace( "/bz2/", '', $file ); // The 2 confusses the regex
+      $file = preg_replace( "/bz2/", '', $file ); // The 2 confuses the regex
 
       $file        = rtrim( $file );
       $pkg_pattern = "/(\D*).*/";
