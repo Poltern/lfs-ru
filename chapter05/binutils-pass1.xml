@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-tools-binutils-pass1" role="wrap">
+<sect1 id="ch-tools-binutils-pass1" role="wrap" xreflabel="binutils-pass1">
   <?dbhtml filename="binutils-pass1.html"?>
 
   <sect1info condition="script">
