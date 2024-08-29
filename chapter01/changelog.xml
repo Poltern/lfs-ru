@@ -39,7 +39,7 @@
     appropriate for the entry or if needed the entire day's listitem.
     -->
 
-    <listitem>
+    <listitem revision='sysv'>
       <para>2024-08-23</para>
       <itemizedlist>
         <listitem>
@@ -49,7 +49,7 @@
       </itemizedlist>
     </listitem>
 
-    <listitem>
+    <listitem revision='sysv'>
       <para>2024-08-23</para>
       <itemizedlist>
         <listitem>
@@ -173,11 +173,11 @@
           <para>[bdubbs] - Update to setuptools-72.1.0. Fixes
           <ulink url='&lfs-ticket-root;5531'>#5531</ulink>.</para>
         </listitem>
-        <listitem>
+        <listitem revision='sysv'>
           <para>[bdubbs] - Update to sysklogd-2.6.1. Fixes
           <ulink url='&lfs-ticket-root;5522'>#5522</ulink>.</para>
         </listitem>
-        <listitem>
+        <listitem revision='systemd'>
           <para>[bdubbs] - Update to systemd-256.4. Fixes
           <ulink url='&lfs-ticket-root;5518'>#5518</ulink>.</para>
         </listitem>
@@ -230,7 +230,7 @@
       </itemizedlist>
     </listitem>
 
-    <listitem>
+    <listitem revision='sysv'>
       <para>2024-07-01</para>
       <itemizedlist>
         <listitem>
@@ -259,7 +259,7 @@
           <para>[bdubbs] - Update to linux-6.9.7. Fixes
           <ulink url='&lfs-ticket-root;5508'>#5508</ulink>.</para>
         </listitem>
-        <listitem>
+        <listitem revision='sysv'>
           <para>[bdubbs] - Update to sysklogd-2.5.2. Fixes
           <ulink url='&lfs-ticket-root;5509'>#5509</ulink>.</para>
         </listitem>
@@ -267,7 +267,7 @@
           <para>[bdubbs] - Update to shadow-4.16.0. Fixes
           <ulink url='&lfs-ticket-root;5510'>#5510</ulink>.</para>
         </listitem>
-        <listitem>
+        <listitem revision='systemd'>
           <para>[bdubbs] - Update to systemd-256.1. Fixes
           <ulink url='&lfs-ticket-root;5511'>#5511</ulink>.</para>
         </listitem>
@@ -289,7 +289,7 @@
           <para>[bdubbs] - Update to iana-etc-20240607. Addresses
           <ulink url='&lfs-ticket-root;5006'>#5006</ulink>.</para>
         </listitem>
-        <listitem>
+        <listitem revision='systemd'>
           <para>[bdubbs] - Update to systemd-256. Fixes
           <ulink url='&lfs-ticket-root;5504'>#5504</ulink>.</para>
         </listitem>
