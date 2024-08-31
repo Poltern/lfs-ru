@@ -1,14 +1,14 @@
 <!-- Editing  up to the line of ==== should be enough
      to generate a book for development, release, or rc-->
-<!ENTITY % development "INCLUDE"><!-- set to INCLUDE for development,
+<!ENTITY % development "IGNORE"><!-- set to INCLUDE for development,
                                       set to IGNORE for release or rc -->
-<!ENTITY % release     "IGNORE"> <!-- set to INCLUDE for release,
+<!ENTITY % release     "INCLUDE"> <!-- set to INCLUDE for release,
                                       set to IGNORE for development or rc -->
 <!ENTITY % rc          "IGNORE"> <!-- set to INCLUDE for rc,
                                       set to IGNORE for development or
                                        release -->
 <!ENTITY % relnum "12.1"><!-- must be given for release or rc -->
-<!ENTITY % reldate "1 марта 2024"><!-- must ve given for release or rc -->
+<!ENTITY % reldate "1 сентября 2024"><!-- must ve given for release or rc -->
 <!ENTITY % crdate "1999-2024"><!-- must ve given for release or rc -->
 <!ENTITY % rcnum  "0"><!-- must be given only for rc -->
 <!-- ================================================================== -->
