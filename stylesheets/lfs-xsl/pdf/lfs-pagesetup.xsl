@@ -244,7 +244,7 @@
   <!-- page.number.format FOR ENGLISH
        We want roman numerals only in book's preface, not parts prefaces
        (if any). The original template is in {docbook-xsl}/fo/pagesetup.xsl -->
-  <xsl:template name="page.number.format">
+  <!--<xsl:template name="page.number.format">
     <xsl:param name="element" select="local-name(.)"/>
     <xsl:param name="master-reference" select="''"/>
 
