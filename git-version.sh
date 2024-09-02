@@ -19,7 +19,7 @@ if [ -e LFS-RELEASE ]; then
 fi
 
 if ! git status > /dev/null; then
-	# Either it's not a git repository, or git is unavaliable.
+    # Either it's not a git repository or git is unavailable.
 	# Just workaround.
 	echo "<![ %sysv; ["                                    >  version.ent
 	echo "<!ENTITY version           \"unknown\">"         >> version.ent

@@ -8,7 +8,7 @@
                 exclude-result-prefixes="cf exsl">
 
    <!-- Top-level chunked code for fast processing.
-        Import standart customized chunk code.
+        Import standard customized chunk code.
         Replaces {docbook-xsl}/xhtml/chunkfast.xsl
 
         Note: Using this file as the top-level for chunked output implies that

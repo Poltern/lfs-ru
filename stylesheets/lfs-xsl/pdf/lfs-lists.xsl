@@ -39,8 +39,8 @@
   <xsl:param name="variablelist.max.termlength">35</xsl:param>
 
     <!-- varlistentry mode block:
-           Addibg a bullet, left alignament, and @kepp-*.* attributes
-           for packages and paches list. -->
+           Addibg a bullet, left alignment, and @kepp-*.* attributes
+           for packages and patches list. -->
     <!-- The original template is in {docbook-xsl}/fo/list.xsl -->
   <xsl:template match="varlistentry" mode="vl.as.blocks">
     <xsl:variable name="id"><xsl:call-template name="object.id"/></xsl:variable>
@@ -135,7 +135,7 @@
   </xsl:template>
 
     <!-- simplelist:
-           Self-made template. Wrap it into a fo:block and process member childs.
+           Self-made template. Wrap it into a fo:block and process member child.
            If @type is specified, the original templates will be used.
            NOTE: when using type='horiz' or type='vert', FOP-0.93 will complaints
              about not supported table-layout="auto" -->

@@ -5,7 +5,7 @@
                 version="1.0">
 
   <!-- This stylesheet contains misc params, attribute sets and templates
-       for output formating.
+       for output formatting.
        This file is for that templates that don't fit in other files. -->
 
     <!-- What space do you want between normal paragraphs. -->
@@ -128,7 +128,7 @@
   </xsl:template>
 
     <!-- literal:
-           Be sure that literal will use allways normal font weight. -->
+           Be sure that literal will use always normal font weight. -->
     <!-- The original template is in {docbook-xsl}/fo/inline.xsl -->
   <xsl:template match="literal">
     <fo:inline  font-weight="normal">
@@ -139,7 +139,7 @@
     <!-- inline.monoseq:
            Added hyphenate-url support to classname, exceptionname, interfacename,
            methodname, computeroutput, constant, envar, filename, function, code,
-           literal, option, promt, systemitem, varname, sgmltag, tag, and uri -->
+           literal, option, prompt, systemitem, varname, sgmltag, tag, and uri -->
     <!-- The original template is in {docbook-xsl}/fo/inline.xsl -->
   <xsl:template name="inline.monoseq">
     <xsl:param name="content">

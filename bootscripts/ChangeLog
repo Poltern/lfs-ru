@@ -1,3 +1,16 @@
+2024-08-25 Xi Ruoyao <xry111@xry111.site>
+   * Remove an empty line and an outdated comment (not valid anymore after
+     /usr merge) from init-functions.
+
+2024-08-24 Andrew Kreimer <algonell@gmail.com>
+   * Fix typos.
+
+2024-08-23 Xi Ruoyao <xry111@xry111.site>
+   * In console, detect FB console by checking /sys/class/graphics/fbcon
+     instead of fb0.  The latter does not exist if CONFIG_FB=n, but
+     CONFIG_DRM_FBDEV_EMULATION=y can support a FB console without
+     CONFIG_FB.
+
 2024-07-12 Xi Ruoyao <xry111@xry111.site>
    * In mountvirtfs, recreate /dev/fd correctly if it's already created
      by the initramfs.
