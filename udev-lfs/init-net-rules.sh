@@ -2,7 +2,7 @@
 
 # This script generates rules for persistent network device naming
 # Data from udev-182 75-persistent-net-generator.rules
-# Updated fof udev-197 (DEVICES=en*)
+# Updated for udev-197 (DEVICES=en*)
 
 RULES=/etc/udev/rules.d/70-persistent-net.rules
 DEVICES=$(eval echo /sys/class/net/{en*,eth*,ath*,wlan*[0-9],msh*,ra*,sta*,ctc*,lcs*,hsi*})

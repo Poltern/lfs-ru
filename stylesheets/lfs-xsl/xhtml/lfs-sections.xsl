@@ -145,7 +145,7 @@
   </xsl:template>
 
     <!-- sect1:
-           When there is a role attibute, use it as the class value.
+           When there is a role attribute, use it as the class value.
            Process the SVN keywords found in sect1info as a footnote.
            Output title before the containing <div> so that the title
            can be at a fixed position.
@@ -171,7 +171,7 @@
   </xsl:template>
 
     <!-- sect2:
-           When there is a role attibute, use it as the class value.
+           When there is a role attribute, use it as the class value.
            Removed unused code. -->
     <!-- The original template is in {docbook-xsl}/xhtml/sections.xsl -->
   <xsl:template match="sect2">

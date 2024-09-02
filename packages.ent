@@ -2,7 +2,7 @@
 
 <!-- Notes:
      For empty *-home entities use " " not ""
-     Packages sizes allways in KB
+     Packages sizes always in KB
      Allowed deviation in SBUs : 10%
      Allowed deviation in disk usage : 2%
 
@@ -86,7 +86,7 @@
 <!ENTITY bison-tmp-du "57 MB">
 <!ENTITY bison-tmp-sbu "0.2 SBU">
 <!ENTITY bison-fin-du "62 MB">
-<!ENTITY bison-fin-sbu "2.3 SBU">
+<!ENTITY bison-fin-sbu "2.2 SBU">
 
 <!ENTITY bzip2-version "1.0.8">
 <!ENTITY bzip2-size "792 KB">
@@ -128,7 +128,7 @@
 <!ENTITY dejagnu-md5 "68c5208c58236eba447d7d6d1326b821">
 <!ENTITY dejagnu-home "&gnu-software;dejagnu/">
 <!ENTITY dejagnu-tmp-du "6.9 MB">
-<!ENTITY dejagnu-tmp-sbu "0.1 SBU">
+<!ENTITY dejagnu-tmp-sbu "менее 0.1 SBU">
 
 <!ENTITY diffutils-version "3.10">
 <!ENTITY diffutils-size "1,587 KB">
@@ -216,7 +216,7 @@
 <!ENTITY gawk-tmp-du "47 MB">
 <!ENTITY gawk-tmp-sbu "0.1 SBU">
 <!ENTITY gawk-fin-du "42 MB">
-<!ENTITY gawk-fin-sbu "0.1 SBU">
+<!ENTITY gawk-fin-sbu "0.2 SBU">
 
 <!ENTITY gcc-version "14.2.0">
 <!ENTITY gcc-size "90,144 KB">
@@ -391,7 +391,7 @@
 <!ENTITY less-fin-du "14 MB">
 <!ENTITY less-fin-sbu "менее 0.1 SBU">
 
-<!ENTITY lfs-bootscripts-version "20240717">      <!-- Scripts depend on this format -->
+<!ENTITY lfs-bootscripts-version "20240825">      <!-- Scripts depend on this format -->
 <!ENTITY lfs-bootscripts-size "BOOTSCRIPTS-SIZE KB">
 <!ENTITY lfs-bootscripts-url "&downloads-root;lfs-bootscripts-&lfs-bootscripts-version;.tar.xz">
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">

@@ -65,7 +65,7 @@
   </xsl:template>
 
     <!-- toc.line:
-           Adding the h* tags and dropping unneded links.
+           Adding the h* tags and dropping unneeded links.
            This template is a full re-made version of the original one. -->
     <!-- The original template is in {docbook-xsl}/xhtml/autotoc.xsl -->
   <xsl:template name="toc.line">

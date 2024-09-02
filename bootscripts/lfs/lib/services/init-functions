@@ -457,11 +457,8 @@ pidofproc()
 
     # If a PID file is set and exists, use it.
     if [ -n "${pidfile}" -a -e "${pidfile}" ]; then
-
         # Use the value in the first line of the pidfile
         pidlist=`/bin/head -n1 "${pidfile}"`
-        # This can optionally be written as 'sed 1q' to repalce 'head -n1'
-        # should LFS move /bin/head to /usr/bin/head
     else
         # Use pidof
         pidlist=`pidof "${program}"`

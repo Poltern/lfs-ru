@@ -166,7 +166,7 @@ cd       build</userinput></screen>
         <listitem>
           <para>Разрешить <filename class="libraryfile">libstdc++</filename> использовать 
 		  <filename class="libraryfile">libgcc</filename>, собранную на этом этапе, вместо 
-		  предыдущей версии, собранной в <внешняя ссылка='ch-tools-gcc-pass1'/>. Предыдущая 
+		  предыдущей версии, собранной в <xref linkend='ch-tools-gcc-pass1'/>. Предыдущая 
 		  версия не поддерживает должным образом обработку исключений на C++, поскольку она 
 		  была собрана без поддержки libc</para>
         </listitem>

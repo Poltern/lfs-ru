@@ -1,6 +1,6 @@
 The udev-lfs set of files is a customization of systemd.
 In 2012, udev was merged with systemd and a build methodology
-incompatible with LFS.  These files add cusom udev rules
+incompatible with LFS.  These files add custom udev rules
 for LFS.
 
 These files are distributed in the form of a tar file available
