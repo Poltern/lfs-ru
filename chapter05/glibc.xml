@@ -47,11 +47,11 @@
 	LSB. Кроме того, для совместимости с x86_64 создайте символическую ссылку,
 	необходимую для правильной работы загрузчика динамической библиотеки:</para>
 
-<screen arch="default"><userinput remap="pre">case $(uname -m) in
-    i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+<screen arch="default"><userinput remap="pre">case "$LFS_TGT" in
+    i?86-*)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
     ;;
-    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
-            ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+    x86_64-*) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
+              ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
     ;;
 esac</userinput></screen>
 <!-- no ld-linux.so.2 here as multilib is based on x86_64, not on i686 -->
@@ -85,22 +85,13 @@ cd       build</userinput></screen>
 
     <para>Затем подготовьте Glibc к компиляции:</para>
 
-<screen arch="default"><userinput remap="configure">../configure                             \
+<screen><userinput remap="configure">../configure                             \
       --prefix=/usr                      \
       --host=$LFS_TGT                    \
       --build=$(../scripts/config.guess) \
       --enable-kernel=&min-kernel;               \
       --with-headers=$LFS/usr/include    \
       --disable-nscd                     \
-      libc_cv_slibdir=/usr/lib</userinput></screen>
-<screen arch="ml_32,ml_x32,ml_all"><userinput remap="configure">../configure                             \
-      --prefix=/usr                      \
-      --host=$LFS_TGT                    \
-      --build=$(../scripts/config.guess) \
-      --enable-kernel=&min-kernel;                \
-      --with-headers=$LFS/usr/include    \
-      --disable-nscd                     \
-      --enable-multi-arch                \
       libc_cv_slibdir=/usr/lib</userinput></screen>
 
     <variablelist>
@@ -270,7 +261,7 @@ CXX="$LFS_TGT-g++ -m32" \
       --build=$(../scripts/config.guess) \
       --enable-kernel=&min-kernel;                \
       --with-headers=$LFS/usr/include    \
-      --enable-multi-arch                \
+      --disable-nscd                     \
       --libdir=/usr/lib32                \
       --libexecdir=/usr/lib32            \
       libc_cv_slibdir=/usr/lib32</userinput></screen>
@@ -339,7 +330,7 @@ CXX="$LFS_TGT-g++ -mx32" \
       --build=$(../scripts/config.guess) \
       --enable-kernel=&min-kernel;                \
       --with-headers=$LFS/usr/include    \
-      --enable-multi-arch                \
+      --disable-nscd                     \
       --libdir=/usr/libx32               \
       --libexecdir=/usr/libx32           \
       libc_cv_slibdir=/usr/libx32</userinput></screen>

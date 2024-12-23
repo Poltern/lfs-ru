@@ -131,6 +131,7 @@ make clean</userinput></screen>
     --with-xz                     \
     --with-zstd                   \
     --with-zlib                   \
+    --disable-manpages            \
     --with-rootlibdir=/usr/lib32</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
@@ -169,6 +170,7 @@ make clean</userinput></screen>
     --with-xz                     \
     --with-zstd                   \
     --with-zlib                   \
+    --disable-manpages            \
     --with-rootlibdir=/usr/libx32</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>

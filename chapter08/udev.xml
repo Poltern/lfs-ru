@@ -256,6 +256,7 @@ meson setup \
       -Dlogind=false                \
       -Dvconsole=false              \
       ..</userinput></screen>
+
     <para>Скомпилируйте пакет:</para>
 
 <screen><userinput remap="make">ninja \

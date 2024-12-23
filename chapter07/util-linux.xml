@@ -139,20 +139,21 @@
     <para>Подготовьте Util-linux к компиляции:</para>
 
 <screen><userinput remap="configure">CC="gcc -m32" \
-./configure ADJTIME_PATH=/var/lib/hwclock/adjtime    \
+./configure --host=i686-pc-linux-gnu \
             --libdir=/usr/lib32      \
-            --host=i686-pc-linux-gnu \
+            --runstatedir=/run       \
             --docdir=/usr/share/doc/util-linux-&util-linux-version; \
-            --disable-chfn-chsh  \
-            --disable-login      \
-            --disable-nologin    \
-            --disable-su         \
-            --disable-setpriv    \
-            --disable-runuser    \
-            --disable-pylibmount \
-            --disable-static     \
-            --without-python     \
-            runstatedir=/run</userinput></screen>
+            --disable-chfn-chsh   \
+            --disable-login       \
+            --disable-nologin     \
+            --disable-su          \
+            --disable-setpriv     \
+            --disable-runuser     \
+            --disable-pylibmount  \
+            --disable-static      \
+            --disable-liblastlog2 \
+            --without-python      \
+            ADJTIME_PATH=/var/lib/hwclock/adjtime</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
 
@@ -180,20 +181,21 @@ rm -rf DESTDIR</userinput></screen>
     <para>Подготовьте Util-linux к компиляции:</para>
 
 <screen><userinput remap="configure">CC="gcc -mx32" \
-./configure ADJTIME_PATH=/var/lib/hwclock/adjtime    \
-            --libdir=/usr/libx32 \
-            --host=x86_64-pc-linux-gnux32 \
+./configure --host=x86_64-pc-linux-gnux32 \
+            --libdir=/usr/libx32     \
+            --runstatedir=/run       \
             --docdir=/usr/share/doc/util-linux-&util-linux-version; \
-            --disable-chfn-chsh  \
-            --disable-login      \
-            --disable-nologin    \
-            --disable-su         \
-            --disable-setpriv    \
-            --disable-runuser    \
-            --disable-pylibmount \
-            --disable-static     \
-            --without-python     \
-            runstatedir=/run</userinput></screen>
+            --disable-chfn-chsh   \
+            --disable-login       \
+            --disable-nologin     \
+            --disable-su          \
+            --disable-setpriv     \
+            --disable-runuser     \
+            --disable-pylibmount  \
+            --disable-static      \
+            --disable-liblastlog2 \
+            --without-python      \
+            ADJTIME_PATH=/var/lib/hwclock/adjtime</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
 
