@@ -31,7 +31,7 @@
         <para><ulink url="https://refspecs.linuxfoundation.org/lsb.shtml">Linux
         Standard Base (LSB) Version 5.0 (2015)</ulink></para>
 
-		<para>LSB имеет четыре отдельных стандарта: Core, Desktop, Runtime Languages 
+		<para>LSB имеет четыре отдельных стандарта: Core, Desktop, Languages 
 		и Imaging. Некоторые части спецификаций Core и Desktop зависят от архитектуры. Есть 
 		также две области не являющиеся обязательными: Gtk3 и Graphics. 
 		LFS старается соответствовать стандартам LSB, для архитектур IA32 (32-bit x86) или 
@@ -49,7 +49,8 @@
 
     <para>Создать законченную систему, которая пройдет сертификационные тесты LSB <quote>с нуля</quote>, 
 	возможно, но этого нельзя сделать без установки множества дополнительных пакетов, которые 
-	выходят за рамки этой книги. Однако, инструкции по их установке можно найти в книге BLFS.</para>
+	выходят за рамки этой книги. Однако, инструкции по установке некоторых из них можно найти 
+	в книге BLFS.</para>
 
     <variablelist>
       <bridgehead renderas="sect3">Пакеты LFS, которые необходимы для удовлетворения 
@@ -60,9 +61,12 @@
       <varlistentry>
         <term><emphasis>LSB Core:</emphasis></term>
         <listitem>
-          <para>Bash, Bc, Binutils, Coreutils, Diffutils, File, Findutils, Gawk,
-                Grep, Gzip, M4, Man-DB, Ncurses, Procps, Psmisc, Sed,
-                Shadow, Tar, Util-linux, Zlib</para>
+          <para>
+            Bash, Bc, Binutils, Coreutils, Diffutils, File, Findutils, Gawk,
+            GCC, Gettext, Glibc, Grep, Gzip, M4, Man-DB, Procps, Psmisc,
+            Sed, Shadow, <phrase revision='sysv'>SysVinit</phrase><phrase
+            revision='systemd'>Systemd</phrase>, Tar, Util-linux, Zlib
+          </para>
         </listitem>
       </varlistentry>
 
@@ -74,9 +78,9 @@
       </varlistentry>
 
       <varlistentry>
-        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <term><emphasis>LSB Languages:</emphasis></term>
         <listitem>
-          <para>Perl, Python</para>
+          <para>Perl</para>
         </listitem>
       </varlistentry>
 
@@ -105,8 +109,9 @@
       <varlistentry>
         <term><emphasis>LSB Core:</emphasis></term>
         <listitem>
-          <para>At, Batch (часть At), Cpio, Ed, Fcrontab, LSB-Tools, NSPR,
-          NSS, PAM, Pax, Sendmail (или Postfix, или Exim), time
+          <para>At, Batch (часть At), BLFS Bash Startup Files, Cpio, Ed,
+          Fcrontab, LSB-Tools, NSPR, NSS, Linux-PAM, Pax, Sendmail
+          (или Postfix, или Exim), Time
           </para>
         </listitem>
       </varlistentry>
@@ -115,15 +120,15 @@
         <term><emphasis>LSB Desktop:</emphasis></term>
         <listitem>
           <para>Alsa, ATK, Cairo, Desktop-file-utils, Freetype, Fontconfig,
-          Gdk-pixbuf, Glib2, GTK+2, Icon-naming-utils, Libjpeg-turbo, Libpng, Libtiff,
-          Libxml2, MesaLib, Pango, Xdg-utils, Xorg</para>
+          Gdk-pixbuf, Glib2, GLU, Icon-naming-utils, Libjpeg-turbo,
+          Libxml2, Mesa, Pango, Xdg-utils, Xorg</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <term><emphasis>LSB Languages:</emphasis></term>
         <listitem>
-          <para>Libxml2, Libxslt </para>
+          <para>Libxml2, Libxslt</para>
         </listitem>
       </varlistentry>
 
@@ -137,36 +142,63 @@
       <varlistentry>
         <term><emphasis>LSB Gtk3 и LSB Graphics (Необязательные):</emphasis></term>
         <listitem>
-          <para>GTK3+</para>
+          <para>GTK+3</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
     <variablelist>
-      <bridgehead renderas="sect3">Пакеты, не поставляемые LFS или BLFS, необходимые 
-	  для удовлетворения требований LSB</bridgehead>
+      <bridgehead renderas="sect3">Компоненты, не поставляемые или поставляемые опционально 
+	  LFS или BLFS, необходимые для удовлетворения LSB</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry>
         <term><emphasis>LSB Core:</emphasis></term>
         <listitem>
-          <para>Нет</para>
+          <para>
+            <command>install_initd</command>,
+            <filename class='libraryfile'>libcrypt.so.1</filename>
+            (может быть предоставлена с дополнительными инструкциями для пакета LFS Libxcrypt),
+            <filename class='libraryfile'>libncurses.so.5</filename>
+            (может быть предоставлена с дополнительными инструкциями для пакета LFS Ncurses),
+            <filename class='libraryfile'>libncursesw.so.5</filename>
+            (но пакетом LFS Ncurses предоставляется 
+			<filename class='libraryfile'>libncursesw.so.6</filename>)
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><emphasis>LSB Desktop:</emphasis></term>
         <listitem>
-          <para>Qt4 (но предоставляется Qt5)</para>
+          <para>
+            <filename class='libraryfile'>libgdk-x11-2.0.so</filename>
+            (но <filename class='libraryfile'>libgdk-3.so</filename>
+            предоставляется пакетом BLFS GTK+-3),
+            <filename class='libraryfile'>libgtk-x11-2.0.so</filename>
+            (но <filename class='libraryfile'>libgtk-3.so</filename>
+            и <filename class='libraryfile'>libgtk-4.so</filename>
+            предоставляется пакетами BLFS GTK+-3 и GTK-4),
+            <filename class='libraryfile'>libpng12.so</filename>
+            (но <filename class='libraryfile'>libpng16.so</filename>
+            предоставляется пакетом BLFS Libpng),
+            <filename class='libraryfile'>libQt*.so.4</filename>
+            (но <filename class='libraryfile'>libQt6*.so.6</filename>
+            предоставляется пакетом BLFS Qt6),
+            <filename class='libraryfile'>libtiff.so.4</filename>
+            (но <filename class='libraryfile'>libtiff.so.6</filename>
+            предоставляется пакетом BLFS Libtiff)
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <term><emphasis>LSB Languages:</emphasis></term>
         <listitem>
-          <para>Нет</para>
+          <para><command>/usr/bin/python</command> (LSB требует Python2, но LFS и BLFS 
+		  предоставляют только Python3)</para>
         </listitem>
       </varlistentry>
 
@@ -180,7 +212,11 @@
       <varlistentry>
         <term><emphasis>LSB Gtk3 и LSB Graphics (Необязательные):</emphasis></term>
         <listitem>
-          <para>Нет</para>
+          <para>
+            <filename class='libraryfile'>libpng15.so</filename>
+            (но <filename class='libraryfile'>libpng16.so</filename>
+            предоставляется пакетом BLFS Libpng)
+          </para>
         </listitem>
       </varlistentry>
 

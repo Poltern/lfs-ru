@@ -178,7 +178,7 @@ EOF</userinput></screen>
 
      <para>x может быть любым числом в диапазоне 16-31. y может быть любым числом в диапазоне 0-255.</para>
 
-     <para>Правильным IP адресом в локальной сети может быть 192.168.1.1.</para>
+     <para>Правильным IP адресом в локальной сети может быть 192.168.1.2.</para>
 
      <para>Если компьютер должен быть виден в Интернете, действительным полным доменным 
 	 именем может быть само имя домена или строка, полученная путем объединения префикса 
@@ -197,7 +197,7 @@ EOF</userinput></screen>
 
 127.0.0.1 localhost.localdomain localhost
 127.0.1.1 <replaceable>&lt;FQDN&gt;</replaceable> <replaceable>&lt;HOSTNAME&gt;</replaceable>
-<replaceable>&lt;192.168.1.1&gt;</replaceable> <replaceable>&lt;FQDN&gt;</replaceable> <replaceable>&lt;HOSTNAME&gt;</replaceable> <replaceable>[alias1] [alias2 ...]</replaceable>
+<replaceable>&lt;192.168.1.2&gt;</replaceable> <replaceable>&lt;FQDN&gt;</replaceable> <replaceable>&lt;HOSTNAME&gt;</replaceable> <replaceable>[alias1] [alias2 ...]</replaceable>
 ::1       localhost ip6-localhost ip6-loopback
 ff02::1   ip6-allnodes
 ff02::2   ip6-allrouters
@@ -205,7 +205,7 @@ ff02::2   ip6-allrouters
 # End /etc/hosts</literal>
 EOF</userinput></screen>
 
-     <para>Значения <replaceable>&lt;192.168.1.1&gt;</replaceable>,
+     <para>Значения <replaceable>&lt;192.168.1.2&gt;</replaceable>,
      <replaceable>&lt;FQDN&gt;</replaceable>, и
      <replaceable>&lt;HOSTNAME&gt;</replaceable> должны быть изменены в соответствии 
 	 с предпочтениями пользователя или требованиями сети (если имеется IP-адрес выданный

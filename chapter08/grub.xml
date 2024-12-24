@@ -102,7 +102,8 @@
 	пакетов, недоступных в ограниченной среде LFS. Если вы все равно хотите запустить
 	тесты, выполните <command>make check</command>.</para>
 
-    <para>Установите пакет:</para>
+    <para>Установите пакет и переместите файл поддержки автодополнения Bash в каталог, 
+	рекомендованный разработчиками "Bash completion":</para>
 
 <screen><userinput remap="install">make install
 mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions</userinput></screen>
