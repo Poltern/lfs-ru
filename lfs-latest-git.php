@@ -11,12 +11,9 @@ $exceptions = array();
 //$exceptions[ 'gmp' ] = "UPDIR=/.*(gmp-\d[\d\.-]*\d).*/:DOWNDIR=";
 
 $regex = array();
-//$regex[ 'bzip2'    ] = "/^.*current version is ([\d\.]+).*$/";
 $regex[ 'intltool' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'less'     ] = "/^.*current released version is less-(\d+).*$/";
 $regex[ 'mpfr'     ] = "/^mpfr-([\d\.]+)\.tar.*$/";
-//$regex[ 'Python'   ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
-//$regex[ 'sysvinit' ] = "/^.*sysvinit-([\d\.]+)dsf\.tar.*$/";
 $regex[ 'tzdata'   ] = "/^.*tzdata([\d]+[a-z]).*$/";
 $regex[ 'xz'       ] = "/^.*xz-([\d\.]*\d).*$/";
 $regex[ 'zlib'     ] = "/^.*zlib ([\d\.]*\d).*$/";
@@ -118,7 +115,7 @@ function get_packages( $package, $dirpath )
   global $exceptions;
   global $regex;
 
-//if ( $package != "psmisc" ) return 0; // debug
+//if ( $package != "wheel" ) return 0; // debug
 
 if ( $package == "bc"         ) $dirpath = github("gavinhoward/bc");
 if ( $package == "check"      ) $dirpath = github("libcheck/check");
@@ -128,14 +125,15 @@ if ( $package == "elfutils"   ) $dirpath = "https://sourceware.org/ftp/elfutils"
 if ( $package == "expect"     ) $dirpath = "https://sourceforge.net/projects/expect/files";
 if ( $package == "file"       ) $dirpath = "https://github.com/file/file/tags";
 if ( $package == "flex"       ) $dirpath = github("westes/flex");
-if ( $package == "flit_core"  ) $dirpath = "https://pypi.org/project/flit-core/";
-if ( $package == "setuptools" ) $dirpath = "https://pypi.org/project/setuptools/";
+if ( $package == "flit_core"  ) $dirpath = "https://pypi.org/rss/project/flit-core/releases.xml";
 if ( $package == "gcc"        ) $dirpath = max_parent( $dirpath, "gcc-" );
 if ( $package == "iana-etc"   ) $dirpath = github("Mic92/iana-etc");
 if ( $package == "intltool"   ) $dirpath = "https://launchpad.net/intltool/trunk";
+if ( $package == "jinja"      ) $dirpath = "https://pypi.org/rss/project/jinja2/releases.xml";
 if ( $package == "libffi"     ) $dirpath = github("libffi/libffi");
 if ( $package == "libxcrypt"  ) $dirpath = github("besser82/libxcrypt");
 if ( $package == "lz4"        ) $dirpath = github("lz4/lz4");
+if ( $package == "markupsafe" ) $dirpath = "https://pypi.org/rss/project/markupsafe/releases.xml";
 if ( $package == "meson"      ) $dirpath = github("mesonbuild/meson");
 if ( $package == "mpc"        ) $dirpath = "https://ftp.gnu.org/gnu/mpc";
 if ( $package == "mpfr"       ) $dirpath = "https://mpfr.loria.fr/mpfr-current";
@@ -145,17 +143,15 @@ if ( $package == "openssl"    ) $dirpath = github("openssl/openssl");
 if ( $package == "procps-ng"  ) $dirpath = "https://gitlab.com/procps-ng/procps/-/tags";
 if ( $package == "psmisc"     ) $dirpath = "https://gitlab.com/psmisc/psmisc/-/tags";
 if ( $package == "Python"     ) $dirpath = "https://www.python.org/downloads/source/";
+if ( $package == "setuptools" ) $dirpath = "https://pypi.org/rss/project/setuptools/releases.xml";
 if ( $package == "shadow"     ) $dirpath = github("shadow-maint/shadow");
 if ( $package == "sysvinit"   ) $dirpath = github("slicer69/sysvinit");
-if ( $package == "MarkupSafe" ) $dirpath = "https://pypi.python.org/pypi/MarkupSafe/";
-if ( $package == "jinja"      ) $dirpath = "https://pypi.python.org/pypi/Jinja2/";
 if ( $package == "sysklogd"   ) $dirpath = github("troglobit/sysklogd");
 if ( $package == "systemd"    ) $dirpath = github("systemd/systemd");
-//if ( $package == "tcl"        ) $dirpath = "https://sourceforge.net/projects/tcl/files";
 if ( $package == "tcl"        ) $dirpath = "https://www.tcl.tk/software/tcltk/download.html";
 if ( $package == "util-linux" ) $dirpath = max_parent( $dirpath, "v." );
 if ( $package == "vim"        ) $dirpath = "https://github.com/vim/vim/tags";
-if ( $package == "wheel"      ) $dirpath = "https://pypi.org/project/wheel/#files";
+if ( $package == "wheel"      ) $dirpath = "https://pypi.org/rss/project/wheel/releases.xml";
 if ( $package == "xz"         ) $dirpath = github("tukaani-project/xz");
 if ( $package == "zlib"       ) $dirpath = "https://www.zlib.net";
 if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
@@ -250,11 +246,22 @@ if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
      return str_replace( "_", ".", $max );
   }
 
+  # Python modules
   if ( $package == "flit_core" )
-     return find_max( $lines, "/flit-core /", "/^.*flit-core ([\d\.]+)$/" );
+     return find_max( $lines, "/flit-core\/\d/", "/^.*flit-core\/([\d\.]+).*$/" );
 
   if ( $package == "setuptools" )
-     return find_max( $lines, "/setuptools /", "/^.*setuptools ([\d\.]+)$/" );
+     return find_max( $lines, "/setuptools\/\d/", "/^.*setuptools\/([\d\.]+).*$/" );
+
+  if ( $package == "markupsafe" )
+     return find_max( $lines, "/markupsafe\/\d/", "/^.*markupsafe\/([\d\.]+).*$/" );
+
+  if ( $package == "jinja" )
+     return find_max( $lines, "/jinja2\/\d/", "/^.*jinja2\/([\d\.]+).*$/" );
+
+  if ( $package == "wheel" )
+     return find_max( $lines, "/wheel\/\d/", "/^.*wheel\/([\d\.]+).*$/" );
+  # End Python modules
 
   if ( $package == "procps-ng" )
      return find_max( $lines, "/v\d/", "/^.*v([\d\.]+)$/" );
@@ -264,9 +271,6 @@ if ( $package == "zstd"       ) $dirpath = github("facebook/zstd");
 
   if ( $package == "grub" )
      return find_max( $lines, "/grub/", "/^.*grub-([\d\.]+).tar.xz.*$/" );
-
-  if ( $package == "jinja" )
-     return find_max( $lines, "/Jinja/", "/^.*Jinja2 ([\d\.]+).*$/" );
 
   if ( $package == "lz4" )
      return find_max( $lines, "/tag_name/", '/^.*v([\d\.]+).*$/' );

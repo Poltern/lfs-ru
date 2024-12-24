@@ -7,6 +7,10 @@
 <!ENTITY bash-upstream-fixes-patch-md5 "2d1691a629c558e894dbb78ee6bf34ef">
 <!ENTITY bash-upstream-fixes-patch-size "5.9 KB">
 -->
+<!ENTITY binutils-upstream-patch "binutils-&binutils-version;-upstream_fix-1.patch">
+<!ENTITY binutils-upstream-patch-md5 "eddd9860af589ec328541a9ec5e5928e">
+<!ENTITY binutils-upstream-patch-size "18 KB">
+
 <!ENTITY bzip2-docs-patch "bzip2-&bzip2-version;-install_docs-1.patch">
 <!ENTITY bzip2-docs-patch-md5 "6a5ac7e89b791aae556de0f745916f7f">
 <!ENTITY bzip2-docs-patch-size "1.6 KB">

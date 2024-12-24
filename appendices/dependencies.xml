@@ -1274,7 +1274,7 @@
       <segmentedlist id="grub-rundeps">
         <segtitle>&runtime;</segtitle>
         <seglistitem>
-          <seg>Bash, GCC, Gettext, Glibc, Xz и Sed.</seg>
+          <seg>Bash, GCC, Gettext, Glibc, Xz и Sed</seg>
         </seglistitem>
       </segmentedlist>
 

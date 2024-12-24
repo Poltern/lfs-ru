@@ -1,13 +1,13 @@
 <!-- Editing  up to the line of ==== should be enough
      to generate a book for development, release, or rc-->
-<!ENTITY % development "IGNORE"><!-- set to INCLUDE for development,
+<!ENTITY % development "INCLUDE"><!-- set to INCLUDE for development,
                                       set to IGNORE for release or rc -->
-<!ENTITY % release     "INCLUDE"> <!-- set to INCLUDE for release,
+<!ENTITY % release     "IGNORE"> <!-- set to INCLUDE for release,
                                       set to IGNORE for development or rc -->
 <!ENTITY % rc          "IGNORE"> <!-- set to INCLUDE for rc,
                                       set to IGNORE for development or
                                        release -->
-<!ENTITY % relnum "12.1"><!-- must be given for release or rc -->
+<!ENTITY % relnum "12.2"><!-- must be given for release or rc -->
 <!ENTITY % reldate "1 сентября 2024"><!-- must ve given for release or rc -->
 <!ENTITY % crdate "1999-2024"><!-- must ve given for release or rc -->
 <!ENTITY % rcnum  "0"><!-- must be given only for rc -->
@@ -34,6 +34,7 @@
                                              &patches-root;,
                                              &donwloads-root;, and
                                              &test-results; -->
+<!ENTITY os-release-type "development"> <!-- used by /etc/os-release -->
 ]]><!-- End %development -->
 
 <![ %release; [
@@ -52,6 +53,7 @@
                                           &test-results; -->
 <!ENTITY releasedate     "%reldate;">
 <!ENTITY copyrightdate   "%crdate;">
+<!ENTITY os-release-type "stable"> <!-- used by /etc/os-release -->
 ]]>
 
 <![ %rc; [
@@ -70,6 +72,7 @@
                                                     &test-results; -->
 <!ENTITY releasedate     "%reldate;">
 <!ENTITY copyrightdate   "%crdate;">
+<!ENTITY os-release-type "development"> <!-- used by /etc/os-release -->
 ]]>
 
 <![ %sysv; [
@@ -95,9 +98,11 @@
 <!ENTITY test-results    "&lfs-root;lfs/build-logs/&generic-version;/">
 <!ENTITY secadv          "&lfs-root;lfs/advisories/">
 
-<!-- 4.19 EOL is Dec 2024
-     so for LFS 12.3 we may consider moving to 5.4 -->
-<!ENTITY min-kernel      "4.19">
+<!-- 5.4 EOL is Dec 2025
+     so for LFS 12.5 we may consider moving to 5.10.
+     Keep an extra whitespace here to align the trailing "\" in glibc
+     configure command if y < 10 in x.y.  -->
+<!ENTITY min-kernel      "5.4 ">
 
 <!--
 <!ENTITY patches-rootd   "&lfs-root;patches/lfs/&generic-versiond;/">

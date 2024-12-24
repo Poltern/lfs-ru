@@ -43,16 +43,12 @@
   <sect2 role="installation">
     <title>Установка пакета Ncurses</title>
 
-    <para>Во-первых, убедитесь, что <command>gawk</command> найден первым во время настройки:</para>
-
-<screen><userinput remap="pre">sed -i s/mawk// configure</userinput></screen>
-
-    <para>Затем выполните следующие команды, чтобы собрать программу 
+    <para>Сначала выполните следующие команды, чтобы собрать программу 
 	<quote>tic</quote> на хосте сборки:</para>
 
 <screen><userinput remap="pre">mkdir build
 pushd build
-  ../configure
+  ../configure AWK=gawk
   make -C include
   make -C progs tic
 popd</userinput></screen>
@@ -69,7 +65,8 @@ popd</userinput></screen>
             --with-cxx-shared            \
             --without-debug              \
             --without-ada                \
-            --disable-stripping</userinput></screen>
+            --disable-stripping          \
+            AWK=gawk</userinput></screen>
 
     <variablelist>
       <title>Значение новых параметров настройки:</title>
@@ -129,22 +126,15 @@ popd</userinput></screen>
 		  хоста в кросс-компилируемой программе может привести к сбою.</para>
         </listitem>
       </varlistentry>
-<!-- this is the default >= 6.5
-      <varlistentry>
-        <term><parameter>- -enable-widec</parameter></term>
-        <listitem>
-          <para>Этот аргумент указывает, что необходимо скомпилировать библиотеки
-		  расширенных символов (такие как, <filename
-          class="libraryfile">libncursesw.so.&ncurses-version;</filename>)
-          вместо обычных (<filename class="libraryfile">libncurses.so.&ncurses-version;</filename>).
-		  Библиотеки расширенных символов можно использовать как в многобайтовой, так и
-          традиционной 8-битной локали, в то время как обычные библиотеки корректно работают
-          только в 8-битных локалях. Библиотеки расширенных символов и обычные совместимы на
-		  уровне исходного кода, но бинарно не совместимы.</para>
 
+      <varlistentry>
+        <term><parameter>AWK=gawk</parameter></term>
+        <listitem>
+          <para>Этот параметр запрещает системе сборки использовать программу 
+		  <command>mawk</command> с хоста. Некоторые версии <command>mawk</command> 
+		  могут привести к ошибке сборки этого пакета.</para>
         </listitem>
       </varlistentry>
--->
     </variablelist>
 
     <para>Скомпилируйте пакет:</para>
