@@ -78,10 +78,11 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
 	их аналоги в <filename class="directory">/usr</filename>.</para>
 
     <note>
-      <para>Если вы по какой-либо причине хотите включить 
-	  <filename class="directory">/bin</filename> и/или 
-	  <filename class="directory">/sbin</filename> в <envar>PATH</envar>, измените 
-	  <envar>PATH</envar> в файле <filename>.bashrc</filename> после сборки LFS.</para>
+      <para>Включение <filename class="directory">/bin</filename> и/или 
+	  <filename class="directory">/sbin</filename> в переменную <envar>PATH</envar> 
+	  может привести к тому, что некоторые пакеты BLFS не будут собраны,
+	  <!-- известный пример: SPIRV-LLVM-Translator --> поэтому не делайте этого в 
+	  файле <filename>.bashrc</filename> или где-либо еще.</para>
     </note>
 
 

@@ -270,10 +270,10 @@ cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></sc
 		  обслуживания (CoS)</para>
 
           <para><command>tc qdisc</command> позволяет пользователям настроить
-		  дисциплину обработки очередей</para>
+		  порядок организации очередей</para>
 
           <para><command>tc class</command> позволяет пользователям настраивать
-		  классы, на основе планирования дисциплины обработки очередей</para>
+		  классы, на основе планирования порядка обработки очередей</para>
 
           <para><command>tc filter</command> позволяет пользователям настроить
 		  фильтрацию пакетов QOS/COS</para>
