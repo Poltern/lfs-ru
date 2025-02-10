@@ -77,8 +77,7 @@ rm -fv man/man8/arpd.8</userinput></screen>
 
     <para>По желанию, установите документацию:</para>
 
-<screen><userinput remap="install">mkdir -pv             /usr/share/doc/iproute2-&iproute2-version;
-cp -v COPYING README* /usr/share/doc/iproute2-&iproute2-version;</userinput></screen>
+<screen><userinput remap="install">install -vDm644 COPYING README* -t /usr/share/doc/iproute2-&iproute2-version;</userinput></screen>
 
   </sect2>
 
