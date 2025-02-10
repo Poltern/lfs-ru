@@ -42,15 +42,18 @@
                                                     ...  [FW_LOADER_USER_HELPER]
   <emphasis role='blue'>F</emphasis>irmware Drivers ---&gt;
     [*] <emphasis role='blue'>E</emphasis>xport DMI identification via sysfs to userspace                 [DMIID]
+    [*] M<emphasis role='blue'>a</emphasis>rk VGA/VBE/EFI FB as generic system framebuffer       [SYSFB_SIMPLEFB]
   <emphasis role='blue'>G</emphasis>raphics support ---&gt;
-    &lt; /*/M&gt; <emphasis role='blue'>D</emphasis>irect Rendering Manager (XFree86 4.1.0 and higher DRI support) ---&gt;
+    &lt;*&gt; <emphasis role='blue'>D</emphasis>irect Rendering Manager (XFree86 4.1.0 and higher DRI support) ---&gt;
                                                                       ...  [DRM]
-      # If [DRM] is selected as * or M, this must be selected:
-      [ /*] <emphasis role='blue'>E</emphasis>nable legacy fbdev support for your modesetting driver
+      [*]    <emphasis role='blue'>D</emphasis>isplay a user-friendly message when a kernel panic occurs
+                                                                ...  [DRM_PANIC]
+      (kmsg)   <emphasis role='blue'>P</emphasis>anic screen formatter                         [DRM_PANIC_SCREEN]
+      [*]    <emphasis role='blue'>E</emphasis>nable legacy fbdev support for your modesetting driver
                                                       ...  [DRM_FBDEV_EMULATION]
+      &lt;*&gt;    <emphasis role='blue'>S</emphasis>imple framebuffer driver                           [DRM_SIMPLEDRM]
     <emphasis role='blue'>C</emphasis>onsole display driver support ---&gt;
-      # If [DRM] is selected as * or M, this must be selected:
-      [ /*] <emphasis role='blue'>F</emphasis>ramebuffer Console support                    [FRAMEBUFFER_CONSOLE]
+      [*] <emphasis role='blue'>F</emphasis>ramebuffer Console support                      [FRAMEBUFFER_CONSOLE]
 
 <emphasis role='blue'>F</emphasis>ile systems ---&gt;
   [*] <emphasis role='blue'>I</emphasis>notify support for userspace                               [INOTIFY_USER]

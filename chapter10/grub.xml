@@ -122,6 +122,7 @@ set timeout=5
 insmod part_gpt
 insmod ext2
 set root=(hd0,2)
+set gfxpayload=1024x768x32
 
 menuentry "GNU/Linux, Linux &linux-version;-lfs-&version;" {
         linux   /boot/vmlinuz-&linux-version;-lfs-&version; root=/dev/sda2 ro
@@ -141,6 +142,13 @@ EOF</userinput></screen>
 	  поэтому в стандартной конфигурации эти два модуля уже встроены и эти две команды 
 	  <command>insmod</command> ничего не будут делать. В любом случае, от них нет никакого 
 	  вреда, но они могут понадобиться в некоторых редких конфигурациях.
+    </para>
+
+    <para>
+      Команда <command>set gfxpayload=1024x768x32</command> устанавливает разрешение и 
+	  глубину цвета кадрового буфера VESA, которые будут переданы ядру. Драйвер SimpleDRM 
+	  ядра должен использовать фреймбуфер VESA. Вы можете использовать другое разрешение 
+	  или значение глубины цвета, которое больше подходит для вашего монитора.
     </para>
 
     <note><para>С точки зрения <application>GRUB</application>, 

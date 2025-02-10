@@ -12,14 +12,12 @@ STACKPROTECTOR_STRONG='*'
 UEVENT_HELPER=' '
 DEVTMPFS='*'
 DEVTMPFS_MOUNT='*'
-DRM=' *M'
+SYSFB_SIMPLEFB='*'
+DRM='*'
+DRM_PANIC='*'
+DRM_PANIC_SCREEN='kmsg'
+DRM_FBDEV_EMULATION='*'
+DRM_SIMPLEDRM='*'
+FRAMEBUFFER_CONSOLE='*'
 
 revision='sysv'
-
-[DRM_FBDEV_EMULATION]
-value = ' *'
-comment = 'If [DRM] is selected as * or M, this must be selected'
-
-[FRAMEBUFFER_CONSOLE]
-value = ' *'
-comment = 'If [DRM] is selected as * or M, this must be selected'
