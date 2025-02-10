@@ -4,8 +4,7 @@
   <!ENTITY % general-entities SYSTEM "../general.ent">
   %general-entities;
   <!-- Convenient entity for "Systemd" or "Udev" -->
-  <!ENTITY systemd-udev "<phrase revision='systemd'>Systemd</phrase>
-                         <phrase revision='sysv'>Udev</phrase>">
+  <!ENTITY systemd-udev "<phrase revision='systemd'>Systemd</phrase><phrase revision='sysv'>Udev</phrase>">
   <!ENTITY bdb "<ulink url='https://www.oracle.com/database/technologies/related/berkeleydb.html'>Berkeley DB</ulink>">
 ]>
 
@@ -2568,9 +2567,10 @@
         <segtitle>&before;</segtitle>
         <seglistitem>
           <seg>Binutils,
-          <phrase revision='systemd'>D-Bus, </phrase>E2fsprogs,
-          IProute2, Kmod, Man-DB, Procps-ng, Python,
-		  &systemd-udev; и Util-linux</seg>
+          <phrase revision='systemd'>D-Bus, </phrase>
+          E2fsprogs, IProute2, Kmod, Man-DB, Procps-ng, Python,
+          &systemd-udev;, 
+          и Util-linux</seg>
         </seglistitem>
       </segmentedlist>
 
