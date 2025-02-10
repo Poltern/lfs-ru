@@ -41,6 +41,11 @@
   <sect2 role="installation">
     <title>Установка пакета Binutils</title>
 
+    <para>Во-первых, примените патч, чтобы предотвратить ошибку, которая приводит к ненужной 
+	повторной привязке к пакетам, зависящим от cmake-3.31.0 или более поздней версии:</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&binutils-upstream-patch;</userinput></screen>
+
     <para>Документация Binutils рекомендует выполнять компиляцию в
     отдельном каталоге:</para>
 

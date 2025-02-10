@@ -89,7 +89,9 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
         <term><parameter>SHLIB_LIBS="-lncursesw"</parameter></term>
         <listitem>
           <para>Этот параметр принудительно линкует Readline с библиотекой
-          <filename class="libraryfile">libncursesw</filename>.</para>
+          <filename class="libraryfile">libncursesw</filename>. Подробную 
+		  информацию смотрите в разделе <quote>Shared Libraries</quote> в 
+		  <filename>README</filename>-файле пакета.</para>
         </listitem>
       </varlistentry>
 
@@ -99,7 +101,7 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
 
     <para>Установите пакет:</para>
 
-<screen><userinput remap="install">make SHLIB_LIBS="-lncursesw" install</userinput></screen>
+<screen><userinput remap="install">make install</userinput></screen>
 
     <para>По желанию установите документацию:</para>
 

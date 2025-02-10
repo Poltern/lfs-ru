@@ -34,15 +34,15 @@
       </listitem>
     </varlistentry>
 -->
-<!--
+
     <varlistentry>
-      <term>Binutils LTO Fix Patch - <token>&binutils-lto-patch-size;</token>:</term>
+      <term>Binutils Upstream Fixes Patch - <token>&binutils-upstream-patch-size;</token>:</term>
       <listitem>
-        <para>Ссылка на загрузку: <ulink url="&patches-root;&binutils-lto-patch;"/></para>
-        <para>Контрольная сумма MD5: <literal>&binutils-lto-patch-md5;</literal></para>
+        <para>Ссылка на загрузку: <ulink url="&patches-root;&binutils-upstream-patch;"/></para>
+        <para>Контрольная сумма MD5: <literal>&binutils-upstream-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
--->
+
     <varlistentry>
       <term>Bzip2 Documentation Patch - <token>&bzip2-docs-patch-size;</token>:</term>
       <listitem>

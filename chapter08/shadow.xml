@@ -43,16 +43,17 @@
     <important>
       <para>
         Если вы установили Linux-PAM, вам следует перейти 
-		<ulink url='&blfs-book;postlfs/shadow.xml'>на страницу BLFS shadow</ulink> вместо 
+		<ulink url='&blfs-book;postlfs/shadow.xml'>к инструкции в BLFS</ulink> вместо 
 		этой страницы, чтобы собрать (пересобрать, или обновить) shadow.
       </para>
     </important>
 
     <note>
-      <para>Если вы хотите принудительно использовать надежные пароли, обратитесь
-	  к инструкции <ulink url="&blfs-book;postlfs/cracklib.html"/> для установки
-	  CrackLib перед сборкой. Затем добавьте параметр <parameter>--with-libcrack</parameter>
-	  в приведенную ниже команду <command>configure</command>.</para>
+      <para>Если вы хотите задействовать использование надежных паролей, сначала 
+	  <ulink url='&blfs-book;postlfs/linux-pam.html'>установите и настройте Linux-PAM</ulink>. 
+	  Затем <ulink url='&blfs-book;postlfs/shadow.html'>установите и настройте shadow с 
+	  поддержкой PAM</ulink>. Наконец <ulink url='&blfs-book;postlfs/libpwquality.html'>установите 
+	  libpwquality и настройте PAM для его использования</ulink>.</para>
     </note>
 
     <para>Отключите установку <command>groups</command> и ее справочных страниц,
@@ -89,11 +90,6 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;</userinput></s
     -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                \
     -i etc/login.defs</userinput></screen>
 
-    <note>
-      <para>Если вы решили собрать Shadow с поддержкой Cracklib, выполните эту команду:</para>
-
-<screen role="nodump"><userinput>sed -i 's:DICTPATH.*:DICTPATH\t/lib/cracklib/pw_dict:' etc/login.defs</userinput></screen>
-    </note>
 <!--
     <para>Make a minor change to make the first group number generated
     by useradd 1000:</para>

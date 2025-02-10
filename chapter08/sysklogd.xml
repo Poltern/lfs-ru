@@ -46,7 +46,8 @@
 <screen><userinput remap="configure">./configure --prefix=/usr      \
             --sysconfdir=/etc  \
             --runstatedir=/run \
-            --without-logger</userinput></screen>
+            --without-logger   \
+            --docdir=/usr/share/doc/sysklogd-&sysklogd-version;</userinput></screen>
 
     <para>Скомпилируйте пакет:</para>
 
